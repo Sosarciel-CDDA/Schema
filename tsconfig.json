@@ -12,9 +12,9 @@
         "skipLibCheck": true,
         "baseUrl": ".",
         "paths": {
-			"@src/*" : ["./src/*"],
-			"@/*"    : ["./*"],
-            "Schema" : ["./src/Schema"]
+            "Schema/*" : ["./src/Schema/*"],
+			"@src/*"   : ["./src/*"],
+			"@/*"      : ["./*"]
         }
     },
     "include": ["./src/**/*.ts", "./src/**/*.js"],

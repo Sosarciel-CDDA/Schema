@@ -1,17 +1,17 @@
-import { FakeSpell } from "../Enchantment";
-import { AnyItem, AnyItemID, ItemCategotyID } from "../Item";
-import { MutationID } from "../Mutation";
-import { NpcInstanceID } from "../NpcInstance";
-import { SoundEffectID, SoundEffectVariantID } from "../SoundEffect";
-import { EocID, InlineEoc, TalkerVar } from "./Eoc";
-import { BoolObj, CondObj, IDObj, LocObj, NumObj, StrObj } from "./VariableObject";
-import { EffectID } from "../Effect";
-import { BodyPartParam, DescText, MessageRatType, Time } from "../GenericDefine";
-import { AssignMissionTarget, MissionDefinitionID } from "../MissionDefinition";
-import { ItemGroupID } from "../ItemGroup";
-import { ActivityTypeID } from "../ActivityType";
-import { MaterialID } from "../Material";
-import { FlagID } from "../Flag";
+import { FakeSpell } from "Schema/Enchantment";
+import { AnyItemID } from "Schema/Item";
+import { MutationID } from "Schema/Mutation";
+import { NpcInstanceID } from "Schema/NpcInstance";
+import { SoundEffectID, SoundEffectVariantID } from "Schema/SoundEffect";
+import { EocID, InlineEoc, TalkerVar } from "../Eoc";
+import { BoolObj, CondObj, IDObj, LocObj, NumObj, StrObj } from "../VariableObject";
+import { EffectID } from "Schema/Effect";
+import { BodyPartParam, DescText, MessageRatType, Time } from "Schema/GenericDefine";
+import { AssignMissionTarget, MissionDefinitionID } from "Schema/MissionDefinition";
+import { ItemGroupID } from "Schema/ItemGroup";
+import { ActivityTypeID } from "Schema/ActivityType";
+import { FlagID } from "Schema/Flag";
+import { EocEffect, ItemSearchData, ParamsEoc, VarComment } from "./EocEffectIndex";
 
 
 
@@ -20,84 +20,20 @@ import { FlagID } from "../Flag";
 
 
 
-
-
-/**Eoc效果 */
-export type EocEffect = EocEffectList[number];
-/**Eoc效果表 */
-export type EocEffectList = [
-    MathAssignExp             ,//
-    RunEoc                    ,//运行Eoc
-    QueueEoc                  ,//延迟运行Eoc
-    EocSelector               ,//Eoc选项
-    RunInvEocs                ,//
-    MapRunItemEocs            ,//
-    RunEocWith                ,//
-    RunEocUntil               ,//
-    WeightedListEocs          ,//
-    LoseTrait                 ,//失去变异
-    AddTrait                  ,//获得变异
-    ConsumeItem               ,//使用/扣除 count 个物品
-    RemoveItem                ,//删除物品
-    SpawnItem                 ,//生成物品
-    SpawnNpc                  ,//生成npc
-    SoundEffect               ,//播放声音
-    CastSpell                 ,//施法
-    Teleport                  ,//传送
-    LocalVar                  ,//获取坐标
-    Message                   ,//发送消息
-    AddEffect                 ,//添加效果
-    LoseEffect                ,//添加效果
-    SetHP                     ,//设置生命值
-    AddStrVar                 ,//添加文本变量
-    SetString                 ,//赋值文本变量
-    AddTimeVar                ,//添加时间变量
-    AddRandStrVar             ,//添加随机文本变量
-    NoParamEffect             ,//无参效果
-    AssingMission             ,//添加任务
-    RemoveActionMission       ,//移除任务
-    FinishMission             ,//完成任务
-    SetCond                   ,//保存条件
-    IfElse                    ,//条件控制
-    SwitchCase                ,//switch控制
-    AssignActivity            ,//开始活动
-    SetFlag                   ,//添加flag
-    UnsetFlag                 ,//移除flag
-    Foreach                   ,//遍历
-    TurnCost                  ,//消耗一定时间
-    SetTalker                 ,//获取talker的character_id
-    MakeSound                 ,//制造声音
-];
-
-/**无参效果 */
-export type NoParamEffect = [
-    "follow_only"       ,//让npc跟随玩家
-    "leave"             ,//让npc停止跟随玩家并离开追随者阵营
-    "drop_weapon"       ,//丢下手持物品 仅限npc
-    NoParamTalkerEffect ,
-][number];
-
-/**双Talker无参效果表 */
-export const NoParamTalkerEffectList = [
-    "prevent_death" ,//在死亡事件中阻止将要发生的死亡
-    "die"           ,//让talker死亡或是删除物品
-] as const;
-/**双Talker无参效果 */
-export type NoParamTalkerEffect = `${`u_`|`npc_`}${typeof NoParamTalkerEffectList[number]}`
 
 /**math赋值表达式 */
-type MathAssignExp = {
+export type MathAssignExp = {
     math:[string,"="|"+="|"-="|"*="|"/=",string]
 };
 
 
 /**运行Eoc */
-type RunEoc = {
+export type RunEoc = {
     /**运行Eoc */
     run_eocs: (ParamsEoc)
 };
 /**循环运行Eoc */
-type RunEocUntil = {
+export type RunEocUntil = {
     /**循环运行Eoc */
     run_eoc_until: (ParamsEoc);
     /**循环条件, 为真时循环 */
@@ -107,14 +43,14 @@ type RunEocUntil = {
     iteration?: (NumObj);
 }
 /**延迟队列eoc */
-type QueueEoc = {
+export type QueueEoc = {
     /**运行Eoc 将会丢失beta talker*/
     queue_eocs: (ParamsEoc);
     /**延迟 */
     time_in_future: (Time);
 }
 /**运行Eoc 并提供参数 */
-type RunEocWith = {
+export type RunEocWith = {
     run_eoc_with: (ParamsEoc);
     /**提供的上下文参数表 变量名:值 */
     variables? : Record<string,string|boolean|number>;
@@ -126,7 +62,7 @@ type RunEocWith = {
     beta_talker? : (NumObj);
 };
 /**Eoc选项 */
-type EocSelector = {
+export type EocSelector = {
     /**根据选择运行提供的EocID */
     run_eoc_selector: IDObj<EocID>[];
     /**提供的上下文参数表 变量名:值 */
@@ -146,7 +82,7 @@ type EocSelector = {
 }
 
 /**生成Npc */
-type SpawnNpc = TalkerVar<{
+export type SpawnNpc = TalkerVar<{
     /**Npc实例ID */
     spawn_npc: NpcInstanceID,
     /**真实数量 */
@@ -156,8 +92,9 @@ type SpawnNpc = TalkerVar<{
     /**最大半径 */
     max_radius?: number,
 },"spawn_npc">;
+
 /**播放声音 */
-type SoundEffect = {
+export type SoundEffect = {
     /**音效ID */
     id          : IDObj<SoundEffectID>;
     /**变体ID */
@@ -168,7 +105,7 @@ type SoundEffect = {
     volume: (NumObj);
 }
 /**施法 */
-type CastSpell = TalkerVar<{
+export type CastSpell = TalkerVar<{
     /**施法 */
     cast_spell: FakeSpell;
     /**默认为 false；如果为 true, 则允许您瞄准施放的法术,   
@@ -185,7 +122,7 @@ type CastSpell = TalkerVar<{
 },"cast_spell">;
 
 /**传送 */
-type Teleport = TalkerVar<{
+export type Teleport = TalkerVar<{
     teleport: (LocObj);
     /**成功传送产生的消息 */
     success_message?: (StrObj);
@@ -196,7 +133,7 @@ type Teleport = TalkerVar<{
 },"teleport">;
 
 /**搜索并获取坐标 存入location_variable*/
-type LocalVar = TalkerVar<{
+export type LocalVar = TalkerVar<{
     location_variable: (LocObj);
     /**在发起者周围 的最小半径 默认 0 */
     min_radius?: (NumObj);
@@ -239,7 +176,7 @@ type LocalVar = TalkerVar<{
 },"location_variable">;
 
 /**发送消息 */
-type Message = TalkerVar<{
+export type Message = TalkerVar<{
     message: (DescText);
     /**默认中立；消息如何在日志中显示 (通常是指颜色) ；  
      * 可以是良好 (绿色) 、中性 (白色) 、不良 (红色) 、  
@@ -268,7 +205,7 @@ type Message = TalkerVar<{
 },"message">;
 
 /**添加效果 */
-type AddEffect = TalkerVar<{
+export type AddEffect = TalkerVar<{
     add_effect: IDObj<EffectID>;
     /**添加的时间
      * 数字为秒
@@ -285,30 +222,19 @@ type AddEffect = TalkerVar<{
 },"add_effect">;
 
 /**失去效果 */
-type LoseEffect = TalkerVar<{
+export type LoseEffect = TalkerVar<{
     lose_effect: IDObj<EffectID>;
 },"lose_effect">;
 
-/**变量操作的注释用字段  
- * { "u_add_var": "gunsmith_ammo_ammount", "type": "number", "context": "artisans", "value": "800" }  
- * 等价于  
- * {math: [ "u_number_artisans_gunsmith_ammo_amount", "=", "800" ]}  
- * type_context_variable_name  
- */
-export type VarComment = {
-    /**注释用字段 type */
-    type?: string;
-    /**注释用字段 context */
-    context?: string;
-}
 /**添加文本变量 */
-type AddStrVar = TalkerVar<{
+export type AddStrVar = TalkerVar<{
     add_var: string;
     /**变量值 */
     value: string;
 },"add_var">&VarComment;
+
 /**赋值文本变量 */
-type SetString = {
+export type SetString = {
     /**文本值 */
     set_string_var:StrObj|StrObj[];
     /**赋值目标 */
@@ -317,20 +243,21 @@ type SetString = {
     parse_tags?:boolean;
 }
 /**添加时间变量 */
-type AddTimeVar = TalkerVar<{
+export type AddTimeVar = TalkerVar<{
     add_var: string;
     /**时间变量 将当前时间存于变量中 */
     time: true;
 },"add_var">&VarComment;
+
 /**添加随机文本变量 */
-type AddRandStrVar = TalkerVar<{
+export type AddRandStrVar = TalkerVar<{
     add_var: string;
     /**可能的变量值 */
     possible_values: string[];
 },"add_var">&VarComment;
 
 /**设置生命 */
-type SetHP = TalkerVar<{
+export type SetHP = TalkerVar<{
     set_hp: (NumObj);
     /**默认为 whole body 全身  
      * 如果使用, HP调整将仅应用于该身体部位  
@@ -349,16 +276,16 @@ type SetHP = TalkerVar<{
 },"set_hp">;
 
 /**失去变异 */
-type LoseTrait = TalkerVar<{
+export type LoseTrait = TalkerVar<{
     lose_trait: IDObj<MutationID>
 },"lose_trait">;
 /**获得变异 */
-type AddTrait = TalkerVar<{
+export type AddTrait = TalkerVar<{
     add_trait: IDObj<MutationID>
 },"add_trait">;
 
 /**生成物品 */
-type SpawnItem = TalkerVar<{
+export type SpawnItem = TalkerVar<{
     spawn_item: IDObj<AnyItemID>|IDObj<ItemGroupID>;
     /**数量 */
     count?: (NumObj);
@@ -371,7 +298,7 @@ type SpawnItem = TalkerVar<{
 },"spawn_item">
 
 /**使用物品 */
-type ConsumeItem = TalkerVar<{
+export type ConsumeItem = TalkerVar<{
     consume_item: IDObj<AnyItemID>;
     /**数量 */
     count?: (NumObj);
@@ -382,23 +309,23 @@ type ConsumeItem = TalkerVar<{
 },"consume_item">;
 
 /**删除物品 */
-type RemoveItem = TalkerVar<{
+export type RemoveItem = TalkerVar<{
     /**删除物品 */
     remove_item_with: IDObj<AnyItemID>;
 },"remove_item_with">;
 
 /**给玩家添加任务 */
-type AssingMission = {
+export type AssingMission = {
     /**给玩家添加目标ID任务 */
     assign_mission: IDObj<MissionDefinitionID>;
 }
 /**将从玩家的活动任务列表中删除任务而不失败。 */
-type RemoveActionMission = {
+export type RemoveActionMission = {
     /**给玩家删除目标ID任务 */
     remove_active_mission: IDObj<MissionDefinitionID>;
 }
 /**使玩家完成任务 */
-type FinishMission = {
+export type FinishMission = {
     /**使玩家完成目标ID任务 */
     finish_mission: IDObj<MissionDefinitionID>;
     /**不为true则视为失败 */
@@ -407,14 +334,14 @@ type FinishMission = {
     step?: number;
 }
 /**将条件Obj保存为变量 */
-type SetCond = {
+export type SetCond = {
     /**将条件Obj保存为变量 */
     set_condition: (CondObj);
     /**将要保存的条件 */
     condition: (BoolObj);
 }
 /**条件控制 */
-type IfElse = {
+export type IfElse = {
     /**对话条件（强制性） */
     if: BoolObj;
     /**满足条件时执行的效果（强制性） */
@@ -423,7 +350,7 @@ type IfElse = {
     else?: EocEffect[];
 }
 /**开始活动 */
-type AssignActivity = TalkerVar<{
+export type AssignActivity = TalkerVar<{
     assign_activity: ActivityTypeID;
     /**活动的持续时间 */
     duration: (Time);
@@ -431,7 +358,7 @@ type AssignActivity = TalkerVar<{
 
 
 /**在背包物品上运行EOC */
-type RunInvEocs = TalkerVar<{
+export type RunInvEocs = TalkerVar<{
     /**物品的选择方式;  
      * 可选值包括:  
      * all          - 所有符合条件的物品都会被选中;  
@@ -465,7 +392,7 @@ type RunInvEocs = TalkerVar<{
 /**在地图上遍历某loc内所有物品  
  * 以物品为u运行eoc  
  */
-type MapRunItemEocs = TalkerVar<{
+export type MapRunItemEocs = TalkerVar<{
     /**物品的选择方式;  
      * 可选值包括:  
      * all          - 所有符合条件的物品都会被选中;  
@@ -502,39 +429,25 @@ type MapRunItemEocs = TalkerVar<{
     false_eocs?: (ParamsEoc);
 },'map_run_item_eocs'>
 
-/**背包筛选数据 */
-export type ItemSearchData = {
-    /**特定物品的id */
-    id?: IDObj<AnyItemID>;
-    /**物品的类别 (区分大小写, 应始终使用小写) */
-    category?: (ItemCategotyID);
-    /**物品具有的标志 */
-    flags?: Exclude<AnyItem["flags"],undefined>[number][];
-    /**物品的材料 */
-    material?: (MaterialID);
-    /**如果为true, 只返回穿着的物品 */
-    worn_only?: boolean;
-    /** 如果为true, 只返回手持的物品 */
-    wielded_only?: boolean;
-};
+
 /**根据权重运行EOC */
-type WeightedListEocs = {
+export type WeightedListEocs = {
     /**根据权重运行EOC  
      * [eoc,权重][]
      */
     weighted_list_eocs: ((InlineEoc|EocID)|[(InlineEoc|EocID),NumObj])[];
 }
 /**添加flag */
-type SetFlag = TalkerVar<{
+export type SetFlag = TalkerVar<{
     set_flag:IDObj<FlagID>;
 },"set_flag">;
 /**移除flag */
-type UnsetFlag = TalkerVar<{
+export type UnsetFlag = TalkerVar<{
     unset_flag:IDObj<FlagID>;
 },"unset_flag">;
 
 /**switch控制 */
-type SwitchCase = {
+export type SwitchCase = {
     /**switch控制 */
     switch:NumObj;
     /**cases合集 */
@@ -547,7 +460,7 @@ type SwitchCase = {
 };
 
 /**制造文本声音 */
-type MakeSound = TalkerVar<{
+export type MakeSound = TalkerVar<{
     make_sound: (StrObj);
     /**音量 */
     volume: (NumObj);
@@ -555,7 +468,7 @@ type MakeSound = TalkerVar<{
 
 
 /**遍历 */
-type Foreach = {
+export type Foreach = {
     /**遍历类型  */
     foreach:ForeachType;
     /**遍历的名称字符串存储变量 */
@@ -572,24 +485,21 @@ type Foreach = {
  * == monstergroup 时 item_group 可为 MonsterGroupID  
  * == array 时 item_group 可为 string[]  
 */
-type ForeachType = "ids"|"item_group"|"monstergroup"|"array";
+export type ForeachType = "ids"|"item_group"|"monstergroup"|"array";
 /**遍历目标  
  * 根据遍历类型变化  
  */
-type ForeachTarget = "bodypart"|"flag"|"trait"|"vitamin"|
+export type ForeachTarget = "bodypart"|"flag"|"trait"|"vitamin"|
     ItemGroupID|string[];
 
 /**使 alpha 消耗一定时间 */
-type TurnCost = {
+export type TurnCost = {
     /**使 alpha 消耗一定时间 */
     turn_cost: (Time);
 }
 
 /**将 talker 的 character_id 传入对象变量 */
-type SetTalker = TalkerVar<{
+export type SetTalker = TalkerVar<{
     set_talker:(NumObj);
 },"set_talker">
 
-
-/**参数Eoc */
-export type ParamsEoc = (IDObj<EocID>|InlineEoc)|(IDObj<EocID>|InlineEoc)[];

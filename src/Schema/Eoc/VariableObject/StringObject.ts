@@ -1,4 +1,4 @@
-import { MonsterID } from "@src/Schema/Monster";
+import { MonsterID } from "Schema/Monster";
 import { IDObj } from "./VariableObjectIndex";
 import { StrObj } from "./StringObjectIndex";
 

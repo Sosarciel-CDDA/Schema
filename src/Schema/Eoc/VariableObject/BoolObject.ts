@@ -1,19 +1,19 @@
-import { MissionDefinitionID } from "@src/Schema/MissionDefinition";
+import { MissionDefinitionID } from "Schema/MissionDefinition";
 import { TalkerVar } from "../Eoc";
 import { BoolObj } from "./BoolObjectIndex";
 import { AnyObj, CompareOpera, CondObj, IDObj, LocObj, NumObj } from "./VariableObjectIndex";
-import { BodyPartID, DescText, Time } from "@src/Schema/GenericDefine";
-import { FieldID } from "@src/Schema/Field";
-import { WeaponCategoryID } from "@src/Schema/WeaponCategory";
-import { FlagID } from "@src/Schema/Flag";
-import { MutationID } from "@src/Schema/Mutation";
-import { AnyItemID } from "@src/Schema/Item";
+import { BodyPartID, DescText, Time } from "Schema/GenericDefine";
+import { FieldID } from "Schema/Field";
+import { WeaponCategoryID } from "Schema/WeaponCategory";
+import { FlagID } from "Schema/Flag";
+import { MutationID } from "Schema/Mutation";
+import { AnyItemID } from "Schema/Item";
 import { VarComment } from "../EocEffect";
 import { StrObj } from "./StringObjectIndex";
-import { EffectID } from "@src/Schema/Effect";
-import { TerrainID } from "@src/Schema/Terrain";
-import { AmmunitionTypeID } from "@src/Schema/AmmiunitionType";
-import { SkillID } from "@src/Schema/Skill";
+import { EffectID } from "Schema/Effect";
+import { TerrainID } from "Schema/Terrain";
+import { AmmunitionTypeID } from "Schema/AmmiunitionType";
+import { SkillID } from "Schema/Skill";
 
 
 
