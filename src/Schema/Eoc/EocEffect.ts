@@ -1,22 +1,17 @@
-import { JArray, JObject, JToken } from "@zwa73/utils";
 import { FakeSpell } from "../Enchantment";
 import { AnyItem, AnyItemID, ItemCategotyID } from "../Item";
 import { MutationID } from "../Mutation";
 import { NpcInstanceID } from "../NpcInstance";
 import { SoundEffectID, SoundEffectVariantID } from "../SoundEffect";
-import { Eoc, EocID, InlineEoc, TalkerVar } from "./Eoc";
-import { BoolObj, CondObj, GenericObj, GenericObjOperateList, IDObj, LocObj, NumObj, StrObj } from "./VariableObject";
+import { EocID, InlineEoc, TalkerVar } from "./Eoc";
+import { BoolObj, CondObj, IDObj, LocObj, NumObj, StrObj } from "./VariableObject";
 import { EffectID } from "../Effect";
-import { BodyPartID, BodyPartParam, DescText, MessageRatType, Time } from "../GenericDefine";
+import { BodyPartParam, DescText, MessageRatType, Time } from "../GenericDefine";
 import { AssignMissionTarget, MissionDefinitionID } from "../MissionDefinition";
 import { ItemGroupID } from "../ItemGroup";
 import { ActivityTypeID } from "../ActivityType";
 import { MaterialID } from "../Material";
 import { FlagID } from "../Flag";
-import { SkillID } from "../Skill";
-import { TerrainID } from "../Terrain";
-import { FieldID } from "../Field";
-import { AmmunitionTypeID } from "../AmmiunitionType";
 
 
 
@@ -72,13 +67,6 @@ export type EocEffectList = [
     TurnCost                  ,//消耗一定时间
     SetTalker                 ,//获取talker的character_id
     MakeSound                 ,//制造声音
-    UHasItemsSum              ,//获取物品总数
-    HasWieldedWithSkill       ,//检查是否持有使用特定技能的武器
-    HasWieldedWithAmmotype    ,//检查是否持有使用特定弹药类型的武器
-    IsOnTerrain               ,//检查是否站在特定地形上
-    IsOnTerrainWithFlag       ,//检查是否站在具有特定标志的地形上
-    IsInField                 ,//检查是否在特定场地上
-    Query                     ,//创建一个弹出窗口
 ];
 
 /**无参效果 */
@@ -93,11 +81,6 @@ export type NoParamEffect = [
 export const NoParamTalkerEffectList = [
     "prevent_death" ,//在死亡事件中阻止将要发生的死亡
     "die"           ,//让talker死亡或是删除物品
-    "can_see"       ,//检查talker是否能看见（不是盲的）
-    "is_deaf"       ,//检查talker是否聋（不能听见）
-    "is_alive"      ,//检查talker是否活着（不是死的）
-    "is_warm"       ,//检查talker是否是温血的（具有WARM标志）
-    "exists"        ,//检查talker是否存在（不是null）
 ] as const;
 /**双Talker无参效果 */
 export type NoParamTalkerEffect = `${`u_`|`npc_`}${typeof NoParamTalkerEffectList[number]}`
@@ -606,115 +589,6 @@ type TurnCost = {
 type SetTalker = TalkerVar<{
     set_talker:(NumObj);
 },"set_talker">
-
-
-/**拥有物品汇总（适用于Avatar、Character、NPC）
- * 当 alpha 或 beta 对话者所拥有的物品中，总量满足任意一组需求时，返回 true。
- * 其中，item 表示要检查的物品； amount 表示应当找到的该物品数量。
- * 此条件可与 _consume_item_sum 配对使用。
- */
-type UHasItemsSum = TalkerVar<{
-    /**物品列表，每项为一个物品及对应数量 */
-    has_items_sum: {
-        /**物品ID或变量引用 */
-        item: (StrObj);
-        /**所需数量或可计算表达式 */
-        amount: (NumObj);
-    }[];
-}, "has_items_sum">;
-
-
-/**检查talker是否持有使用特定技能的武器 */
-type HasWieldedWithSkill = TalkerVar<{
-    /**检查talker是否持有使用特定技能的武器
-     * 对于枪械，技能来自武器的skill字段
-     * 对于近战武器，技能来自武器具有的最高伤害类型
-     */
-    has_wielded_with_skill: IDObj<SkillID>|StrObj;
-}, "has_wielded_with_skill">;
-
-/**检查talker是否持有使用特定弹药类型的武器
- * 适用于：
- * - Avatar ✔️
- * - Character ✔️
- * - NPC ✔️
- * - Monster ❌
- * - Furniture ❌
- * - Item ❌
- * - Vehicle ❌
- */
-type HasWieldedWithAmmotype = TalkerVar<{
-    /**检查talker是否持有使用特定弹药类型的武器
-     * 对于可以使用多种弹药类型的物品也有效
-     */
-    has_wielded_with_ammotype: IDObj<AmmunitionTypeID>|StrObj;
-}, "has_wielded_with_ammotype">;
-
-/**检查talker是否站在特定地形上
- * 适用于：
- * - Avatar ✔️
- * - Character ✔️
- * - NPC ✔️
- * - Monster ✔️
- * - Furniture ✔️
- * - Item ✔️
- * - Vehicle ✔️
- */
-type IsOnTerrain = TalkerVar<{
-    /**检查talker是否站在特定地形上 */
-    is_on_terrain: IDObj<TerrainID>|StrObj;
-}, "is_on_terrain">;
-
-/**检查talker是否站在具有特定标志的地形上
- * 适用于：
- * - Avatar ✔️
- * - Character ✔️
- * - NPC ✔️
- * - Monster ✔️
- * - Furniture ✔️
- * - Item ✔️
- * - Vehicle ✔️
- */
-type IsOnTerrainWithFlag = TalkerVar<{
-    /**检查talker是否站在具有特定标志的地形上 */
-    is_on_terrain_with_flag: IDObj<FlagID>|StrObj;
-}, "is_on_terrain_with_flag">;
-
-/**检查talker是否在特定场地上
- * 适用于：
- * - Avatar ✔️
- * - Character ✔️
- * - NPC ✔️
- * - Monster ✔️
- * - Furniture ✔️
- * - Item ✔️
- * - Vehicle ✔️
- */
-type IsInField = TalkerVar<{
-    /**检查talker是否在特定场地上 */
-    is_in_field: IDObj<FieldID>|StrObj;
-}, "is_in_field">;
-
-/**为玩家创建一个弹出窗口，可以回答"是"或"否"
- * 适用于：
- * - Avatar ✔️
- * - Character ✔️
- * - NPC ✔️
- * - Monster ❌
- * - Furniture ❌
- * - Item ❌
- * - Vehicle ❌
- */
-type Query = TalkerVar<{
-    /**为玩家创建一个弹出窗口
-     * 对于玩家（Avatar），创建一个可以回答"是"或"否"的弹出窗口
-     * 如果选择"是"则返回true，否则返回false
-     */
-    query: StrObj;
-    /**指定NPC（非玩家控制的角色）的默认输出 */
-    default: boolean;
-}, "query">;
-
 
 
 /**参数Eoc */

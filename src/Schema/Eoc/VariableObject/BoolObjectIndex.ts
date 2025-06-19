@@ -2,7 +2,7 @@
 export type BoolObj = BoolOperateList[number]|NoParamCond;
 
 
-import { BoolOperaAnd, BoolOperaCompStr, BoolOperaNot, BoolOperaOr, CompareTime, GetCond, HasEffect, HasFlag, HasItem, HasItems, HasMission, HasStrVar, HasTimeVar, HasTrait, HasWieldFlag, HasWieldWeaponCategoty, IsInField, MathCompareExp, ModIsLoad, OneInChance, QueryTile, SurvivalNeed } from "./BoolObject";
+import { BoolOperaAnd, BoolOperaCompStr, BoolOperaNot, BoolOperaOr, CompareTime, GetCond, HasEffect, HasFlag, HasItem, HasItems, HasMission, HasStrVar, HasTimeVar, HasTrait, HasWieldedWithAmmotype, HasWieldedWithSkill, HasWieldFlag, HasWieldWeaponCategoty, IsInField, IsOnTerrain, IsOnTerrainWithFlag, MathCompareExp, ModIsLoad, OneInChance, QueryBool, QueryTile, SurvivalNeed, UHasItemsSum } from "./BoolObject";
 /**Eoc Bool 对象操作符 */
 export type BoolOperateList = [
     BoolOperaNot            ,//非
@@ -27,6 +27,13 @@ export type BoolOperateList = [
     GetCond                 ,//获取条件
     QueryTile               ,//选择地块
     SurvivalNeed            ,//生存需求
+
+    UHasItemsSum              ,//获取物品总数
+    HasWieldedWithSkill       ,//检查是否持有使用特定技能的武器
+    HasWieldedWithAmmotype    ,//检查是否持有使用特定弹药类型的武器
+    IsOnTerrain               ,//检查是否站在特定地形上
+    IsOnTerrainWithFlag       ,//检查是否站在具有特定标志的地形上
+    QueryBool                 ,//创建一个弹出窗口
 ];
 
 /**无参条件 */
@@ -39,7 +46,6 @@ export const NoParamTalkerCondList = [
     "female"              ,//是女性
     "male"                ,//是男性
     "can_drop_weapon"     ,//可以丢弃手中的物品
-    "is_alive"            ,//还活着
     "has_weapon"          ,//挥舞着任意物品
     "is_avatar"           ,//是主角
     "is_npc"              ,//是npc
@@ -48,7 +54,12 @@ export const NoParamTalkerCondList = [
     "is_item"             ,//是物品
     "is_furnitur"         ,//是家具
     "driving"             ,//正在驾驶
-    "exists"              ,//talker是否存在
+
+    "can_see"       ,//检查talker是否能看见（不是盲的）
+    "is_deaf"       ,//检查talker是否聋（不能听见）
+    "is_alive"      ,//检查talker是否活着（不是死的）
+    "is_warm"       ,//检查talker是否是温血的（具有WARM标志）
+    "exists"        ,//检查talker是否存在（不是null）
 ] as const;
 
 /**双Talker无参条件 */

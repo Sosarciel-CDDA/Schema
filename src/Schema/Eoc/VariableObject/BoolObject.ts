@@ -11,6 +11,9 @@ import { AnyItemID } from "@src/Schema/Item";
 import { VarComment } from "../EocEffect";
 import { StrObj } from "./StringObjectIndex";
 import { EffectID } from "@src/Schema/Effect";
+import { TerrainID } from "@src/Schema/Terrain";
+import { AmmunitionTypeID } from "@src/Schema/AmmiunitionType";
+import { SkillID } from "@src/Schema/Skill";
 
 
 
@@ -186,3 +189,99 @@ export type SurvivalNeed = TalkerVar<{
     amount?: number;
     level?: "TIRED";
 },"need">
+
+
+
+
+/**拥有物品汇总（适用于Avatar、Character、NPC）
+ * 当 alpha 或 beta 对话者所拥有的物品中，总量满足任意一组需求时，返回 true。
+ * 其中，item 表示要检查的物品； amount 表示应当找到的该物品数量。
+ * 此条件可与 _consume_item_sum 配对使用。
+ */
+export type UHasItemsSum = TalkerVar<{
+    /**物品列表，每项为一个物品及对应数量 */
+    has_items_sum: {
+        /**物品ID或变量引用 */
+        item: (StrObj);
+        /**所需数量或可计算表达式 */
+        amount: (NumObj);
+    }[];
+}, "has_items_sum">;
+
+
+/**检查talker是否持有使用特定技能的武器 */
+export type HasWieldedWithSkill = TalkerVar<{
+    /**检查talker是否持有使用特定技能的武器
+     * 对于枪械，技能来自武器的skill字段
+     * 对于近战武器，技能来自武器具有的最高伤害类型
+     */
+    has_wielded_with_skill: IDObj<SkillID>;
+}, "has_wielded_with_skill">;
+
+/**检查talker是否持有使用特定弹药类型的武器
+ * 适用于：
+ * - Avatar ✔️
+ * - Character ✔️
+ * - NPC ✔️
+ * - Monster ❌
+ * - Furniture ❌
+ * - Item ❌
+ * - Vehicle ❌
+ */
+export type HasWieldedWithAmmotype = TalkerVar<{
+    /**检查talker是否持有使用特定弹药类型的武器
+     * 对于可以使用多种弹药类型的物品也有效
+     */
+    has_wielded_with_ammotype: IDObj<AmmunitionTypeID>;
+}, "has_wielded_with_ammotype">;
+
+/**检查talker是否站在特定地形上
+ * 适用于：
+ * - Avatar ✔️
+ * - Character ✔️
+ * - NPC ✔️
+ * - Monster ✔️
+ * - Furniture ✔️
+ * - Item ✔️
+ * - Vehicle ✔️
+ */
+export type IsOnTerrain = TalkerVar<{
+    /**检查talker是否站在特定地形上 */
+    is_on_terrain: IDObj<TerrainID>;
+}, "is_on_terrain">;
+
+/**检查talker是否站在具有特定标志的地形上
+ * 适用于：
+ * - Avatar ✔️
+ * - Character ✔️
+ * - NPC ✔️
+ * - Monster ✔️
+ * - Furniture ✔️
+ * - Item ✔️
+ * - Vehicle ✔️
+ */
+export type IsOnTerrainWithFlag = TalkerVar<{
+    /**检查talker是否站在具有特定标志的地形上 */
+    is_on_terrain_with_flag: IDObj<FlagID>;
+}, "is_on_terrain_with_flag">;
+
+
+/**为玩家创建一个弹出窗口，可以回答"是"或"否"
+ * 适用于：
+ * - Avatar ✔️
+ * - Character ✔️
+ * - NPC ✔️
+ * - Monster ❌
+ * - Furniture ❌
+ * - Item ❌
+ * - Vehicle ❌
+ */
+export type QueryBool = TalkerVar<{
+    /**为玩家创建一个弹出窗口
+     * 对于玩家（Avatar），创建一个可以回答"是"或"否"的弹出窗口
+     * 如果选择"是"则返回true，否则返回false
+     */
+    query: StrObj;
+    /**指定NPC（非玩家控制的角色）的默认输出 */
+    default: boolean;
+}, "query">;
