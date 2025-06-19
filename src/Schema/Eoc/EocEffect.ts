@@ -594,7 +594,6 @@ type SetTalker = TalkerVar<{
 
 
 /**拥有物品汇总（适用于Avatar、Character、NPC）
- * 类型：由若干对组成的数组，每一对包含一个字符串或变量对象，以及一个整数或变量对象。
  * 当 alpha 或 beta 对话者所拥有的物品中，总量满足任意一组需求时，返回 true。
  * 其中，item 表示要检查的物品； amount 表示应当找到的该物品数量。
  * 此条件可与 _consume_item_sum 配对使用。

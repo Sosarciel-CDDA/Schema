@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "expand-macro": "powershell scripts/expand-macro",
+    "post-process": "powershell scripts/post-process",
     "compile": "powershell scripts/compile",
     "package": "powershell scripts/package",
     "build-schema": "powershell scripts/build-schema"
