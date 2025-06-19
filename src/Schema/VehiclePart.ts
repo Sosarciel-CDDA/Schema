@@ -1,5 +1,5 @@
 import { AmmunitionTypeID } from "./AmmiunitionType";
-import { DamageTypeID } from "./DameType";
+import { DamageTypeID } from "./DamageType";
 import { FieldID } from "./Field";
 import { CddaID, Color, CopyfromVar, DescText, Time, Volume } from "./GenericDefine";
 import { AnyItemID, GenericID } from "./Item";

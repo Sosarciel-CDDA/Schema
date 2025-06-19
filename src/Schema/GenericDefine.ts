@@ -16,7 +16,7 @@ import { Spell } from "./Spell";
 import { MaterialID } from "./Material";
 import { MissionDefinition } from "./MissionDefinition";
 import { Mutation } from "./Mutation";
-import { DamageInfoOrder, DamageType, DamageTypeID } from "./DameType";
+import { DamageInfoOrder, DamageType, DamageTypeID } from "./DamageType";
 import { AmmoEffect } from "./AmmoEffect";
 import { ModTileset } from "./ModTileset";
 import { ActivityType } from "./ActivityType";

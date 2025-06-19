@@ -16,6 +16,7 @@ import { FlagID } from "../Flag";
 import { SkillID } from "../Skill";
 import { TerrainID } from "../Terrain";
 import { FieldID } from "../Field";
+import { AmmunitionTypeID } from "../AmmiunitionType";
 
 
 
@@ -646,8 +647,7 @@ type HasWieldedWithAmmotype = TalkerVar<{
     /**检查talker是否持有使用特定弹药类型的武器
      * 对于可以使用多种弹药类型的物品也有效
      */
-    //has_wielded_with_ammotype: IDObj<AmmoTypeID>|StrObj;
-    has_wielded_with_ammotype: IDObj<string>|StrObj;
+    has_wielded_with_ammotype: IDObj<AmmunitionTypeID>|StrObj;
 }, "has_wielded_with_ammotype">;
 
 /**检查talker是否站在特定地形上
@@ -677,8 +677,7 @@ type IsOnTerrain = TalkerVar<{
  */
 type IsOnTerrainWithFlag = TalkerVar<{
     /**检查talker是否站在具有特定标志的地形上 */
-    //is_on_terrain_with_flag: IDObj<TerrainFlagID>|StrObj;
-    is_on_terrain_with_flag: IDObj<string>|StrObj;
+    is_on_terrain_with_flag: IDObj<FlagID>|StrObj;
 }, "is_on_terrain_with_flag">;
 
 /**检查talker是否在特定场地上

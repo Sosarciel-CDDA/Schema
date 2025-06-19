@@ -1,4 +1,4 @@
-import { DamageTypeID, DefineDamageTypeIDList } from "./DameType";
+import { DamageTypeID, DefineDamageTypeIDList } from "./DamageType";
 import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";

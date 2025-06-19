@@ -1,4 +1,4 @@
-import { DamageTypeID } from "./DameType";
+import { DamageTypeID } from "./DamageType";
 import { CddaID, DescText, Energy, Volume } from "./GenericDefine";
 
 

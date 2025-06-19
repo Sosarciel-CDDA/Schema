@@ -1,4 +1,4 @@
-import { DamageTypeID } from "./DameType";
+import { DamageTypeID } from "./DamageType";
 import { FakeSpell } from "./Enchantment";
 import { NumObj } from "./Eoc";
 import { FieldID } from "./Field";
