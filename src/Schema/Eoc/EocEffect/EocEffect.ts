@@ -279,6 +279,7 @@ export type SetHP = TalkerVar<{
 export type LoseTrait = TalkerVar<{
     lose_trait: IDObj<MutationID>
 },"lose_trait">;
+
 /**获得变异 */
 export type AddTrait = TalkerVar<{
     add_trait: IDObj<MutationID>
@@ -437,10 +438,12 @@ export type WeightedListEocs = {
      */
     weighted_list_eocs: ((InlineEoc|EocID)|[(InlineEoc|EocID),NumObj])[];
 }
+
 /**添加flag */
 export type SetFlag = TalkerVar<{
     set_flag:IDObj<FlagID>;
 },"set_flag">;
+
 /**移除flag */
 export type UnsetFlag = TalkerVar<{
     unset_flag:IDObj<FlagID>;
@@ -466,7 +469,6 @@ export type MakeSound = TalkerVar<{
     volume: (NumObj);
 },'make_sound'>
 
-
 /**遍历 */
 export type Foreach = {
     /**遍历类型  */
@@ -478,6 +480,7 @@ export type Foreach = {
     /**遍历目标 */
     target:ForeachTarget;
 }
+
 /**遍历类型  
  * 影响 target 的类型  
  * == ids 时 target 可为 "bodypart"|"flag"|"trait"|"vitamin"  
@@ -486,6 +489,7 @@ export type Foreach = {
  * == array 时 item_group 可为 string[]  
 */
 export type ForeachType = "ids"|"item_group"|"monstergroup"|"array";
+
 /**遍历目标  
  * 根据遍历类型变化  
  */

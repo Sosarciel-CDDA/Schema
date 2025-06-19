@@ -193,10 +193,11 @@ export type SurvivalNeed = TalkerVar<{
 
 
 
-/**拥有物品汇总（适用于Avatar、Character、NPC）
+/**拥有物品汇总
  * 当 alpha 或 beta 对话者所拥有的物品中，总量满足任意一组需求时，返回 true。
  * 其中，item 表示要检查的物品； amount 表示应当找到的该物品数量。
  * 此条件可与 _consume_item_sum 配对使用。
+ * 适用于: Avatar Character NPC
  */
 export type UHasItemsSum = TalkerVar<{
     /**物品列表，每项为一个物品及对应数量 */
@@ -219,14 +220,7 @@ export type HasWieldedWithSkill = TalkerVar<{
 }, "has_wielded_with_skill">;
 
 /**检查talker是否持有使用特定弹药类型的武器
- * 适用于：
- * - Avatar ✔️
- * - Character ✔️
- * - NPC ✔️
- * - Monster ❌
- * - Furniture ❌
- * - Item ❌
- * - Vehicle ❌
+ * 适用于: Avatar Character NPC
  */
 export type HasWieldedWithAmmotype = TalkerVar<{
     /**检查talker是否持有使用特定弹药类型的武器
@@ -236,14 +230,7 @@ export type HasWieldedWithAmmotype = TalkerVar<{
 }, "has_wielded_with_ammotype">;
 
 /**检查talker是否站在特定地形上
- * 适用于：
- * - Avatar ✔️
- * - Character ✔️
- * - NPC ✔️
- * - Monster ✔️
- * - Furniture ✔️
- * - Item ✔️
- * - Vehicle ✔️
+ * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  */
 export type IsOnTerrain = TalkerVar<{
     /**检查talker是否站在特定地形上 */
@@ -251,14 +238,7 @@ export type IsOnTerrain = TalkerVar<{
 }, "is_on_terrain">;
 
 /**检查talker是否站在具有特定标志的地形上
- * 适用于：
- * - Avatar ✔️
- * - Character ✔️
- * - NPC ✔️
- * - Monster ✔️
- * - Furniture ✔️
- * - Item ✔️
- * - Vehicle ✔️
+ * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  */
 export type IsOnTerrainWithFlag = TalkerVar<{
     /**检查talker是否站在具有特定标志的地形上 */
@@ -267,14 +247,7 @@ export type IsOnTerrainWithFlag = TalkerVar<{
 
 
 /**为玩家创建一个弹出窗口，可以回答"是"或"否"
- * 适用于：
- * - Avatar ✔️
- * - Character ✔️
- * - NPC ✔️
- * - Monster ❌
- * - Furniture ❌
- * - Item ❌
- * - Vehicle ❌
+ * 适用于: Avatar Character NPC
  */
 export type QueryBool = TalkerVar<{
     /**为玩家创建一个弹出窗口
