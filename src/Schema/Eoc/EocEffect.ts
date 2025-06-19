@@ -68,6 +68,7 @@ export type EocEffectList = [
     TurnCost            ,//消耗一定时间
     SetTalker           ,//获取talker的character_id
     MakeSound           ,//制造声音
+    UHasItemsSum        ,//获取物品总数
 ];
 
 /**无参效果 */
@@ -590,6 +591,24 @@ type TurnCost = {
 type SetTalker = TalkerVar<{
     set_talker:(NumObj);
 },"set_talker">
+
+
+/**拥有物品汇总（适用于Avatar、Character、NPC）
+ * 类型：由若干对组成的数组，每一对包含一个字符串或变量对象，以及一个整数或变量对象。
+ * 当 alpha 或 beta 对话者所拥有的物品中，总量满足任意一组需求时，返回 true。
+ * 其中，item 表示要检查的物品； amount 表示应当找到的该物品数量。
+ * 此条件可与 _consume_item_sum 配对使用。
+ */
+type UHasItemsSum = TalkerVar<{
+    /**物品列表，每项为一个物品及对应数量 */
+    has_items_sum: {
+        /**物品ID或变量引用 */
+        item: (StrObj);
+        /**所需数量或可计算表达式 */
+        amount: (NumObj);
+    }[];
+}, "has_items_sum">;
+
 
 /**参数Eoc */
 export type ParamsEoc = (IDObj<EocID>|InlineEoc)|(IDObj<EocID>|InlineEoc)[];
