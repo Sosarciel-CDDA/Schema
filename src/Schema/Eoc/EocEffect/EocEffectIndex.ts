@@ -3,9 +3,6 @@ import { MaterialID } from "Schema/Material";
 import { EocID, InlineEoc } from "../Eoc";
 import { IDObj } from "../VariableObject";
 
-//#region EocEffectList自动生成
-//#endregion
-
 
 /**Eoc效果 */
 export type EocEffect = EocEffectList[number];
@@ -30,55 +27,6 @@ export const NoParamTalkerEffectList = [
 ] as const;
 /**双Talker无参效果 */
 export type NoParamTalkerEffect = `${`u_`|`npc_`}${typeof NoParamTalkerEffectList[number]}`
-
-
-import { AddEffect, AddRandStrVar, AddStrVar, AddTimeVar, AddTrait, AssignActivity, AssingMission, CastSpell, ConsumeItem, EocSelector, FinishMission, Foreach, IfElse, LocalVar, LoseEffect, LoseTrait, MakeSound, MapRunItemEocs, MathAssignExp, Message, QueueEoc, RemoveActionMission, RemoveItem, RunEoc, RunEocUntil, RunEocWith, RunInvEocs, SetCond, SetFlag, SetHP, SetString, SetTalker, SoundEffect, SpawnItem, SpawnNpc, SwitchCase, Teleport, TurnCost, UnsetFlag, WeightedListEocs } from "./EocEffect";
-/**Eoc效果表 */
-export type EocEffectList = [
-    MathAssignExp             ,//
-    RunEoc                    ,//运行Eoc
-    QueueEoc                  ,//延迟运行Eoc
-    EocSelector               ,//Eoc选项
-    RunInvEocs                ,//
-    MapRunItemEocs            ,//
-    RunEocWith                ,//
-    RunEocUntil               ,//
-    WeightedListEocs          ,//
-    LoseTrait                 ,//失去变异
-    AddTrait                  ,//获得变异
-    ConsumeItem               ,//使用/扣除 count 个物品
-    RemoveItem                ,//删除物品
-    SpawnItem                 ,//生成物品
-    SpawnNpc                  ,//生成npc
-    SoundEffect               ,//播放声音
-    CastSpell                 ,//施法
-    Teleport                  ,//传送
-    LocalVar                  ,//获取坐标
-    Message                   ,//发送消息
-    AddEffect                 ,//添加效果
-    LoseEffect                ,//添加效果
-    SetHP                     ,//设置生命值
-    AddStrVar                 ,//添加文本变量
-    SetString                 ,//赋值文本变量
-    AddTimeVar                ,//添加时间变量
-    AddRandStrVar             ,//添加随机文本变量
-    NoParamEffect             ,//无参效果
-    AssingMission             ,//添加任务
-    RemoveActionMission       ,//移除任务
-    FinishMission             ,//完成任务
-    SetCond                   ,//保存条件
-    IfElse                    ,//条件控制
-    SwitchCase                ,//switch控制
-    AssignActivity            ,//开始活动
-    SetFlag                   ,//添加flag
-    UnsetFlag                 ,//移除flag
-    Foreach                   ,//遍历
-    TurnCost                  ,//消耗一定时间
-    SetTalker                 ,//获取talker的character_id
-    MakeSound                 ,//制造声音
-];
-
-
 
 
 /**变量操作的注释用字段  
@@ -109,3 +57,53 @@ export type ItemSearchData = {
     /** 如果为true, 只返回手持的物品 */
     wielded_only?: boolean;
 };
+
+
+
+
+//#region Eoc效果表导出
+import {MathAssignExp, RunEoc, RunEocUntil, QueueEoc, RunEocWith, EocSelector, SpawnNpc, SoundEffect, CastSpell, Teleport, LocalVar, Message, AddEffect, LoseEffect, AddStrVar, SetString, AddTimeVar, AddRandStrVar, SetHP, LoseTrait, AddTrait, SpawnItem, ConsumeItem, RemoveItem, AssingMission, RemoveActionMission, FinishMission, SetCond, IfElse, AssignActivity, RunInvEocs, MapRunItemEocs, WeightedListEocs, SetFlag, UnsetFlag, SwitchCase, MakeSound, Foreach, TurnCost, SetTalker} from './EocEffect'
+/**Eoc效果表导出 */
+export type EocEffectList = [
+    MathAssignExp           ,//math赋值表达式
+    RunEoc                  ,//运行Eoc
+    RunEocUntil             ,//循环运行Eoc
+    QueueEoc                ,//延迟队列eoc
+    RunEocWith              ,//运行Eoc 并提供参数
+    EocSelector             ,//Eoc选项
+    SpawnNpc                ,//生成Npc
+    SoundEffect             ,//播放声音
+    CastSpell               ,//施法
+    Teleport                ,//传送
+    LocalVar                ,//搜索并获取坐标 存入location_variable
+    Message                 ,//发送消息
+    AddEffect               ,//添加效果
+    LoseEffect              ,//失去效果
+    AddStrVar               ,//添加文本变量
+    SetString               ,//赋值文本变量
+    AddTimeVar              ,//添加时间变量
+    AddRandStrVar           ,//添加随机文本变量
+    SetHP                   ,//设置生命
+    LoseTrait               ,//失去变异
+    AddTrait                ,//获得变异
+    SpawnItem               ,//生成物品
+    ConsumeItem             ,//使用物品
+    RemoveItem              ,//删除物品
+    AssingMission           ,//给玩家添加任务
+    RemoveActionMission     ,//将从玩家的活动任务列表中删除任务而不失败。
+    FinishMission           ,//使玩家完成任务
+    SetCond                 ,//将条件Obj保存为变量
+    IfElse                  ,//条件控制
+    AssignActivity          ,//开始活动
+    RunInvEocs              ,//在背包物品上运行EOC
+    MapRunItemEocs          ,//在地图上遍历某loc内所有物品
+    WeightedListEocs        ,//根据权重运行EOC
+    SetFlag                 ,//添加flag
+    UnsetFlag               ,//移除flag
+    SwitchCase              ,//switch控制
+    MakeSound               ,//制造文本声音
+    Foreach                 ,//遍历类型
+    TurnCost                ,//使 alpha 消耗一定时间
+    SetTalker               ,//将 talker 的 character_id 传入对象变量
+];
+//#endregion

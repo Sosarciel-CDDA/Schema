@@ -1,41 +1,6 @@
 /**Eoc Bool 对象 */
 export type BoolObj = BoolOperateList[number]|NoParamCond;
 
-
-import { BoolOperaAnd, BoolOperaCompStr, BoolOperaNot, BoolOperaOr, CompareTime, GetCond, HasEffect, HasFlag, HasItem, HasItems, HasMission, HasStrVar, HasTimeVar, HasTrait, HasWieldedWithAmmotype, HasWieldedWithSkill, HasWieldFlag, HasWieldWeaponCategoty, IsInField, IsOnTerrain, IsOnTerrainWithFlag, MathCompareExp, ModIsLoad, OneInChance, QueryBool, QueryTile, SurvivalNeed, UHasItemsSum } from "./BoolObject";
-/**Eoc Bool 对象操作符 */
-export type BoolOperateList = [
-    BoolOperaNot            ,//非
-    BoolOperaOr             ,//或
-    BoolOperaAnd            ,//与
-    BoolOperaCompStr        ,//比较两个字符串
-    MathCompareExp          ,//
-    HasWieldFlag            ,//手中的物品有某个flag
-    HasWieldWeaponCategoty  ,//手中的物品有某个武器分类
-    HasItem                 ,//携带/穿戴/持握/背包里有某个物品
-    HasItems                ,//携带/穿戴/持握/背包里有N个某物品
-    HasTrait                ,//有某个变异
-    HasEffect               ,//有某个效果
-    HasFlag                 ,//有某个Flag
-    OneInChance             ,//1/n的概率返回true
-    CompareTime             ,//比较时间变量
-    HasStrVar               ,//有某个变量
-    HasTimeVar              ,//有某个变量
-    ModIsLoad               ,//某个mod是否加载
-    HasMission              ,//有某个任务
-    IsInField               ,//在某个地块附着物上
-    GetCond                 ,//获取条件
-    QueryTile               ,//选择地块
-    SurvivalNeed            ,//生存需求
-
-    UHasItemsSum              ,//获取物品总数
-    HasWieldedWithSkill       ,//检查是否持有使用特定技能的武器
-    HasWieldedWithAmmotype    ,//检查是否持有使用特定弹药类型的武器
-    IsOnTerrain               ,//检查是否站在特定地形上
-    IsOnTerrainWithFlag       ,//检查是否站在具有特定标志的地形上
-    QueryBool                 ,//创建一个弹出窗口
-];
-
 /**无参条件 */
 export type NoParamCond = [
     NoParamTalkerCond,
@@ -64,3 +29,38 @@ export const NoParamTalkerCondList = [
 
 /**双Talker无参条件 */
 export type NoParamTalkerCond = `${`u_`|`npc_`}${typeof NoParamTalkerCondList[number]}`
+
+
+//#region BoolOperate导出
+import {BoolOperaNot, BoolOperaOr, BoolOperaAnd, BoolOperaCompStr, MathCompareExp, GetCond, HasEffect, HasFlag, HasStrVar, HasTimeVar, HasItem, HasItems, HasTrait, HasWieldFlag, HasWieldWeaponCategoty, IsInField, OneInChance, ModIsLoad, HasMission, CompareTime, QueryTile, SurvivalNeed, HasItemsSum, HasWieldedWithSkill, HasWieldedWithAmmotype, IsOnTerrain, IsOnTerrainWithFlag} from './BoolObject'
+/**BoolOperate导出 */
+export type BoolOperateList = [
+    BoolOperaNot            ,//非操作
+    BoolOperaOr             ,//或操作
+    BoolOperaAnd            ,//与操作
+    BoolOperaCompStr        ,//比较字符串是否相等
+    MathCompareExp          ,//math比较表达式
+    GetCond                 ,//获取条件
+    HasEffect               ,//有某个效果
+    HasFlag                 ,//有某个Flag
+    HasStrVar               ,//有某个文本变量
+    HasTimeVar              ,//有某个时间变量
+    HasItem                 ,//携带/穿戴/持握/背包里有某个物品
+    HasItems                ,//包里有N个某物品
+    HasTrait                ,//有某个变异
+    HasWieldFlag            ,//手中的物品有某个flag
+    HasWieldWeaponCategoty  ,//手中的物品有某个武器分类
+    IsInField               ,//站在某个地块附着物上
+    OneInChance             ,//1/n的概率返回true
+    ModIsLoad               ,//某个mod是否加载
+    HasMission              ,//有某个任务
+    CompareTime             ,//获取 时间变量自创建以来经过的时间 并比较
+    QueryTile               ,//选择地块的模式 列表 */
+    SurvivalNeed            ,//生存需求
+    HasItemsSum             ,//拥有物品汇总
+    HasWieldedWithSkill     ,//检查talker是否持有使用特定技能的武器
+    HasWieldedWithAmmotype  ,//检查talker是否持有使用特定弹药类型的武器
+    IsOnTerrain             ,//检查talker是否站在特定地形上
+    IsOnTerrainWithFlag     ,//检查talker是否站在具有特定标志的地形上
+];
+//#endregion

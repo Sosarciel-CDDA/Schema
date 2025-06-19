@@ -32,6 +32,7 @@ export type RunEoc = {
     /**运行Eoc */
     run_eocs: (ParamsEoc)
 };
+
 /**循环运行Eoc */
 export type RunEocUntil = {
     /**循环运行Eoc */
@@ -42,6 +43,7 @@ export type RunEocUntil = {
      * 不设置条件时为指定循环次数 默认100*/
     iteration?: (NumObj);
 }
+
 /**延迟队列eoc */
 export type QueueEoc = {
     /**运行Eoc 将会丢失beta talker*/
@@ -49,6 +51,7 @@ export type QueueEoc = {
     /**延迟 */
     time_in_future: (Time);
 }
+
 /**运行Eoc 并提供参数 */
 export type RunEocWith = {
     run_eoc_with: (ParamsEoc);
@@ -61,6 +64,7 @@ export type RunEocWith = {
     alpha_talker? : (NumObj);
     beta_talker? : (NumObj);
 };
+
 /**Eoc选项 */
 export type EocSelector = {
     /**根据选择运行提供的EocID */
@@ -104,6 +108,7 @@ export type SoundEffect = {
     /**音量 */
     volume: (NumObj);
 }
+
 /**施法 */
 export type CastSpell = TalkerVar<{
     /**施法 */
@@ -242,6 +247,7 @@ export type SetString = {
     /**格式化文本标签 */
     parse_tags?:boolean;
 }
+
 /**添加时间变量 */
 export type AddTimeVar = TalkerVar<{
     add_var: string;
@@ -320,11 +326,13 @@ export type AssingMission = {
     /**给玩家添加目标ID任务 */
     assign_mission: IDObj<MissionDefinitionID>;
 }
+
 /**将从玩家的活动任务列表中删除任务而不失败。 */
 export type RemoveActionMission = {
     /**给玩家删除目标ID任务 */
     remove_active_mission: IDObj<MissionDefinitionID>;
 }
+
 /**使玩家完成任务 */
 export type FinishMission = {
     /**使玩家完成目标ID任务 */
@@ -334,6 +342,7 @@ export type FinishMission = {
     /**完成相当于step值的任务步骤 */
     step?: number;
 }
+
 /**将条件Obj保存为变量 */
 export type SetCond = {
     /**将条件Obj保存为变量 */
@@ -341,6 +350,7 @@ export type SetCond = {
     /**将要保存的条件 */
     condition: (BoolObj);
 }
+
 /**条件控制 */
 export type IfElse = {
     /**对话条件（强制性） */
@@ -350,6 +360,7 @@ export type IfElse = {
     /**不满足条件时执行的效果（可选） */
     else?: EocEffect[];
 }
+
 /**开始活动 */
 export type AssignActivity = TalkerVar<{
     assign_activity: ActivityTypeID;
@@ -469,6 +480,21 @@ export type MakeSound = TalkerVar<{
     volume: (NumObj);
 },'make_sound'>
 
+/**遍历类型  
+ * 影响 target 的类型  
+ * == ids 时 target 可为 "bodypart"|"flag"|"trait"|"vitamin"  
+ * == item_group 时 item_group 可为 ItemGroupID  
+ * == monstergroup 时 item_group 可为 MonsterGroupID  
+ * == array 时 item_group 可为 string[]  
+*/
+type ForeachType = "ids"|"item_group"|"monstergroup"|"array";
+
+/**遍历目标  
+ * 根据遍历类型变化  
+ */
+type ForeachTarget = "bodypart"|"flag"|"trait"|"vitamin"|
+    ItemGroupID|string[];
+
 /**遍历 */
 export type Foreach = {
     /**遍历类型  */
@@ -480,21 +506,6 @@ export type Foreach = {
     /**遍历目标 */
     target:ForeachTarget;
 }
-
-/**遍历类型  
- * 影响 target 的类型  
- * == ids 时 target 可为 "bodypart"|"flag"|"trait"|"vitamin"  
- * == item_group 时 item_group 可为 ItemGroupID  
- * == monstergroup 时 item_group 可为 MonsterGroupID  
- * == array 时 item_group 可为 string[]  
-*/
-export type ForeachType = "ids"|"item_group"|"monstergroup"|"array";
-
-/**遍历目标  
- * 根据遍历类型变化  
- */
-export type ForeachTarget = "bodypart"|"flag"|"trait"|"vitamin"|
-    ItemGroupID|string[];
 
 /**使 alpha 消耗一定时间 */
 export type TurnCost = {

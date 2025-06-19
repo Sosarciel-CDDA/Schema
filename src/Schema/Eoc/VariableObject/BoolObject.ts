@@ -23,16 +23,19 @@ export type BoolOperaNot = {
     /**非操作 */
     not: (BoolObj);
 };
+
 /**或操作 */
 export type BoolOperaOr = {
     /**或操作 */
     or: (BoolObj)[]
 };
+
 /**与操作 */
 export type BoolOperaAnd = {
     /**与操作 */
     and: (BoolObj)[]
 };
+
 /**比较字符串是否相等 */
 export type BoolOperaCompStr = {
     /**比较字符串是否相等 可以用'yes'进行空值判断 */
@@ -77,6 +80,7 @@ export type HasStrVar = TalkerVar<{
     /**要求的内容 */
     value: (StrObj);
 },"has_var">&VarComment;
+
 /**有某个时间变量 */
 export type HasTimeVar = TalkerVar<{
     /**有某个时间变量 */
@@ -166,6 +170,7 @@ const QueryTileTypeList = [
 ] as const;
 /**选择地块的模式 列表 */
 type QueryTileType = typeof QueryTileTypeList[number];
+
 /**选择地块 */
 export type QueryTile = TalkerVar<{
     /**选择地块 */
@@ -199,7 +204,7 @@ export type SurvivalNeed = TalkerVar<{
  * 此条件可与 _consume_item_sum 配对使用。
  * 适用于: Avatar Character NPC
  */
-export type UHasItemsSum = TalkerVar<{
+export type HasItemsSum = TalkerVar<{
     /**物品列表，每项为一个物品及对应数量 */
     has_items_sum: {
         /**物品ID或变量引用 */
