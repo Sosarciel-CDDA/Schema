@@ -1,10 +1,11 @@
-//#region EocEffectList自动生成
-//#endregion
-
 import { AnyItem, AnyItemID, ItemCategotyID } from "Schema/Item";
 import { MaterialID } from "Schema/Material";
 import { EocID, InlineEoc } from "../Eoc";
 import { IDObj } from "../VariableObject";
+
+//#region EocEffectList自动生成
+//#endregion
+
 
 /**Eoc效果 */
 export type EocEffect = EocEffectList[number];
@@ -12,6 +13,23 @@ export type EocEffect = EocEffectList[number];
 
 /**参数Eoc */
 export type ParamsEoc = (IDObj<EocID>|InlineEoc)|(IDObj<EocID>|InlineEoc)[];
+
+
+/**无参效果 */
+export type NoParamEffect = [
+    "follow_only"       ,//让npc跟随玩家
+    "leave"             ,//让npc停止跟随玩家并离开追随者阵营
+    "drop_weapon"       ,//丢下手持物品 仅限npc
+    NoParamTalkerEffect ,
+][number];
+
+/**双Talker无参效果表 */
+export const NoParamTalkerEffectList = [
+    "prevent_death" ,//在死亡事件中阻止将要发生的死亡
+    "die"           ,//让talker死亡或是删除物品
+] as const;
+/**双Talker无参效果 */
+export type NoParamTalkerEffect = `${`u_`|`npc_`}${typeof NoParamTalkerEffectList[number]}`
 
 
 import { AddEffect, AddRandStrVar, AddStrVar, AddTimeVar, AddTrait, AssignActivity, AssingMission, CastSpell, ConsumeItem, EocSelector, FinishMission, Foreach, IfElse, LocalVar, LoseEffect, LoseTrait, MakeSound, MapRunItemEocs, MathAssignExp, Message, QueueEoc, RemoveActionMission, RemoveItem, RunEoc, RunEocUntil, RunEocWith, RunInvEocs, SetCond, SetFlag, SetHP, SetString, SetTalker, SoundEffect, SpawnItem, SpawnNpc, SwitchCase, Teleport, TurnCost, UnsetFlag, WeightedListEocs } from "./EocEffect";
@@ -60,21 +78,7 @@ export type EocEffectList = [
     MakeSound                 ,//制造声音
 ];
 
-/**无参效果 */
-export type NoParamEffect = [
-    "follow_only"       ,//让npc跟随玩家
-    "leave"             ,//让npc停止跟随玩家并离开追随者阵营
-    "drop_weapon"       ,//丢下手持物品 仅限npc
-    NoParamTalkerEffect ,
-][number];
 
-/**双Talker无参效果表 */
-export const NoParamTalkerEffectList = [
-    "prevent_death" ,//在死亡事件中阻止将要发生的死亡
-    "die"           ,//让talker死亡或是删除物品
-] as const;
-/**双Talker无参效果 */
-export type NoParamTalkerEffect = `${`u_`|`npc_`}${typeof NoParamTalkerEffectList[number]}`
 
 
 /**变量操作的注释用字段  
