@@ -13,6 +13,9 @@ import { ItemGroupID } from "../ItemGroup";
 import { ActivityTypeID } from "../ActivityType";
 import { MaterialID } from "../Material";
 import { FlagID } from "../Flag";
+import { SkillID } from "../Skill";
+import { TerrainID } from "../Terrain";
+import { FieldID } from "../Field";
 
 
 
@@ -27,48 +30,54 @@ import { FlagID } from "../Flag";
 export type EocEffect = EocEffectList[number];
 /**Eoc效果表 */
 export type EocEffectList = [
-    MathAssignExp       ,//
-    RunEoc              ,//运行Eoc
-    QueueEoc            ,//延迟运行Eoc
-    EocSelector         ,//Eoc选项
-    RunInvEocs          ,//
-    MapRunItemEocs      ,//
-    RunEocWith          ,//
-    RunEocUntil         ,//
-    WeightedListEocs    ,//
-    LoseTrait           ,//失去变异
-    AddTrait            ,//获得变异
-    ConsumeItem         ,//使用/扣除 count 个物品
-    RemoveItem          ,//删除物品
-    SpawnItem           ,//生成物品
-    SpawnNpc            ,//生成npc
-    SoundEffect         ,//播放声音
-    CastSpell           ,//施法
-    Teleport            ,//传送
-    LocalVar            ,//获取坐标
-    Message             ,//发送消息
-    AddEffect           ,//添加效果
-    LoseEffect          ,//添加效果
-    SetHP               ,//设置生命值
-    AddStrVar           ,//添加文本变量
-    SetString           ,//赋值文本变量
-    AddTimeVar          ,//添加时间变量
-    AddRandStrVar       ,//添加随机文本变量
-    NoParamEffect       ,//无参效果
-    AssingMission       ,//添加任务
-    RemoveActionMission ,//移除任务
-    FinishMission       ,//完成任务
-    SetCond             ,//保存条件
-    IfElse              ,//条件控制
-    SwitchCase          ,//switch控制
-    AssignActivity      ,//开始活动
-    SetFlag             ,//添加flag
-    UnsetFlag           ,//移除flag
-    Foreach             ,//遍历
-    TurnCost            ,//消耗一定时间
-    SetTalker           ,//获取talker的character_id
-    MakeSound           ,//制造声音
-    UHasItemsSum        ,//获取物品总数
+    MathAssignExp             ,//
+    RunEoc                    ,//运行Eoc
+    QueueEoc                  ,//延迟运行Eoc
+    EocSelector               ,//Eoc选项
+    RunInvEocs                ,//
+    MapRunItemEocs            ,//
+    RunEocWith                ,//
+    RunEocUntil               ,//
+    WeightedListEocs          ,//
+    LoseTrait                 ,//失去变异
+    AddTrait                  ,//获得变异
+    ConsumeItem               ,//使用/扣除 count 个物品
+    RemoveItem                ,//删除物品
+    SpawnItem                 ,//生成物品
+    SpawnNpc                  ,//生成npc
+    SoundEffect               ,//播放声音
+    CastSpell                 ,//施法
+    Teleport                  ,//传送
+    LocalVar                  ,//获取坐标
+    Message                   ,//发送消息
+    AddEffect                 ,//添加效果
+    LoseEffect                ,//添加效果
+    SetHP                     ,//设置生命值
+    AddStrVar                 ,//添加文本变量
+    SetString                 ,//赋值文本变量
+    AddTimeVar                ,//添加时间变量
+    AddRandStrVar             ,//添加随机文本变量
+    NoParamEffect             ,//无参效果
+    AssingMission             ,//添加任务
+    RemoveActionMission       ,//移除任务
+    FinishMission             ,//完成任务
+    SetCond                   ,//保存条件
+    IfElse                    ,//条件控制
+    SwitchCase                ,//switch控制
+    AssignActivity            ,//开始活动
+    SetFlag                   ,//添加flag
+    UnsetFlag                 ,//移除flag
+    Foreach                   ,//遍历
+    TurnCost                  ,//消耗一定时间
+    SetTalker                 ,//获取talker的character_id
+    MakeSound                 ,//制造声音
+    UHasItemsSum              ,//获取物品总数
+    HasWieldedWithSkill       ,//检查是否持有使用特定技能的武器
+    HasWieldedWithAmmotype    ,//检查是否持有使用特定弹药类型的武器
+    IsOnTerrain               ,//检查是否站在特定地形上
+    IsOnTerrainWithFlag       ,//检查是否站在具有特定标志的地形上
+    IsInField                 ,//检查是否在特定场地上
+    Query                     ,//创建一个弹出窗口
 ];
 
 /**无参效果 */
@@ -83,6 +92,11 @@ export type NoParamEffect = [
 export const NoParamTalkerEffectList = [
     "prevent_death" ,//在死亡事件中阻止将要发生的死亡
     "die"           ,//让talker死亡或是删除物品
+    "can_see"       ,//检查talker是否能看见（不是盲的）
+    "is_deaf"       ,//检查talker是否聋（不能听见）
+    "is_alive"      ,//检查talker是否活着（不是死的）
+    "is_warm"       ,//检查talker是否是温血的（具有WARM标志）
+    "exists"        ,//检查talker是否存在（不是null）
 ] as const;
 /**双Talker无参效果 */
 export type NoParamTalkerEffect = `${`u_`|`npc_`}${typeof NoParamTalkerEffectList[number]}`
@@ -609,6 +623,100 @@ type UHasItemsSum = TalkerVar<{
 }, "has_items_sum">;
 
 
+/**检查talker是否持有使用特定技能的武器 */
+type HasWieldedWithSkill = TalkerVar<{
+    /**检查talker是否持有使用特定技能的武器
+     * 对于枪械，技能来自武器的skill字段
+     * 对于近战武器，技能来自武器具有的最高伤害类型
+     */
+    has_wielded_with_skill: IDObj<SkillID>|StrObj;
+}, "has_wielded_with_skill">;
+
+/**检查talker是否持有使用特定弹药类型的武器
+ * 适用于：
+ * - Avatar ✔️
+ * - Character ✔️
+ * - NPC ✔️
+ * - Monster ❌
+ * - Furniture ❌
+ * - Item ❌
+ * - Vehicle ❌
+ */
+type HasWieldedWithAmmotype = TalkerVar<{
+    /**检查talker是否持有使用特定弹药类型的武器
+     * 对于可以使用多种弹药类型的物品也有效
+     */
+    //has_wielded_with_ammotype: IDObj<AmmoTypeID>|StrObj;
+    has_wielded_with_ammotype: IDObj<string>|StrObj;
+}, "has_wielded_with_ammotype">;
+
+/**检查talker是否站在特定地形上
+ * 适用于：
+ * - Avatar ✔️
+ * - Character ✔️
+ * - NPC ✔️
+ * - Monster ✔️
+ * - Furniture ✔️
+ * - Item ✔️
+ * - Vehicle ✔️
+ */
+type IsOnTerrain = TalkerVar<{
+    /**检查talker是否站在特定地形上 */
+    is_on_terrain: IDObj<TerrainID>|StrObj;
+}, "is_on_terrain">;
+
+/**检查talker是否站在具有特定标志的地形上
+ * 适用于：
+ * - Avatar ✔️
+ * - Character ✔️
+ * - NPC ✔️
+ * - Monster ✔️
+ * - Furniture ✔️
+ * - Item ✔️
+ * - Vehicle ✔️
+ */
+type IsOnTerrainWithFlag = TalkerVar<{
+    /**检查talker是否站在具有特定标志的地形上 */
+    //is_on_terrain_with_flag: IDObj<TerrainFlagID>|StrObj;
+    is_on_terrain_with_flag: IDObj<string>|StrObj;
+}, "is_on_terrain_with_flag">;
+
+/**检查talker是否在特定场地上
+ * 适用于：
+ * - Avatar ✔️
+ * - Character ✔️
+ * - NPC ✔️
+ * - Monster ✔️
+ * - Furniture ✔️
+ * - Item ✔️
+ * - Vehicle ✔️
+ */
+type IsInField = TalkerVar<{
+    /**检查talker是否在特定场地上 */
+    is_in_field: IDObj<FieldID>|StrObj;
+}, "is_in_field">;
+
+/**为玩家创建一个弹出窗口，可以回答"是"或"否"
+ * 适用于：
+ * - Avatar ✔️
+ * - Character ✔️
+ * - NPC ✔️
+ * - Monster ❌
+ * - Furniture ❌
+ * - Item ❌
+ * - Vehicle ❌
+ */
+type Query = TalkerVar<{
+    /**为玩家创建一个弹出窗口
+     * 对于玩家（Avatar），创建一个可以回答"是"或"否"的弹出窗口
+     * 如果选择"是"则返回true，否则返回false
+     */
+    query: StrObj;
+    /**指定NPC（非玩家控制的角色）的默认输出 */
+    default: boolean;
+}, "query">;
+
+
+
 /**参数Eoc */
 export type ParamsEoc = (IDObj<EocID>|InlineEoc)|(IDObj<EocID>|InlineEoc)[];
-
