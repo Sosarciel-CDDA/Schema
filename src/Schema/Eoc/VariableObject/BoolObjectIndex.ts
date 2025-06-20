@@ -57,7 +57,7 @@ export type NoParamTalkerCond = `${`u_`|`npc_`}${typeof NoParamTalkerCondList[nu
 
 
 //#region BoolOperate导出
-import {BoolOperaNot, BoolOperaOr, BoolOperaAnd, BoolOperaCompStr, MathCompareExp, GetCond, HasEffect, HasStrVar, HasTimeVar, HasWieldFlag, HasWieldWeaponCategoty, OneInChance, ModIsLoad, HasMission, CompareTime, QueryTile, SurvivalNeed, HasItemsSum, HasWieldedWithSkill, HasWieldedWithAmmotype, IsOnTerrainWithFlag, QueryBool, AtOmLocation, HasTrait, HasAnyTrait, HasVisibleTrait, IsTraitPurifiable, HasMartialArt, UsingMartialArt, HasFlag, HasPartFlag, HasSpecies, Bodytype, ExpectsVars, CompareString, CompareStringMatchAll, Profession, HasStrength, HasDexterity, HasIntelligence, HasPerception, HasPartTemp, HasItem, HasItems, HasItemCategory, HasBionics, HasAnyEffect, HasProficiency, KnowRecipe, HasWornWithFlag, HasWieldedWithFlag, HasWieldedWithWeaponCategory, Query, IsOnTerrain, IsInField, CanSeeLocation, MapTerrainWithFlag, MapFurnitureWithFlag, MapTerrainId, MapFurnitureId, MapFieldId, MapInCity, LineOfSight} from './BoolObject'
+import {BoolOperaNot, BoolOperaOr, BoolOperaAnd, BoolOperaCompStr, MathCompareExp, GetCond, HasEffect, HasStrVar, HasTimeVar, HasWieldFlag, HasWieldWeaponCategoty, OneInChance, ModIsLoad, HasMission, CompareTime, SurvivalNeed, HasItemsSum, HasWieldedWithSkill, HasWieldedWithAmmotype, IsOnTerrainWithFlag, QueryBool, AtOmLocation, HasTrait, HasAnyTrait, HasVisibleTrait, IsTraitPurifiable, HasMartialArt, UsingMartialArt, HasFlag, HasPartFlag, HasSpecies, Bodytype, ExpectsVars, CompareString, CompareStringMatchAll, Profession, HasStrength, HasDexterity, HasIntelligence, HasPerception, HasPartTemp, HasItem, HasItems, HasItemCategory, HasBionics, HasAnyEffect, HasProficiency, KnowRecipe, HasWornWithFlag, HasWieldedWithFlag, HasWieldedWithWeaponCategory, Query, IsOnTerrain, IsInField, CanSeeLocation, MapTerrainWithFlag, MapFurnitureWithFlag, MapTerrainId, MapFurnitureId, MapFieldId, MapInCity, LineOfSight} from './BoolObject'
 /**BoolOperate导出 */
 export type BoolOperateList = [
     BoolOperaNot            ,//非操作
@@ -75,7 +75,6 @@ export type BoolOperateList = [
     ModIsLoad               ,//某个mod是否加载
     HasMission              ,//有某个任务
     CompareTime             ,//获取 时间变量自创建以来经过的时间 并比较
-    QueryTile               ,//选择地块的模式 列表 */
     SurvivalNeed            ,//生存需求
     HasItemsSum             ,//拥有物品汇总
     HasWieldedWithSkill     ,//检查talker是否持有使用特定技能的武器

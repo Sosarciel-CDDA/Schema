@@ -64,7 +64,7 @@ export type ItemSearchData = {
 //#region Eoc效果表导出
 import {SpawnNpc, SpawnItem, RemoveItem, SetFlag, TurnCost} from './EocEffect'
 import {MathAssignExp, SoundEffect, OpenDialogue, TakeControl, TakeControlMenu, GiveAchievement, AssignMission, RemoveActiveMission, FinishMission, OfferMission, RunEocs, RunNpcEocs, RunMonsterEocs, RunInvEocs, MapRunEocs, MapRunItemEocs, RevealMap, RevealRoute, ClosestCity, WeightedListEocs, RunEocSelector, RollRemainder, IfCondition, SwitchStatement, ForEach} from './GenericEffect'
-import {CastSpell, Teleport, LocalVar, Message, AddEffect, LoseEffect, AddStrVar, AddTimeVar, AddRandStrVar, SetString, LoseTrait, AddTrait, ConsumeItem, SetCond, AssignActivity, UnsetFlag, MakeSound} from './CharacterEffect'
+import {DealDamage, GetMutate, GetMutateCategory, MutateTowards, SetTraitPurifiability, AddEffect, AddBionic, LoseBionic, AddTrait, LoseEffect, LoseTrait, ActivateTrait, DeactivateTrait, LearnMartialArt, ForgetMartialArt, AddVar, LoseVar, CopyVar, SetStringVar, SetCondition, LearnRecipe, ForgetRecipe, AssignActivity, CancelActivity, LocationVariable, LocationVariableAdjust, BarberHair, BarberBeard, NpcFirstTopic, Teleport, AddWet, MakeSound, ModHealthy, AddMorale, LoseMorale, ConsumeItemSum, SetFacRelation, AddFactionTrust, Die, PreventDeath, Attack, CreateExplosion, Knockback, CastSpell, LevelSpellClass, QueryOmt, QueryTile, ChooseAdjacentHighlight, MirrorCoordinates, Message, UnsetFlag} from './CharacterEffect'
 /**Eoc效果表导出 */
 export type EocEffectList = [
     SpawnNpc                ,//生成Npc
@@ -97,22 +97,56 @@ export type EocEffectList = [
     IfCondition             ,//条件判断
     SwitchStatement         ,//开关语句
     ForEach                 ,//遍历类型
-    CastSpell               ,//施法
-    Teleport                ,//传送
-    LocalVar                ,//搜索并获取坐标 存入location_variable
-    Message                 ,//发送消息
+    DealDamage              ,//造成伤害
+    GetMutate               ,//突变
+    GetMutateCategory       ,//分类突变
+    MutateTowards           ,//定向突变
+    SetTraitPurifiability   ,//设置特征可净化性
     AddEffect               ,//添加效果
-    LoseEffect              ,//失去效果
-    AddStrVar               ,//添加文本变量
-    AddTimeVar              ,//添加时间变量
-    AddRandStrVar           ,//添加随机文本变量
-    SetString               ,//赋值文本变量
-    LoseTrait               ,//失去变异
-    AddTrait                ,//获得变异
-    ConsumeItem             ,//使用物品
-    SetCond                 ,//将条件Obj保存为变量
-    AssignActivity          ,//开始活动
+    AddBionic               ,//添加仿生装置
+    LoseBionic              ,//移除仿生装置
+    AddTrait                ,//添加特性
+    LoseEffect              ,//移除效果
+    LoseTrait               ,//移除特性
+    ActivateTrait           ,//激活特性
+    DeactivateTrait         ,//停用特性
+    LearnMartialArt         ,//学习武术
+    ForgetMartialArt        ,//忘记武术
+    AddVar                  ,//添加变量
+    LoseVar                 ,//移除变量
+    CopyVar                 ,//复制变量
+    SetStringVar            ,//设置字符串变量
+    SetCondition            ,//设置条件
+    LearnRecipe             ,//学习配方
+    ForgetRecipe            ,//忘记配方
+    AssignActivity          ,//分配活动
+    CancelActivity          ,//取消活动
+    LocationVariable        ,//位置变量
+    LocationVariableAdjust  ,//调整位置变量
+    BarberHair              ,//理发-发型
+    BarberBeard             ,//理发-胡须
+    NpcFirstTopic           ,//NPC首个话题
+    Teleport                ,//传送
+    AddWet                  ,//添加湿度
+    MakeSound               ,//发出文本声音
+    ModHealthy              ,//修改健康
+    AddMorale               ,//添加士气
+    LoseMorale              ,//移除士气
+    ConsumeItemSum          ,//消耗物品总和
+    SetFacRelation          ,//设置派系关系
+    AddFactionTrust         ,//添加派系信任
+    Die                     ,//死亡
+    PreventDeath            ,//防止死亡
+    Attack                  ,//攻击
+    CreateExplosion         ,//爆炸
+    Knockback               ,//击退
+    CastSpell               ,//施法
+    LevelSpellClass         ,//提升法术类别等级
+    QueryOmt                ,//查询地图图块
+    QueryTile               ,//选择地块的模式 列表 */
+    ChooseAdjacentHighlight ,//选择相邻高亮图块
+    MirrorCoordinates       ,//镜像坐标
+    Message                 ,//发送消息
     UnsetFlag               ,//移除flag
-    MakeSound               ,//制造文本声音
 ];
 //#endregion
