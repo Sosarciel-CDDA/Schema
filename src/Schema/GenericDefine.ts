@@ -60,7 +60,7 @@ export type Energy = number|`${number} ${"mJ"|"kJ"}`;
 export type Power = number|`${number} ${"mW"}`;
 /**价格 */
 export type Price = number|`${number} ${"USD"|"cent"|"kUSD"}`;
-/**时间 PERMANENT 为永久 */
+/**时间 无符号为秒 1turn=1s PERMANENT 为永久 */
 export type Time = number|`${number} ${"s"|"m"|"h"|"d"}`|"PERMANENT";
 /**可用的颜色列表 */
 export const ColorList = [
