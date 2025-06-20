@@ -4,8 +4,12 @@ export type BoolObj = BoolOperateList[number]|NoParamCond;
 /**无参条件 */
 export type NoParamCond = [
     NoParamTalkerCond,
-    "is_by_radio"    ,//此对话是在无线通话
+    "is_by_radio"    ,// 检查此对话是否通过无线电进行（而非面对面交谈）
+    "player_see_u"   ,// 检查玩家是否可以看见alpha talker（适用于任何talker类型）
+    "player_see_npc" ,// 检查玩家是否可以看见beta talker（适用于任何talker类型）
+    "has_ammo"       ,// 检查beta talker（物品）是否有足够的弹药至少射击一次
 ][number];
+
 /**双Talker无参条件列表 */
 export const NoParamTalkerCondList = [
     "female"                ,//是女性
@@ -30,14 +34,30 @@ export const NoParamTalkerCondList = [
     "can_stow_weapon"       ,//检查talker是否可以收起武器
     "controlling_vehicle"   ,//检查talker是否控制着载具
     "driving"               ,//检查talker是否操作着移动中的载具
+    "see_npc"               ,// 检查alpha talker是否可以看见beta talker
+    "see_you"               ,// 检查beta talker是否可以看见alpha talker
+    "see_npc_loc"           ,// 检查从alpha talker位置是否可以看见beta talker位置（不考虑视觉条件）
+    "see_you_loc"           ,// 检查从beta talker位置是否可以看见alpha talker位置（不考虑视觉条件）
+    "is_driven"             ,// 检查talker（载具）是否正在被驾驶
+    "is_remote_controlled"  ,// 检查talker（载具）是否正在被玩家远程控制
+    "can_fly"               ,// 检查talker（载具）是否能够飞行
+    "is_flying"             ,// 检查talker（载具）是否正在飞行
+    "can_float"             ,// 检查talker（载具）是否能够漂浮
+    "is_floating"           ,// 检查talker（载具）是否正在漂浮
+    "is_falling"            ,// 检查talker（载具）是否正在坠落
+    "is_skidding"           ,// 检查talker（载具）是否正在打滑
+    "is_sinking"            ,// 检查talker（载具）是否正在下沉
+    "is_on_rails"           ,// 检查talker（载具）是否使用轨道
+    "is_avatar_passenger"   ,// 检查talker（载具）是否有玩家作为乘客
 ] as const;
+
 
 /**双Talker无参条件 */
 export type NoParamTalkerCond = `${`u_`|`npc_`}${typeof NoParamTalkerCondList[number]}`
 
 
 //#region BoolOperate导出
-import {BoolOperaNot, BoolOperaOr, BoolOperaAnd, BoolOperaCompStr, MathCompareExp, GetCond, HasEffect, HasStrVar, HasTimeVar, HasWieldFlag, HasWieldWeaponCategoty, IsInField, OneInChance, ModIsLoad, HasMission, CompareTime, QueryTile, SurvivalNeed, HasItemsSum, HasWieldedWithSkill, HasWieldedWithAmmotype, IsOnTerrain, IsOnTerrainWithFlag, QueryBool, AtOmLocation, HasTrait, HasAnyTrait, HasVisibleTrait, IsTraitPurifiable, HasMartialArt, UsingMartialArt, HasFlag, HasPartFlag, HasSpecies, Bodytype, ExpectsVars, CompareString, CompareStringMatchAll, Profession, HasStrength, HasDexterity, HasIntelligence, HasPerception, HasPartTemp, HasItem, HasItems, HasItemCategory, HasBionics, HasAnyEffect, HasProficiency, KnowRecipe, HasWornWithFlag} from './BoolObject'
+import {BoolOperaNot, BoolOperaOr, BoolOperaAnd, BoolOperaCompStr, MathCompareExp, GetCond, HasEffect, HasStrVar, HasTimeVar, HasWieldFlag, HasWieldWeaponCategoty, OneInChance, ModIsLoad, HasMission, CompareTime, QueryTile, SurvivalNeed, HasItemsSum, HasWieldedWithSkill, HasWieldedWithAmmotype, IsOnTerrainWithFlag, QueryBool, AtOmLocation, HasTrait, HasAnyTrait, HasVisibleTrait, IsTraitPurifiable, HasMartialArt, UsingMartialArt, HasFlag, HasPartFlag, HasSpecies, Bodytype, ExpectsVars, CompareString, CompareStringMatchAll, Profession, HasStrength, HasDexterity, HasIntelligence, HasPerception, HasPartTemp, HasItem, HasItems, HasItemCategory, HasBionics, HasAnyEffect, HasProficiency, KnowRecipe, HasWornWithFlag, HasWieldedWithFlag, HasWieldedWithWeaponCategory, Query, IsOnTerrain, IsInField, CanSeeLocation, MapTerrainWithFlag, MapFurnitureWithFlag, MapTerrainId, MapFurnitureId, MapFieldId, MapInCity, LineOfSight} from './BoolObject'
 /**BoolOperate导出 */
 export type BoolOperateList = [
     BoolOperaNot            ,//非操作
@@ -51,7 +71,6 @@ export type BoolOperateList = [
     HasTimeVar              ,//有某个时间变量
     HasWieldFlag            ,//手中的物品有某个flag
     HasWieldWeaponCategoty  ,//手中的物品有某个武器分类
-    IsInField               ,//站在某个地块附着物上
     OneInChance             ,//1/n的概率返回true
     ModIsLoad               ,//某个mod是否加载
     HasMission              ,//有某个任务
@@ -61,7 +80,6 @@ export type BoolOperateList = [
     HasItemsSum             ,//拥有物品汇总
     HasWieldedWithSkill     ,//检查talker是否持有使用特定技能的武器
     HasWieldedWithAmmotype  ,//检查talker是否持有使用特定弹药类型的武器
-    IsOnTerrain             ,//检查talker是否站在特定地形上
     IsOnTerrainWithFlag     ,//检查talker是否站在具有特定标志的地形上
     QueryBool               ,//为玩家创建一个弹出窗口，可以回答"是"或"否"
     AtOmLocation            ,//检查talker是否站在特定的大地图瓦片上
@@ -92,5 +110,18 @@ export type BoolOperateList = [
     HasProficiency          ,//检查talker是否掌握了特定熟练度
     KnowRecipe              ,//检查角色是否知道特定配方
     HasWornWithFlag         ,//检查talker是否穿戴着带有特定标志的物品
+    HasWieldedWithFlag      ,//检查talker是否持有带有特定标志的武器
+    HasWieldedWithWeaponCategory,//检查talker是否持有带有特定武器类别的物品
+    Query                   ,//创建一个可以回答"是"或"否"的弹出窗口
+    IsOnTerrain             ,//检查talker是否站在特定地形上
+    IsInField               ,//检查talker是否站在特定场地上
+    CanSeeLocation          ,//检查talker是否可以看到位置
+    MapTerrainWithFlag      ,//检查地形是否具有特定标志
+    MapFurnitureWithFlag    ,//检查家具是否具有特定标志
+    MapTerrainId            ,//检查地形是否具有特定ID
+    MapFurnitureId          ,//检查家具是否具有特定ID
+    MapFieldId              ,//检查场地是否具有特定ID
+    MapInCity               ,//检查位置是否在城市边界内（在z-1或更高）
+    LineOfSight             ,//检查两点是否相互可见
 ];
 //#endregion

@@ -1,5 +1,5 @@
 import { MissionDefinitionID } from "Schema/MissionDefinition";
-import { TalkerVar } from "../Eoc";
+import { EocID, TalkerVar } from "../Eoc";
 import { BoolObj } from "./BoolObjectIndex";
 import { AnyObj, CompareOpera, CondObj, IDObj, LocObj, NumObj } from "./VariableObjectIndex";
 import { BodyPartID, DescText, Time } from "Schema/GenericDefine";
@@ -94,12 +94,6 @@ export type HasWieldWeaponCategoty = TalkerVar<{
     /**手中的物品有某个武器分类 */
     has_wielded_with_weapon_category:IDObj<WeaponCategoryID>;
 },"has_wielded_with_weapon_category">;
-
-/**站在某个地块附着物上 */
-export type IsInField = TalkerVar<{
-    /**手中的物品有某个武器分类 */
-    is_in_field:IDObj<FieldID>;
-},"is_in_field">;
 
 /**1/n的概率返回true */
 export type OneInChance = {
@@ -205,20 +199,14 @@ export type HasWieldedWithAmmotype = TalkerVar<{
     has_wielded_with_ammotype: IDObj<AmmunitionTypeID>;
 }, "has_wielded_with_ammotype">;
 
-/**检查talker是否站在特定地形上
- * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
- */
-export type IsOnTerrain = TalkerVar<{
-    /**检查talker是否站在特定地形上 */
-    is_on_terrain: IDObj<TerrainID>;
-}, "is_on_terrain">;
 
 /**检查talker是否站在具有特定标志的地形上
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  */
 export type IsOnTerrainWithFlag = TalkerVar<{
     /**检查talker是否站在具有特定标志的地形上 */
-    is_on_terrain_with_flag: IDObj<FlagID>;
+    //is_on_terrain_with_flag: IDObj<FlagID>;
+    is_on_terrain_with_flag: (StrObj);
 }, "is_on_terrain_with_flag">;
 
 
@@ -507,5 +495,133 @@ export type HasWornWithFlag = TalkerVar<{
  */
 export type HasWieldedWithFlag = TalkerVar<{
     /**检查talker是否持有带有特定标志的武器 */
-    has_wielded_with_flag: (StrObj);
+    has_wielded_with_flag: (IDObj<FlagID>);
 }, "has_wielded_with_flag">;
+
+/**检查talker是否持有带有特定武器类别的物品
+ * 适用于: Avatar Character NPC
+ */
+export type HasWieldedWithWeaponCategory = TalkerVar<{
+    /**检查talker是否持有带有特定武器类别的物品 */
+    has_wielded_with_weapon_category: (IDObj<WeaponCategoryID>);
+}, "has_wielded_with_weapon_category">;
+
+/**创建一个可以回答"是"或"否"的弹出窗口
+ * 适用于: Avatar Character NPC
+ */
+export type Query = TalkerVar<{
+    /**创建一个可以回答"是"或"否"的弹出窗口
+     * 对于玩家，如果选择"是"，则返回true，否则返回false
+     * 只有当其余条件为真时才会创建弹出窗口
+     */
+    query: (StrObj);
+    /**指定NPC（玩家不控制）的默认输出 */
+    default?: boolean;
+}, "query">;
+
+/**检查talker是否站在特定地形上
+ * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
+ */
+export type IsOnTerrain = TalkerVar<{
+    /**检查talker是否站在特定地形上 */
+    is_on_terrain: (IDObj<TerrainID>);
+}, "is_on_terrain">;
+
+/**检查talker是否站在特定场地上
+ * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
+ */
+export type IsInField = TalkerVar<{
+    /**检查talker是否站在特定场地上 */
+    is_in_field: (IDObj<FieldID>);
+}, "is_in_field">;
+
+/**检查talker是否可以看到位置
+ * 适用于: Avatar Character NPC Monster
+ */
+export type CanSeeLocation = TalkerVar<{
+    /**检查talker是否可以看到位置 */
+    can_see_location: (StrObj);
+}, "can_see_location">;
+
+// 无talker变体的条件类型
+
+/**检查地形是否具有特定标志
+ * 适用于: 不需要talker
+ */
+export type MapTerrainWithFlag = {
+    /**检查地形是否具有特定标志 */
+    map_terrain_with_flag: (StrObj);
+    /**指定地形的位置（必需） */
+    loc: (StrObj);
+};
+
+/**检查家具是否具有特定标志
+ * 适用于: 不需要talker
+ */
+export type MapFurnitureWithFlag = {
+    /**检查家具是否具有特定标志 */
+    map_furniture_with_flag: (StrObj);
+    /**指定家具的位置（必需） */
+    loc: (StrObj);
+};
+
+/**检查地形是否具有特定ID
+ * 适用于: 不需要talker
+ */
+export type MapTerrainId = {
+    /**检查地形是否具有特定ID */
+    map_terrain_id: (IDObj<TerrainID>);
+    /**指定地形的位置（必需） */
+    loc: (StrObj);
+};
+
+/**检查家具是否具有特定ID
+ * 适用于: 不需要talker
+ */
+export type MapFurnitureId = {
+    /**检查家具是否具有特定ID */
+    //map_furniture_id: (IDObj<FurnitureID>);
+    map_furniture_id: (StrObj);
+    /**指定家具的位置（必需） */
+    loc: (StrObj);
+};
+
+/**检查场地是否具有特定ID
+ * 适用于: 不需要talker
+ */
+export type MapFieldId = {
+    /**检查场地是否具有特定ID */
+    map_field_id: (IDObj<FieldID>);
+    /**指定场地的位置（必需） */
+    loc: (StrObj);
+};
+
+/**检查位置是否在城市边界内（在z-1或更高）
+ * 适用于: 不需要talker
+ */
+export type MapInCity = {
+    /**检查位置是否在城市边界内 */
+    map_in_city: (StrObj);
+};
+
+/**检查两点是否相互可见
+ * 适用于: 不需要talker
+ */
+export type LineOfSight = {
+    /**要检查的距离 */
+    line_of_sight: NumObj;
+    /**线的两个点之一 */
+    loc_1: (StrObj);
+    /**线的另一个点 */
+    loc_2: (StrObj);
+    /**如果为false，则忽略不透明的场地。默认为true */
+    with_fields?: boolean;
+};
+
+/**检查提供的EOC的条件是否返回true
+ * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
+ */
+export type TestEoc = {
+    /**检查提供的EOC的条件是否返回true */
+    test_eoc: (IDObj<EocID>);
+};
