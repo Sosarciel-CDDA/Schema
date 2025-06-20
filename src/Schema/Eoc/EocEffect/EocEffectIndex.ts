@@ -62,17 +62,14 @@ export type ItemSearchData = {
 
 
 //#region Eoc效果表导出
-import {SpawnNpc, SpawnItem, RemoveItem, SetFlag, TurnCost, UnsetFlag} from './EocEffect'
+import {SpawnItem, RemoveItem} from './EocEffect'
 import {MathAssignExp, SoundEffect, OpenDialogue, TakeControl, TakeControlMenu, GiveAchievement, AssignMission, RemoveActiveMission, FinishMission, OfferMission, RunEocs, RunNpcEocs, RunMonsterEocs, RunInvEocs, MapRunEocs, MapRunItemEocs, RevealMap, RevealRoute, ClosestCity, WeightedListEocs, RunEocSelector, RollRemainder, IfCondition, SwitchStatement, ForEach} from './GenericEffect'
 import {DealDamage, GetMutate, GetMutateCategory, MutateTowards, SetTraitPurifiability, AddEffect, AddBionic, LoseBionic, AddTrait, LoseEffect, LoseTrait, ActivateTrait, DeactivateTrait, LearnMartialArt, ForgetMartialArt, AddVar, LoseVar, CopyVar, SetStringVar, SetCondition, LearnRecipe, ForgetRecipe, AssignActivity, CancelActivity, LocationVariable, LocationVariableAdjust, BarberHair, BarberBeard, NpcFirstTopic, Teleport, AddWet, MakeSound, ModHealthy, AddMorale, LoseMorale, ConsumeItemSum, SetFacRelation, AddFactionTrust, Die, PreventDeath, Attack, CreateExplosion, Knockback, CastSpell, LevelSpellClass, QueryOmt, QueryTile, ChooseAdjacentHighlight, MirrorCoordinates, Message, ConsumeItem} from './CharacterEffect'
+import {SetFlag, UnsetFlag, Activate, SetFault, SetRandomFaultOfType, MapSpawnItem, MapgenUpdate, RevertLocation, AlterTimedEvents, Lightning, NextWeather, CustomLightLevel, TransformRadius, TransformLine, PlaceOverride, SpawnMonster, SpawnNpc, SetField, SetEmit, TurnCost} from './ItemEffect'
 /**Eoc效果表导出 */
 export type EocEffectList = [
-    SpawnNpc                ,//生成Npc
     SpawnItem               ,//生成物品
     RemoveItem              ,//删除物品
-    SetFlag                 ,//添加flag
-    TurnCost                ,//使 alpha 消耗一定时间
-    UnsetFlag               ,//移除flag
     MathAssignExp           ,//math赋值表达式
     SoundEffect             ,//播放声音效果
     OpenDialogue            ,//打开对话
@@ -149,5 +146,25 @@ export type EocEffectList = [
     MirrorCoordinates       ,//镜像坐标
     Message                 ,//消息
     ConsumeItem             ,//使用物品
+    SetFlag                 ,//设置标志
+    UnsetFlag               ,//移除标志
+    Activate                ,//激活
+    SetFault                ,//设置故障
+    SetRandomFaultOfType    ,//设置随机故障
+    MapSpawnItem            ,//生成物品
+    MapgenUpdate            ,//地图更新
+    RevertLocation          ,//恢复位置
+    AlterTimedEvents        ,//改变定时事件
+    Lightning               ,//闪电
+    NextWeather             ,//下一个天气
+    CustomLightLevel        ,//自定义光照级别
+    TransformRadius         ,//转换半径
+    TransformLine           ,//转换线
+    PlaceOverride           ,//位置覆盖
+    SpawnMonster            ,//生成怪物
+    SpawnNpc                ,//生成NPC
+    SetField                ,//生成场地
+    SetEmit                 ,//发出场地
+    TurnCost                ,//回合消耗
 ];
 //#endregion
