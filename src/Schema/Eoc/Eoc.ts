@@ -32,15 +32,15 @@ export type Eoc = {
     /**关闭条件  
      * 当一个 effect_on_condition 自动激活(调用)并且未满足其条件时,  
      * 如果存在 deactivate_condition 并且没有 false_effect 条目,  
-     * 将会测试 deactivate_condition。  
+     * 将会测试 deactivate_condition.   
      * 如果它返回 true,  
-     * 这个 effect_on_condition 将不再每隔一段时间自动调用。  
+     * 这个 effect_on_condition 将不再每隔一段时间自动调用.   
      * 每当玩家/NPC 获得/失去一个特性或仿生装置时,  
      * 所有被停用的 effect_on_conditions 都会运行 deactivate_condition;  
-     * 如果返回 false, effect_on_condition 将开始再次运行。  
+     * 如果返回 false, effect_on_condition 将开始再次运行.   
      * 这是为了允许为特定的特性或仿生装置添加 effect_on_conditions,  
-     * 当你没有目标仿生装置/特性时, 不会浪费时间运行。  
-     * 请参阅 NPC 的 “Dialogue conditions” 部分以获取完整语法。  
+     * 当你没有目标仿生装置/特性时, 不会浪费时间运行.   
+     * 请参阅 NPC 的 “Dialogue conditions” 部分以获取完整语法.   
      */
     deactivate_condition?: BoolObj;
     /**eoc触发时机, 仅当eoc_type为EVENT时有效 */

@@ -31,23 +31,23 @@ export type GunBase = {
     recoil?: number;
     /**抵抗损坏/生锈, 也决定了失火几率 */
     durability?: number;
-    /**发射黑火药弹药时, 有 N 分之一的几率 (每次射击）被堵塞（越高越好)。 可选, 默认为 8 */
+    /**发射黑火药弹药时, 有 N 分之一的几率 (每次射击）被堵塞（越高越好).  可选, 默认为 8 */
     blackpowder_tolerance?: number;
-    /**枪发射多颗子弹连射时的最小弹药后坐力。 */
+    /**枪发射多颗子弹连射时的最小弹药后坐力.  */
     min_cycle_recoil?: number;
     /**可以装载的最大弹药量 */
     clip_size?: number;
-    /**除了普通弹药 (如果有)之外, 枪还需要一些电能。  
-     * 枪内电池电量耗尽。  
-     * 使用标志“USE_UPS”和“USES_BIONIC_POWER”来耗尽其他资源。  
-     * 这也适用于模组。 附加带有 energy_drain 的模组将增加/增加武器的消耗。
+    /**除了普通弹药 (如果有)之外, 枪还需要一些电能.   
+     * 枪内电池电量耗尽.   
+     * 使用标志“USE_UPS”和“USES_BIONIC_POWER”来耗尽其他资源.   
+     * 这也适用于模组.  附加带有 energy_drain 的模组将增加/增加武器的消耗. 
      */
     energy_drain?: Energy;
     /**使用的弹药量 默认1 */
     ammo_to_fire?: number;
     /**这把枪的射击模式 DEFAULT,AUTO, MELEE  
      * 后面是游戏中显示的模式名称  
-     * 最后是该模组的射击次数。  
+     * 最后是该模组的射击次数.   
      */
     modes?: FireMode[];
     /**重新加载的时间量, 100 = 1 秒 = 1 "turn" */
@@ -62,10 +62,10 @@ export type GunBase = {
     barrel_length?: (Length);
     /**枪械的有效位置以及该位置的插槽安装量 */
     valid_mod_locations?: ValidMod[];
-    /**这把枪射击时产生的噪音量。  
-     * 如果未定义值, 则根据加载弹药的响度值进行计算。  
-     * 最终响度计算为枪支响度+枪械响度+弹药响度。  
-     * 如果最终响度为 0, 则枪声完全静音。  
+    /**这把枪射击时产生的噪音量.   
+     * 如果未定义值, 则根据加载弹药的响度值进行计算.   
+     * 最终响度计算为枪支响度+枪械响度+弹药响度.   
+     * 如果最终响度为 0, 则枪声完全静音.   
      **/
     loudness?: number;
     /**枪械的flag */
@@ -76,9 +76,9 @@ export type GunBase = {
     reload_noise?: string;
     /**重装时发出的声音大小 */
     reload_noise_volume?: number;
-    /**可能适用于该枪的故障类型； 通常继承自单个抽象, 例如rifle_base, 但也存在例外 */
+    /**可能适用于该枪的故障类型;  通常继承自单个抽象, 例如rifle_base, 但也存在例外 */
     faults?:string[];
-    /**武器的处理； 更好的操控性意味着更少的后坐力 */
+    /**武器的处理;  更好的操控性意味着更少的后坐力 */
     handling?:number;
     heat_per_shot?:undefined;
     cooling_value?:undefined;
@@ -134,7 +134,7 @@ export type FireModeDisplayName =[
 /*开火模式额外flag */
 export type FireModeFlag = [
     "NPC_AVOID"     ,//禁止 NPC 使用
-    "MELEE"         ,//近战攻击的第三个参数指定到达距离 使用枪或辅助枪械的属性进行近战攻击。
+    "MELEE"         ,//近战攻击的第三个参数指定到达距离 使用枪或辅助枪械的属性进行近战攻击. 
     "SIMULTANEOUS"  ,//多发子弹同时发射, 最后施加后坐力
 ][number];
 
@@ -149,22 +149,22 @@ export type ValidMod = [
 
 /**枪械可用的flag 列表 */
 export const GunFlagList      = [
-    "BACKBLAST"               , // 在射击的人后面产生小爆炸。目前还没有实现？
-    "BIPOD"                   , // 操控加成只适用于MOUNTABLE地图/车辆瓦片。不包括挥舞时间惩罚（参见SLOW_WIELD）
+    "BACKBLAST"               , // 在射击的人后面产生小爆炸. 目前还没有实现？
+    "BIPOD"                   , // 操控加成只适用于MOUNTABLE地图/车辆瓦片. 不包括挥舞时间惩罚 (参见SLOW_WIELD) 
     "BRASS_CATCHER"           , // 这个枪械改装件是弹壳收集器, 可以储存你射出的所有弹壳
-    "CHARGE"                  , // 必须充电才能射击。更高的电荷会造成更多的伤害
+    "CHARGE"                  , // 必须充电才能射击. 更高的电荷会造成更多的伤害
     "CHOKE"                   , // 这个枪械改装件是一个消音器, 防止你射出猪鼻子
-    "COLLAPSED_STOCK"         , // 减少枪的长度20厘米；与FOLDED_STOCK相同；出于某种原因现在不起作用
-    "COLLAPSIBLE_STOCK"       , // 根据枪的基础大小（不包括任何改装件）成比例地减少武器体积。不包括挥舞时间惩罚（参见NEEDS_UNFOLD）
+    "COLLAPSED_STOCK"         , // 减少枪的长度20厘米; 与FOLDED_STOCK相同; 出于某种原因现在不起作用
+    "COLLAPSIBLE_STOCK"       , // 根据枪的基础大小 (不包括任何改装件) 成比例地减少武器体积. 不包括挥舞时间惩罚 (参见NEEDS_UNFOLD) 
     "CONSUMABLE"              , // 使枪部有一定几率根据射出的弹药受损, 可定义字段'consume_chance'和'consume_divisor'
     "DISABLE_SIGHTS"          , // 阻止使用基础武器瞄准器
     "EASY_CLEAN"              , // 这种武器相对简单, 你花费的清洁和润滑时间减半
     "FIRE_TWOHAND"            , // 枪只能在玩家有两只空手时射击
-    "FOLDED_STOCK"            , // 减少枪的长度20厘米；与COLLAPSED_STOCK相同
+    "FOLDED_STOCK"            , // 减少枪的长度20厘米; 与COLLAPSED_STOCK相同
     "INSTALL_DIFFICULT"       , // 这个枪械改装件很难安装, 如果你失败, 可能会损坏你的枪
     "IRREMOVABLE"             , // 使枪械改装件不能被移除
-    "IS_ARMOR"                , // 这个枪械改装件可以使用装甲语法, 并且可以穿戴（与你安装这个改装件的武器相同）
-    "LASER_SIGHT"             , // 这个枪械改装件是一个激光瞄准器, 如果满足特定条件（目标接近, 而且不是太亮）提供瞄准加成
+    "IS_ARMOR"                , // 这个枪械改装件可以使用装甲语法, 并且可以穿戴 (与你安装这个改装件的武器相同) 
+    "LASER_SIGHT"             , // 这个枪械改装件是一个激光瞄准器, 如果满足特定条件 (目标接近, 而且不是太亮) 提供瞄准加成
     "MECH_BAT"                , // 这是一个设计用来为军用机甲供电的异种电池
     "MOUNTED_GUN"             , // 枪只能在带有MOUNTABLE标志的地形/家具上使用
     "NEEDS_NO_LUBE"           , // 这种武器不需要润滑剂就能正常工作
@@ -172,7 +172,7 @@ export const GunFlagList      = [
     "NON_FOULING"             , // 枪不会变脏或积黑火药
     "NO_TURRET"               , // 阻止为这把枪生成车辆炮塔原型
     "NO_UNLOAD"               , // 不能卸载
-    "PRIMITIVE_RANGED_WEAPON" , // 允许使用非枪匠工具修理（但不能加固）它
+    "PRIMITIVE_RANGED_WEAPON" , // 允许使用非枪匠工具修理 (但不能加固) 它
     "PUMP_ACTION"             , // 枪的泵动作上有导轨, 允许在下挂槽上安装只有PUMP_RAIL_COMPATIBLE标志的改装件
     "PUMP_RAIL_COMPATIBLE"    , // 改装件可以安装在带有泵动作导轨的枪的下挂槽上
     "RELOAD_AND_SHOOT"        , // 射击自动重装然后射击

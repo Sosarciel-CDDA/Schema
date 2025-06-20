@@ -4,10 +4,10 @@ export type BoolObj = BoolOperateList[number]|NoParamCond;
 /**无参条件 */
 export type NoParamCond = [
     NoParamTalkerCond,
-    "is_by_radio"    ,// 检查此对话是否通过无线电进行（而非面对面交谈）
-    "player_see_u"   ,// 检查玩家是否可以看见alpha talker（适用于任何talker类型）
-    "player_see_npc" ,// 检查玩家是否可以看见beta talker（适用于任何talker类型）
-    "has_ammo"       ,// 检查beta talker（物品）是否有足够的弹药至少射击一次
+    "is_by_radio"    ,// 检查此对话是否通过无线电进行 (而非面对面交谈) 
+    "player_see_u"   ,// 检查玩家是否可以看见alpha talker (适用于任何talker类型) 
+    "player_see_npc" ,// 检查玩家是否可以看见beta talker (适用于任何talker类型) 
+    "has_ammo"       ,// 检查beta talker (物品) 是否有足够的弹药至少射击一次
 ][number];
 
 /**双Talker无参条件列表 */
@@ -24,11 +24,11 @@ export const NoParamTalkerCondList = [
     "is_furnitur"           ,//是家具
     "is_vehicle"            ,//是车辆
     "driving"               ,//正在驾驶
-    "can_see"               ,//检查talker是否能看见（不是盲的）
-    "is_deaf"               ,//检查talker是否聋（不能听见）
-    "is_alive"              ,//检查talker是否活着（不是死的）
-    "is_warm"               ,//检查talker是否是温血的（具有WARM标志）
-    "exists"                ,//检查talker是否存在（不是null）
+    "can_see"               ,//检查talker是否能看见 (不是盲的) 
+    "is_deaf"               ,//检查talker是否聋 (不能听见) 
+    "is_alive"              ,//检查talker是否活着 (不是死的) 
+    "is_warm"               ,//检查talker是否是温血的 (具有WARM标志) 
+    "exists"                ,//检查talker是否存在 (不是null) 
     "has_alpha"             ,//检查alpha talker是否存在
     "has_beta"              ,//检查beta talker是否存在
     "can_stow_weapon"       ,//检查talker是否可以收起武器
@@ -36,19 +36,19 @@ export const NoParamTalkerCondList = [
     "driving"               ,//检查talker是否操作着移动中的载具
     "see_npc"               ,// 检查alpha talker是否可以看见beta talker
     "see_you"               ,// 检查beta talker是否可以看见alpha talker
-    "see_npc_loc"           ,// 检查从alpha talker位置是否可以看见beta talker位置（不考虑视觉条件）
-    "see_you_loc"           ,// 检查从beta talker位置是否可以看见alpha talker位置（不考虑视觉条件）
-    "is_driven"             ,// 检查talker（载具）是否正在被驾驶
-    "is_remote_controlled"  ,// 检查talker（载具）是否正在被玩家远程控制
-    "can_fly"               ,// 检查talker（载具）是否能够飞行
-    "is_flying"             ,// 检查talker（载具）是否正在飞行
-    "can_float"             ,// 检查talker（载具）是否能够漂浮
-    "is_floating"           ,// 检查talker（载具）是否正在漂浮
-    "is_falling"            ,// 检查talker（载具）是否正在坠落
-    "is_skidding"           ,// 检查talker（载具）是否正在打滑
-    "is_sinking"            ,// 检查talker（载具）是否正在下沉
-    "is_on_rails"           ,// 检查talker（载具）是否使用轨道
-    "is_avatar_passenger"   ,// 检查talker（载具）是否有玩家作为乘客
+    "see_npc_loc"           ,// 检查从alpha talker位置是否可以看见beta talker位置 (不考虑视觉条件) 
+    "see_you_loc"           ,// 检查从beta talker位置是否可以看见alpha talker位置 (不考虑视觉条件) 
+    "is_driven"             ,// 检查talker (载具) 是否正在被驾驶
+    "is_remote_controlled"  ,// 检查talker (载具) 是否正在被玩家远程控制
+    "can_fly"               ,// 检查talker (载具) 是否能够飞行
+    "is_flying"             ,// 检查talker (载具) 是否正在飞行
+    "can_float"             ,// 检查talker (载具) 是否能够漂浮
+    "is_floating"           ,// 检查talker (载具) 是否正在漂浮
+    "is_falling"            ,// 检查talker (载具) 是否正在坠落
+    "is_skidding"           ,// 检查talker (载具) 是否正在打滑
+    "is_sinking"            ,// 检查talker (载具) 是否正在下沉
+    "is_on_rails"           ,// 检查talker (载具) 是否使用轨道
+    "is_avatar_passenger"   ,// 检查talker (载具) 是否有玩家作为乘客
 ] as const;
 
 
@@ -81,7 +81,7 @@ export type BoolOperateList = [
     HasWieldedWithSkill     ,//检查talker是否持有使用特定技能的武器
     HasWieldedWithAmmotype  ,//检查talker是否持有使用特定弹药类型的武器
     IsOnTerrainWithFlag     ,//检查talker是否站在具有特定标志的地形上
-    QueryBool               ,//为玩家创建一个弹出窗口，可以回答"是"或"否"
+    QueryBool               ,//为玩家创建一个弹出窗口, 可以回答"是"或"否"
     AtOmLocation            ,//检查talker是否站在特定的大地图瓦片上
     HasTrait                ,//检查talker是否有特定的特质/变异
     HasAnyTrait             ,//检查talker是否有任意一个特定的特质/变异
@@ -90,12 +90,12 @@ export type BoolOperateList = [
     HasMartialArt           ,//检查talker是否拥有特定武术
     UsingMartialArt         ,//检查talker是否正在使用特定武术
     HasFlag                 ,//检查talker是否有特定标志
-    HasPartFlag             ,//检查talker（作为载具）是否有带有特定标志的部件
+    HasPartFlag             ,//检查talker (作为载具) 是否有带有特定标志的部件
     HasSpecies              ,//检查talker是否属于特定物种
     Bodytype                ,//检查talker的身体类型
     ExpectsVars             ,//检查每个提供的变量是否存在
-    CompareString           ,//比较所有字符串，如果至少有两个匹配则返回true
-    CompareStringMatchAll   ,//比较所有字符串，如果全部匹配则返回true
+    CompareString           ,//比较所有字符串, 如果至少有两个匹配则返回true
+    CompareStringMatchAll   ,//比较所有字符串, 如果全部匹配则返回true
     Profession              ,//检查玩家角色是否有给定的职业ID或其"爱好"子类型
     HasStrength             ,//检查talker的力量是否至少达到指定值
     HasDexterity            ,//检查talker的敏捷是否至少达到指定值
@@ -121,7 +121,7 @@ export type BoolOperateList = [
     MapTerrainId            ,//检查地形是否具有特定ID
     MapFurnitureId          ,//检查家具是否具有特定ID
     MapFieldId              ,//检查场地是否具有特定ID
-    MapInCity               ,//检查位置是否在城市边界内（在z-1或更高）
+    MapInCity               ,//检查位置是否在城市边界内 (在z-1或更高) 
     LineOfSight             ,//检查两点是否相互可见
 ];
 //#endregion

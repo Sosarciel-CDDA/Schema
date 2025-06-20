@@ -130,7 +130,7 @@ export type CompareTime = TalkerVar<{
 /**选择地块的模式 列表 */
 const QueryTileTypeList = [
     "anywhere"      , //与"look around" UI相同
-    "line_of_sight" , //此刻可见的唯一瓷砖（范围是强制性的）
+    "line_of_sight" , //此刻可见的唯一瓷砖 (范围是强制性的) 
     "around"        , //与点燃火源相同, 你只能选择紧邻的9个瓷砖
 ] as const;
 /**选择地块的模式 列表 */
@@ -140,9 +140,9 @@ type QueryTileType = typeof QueryTileTypeList[number];
 export type QueryTile = TalkerVar<{
     /**选择地块 */
     query_tile: QueryTileType;
-    /**包含所选瓷砖坐标的变量对象（强制性） */
+    /**包含所选瓷砖坐标的变量对象 (强制性)  */
     target_var: (LocObj);
-    /**定义line_of_sight的可选范围（对于line_of_sight是强制性的, 否则不需要） */
+    /**定义line_of_sight的可选范围 (对于line_of_sight是强制性的, 否则不需要)  */
     range?: (NumObj);
     /**定义是否允许为anywhere选择其他z-level */
     z_level?: (NumObj);
@@ -164,13 +164,13 @@ export type SurvivalNeed = TalkerVar<{
 
 
 /**拥有物品汇总
- * 当 alpha 或 beta 对话者所拥有的物品中，总量满足任意一组需求时，返回 true。
- * 其中，item 表示要检查的物品； amount 表示应当找到的该物品数量。
- * 此条件可与 _consume_item_sum 配对使用。
+ * 当 alpha 或 beta 对话者所拥有的物品中, 总量满足任意一组需求时, 返回 true. 
+ * 其中, item 表示要检查的物品;  amount 表示应当找到的该物品数量. 
+ * 此条件可与 _consume_item_sum 配对使用. 
  * 适用于: Avatar Character NPC
  */
 export type HasItemsSum = TalkerVar<{
-    /**物品列表，每项为一个物品及对应数量 */
+    /**物品列表, 每项为一个物品及对应数量 */
     has_items_sum: {
         /**物品ID或变量引用 */
         item: (StrObj);
@@ -183,8 +183,8 @@ export type HasItemsSum = TalkerVar<{
 /**检查talker是否持有使用特定技能的武器 */
 export type HasWieldedWithSkill = TalkerVar<{
     /**检查talker是否持有使用特定技能的武器
-     * 对于枪械，技能来自武器的skill字段
-     * 对于近战武器，技能来自武器具有的最高伤害类型
+     * 对于枪械, 技能来自武器的skill字段
+     * 对于近战武器, 技能来自武器具有的最高伤害类型
      */
     has_wielded_with_skill: IDObj<SkillID>;
 }, "has_wielded_with_skill">;
@@ -210,16 +210,16 @@ export type IsOnTerrainWithFlag = TalkerVar<{
 }, "is_on_terrain_with_flag">;
 
 
-/**为玩家创建一个弹出窗口，可以回答"是"或"否"
+/**为玩家创建一个弹出窗口, 可以回答"是"或"否"
  * 适用于: Avatar Character NPC
  */
 export type QueryBool = TalkerVar<{
     /**为玩家创建一个弹出窗口
-     * 对于玩家（Avatar），创建一个可以回答"是"或"否"的弹出窗口
-     * 如果选择"是"则返回true，否则返回false
+     * 对于玩家 (Avatar) , 创建一个可以回答"是"或"否"的弹出窗口
+     * 如果选择"是"则返回true, 否则返回false
      */
     query: StrObj;
-    /**指定NPC（非玩家控制的角色）的默认输出 */
+    /**指定NPC (非玩家控制的角色) 的默认输出 */
     default: boolean;
 }, "query">;
 
@@ -254,7 +254,7 @@ export type HasAnyTrait = TalkerVar<{
  * 适用于: Avatar Character NPC
  */
 export type HasVisibleTrait = TalkerVar<{
-    /**检查talker是否有可见的特质/变异（在mutation visibility字段中定义了可见性） */
+    /**检查talker是否有可见的特质/变异 (在mutation visibility字段中定义了可见性)  */
     has_visible_trait: (IDObj<MutationID>);
 }, "has_visible_trait">;
 
@@ -263,7 +263,7 @@ export type HasVisibleTrait = TalkerVar<{
  */
 export type IsTraitPurifiable = TalkerVar<{
     /**检查talker的特质是否可净化
-     * 不可净化性可以在特质定义中全局设置，或通过u/npc_set_trait_purifiability为每个角色单独设置
+     * 不可净化性可以在特质定义中全局设置, 或通过u/npc_set_trait_purifiability为每个角色单独设置
      */
     is_trait_purifiable: (IDObj<MutationID>);
 }, "is_trait_purifiable">;
@@ -292,18 +292,18 @@ export type UsingMartialArt = TalkerVar<{
 export type HasFlag = TalkerVar<{
     /**检查talker是否有特定标志
      * 特殊标志MUTATION_THRESHOLD可用于检查talker是否有任何变异阈值
-     * 对于怪物，可以检查json标志（通过效果应用）和怪物标志
+     * 对于怪物, 可以检查json标志 (通过效果应用) 和怪物标志
      */
     has_flag: (StrObj);
 }, "has_flag">;
 
-/**检查talker（作为载具）是否有带有特定标志的部件
+/**检查talker (作为载具) 是否有带有特定标志的部件
  * 适用于: Vehicle
  */
 export type HasPartFlag = TalkerVar<{
-    /**检查talker（作为载具）是否有带有特定标志的部件 */
+    /**检查talker (作为载具) 是否有带有特定标志的部件 */
     has_part_flag: (StrObj);
-    /**如果存在且为true，则部件需要被启用 */
+    /**如果存在且为true, 则部件需要被启用 */
     enabled?: boolean;
 }, "has_part_flag">;
 
@@ -317,7 +317,7 @@ export type HasSpecies = TalkerVar<{
 
 /**检查talker的身体类型
  * 适用于: Avatar Character NPC
- * 对于玩家/NPC，如果身体类型是human则返回true
+ * 对于玩家/NPC, 如果身体类型是human则返回true
  */
 export type Bodytype = TalkerVar<{
     /**检查talker的身体类型 */
@@ -329,25 +329,25 @@ export type Bodytype = TalkerVar<{
  */
 export type ExpectsVars = {
     /**检查每个提供的变量是否存在
-     * 如果检查失败，返回false并创建调试错误消息
+     * 如果检查失败, 返回false并创建调试错误消息
      */
     expects_vars: (StrObj)[];
 };
 
-/**比较所有字符串，如果至少有两个匹配则返回true
+/**比较所有字符串, 如果至少有两个匹配则返回true
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  */
 export type CompareString = {
-    /**比较所有字符串，如果至少有两个匹配则返回true */
+    /**比较所有字符串, 如果至少有两个匹配则返回true */
     compare_string: (StrObj)[];
 };
 
-/**比较所有字符串，如果全部匹配则返回true
+/**比较所有字符串, 如果全部匹配则返回true
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  */
 export type CompareStringMatchAll = {
-    /**比较所有字符串，如果全部匹配则返回true
-     * 对于两个字符串，检查与compare_string相同
+    /**比较所有字符串, 如果全部匹配则返回true
+     * 对于两个字符串, 检查与compare_string相同
      */
     compare_string_match_all: (StrObj)[];
 };
@@ -398,7 +398,7 @@ export type HasPerception = TalkerVar<{
  */
 export type HasPartTemp = TalkerVar<{
     /**检查talker的身体部位温度是否高于指定值
-     * 温度以任意单位表示，在weather.h中描述：体温以0u到10000u的比例测量，其中10u = 0.02C，5000u是37C
+     * 温度以任意单位表示, 在weather.h中描述: 体温以0u到10000u的比例测量, 其中10u = 0.02C, 5000u是37C
      */
     has_part_temp: (NumObj);
     /**指定要检查的身体部位 */
@@ -436,7 +436,7 @@ export type HasItemCategory = TalkerVar<{
     /**检查talker是否有特定类别的物品 */
     //has_item_category: (IDObj<ItemCategotyID>);
     has_item_category: (StrObj);
-    /**物品的数量，用于检查数量大于1的物品 */
+    /**物品的数量, 用于检查数量大于1的物品 */
     count?: (NumObj);
 }, "has_item_category">;
 
@@ -466,7 +466,7 @@ export type HasAnyEffect = TalkerVar<{
  * 适用于: Avatar Character NPC
  */
 export type HasProficiency = TalkerVar<{
-    /**检查talker是否掌握了特定熟练度（达到100%） */
+    /**检查talker是否掌握了特定熟练度 (达到100%)  */
     //has_proficiency: (IDObj<ProficiencyID>);
     has_proficiency: (StrObj);
 }, "has_proficiency">;
@@ -476,7 +476,7 @@ export type HasProficiency = TalkerVar<{
  */
 export type KnowRecipe = {
     /**检查角色是否知道特定配方
-     * 只计算记忆中的配方，不包括书中的配方
+     * 只计算记忆中的配方, 不包括书中的配方
      */
     //u_know_recipe: (IDObj<RecipeID>);
     u_know_recipe: (StrObj);
@@ -511,11 +511,11 @@ export type HasWieldedWithWeaponCategory = TalkerVar<{
  */
 export type Query = TalkerVar<{
     /**创建一个可以回答"是"或"否"的弹出窗口
-     * 对于玩家，如果选择"是"，则返回true，否则返回false
+     * 对于玩家, 如果选择"是", 则返回true, 否则返回false
      * 只有当其余条件为真时才会创建弹出窗口
      */
     query: (StrObj);
-    /**指定NPC（玩家不控制）的默认输出 */
+    /**指定NPC (玩家不控制) 的默认输出 */
     default?: boolean;
 }, "query">;
 
@@ -551,7 +551,7 @@ export type CanSeeLocation = TalkerVar<{
 export type MapTerrainWithFlag = {
     /**检查地形是否具有特定标志 */
     map_terrain_with_flag: (StrObj);
-    /**指定地形的位置（必需） */
+    /**指定地形的位置 (必需)  */
     loc: (StrObj);
 };
 
@@ -561,7 +561,7 @@ export type MapTerrainWithFlag = {
 export type MapFurnitureWithFlag = {
     /**检查家具是否具有特定标志 */
     map_furniture_with_flag: (StrObj);
-    /**指定家具的位置（必需） */
+    /**指定家具的位置 (必需)  */
     loc: (StrObj);
 };
 
@@ -571,7 +571,7 @@ export type MapFurnitureWithFlag = {
 export type MapTerrainId = {
     /**检查地形是否具有特定ID */
     map_terrain_id: (IDObj<TerrainID>);
-    /**指定地形的位置（必需） */
+    /**指定地形的位置 (必需)  */
     loc: (StrObj);
 };
 
@@ -582,7 +582,7 @@ export type MapFurnitureId = {
     /**检查家具是否具有特定ID */
     //map_furniture_id: (IDObj<FurnitureID>);
     map_furniture_id: (StrObj);
-    /**指定家具的位置（必需） */
+    /**指定家具的位置 (必需)  */
     loc: (StrObj);
 };
 
@@ -592,11 +592,11 @@ export type MapFurnitureId = {
 export type MapFieldId = {
     /**检查场地是否具有特定ID */
     map_field_id: (IDObj<FieldID>);
-    /**指定场地的位置（必需） */
+    /**指定场地的位置 (必需)  */
     loc: (StrObj);
 };
 
-/**检查位置是否在城市边界内（在z-1或更高）
+/**检查位置是否在城市边界内 (在z-1或更高) 
  * 适用于: 不需要talker
  */
 export type MapInCity = {
@@ -614,7 +614,7 @@ export type LineOfSight = {
     loc_1: (StrObj);
     /**线的另一个点 */
     loc_2: (StrObj);
-    /**如果为false，则忽略不透明的场地。默认为true */
+    /**如果为false, 则忽略不透明的场地. 默认为true */
     with_fields?: boolean;
 };
 

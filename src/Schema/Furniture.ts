@@ -14,9 +14,9 @@ export type Furniture = {
      * 可用于制作的物品 (工具）的 ID（家具充当该类型的物品)  
      */
     crafting_pseudo_item?: "anvil";
-    /**可以在这里制作。
-     * 超过这些限制的质量/体积会导致速度惩罚。
-     * 必须与 "workbench" examine_action 配对才能工作。
+    /**可以在这里制作. 
+     * 超过这些限制的质量/体积会导致速度惩罚. 
+     * 必须与 "workbench" examine_action 配对才能工作. 
      **/
     workbench?: {
         /**制作加速倍率 */

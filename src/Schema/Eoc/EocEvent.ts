@@ -21,7 +21,7 @@ export const EocEventList = [
     "angers_amigara_horrors",
 
     // avatar / NONE
-    // 当玩家穿越大地图边界时触发，包括玩家生成时
+    // 当玩家穿越大地图边界时触发, 包括玩家生成时
     // { "pos", tripoint }, { "oter_id", oter_id },
     "avatar_enters_omt",
 
@@ -71,12 +71,12 @@ export const EocEventList = [
     "causes_resonance_cascade",
 
     // character / NONE
-    // 在成功的屠宰行动后触发。butcher_type的可能值是ACT_BLEED, ACT_BUTCHER, ACT_BUTCHER_FULL, ACT_FIELD_DRESS, ACT_SKIN, ACT_QUARTER, ACT_DISMEMBER, ACT_DISSECT
+    // 在成功的屠宰行动后触发. butcher_type的可能值是ACT_BLEED, ACT_BUTCHER, ACT_BUTCHER_FULL, ACT_FIELD_DRESS, ACT_SKIN, ACT_QUARTER, ACT_DISMEMBER, ACT_DISSECT
     // { "character", character_id }, { "monster_id", mtype_id }, { "butcher_type", string },
     "character_butchered_corpse",
 
     // character / NONE
-    // 当角色施放法术时触发。当施放具有多种效果的法术时，将触发效果的数量
+    // 当角色施放法术时触发. 当施放具有多种效果的法术时, 将触发效果的数量
     // { "character", character_id }, { "spell", spell_id }, { "school", trait_id }, { "difficulty", int }, { "cost", int }, { "cast_time", int }, { "damage", int },
     "character_casts_spell",
 
@@ -176,7 +176,7 @@ export const EocEventList = [
     "character_starts_activity",
 
     // character / NONE
-    // 当角色脱下穿戴的物品时触发。如果使用run_inv_eocs，请记住事件在物品实际移除之前触发
+    // 当角色脱下穿戴的物品时触发. 如果使用run_inv_eocs, 请记住事件在物品实际移除之前触发
     // { "character", character_id }, { "itype", itype_id }
     "character_takeoff_item",
 
@@ -186,7 +186,7 @@ export const EocEventList = [
     "character_takes_damage",
 
     // monster / attacker if exists, otherwise NONE(character or monster)
-    // 当怪物从任何生物受到任何伤害时触发。包括来自出血等效果的伤害
+    // 当怪物从任何生物受到任何伤害时触发. 包括来自出血等效果的伤害
     // { "damage", int }, { "dies", bool },
     "monster_takes_damage",
 
@@ -201,12 +201,12 @@ export const EocEventList = [
     "character_wakes_up",
 
     // character / NONE
-    // 在角色尝试入睡的那一刻触发，在确认并设置闹钟之后，但在"你躺下"之前
+    // 在角色尝试入睡的那一刻触发, 在确认并设置闹钟之后, 但在"你躺下"之前
     // { "character", character_id },
     "character_attempt_to_fall_asleep",
 
     // character / NONE
-    // 在角色实际入睡的那一刻触发；触发包括角色因困倦或药物而短时间睡眠的情况；睡眠持续时间可能会因伤害/噪音/光线/疼痛阈值和其他因素而在睡眠中途改变
+    // 在角色实际入睡的那一刻触发; 触发包括角色因困倦或药物而短时间睡眠的情况; 睡眠持续时间可能会因伤害/噪音/光线/疼痛阈值和其他因素而在睡眠中途改变
     // { "character", character_id }, { "duration", int_ (in seconds) }
     "character_falls_asleep",
 
@@ -221,7 +221,7 @@ export const EocEventList = [
     "character_wears_item",
 
     // character / item to wear
-    // 当穿戴的护甲因伤害而被设置为销毁时触发。护甲仍然存在，但会在EOC完成运行后立即被销毁
+    // 当穿戴的护甲因伤害而被设置为销毁时触发. 护甲仍然存在, 但会在EOC完成运行后立即被销毁
     // { "character", character_id }, { "itype", itype_id },
     "character_armor_destroyed",
 
@@ -261,7 +261,7 @@ export const EocEventList = [
     "dermatik_eggs_injected",
 
     // avatar / NONE
-    // 仅通过带有effect_str ROOTS_DIE的法术触发（目前通过triffid心脏的死亡法术）
+    // 仅通过带有effect_str ROOTS_DIE的法术触发 (目前通过triffid心脏的死亡法术) 
     // NONE
     "destroys_triffid_grove",
 
@@ -346,7 +346,7 @@ export const EocEventList = [
     "falls_asleep_from_exhaustion",
 
     // avatar / NONE
-    // 当载具部件（防水容器/带有弹匣口袋的弹匣/反应堆）受到足够伤害时触发
+    // 当载具部件 (防水容器/带有弹匣口袋的弹匣/反应堆) 受到足够伤害时触发
     // { "vehicle_name", string }
     "fuel_tank_explodes",
 
@@ -371,7 +371,7 @@ export const EocEventList = [
     "gains_skill_level",
 
     // avatar / NONE
-    // 当显示ASCII墓碑画面时触发（显然是在角色死亡时）
+    // 当显示ASCII墓碑画面时触发 (显然是在角色死亡时) 
     // { "avatar_id", character_id }, { "avatar_name", string }, { "avatar_is_male", bool }, { "is_suicide", bool }, { "last_words", string }
     "game_avatar_death",
 
@@ -381,7 +381,7 @@ export const EocEventList = [
     "game_avatar_new",
 
     // avatar / NONE
-    // 仅在加载已保存的游戏时触发（不是新游戏！）
+    // 仅在加载已保存的游戏时触发 (不是新游戏！) 
     // { "cdda_version", string }
     "game_load",
 
@@ -391,7 +391,7 @@ export const EocEventList = [
     "game_begin",
 
     // avatar / NONE
-    // 在完全接受死亡，结局等播放后触发（可能不能用于eoc目的？）
+    // 在完全接受死亡, 结局等播放后触发 (可能不能用于eoc目的？) 
     // { "total_time_played", chrono_seconds }
     "game_over",
 
@@ -436,12 +436,12 @@ export const EocEventList = [
     "npc_becomes_hostile",
 
     // avatar / NONE
-    // 当通过（"旧实验室"终局的？）计算机激活TOGGLE PORTAL选项时触发
+    // 当通过 ("旧实验室"终局的？) 计算机激活TOGGLE PORTAL选项时触发
     // NONE
     "opens_portal",
 
     // character / NONE
-    // 当玩家打开法术菜单或当NPC评估法术作为最佳武器时触发（准备使用它）
+    // 当玩家打开法术菜单或当NPC评估法术作为最佳武器时触发 (准备使用它) 
     // { "character", character_id }
     "opens_spellbook",
 
@@ -461,7 +461,7 @@ export const EocEventList = [
     "player_gets_achievement",
 
     // character / NONE
-    // 当玩家改变法术等级时触发，可能通过施法、阅读法术书或使用EoC。使用chargen选项中的法术生成新角色也会运行此事件
+    // 当玩家改变法术等级时触发, 可能通过施法, 阅读法术书或使用EoC. 使用chargen选项中的法术生成新角色也会运行此事件
     // { "character", character_id }, { "spell", spell_id }, { "new_level", int }, { "spell_class", trait_id }
     "player_levels_spell",
 
@@ -471,7 +471,7 @@ export const EocEventList = [
     "reads_book",
 
     // avatar / NONE
-    // 当通过（"旧实验室"终局的？）计算机激活Release Specimens选项时触发
+    // 当通过 ("旧实验室"终局的？) 计算机激活Release Specimens选项时触发
     // NONE
     "releases_subspace_specimens",
 
@@ -491,22 +491,22 @@ export const EocEventList = [
     "spellcasting_finish",
 
     // character / NONE
-    // （未实现）
+    //  (未实现) 
     // { "character", character_id }, { "victim_name", string }
     "telefrags_creature",
 
     // character / NONE
-    // 当角色（实际上只有avatar有资格）因teleglow效果而被传送时触发
+    // 当角色 (实际上只有avatar有资格) 因teleglow效果而被传送时触发
     // { "character", character_id }
     "teleglow_teleports",
 
     // character / NONE
-    // 当角色（实际上只有avatar有资格）被传送到墙中时触发
+    // 当角色 (实际上只有avatar有资格) 被传送到墙中时触发
     // { "character", character_id }, { "obstacle_name", string }
     "teleports_into_wall",
 
     // avatar / NONE
-    // 当通过（"旧实验室"终局的？）计算机激活Terminate Specimens选项时触发
+    // 当通过 ("旧实验室"终局的？) 计算机激活Terminate Specimens选项时触发
     // NONE
     "terminates_subspace_specimens",
 
@@ -516,7 +516,7 @@ export const EocEventList = [
     "throws_up",
 
     // character / NONE
-    // 当因黑客攻击、撬动、使用计算机的失败状态或（如果玩家足够近）损坏带有ALARMED标志的地形而触发警报时触发
+    // 当因黑客攻击, 撬动, 使用计算机的失败状态或 (如果玩家足够近) 损坏带有ALARMED标志的地形而触发警报时触发
     // { "character", character_id }
     "triggers_alarm",
 

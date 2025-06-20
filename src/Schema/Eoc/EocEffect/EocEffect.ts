@@ -113,7 +113,7 @@ export type SoundEffect = {
 export type CastSpell = TalkerVar<{
     /**施法 */
     cast_spell: FakeSpell;
-    /**默认为 false；如果为 true, 则允许您瞄准施放的法术,   
+    /**默认为 false; 如果为 true, 则允许您瞄准施放的法术,   
      * 否则将其施放于随机位置, 就像RANDOM_TARGET使用了法术标志一样  
      * RANDOM_TARGET法术需要此项目为true才能正常索敌  
      */
@@ -147,7 +147,7 @@ export type LocalVar = TalkerVar<{
     /**如果为 true, 则仅选择室外值 默认为 false */
     outdoor_only?: boolean;
     /**如果使用, 搜索将不是从u_或npc_位置执行,   
-     * 而是从 执行mission_target。  
+     * 而是从 执行mission_target.   
      * 它使用allocate_mission_target语法  
      */
     target_params?: (AssignMissionTarget);
@@ -183,10 +183,10 @@ export type LocalVar = TalkerVar<{
 /**发送消息 */
 export type Message = TalkerVar<{
     message: (DescText);
-    /**默认中立；消息如何在日志中显示 (通常是指颜色) ；  
-     * 可以是良好 (绿色) 、中性 (白色) 、不良 (红色) 、  
-     * 混合 (紫色) 、警告 (黄色) 、信息 (蓝色) 、调试 (仅在调试模式打开时出现) 、  
-     * 爆头 (紫色) 、临界 (黄色) , 放牧 (蓝色)   
+    /**默认中立; 消息如何在日志中显示 (通常是指颜色) ;   
+     * 可以是良好 (绿色) , 中性 (白色) , 不良 (红色) ,   
+     * 混合 (紫色) , 警告 (黄色) , 信息 (蓝色) , 调试 (仅在调试模式打开时出现) ,   
+     * 爆头 (紫色) , 临界 (黄色) , 放牧 (蓝色)   
      */
     type?: (MessageRatType);
     /**如果为true 那么只会在用户没有聋时显示 */
@@ -196,14 +196,14 @@ export type Message = TalkerVar<{
     /**如果为 true, 则效果会显示来自的随机片段u_message */
     snippet?: boolean;
     /**如果为 true, 并且snippet为 true, 它将连接讲话者和片段,   
-     * 并且如果该讲话者使用的话, 将始终提供相同的片段；要求片段设置 id  
+     * 并且如果该讲话者使用的话, 将始终提供相同的片段; 要求片段设置 id  
      */
     same_snippet?: boolean;
     /**如果为真, 该消息将生成一个弹出窗口u_message */
     popup?: boolean;
     /**如果为 true, 并且popup为 true, 则弹出窗口将中断任何发送消息的活动 */
     popup_w_interrupt_query?: boolean;
-    /**默认为“中性”；distraction_type, 用于中断, 用于分心管理器  
+    /**默认为“中性”; distraction_type, 用于中断, 用于分心管理器  
      * 完整列表存在 inactivity_type.cpp  
      */
     interrupt_type?: boolean;
@@ -327,7 +327,7 @@ export type AssingMission = {
     assign_mission: IDObj<MissionDefinitionID>;
 }
 
-/**将从玩家的活动任务列表中删除任务而不失败。 */
+/**将从玩家的活动任务列表中删除任务而不失败.  */
 export type RemoveActionMission = {
     /**给玩家删除目标ID任务 */
     remove_active_mission: IDObj<MissionDefinitionID>;
@@ -353,11 +353,11 @@ export type SetCond = {
 
 /**条件控制 */
 export type IfElse = {
-    /**对话条件（强制性） */
+    /**对话条件 (强制性)  */
     if: BoolObj;
-    /**满足条件时执行的效果（强制性） */
+    /**满足条件时执行的效果 (强制性)  */
     then: EocEffect[];
-    /**不满足条件时执行的效果（可选） */
+    /**不满足条件时执行的效果 (可选)  */
     else?: EocEffect[];
 }
 
@@ -413,7 +413,7 @@ export type MapRunItemEocs = TalkerVar<{
      * manual_mult  - 与manual相同, 但可以选择多个物品  
      */
     map_run_item_eocs: "all"|"random"|"manual"|"manual_mult";
-    /**扫描物品的位置；如果没有指定位置，则只扫描talker所在的格子 */
+    /**扫描物品的位置; 如果没有指定位置, 则只扫描talker所在的格子 */
     loc?:(LocObj);
     /**围绕位置/talker的搜索半径 */
     min_radius?:(NumObj);

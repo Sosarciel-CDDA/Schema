@@ -90,7 +90,7 @@ export type EocEffectList = [
     ConsumeItem             ,//使用物品
     RemoveItem              ,//删除物品
     AssingMission           ,//给玩家添加任务
-    RemoveActionMission     ,//将从玩家的活动任务列表中删除任务而不失败。
+    RemoveActionMission     ,//将从玩家的活动任务列表中删除任务而不失败. 
     FinishMission           ,//使玩家完成任务
     SetCond                 ,//将条件Obj保存为变量
     IfElse                  ,//条件控制

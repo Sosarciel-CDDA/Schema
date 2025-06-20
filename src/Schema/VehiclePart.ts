@@ -18,7 +18,7 @@ export type VehiclePart = CopyfromVar<{
     id: VehiclePartID;
     /**显示名称 */
     name: (DescText);
-    /** (可选) 如果此部分没有图块, 向图块集提供提示, 使用 looks_like 图块。 */
+    /** (可选) 如果此部分没有图块, 向图块集提供提示, 使用 looks_like 图块.  */
     looks_like: string;
     /**功能取决于部件类型:  */
     bonus: number;
@@ -26,9 +26,9 @@ export type VehiclePart = CopyfromVar<{
     color: Color;
     /**部件损坏时使用的颜色 */
     broken_color: Color;
-    /**可选。确定部件是否可以安装在给定瓦片上的检查之一。如果任何现有部件占用同一位置, 则不能安装部件。 */
+    /**可选. 确定部件是否可以安装在给定瓦片上的检查之一. 如果任何现有部件占用同一位置, 则不能安装部件.  */
     location: "fuel_source";
-    /** (可选, 默认 = 100) 当此部件击中某物时, 所造成的伤害乘数, 以百分比表示。越高 = 对被击中的生物造成更多的伤害 */
+    /** (可选, 默认 = 100) 当此部件击中某物时, 所造成的伤害乘数, 以百分比表示. 越高 = 对被击中的生物造成更多的伤害 */
     damage_modifier?: number;
     /**部件在损坏前可以承受多少伤害 */
     durability: number;
@@ -36,25 +36,25 @@ export type VehiclePart = CopyfromVar<{
     description: (DescText);
     /** (可选, 默认 = "NULL") 部件消耗的燃料/弹药类型, 作为物品 id */
     fuel_type?: AmmunitionTypeID;
-    /**部件的电力使用量, 以瓦特为单位。负值表示消耗电力, 正值表示产生电力。  
-     * 通常, 电力消耗还需要 ENABLED_DRAINS_EPOWER 标志, 并且物品需要打开。  
-     * 太阳能板的电力产生受到太阳角度的影响。当太阳在 90 度时, 面板产生全部电力。  
+    /**部件的电力使用量, 以瓦特为单位. 负值表示消耗电力, 正值表示产生电力.   
+     * 通常, 电力消耗还需要 ENABLED_DRAINS_EPOWER 标志, 并且物品需要打开.   
+     * 太阳能板的电力产生受到太阳角度的影响. 当太阳在 90 度时, 面板产生全部电力.   
      */
     epower?: number;
-    /**用于安装此部件的物品, 以及移除此部件时获得的物品。 */
+    /**用于安装此部件的物品, 以及移除此部件时获得的物品.  */
     item: GenericID;
-    /**覆盖 "item", 移除此部件时返回的物品。 */
+    /**覆盖 "item", 移除此部件时返回的物品.  */
     remove_as?: GenericID;
     /**你的机械技能必须至少达到这个级别才能安装这个部件 */
     difficulty: number;
-    /**当车辆部件被销毁时, 此物品组中的物品 (参见 ITEM_SPAWN.md) 将在地面上的部件周围生成。  
-     * 或者只是物品组的 id。  
+    /**当车辆部件被销毁时, 此物品组中的物品 (参见 ITEM_SPAWN.md) 将在地面上的部件周围生成.   
+     * 或者只是物品组的 id.   
      */
     breaks_into?: ItemGroupEntrie[]|ItemGroupID;
     /**与部件相关的标志 */
     flags?: VPFlag[];
-    /** (可选) 部件的特殊安装、移除或修理要求。  
-     * 每个字段都由一个对象组成, 字段为 "skills"、"time" 和 "using"。  
+    /** (可选) 部件的特殊安装, 移除或修理要求.   
+     * 每个字段都由一个对象组成, 字段为 "skills", "time" 和 "using".   
      */
     requirements?: {
         install?: VPRequirement;
@@ -85,7 +85,7 @@ export type VehiclePart = CopyfromVar<{
     unfolding_tools?: AnyItemID[];
     /** 展开此部件的时间 */
     unfolding_time?: (Time);
-    /** 伤害减少；参见"部件阻力"。如果未指定, 则设为零 */
+    /** 伤害减少; 参见"部件阻力". 如果未指定, 则设为零 */
     damage_reduction: Partial<Record<DamageTypeID|"non_physical"|"physical"|"all",number>>;
     /** (可选) 一个列表, 每个列表都是一个工具质量和质量等级, 该车辆部件提供 */
     qualities?: [ToolQualityID, number][];
@@ -93,15 +93,15 @@ export type VehiclePart = CopyfromVar<{
     transform_terrain?: {
         /** 可以转换的地形的标志列表 */
         pre_flags: ["PLOWABLE"];
-        /** (可选, 默认为"t_null") 结果地形（如果有） */
+        /** (可选, 默认为"t_null") 结果地形 (如果有)  */
         post_terrain: "t_dirtmound";
-        /** (可选, 默认为"f_null") 结果家具（如果有） */
+        /** (可选, 默认为"f_null") 结果家具 (如果有)  */
         post_furniture: "f_boulder";
-        /** (可选, 默认为"fd_null") 结果字段（如果有） */
+        /** (可选, 默认为"fd_null") 结果字段 (如果有)  */
         post_field?: FieldID;
-        /** (可选, 默认为0) 字段的强度（如果有） */
+        /** (可选, 默认为0) 字段的强度 (如果有)  */
         post_field_intensity?: number;
-        /** (可选, 默认为0转) 字段的生存时间（如果有） */
+        /** (可选, 默认为0转) 字段的生存时间 (如果有)  */
         post_field_age?: (Time);
     };
     /** 要生成的变体基础 (参见下文) */
@@ -128,11 +128,11 @@ export type VehiclePart = CopyfromVar<{
 
 /**车辆部件的操作需求 */
 type VPRequirement = {
-    /**"skills" 是一个列表, 每个列表都是一个技能名称和技能等级。 */
+    /**"skills" 是一个列表, 每个列表都是一个技能名称和技能等级.  */
     skills: [SkillID, number][];
-    /**"time" 是一个字符串, 指定执行操作的时间。 */
+    /**"time" 是一个字符串, 指定执行操作的时间.  */
     time: (Time);
-    /**"using" 是一个列表, 每个列表都是一个制作要求。 */
+    /**"using" 是一个列表, 每个列表都是一个制作要求.  */
     using: ReqUsing;
 }
 
@@ -150,7 +150,7 @@ export const VPFlagList = [
     "AIRCRAFT_REPAIRABLE_NOPROF"   , // 允许玩家在没有任何熟练度的情况下安全地从飞机上取下部件
     "AISLE_LIGHT"                  , // 这个部件可以照亮周围环境
     "AISLE"                        , // 玩家可以以比正常速度更小的速度惩罚移动到这个部件上
-    "ALTERNATOR"                   , // 为安装在车辆上的电池充电。只能安装在带有E_ALTERNATOR标志的部件上
+    "ALTERNATOR"                   , // 为安装在车辆上的电池充电. 只能安装在带有E_ALTERNATOR标志的部件上
     "ANCHOR_POINT"                 , // 允许安全地安装安全带
     "ANIMAL_CTRL"                  , // 可以驾驭动物, 需要HARNESS_bodytype标志来指定动物的体型
     "APPLIANCE"                    , // 这个车辆部件是一个家用电器, 并相应地处理
@@ -167,7 +167,7 @@ export const VPFlagList = [
     "CAMERA_CONTROL"               , // 这个部件允许使用安装在车辆上的摄像系统
     "CAMERA"                       , // 车辆部件, 允许通过安装的摄像系统查看
     "CAPTURE_MOSNTER_VEH"          , // 当安装在车辆上时, 可以用来捕获怪物
-    "CARGO_LOCKING"                , // 这个货物区域对NPC不可访问。只能安装在带有LOCKABLE_CARGO标志的部件上
+    "CARGO_LOCKING"                , // 这个货物区域对NPC不可访问. 只能安装在带有LOCKABLE_CARGO标志的部件上
     "CARGO"                        , // 货物装载区
     "CHIMES"                       , // 使用时产生连续的噪音
     "CIRCLE_LIGHT"                 , // 打开时投射出一个圆形的光线
@@ -181,7 +181,7 @@ export const VPFlagList = [
     "DISHWASHER"                   , // 可以用来批量清洗肮脏的非软物品
     "DOME_LIGHT"                   , // 这个部件可以照亮周围环境
     "DOOR_MOTOR"                   , // 只能安装在带有OPENABLE标志的部件上
-    "ENABLED_DRAINS_EPOWER"        , // 使车辆部件需要一些能量来开始工作。需要epower字段
+    "ENABLED_DRAINS_EPOWER"        , // 使车辆部件需要一些能量来开始工作. 需要epower字段
     "ENGINE"                       , // 是一个引擎, 并为车辆的机械动力做出贡献
     "EVENTURN"                     , // 只在偶数轮次上
     "EXTRA_DRAG"                   , // 告诉车辆, 这个部件会减少引擎的动力
@@ -193,7 +193,7 @@ export const VPFlagList = [
     "E_HIGHER_SKILL"               , // 是一个引擎, 安装的引擎越多, 安装起来就越困难
     "E_STARTS_INSTANTLY"           , // 是一个引擎, 像食物踏板一样, 可以立即启动
     "FLAT_SURF"                    , // 带有平坦硬表面的部件 (例如, 桌子)
-    "FLUIDTANK"                    , // 允许在这个部件中存储液体；液体的数量应在这个车辆部件的物品中定义
+    "FLUIDTANK"                    , // 允许在这个部件中存储液体; 液体的数量应在这个车辆部件的物品中定义
     "FREEZER"                      , // 可以在零度以下的温度下冻结物品
     "FRIDGE"                       , // 可以冷藏物品
     "FUNNEL"                       , // 如果安装在车辆油箱上, 可以在下雨时收集雨水
@@ -201,7 +201,7 @@ export const VPFlagList = [
     "HANDHELD_BATTERY_MOUNT"       , // 与BATTERY_MOUNT相同, 但用于手持电池安装
     "HARNESS_bodytype"             , // 用任何替换bodytype以接受任何类型, 或者用目标类型替换
     "HORN"                         , // 使用时产生噪音
-    "INITIAL_PART"                 , // 通过建筑菜单开始新车辆时, 这个车辆部件将是车辆的初始部件 (如果使用的物品与这个部件所需的物品匹配) 。带有此标志的部件的物品会自动添加为车辆开始建设的组件
+    "INITIAL_PART"                 , // 通过建筑菜单开始新车辆时, 这个车辆部件将是车辆的初始部件 (如果使用的物品与这个部件所需的物品匹配) . 带有此标志的部件的物品会自动添加为车辆开始建设的组件
     "INTERNAL"                     , // 只能安装在带有CARGO标志的部件上
     "LOCKABLE_CARGO"               , // 能够安装锁的货物容器
     "MUFFLER"                      , // 在运行时降低车辆的噪音
@@ -218,7 +218,7 @@ export const VPFlagList = [
     "NO_INSTALL_HIDDEN"            , // 部件不能由玩家安装, 并在安装菜单中隐藏 (例如, 电源线, 充气船部件, 召唤车辆部件)
     "NO_INSTALL_PLAYER"            , // 部件不能由玩家安装, 但在安装菜单中可见 (例如, 直升机转子)
     "NO_LEAK"                      , // 使船体即使受损也能漂浮
-    "NO_MODIFY_VEHICLE"            , // 安装带有此标志的部件在车辆上将意味着它不能再被修改。带有此标志的部件不应由玩家安装
+    "NO_MODIFY_VEHICLE"            , // 安装带有此标志的部件在车辆上将意味着它不能再被修改. 带有此标志的部件不应由玩家安装
     "NO_REPAIR"                    , // 不能修理
     "NO_UNINSTALL"                 , // 不能卸载
     "OBSTACLE"                     , // 不能穿过部件, 除非部件也是OPENABLE
@@ -230,25 +230,25 @@ export const VPFlagList = [
     "OPENCLOSE_INSIDE"             , // 可以打开或关闭, 但只能从车内打开或关闭
     "OVER"                         , // 可以安装在其他部件上
     "PERPETUAL"                    , // 如果与REACTOR配对, 部件在不消耗燃料的情况下产生电力
-    "PLANTER"                      , // 在犁过的土地上种植种子, 当地面不适合时洒出种子。在非DIGGABLE表面上运行时会损坏
-    "PLOW"                         , // 在活动时犁过部件下面的土壤。在不适合的地形上受到与车辆速度成比例的损坤
+    "PLANTER"                      , // 在犁过的土地上种植种子, 当地面不适合时洒出种子. 在非DIGGABLE表面上运行时会损坏
+    "PLOW"                         , // 在活动时犁过部件下面的土壤. 在不适合的地形上受到与车辆速度成比例的损坤
     "POWER_TRANSFER"               , // 向连接的东西 (可能是车辆) 传输电力
     "PROTRUSION"                   , // 部件突出, 所以其他部件不能安装在它上面
     "REACTOR"                      , // 启用时, 部件消耗燃料产生电力
     "REAPER"                       , // 割下成熟的作物, 将它们放在方块上
-    "RECHARGE"                     , // 为带有相同标志的物品充电。 (目前只有可充电电池模块)
+    "RECHARGE"                     , // 为带有相同标志的物品充电.  (目前只有可充电电池模块)
     "REMOTE_CONTROLS"              , // 一旦安装, 允许通过遥控器使用车辆
     "REVERSIBLE"                   , // 拆除与安装的要求相同, 但速度是两倍
-    "ROOF"                         , // 覆盖车辆的一部分。车辆上有屋顶的区域和周围区域的屋顶, 被认为是内部。否则它们是外部
-    "SCOOP"                        , // 从车辆下面拉出物品到部件的货物空间。也可以拖地
-    "SEATBELT"                     , // 在事故中帮助防止玩家从车辆中弹出。只能安装在带有BELTABLE标志的部件上
+    "ROOF"                         , // 覆盖车辆的一部分. 车辆上有屋顶的区域和周围区域的屋顶, 被认为是内部. 否则它们是外部
+    "SCOOP"                        , // 从车辆下面拉出物品到部件的货物空间. 也可以拖地
+    "SEATBELT"                     , // 在事故中帮助防止玩家从车辆中弹出. 只能安装在带有BELTABLE标志的部件上
     "SEAT"                         , // 玩家可以坐或睡的座位
     "SECURITY"                     , // 如果安装, 当车辆被砸时会发出响亮的噪音
     "SHARP"                        , // 用这个部件击中怪物时, 会造成切割伤害而不是砸伤, 防止怪物被晕眩
-    "SHOCK_ABSORBER"               , // 这个部件保护同一瓦片上的非框架部件免受碰撞的冲击伤害。它不提供对直接冲击或其他攻击的保护
+    "SHOCK_ABSORBER"               , // 这个部件保护同一瓦片上的非框架部件免受碰撞的冲击伤害. 它不提供对直接冲击或其他攻击的保护
     "SIMPLE_PART"                  , // 这个部件可以安装或从其他阻止修改的部件上移除
     "SMASH_REMOVE"                 , // 当你移除这个部件时, 你会得到砸击的结果, 而不是得到物品
-    "SOLAR_PANEL"                  , // 在阳光下为车辆电池充电。在车辆生成时有1/4的机会被破坏
+    "SOLAR_PANEL"                  , // 在阳光下为车辆电池充电. 在车辆生成时有1/4的机会被破坏
     "SPACE_HEATER"                 , // 有一个单独的命令来切换这个部件
     "STABLE"                       , // 类似于WHEEL, 但如果车辆只有1x1的部分, 这个单个轮子就算作足够的轮子
     "STEERABLE"                    , // 这个轮子是可转向的
@@ -256,11 +256,11 @@ export const VPFlagList = [
     "TRACKED"                      , // 有助于提高转向效果, 但在安装难度上不算作转向轴, 仍然对转向中心的阻力计算有贡献
     "TRACK"                        , // 允许在地图上标记和跟踪安装在车辆上的车辆
     "TRANSFORM_TERRAIN"            , // 转换地形 (使用transform_terrain中定义的规则)
-    "TURRET_CONTROLS"              , // 如果带有此标志的部件安装在炮塔上, 它允许将炮塔的瞄准模式设置为全自动。只能安装在带有TURRET标志的部件上
+    "TURRET_CONTROLS"              , // 如果带有此标志的部件安装在炮塔上, 它允许将炮塔的瞄准模式设置为全自动. 只能安装在带有TURRET标志的部件上
     "TURRET_MOUNT"                 , // 带有此标志的部件适合安装炮塔
-    "TURRET"                       , // 是一个武器炮塔。只能安装在带有TURRET_MOUNT标志的部件上
-    "UNMOUNT_ON_DAMAGE"            , // 当部件被伤害破坏时, 部件会从车辆上断裂。物品是新的, 通常是无损的
-    "UNMOUNT_ON_MOVE"              , // 当车辆移动时, 卸下这个部件。除非你给它特殊处理, 否则不会掉落部件
+    "TURRET"                       , // 是一个武器炮塔. 只能安装在带有TURRET_MOUNT标志的部件上
+    "UNMOUNT_ON_DAMAGE"            , // 当部件被伤害破坏时, 部件会从车辆上断裂. 物品是新的, 通常是无损的
+    "UNMOUNT_ON_MOVE"              , // 当车辆移动时, 卸下这个部件. 除非你给它特殊处理, 否则不会掉落部件
     "UNSTABLE_WHEEL"               , // 与STABLE相反, 如果单独安装, 这将不会为你的车辆提供轮胎需求
     "VARIABLE_SIZE"                , // 有'大小', 用于功率, 轮胎半径等
     "VISION"                       , // 提供看不见的方向的视野, 例如镜子

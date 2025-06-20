@@ -24,8 +24,8 @@ export type MissionDefinition = {
     value: number;
     /**如果目标是寻找道具, 目标的道具ID */
     item?: AnyItemID;
-    /**可选布尔值, 默认为 false。 如果为 true,   
-     * 则此任务完成后, 它将不会显示在已完成的任务或失败的任务列表中。  
+    /**可选布尔值, 默认为 false.  如果为 true,   
+     * 则此任务完成后, 它将不会显示在已完成的任务或失败的任务列表中.   
      */
     invisible_on_complete?: boolean;
     /**任务开始的效果 */
@@ -121,31 +121,31 @@ type MissionEffect = {
 export type AssignMissionTarget = {
     /**将被选为目标的覆盖图地形的 ID */
     om_terrain?: IDObj<OvermapTerrainID>;
-    /**与 om_terrain 一起使用的匹配规则。默认为TYPE */
+    /**与 om_terrain 一起使用的匹配规则. 默认为TYPE */
     om_terrain_match_type?:OMTMatchType;
     /**包含覆盖图地形的覆盖图特殊 ID */
     om_special?:IDObj<OverMapSpecialID>;
-    /**要查找的覆盖地图地形的 ID, 如果om_terrain找不到则替换。*/
+    /**要查找的覆盖地图地形的 ID, 如果om_terrain找不到则替换. */
     om_terrain_replace?:IDObj<OvermapTerrainID>;
-    /**要显示的覆盖地图地形坐标中的半径。 */
+    /**要显示的覆盖地图地形坐标中的半径.  */
     reveal_radius: (NumObj);
-    /**如果属实, 那om_terrain肯定已经被看到了。 */
+    /**如果属实, 那om_terrain肯定已经被看到了.  */
     must_see?:boolean;
-    /**如果属实, 那么om_terrain一定还没有被看到。 */
+    /**如果属实, 那么om_terrain一定还没有被看到.  */
     cant_see?:boolean;
-    /**如果为 true, 则使用随机匹配​​。如果为 false, 则使用最接近的om_terrain */
+    /**如果为 true, 则使用随机匹配​​. 如果为 false, 则使用最接近的om_terrain */
     random?:boolean;
-    /**在覆盖地图地形坐标中寻找匹配的范围om_terrain。 */
+    /**在覆盖地图地形坐标中寻找匹配的范围om_terrain.  */
     search_range: (NumObj);
-    /**覆盖地图地形坐标中的范围。此范围内的实例om_terrain将被忽略。 */
+    /**覆盖地图地形坐标中的范围. 此范围内的实例om_terrain将被忽略.  */
     min_distance?: (NumObj);
-    /**从 NPC 的当前位置 (而不是玩家的当前位置) 开始搜索。 */
+    /**从 NPC 的当前位置 (而不是玩家的当前位置) 开始搜索.  */
     origin_npc?:boolean;
     /**如果指定, 搜索时将使用而不是玩家或 NPC 的 z */
     z?: (NumObj);
-    /**一个variable_object (参见variable_objectdoc ) , 如果设置了该变量的值将被使用。 */
+    /**一个variable_object (参见variable_objectdoc ) , 如果设置了该变量的值将被使用.  */
     var?: (LocObj);
-    /**找到或创建 后om_terrain, 将任务目标地形偏移覆盖地图地形坐标中的偏移量。 */
+    /**找到或创建 后om_terrain, 将任务目标地形偏移覆盖地图地形坐标中的偏移量.  */
     offset_x?: number;
     /**同offset_x */
     offset_y?: number;
@@ -155,10 +155,10 @@ export type AssignMissionTarget = {
 
 /**地块匹配类型 列表 */
 export const OMTMatchTypeList =[
-    "EXACT"    , // 提供的字符串必须与覆盖地图地形 ID 完全匹配, 包括线性地形类型的线性方向后缀或旋转地形类型的旋转后缀。
-    "TYPE"     , // 提供的字符串必须与覆盖地图地形 ID 的基本类型 ID 完全匹配, 这意味着旋转和线性地形类型的后缀将被忽略。
-    "PREFIX"   , // 提供的字符串必须是覆盖地图地形 ID 的完整前缀 (附加部分由下划线分隔) 。例如, “forest”将匹配“forest”或“forest_thick”, 但不匹配“forestcabin”。
-    "CONTAINS" , // 提供的字符串必须包含在覆盖地图地形 ID 中, 但可以出现在开头、结尾或中间, 并且没有任何关于下划线分隔的规则。
+    "EXACT"    , // 提供的字符串必须与覆盖地图地形 ID 完全匹配, 包括线性地形类型的线性方向后缀或旋转地形类型的旋转后缀. 
+    "TYPE"     , // 提供的字符串必须与覆盖地图地形 ID 的基本类型 ID 完全匹配, 这意味着旋转和线性地形类型的后缀将被忽略. 
+    "PREFIX"   , // 提供的字符串必须是覆盖地图地形 ID 的完整前缀 (附加部分由下划线分隔) . 例如, “forest”将匹配“forest”或“forest_thick”, 但不匹配“forestcabin”. 
+    "CONTAINS" , // 提供的字符串必须包含在覆盖地图地形 ID 中, 但可以出现在开头, 结尾或中间, 并且没有任何关于下划线分隔的规则. 
 ] as const;
 /**地块匹配类型  
  * 如果未指定, 则默认为 TYPE  

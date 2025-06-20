@@ -102,7 +102,7 @@ export type ToolQuality = {
     name: (DescText);
     /**唯一ID */
     id: ToolQualityID;
-    /**不是必需的。可能使用该物品执行的特殊操作。  
+    /**不是必需的. 可能使用该物品执行的特殊操作.   
      * [ 物品的最小品质等级, [...可进行的动作]]  
      */
     usages?: [ number, ToolQualityID[] ][];

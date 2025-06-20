@@ -24,7 +24,7 @@ export type Requirement = {
      * [ [ 可选的物品1, 可选的物品2 ], [ 必须的物品1 ] ]  
      */
     components: ReqComponents;
-    /**给出需求 id；需求可能有嵌套的工具、质量或组件 */
+    /**给出需求 id; 需求可能有嵌套的工具, 质量或组件 */
     using: ReqUsing;
 }
 

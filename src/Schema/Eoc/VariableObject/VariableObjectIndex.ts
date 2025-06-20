@@ -16,7 +16,7 @@ export type NpcNumObj = NpcNumOperateList[number];
 /**npc属性技能专用的数字对象操作符 */
 export type NpcNumOperateList = [
     NumOperaRng                         ,// >=[0] ~ <=[1] 之间的随机数
-    NumOperaOneIn                       ,//表示在 [0] 次尝试中出现 1 次的随机确定机会为 1, 否则为 0。
+    NumOperaOneIn                       ,//表示在 [0] 次尝试中出现 1 次的随机确定机会为 1, 否则为 0. 
     NumOperaDice                        ,//表示通过将 [0] 个随机确定的数字与 1 到 [1] 之间的值相加而生成的随机确定的数字
     NumOperaSum                         ,//所有数字加
     NumOperaMul                         ,//所有数字乘

@@ -15,16 +15,16 @@ export type Material = {
     type: "material";
     id: MaterialID;
     name: (DescText);
-    /**密度 影响车辆碰撞损坏, 较致密的零件比较不致密的零件更具优势。 */
+    /**密度 影响车辆碰撞损坏, 较致密的零件比较不致密的零件更具优势.  */
     density: number;
-    /**材料未冷冻时的比热 (J/(g K))。默认 4.186 - 水。 */
+    /**材料未冷冻时的比热 (J/(g K)). 默认 4.186 - 水.  */
     specific_heat_liquid: number;
-    /**材料冷冻时的比热 (J/(g K))。默认 2.108 - 水。 */
+    /**材料冷冻时的比热 (J/(g K)). 默认 2.108 - 水.  */
     specific_heat_solid: number;
-    /**材料的熔化潜热 (J/g)。默认 334。 */
+    /**材料的熔化潜热 (J/g). 默认 334.  */
     latent_heat: number;
     /**材料的凝固点  
-     * 该材料的凝固点 (C)。默认 0 C (32 F)。  
+     * 该材料的凝固点 (C). 默认 0 C (32 F).   
      */
     freezing_point: number;
     /**可食用 默认false */
@@ -67,9 +67,9 @@ export type Material = {
 export type MateBurnData ={
     /**是否免疫燃烧  */
     immune?: boolean;
-    /**决定该材料增加火力的时间和强度。  
-     * 负值会减少火中的燃料, 使火熄灭。  
-     * 如果具有液体相 ID 的物品是易燃的, 则应由值 >= 200 的材料制成。  
+    /**决定该材料增加火力的时间和强度.   
+     * 负值会减少火中的燃料, 使火熄灭.   
+     * 如果具有液体相 ID 的物品是易燃的, 则应由值 >= 200 的材料制成.   
      */
     fuel: number;
     /**决定该材质燃烧时产生多少烟雾 */
@@ -77,7 +77,7 @@ export type MateBurnData ={
     /**如果非零且低于物品体积, 则按 volume_per_turn / 回合 燃烧体积
      */
     volume_per_turn?: (Volume);
-    /**决定火灾将由该材料制成的物品转化为燃料的速度。  
+    /**决定火灾将由该材料制成的物品转化为燃料的速度.   
      * 不影响给定提供的总燃料  
      */
     burn: number;
