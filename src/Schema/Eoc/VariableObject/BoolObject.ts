@@ -22,7 +22,7 @@ import { MonBP } from "Schema/Monster";
 
 /**math比较表达式 */
 export type MathCompareExp = {
-    math:[string,CompareOpera,string]
+    math:[string,CompareOpera,string]|[string]
 };
 
 /**获取条件 */
