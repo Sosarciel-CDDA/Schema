@@ -1,0 +1,81 @@
+import { MissionDefinitionID } from "Schema/MissionDefinition";
+import { EocID, TalkerVar } from "../Eoc";
+import { BoolObj } from "./BoolObjectIndex";
+import { AnyObj, CompareOpera, CondObj, IDObj, LocObj, NumObj } from "./VariableObjectIndex";
+import { BodyPartID, DescText, Time } from "Schema/GenericDefine";
+import { FieldID } from "Schema/Field";
+import { WeaponCategoryID } from "Schema/WeaponCategory";
+import { FlagID } from "Schema/Flag";
+import { MutationID } from "Schema/Mutation";
+import { AnyItemID } from "Schema/Item";
+import { VarComment } from "../EocEffect";
+import { StrObj } from "./StringObjectIndex";
+import { EffectID } from "Schema/Effect";
+import { TerrainID } from "Schema/Terrain";
+import { AmmunitionTypeID } from "Schema/AmmiunitionType";
+import { SkillID } from "Schema/Skill";
+
+
+/**比较字符串是否相等 */
+export type BoolOperaCompStr = {
+    /**比较字符串是否相等 可以用'yes'进行空值判断 */
+    compare_string: [AnyObj,AnyObj]
+};
+
+
+
+
+
+
+
+/**有某个文本变量 */
+export type HasStrVar = TalkerVar<{
+    /**有某个文本变量 */
+    has_var:string;
+    /**要求的内容 */
+    value: (StrObj);
+},"has_var">&VarComment;
+
+/**有某个时间变量 */
+export type HasTimeVar = TalkerVar<{
+    /**有某个时间变量 */
+    has_var:string;
+    /**表示是时间变量 */
+    time:true;
+},"has_var">&VarComment;
+
+
+
+
+
+
+
+
+/**获取 时间变量自创建以来经过的时间 并比较 */
+export type CompareTime = TalkerVar<{
+    compare_time_since_var: string;
+    /**变量的 type 注释 */
+    type?: string;
+    /**变量的 context 注释 */
+    context?: string;
+    /**操作符 */
+    op: CompareOpera;
+    /**比较的时间 */
+    time: (Time);
+},"compare_time_since_var">;
+
+
+
+
+
+
+// 无talker变体的条件类型
+
+
+/**检查提供的EOC的条件是否返回true
+ * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
+ */
+export type TestEoc = {
+    /**检查提供的EOC的条件是否返回true */
+    test_eoc: (IDObj<EocID>);
+};

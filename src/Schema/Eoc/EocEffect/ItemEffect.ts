@@ -694,7 +694,7 @@ export type SetEmit = TalkerVar<{
  */
 export type TurnCost = TalkerVar<{
     /**回合消耗
-     * 动作需要多长时间 (可以指定为回合数（小数) , 或作为持续时间）
+     * 动作需要多长时间 (可以指定为回合数 (小数) , 或作为持续时间) 
      */
     turn_cost: (TimeObj);
 }, 'turn_cost'>;

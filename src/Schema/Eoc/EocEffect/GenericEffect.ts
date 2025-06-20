@@ -213,7 +213,7 @@ export type RunEocs = {
     /**延迟触发时间
      * 如果使用, EOC将在未来此时间量后激活; 默认为0, 表示立即运行. 
      * 如果EOC是全局的, avatar将是u, npc将无效. 
-     * 如果EOC不是全局的, 它将排队给当前alpha (如果他们是角色（avatar或npc) ）否则不会排队. 
+     * 如果EOC不是全局的, 它将排队给当前alpha (如果他们是角色 (avatar或npc) ) 否则不会排队. 
      * 与"condition"和"iterations"不兼容
      */
     time_in_future?: (TimeObj);
