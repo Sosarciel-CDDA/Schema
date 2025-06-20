@@ -73,11 +73,11 @@ export type TalkerVar<B extends JObject,K extends string> =
 /**成功或失败的Eoc效果 */
 export type ToFEffect = {
     /**成功时运行的EOCs
-     * 如果接管控制权成功，将运行所有true_eocs中的EOCs
+     * 如果接管控制权成功, 将运行所有true_eocs中的EOCs
      */
     true_eocs?: EocEffect[];
     /**失败时运行的EOCs
-     * 如果接管控制权失败，将运行所有false_eocs中的EOCs
+     * 如果接管控制权失败, 将运行所有false_eocs中的EOCs
      */
     false_eocs?: EocEffect[];
 }

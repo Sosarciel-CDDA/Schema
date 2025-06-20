@@ -102,7 +102,7 @@ export type FakeSpell = {
     id: SpellID;
     /**击中附魔拥有者而非命中目标  
      * @default false
-     * 如果为true，法术可能会影响施法者（作为AoE法术的自我伤害，或作为增益法术的效果应用）
+     * 如果为true, 法术可能会影响施法者 (作为AoE法术的自我伤害, 或作为增益法术的效果应用) 
      */
     hit_self?: boolean;
     /** 1/n 的几率触发 */

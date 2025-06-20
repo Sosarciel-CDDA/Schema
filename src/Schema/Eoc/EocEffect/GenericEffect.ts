@@ -17,7 +17,7 @@ export type MathAssignExp = {
  * 从声音包中播放一个声音效果
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  * @example
- * // 播放bionics声音，变体为pixelated，音量为50
+ * // 播放bionics声音, 变体为pixelated, 音量为50
  * { "sound_effect": "pixelated", "id": "bionics", "volume": 50 }
  */
 export type SoundEffect = {
@@ -30,7 +30,7 @@ export type SoundEffect = {
      */
     id?: (IDObj<SoundEffectID>);
     /**是否为户外事件
-     * 如果为true且玩家在地下，玩家听到声音的可能性较小
+     * 如果为true且玩家在地下, 玩家听到声音的可能性较小
      * @default false
      */
     outdoor_event?: boolean;
@@ -42,12 +42,12 @@ export type SoundEffect = {
 }
 
 /**打开对话
- * 在参与者之间打开一个对话；这只应该在effect_on_conditions中使用，而不是在实际的npc对话中
+ * 在参与者之间打开一个对话; 这只应该在effect_on_conditions中使用, 而不是在实际的npc对话中
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  * @example
  * // 打开指定topic的对话
  * { "open_dialogue": { "topic": "TALK_PERK_MENU_MAIN" } }
- * // 打开与电脑的对话（电脑在地图端定义了 "chat_topics": [ "COMP_REFUGEE_CENTER_MAIN" ]）
+ * // 打开与电脑的对话 (电脑在地图端定义了 "chat_topics": [ "COMP_REFUGEE_CENTER_MAIN" ]) 
  * {
  *   "id": "EOC_REFUGEE_CENTER_COMPUTER",
  *   "type": "effect_on_condition",
@@ -56,37 +56,37 @@ export type SoundEffect = {
  */
 export type OpenDialogue = {
     /**对话主题
-     * 如果使用，将使用此主题与一个空的talker进行对话，而不是与参与者对话
+     * 如果使用, 将使用此主题与一个空的talker进行对话, 而不是与参与者对话
      */
     topic?: (IDObj<TalkTopicID>);
     /**对话成功时运行的EOCs
-     * 如果对话成功，将运行所有true_eocs中的EOCs
+     * 如果对话成功, 将运行所有true_eocs中的EOCs
      */
     true_eocs?: EocEffect[];
     /**对话失败时运行的EOCs
-     * 如果对话失败，将运行所有false_eocs中的EOCs
+     * 如果对话失败, 将运行所有false_eocs中的EOCs
      */
     false_eocs?: EocEffect[];
 }
 
 /**接管NPC控制权
- * 如果beta talker是NPC，接管其控制权
+ * 如果beta talker是NPC, 接管其控制权
  * 适用于: NPC
  * @example
  * // 接管NPC控制权
  * "effect": [ "take_control" ]
- * // 接管NPC控制权；如果成功运行EOC_GOOD，失败运行EOC_BAD
+ * // 接管NPC控制权; 如果成功运行EOC_GOOD, 失败运行EOC_BAD
  * { "take_control": { "true_eocs": [ "EOC_GOOD" ], "false_eocs": [ "EOC_BAD" ] } }
  */
 export type TakeControl = "take_control"|{
     /**接管控制权
-     * 使你控制NPC；仅当avatar（你）是alpha talker且beta talker是NPC时有效
+     * 使你控制NPC; 仅当avatar (你) 是alpha talker且beta talker是NPC时有效
      */
     take_control: (ToFEffect);
 }
 
 /**打开跟随者控制菜单
- * 打开一个菜单来选择要控制的跟随者。仅对你的跟随者有效
+ * 打开一个菜单来选择要控制的跟随者. 仅对你的跟随者有效
  * 适用于: Avatar
  * @example
  * // 打开切换角色的菜单
@@ -113,20 +113,20 @@ export type GiveAchievement = {
  * 将任务分配给玩家
  * 适用于: Avatar
  * @example
- * // 分配一个MISSION_REACH_FAKE_DAVE任务，必须在接下来的17小时内完成
+ * // 分配一个MISSION_REACH_FAKE_DAVE任务, 必须在接下来的17小时内完成
  * { "assign_mission": "MISSION_REACH_FAKE_DAVE", "deadline": { "math": [ "time('now') + time(' 17 h')" ] } }
  */
 export type AssignMission = {
     /**要分配给玩家的任务 */
     assign_mission: IDObj<MissionDefinitionID>;
     /**任务截止时间
-     * 如果任务在此时间点前未完成，将自动失败
+     * 如果任务在此时间点前未完成, 将自动失败
      */
     deadline?: (TimeObj);
 }
 
 /**移除活动任务
- * 从玩家的活动任务列表中移除任务，但不会导致任务失败
+ * 从玩家的活动任务列表中移除任务, 但不会导致任务失败
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  * @example
  * // 从你的列表中移除MISSION_BONUS_KILL_BOSS任务
@@ -158,7 +158,7 @@ export type FinishMission = {
      */
     success?: boolean;
     /**完成到指定步骤
-     * 如果使用，将任务完成到此步骤
+     * 如果使用, 将任务完成到此步骤
      */
     step?: number;
 }
@@ -171,7 +171,7 @@ export type FinishMission = {
  * { "offer_mission": "MISSION_GET_RELIC" }
  * // 与上面相同
  * { "offer_mission": [ "MISSION_GET_RELIC" ] }
- * // NPC现在可以提供MISSION_A、B和C任务
+ * // NPC现在可以提供MISSION_A, B和C任务
  * { "offer_mission": [ "MISSION_A", "MISSION_B", "MISSION_C" ] }
  */
 export type OfferMission = {
@@ -181,7 +181,7 @@ export type OfferMission = {
 
 
 /**运行EOCs
- * 运行另一个EOC。可以是单独的EOC，也可以是run_eocs效果内的内联EOC
+ * 运行另一个EOC. 可以是单独的EOC, 也可以是run_eocs效果内的内联EOC
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  * @example
  * // 运行EOC_DO_GOOD_THING EOC
@@ -196,71 +196,71 @@ export type OfferMission = {
  */
 export type RunEocs = {
     /**要运行的EOC或EOCs
-     * 可以是EOC ID、内联EOC或变量对象，或它们的数组
+     * 可以是EOC ID, 内联EOC或变量对象, 或它们的数组
      */
     run_eocs: (ParamsEoc);
     /**迭代次数
-     * 如果使用，run_eocs中的所有eoc将重复此次数。EOCs按顺序重复；
-     * 例如："run_eocs": [ "A", "B" ], "repeat": 3 将执行 A, B, A, B, A, B
+     * 如果使用, run_eocs中的所有eoc将重复此次数. EOCs按顺序重复; 
+     * 例如: "run_eocs": [ "A", "B" ], "repeat": 3 将执行 A, B, A, B, A, B
      * @default 1
      */
     iterations?: (NumObj);
     /**条件
-     * 如果使用，只要此条件返回true，EOC就会运行。
-     * 如果使用"condition"，可以使用"iterations"将运行次数限制为特定数量（默认为100次，直到终止）
+     * 如果使用, 只要此条件返回true, EOC就会运行. 
+     * 如果使用"condition", 可以使用"iterations"将运行次数限制为特定数量 (默认为100次, 直到终止) 
      */
     condition?: (BoolObj);
     /**延迟触发时间
-     * 如果使用，EOC将在未来此时间量后激活；默认为0，表示立即运行。
-     * 如果EOC是全局的，avatar将是u，npc将无效。
-     * 如果EOC不是全局的，它将排队给当前alpha（如果他们是角色（avatar或npc））否则不会排队。
+     * 如果使用, EOC将在未来此时间量后激活; 默认为0, 表示立即运行. 
+     * 如果EOC是全局的, avatar将是u, npc将无效. 
+     * 如果EOC不是全局的, 它将排队给当前alpha (如果他们是角色（avatar或npc) ）否则不会排队. 
      * 与"condition"和"iterations"不兼容
      */
     time_in_future?: (TimeObj);
     /**随机化延迟触发时间
-     * 与time_in_future一起使用；
-     * 如果为false，整个EOC数组将在完全相同的时刻运行；
-     * 如果为true，数组中的每个EOC将一次又一次地选择自己的时间
+     * 与time_in_future一起使用; 
+     * 如果为false, 整个EOC数组将在完全相同的时刻运行; 
+     * 如果为true, 数组中的每个EOC将一次又一次地选择自己的时间
      */
     randomize_time_in_future?: boolean;
     /**alpha位置
-     * 允许通过定义u_location_variable来交换talker，EOC应该在该位置运行。
-     * 将alpha talker设置为该位置的生物。
+     * 允许通过定义u_location_variable来交换talker, EOC应该在该位置运行. 
+     * 将alpha talker设置为该位置的生物. 
      */
     alpha_loc?: (LocObj);
     /**beta位置
-     * 允许通过定义u_location_variable来交换talker，EOC应该在该位置运行。
-     * 将beta talker设置为该位置的生物。
+     * 允许通过定义u_location_variable来交换talker, EOC应该在该位置运行. 
+     * 将beta talker设置为该位置的生物. 
      */
     beta_loc?: (LocObj);
     /**alpha talker
-     * 设置alpha talker。这可以是character_id（可以从EOC事件或u_set_talker的结果获取），
-     * 或一些硬编码值：
+     * 设置alpha talker. 这可以是character_id (可以从EOC事件或u_set_talker的结果获取) , 
+     * 或一些硬编码值: 
      * "": null talker
-     * "u"/"npc": EOC的alpha/beta talker（应该是Avatar/Character/NPC/Monster）
+     * "u"/"npc": EOC的alpha/beta talker (应该是Avatar/Character/NPC/Monster) 
      * "avatar": 你的avatar
-     * 注意：如果同时使用"alpha_loc"和"alpha_talker"，将忽略"alpha_talker"，beta也是如此。
+     * 注意: 如果同时使用"alpha_loc"和"alpha_talker", 将忽略"alpha_talker", beta也是如此. 
      */
     alpha_talker?: (TalekrObj);
     /**beta talker
-     * 设置beta talker。这可以是character_id（可以从EOC事件或u_set_talker的结果获取），
-     * 或一些硬编码值：
+     * 设置beta talker. 这可以是character_id (可以从EOC事件或u_set_talker的结果获取) , 
+     * 或一些硬编码值: 
      * "": null talker
-     * "u"/"npc": EOC的alpha/beta talker（应该是Avatar/Character/NPC/Monster）
+     * "u"/"npc": EOC的alpha/beta talker (应该是Avatar/Character/NPC/Monster) 
      * "avatar": 你的avatar
-     * 注意：如果同时使用"beta_loc"和"beta_talker"，将忽略"beta_talker"，alpha也是如此。
+     * 注意: 如果同时使用"beta_loc"和"beta_talker", 将忽略"beta_talker", alpha也是如此. 
      */
     beta_talker?: (TalekrObj);
     /**失败时运行的EOCs
-     * 在以下情况下运行false EOCs：
-     * 1. "alpha_loc"/"beta_loc"处没有生物，或
-     * 2. "alpha_talker"或"beta_talker"在游戏中不存在（例如死亡的NPC），或
+     * 在以下情况下运行false EOCs: 
+     * 1. "alpha_loc"/"beta_loc"处没有生物, 或
+     * 2. "alpha_talker"或"beta_talker"在游戏中不存在 (例如死亡的NPC) , 或
      * 3. alpha和beta talker都为null
      */
     false_eocs?: (ParamsEoc);
     /**上下文变量
-     * 将传递给EOC的上下文变量；数值应指定为字符串；
-     * 当变量是对象并且i18n成员设置为true时，变量将被本地化；
+     * 将传递给EOC的上下文变量; 数值应指定为字符串; 
+     * 当变量是对象并且i18n成员设置为true时, 变量将被本地化; 
      * 可以在运行的EOC内使用expects_vars条件来确保在EOC运行之前每个变量都存在
      */
     variables?: {[k:string]:string|boolean|number};
@@ -268,7 +268,7 @@ export type RunEocs = {
 
 
 /**NPC运行EOCs
- * NPC运行由此效果提供的EOCs；可以在现实气泡之外工作
+ * NPC运行由此效果提供的EOCs; 可以在现实气泡之外工作
  * 适用于: NPC
  * @example
  * // 所有你能看到的30格范围内的NPC运行EOC_DEATH和EOC_TAXES
@@ -290,30 +290,30 @@ export type RunNpcEocs = TalkerVar<{
      */
     run_npc_eocs?: (ParamsEoc);
     /**NPC的唯一ID
-     * 将受影响的NPC的ID；如果没有ID，则效果会在你的现实气泡中的每个NPC上运行（如果"local": true），
-     * 或在世界上的每个NPC上运行（如果"local": false）；
+     * 将受影响的NPC的ID; 如果没有ID, 则效果会在你的现实气泡中的每个NPC上运行 (如果"local": true) , 
+     * 或在世界上的每个NPC上运行 (如果"local": false) ; 
      * NPC的唯一ID在mapgen中使用npcs或place_npcs指定
      */
     unique_ids?: (StrObj) | (StrObj)[];
     /**是否为本地
      * @default false
-     * 如果为true，效果将在世界上的每个NPC上运行；
-     * 如果为false，效果仅在你的现实气泡中的NPC上运行
+     * 如果为true, 效果将在世界上的每个NPC上运行; 
+     * 如果为false, 效果仅在你的现实气泡中的NPC上运行
      */
     local?: boolean;
     /**NPC范围
-     * 如果使用，只有在此范围内的NPC会受到影响
+     * 如果使用, 只有在此范围内的NPC会受到影响
      */
     npc_range?: (NumObj);
     /**是否必须可见
      * @default false
-     * 如果为true，只有你能看到的NPC会受到影响
+     * 如果为true, 只有你能看到的NPC会受到影响
      */
     npc_must_see?: boolean;
 },'run_npc_eocs'>
 
 /**怪物运行EOCs
- * 怪物运行由此效果提供的EOCs；仅在现实气泡内工作
+ * 怪物运行由此效果提供的EOCs; 仅在现实气泡内工作
  * 适用于: Monster
  * @example
  * // 在alpha talker周围36格范围内随机选择一半的怪物运行EOC_KILL_SHADOW
@@ -336,12 +336,12 @@ export type RunMonsterEocs = TalkerVar<{
      */
     mtype_ids?: (StrObj)[];
     /**怪物范围
-     * 如果使用，只有在此范围内的怪物会受到影响
+     * 如果使用, 只有在此范围内的怪物会受到影响
      */
     monster_range?: (NumObj);
     /**是否必须可见
      * @default false
-     * 如果为true，只有你能看到的怪物会受到影响
+     * 如果为true, 只有你能看到的怪物会受到影响
      */
     monster_must_see?: boolean;
 },'run_monster_eocs'>
@@ -351,7 +351,7 @@ export type RunMonsterEocs = TalkerVar<{
  * 在你或NPC的物品栏中的物品上运行EOCs
  * 适用于: Item
  * @example
- * // 选择角色手中的物品，并在其上运行EOC_DESTROY_ITEM EOC
+ * // 选择角色手中的物品, 并在其上运行EOC_DESTROY_ITEM EOC
  * {
  *   "u_run_inv_eocs": "random",
  *   "search_data": [ { "wielded_only": true } ],
@@ -361,15 +361,15 @@ export type RunMonsterEocs = TalkerVar<{
 export type RunInvEocs = TalkerVar<{
     /**要运行的EOCs
      * 物品将运行的EOCs
-     * 值可以是：
+     * 值可以是: 
      * all          - 选择所有匹配条件的物品
      * random       - 从所有匹配条件的物品中随机选择一个
-     * manual       - 打开一个菜单，显示所有可以选择的物品，你可以选择一个
-     * manual_mult  - 与manual相同，但可以选择多个物品
+     * manual       - 打开一个菜单, 显示所有可以选择的物品, 你可以选择一个
+     * manual_mult  - 与manual相同, 但可以选择多个物品
      */
     run_inv_eocs?: "all" | "random" | "manual" | "manual_mult";
     /**搜索数据  
-     * 设置目标物品的条件；如果没有search_data，则可以选择任何物品  
+     * 设置目标物品的条件; 如果没有search_data, 则可以选择任何物品  
      * 条件可以是:  
      * id           - 特定物品的id;  
      * category     - 物品的类别 (区分大小写, 应始终使用小写);  
@@ -384,21 +384,21 @@ export type RunInvEocs = TalkerVar<{
      */
     title?: (StrObj);
     /**成功时运行的EOCs
-     * 如果成功选择了物品，将运行所有true_eocs中的EOCs
+     * 如果成功选择了物品, 将运行所有true_eocs中的EOCs
      */
     true_eocs?: (ParamsEoc);
     /**失败时运行的EOCs
-     * 如果未能选择物品，将运行所有false_eocs中的EOCs
+     * 如果未能选择物品, 将运行所有false_eocs中的EOCs
      */
     false_eocs?: (ParamsEoc);
 },'run_inv_eocs'>;
 
 
 /**在地图上运行EOCs
- * 选择你、npc或target_var周围的所有地块，将其坐标存储在store_coordinates_in中，然后为每个地块检查EOC条件
+ * 选择你, npc或target_var周围的所有地块, 将其坐标存储在store_coordinates_in中, 然后为每个地块检查EOC条件
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  * @example
- * // 选择玩家周围6格范围内的地块，检查是否有TREE标志的地形
+ * // 选择玩家周围6格范围内的地块, 检查是否有TREE标志的地形
  * {
  *   "u_map_run_eocs": [ "SOME_ANOTHER_TEST_EOC" ],
  *   "range": 6,
@@ -416,12 +416,12 @@ export type MapRunEocs = TalkerVar<{
      */
     store_coordinates_in?: (LocObj);
     /**条件
-     * 检查是否需要运行EOC的条件。可以（且应该）使用store_coordinates_in中的变量。
+     * 检查是否需要运行EOC的条件. 可以 (且应该) 使用store_coordinates_in中的变量. 
      * @default true
      */
     condition?: (BoolObj);
     /**目标变量
-     * 游戏应该在其周围扫描的位置变量；如果省略，则使用u_或npc_位置
+     * 游戏应该在其周围扫描的位置变量; 如果省略, 则使用u_或npc_位置
      */
     target_var?: (LocObj);
     /**范围
@@ -430,8 +430,8 @@ export type MapRunEocs = TalkerVar<{
      */
     range?: (NumObj);
     /**是否在第一次匹配后停止
-     * 如果为true，在第一个条件满足后停止执行；
-     * 如果为false，在所有满足条件的地块上运行EOC。
+     * 如果为true, 在第一个条件满足后停止执行; 
+     * 如果为false, 在所有满足条件的地块上运行EOC. 
      * @default false
      */
     stop_at_first?: boolean;
@@ -453,15 +453,15 @@ export type MapRunEocs = TalkerVar<{
 export type MapRunItemEocs = TalkerVar<{
     /**要运行的EOCs
      * 物品将运行的EOCs
-     * 值可以是：
+     * 值可以是: 
      * all - 选择所有匹配条件的物品
      * random - 从所有匹配条件的物品中随机选择一个
-     * manual - 打开一个菜单，显示所有可以选择的物品，你可以选择一个
-     * manual_mult - 与manual相同，但可以选择多个物品
+     * manual - 打开一个菜单, 显示所有可以选择的物品, 你可以选择一个
+     * manual_mult - 与manual相同, 但可以选择多个物品
      */
     map_run_item_eocs?: "all" | "random" | "manual" | "manual_mult";
     /**位置
-     * 将扫描物品的位置；如果没有指定，则只扫描talker所在的地块
+     * 将扫描物品的位置; 如果没有指定, 则只扫描talker所在的地块
      */
     loc?: (LocObj);
     /**最小半径
@@ -477,15 +477,15 @@ export type MapRunItemEocs = TalkerVar<{
      */
     title?: (StrObj);
     /**搜索数据
-     * 设置目标物品的条件；如果没有search_data，则可以选择任何物品
+     * 设置目标物品的条件; 如果没有search_data, 则可以选择任何物品
      */
     search_data?: ItemSearchData[];
     /**成功时运行的EOCs
-     * 如果成功选择了物品，将运行所有true_eocs中的EOCs
+     * 如果成功选择了物品, 将运行所有true_eocs中的EOCs
      */
     true_eocs?: (ParamsEoc);
     /**失败时运行的EOCs
-     * 如果未能选择物品，将运行所有false_eocs中的EOCs
+     * 如果未能选择物品, 将运行所有false_eocs中的EOCs
      */
     false_eocs?: (ParamsEoc);
 },'map_run_item_eocs'>;
@@ -549,7 +549,7 @@ export type RevealRoute = {
     radius?: (NumObj);
     /**仅道路
      * @default false
-     * 如果为true，只揭示道路地块
+     * 如果为true, 只揭示道路地块
      */
     road_only?: boolean;
 };
@@ -559,7 +559,7 @@ export type RevealRoute = {
  * 将附近最近城市的坐标存储在变量中
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  * @example
- * // 存储最近已知城市的坐标，并打印变量
+ * // 存储最近已知城市的坐标, 并打印变量
  * {
  *   "closest_city": { "context_val": "city" },
  *   "u_message": "Known city: <context_val:city>"
@@ -568,13 +568,13 @@ export type RevealRoute = {
 export type ClosestCity = {
     /**城市位置
      * 存储找到的城市中心的位置变量
-     * 额外发送上下文变量city_name（字符串）和city_size（整数）
+     * 额外发送上下文变量city_name (字符串) 和city_size (整数) 
      */
     closest_city: (LocObj);
     /**是否已知
      * @default true
-     * 如果为true，选择你知道的最近城市（在地图上有黄色文本的城市名称），
-     * 否则选择最近的城市，即使你还没有访问过它
+     * 如果为true, 选择你知道的最近城市 (在地图上有黄色文本的城市名称) , 
+     * 否则选择最近的城市, 即使你还没有访问过它
      */
     known?: boolean;
 }
@@ -599,7 +599,7 @@ export type ClosestCity = {
  */
 export type WeightedListEocs = {
     /**EOC列表
-     * 将运行的EOC及其权重；EOC可以是ID或内联EOC，权重可以是整数或变量对象
+     * 将运行的EOC及其权重; EOC可以是ID或内联EOC, 权重可以是整数或变量对象
      */
     weighted_list_eocs: ((InlineEoc|EocID)|[(InlineEoc|EocID),NumObj])[];
 }
@@ -607,7 +607,7 @@ export type WeightedListEocs = {
 
 
 /**运行EOC选择器
- * 打开一个菜单，允许选择多个选项之一
+ * 打开一个菜单, 允许选择多个选项之一
  * 适用于: Avatar
  * @example
  * // 你可以从"Choose your destiny"列表中选择四个选项之一
@@ -626,19 +626,19 @@ export type WeightedListEocs = {
  */
 export type RunEocSelector = {
     /**EOC列表
-     * 可以选择的EOC列表；列出的EOC的条件将被检查，不通过的将被灰显
+     * 可以选择的EOC列表; 列出的EOC的条件将被检查, 不通过的将被灰显
      */
     run_eoc_selector: IDObj<EocID>[];
     /**选项名称
-     * 将在列表上显示的选项名称；名称数量应等于EOC数量
+     * 将在列表上显示的选项名称; 名称数量应等于EOC数量
      */
     names?: (StrObj)[];
     /**选项描述
-     * 将在列表上显示的选项描述；描述数量应等于EOC数量
+     * 将在列表上显示的选项描述; 描述数量应等于EOC数量
      */
     descriptions?: (StrObj)[];
     /**快捷键
-     * 将用作选择每个EOC的快捷键的字符；键数量应等于EOC数量
+     * 将用作选择每个EOC的快捷键的字符; 键数量应等于EOC数量
      */
     keys?: string[];
     /**标题
@@ -647,32 +647,32 @@ export type RunEocSelector = {
      */
     title?: (DescText);
     /**隐藏失败项
-     * 如果为true，检查失败的选项将从列表中完全移除，而不是被灰显
+     * 如果为true, 检查失败的选项将从列表中完全移除, 而不是被灰显
      */
     hide_failing?: boolean;
     /**允许取消
-     * 如果为true，你可以退出菜单而不选择选项，不会发生任何效果
+     * 如果为true, 你可以退出菜单而不选择选项, 不会发生任何效果
      */
     allow_cancel?: boolean;
     /**高亮禁用项
-     * 如果为true，检查失败的选项仍然可以导航，意味着你可以高亮它并阅读其描述。
-     * 如果allow_cancel为true，选择它将被视为与退出相同
+     * 如果为true, 检查失败的选项仍然可以导航, 意味着你可以高亮它并阅读其描述. 
+     * 如果allow_cancel为true, 选择它将被视为与退出相同
      */
     hilight_disabled?: boolean;
     /**变量
-     * 将传递给EOC的变量；数值应指定为字符串；
-     * 当变量是对象并且i18n成员设置为true时，变量将被本地化；
+     * 将传递给EOC的变量; 数值应指定为字符串; 
+     * 当变量是对象并且i18n成员设置为true时, 变量将被本地化; 
      * 可以使用expects_vars条件来确保在EOC运行之前每个变量都存在
      */
     variables?: {[k:string]:string|boolean|number};
 }
 
 /**随机获取剩余项
- * 如果你或NPC没有列出的所有仿生学、突变、法术或配方，随机给予一个
+ * 如果你或NPC没有列出的所有仿生学, 突变, 法术或配方, 随机给予一个
  * 适用于: Avatar Character NPC
  * @example
- * // 尝试给你一个突变A、B或C，如果你没有其中一个，显示消息"You got %s!"；
- * // 如果成功，运行EOC_SUCCESS，否则运行EOC_FAIL
+ * // 尝试给你一个突变A, B或C, 如果你没有其中一个, 显示消息"You got %s!"; 
+ * // 如果成功, 运行EOC_SUCCESS, 否则运行EOC_FAIL
  * {
  *   "u_roll_remainder": [ "mutationA", "mutationB", "mutationC" ],
  *   "type": "mutation",
@@ -687,21 +687,21 @@ export type RollRemainder = TalkerVar<{
      */
     roll_remainder?: (StrObj) | (StrObj)[];
     /**项的类型
-     * 将给予的项的类型；可以是bionic、mutation、spell或recipe之一
+     * 将给予的项的类型; 可以是bionic, mutation, spell或recipe之一
      */
     type: (StrObj)|"bionic"|"mutation"|"spell"|"recipe";
     /**消息
-     * 一旦remainder被使用，将在日志中显示的消息；
-     * 可以在此消息中使用%s符号来写出将被给予的项的名称；
+     * 一旦remainder被使用, 将在日志中显示的消息; 
+     * 可以在此消息中使用%s符号来写出将被给予的项的名称; 
      * 只有在roll成功时才会打印消息
      */
     message?: (StrObj);
     /**成功时运行的EOCs
-     * 如果remainder为正，将运行所有true_eocs中的EOCs
+     * 如果remainder为正, 将运行所有true_eocs中的EOCs
      */
     true_eocs?: (ParamsEoc);
     /**失败时运行的EOCs
-     * 如果remainder为负，将运行所有false_eocs中的EOCs
+     * 如果remainder为负, 将运行所有false_eocs中的EOCs
      */
     false_eocs?: (ParamsEoc);
 },'roll_remainder'>;
@@ -744,10 +744,10 @@ export type IfCondition = {
 
 
 /**开关语句
- * 检查值，并根据它选择要运行的case
+ * 检查值, 并根据它选择要运行的case
  * 适用于: Avatar Character NPC
  * @example
- * // 检查some_spell法术的等级，并根据等级执行不同操作
+ * // 检查some_spell法术的等级, 并根据等级执行不同操作
  * {
  *   "switch": { "math": [ "u_spell_level('some_spell')" ] },
  *   "cases": [
@@ -768,11 +768,11 @@ export type IfCondition = {
  */
 export type SwitchStatement = {
     /**要检查的值
-     * 将被读取的值；只能使用数值
+     * 将被读取的值; 只能使用数值
      */
     switch: NumObj;
     /**case列表
-     * 如果switch的值大于或等于此case，将运行的效果
+     * 如果switch的值大于或等于此case, 将运行的效果
      */
     cases: {
         /**case值 */
@@ -798,7 +798,7 @@ type ForeachTarget = "bodypart"|"flag"|"trait"|"vitamin"|
     ItemGroupID|string[];
 
 /**遍历列表
- * 在变量中存储特定列表的值，并重复执行效果
+ * 在变量中存储特定列表的值, 并重复执行效果
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
  * @example
  * // 重置你的所有维生素
@@ -811,7 +811,7 @@ type ForeachTarget = "bodypart"|"flag"|"trait"|"vitamin"|
  */
 export type ForEach = {
     /**列表类型
-     * 列表的类型。可用"ids"、"item_group"、"monstergroup"、"array"
+     * 列表的类型. 可用"ids", "item_group", "monstergroup", "array"
      * == ids 时 target 可为 "bodypart"|"flag"|"trait"|"vitamin"  
      * == item_group 时 target 可为 ItemGroupID  
      * == monstergroup 时 target 可为 MonsterGroupID  
@@ -827,8 +827,8 @@ export type ForEach = {
      */
     effect: EocEffect[];
     /**目标
-     * 根据"foreach"的值而变化。
-     * "ids": 列出游戏中出现的对象的ID。可用"bodypart"、"flag"、"trait"、"vitamin"
+     * 根据"foreach"的值而变化. 
+     * "ids": 列出游戏中出现的对象的ID. 可用"bodypart", "flag", "trait", "vitamin"
      * "item_group": 列出物品组中物品的ID
      * "monstergroup": 列出怪物组中怪物的ID
      * "array": 列出简单字符串
