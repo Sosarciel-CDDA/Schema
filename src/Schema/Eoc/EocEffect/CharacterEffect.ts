@@ -125,7 +125,7 @@ export type GetMutateCategory = TalkerVar<{
  */
 export type MutateTowards = TalkerVar<{
     /**目标特征ID */
-    mutate_towards: (StrObj);
+    mutate_towards: (IDObj<MutationID>);
     /**突变类别
      * @default "ANY"
      * 定义用于突变步骤的类别 - 对于维生素使用是必需的
@@ -305,8 +305,7 @@ export type LoseTrait = TalkerVar<{
  * { "u_activate_trait": { "context_val": "this" } }
  */
 export type ActivateTrait = TalkerVar<{
-    /**要激活的特性/突变ID
-     */
+    /**要激活的特性/突变ID */
     activate_trait: IDObj<MutationID>;
 }, 'activate_trait'>;
 
@@ -321,8 +320,7 @@ export type ActivateTrait = TalkerVar<{
  * { "u_deactivate_trait": { "context_val": "that" } }
  */
 export type DeactivateTrait = TalkerVar<{
-    /**要停用的特性/突变ID
-     */
+    /**要停用的特性/突变ID */
     deactivate_trait: IDObj<MutationID>;
 }, 'deactivate_trait'>;
 
