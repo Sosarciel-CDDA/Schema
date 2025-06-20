@@ -63,7 +63,7 @@ export type ItemSearchData = {
 
 //#region Eoc效果表导出
 import {SpawnNpc, SpawnItem, RemoveItem, SetFlag, TurnCost} from './EocEffect'
-import {MathAssignExp, RunEoc, EocSelector, SoundEffect, AssingMission, RemoveActionMission, FinishMission, IfElse, RunInvEocs, MapRunItemEocs, WeightedListEocs, SwitchCase, Foreach} from './GenericEffect'
+import {MathAssignExp, SoundEffect, OpenDialogue, TakeControl, TakeControlMenu, GiveAchievement, AssignMission, RemoveActiveMission, FinishMission, OfferMission, RunEocs, RunNpcEocs, RunMonsterEocs, RunInvEocs, MapRunEocs, MapRunItemEocs, RevealMap, RevealRoute, ClosestCity, WeightedListEocs, RunEocSelector, RollRemainder, IfCondition, SwitchStatement, ForEach} from './GenericEffect'
 import {CastSpell, Teleport, LocalVar, Message, AddEffect, LoseEffect, AddStrVar, AddTimeVar, AddRandStrVar, SetString, LoseTrait, AddTrait, ConsumeItem, SetCond, AssignActivity, UnsetFlag, MakeSound} from './CharacterEffect'
 /**Eoc效果表导出 */
 export type EocEffectList = [
@@ -73,18 +73,30 @@ export type EocEffectList = [
     SetFlag                 ,//添加flag
     TurnCost                ,//使 alpha 消耗一定时间
     MathAssignExp           ,//math赋值表达式
-    RunEoc                  ,//运行Eoc
-    EocSelector             ,//Eoc选项
-    SoundEffect             ,//播放声音
-    AssingMission           ,//给玩家添加任务
-    RemoveActionMission     ,//将从玩家的活动任务列表中删除任务而不失败.
-    FinishMission           ,//使玩家完成任务
-    IfElse                  ,//条件控制
-    RunInvEocs              ,//在背包物品上运行EOC
-    MapRunItemEocs          ,//在地图上遍历某loc内所有物品
-    WeightedListEocs        ,//根据权重运行EOC
-    SwitchCase              ,//switch控制
-    Foreach                 ,//遍历类型
+    SoundEffect             ,//播放声音效果
+    OpenDialogue            ,//打开对话
+    TakeControl             ,//接管NPC控制权
+    TakeControlMenu         ,//打开跟随者控制菜单
+    GiveAchievement         ,//授予成就
+    AssignMission           ,//分配任务
+    RemoveActiveMission     ,//移除活动任务
+    FinishMission           ,//完成任务
+    OfferMission            ,//提供任务
+    RunEocs                 ,//运行EOCs
+    RunNpcEocs              ,//NPC运行EOCs
+    RunMonsterEocs          ,//怪物运行EOCs
+    RunInvEocs              ,//在物品上运行EOCs
+    MapRunEocs              ,//在地图上运行EOCs
+    MapRunItemEocs          ,//在地图物品上运行EOCs
+    RevealMap               ,//揭示地图
+    RevealRoute             ,//揭示路线
+    ClosestCity             ,//最近城市
+    WeightedListEocs        ,//加权列表EOCs
+    RunEocSelector          ,//运行EOC选择器
+    RollRemainder           ,//随机获取剩余项
+    IfCondition             ,//条件判断
+    SwitchStatement         ,//开关语句
+    ForEach                 ,//遍历类型
     CastSpell               ,//施法
     Teleport                ,//传送
     LocalVar                ,//搜索并获取坐标 存入location_variable

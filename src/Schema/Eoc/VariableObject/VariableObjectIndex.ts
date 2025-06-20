@@ -1,3 +1,4 @@
+import { Time } from "Schema/GenericDefine";
 import { BoolObj } from "./BoolObjectIndex";
 import { StrObj } from "./StringObjectIndex";
 
@@ -69,6 +70,12 @@ export type CondObj = GenericObj|string;
 
 /**位置Obj */
 export type LocObj = GenericObj;
+
+/**时间Obj */
+export type TimeObj = NumObj|Time;
+
+/**talkerObj */
+export type TalekrObj = GenericObj;
 
 
 /**专用于某种ID的字符串对象  */
