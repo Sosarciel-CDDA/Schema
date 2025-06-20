@@ -1489,51 +1489,6 @@ export type MirrorCoordinates = TalkerVar<{
 }, 'mirror_coordinates'>;
 
 
-
-
-
-
-
-
-
-
-
-/**地图运行EOCs
- * 在talker周围的区域运行EOCs
- * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
- * @example
- * // 在alpha talker周围5个图块范围内运行EOC_EMP，对所有图块应用EMP效果
- * {
- *   "u_map_run_eocs": [ "EOC_EMP" ],
- *   "range": 5,
- *   "store_coordinates_in": { "context_val": "loc" },
- *   "stop_at_first": false
- * }
- */
-export type MapRunEocs = TalkerVar<{
-    /**要运行的EOCs
-     * 将在每个图块上运行的EOC ID列表
-     */
-    map_run_eocs: IDObj<EocID>|(IDObj<EocID>)[];
-    /**范围
-     * 从talker位置开始的半径，以图块为单位
-     */
-    range: (NumObj);
-    /**存储坐标变量
-     * 存储当前处理的图块坐标的变量
-     */
-    store_coordinates_in: (StrObj);
-    /**首次停止
-     * @default false
-     * 如果为true，当EOC返回true时停止处理
-     */
-    stop_at_first?: boolean;
-    /**目标变量
-     * 如果设置，不是从talker位置开始，而是从此变量指定的位置开始
-     */
-    target_var?: (LocObj);
-}, 'map_run_eocs'>;
-
 /**消息
  * 在日志中显示文本消息。u_message和npc_message仅在你或NPC是avatar时显示消息。message总是显示消息。
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
