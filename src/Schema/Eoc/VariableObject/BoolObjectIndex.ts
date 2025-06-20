@@ -8,23 +8,28 @@ export type NoParamCond = [
 ][number];
 /**双Talker无参条件列表 */
 export const NoParamTalkerCondList = [
-    "female"              ,//是女性
-    "male"                ,//是男性
-    "can_drop_weapon"     ,//可以丢弃手中的物品
-    "has_weapon"          ,//挥舞着任意物品
-    "is_avatar"           ,//是主角
-    "is_npc"              ,//是npc
-    "is_character"        ,//是角色
-    "is_monster"          ,//是怪物
-    "is_item"             ,//是物品
-    "is_furnitur"         ,//是家具
-    "driving"             ,//正在驾驶
-
-    "can_see"       ,//检查talker是否能看见（不是盲的）
-    "is_deaf"       ,//检查talker是否聋（不能听见）
-    "is_alive"      ,//检查talker是否活着（不是死的）
-    "is_warm"       ,//检查talker是否是温血的（具有WARM标志）
-    "exists"        ,//检查talker是否存在（不是null）
+    "female"                ,//是女性
+    "male"                  ,//是男性
+    "can_drop_weapon"       ,//可以丢弃手中的物品
+    "has_weapon"            ,//挥舞着任意物品
+    "is_avatar"             ,//是主角
+    "is_npc"                ,//是npc
+    "is_character"          ,//是角色
+    "is_monster"            ,//是怪物
+    "is_item"               ,//是物品
+    "is_furnitur"           ,//是家具
+    "is_vehicle"            ,//是车辆
+    "driving"               ,//正在驾驶
+    "can_see"               ,//检查talker是否能看见（不是盲的）
+    "is_deaf"               ,//检查talker是否聋（不能听见）
+    "is_alive"              ,//检查talker是否活着（不是死的）
+    "is_warm"               ,//检查talker是否是温血的（具有WARM标志）
+    "exists"                ,//检查talker是否存在（不是null）
+    "has_alpha"             ,//检查alpha talker是否存在
+    "has_beta"              ,//检查beta talker是否存在
+    "can_stow_weapon"       ,//检查talker是否可以收起武器
+    "controlling_vehicle"   ,//检查talker是否控制着载具
+    "driving"               ,//检查talker是否操作着移动中的载具
 ] as const;
 
 /**双Talker无参条件 */
@@ -32,7 +37,7 @@ export type NoParamTalkerCond = `${`u_`|`npc_`}${typeof NoParamTalkerCondList[nu
 
 
 //#region BoolOperate导出
-import {BoolOperaNot, BoolOperaOr, BoolOperaAnd, BoolOperaCompStr, MathCompareExp, GetCond, HasEffect, HasFlag, HasStrVar, HasTimeVar, HasItem, HasItems, HasTrait, HasWieldFlag, HasWieldWeaponCategoty, IsInField, OneInChance, ModIsLoad, HasMission, CompareTime, QueryTile, SurvivalNeed, HasItemsSum, HasWieldedWithSkill, HasWieldedWithAmmotype, IsOnTerrain, IsOnTerrainWithFlag} from './BoolObject'
+import {BoolOperaNot, BoolOperaOr, BoolOperaAnd, BoolOperaCompStr, MathCompareExp, GetCond, HasEffect, HasStrVar, HasTimeVar, HasWieldFlag, HasWieldWeaponCategoty, IsInField, OneInChance, ModIsLoad, HasMission, CompareTime, QueryTile, SurvivalNeed, HasItemsSum, HasWieldedWithSkill, HasWieldedWithAmmotype, IsOnTerrain, IsOnTerrainWithFlag, QueryBool, AtOmLocation, HasTrait, HasAnyTrait, HasVisibleTrait, IsTraitPurifiable, HasMartialArt, UsingMartialArt, HasFlag, HasPartFlag, HasSpecies, Bodytype, ExpectsVars, CompareString, CompareStringMatchAll, Profession, HasStrength, HasDexterity, HasIntelligence, HasPerception, HasPartTemp, HasItem, HasItems, HasItemCategory, HasBionics, HasAnyEffect, HasProficiency, KnowRecipe, HasWornWithFlag} from './BoolObject'
 /**BoolOperate导出 */
 export type BoolOperateList = [
     BoolOperaNot            ,//非操作
@@ -42,12 +47,8 @@ export type BoolOperateList = [
     MathCompareExp          ,//math比较表达式
     GetCond                 ,//获取条件
     HasEffect               ,//有某个效果
-    HasFlag                 ,//有某个Flag
     HasStrVar               ,//有某个文本变量
     HasTimeVar              ,//有某个时间变量
-    HasItem                 ,//携带/穿戴/持握/背包里有某个物品
-    HasItems                ,//包里有N个某物品
-    HasTrait                ,//有某个变异
     HasWieldFlag            ,//手中的物品有某个flag
     HasWieldWeaponCategoty  ,//手中的物品有某个武器分类
     IsInField               ,//站在某个地块附着物上
@@ -62,5 +63,34 @@ export type BoolOperateList = [
     HasWieldedWithAmmotype  ,//检查talker是否持有使用特定弹药类型的武器
     IsOnTerrain             ,//检查talker是否站在特定地形上
     IsOnTerrainWithFlag     ,//检查talker是否站在具有特定标志的地形上
+    QueryBool               ,//为玩家创建一个弹出窗口，可以回答"是"或"否"
+    AtOmLocation            ,//检查talker是否站在特定的大地图瓦片上
+    HasTrait                ,//检查talker是否有特定的特质/变异
+    HasAnyTrait             ,//检查talker是否有任意一个特定的特质/变异
+    HasVisibleTrait         ,//检查talker是否有可见的特质/变异
+    IsTraitPurifiable       ,//检查talker的特质是否可净化
+    HasMartialArt           ,//检查talker是否拥有特定武术
+    UsingMartialArt         ,//检查talker是否正在使用特定武术
+    HasFlag                 ,//检查talker是否有特定标志
+    HasPartFlag             ,//检查talker（作为载具）是否有带有特定标志的部件
+    HasSpecies              ,//检查talker是否属于特定物种
+    Bodytype                ,//检查talker的身体类型
+    ExpectsVars             ,//检查每个提供的变量是否存在
+    CompareString           ,//比较所有字符串，如果至少有两个匹配则返回true
+    CompareStringMatchAll   ,//比较所有字符串，如果全部匹配则返回true
+    Profession              ,//检查玩家角色是否有给定的职业ID或其"爱好"子类型
+    HasStrength             ,//检查talker的力量是否至少达到指定值
+    HasDexterity            ,//检查talker的敏捷是否至少达到指定值
+    HasIntelligence         ,//检查talker的智力是否至少达到指定值
+    HasPerception           ,//检查talker的感知是否至少达到指定值
+    HasPartTemp             ,//检查talker的身体部位温度是否高于指定值
+    HasItem                 ,//检查talker是否有特定物品
+    HasItems                ,//检查talker是否有特定数量的物品
+    HasItemCategory         ,//检查talker是否有特定类别的物品
+    HasBionics              ,//检查talker是否有特定仿生装置
+    HasAnyEffect            ,//检查talker是否有任意一个特定效果
+    HasProficiency          ,//检查talker是否掌握了特定熟练度
+    KnowRecipe              ,//检查角色是否知道特定配方
+    HasWornWithFlag         ,//检查talker是否穿戴着带有特定标志的物品
 ];
 //#endregion
