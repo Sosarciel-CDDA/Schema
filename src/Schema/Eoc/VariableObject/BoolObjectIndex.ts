@@ -121,7 +121,7 @@ export type BoolOperateList = [
     MapTerrainId            ,//检查地形是否具有特定ID
     MapFurnitureId          ,//检查家具是否具有特定ID
     MapFieldId              ,//检查场地是否具有特定ID
-    MapInCity               ,//检查位置是否在城市边界内 (在z-1或更高) 
+    MapInCity               ,//检查位置是否在城市边界内 (在z-1或更高)
     LineOfSight             ,//检查两点是否相互可见
 ];
 //#endregion

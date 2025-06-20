@@ -66,7 +66,11 @@ void (async () => {
     void exportTypeList({
         listName:'EocEffectList',
         targetFile:path.join(EOC_DIR,"EocEffect","EocEffectIndex.ts"),
-        typeFileList:[path.join(EOC_DIR,"EocEffect","EocEffect.ts")],
+        typeFileList:[
+            path.join(EOC_DIR,"EocEffect","EocEffect.ts"),
+            path.join(EOC_DIR,"EocEffect","GenericEffect.ts"),
+            path.join(EOC_DIR,"EocEffect","CharacterEffect.ts"),
+        ],
         region:'Eoc效果表导出'
     });
     void exportTypeList({
