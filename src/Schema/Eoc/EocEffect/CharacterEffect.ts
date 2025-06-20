@@ -1,5 +1,5 @@
 import { FakeSpell } from "Schema/Enchantment";
-import { TalkerStr, TalkerVar } from "../Eoc";
+import { EocID, TalkerStr, TalkerVar } from "../Eoc";
 import { ParamsEoc, VarComment } from "./EocEffectIndex";
 import { BoolObj, CondObj, GenericObj, IDObj, LocObj, NumObj, StrObj, TimeObj } from "../VariableObject";
 import { BodyPartID, BodyPartParam, DescText, Explosion, MessageRatType, Time } from "Schema/GenericDefine";
@@ -1490,43 +1490,126 @@ export type MirrorCoordinates = TalkerVar<{
 
 
 
-//未转换的
 
-/**发送消息 */
-export type Message = TalkerVar<{
-    message: (DescText);
-    /**默认中立; 消息如何在日志中显示 (通常是指颜色) ;   
-     * 可以是良好 (绿色) , 中性 (白色) , 不良 (红色) ,   
-     * 混合 (紫色) , 警告 (黄色) , 信息 (蓝色) , 调试 (仅在调试模式打开时出现) ,   
-     * 爆头 (紫色) , 临界 (黄色) , 放牧 (蓝色)   
+
+
+
+
+
+
+
+/**地图运行EOCs
+ * 在talker周围的区域运行EOCs
+ * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
+ * @example
+ * // 在alpha talker周围5个图块范围内运行EOC_EMP，对所有图块应用EMP效果
+ * {
+ *   "u_map_run_eocs": [ "EOC_EMP" ],
+ *   "range": 5,
+ *   "store_coordinates_in": { "context_val": "loc" },
+ *   "stop_at_first": false
+ * }
+ */
+export type MapRunEocs = TalkerVar<{
+    /**要运行的EOCs
+     * 将在每个图块上运行的EOC ID列表
      */
-    type?: (MessageRatType);
-    /**如果为true 那么只会在用户没有聋时显示 */
+    map_run_eocs: IDObj<EocID>|(IDObj<EocID>)[];
+    /**范围
+     * 从talker位置开始的半径，以图块为单位
+     */
+    range: (NumObj);
+    /**存储坐标变量
+     * 存储当前处理的图块坐标的变量
+     */
+    store_coordinates_in: (StrObj);
+    /**首次停止
+     * @default false
+     * 如果为true，当EOC返回true时停止处理
+     */
+    stop_at_first?: boolean;
+    /**目标变量
+     * 如果设置，不是从talker位置开始，而是从此变量指定的位置开始
+     */
+    target_var?: (LocObj);
+}, 'map_run_eocs'>;
+
+/**消息
+ * 在日志中显示文本消息。u_message和npc_message仅在你或NPC是avatar时显示消息。message总是显示消息。
+ * 适用于: Avatar Character NPC Monster Furniture Item Vehicle
+ * @example
+ * // 在日志中发送红色的"Bad json! Bad!"消息
+ * { "u_message": "Bad json! Bad!", "type": "bad" }
+ * // 从local_files_simple打印一个片段，并弹出它。片段总是相同的
+ * { "u_message": "local_files_simple", "snippet": true, "same_snippet": true, "popup": true, "store_in_lore": true }
+ * // 在屏幕顶部打印一个居中对齐的非侵入性文本弹出窗口
+ * { "u_message": "uninvasive text", "popup": true, "popup_flag": "PF_ON_TOP" }
+ * // 打印带有上下文变量的文本
+ * { "u_message": "Test event with trait_id FIRE! <context_val:trait_id>", "type": "good" }
+ */
+export type Message = TalkerVar<{
+    /**消息内容
+     * 将打印的消息；如果snippet为true，则为将打印的片段的ID
+     */
+    message: (StrObj);
+    /**消息类型
+     * @default "neutral"
+     * 消息在日志中的显示方式（通常表示颜色）；
+     * 可以是good（绿色）、neutral（白色）、bad（红色）、mixed（紫色）、
+     * warning（黄色）、info（蓝色）、debug（仅在调试模式下显示）、
+     * headshot（紫色）、critical（黄色）、grazing（蓝色）中的任何一种
+     */
+    type?: (IDObj<MessageRatType>);
+    /**是否有声音
+     * @default false
+     * 如果为true，仅在玩家不聋时显示消息
+     */
     sound?: boolean;
-    /**如果为true 且 sound为真 玩家在 地下/地下室 时难以听到 */
+    /**仅户外
+     * @default false
+     * 如果为true，且sound为true，如果你在地下，消息会更难听到
+     */
     outdoor_only?: boolean;
-    /**如果为 true, 则效果会显示来自的随机片段u_message */
+    /**片段
+     * @default false
+     * 如果为true，效果会显示来自u_message的随机片段
+     */
     snippet?: boolean;
-    /**如果为 true, 并且snippet为 true, 它将连接讲话者和片段,   
-     * 并且如果该讲话者使用的话, 将始终提供相同的片段; 要求片段设置 id  
+    /**存储在知识中
+     * @default false
+     * 如果为true，且message是片段，片段将存储在知识标签中
+     */
+    store_in_lore?: boolean;
+    /**相同片段
+     * @default false
+     * 如果为true，且snippet为true，它将连接talker和片段，并且如果由此talker使用，将始终提供相同的片段；
+     * 需要片段设置ID
      */
     same_snippet?: boolean;
-    /**如果为真, 该消息将生成一个弹出窗口u_message */
-    popup?: boolean;
-    /**如果为 true, 并且popup为 true, 则弹出窗口将中断任何发送消息的活动 */
-    popup_w_interrupt_query?: boolean;
-    /**默认为“中性”; distraction_type, 用于中断, 用于分心管理器  
-     * 完整列表存在 inactivity_type.cpp  
+    /**弹出
+     * @default false
+     * 如果为true，消息将生成带有u_message的弹出窗口
      */
-    interrupt_type?: boolean;
-},"message">;
+    popup?: boolean;
+    /**弹出标志
+     * @default "PF_NONE"
+     * 如果指定，弹出窗口将由指定的标志修改，允许的值见下文
+     */
+    popup_flag?: (StrObj);
+    /**弹出中断查询
+     * @default false
+     * 如果为true，且popup为true，弹出窗口将中断任何活动以发送消息
+     */
+    popup_w_interrupt_query?: boolean;
+    /**中断类型
+     * @default "neutral"
+     * 用于中断的distraction_type，用于分心管理器；完整列表存在于activity_type.cpp中
+     */
+    interrupt_type?: (StrObj);
+}, 'message'>;
 
 
-/**移除flag */
-export type UnsetFlag = TalkerVar<{
-    unset_flag:IDObj<FlagID>;
-},"unset_flag">;
-
+//未转换的
 
 /**使用物品 */
 export type ConsumeItem = TalkerVar<{
@@ -1538,3 +1621,4 @@ export type ConsumeItem = TalkerVar<{
     /**为true时将显示消息给予npc物品 */
     popup?: boolean;
 },"consume_item">;
+

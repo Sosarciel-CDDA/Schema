@@ -50,3 +50,9 @@ export type TurnCost = {
     turn_cost: (Time);
 }
 
+
+/**移除flag */
+export type UnsetFlag = TalkerVar<{
+    unset_flag:IDObj<FlagID>;
+},"unset_flag">;
+
