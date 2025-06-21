@@ -6,6 +6,7 @@ import { AnyItemID, ArmorID, GunID } from "./Item";
 import { MaterialID } from "./Material";
 import { MonsterID } from "./Monster";
 import { MutationCategory } from "./MutationCategory";
+import { ScentTypeID } from "./ScentType";
 import { SpellID } from "./Spell";
 
 
@@ -171,7 +172,7 @@ export type Mutation = {
     /**你散发出的气味类型, 如在scent_types.json中定义  
      * @default ""
      */
-    scent_type?: string;
+    scent_type?: (ScentTypeID);
     /**吃或喝的时间乘以这个数 */
     consume_time_modifier?: number;
     /**每个bmi单位超过character_weight_category::normal, 增加的hp_max数量  

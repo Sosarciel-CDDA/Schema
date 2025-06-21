@@ -1,8 +1,12 @@
 import { CddaID } from "./GenericDefine";
 
 
+/**技能 */
+export type SkillID = CddaID<"SKILL"> | DefineSkillID;
+
+
 /**预定义的技能ID 列表 */
-export const DefineSkillList = [
+export const DefineSkillIDList = [
     "speech"        ,//社交
     "computer"      ,//计算机学
     "firstaid"      ,//医疗
@@ -32,5 +36,5 @@ export const DefineSkillList = [
     "chemistry"     ,//应用科学
     "spellcraft"    ,//魔法
 ] as const;
-/**技能 */
-export type SkillID = CddaID<"SKILL"> | typeof DefineSkillList[number];
+
+export type DefineSkillID = typeof DefineSkillIDList[number];

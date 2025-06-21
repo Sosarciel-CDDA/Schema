@@ -33,6 +33,8 @@ import { MonsterGroup } from "./MonsterGroup";
 import { ProficiencyCategory } from "./ProficiencyCategory";
 import { Species } from "./Species";
 import { MutationCategory } from "./MutationCategory";
+import { ScentType } from "./ScentType";
+import { Proficiency } from "./Proficiency";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -397,6 +399,6 @@ export type AnyCddaJson = AnyItem|Eoc|Mutation|DamageType|DamageInfoOrder|
     Effect|Spell|MathFunction|AmmoEffect|MissionDefinition|
     ModTileset|ActivityType|VehiclePart|ToolQuality|TalkTopic|Terrain|
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
-    Species|MutationCategory;
+    Species|MutationCategory|ScentType|Proficiency;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];

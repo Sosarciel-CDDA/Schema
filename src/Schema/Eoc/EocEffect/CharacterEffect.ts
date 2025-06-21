@@ -411,8 +411,7 @@ export type AddVar = TalkerVar<{
  * { "u_lose_var": "bio_blade_electric_on" }
  */
 export type LoseVar = TalkerVar<{
-    /**要移除的变量
-     */
+    /**要移除的变量 */
     lose_var: string;
     /**类型
      * 描述变量的附加文本; 不是强制性的, 但需要移除正确的变量

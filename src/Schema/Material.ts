@@ -1,5 +1,6 @@
 import { DamageTypeID } from "./DamageType";
 import { CddaID, DescText, Energy, Float, Volume } from "./GenericDefine";
+import { VitaminID } from "./Vitamin";
 
 
 
@@ -51,19 +52,19 @@ export type Material = {
     /**描述材料损坏程度的形容词  
      * ["bruised", "mutilated", "badly mutilated", "thoroughly mutilated"]  
      */
-    dmg_adj: string[];
+    dmg_adj: (DescText)[];
     /**描述材料被砸坏的形容词  
      * "bruised"  
      */
-    bash_dmg_verb: string;
+    bash_dmg_verb: (DescText);
     /**描述材料被切割的形容词  
      * "sliced"  
      */
-    cut_dmg_verb: string;
+    cut_dmg_verb: (DescText);
     /**此材质含有的维生素  
      * [["calcium", 0.1], ["vitB", 1], ["iron", 1.3]];  
      */
-    vitamins: [string,number][];
+    vitamins: [VitaminID,number][];
     /**是否导电 */
     conductive:boolean;
     /**是否强化？ */

@@ -2,10 +2,12 @@ import { DamageTypeID, DefineDamageTypeIDList } from "./DamageType";
 import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
-import { BodyPartParam, CddaID, CharSymbol, Color, DefineMonFaction, DefineNpcFaction, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
+import { BodyPartParam, CddaID, CharSymbol, Color, DefineMonFaction, DefineNpcFaction, DescText, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { MaterialID } from "./Material";
+import { ProficiencyID } from "./Proficiency";
+import { ScentTypeID } from "./ScentType";
 import { MonsterTrigger, Species, SpeciesID } from "./Species";
 import { TalkTopicID } from "./TalkTopic";
 
@@ -17,14 +19,14 @@ export type MonsterID = CddaID<"MON">;
 /**怪物 */
 export type Monster = {
     /**看上去像哪个id的物品 */
-    looks_like?: string;
+    looks_like?: MonsterID|AnyItemID;
     /**怪物ID */
     id: MonsterID;
     type: "MONSTER";
     /**怪物名 */
-    name: string;
+    name: (DescText);
     /**怪物说明 */
-    description: string;
+    description: (DescText);
     /**怪物的字符画ID */
     ascii_picture?:string;
     /**生命值 */
@@ -43,17 +45,17 @@ export type Monster = {
     bodytype?: MonBP;
     /**行动速度 */
     speed: Int;
-    /** (字符串) 从另一个怪物继承怪物属性. 参见 JSON_INHERITANCE.md */
+    /**从另一个怪物继承怪物属性. 参见 JSON_INHERITANCE.md */
     "copy-from"?: MonsterID;
-    /** (字符串数组) 怪物类别 (NULL, CLASSIC, 或 WILDLIFE) */
-    categories?: string[];
-    /** (字符串数组) 物种 ID, 例如 HUMAN, ROBOT, ZOMBIE, BIRD, MUTANT 等 */
+    /**怪物类别 (NULL, CLASSIC, 或 WILDLIFE) */
+    categories?: MonsterCategory[];
+    /**物种 ID, 例如 HUMAN, ROBOT, ZOMBIE, BIRD, MUTANT 等 */
     species?: SpeciesID[];
-    /** (字符串数组) 怪物追踪这些气味 */
-    scents_tracked?: string[];
-    /** (字符串数组) 怪物忽略这些气味 */
-    scents_ignored?: string[];
-    /** (字符串数组) 怪物由哪些材料构成 */
+    /**怪物追踪这些气味 */
+    scents_tracked?: ScentTypeID[];
+    /**怪物忽略这些气味 */
+    scents_ignored?: ScentTypeID[];
+    /**怪物由哪些材料构成 */
     material?: MaterialID[];
     /** (字符串) 怪物的身体物质状态, 例如 SOLID, LIQUID, GAS, PLASMA, NULL */
     phase?: Phase;
@@ -103,7 +105,7 @@ export type Monster = {
     weakpoint_sets?: string[];
     /**当电伤害发生时, 应用电击的机会的乘数 (目前没有实现其他效果)  */
     status_chance_multiplier?: Float;
-    /** (对象或字符串数组) 怪物所属的弱点家族 */
+    /**怪物所属的弱点族 */
     families?: MonWeakpointFamilie[];
     /**全日光下的视野范围, 其中50是典型的最大值 */
     vision_day?: Int;
@@ -126,7 +128,7 @@ export type Monster = {
      */
     death_function?: {
         corpse_type?: "NO_CORPSE";
-        message?:string;
+        message?:(DescText);
         effect?:FakeSpell;
     };
     /** (对象数组) 怪物发出的场以及频率 */
@@ -151,13 +153,13 @@ export type Monster = {
     /**如果与怪物开启对话, 会出现的对话主题 */
     chat_topics?: TalkTopicID[];
     /**当怪物友好时, 可以转换为的物品 (例如, 拆解炮塔)  */
-    revert_to_itype?: string;
+    revert_to_itype?: (AnyItemID);
     /**如果这个怪物是一个带有内置武器的可骑乘机甲, 这是武器 id */
-    mech_weapon?: string;
+    mech_weapon?: (AnyItemID);
     /**如果这个怪物是一个可骑乘的机甲, 这是它给骑手的力量加成 */
     mech_str_bonus?: Int;
     /**如果这个怪物是一个可骑乘的机甲, 这是电池的 id. 不支持对象或数组 (即只有一个电池 id)  */
-    mech_battery?: string;
+    mech_battery?: (AnyItemID);
     /* 新生成的怪物开始时拥有的弹药 */
     starting_ammo?: Record<AnyItemID,number>;
     /**这个怪物生成时带有的坐骑特定物品. 接受绑定, 马具, 护甲和存储的条目 */
@@ -343,19 +345,22 @@ export type MonWeakpointEff = {
     /** 如果玩家触发效果, 要打印的消息. 应该带有一个模板参数, 引用怪物的名称 */
     message: string;
 }
-/**怪物的专长弱点
+
+/**怪物的弱点族
  * 字符串时为 proficiency
  */
 export type MonWeakpointFamilie = {
-    /**家人的身份证. 如果未提供, 则默认为proficiency.  */
+    /**族id
+     * @default "proficiency"
+     */
     id?: string;
-    /**家庭对应的熟练度ID.  */
-    proficiency?: string;
-    /**如果攻击者熟练, 则对弱点技能的奖励.  */
+    /**族对应的专长ID */
+    proficiency?: (ProficiencyID);
+    /**如果攻击者掌握专长, 则对弱点技能的奖励 */
     bonus?: number;
-    /**如果攻击者缺乏熟练程度, 则会对弱点技能进行惩罚.  */
+    /**如果攻击者缺乏专长, 则会对弱点技能进行惩罚 */
     penalty?: number;
-}|string;
+}|ProficiencyID;
 
 /**怪物的升级项 */
 export type MonUpgrade = {
@@ -479,3 +484,13 @@ export const MonsterFlagList = [
 ] as const;
 /**怪物可用的Flag */
 export type MonsterFlag = (typeof MonsterFlagList)[number];
+
+/**可用的怪物类型 列表 */
+export const MonsterCategoryList = [
+  "NULL",     // 空类别；系统保留，不具备实际分类含义
+  "CLASSIC",  // 仅包含经典僵尸电影中的怪物；仅在 classic 模式中生成
+  "WILDLIFE", // 自然动物类怪物；可在 classic 模式中生成
+] as const;
+/**可用的怪物类型 */
+export type MonsterCategory = typeof MonsterCategoryList[number];
+

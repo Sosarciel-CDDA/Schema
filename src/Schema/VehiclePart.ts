@@ -4,6 +4,7 @@ import { FieldID } from "./Field";
 import { CddaID, Color, CopyfromVar, DescText, Time, Volume } from "./GenericDefine";
 import { AnyItemID, GenericID } from "./Item";
 import { ItemEntrieQuick, ItemGroupEntrie, ItemGroupID } from "./ItemGroup";
+import { MonsterID } from "./Monster";
 import { ReqUsing, RequirementID } from "./Requirement";
 import { SkillID } from "./Skill";
 import { ToolQualityID } from "./ToolQuality";
@@ -18,8 +19,8 @@ export type VehiclePart = CopyfromVar<{
     id: VehiclePartID;
     /**显示名称 */
     name: (DescText);
-    /** (可选) 如果此部分没有图块, 向图块集提供提示, 使用 looks_like 图块.  */
-    looks_like: string;
+    /**如果此部分没有图块, 向图块集提供提示, 使用 looks_like 图块.  */
+    looks_like?: MonsterID|AnyItemID;
     /**功能取决于部件类型:  */
     bonus: number;
     /**部件工作时使用的颜色 */
@@ -27,14 +28,18 @@ export type VehiclePart = CopyfromVar<{
     /**部件损坏时使用的颜色 */
     broken_color: Color;
     /**可选. 确定部件是否可以安装在给定瓦片上的检查之一. 如果任何现有部件占用同一位置, 则不能安装部件.  */
-    location: "fuel_source";
-    /** (可选, 默认 = 100) 当此部件击中某物时, 所造成的伤害乘数, 以百分比表示. 越高 = 对被击中的生物造成更多的伤害 */
+    location?: "fuel_source";
+    /**当此部件击中某物时, 所造成的伤害乘数, 以百分比表示. 越高 = 对被击中的生物造成更多的伤害
+     * @default 100
+     */
     damage_modifier?: number;
     /**部件在损坏前可以承受多少伤害 */
     durability: number;
     /**安装此车辆部件时的描述 */
     description: (DescText);
-    /** (可选, 默认 = "NULL") 部件消耗的燃料/弹药类型, 作为物品 id */
+    /**部件消耗的燃料/弹药类型, 作为物品 id
+     * @default "NULL"
+     */
     fuel_type?: AmmunitionTypeID;
     /**部件的电力使用量, 以瓦特为单位. 负值表示消耗电力, 正值表示产生电力.   
      * 通常, 电力消耗还需要 ENABLED_DRAINS_EPOWER 标志, 并且物品需要打开.   
