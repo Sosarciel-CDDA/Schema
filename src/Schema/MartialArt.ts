@@ -1,60 +1,142 @@
-import { CddaID } from "./GenericDefine"
+import { CddaID, DescText, Int } from "./GenericDefine";
+import { AnyItemID } from "./Item";
+import { ParamsEoc } from "./Eoc";
+import { SkillID } from "./Skill";
+import { WeaponCategoryID } from "./WeaponCategory";
 
 
-
-
-/**武术 */
+/**武术流派ID格式 */
 export type MartialArtID = CddaID<"MA">;
 
-type template = {
-  "type": "martial_art",
-  "id": "style_debug",                   // Unique ID. Must be one continuous word, use underscores if necessary
-  "name": "Debug Mastery",               // In-game name displayed
-  "description": "A secret martial art used only by developers and cheaters.",    // In-game description
-  "initiate": [ "You stand ready.", "%s stands ready." ],    // Message shown when player or NPC selects this MA
-  "autolearn": [ [ "unarmed", "2" ] ],   // A list of skill requirements that if met, automatically teach the player the MA
-  "teachable": true,                     // Whether it's possible to teach this style between characters
-  "allow_all_weapons": true,             // This MA always works, no matter what weapon is equipped (including no weapon)
-  "force_unarmed": true,                 // You never use the equipped item to make attacks with this MA, and will use only your fist, legs or another limbs you have
-  "prevent_weapon_blocking": true,       // You never block using weapon with this MA
-  "strictly_melee": true,                // This style can only be used with weapons, it can't be used with bare hands
-  "arm_block_with_bio_armor_arms": true, // Enables blocking damage using the Arms Alloy Plating CBM
-  "leg_block_with_bio_armor_legs": true, // Enables blocking damage using the Legs Alloy Plating CBM
-  //"autolearn": [ [ "melee", 1 ] ],       // The style is autolearned once you reach this level in specific skill or skills
-  "primary_skill": "bashing",            // The difficulty and effectiveness of this MA scales from this skill (Default is "unarmed")
-  "learn_difficulty": 5,                 // Difficulty to learn the style from a book based on "primary_skill". Total chance to learn a style from a single read of the book is equal to one in (10 + learn_difficulty - primary_skill)
-  "arm_block": 99,                       // Unarmed skill level at which arm blocking is unlocked
-  "leg_block": 99,                       // Unarmed skill level at which arm blocking is unlocked
-  "nonstandard_block": 99,               // Unarmed skill level at which blocking with "nonstandard" mutated limbs is unlocked
-  "static_buffs": [ { "id": "debug_elem_resist" } ],    // List of buffs that are automatically applied every turn. Same syntax for the following fields with "_buffs" in their name. For further details, see Martial art buffs
-  "onmove_buffs": [  ],                  // List of buffs that are automatically applied on movement
-  "onpause_buffs": [  ],                 // List of buffs that are automatically applied when passing a turn
-  "onattack_buffs": [  ],                // List of buffs that are automatically applied after any attack, hit or miss
-  "onhit_buffs": [  ],                   // List of buffs that are automatically applied on successful hit
-  "onmiss_buffs": [  ],                  // List of buffs that are automatically applied on a miss
-  "oncrit_buffs": [  ],                  // List of buffs that are automatically applied on a crit
-  "ongethit_buffs": [  ],                // List of buffs that are automatically applied on being hit
-  "ondodge_buffs": [  ],                 // List of buffs that are automatically applied on successful dodge
-  "onblock_buffs": [  ],                 // List of buffs that are automatically applied on successful block
-  "onkill_buffs": [  ],                  // List of buffs that are automatically applied upon killing an enemy
-  "static_eocs": [                       // List of eocs that are automatically triggered every turn
-    "EOC_ID",                            // Syntax allows either eoc IDs or as inline blocks
-    { "id": "INLINE_EOC_ID" }
-  ],
-  "onmove_eocs": [  ],                   // List of eocs that are automatically triggered on movement
-  "onpause_eocs": [  ],                  // List of eocs that are automatically triggered when passing a turn
-  "onattack_eocs": [  ],                 // List of eocs that are automatically triggered after any attack, hit or miss
-  "onhit_eocs": [  ],                    // List of eocs that are automatically triggered on successful hit
-  "onmiss_eocs": [  ],                   // List of eocs that are automatically triggered on a miss
-  "oncrit_eocs": [  ],                   // List of eocs that are automatically triggered on a crit
-  "ongethit_eocs": [  ],                 // List of eocs that are automatically triggered on being hit
-  "ondodge_eocs": [  ],                  // List of eocs that are automatically triggered on successful dodge
-  "onblock_eocs": [  ],                  // List of eocs that are automatically triggered on successful block
-  "onkill_eocs": [  ],                   // List of eocs that are automatically triggered upon killing an enemy
-  "techniques": [                        // List of techniques available when this MA is used
-    "tec_debug_slow",
-    "tec_debug_arpen"
-  ],
-  "weapons": [ "tonfa" ],                // List of weapons usable with this art
-  "weapon_category": [ "MEDIUM_SWORDS" ] // List of weapons categories usable with this MA
+
+
+
+/**武术流派定义 */
+export type MartialArt = {
+    /**固定为"martial_art" */
+    type: "martial_art";
+    /**武术流派ID */
+    id: MartialArtID;
+    /**流派名称 */
+    name: (DescText);
+    /**流派描述 */
+    description: (DescText);
+    /**激活时的消息 */
+    initiate?: [DescText, DescText];
+    /**自动学习条件 */
+    autolearn?: [SkillID, Int][];
+    /**是否可教学 */
+    teachable?: boolean;
+    /**是否允许所有武器 */
+    allow_all_weapons?: boolean;
+    /**是否强制空手攻击 */
+    force_unarmed?: boolean;
+    /**是否阻止武器格挡 */
+    prevent_weapon_blocking?: boolean;
+    /**是否严格限制近战武器 */
+    strictly_melee?: boolean;
+    /**是否允许生物装甲手臂格挡 */
+    arm_block_with_bio_armor_arms?: boolean;
+    /**是否允许生物装甲腿部格挡 */
+    leg_block_with_bio_armor_legs?: boolean;
+    /**主要技能 */
+    primary_skill?: (SkillID);
+    /**学习难度 */
+    learn_difficulty?: Int;
+    /**手臂格挡解锁等级 */
+    arm_block?: Int;
+    /**腿部格挡解锁等级 */
+    leg_block?: Int;
+    /**非标准肢体格挡解锁等级 */
+    nonstandard_block?: Int;
+    /**常驻buff效果 */
+    static_buffs?: MartialArtBuff[];
+    /**移动时触发的buff效果 */
+    onmove_buffs?: MartialArtBuff[];
+    /**等待时触发的buff效果 */
+    onpause_buffs?: MartialArtBuff[];
+    /**攻击后触发的buff效果 */
+    onattack_buffs?: MartialArtBuff[];
+    /**命中后触发的buff效果 */
+    onhit_buffs?: MartialArtBuff[];
+    /**未命中时触发的buff效果 */
+    onmiss_buffs?: MartialArtBuff[];
+    /**暴击时触发的buff效果 */
+    oncrit_buffs?: MartialArtBuff[];
+    /**被击中时触发的buff效果 */
+    ongethit_buffs?: MartialArtBuff[];
+    /**闪避时触发的buff效果 */
+    ondodge_buffs?: MartialArtBuff[];
+    /**格挡时触发的buff效果 */
+    onblock_buffs?: MartialArtBuff[];
+    /**击杀时触发的buff效果 */
+    onkill_buffs?: MartialArtBuff[];
+    /**常驻效果条件 */
+    static_eocs?: (ParamsEoc);
+    /**移动时触发的效果条件 */
+    onmove_eocs?: (ParamsEoc);
+    /**等待时触发的效果条件 */
+    onpause_eocs?: (ParamsEoc);
+    /**攻击后触发的效果条件 */
+    onattack_eocs?: (ParamsEoc);
+    /**命中后触发的效果条件 */
+    onhit_eocs?: (ParamsEoc);
+    /**未命中时触发的效果条件 */
+    onmiss_eocs?: (ParamsEoc);
+    /**暴击时触发的效果条件 */
+    oncrit_eocs?: (ParamsEoc);
+    /**被击中时触发的效果条件 */
+    ongethit_eocs?: (ParamsEoc);
+    /**闪避时触发的效果条件 */
+    ondodge_eocs?: (ParamsEoc);
+    /**格挡时触发的效果条件 */
+    onblock_eocs?: (ParamsEoc);
+    /**击杀时触发的效果条件 */
+    onkill_eocs?: (ParamsEoc);
+    /**可用技巧列表 */
+    techniques?: string[];
+    /**可用武器列表 */
+    weapons?: AnyItemID[];
+    /**可用武器类别 */
+    weapon_category?: WeaponCategoryID[];
+};
+
+
+
+/**武术流派BuffID格式 */
+export type MartialArtBuffID = CddaID<"MAB">;
+
+
+/**武术流派buff效果 */
+export type MartialArtBuff = {
+    /**buff效果ID */
+    id: (MartialArtBuffID);
+    /**buff名称 */
+    name?: (DescText);
+    /**buff描述 */
+    description?: (DescText);
+    /**buff持续时间(回合数) */
+    buff_duration?: Int;
+    /**切换流派时是否保留 */
+    persists?: boolean;
+    /**是否允许空手时生效 */
+    unarmed_allowed?: boolean;
+    /**是否允许近战武器时生效 */
+    melee_allowed?: boolean;
+    /**是否严格限制空手(不允许任何武器) */
+    strictly_unarmed?: boolean;
+    /**是否需要在墙边 */
+    wall_adjacent?: boolean;
+    /**允许的武器类别 */
+    weapon_categories_allowed?: WeaponCategoryID[];
+    /**最大叠加层数 */
+    max_stacks?: Int;
+    /**额外格挡次数 */
+    bonus_blocks?: Int;
+    /**额外闪避次数 */
+    bonus_dodges?: Int;
+    /**固定加成 */
+    flat_bonuses?: any[];
+    /**倍率加成 */
+    mult_bonuses?: any[];
 }
