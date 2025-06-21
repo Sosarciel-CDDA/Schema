@@ -1,7 +1,7 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
-import { CddaID, CopyfromVar, Power, DescText } from "../GenericDefine";
+import { CddaID, Power, DescText } from "../GenericDefine";
 import { ToolQualityID } from "../ToolQuality";
-import { GenericBase, GenericFlagID } from "./Generic";
+import { GenericFlagID } from "./Generic";
 import { GunModTrait } from "./GunMod";
 
 

@@ -1,6 +1,6 @@
 import { ParamsEoc } from "Schema/Eoc";
-import { CddaID, CopyfromVar, Time, Weight } from "Schema/GenericDefine";
-import { GenericBase, GenericFlagID } from "./Generic";
+import { CddaID, Time, Weight } from "Schema/GenericDefine";
+import { GenericFlagID } from "./Generic";
 import { VitaminID } from "Schema/Vitamin";
 import { MaterialID } from "Schema/Material";
 import { AnyItemID } from "./ItemIndex";

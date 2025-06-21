@@ -1,7 +1,6 @@
-import { AmmunitionTypeID } from "../AmmiunitionType";
-import { BodyPartID, CddaID, CopyfromVar } from "../GenericDefine"
+import { BodyPartID, CddaID } from "../GenericDefine"
 import { MaterialID } from "../Material";
-import { GenericBase, GenericFlagID } from "./Generic"
+import { GenericFlagID } from "./Generic"
 
 
 /**Armor ID格式 */

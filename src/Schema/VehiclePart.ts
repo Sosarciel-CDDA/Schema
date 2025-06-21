@@ -2,10 +2,10 @@ import { AmmunitionTypeID } from "./AmmiunitionType";
 import { DamageTypeID } from "./DamageType";
 import { FieldID } from "./Field";
 import { CddaID, Color, CopyfromVar, DescText, Time, Volume } from "./GenericDefine";
-import { AnyItemID, GenericID } from "./Item";
-import { ItemEntrieQuick, ItemGroupEntrie, ItemGroupID } from "./ItemGroup";
+import { AnyItemID } from "./Item";
+import { ItemGroupEntrie, ItemGroupID } from "./ItemGroup";
 import { MonsterID } from "./Monster";
-import { ReqUsing, RequirementID } from "./Requirement";
+import { ReqUsing } from "./Requirement";
 import { SkillID } from "./Skill";
 import { ToolQualityID } from "./ToolQuality";
 
@@ -47,9 +47,9 @@ export type VehiclePart = CopyfromVar<{
      */
     epower?: number;
     /**用于安装此部件的物品, 以及移除此部件时获得的物品.  */
-    item: GenericID;
+    item: (AnyItemID);
     /**覆盖 "item", 移除此部件时返回的物品.  */
-    remove_as?: GenericID;
+    remove_as?: (AnyItemID);
     /**你的机械技能必须至少达到这个级别才能安装这个部件 */
     difficulty: number;
     /**当车辆部件被销毁时, 此物品组中的物品 (参见 ITEM_SPAWN.md) 将在地面上的部件周围生成.   

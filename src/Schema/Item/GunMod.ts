@@ -1,9 +1,8 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { Energy, CddaID, CopyfromVar, Length, Time, DescText } from "../GenericDefine";
+import { Energy, CddaID, Length, Time, DescText } from "../GenericDefine";
 import { SkillID } from "../Skill";
-import { GenericBase, GenericFlagID } from "./Generic";
-import { FireMode, GunBase, GunFlagID, GunID } from "./Gun";
+import { FireMode, GunBase } from "./Gun";
 import { MagazineID } from "./Magazine";
 
 

@@ -1,16 +1,10 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { EnchantmentID, InlineEnchantment } from "../Enchantment";
-import { CustomFlagID, FlagID } from "../Flag";
-import { CddaID, CharSymbol, Color, CopyfromVar, DescText, Explosion, Length, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
-import { AmmoTrait, AmmoID } from "./Ammo";
-import { GunTrait, GunID } from "./Gun";
+import { CustomFlagID } from "../Flag";
+import { CharSymbol, Color, DescText, Explosion, Length, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
+import { AmmoID } from "./Ammo";
 import { WeaponCategoryID } from "../WeaponCategory";
 import { MaterialID } from "../Material";
-import { ToolTrait, ToolID } from "./Tool";
-import { MagazineTrait, MagazineID } from "./Magazine";
-import { ComestibleID, ComestibleTrait } from "./Comestible";
-import { ArmorID, ArmorTrait } from "./Armor";
-import { GunModID, GunModTrait } from "./GunMod";
 import { UseAction } from "../ItemAction";
 import { AnyItemID } from "./ItemIndex";
 
@@ -60,13 +54,9 @@ export const DefineGenericIDList = [
 export type DefineGenericID = typeof DefineGenericIDList[number];
 
 /**通用物品基础 */
-export type GenericBase = {
+export type GenericTrait = {
     /**物品flag */
     flags?: GenericFlagID[];
-    /**物品类型 */
-    type: "ITEM";
-    /**物品唯一ID */
-    id: string;
     /**物品显示名 */
     name: (DescText);
     /**物品分类 */

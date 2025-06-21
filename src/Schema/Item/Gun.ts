@@ -1,8 +1,8 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { RangeDamage, Energy, Volume, CddaID, CopyfromVar, Length } from "../GenericDefine";
+import { RangeDamage, Energy, Volume, CddaID, Length } from "../GenericDefine";
 import { SkillID } from "../Skill";
-import { GenericBase, GenericFlagID } from "./Generic";
+import { GenericFlagID } from "./Generic";
 import { GunModID, GunModSlot } from "./GunMod";
 
 
