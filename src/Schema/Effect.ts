@@ -112,28 +112,30 @@ export type Effect = {
     /**在已有效果的情况下再次添加效果时  
      * 所增加时间的修正值  
      * duration = duration + (dur_add_perc/100) * max_duration  
-     * 默认 100  
+     * @default 100
      */
     dur_add_perc?: number;
     /**在已有效果的情况下再次添加效果时  
      * 所增加的强度  
-     * 默认 0  
+     * @default 0
      */
     int_add_val?: number;
     /**强度衰减量  
      * 每经过int_decay_tick 的时间后  
      * 效果强度将会调整此数值  
-     * 默认-1  
+     * @default -1
      */
     int_decay_step?: number;
     /**强度衰减间隔  
      * 效果做出自然增减的间隔 秒  
-     * 默认0 即不会改变  
+     * 0即不会改变  
+     * @default 0
      */
     int_decay_tick?: number;
     /**强度衰减移除  
      * 在强度衰减为0时移除效果  
-     * 默认false */
+     * @default false
+     */
     int_decay_remove?: boolean;
     /**时间强度系数  
      * 覆盖其他三个强度字段,   
@@ -143,7 +145,7 @@ export type Effect = {
     int_dur_factor?: number;
     /**这允许或禁止在“效果”选项卡中给定效果的名称旁边显示强度值.   
      * 例如显示“弱点[142]”或简单的“弱点”文本.   
-     * 默认true  
+     * @default true
      */
     show_intensity?: boolean;
     /**豁免效果时产生的消息  
@@ -157,7 +159,7 @@ export type Effect = {
      */
     decay_messages?: [DescText,EffectRatType][];
     /**这个效果是否只能应用于主肢体  
-     * 默认false  
+     * @default false
      */
     main_parts_only?: boolean;
     /**使玩家对止痛药的成瘾减少了给他们带来更多 pkill 效果的机会  

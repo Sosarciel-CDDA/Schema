@@ -87,7 +87,8 @@ export type AmmoEffect = {
 /**弹药AOE效果 */
 export type AmmoAoe = {
     /**地块附着物类型  
-     * 将在投射物中心周围产生的地块附着物; 默认 "fd_null"  
+     * 将在投射物中心周围产生的地块附着物  
+     * @default "fd_null"
      */
     field_type?: FieldID;
     /**最小强度  
@@ -150,15 +151,18 @@ export type AmmoTrail = {
      */
     field_type?: FieldID;
     /**最小强度  
-     * 地块附着物的最小强度; 默认 0  
+     * 地块附着物的最小强度  
+     * @default 0
      */
     intensity_min?: number;
     /**最大强度  
-     * 地块附着物的最大强度; 默认 0  
+     * 地块附着物的最大强度  
+     * @default 0
      */
     intensity_max?: number;
     /**概率  
-     *  产生1个单位地块附着物的概率, 从0到100; 默认100  
+     * 产生1个单位地块附着物的概率, 从0到100  
+     * @default 100
      */
     chance?: number;
 }
