@@ -15,20 +15,30 @@ export type Eoc = {
     type: "effect_on_condition";
     /**唯一ID */
     id: EocID;
-    /**eoc类型 */
-    eoc_type: EocType,
     /**效果 */
     effect?: EocEffect[];
     /**启用条件为假时的效果 */
     false_effect?: EocEffect[];
     /**启用条件 */
     condition?: BoolObj;
+}&({
+    /**循环eoc 默认值 */
+    eoc_type?:"RECURRING";
     /**循环间隔 */
     recurrence?: (Time);
-    /**deactivate_condition 是否仅在玩家上运行 */
-    global?:boolean,
-    /**是否可在NPC上运行 global生效时才可用 */
-    run_for_npcs?:boolean,
+    /**deactivate_condition 是否仅在玩家上运行
+     * 如果为 True，此循环 EOC 将在玩家和全局队列中的每个 NPC 上运行。
+     * 停用条件将根据角色设定生效。
+     * 如果为 False，则角色和每个角色将拥有各自的副本和各自的停用列表。
+     * @default false
+     */
+    global?:boolean;
+    /**是否可在NPC上运行 global生效时才可用
+     * 如果为False，则 EOC 将仅针对角色运行
+     * 如果为True，则 EOC 将针对角色和所有 NPC 运行
+     * @default false
+     */
+    run_for_npcs?:boolean;
     /**关闭条件  
      * 当一个 effect_on_condition 自动激活(调用)并且未满足其条件时,  
      * 如果存在 deactivate_condition 并且没有 false_effect 条目,  
@@ -43,9 +53,15 @@ export type Eoc = {
      * 请参阅 NPC 的 “Dialogue conditions” 部分以获取完整语法.   
      */
     deactivate_condition?: BoolObj;
+}|{
+    /**事件eoc */
+    eoc_type:"EVENT";
     /**eoc触发时机, 仅当eoc_type为EVENT时有效 */
-    required_event?: EocEvent;
-};
+    required_event: EocEvent;
+}|{
+    /**其他eoc */
+    eoc_type: Exclude<EocType,"EVENT"|"RECURRING">,
+});
 
 /**EOC类型 列表 */
 export const EocTypeList = [
@@ -72,13 +88,9 @@ export type TalkerVar<B extends JObject,K extends string> =
 
 /**成功或失败的Eoc效果 */
 export type ToFEffect = {
-    /**成功时运行的EOCs
-     * 如果接管控制权成功, 将运行所有true_eocs中的EOCs
-     */
+    /**成功时运行的EOCs */
     true_eocs?: EocEffect[];
-    /**失败时运行的EOCs
-     * 如果接管控制权失败, 将运行所有false_eocs中的EOCs
-     */
+    /**失败时运行的EOCs */
     false_eocs?: EocEffect[];
 }
 
