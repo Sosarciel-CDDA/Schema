@@ -21,17 +21,17 @@ export type GunMod = CopyfromVar<{
 	mod_targets: SkillID[];
 	/** 必填. 安装需要多长时间？一个整数将被读取为移动, 或者可以使用时间字符串 */
 	install_time: (Time);
-	/** (可选) 限制改装件到那些基础 (在修饰符之前) 弹药类型的枪 */
+	/**限制改装件到那些基础 (在修饰符之前) 弹药类型的枪 */
 	acceptable_ammo?: AmmunitionTypeID[];
-	/** (可选) 如果指定, 修改父枪使用这些弹药类型 */
+	/**如果指定, 修改父枪使用这些弹药类型 */
 	ammo_modifier?: AmmunitionTypeID[];
-	/** (可选) 改变父枪接受的弹药类型 [弹药ID, 弹夹约束[]][] */
+	/**改变父枪接受的弹药类型 [弹药ID, 弹夹约束[]][] */
 	magazine_adaptor?: [AmmunitionTypeID, MagazineID[]][];
-	/** (可选) 增加或减少基础枪伤害的字段 */
+	/**增加或减少基础枪伤害的字段 */
 	damage_modifier?: number;
-	/** (可选) 增加或减少基础枪弹散的字段 */
+	/**增加或减少基础枪弹散的字段 */
 	dispersion_modifier?: number;
-	/** (可选) 增加或减少基础枪噪音的字段 */
+	/**增加或减少基础枪噪音的字段 */
 	loudness_modifier?: number;
 	/** (可选) 增加或减少基础枪范围的字段 */
 	range_modifier?: number;
@@ -41,7 +41,7 @@ export type GunMod = CopyfromVar<{
 	integral_longest_side?: (Length);
 	/** 使用此字段将覆盖枪的min_cycle_recoil */
 	overwrite_min_cycle_recoil?: number;
-	/** 当你用这个改装件重装枪时, 会产生的信息; 似乎不起作用  */
+	/** 当你用这个改装件重装枪时, 会产生的信息; 似乎不起作用 */
 	reload_noise?: (DescText);
 	/** 当你用这个改装件重装枪时, 产生的噪音量 */
 	reload_noise_volume?: number;

@@ -34,6 +34,7 @@ export type ItemGroup = {
      * 如果未指定, 则默认为old, 这表示该项目组使用旧格式 本质上是分布.   
      * collection   集合 为每个entries均独立概率  
      * distribution 分布 为加权轮盘随机  
+     * @default "distribution"
      */
     subtype?: "collection"|"distribution",
     /**详细写法 */
@@ -101,7 +102,9 @@ type ItemGroupEntrieOpt = Partial<{
     "ammo-group": string,
     "container-group": string,
     "entry-wrapper": string,
-    /**如果为 true, 则物品生成时容器将被密封. 默认为true */
+    /**如果为 true, 则物品生成时容器将被密封. 
+     * @default true
+     */
     sealed: boolean;
     /**该项目的有效 itype 变体 ID.  */
     variant: AnyItemID;
