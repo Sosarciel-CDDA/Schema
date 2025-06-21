@@ -46,11 +46,9 @@ export type DescText = string|{
     ctxt?: string;
 };
 
-/**整数  
- * @TJS-type integer
- */
-export type Int = number;
-/**浮点数 */
+/**@TJS-type integer */
+export type Int = (Number&number);
+/**@TJS-type number */
 export type Float = number;
 
 /**单字符 */
@@ -59,19 +57,19 @@ export type CharSymbol = string;
 /**辅助Schema解析的字符串构造浮点数字 */
 type SchemaNumber = `${number}${"."|""}${number|""}`;
 /**重量 */
-export type Weight = Int|`${Int} ${"kg"|"g"}`;
+export type Weight = Int|`${number} ${"kg"|"g"}`;
 /**体积 */
-export type Volume = Int|`${Int} ${"L"|"ml"}`;
+export type Volume = Int|`${number} ${"L"|"ml"}`;
 /**长度 */
-export type Length = Int|`${Int} ${"mm"|"cm"|"m"|"km"}`;
+export type Length = Int|`${number} ${"mm"|"cm"|"m"|"km"}`;
 /**能量 */
-export type Energy = Int|`${Int} ${"mJ"|"kJ"}`;
+export type Energy = Int|`${number} ${"mJ"|"kJ"}`;
 /**能耗 */
-export type Power = Int|`${Int} ${"mW"}`;
+export type Power = Int|`${number} ${"mW"}`;
 /**价格 */
-export type Price = Int|`${Int} ${"USD"|"cent"|"kUSD"}`;
+export type Price = Int|`${number} ${"USD"|"cent"|"kUSD"}`;
 /**时间 无符号为秒 1turn=1s PERMANENT 为永久 */
-export type Time = Int|`${Int} ${"s"|"m"|"h"|"d"}`|"PERMANENT";
+export type Time = Int|`${number} ${"s"|"m"|"h"|"d"}`|"PERMANENT";
 /**可用的颜色列表 */
 export const ColorList = [
     "black"         ,
@@ -123,12 +121,12 @@ export type SubBP = typeof SubBPList[number];
 /**自定义的肢体 */
 export type CustBP = CddaID<"BP">;
 
-/**自定义的ID  
- * @TJS-type string  
- */
-export type CddaID<T extends string> = AnyString|`${T}_${string}`|SchemaString;
-//export type CddaID<T extends string> = `${`${string}_`|''}${T}_${string}`|SchemaString;
+/**@TJS-type string */
+export type SchemaString = (String&string);
 
+/**自定义的ID */
+export type CddaID<T extends string> = (`${T}_${string}`|SchemaString);
+//export type CddaID<T extends string> = `${`${string}_`|''}${T}_${string}`|SchemaString;
 
 /**Copyfrom的保留字段 */
 export type CopyfromResFD = "id"|"type";
@@ -155,11 +153,6 @@ export type Copyfrom<T extends CopyfromAble> =
     //    ? Partial<TMP[P]> & {delete?: TMP[P],extend?: TMP[P]}
     //    : Partial<TMP[P]>
     //}>;
-
-/**用于辅助解析只能补全的类型  
- * 输出后替换为 ^.*$ 的 string 匹配  
- */
-export type SchemaString = `${string}SchemaString`;
 
 /**组肢体 */
 export const BodyPartList = [...LimbBPList,...SubBPList] as const;
@@ -295,7 +288,7 @@ export type Explosion = {
      * 值应大于0但小于1  
      * @default 0.75
      */
-    distance_factor?: (Float);
+    distance_factor?: Float;
     /**爆炸可能产生的最大 (听觉)噪音.  */
     max_noise?: number;
     /**爆炸是否会留下火  

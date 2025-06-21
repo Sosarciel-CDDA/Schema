@@ -27,10 +27,8 @@ export type Monster = {
     description: string;
     /**怪物的字符画ID */
     ascii_picture?:string;
-    /**生命值
-     * @TJS-type integer
-     */
-    hp: (Int);
+    /**生命值 */
+    hp: Int;
     /**体积 影响不同大小目标的近战命中率 */
     volume: (Volume);
     /**重量 */
@@ -43,10 +41,8 @@ export type Monster = {
     default_faction: DefineMonFaction;
     /**怪物身体类型 */
     bodytype?: MonBP;
-    /**行动速度
-     * @TJS-type integer
-     */
-    speed: (Int);
+    /**行动速度 */
+    speed: Int;
     /** (字符串) 从另一个怪物继承怪物属性. 参见 JSON_INHERITANCE.md */
     "copy-from"?: MonsterID;
     /** (字符串数组) 怪物类别 (NULL, CLASSIC, 或 WILDLIFE) */
@@ -63,9 +59,8 @@ export type Monster = {
     phase?: Phase;
     /**每次常规攻击的移动次数. 如果未定义, 默认为100 
      * @default 100
-     * @TJS-type integer
      */
-    attack_cost?: (Int);
+    attack_cost?: Int;
     /**特殊和远程攻击的额外怪物难度  
      * 如果超过 30, 则击杀将记录在纪念日志中.   
      * 怪物难度是根据预期的近战伤害, 闪避, 护甲, 生命值, 速度, 士气, 攻击性和视野范围来计算的.   
@@ -76,47 +71,30 @@ export type Monster = {
      *   15   强大的远程攻击, 带有额外的危险, 例如腐蚀性僵尸的口水  
      *   20   非常强大的远程攻击, 例如激光炮塔或军用炮塔的5.56毫米步枪, 或者强大的特殊能力, 例如僵尸死灵法师复活其他僵尸的能力.   
      *   30   即使对于装甲角色来说也是致命的远程攻击, 例如反物质炮塔的 0.50 BMG 步枪.  
-     * @TJS-type integer
      */
-    diff?: (Int);
-    /**初始侵略性, 当怪物达到10时会变得敌对
-     * @TJS-type integer
-     */
-    aggression?: (Int);
-    /**初始士气, 当 (当前侵略性 + 当前士气) < 0 时, 怪物会逃跑
-     * @TJS-type integer
-     */
-    morale?: (Int);
+    diff?: Int;
+    /**初始侵略性, 当怪物达到10时会变得敌对 */
+    aggression?: Int;
+    /**初始士气, 当 (当前侵略性 + 当前士气) < 0 时, 怪物会逃跑 */
+    morale?: Int;
     /** (布尔值) 如果为真, 怪物在生气时总是会攻击角色 */
     aggro_character?: boolean;
     /**对于坐骑, 坐骑到骑手重量的最大比率, 例如 0.2 表示 <=20% */
-    mountable_weight_ratio?: (Float);
-    /**怪物在近战战斗中的技能, 从0-10, 其中4是平均水平的怪物
-     * @TJS-type integer
-     */
-    melee_skill?: (Int);
-    /**怪物躲避攻击的技能
-     * @TJS-type integer
-     */
-    dodge?: (Int);
+    mountable_weight_ratio?: Float;
+    /**怪物在近战战斗中的技能, 从0-10, 其中4是平均水平的怪物 */
+    melee_skill?: Int;
+    /**怪物躲避攻击的技能 */
+    dodge?: Int;
     /** (对象数组) 在怪物近战攻击时添加到骰子滚动上的伤害实例列表 */
     melee_damage?: MosnterMeleeDamage[];
-    /**在怪物近战攻击时确定砸伤伤害的骰子滚动次数
-     * @TJS-type integer
-     */
-    melee_dice?: (Int);
-    /**每个由 melee_dice 滚动的骰子的面数
-     * @TJS-type integer
-     */
-    melee_dice_sides?: (Int);
-    /**抓取效果的强度, 从1到n, 模拟n个常规僵尸抓取
-     * @TJS-type integer
-     */
-    grab_strength?: (Int);
-    /**通过与这个怪物战斗可以学习的最大近战技能等级. 如果未定义, 默认为 melee_skill + 2
-     * @TJS-type integer
-     */
-    melee_training_cap?: (Int);
+    /**在怪物近战攻击时确定砸伤伤害的骰子滚动次数 */
+    melee_dice?: Int;
+    /**每个由 melee_dice 滚动的骰子的面数 */
+    melee_dice_sides?: Int;
+    /**抓取效果的强度, 从1到n, 模拟n个常规僵尸抓取 */
+    grab_strength?: Int;
+    /**通过与这个怪物战斗可以学习的最大近战技能等级. 如果未定义, 默认为 melee_skill + 2 */
+    melee_training_cap?: Int;
     /** (对象) 怪物对不同类型伤害的保护 */
     armor?: Record<DamageTypeID,number>;
     /** (对象数组) 怪物保护中的弱点 */
@@ -124,27 +102,23 @@ export type Monster = {
     /** (字符串数组) 应用于怪物的弱点集 */
     weakpoint_sets?: string[];
     /**当电伤害发生时, 应用电击的机会的乘数 (目前没有实现其他效果)  */
-    status_chance_multiplier?: (Float);
+    status_chance_multiplier?: Float;
     /** (对象或字符串数组) 怪物所属的弱点家族 */
     families?: MonWeakpointFamilie[];
-    /**全日光下的视野范围, 其中50是典型的最大值
-     * @TJS-type integer
-     */
-    vision_day?: (Int);
+    /**全日光下的视野范围, 其中50是典型的最大值 */
+    vision_day?: Int;
     /**完全黑暗中的视野范围  
-     * 例如: coyote 5, bear 10, sewer rat 30, flaming eye 40  
-     * @TJS-type integer
+     * 例如: coyote 5, bear 10, sewer rat 30, flaming eye 40   
      */
-    vision_night?: (Int);
+    vision_night?: Int;
     /**怪物在自己和当前被追踪的敌人或被跟随的领导者之间保持的瓦片数量
      * @default 3
-     * @TJS-type integer
      */
-    tracking_distance?: (Int);
+    tracking_distance?: Int;
     /**这个怪物不会触发的陷阱的 trap_id. 默认行为是触发所有陷阱 */
     trap_avoids?: string[];
     /**怪物被动发出的光量, 必须大于0才能产生任何效果 */
-    luminance?: (Float);
+    luminance?: Float;
     /**当怪物死亡时生成的物品组 */
     death_drops?:ItemGroupID|InlineItemGroup;
     /**死亡效果  
@@ -160,17 +134,14 @@ export type Monster = {
         emit_id  : EmitID;
         delay    : (Time);
     }[];
-    /**怪物每回合恢复的生命值数量
-     * @TJS-type integer
-     */
-    regenerates?: (Int);
+    /**怪物每回合恢复的生命值数量 */
+    regenerates?: Int;
     /**如果怪物在黑暗中快速恢复, 则为真 */
     regenerates_in_dark?: boolean;
     /**当怪物具有此效果时, 通过整数值修改恢复  
      * 例如, -5 将每回合 40hp 的恢复值减少到 35hp. 不能将恢复减少到 0 以下  
-     * @TJS-type integer
      */
-    regeneration_modifiers?: [EffectID, (Int)];
+    regeneration_modifiers?: [EffectID, Int];
     /**如果怪物在满血时会停止逃跑以恢复愤怒和士气, 则为真 */
     regen_morale?: boolean;
     /**怪物拥有的特殊攻击 */
@@ -183,10 +154,8 @@ export type Monster = {
     revert_to_itype?: string;
     /**如果这个怪物是一个带有内置武器的可骑乘机甲, 这是武器 id */
     mech_weapon?: string;
-    /**如果这个怪物是一个可骑乘的机甲, 这是它给骑手的力量加成
-     * @TJS-type integer
-     */
-    mech_str_bonus?: (Int);
+    /**如果这个怪物是一个可骑乘的机甲, 这是它给骑手的力量加成 */
+    mech_str_bonus?: Int;
     /**如果这个怪物是一个可骑乘的机甲, 这是电池的 id. 不支持对象或数组 (即只有一个电池 id)  */
     mech_battery?: string;
     /* 新生成的怪物开始时拥有的弹药 */
@@ -223,31 +192,26 @@ export type Monster = {
     petfood?: any;
     /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定必须吸收多少毫升才能获得 1 HP
      * @default 250
-     * @TJS-type integer
      */
-    absorb_ml_per_hp?: (Int);
+    absorb_ml_per_hp?: Int;
     /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定基于被吸收物品的体积吸收物品的移动成本
      * @default 0.025
      */
-    absorb_move_cost_per_ml?: (Float);
+    absorb_move_cost_per_ml?: Float;
     /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最小移动成本, 无论消耗物品的体积大小
      * @default 1
-     * @TJS-type integer
      */
-    absorb_move_cost_min?: (Int);
+    absorb_move_cost_min?: Int;
     /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最大移动成本, 无论消耗物品的体积大小. -1 表示无限制
      * @default -1
-     * @TJS-type integer
      */
-    absorb_move_cost_max?: (Int);
+    absorb_move_cost_max?: Int;
     /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 指定怪物将寻求吸收的材料类型  
      * 只要物品由列表中的至少一种材料制成, 就会匹配该物品. 如果未指定, 怪物将吸收所有材料
      */
     absorb_material?: MaterialID[];
-    /**对于具有 SPLIT 特殊攻击的怪物. 确定分裂成自身副本时的移动成本
-     * @TJS-type integer
-     */
-    split_move_cost?: (Int);
+    /**对于具有 SPLIT 特殊攻击的怪物. 确定分裂成自身副本时的移动成本 */
+    split_move_cost?: Int;
 }&Pick<Species,'anger_triggers'|'fear_triggers'|'placate_triggers'>;
 
 /**怪物的身体类型 列表 */
@@ -437,10 +401,10 @@ export type MonShearing = {
     amount: number|[number,number];
 }|{
     /**以怪物体重百分比计算数量 1为100% */
-    ratio_mass: (Float);
+    ratio_mass: Float;
 }|{
     /**以怪物体积百分比计算数量 1为100% */
-    ratio_volume: (Float);
+    ratio_volume: Float;
 });
 
 /**怪物的攻击效果 */
@@ -470,19 +434,16 @@ export type MonAttackEffect = {
 export type MonPathSettings = {
     /**路径的最大直接距离
      * @default 0
-     * @TJS-type integer
      */
-    max_dist?: (Int);
+    max_dist?: Int;
     /**路径的最大总长度
      * @default -1
-     * @TJS-type integer
      */
-    max_length?: (Int);
+    max_length?: Int;
     /**怪物通过障碍物时的力量
      * @default -1
-     * @TJS-type integer
      */
-    bash_strength?: (Int);
+    bash_strength?: Int;
     /**怪物知道如何打开门
      * @default false
      */

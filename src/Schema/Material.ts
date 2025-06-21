@@ -21,12 +21,12 @@ export type Material = {
      * 默认 4.186 - 水  
      * @default 4.186
     */
-    specific_heat_liquid: (Float);
+    specific_heat_liquid: Float;
     /**材料冷冻时的比热 (J/(g K))  
      * 默认 2.108 - 水
      * @default 2.108
      */
-    specific_heat_solid: (Float);
+    specific_heat_solid: Float;
     /**材料的熔化潜热 (J/g)
      * @default 334
      */

@@ -13,7 +13,7 @@
   "author": "zwa73",
   "license": "ISC",
   "dependencies": {
-    "@zwa73/dev-utils": "^1.0.88",
+    "@zwa73/dev-utils": "^1.0.89",
     "@zwa73/utils": "^1.0.149"
   },
   "devDependencies": {

@@ -7,7 +7,7 @@
     default_faction: "human",
     id: "qq",
     speed: 1,
-    volume: "1 L",
+    volume: "2 L",
     symbol: "s",
-    weight: 1.2,
+    weight: 1,
 }
