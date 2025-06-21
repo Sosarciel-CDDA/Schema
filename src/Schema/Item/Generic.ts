@@ -62,7 +62,7 @@ export type DefineGenericID = typeof DefineGenericIDList[number];
 /**通用物品基础 */
 export type GenericBase = {
     /**物品flag */
-    flags?: string[];
+    flags?: GenericFlagID[];
     /**物品类型 */
     type: "ITEM";
     /**物品唯一ID */
@@ -213,7 +213,7 @@ export const WeaponFlagList = [
     "WHIP"             , //有一定几率解除对手的武装. 
 ] as const;
 /**武器Flag */
-export type WeaponFlag = typeof WeaponFlagList[number];
+export type WeaponFlagID = typeof WeaponFlagList[number];
 
 
 
@@ -254,7 +254,7 @@ export const GenericFlagList = [
     "NO_SALVAGE"             , //无法拆分
 ] as const;
 /**预定义的通用物品的flag */
-export type DefineGenericFlag = typeof GenericFlagList[number];
+export type DefineGenericFlagID = typeof GenericFlagList[number];
 
 /**动态产生的Flag 列表 */
 export const TechFlagList = [
@@ -276,10 +276,10 @@ export const TechFlagList = [
     "WET"                 , //物品是湿的, 会慢慢干掉 (例如毛巾) . 
 ] as const;
 /**动态产生的Flag */
-export type TechFlag = typeof TechFlagList[number];
+export type TechFlagID = typeof TechFlagList[number];
 
 /**通用物品的flag */
-export type GenericFlag = DefineGenericFlag|WeaponFlag|TechFlag|CustomFlagID;
+export type GenericFlagID = DefineGenericFlagID|WeaponFlagID|TechFlagID|CustomFlagID;
 
 /**物品的材质 字符串时为材质类型 */
 export type ItemMaterial = MaterialID|{

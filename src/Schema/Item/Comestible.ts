@@ -1,6 +1,6 @@
 import { ParamsEoc } from "Schema/Eoc";
 import { CddaID, CopyfromVar, Time, Weight } from "Schema/GenericDefine";
-import { GenericBase, GenericFlag } from "./Generic";
+import { GenericBase, GenericFlagID } from "./Generic";
 import { VitaminID } from "Schema/Vitamin";
 import { MaterialID } from "Schema/Material";
 import { AnyItemID } from "./ItemIndex";
@@ -72,7 +72,7 @@ export type ComestibleTrait = {
     /** (可选) 此物品所在的宠物食品类别 */
     petfood?: string[];
     /**消耗品的flag */
-    flags?: ComestibleFlag[];
+    flags?: ComestibleFlagID[];
 };
 
 /**消耗品类型 列表*/
@@ -86,7 +86,7 @@ export const  ComestibleTypeList = [
 export type ComestibleType = typeof ComestibleTypeList[number];
 
 /**消耗品Flag 列表*/
-export const ComestibleFlagList = [
+export const ComestibleFlagIDList = [
     "ACID"                  , // 使用 BLECH 功能消耗时, 如果角色具有 ACIDPROOF 或 ACIDBLOOD 特性, 惩罚会减少. 
     "CARNIVORE_OK"          , // 可以被具有 Carnivore 突变的角色食用. 
     "CANT_HEAL_EVERYONE"    , // 这种药不能被所有人使用, 它需要一个特殊的突变. 参见 mutation 中的 can_heal_with. 
@@ -124,5 +124,5 @@ export const ComestibleFlagList = [
 ] as const;
 
 /**消耗品Flag */
-export type ComestibleFlag = typeof ComestibleFlagList[number]|GenericFlag;
+export type ComestibleFlagID = typeof ComestibleFlagIDList[number]|GenericFlagID;
 

@@ -2,7 +2,7 @@ import { AmmunitionTypeID } from "../AmmiunitionType";
 import { RangeDamage, Energy, Volume, CddaID, CopyfromVar, Power as Capacity } from "../GenericDefine";
 import { SkillID } from "../Skill";
 import { AmmoID } from "./Ammo";
-import { GenericBase, GenericFlag } from "./Generic";
+import { GenericBase, GenericFlagID } from "./Generic";
 import { AnyItemID } from "./ItemIndex";
 
 
@@ -28,12 +28,12 @@ export type MagazineTrait = {
     /**如果设置, 则每消耗一单位弹药就会丢弃一个链接 (给定类型) (设置用于分解弹药带) */
     linkage?: AnyItemID;
     /**弹夹的Flag */
-    flags?: MagazineFlag[];
+    flags?: MagazineFlagID[];
 };
 
 
 /**弹夹可用的flag 列表 */
-export const MagazineFlagList = [
+export const MagazineFlagIDList = [
     "MAG_BULKY"           , //可以存放在适当的超大弹药袋中 (适用于笨重或形状笨拙的弹匣). 
     "MAG_COMPACT"         , //可以存放在合适的弹药袋中 (用于紧凑型弹匣). 
     "MAG_DESTROY"         , //当最后一轮消耗完时, 弹匣将被销毁 (用于弹药带). 优先于MAG_EJECT.
@@ -42,4 +42,4 @@ export const MagazineFlagList = [
     "SPEEDLOADER_CLIP"    , //其作用类似于SPEEDLOADER, 但目标枪或弹匣不必清空即可进行转移. 
 ] as const;
 /**弹夹可用的flag */
-export type MagazineFlag = typeof MagazineFlagList[number]|GenericFlag;
+export type MagazineFlagID = typeof MagazineFlagIDList[number]|GenericFlagID;

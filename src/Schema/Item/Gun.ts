@@ -2,7 +2,7 @@ import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
 import { RangeDamage, Energy, Volume, CddaID, CopyfromVar, Length } from "../GenericDefine";
 import { SkillID } from "../Skill";
-import { GenericBase, GenericFlag } from "./Generic";
+import { GenericBase, GenericFlagID } from "./Generic";
 import { GunModID, GunModSlot } from "./GunMod";
 
 
@@ -71,7 +71,7 @@ export type GunBase = {
      **/
     loudness?: number;
     /**枪械的flag */
-    flags?: GunFlag[];
+    flags?: GunFlagID[];
     /**子弹附加效果 */
     ammo_effects?: AmmoEffectID[],
     /**重装时发出的声音 */
@@ -150,7 +150,7 @@ export type ValidMod = [
 
 
 /**枪械可用的flag 列表 */
-export const GunFlagList      = [
+export const GunFlagIDList      = [
     "BACKBLAST"               , // 在射击的人后面产生小爆炸. 目前还没有实现？
     "BIPOD"                   , // 操控加成只适用于MOUNTABLE地图/车辆瓦片. 不包括挥舞时间惩罚 (参见SLOW_WIELD) 
     "BRASS_CATCHER"           , // 这个枪械改装件是弹壳收集器, 可以储存你射出的所有弹壳
@@ -188,4 +188,4 @@ export const GunFlagList      = [
     "WONT_TRAIN_MARKSMANSHIP" , // 射击这把枪不会训练你的射击技巧
 ] as const;
 /**枪械可用的flag */
-export type GunFlag = typeof GunFlagList[number]|GenericFlag;
+export type GunFlagID = typeof GunFlagIDList[number]|GenericFlagID;

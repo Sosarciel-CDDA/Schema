@@ -1,7 +1,7 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { BodyPartID, CddaID, CopyfromVar } from "../GenericDefine"
 import { MaterialID } from "../Material";
-import { GenericBase, GenericFlag } from "./Generic"
+import { GenericBase, GenericFlagID } from "./Generic"
 
 
 /**Armor ID格式 */
@@ -15,7 +15,7 @@ export type ArmorTrait = {
     warmth?: number;
     /**环境保护 */
     environmental_protection?: number;
-    flags?: ArmorFlag[];
+    flags?: ArmorFlagID[];
     /**护甲数据 必须设置覆盖层 */
     armor?: ArmorData[];
 };
@@ -54,14 +54,14 @@ export const ArmorLayerList = ["PERSONAL","SKINTIGHT","NORMAL","WAIST","OUTER","
 /**装甲图层 */
 export type ArmorLayer = typeof ArmorLayerList[number];
 
-export const ArmorFlagList = [
+export const ArmorFlagIDList = [
     "INTEGRATED"             , // 该物品代表了由突变或仿生学授予的你的一部分. 它总是适合, 不能被卸下 (除了失去来源), 并且不会在死亡时掉落, 但在功能, 负担, 层冲突等方面表现得像普通盔甲. 
     "ALLOWS_NATURAL_ATTACKS" , // 允许变异肢体的攻击
     "BLOCK_WHILE_WORN"       , // 允许使用磨损的盔甲或盾牌来阻挡攻击. 
     "PARTIAL_DEAF"           , // 降低音量到安全
     "PADDED"                 , // 有内衬 即使没有任何特定材料是柔软的, 这种盔甲也算舒适. 
 ] as const;
-export type ArmorFlag = typeof ArmorFlagList[number]|ArmorLayer|GenericFlag;
+export type ArmorFlagID = typeof ArmorFlagIDList[number]|ArmorLayer|GenericFlagID;
 
 
 

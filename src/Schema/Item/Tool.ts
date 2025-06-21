@@ -1,7 +1,7 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { CddaID, CopyfromVar, Power, DescText } from "../GenericDefine";
 import { ToolQualityID } from "../ToolQuality";
-import { GenericBase, GenericFlag } from "./Generic";
+import { GenericBase, GenericFlagID } from "./Generic";
 import { GunModTrait } from "./GunMod";
 
 
@@ -58,7 +58,7 @@ export type ToolTrait = {
         folded_parts?: "folded_parts_syntax";
     };
     /**工具的Flag */
-    flags?:ToolFlag[];
+    flags?:ToolFlagID[];
     /**同时作为枪械模组的数据 */
     gunmod_data?: Omit<GunModTrait,"id"|"type">;
 };
@@ -68,7 +68,7 @@ export type ItemToolQuality = [ToolQualityID,number];
 
 
 /**工具可用的flag 列表 */
-export const ToolFlagList = [
+export const ToolFlagIDList = [
     "ACT_ON_RANGED_HIT"               , //该物品应在投掷或发射时激活, 如果它在地面上生成, 则立即得到处理. 
     "ALLOWS_REMOTE_USE"               , //该物品可以从相邻的方块中激活或重新加载, 而无需拿起它. 
     "BELT_CLIP"                       , //该物品可以夹在或挂在适当尺寸的皮带环上 (皮带环受其 max_volume 和 max_weight 属性的限制)
@@ -104,4 +104,4 @@ export const ToolFlagList = [
     "WRITE_MESSAGE"                   , //该物品可用于在标牌上书写信息. 
 ] as const;
 /**工具可用的flag */
-export type ToolFlag = typeof ToolFlagList[number]|`LIGHT_${number}`|GenericFlag;
+export type ToolFlagID = typeof ToolFlagIDList[number]|`LIGHT_${number}`|GenericFlagID;
