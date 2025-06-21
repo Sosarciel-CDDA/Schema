@@ -130,12 +130,12 @@ export type Monster = {
         emit_id  : EmitID;
         delay    : (Time);
     }[];
-    /** (整数) 怪物每回合恢复的生命值数量 */
-    regenerates?: number;
+    /** 怪物每回合恢复的生命值数量 */
+    regenerates?: (Int);
     /** (布尔值) 如果怪物在黑暗中快速恢复, 则为真 */
     regenerates_in_dark?: boolean;
-    /** (效果 id, 整数) 当怪物具有此效果时, 通过整数值修改恢复. 例如, -5 将每回合 40hp 的恢复值减少到 35hp. 不能将恢复减少到 0 以下 */
-    regeneration_modifiers?: [EffectID, number];
+    /** 当怪物具有此效果时, 通过整数值修改恢复. 例如, -5 将每回合 40hp 的恢复值减少到 35hp. 不能将恢复减少到 0 以下 */
+    regeneration_modifiers?: [EffectID, (Int)];
     /** (布尔值) 如果怪物在满血时会停止逃跑以恢复愤怒和士气, 则为真 */
     regen_morale?: boolean;
     /** (对象数组) 怪物拥有的特殊攻击 */
@@ -148,11 +148,11 @@ export type Monster = {
     revert_to_itype?: string;
     /** (字符串) 如果这个怪物是一个带有内置武器的可骑乘机甲, 这是武器 id */
     mech_weapon?: string;
-    /** (整数) 如果这个怪物是一个可骑乘的机甲, 这是它给骑手的力量加成 */
-    mech_str_bonus?: number;
+    /** 如果这个怪物是一个可骑乘的机甲, 这是它给骑手的力量加成 */
+    mech_str_bonus?: (Int);
     /** (字符串) 如果这个怪物是一个可骑乘的机甲, 这是电池的 id. 不支持对象或数组 (即只有一个电池 id)  */
     mech_battery?: string;
-    /** (对象) 新生成的怪物开始时拥有的弹药 */
+    /** 新生成的怪物开始时拥有的弹药 */
     starting_ammo?: Record<AnyItemID,number>;
     /** (对象) 这个怪物生成时带有的坐骑特定物品. 接受绑定, 马具, 护甲和存储的条目 */
     mount_items?: MonMountItem;
@@ -449,6 +449,3 @@ export const MonsterFlagList = [
 ] as const;
 /**怪物可用的Flag */
 export type MonsterFlag = (typeof MonsterFlagList)[number];
-
-
-
