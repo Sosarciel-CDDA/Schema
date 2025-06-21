@@ -6,6 +6,7 @@ import { BodyPartParam, CddaID, CharSymbol, Color, DefineMonFaction, DefineNpcFa
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { MaterialID } from "./Material";
+import { MonsterTrigger, Species, SpeciesID } from "./Species";
 import { TalkTopicID } from "./TalkTopic";
 
 
@@ -47,7 +48,7 @@ export type Monster = {
     /** (字符串数组) 怪物类别 (NULL, CLASSIC, 或 WILDLIFE) */
     categories?: string[];
     /** (字符串数组) 物种 ID, 例如 HUMAN, ROBOT, ZOMBIE, BIRD, MUTANT 等 */
-    species?: string[];
+    species?: SpeciesID[];
     /** (字符串数组) 怪物追踪这些气味 */
     scents_tracked?: string[];
     /** (字符串数组) 怪物忽略这些气味 */
@@ -139,12 +140,6 @@ export type Monster = {
     special_attacks?: any[];
     /** (字符串数组) 像 SEES, HEARS, SMELLS, STUMBLES, REVIVES 这样的任意数量的属性 */
     flags?: MonsterFlag[];
-    /** (字符串数组) 降低怪物士气的触发器 (参见 JSON_FLAGS.md)  */
-    fear_triggers?: string[];
-    /** (字符串数组) 提高怪物侵略性的触发器 (与 fear 相同的标志)  */
-    anger_triggers?: string[];
-    /** (字符串数组) 降低怪物侵略性的触发器 (与 fear 相同的标志)  */
-    placate_triggers?: string[];
     /** (字符串数组) 如果与怪物开启对话, 会出现的对话主题 */
     chat_topics?: TalkTopicID[];
     /** (字符串) 当怪物友好时, 可以转换为的物品 (例如, 拆解炮塔)  */
@@ -199,7 +194,7 @@ export type Monster = {
     absorb_material?: MaterialID[];
     /** (整数) 对于具有 SPLIT 特殊攻击的怪物. 确定分裂成自身副本时的移动成本 */
     split_move_cost?: number;
-};
+}&Pick<Species,'anger_triggers'|'fear_triggers'|'placate_triggers'>;
 
 /**怪物的身体类型 列表 */
 export const MonsterBPList = [
@@ -452,3 +447,6 @@ export const MonsterFlagList = [
 ] as const;
 /**怪物可用的Flag */
 export type MonsterFlag = (typeof MonsterFlagList)[number];
+
+
+

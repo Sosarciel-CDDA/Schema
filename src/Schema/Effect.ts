@@ -4,7 +4,7 @@ import { FlagID } from "./Flag";
 import { BodyPartID, CddaID, DescText, EffectRatType, Time } from "./GenericDefine";
 import { LimbScoreID } from "./LimbScore";
 import { MutationID } from "./Mutation";
-import { VitaminsID } from "./Vitamins";
+import { VitaminID } from "./Vitamin";
 
 
 
@@ -207,7 +207,7 @@ export type Effect = {
 /**效果维生素修正 */
 export type EffectVitaminsMod ={
     /**维生素ID */
-    vitamin: VitaminsID;
+    vitamin: VitaminID;
     /**每隔[0]~[1] tick 将会应用一次调整  
      * 按效果强度应用不同成员  
      */

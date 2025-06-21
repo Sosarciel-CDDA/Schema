@@ -30,6 +30,9 @@ import { Mapgen } from "./Mapgen";
 import { Palette } from "./Palette";
 import { Furniture } from "./Furniture";
 import { MonsterGroup } from "./MonsterGroup";
+import { ProficiencyCategory } from "./ProficiencyCategory";
+import { Species } from "./Species";
+import { MutationCategory } from "./MutationCategory";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -375,6 +378,7 @@ export type AnyCddaJson = AnyItem|Eoc|Mutation|DamageType|DamageInfoOrder|
     NpcClass|NpcInstance|OverlayOrdering|SoundEffect|Requirement|
     Effect|Spell|MathFunction|AmmoEffect|MissionDefinition|
     ModTileset|ActivityType|VehiclePart|ToolQuality|TalkTopic|Terrain|
-    OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup;
+    OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
+    Species|MutationCategory;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];

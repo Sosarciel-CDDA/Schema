@@ -11,6 +11,8 @@ import { NpcClassID } from "Schema/NpcClass";
 import { NpcInstanceID } from "Schema/NpcInstance";
 import { MutationID } from "Schema/Mutation";
 import { EmitID } from "Schema/Emit";
+import { FieldID } from "Schema/Field";
+import { FaultID } from "Schema/Fault";
 
 
 
@@ -69,8 +71,7 @@ export type Activate = TalkerVar<{
  */
 export type SetFault = TalkerVar<{
     /**要应用的故障ID */
-    //set_fault: (IDObj<FaultID>);
-    set_fault: (StrObj);
+    set_fault: (IDObj<FaultID>);
     /**强制
      * @default false
      * 如果为true, 即使物品没有定义它作为可能的故障, 也会应用故障
@@ -94,8 +95,7 @@ export type SetFault = TalkerVar<{
  */
 export type SetRandomFaultOfType = TalkerVar<{
     /**要应用的故障类型 */
-    //set_random_fault_of_type: (IDObj<FaultID>);
-    set_random_fault_of_type: (StrObj);
+    set_random_fault_of_type: (IDObj<FaultID>);
     /**强制
      * @default false
      * 如果为true, 即使物品没有定义它作为可能的故障, 也会应用故障
@@ -619,7 +619,7 @@ export type SetField = TalkerVar<{
     /**生成场地
      * 要在玩家周围生成的场地的ID
      */
-    set_field: (StrObj);
+    set_field: (IDObj<FieldID>);
     /**强度
      * @default 1
      * 要生成的场地的强度

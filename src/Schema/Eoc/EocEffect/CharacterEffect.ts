@@ -15,6 +15,8 @@ import { FurnitureID } from "Schema/Furniture";
 import { FieldID } from "Schema/Field";
 import { MonsterID } from "Schema/Monster";
 import { TalkTopicID } from "Schema/TalkTopic";
+import { MartialArtID } from "Schema/MartialArt";
+import { MutationCategoryID } from "Schema/MutationCategory";
 
 
 
@@ -130,8 +132,7 @@ export type MutateTowards = TalkerVar<{
      * @default "ANY"
      * 定义用于突变步骤的类别 - 对于维生素使用是必需的
      */
-    //category: (IDObj<MutateCategoryID>);
-    category?: (StrObj);
+    category?: (IDObj<MutationCategoryID>);
     /**是否使用维生素
      * 与mutate中相同, 需要定义类别
      */
@@ -337,8 +338,7 @@ export type DeactivateTrait = TalkerVar<{
  */
 export type LearnMartialArt = TalkerVar<{
     /**要学习的武术 */
-    //learn_martial_art: (IDObj<MartialID>);
-    learn_martial_art: (StrObj);
+    learn_martial_art: (IDObj<MartialArtID>);
 }, 'learn_martial_art'>;
 
 
@@ -353,8 +353,7 @@ export type LearnMartialArt = TalkerVar<{
  */
 export type ForgetMartialArt = TalkerVar<{
     /**要忘记的武术ID */
-    //forget_martial_art: (IDObj<MartialID>);
-    forget_martial_art: (StrObj);
+    forget_martial_art: (IDObj<MartialArtID>);
 }, 'forget_martial_art'>;
 
 

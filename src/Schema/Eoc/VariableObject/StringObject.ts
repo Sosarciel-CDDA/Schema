@@ -1,6 +1,7 @@
 import { MonsterID } from "Schema/Monster";
 import { IDObj } from "./VariableObjectIndex";
 import { StrObj } from "./StringObjectIndex";
+import { MartialArtID } from "Schema/MartialArt";
 
 
 /**怪物阵营mutator */
@@ -24,7 +25,7 @@ export type MutatorsMaTechName = {
     /** 返回具有ID matec_id的武术技术的名称 */
     mutator:"ma_technique_name";
     /** 武术ID */
-    matec_id:string;
+    matec_id:IDObj<MartialArtID>;
 }
 
 /**武术简介mutator */
@@ -32,7 +33,7 @@ export type MutatorsMaTechDesc = {
     /** 返回具有ID matec_id的武术技术的描述 */
     mutator:"ma_technique_description";
     /** 武术ID */
-    matec_id:string;
+    matec_id:IDObj<MartialArtID>;
 }
 
 /**随机武术mutator */

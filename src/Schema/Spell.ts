@@ -6,6 +6,7 @@ import { BodyPartID, CddaID, DescText } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { MonsterID } from "./Monster";
 import { SoundEffectID, SoundEffectVariantID } from "./SoundEffect";
+import { SpeciesID } from "./Species";
 
 
 
@@ -32,9 +33,9 @@ export type Spell = {
     /**如果法术可以对生物释放 有效的怪物ID */
     targeted_monster_ids?:MonsterID[];
     /**如果法术可以对生物释放 有效的怪物特殊标签 */
-    targeted_monster_species?:string[];
+    targeted_monster_species?:SpeciesID[];
     /**如果法术可以对生物释放 排除的怪物特殊标签 */
-    ignored_monster_species?:string[];
+    ignored_monster_species?:SpeciesID[];
     /**法术效果类型 */
     effect: SpellEffect;
     /**法术效果子类型  

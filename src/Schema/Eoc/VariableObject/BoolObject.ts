@@ -7,7 +7,7 @@ import { FieldID } from "Schema/Field";
 import { WeaponCategoryID } from "Schema/WeaponCategory";
 import { FlagID } from "Schema/Flag";
 import { MutationID } from "Schema/Mutation";
-import { AnyItem, AnyItemID } from "Schema/Item";
+import { AnyItem, AnyItemID, ItemCategotyID } from "Schema/Item";
 import { VarComment } from "../EocEffect";
 import { StrObj } from "./StringObjectIndex";
 import { EffectID } from "Schema/Effect";
@@ -16,6 +16,10 @@ import { AmmunitionTypeID } from "Schema/AmmiunitionType";
 import { SkillID } from "Schema/Skill";
 import { OvermapTerrainID } from "Schema/OvermapTerrain";
 import { MonBP } from "Schema/Monster";
+import { MartialArtID } from "Schema/MartialArt";
+import { SpeciesID } from "Schema/Species";
+import { RecipeID } from "Schema/Repice";
+import { ProficiencyID } from "Schema/Proficiency";
 
 
 //#region 不在文档内的
@@ -266,8 +270,7 @@ export type HasMartialArt = TalkerVar<{
     /**有武术
      * 要检查的武术ID
      */
-    //has_martial_art: (IDObj<MartialArtID>);
-    has_martial_art: (StrObj);
+    has_martial_art: (IDObj<MartialArtID>);
 }, 'has_martial_art'>;
 
 /**使用武术
@@ -281,8 +284,7 @@ export type UsingMartialArt = TalkerVar<{
     /**使用武术
      * 要检查的武术ID
      */
-    //using_martial_art: (IDObj<MartialArtID>);
-    using_martial_art: (StrObj);
+    using_martial_art: (IDObj<MartialArtID>);
 }, 'using_martial_art'>;
 
 
@@ -336,7 +338,7 @@ export type HasSpecies = TalkerVar<{
     /**有物种
      * 要检查的物种ID
      */
-    has_species: (StrObj);
+    has_species: (IDObj<SpeciesID>);
 }, 'has_species'>;
 
 
@@ -565,7 +567,7 @@ export type HasItemCategory = TalkerVar<{
     /**有物品类别
      * 要检查的物品类别
      */
-    has_item_category: (StrObj);
+    has_item_category: (IDObj<ItemCategotyID>);
     /**数量
      * 需要的物品数量
      */
@@ -686,19 +688,18 @@ export type HasAnyEffect = TalkerVar<{
     bodypart?: (IDObj<BodyPartID>);
 }, 'has_any_effect'>;
 
-/**有熟练度
- * 如果alpha或beta talker已经掌握了熟练度 (达到100%) 则返回true
+/**有专长
+ * 如果alpha或beta talker已经掌握了专长 (达到100%) 则返回true
  * 适用于: Avatar Character NPC
  * @example
  * // 检查你是否掌握了化学原理
  * { "u_has_proficiency": "prof_intro_chemistry" }
  */
 export type HasProficiency = TalkerVar<{
-    /**有熟练度
-     * 要检查的熟练度ID
+    /**有专长
+     * 要检查的专长ID
      */
-    //has_proficiency: (IDObj<ProficiencyID>);
-    has_proficiency: (StrObj);
+    has_proficiency: (IDObj<ProficiencyID>);
 }, 'has_proficiency'>;
 
 
@@ -778,8 +779,7 @@ export type KnowRecipe = TalkerVar<{
     /**知道配方
      * 要检查的配方ID
      */
-    //u_know_recipe: (IDObj<RecipeID>);
-    know_recipe: (StrObj);
+    know_recipe: (IDObj<RecipeID>);
 }, 'know_recipe'>;
 
 /**穿戴有标志的物品

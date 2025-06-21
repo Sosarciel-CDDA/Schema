@@ -1,7 +1,7 @@
 import { ParamsEoc } from "Schema/Eoc";
 import { CddaID, CopyfromVar, Time, Weight } from "Schema/GenericDefine";
 import { AnyItemID, GenericBase, GenericFlag } from "./Generic";
-import { VitaminsID } from "Schema/Vitamins";
+import { VitaminID } from "Schema/Vitamin";
 import { MaterialID } from "Schema/Material";
 
 /**Comestible ID格式   */
@@ -53,7 +53,7 @@ export type Comestible = CopyfromVar<{
     /** (可选) 此食品携带的疾病列表及其相关概率. 值必须在[0, 100]范围内.  */
     contamination?: [{ disease: "bad_food"; probability: number }];
     /**通过消费此物品的一次 (部分) 提供的维生素. 某些维生素 ("calcium", "iron", "vitC") 可以用该食品中维生素的重量来指定. 按重量指定的维生素可以是克 ("g") , 毫克 ("mg") 或微克 ("μg", "ug", "mcg") . 如果维生素未按重量指定, 则按"单位"指定, 含义根据维生素定义而定. 营养维生素 ("calcium", "iron", "vitC") 是理想每日价值平均的整数百分比. 维生素数组键包括以下内容: calcium, iron, vitC, mutant_toxin, bad_food, blood和redcells.  */
-    vitamins?: [VitaminsID, Weight][];
+    vitamins?: [VitaminID, Weight][];
     /**此食品由所有材料 (ID) 制成 */
     material?: {
         /**材料 */

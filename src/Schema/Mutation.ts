@@ -5,6 +5,7 @@ import { BodyPartID, CddaID, DescText, EffectRatType, SocialType } from "./Gener
 import { AnyItemID, ArmorID, GunID } from "./Item";
 import { MaterialID } from "./Material";
 import { MonsterID } from "./Monster";
+import { MutationCategory } from "./MutationCategory";
 import { SpellID } from "./Spell";
 
 
@@ -165,7 +166,7 @@ export type Mutation = {
     /**只对你有效的`MED`列表. 查看`CANT_HEAL_EVERYONE`标志项 (默认值: 空) */
     can_heal_with?: AnyItemID[];
     /**你可以变异成的类别列表 (默认值: 空) */
-    allowed_category?: string[];
+    allowed_category?: MutationCategory[];
     /**不能接收CBMs的身体部位列表 (默认值: 空) */
     no_cbm_on_bp?: BodyPartID[];
     /**发光身体部位列表以及发光强度作为浮点数 (默认值: 空) */

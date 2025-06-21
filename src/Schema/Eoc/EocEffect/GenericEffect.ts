@@ -6,6 +6,7 @@ import { TalkTopicID } from "Schema/TalkTopic";
 import { MissionDefinitionID } from "Schema/MissionDefinition";
 import { DescText, Time } from "Schema/GenericDefine";
 import { ItemGroupID } from "Schema/ItemGroup";
+import { MonsterID } from "Schema/Monster";
 
 
 /**math赋值表达式 */
@@ -334,7 +335,7 @@ export type RunMonsterEocs = TalkerVar<{
     /**怪物类型ID
      * 应该受到影响的mtype_id
      */
-    mtype_ids?: (StrObj)[];
+    mtype_ids?: (IDObj<MonsterID>)[];
     /**怪物范围
      * 如果使用, 只有在此范围内的怪物会受到影响
      */
@@ -689,7 +690,7 @@ export type RollRemainder = TalkerVar<{
     /**项的类型
      * 将给予的项的类型; 可以是bionic, mutation, spell或recipe之一
      */
-    type: (StrObj)|"bionic"|"mutation"|"spell"|"recipe";
+    type: (IDObj<"bionic"|"mutation"|"spell"|"recipe">);
     /**消息
      * 一旦remainder被使用, 将在日志中显示的消息; 
      * 可以在此消息中使用%s符号来写出将被给予的项的名称; 
