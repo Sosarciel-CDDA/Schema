@@ -84,19 +84,33 @@ export type Mutation = {
     encumbrance_multiplier_always?: Partial<Record<BodyPartID,number>>;
     /**从玩家的可见范围中减去的百分比, 上限为60. 负值有效, 但由于视觉范围的上限方式, 效果不是很明显 */
     stealth_modifier?: number;
-    /**当设置时, 突变是玩家需要激活的活动突变 (默认值: false) */
+    /**当设置时, 突变是玩家需要激活的活动突变  
+     * @default false
+     */
     active?: boolean;
-    /**当为true时, 这个'active'突变开始活动 (默认值: false, 需要'active') */
+    /**当为true时, 这个'active'突变开始活动 (需要'active')  
+     * @default false
+     */
     starts_active?: boolean;
-    /**激活此突变的成本. 需要将饥饿, 口渴或疲劳值设置为true (默认值: 0) */
+    /**激活此突变的成本. 需要将饥饿, 口渴或疲劳值设置为true  
+     * @default 0
+     */
     cost?: number;
-    /**设置需要经过多少时间单位 (回合 * 当前玩家速度)才能再次支付成本. 需要大于一才有任何效果 (默认值: 0) */
+    /**设置需要经过多少时间单位 (回合 * 当前玩家速度)才能再次支付成本. 需要大于一才有任何效果  
+     * @default 0
+     */
     time?: number;
-    /**如果为true, 激活突变消耗`cost` kcal.  (默认值: false) */
+    /**如果为true, 激活突变消耗`cost` kcal.  
+     * @default false
+     */
     kcal?: boolean;
-    /**如果为true, 激活突变增加口渴成本 (默认值: false) */
+    /**如果为true, 激活突变增加口渴成本  
+     * @default false
+     */
     thirst?: boolean;
-    /**如果为true, 激活突变增加疲劳成本 (默认值: false) */
+    /**如果为true, 激活突变增加疲劳成本  
+     * @default false
+     */
     fatigue?: boolean;
     /**突变激活在你的角色上应用此标志 */
     active_flags?: FlagID[];
@@ -142,37 +156,67 @@ export type Mutation = {
     };
     /**胃大小调节剂, 增加您一次可以消耗的食物量 */
     stomach_size_multiplier?: number;
-    /**影响你气味强度的浮点数 (默认值: 1.0) */
+    /**影响你气味强度的浮点数  
+     * @default 1.0
+     */
     scent_modifier?: number;
-    /**影响你当前气味倾向的目标气味的整数 (默认值: 500) */
+    /**影响你当前气味倾向的目标气味的整数  
+     * @default 500
+     */
     scent_intensity?: number;
-    /**添加到你的目标气味值的整数 (默认值: 0) */
+    /**添加到你的目标气味值的整数  
+     * @default 0
+     */
     scent_mask?: number;
-    /**你散发出的气味类型, 如在scent_types.json中定义 (默认值: 空) */
+    /**你散发出的气味类型, 如在scent_types.json中定义  
+     * @default ""
+     */
     scent_type?: string;
     /**吃或喝的时间乘以这个数 */
     consume_time_modifier?: number;
-    /**每个bmi单位超过character_weight_category::normal, 增加的hp_max数量 (默认值: 0.0) */
+    /**每个bmi单位超过character_weight_category::normal, 增加的hp_max数量  
+     * @default 0.0
+     */
     fat_to_max_hp?: number;
-    /**你的健康可以改变得有多快. 如果设置为0, 它永远不会改变 (默认值: 1.0) */
+    /**你的健康可以改变得有多快. 如果设置为0, 它永远不会改变  
+     * @default 1.0
+     */
     healthy_rate?: number;
-    /**水对你造成多少伤害, 负值代表治疗 (默认值: 0) */
+    /**水对你造成多少伤害, 负值代表治疗  
+     * @default 0
+     */
     weakness_to_water?: number;
-    /**忽视你的物种列表 (默认值: 空) */
+    /**忽视你的物种列表  
+     * @default []
+     */
     ignored_by?: string[];
-    /**被你激怒的物种列表以及多少, 负值代表平静 (默认值: 空) */
+    /**被你激怒的物种列表以及多少, 负值代表平静  
+     * @default []
+     */
     anger_relations?: [string, number][];
-    /**可食用材料列表 (默认值: 空) */
+    /**可食用材料列表  
+     * @default []
+     */
     can_only_eat?: MaterialID[];
-    /**你受限于的`MED`列表, 包括变异剂, 血清, 阿司匹林, 绷带等 (默认值: 空) */
+    /**你受限于的`MED`列表, 包括变异剂, 血清, 阿司匹林, 绷带等  
+     * @default []
+     */
     can_only_heal_with?: AnyItemID[];
-    /**只对你有效的`MED`列表. 查看`CANT_HEAL_EVERYONE`标志项 (默认值: 空) */
+    /**只对你有效的`MED`列表. 查看`CANT_HEAL_EVERYONE`标志项  
+     * @default []
+     */
     can_heal_with?: AnyItemID[];
-    /**你可以变异成的类别列表 (默认值: 空) */
+    /**你可以变异成的类别列表  
+     * @default []
+     */
     allowed_category?: MutationCategory[];
-    /**不能接收CBMs的身体部位列表 (默认值: 空) */
+    /**不能接收CBMs的身体部位列表  
+     * @default []
+     */
     no_cbm_on_bp?: BodyPartID[];
-    /**发光身体部位列表以及发光强度作为浮点数 (默认值: 空) */
+    /**发光身体部位列表以及发光强度作为浮点数  
+     * @default []
+     */
     lumination?: [BodyPartID, number][];
     /**额外代谢率乘数 (1.0倍, -0.5减半) */
     metabolism_modifier?: number;
