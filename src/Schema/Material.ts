@@ -33,6 +33,7 @@ export type Material = {
     latent_heat: number;
     /**材料的凝固点  
      * 该材料的凝固点 (C). 默认 0 C (32 F).  
+     * @default 0
      */
     freezing_point: number;
     /**可食用
