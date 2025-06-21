@@ -46,7 +46,9 @@ export type DescText = string|{
     ctxt?: string;
 };
 
-/**整数 */
+/**整数  
+ * @TJS-type integer
+ */
 export type Int = number;
 /**浮点数 */
 export type Float = number;

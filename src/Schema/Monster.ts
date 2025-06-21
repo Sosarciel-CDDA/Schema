@@ -184,18 +184,18 @@ export type Monster = {
     speed_description?: string;
     /** (对象) 关于将这个怪物喂食以将其变成宠物的数据 */
     petfood?: any;
-    /** (整数) 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定必须吸收多少毫升才能获得 1 HP. 默认 250 */
-    absorb_ml_per_hp?: number;
-    /** (浮点数) 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定基于被吸收物品的体积吸收物品的移动成本. 默认 0.025f */
-    absorb_move_cost_per_ml?: number;
-    /** (整数) 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最小移动成本, 无论消耗物品的体积大小. 默认 1 */
-    absorb_move_cost_min?: number;
-    /** (整数) 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最大移动成本, 无论消耗物品的体积大小. -1 表示无限制. 默认 -1 */
-    absorb_move_cost_max?: number;
+    /** 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定必须吸收多少毫升才能获得 1 HP. 默认 250 */
+    absorb_ml_per_hp?: (Int);
+    /** 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定基于被吸收物品的体积吸收物品的移动成本. 默认 0.025f */
+    absorb_move_cost_per_ml?: (Float);
+    /** 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最小移动成本, 无论消耗物品的体积大小. 默认 1 */
+    absorb_move_cost_min?: (Int);
+    /** 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最大移动成本, 无论消耗物品的体积大小. -1 表示无限制. 默认 -1 */
+    absorb_move_cost_max?: (Int);
     /** (字符串数组) 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 指定怪物将寻求吸收的材料类型. 只要物品由列表中的至少一种材料制成, 就会匹配该物品. 如果未指定, 怪物将吸收所有材料 */
     absorb_material?: MaterialID[];
-    /** (整数) 对于具有 SPLIT 特殊攻击的怪物. 确定分裂成自身副本时的移动成本 */
-    split_move_cost?: number;
+    /** 对于具有 SPLIT 特殊攻击的怪物. 确定分裂成自身副本时的移动成本 */
+    split_move_cost?: (Int);
 }&Pick<Species,'anger_triggers'|'fear_triggers'|'placate_triggers'>;
 
 /**怪物的身体类型 列表 */
