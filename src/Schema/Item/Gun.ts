@@ -89,10 +89,10 @@ export type GunBase = {
 };
 
 /**枪械 */
-export type Gun = CopyfromVar<{
-    id:GunID;
-    type: "GUN";
-} & GunBase & GenericBase>;
+export type GunTrait = {
+    id: GunID;
+    trait_type: "GUN";
+} & GunBase;
 
 
 

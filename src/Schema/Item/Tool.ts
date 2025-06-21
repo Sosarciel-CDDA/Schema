@@ -2,16 +2,16 @@ import { AmmunitionTypeID } from "../AmmiunitionType";
 import { CddaID, CopyfromVar, Power, DescText } from "../GenericDefine";
 import { ToolQualityID } from "../ToolQuality";
 import { GenericBase, GenericFlag } from "./Generic";
-import { GunMod } from "./GunMod";
+import { GunModTrait } from "./GunMod";
 
 
 /**TOOL ID格式 */
 export type ToolID = CddaID<"TOOL">;
 
 /**工具 */
-export type Tool = CopyfromVar<{
+export type ToolTrait = {
     id: ToolID;
-    type: "TOOL";
+    trait_type: "TOOL";
     /**随着时间的推移消耗的费用, 不推荐使用 power_draw */
     turns_per_charge?: number;
     /**当与 UPS 结合使用时, 该项目将燃烧燃料以获得给定的能量值,   
@@ -60,8 +60,8 @@ export type Tool = CopyfromVar<{
     /**工具的Flag */
     flags?:ToolFlag[];
     /**同时作为枪械模组的数据 */
-    gunmod_data?: Omit<GunMod,"id"|"type">;
-} & GenericBase>;
+    gunmod_data?: Omit<GunModTrait,"id"|"type">;
+};
 
 /**物品的工具品质 [调整值类型, 品质等级] */
 export type ItemToolQuality = [ToolQualityID,number];

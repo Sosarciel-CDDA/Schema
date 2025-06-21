@@ -1,10 +1,10 @@
-import { AnyString, JObject, JToken } from "@zwa73/utils";
+import { JToken } from "@zwa73/utils";
 import { AmmunitionType } from "./AmmiunitionType";
 import { Effect } from "./Effect";
 import { Enchantment } from "./Enchantment";
-import { Eoc, IDObj, StrObj } from "./Eoc";
+import { Eoc, IDObj } from "./Eoc";
 import { Flag, FlagID } from "./Flag";
-import { AmmoID, AnyItem, AnyItemID } from "./Item";
+import { AmmoID, AnyItem, AnyItemID, AnyItemTrait } from "./Item";
 import { ItemGroup } from "./ItemGroup";
 import { MathFunction } from "./MathFuncion";
 import { Monster } from "./Monster";
@@ -396,7 +396,7 @@ type AnyOtherObject = {
 };
 
 /**任何Cdda的Json */
-export type AnyCddaJson = AnyItem|Eoc|Mutation|DamageType|DamageInfoOrder|
+export type AnyCddaJson = AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInfoOrder|
     AmmunitionType|Enchantment|Flag|ItemGroup|Monster|
     NpcClass|NpcInstance|OverlayOrdering|SoundEffect|Requirement|
     Effect|Spell|MathFunction|AmmoEffect|MissionDefinition|

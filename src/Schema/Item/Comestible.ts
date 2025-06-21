@@ -1,17 +1,17 @@
 import { ParamsEoc } from "Schema/Eoc";
 import { CddaID, CopyfromVar, Time, Weight } from "Schema/GenericDefine";
-import { AnyItemID, GenericBase, GenericFlag } from "./Generic";
+import { GenericBase, GenericFlag } from "./Generic";
 import { VitaminID } from "Schema/Vitamin";
 import { MaterialID } from "Schema/Material";
+import { AnyItemID } from "./ItemIndex";
 
 /**Comestible ID格式   */
 export type ComestibleID = CddaID<"COME">;
 
 /**Comestible 消耗品 */
-export type Comestible = CopyfromVar<{
+export type ComestibleTrait = {
     id: ComestibleID;
-    /**定义为COMESTIBLE */
-    type: "COMESTIBLE";
+    trait_type: "COMESTIBLE";
     /**一个时间持续期: 食品保质期. 0 = 不会变质 */
     spoils_in?: (Time);
     /**刺激效果 */
@@ -73,7 +73,7 @@ export type Comestible = CopyfromVar<{
     petfood?: string[];
     /**消耗品的flag */
     flags?: ComestibleFlag[];
-} & GenericBase>;
+};
 
 /**消耗品类型 列表*/
 export const  ComestibleTypeList = [

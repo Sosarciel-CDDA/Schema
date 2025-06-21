@@ -1,13 +1,13 @@
 {
     $schema: "./schema/AnyCddaJson.schema.json",
-    type: "MONSTER",
-    hp: 1,
-    name: "qq",
-    description: "",
-    default_faction: "human",
-    id: "qq",
-    speed: 1,
-    volume: "2 L",
-    symbol: "s",
-    weight: 1,
+    type: "ITEM",
+    id: "tstitem",
+    subtype: ["ARMOR"],
+    description: "Test Item",
+    name: "Test Item",
+    symbol: "1",
+    volume: 1000,
+    weight: 1000,
+    price: 1000,
+    range: 0
 }

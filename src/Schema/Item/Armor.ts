@@ -8,9 +8,9 @@ import { GenericBase, GenericFlag } from "./Generic"
 export type ArmorID = CddaID<"ARMOR">;
 
 /**一件护甲 */
-export type Armor = CopyfromVar<{
-    id:ArmorID;
-    type: "ARMOR";
+export type ArmorTrait = {
+    id: ArmorID;
+    trait_type: "ARMOR";
     /**保暖度 */
     warmth?: number;
     /**环境保护 */
@@ -18,7 +18,7 @@ export type Armor = CopyfromVar<{
     flags?: ArmorFlag[];
     /**护甲数据 必须设置覆盖层 */
     armor?: ArmorData[];
-} & GenericBase>;
+};
 
 /**护甲数据 */
 export type ArmorData = {

@@ -1,7 +1,8 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { CddaID, CopyfromVar, RangeDamage } from "../GenericDefine";
-import { AnyItemID, GenericBase, GenericFlag } from "./Generic";
+import { CddaID, RangeDamage } from "../GenericDefine";
+import { GenericFlag } from "./Generic";
+import { AnyItemID } from "./ItemIndex";
 
 
 
@@ -9,9 +10,9 @@ import { AnyItemID, GenericBase, GenericFlag } from "./Generic";
 export type AmmoID = CddaID<"AMMO">;
 
 /**Ammo 弹药物品 */
-export type Ammo = CopyfromVar<{
-    id:AmmoID;
-    type: "AMMO";
+export type AmmoTrait = {
+    id: AmmoID;
+    trait_type: "AMMO";
     /**弹药类型 使用材质id */
     ammo_type: AmmunitionTypeID;
     /**远程伤害 */
@@ -64,7 +65,7 @@ export type Ammo = CopyfromVar<{
     flags?: GenericFlag[];
     /**发射弹药后在弹药落点掉落的物品 */
     drop?:AnyItemID;
-}&GenericBase>;
+};
 
 
 

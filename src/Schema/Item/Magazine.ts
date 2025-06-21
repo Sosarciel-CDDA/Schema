@@ -2,16 +2,17 @@ import { AmmunitionTypeID } from "../AmmiunitionType";
 import { RangeDamage, Energy, Volume, CddaID, CopyfromVar, Power as Capacity } from "../GenericDefine";
 import { SkillID } from "../Skill";
 import { AmmoID } from "./Ammo";
-import { AnyItemID, GenericBase, GenericFlag } from "./Generic";
+import { GenericBase, GenericFlag } from "./Generic";
+import { AnyItemID } from "./ItemIndex";
 
 
 /**弹夹 ID格式 */
 export type MagazineID = CddaID<"MAG">;
 
 /**弹夹 */
-export type Magazine = CopyfromVar<{
+export type MagazineTrait = {
     id: MagazineID;
-    type: "MAGAZINE";
+    trait_type: "MAGAZINE";
     /**该弹匣可以装载哪些类型的弹药 */
     ammo_type: AmmunitionTypeID[];
     /**弹匣容量 (与弹药量相当的单位) */
@@ -28,7 +29,7 @@ export type Magazine = CopyfromVar<{
     linkage?: AnyItemID;
     /**弹夹的Flag */
     flags?: MagazineFlag[];
-} & GenericBase>;
+};
 
 
 /**弹夹可用的flag 列表 */

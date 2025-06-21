@@ -11,10 +11,9 @@ import { MagazineID } from "./Magazine";
 export type GunModID = CddaID<"GMOD">;
 
 /**枪械模组 */
-export type GunMod = CopyfromVar<{
-    id:GunModID;
-	/** 定义这个为GUNMOD */
-	type: "GUNMOD";
+export type GunModTrait = {
+	id: GunModID;
+	trait_type: "GUNMOD";
 	/** 必填. 这个枪械改装件安装在哪里？ */
 	location: GunModSlot;
 	/** 必填. 这个枪械改装件可以用于哪种武器？ */
@@ -120,7 +119,7 @@ export type GunMod = CopyfromVar<{
 	blacklist_slot?: GunModSlot[];
 	/** 如果枪上存在指定的改装件, 阻止安装枪械改装件 */
 	blacklist_mod?: GunModID[];
-} & Partial<GunBase> & GenericBase>;
+} & Partial<GunBase>;
 
 /**枪械模组槽位 */
 export type GunModSlot = string;

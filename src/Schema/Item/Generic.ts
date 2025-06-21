@@ -2,16 +2,17 @@ import { AmmunitionTypeID } from "../AmmiunitionType";
 import { EnchantmentID, InlineEnchantment } from "../Enchantment";
 import { CustomFlagID, FlagID } from "../Flag";
 import { CddaID, CharSymbol, Color, CopyfromVar, DescText, Explosion, Length, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
-import { Ammo, AmmoID } from "./Ammo";
-import { Gun, GunID } from "./Gun";
+import { AmmoTrait, AmmoID } from "./Ammo";
+import { GunTrait, GunID } from "./Gun";
 import { WeaponCategoryID } from "../WeaponCategory";
 import { MaterialID } from "../Material";
-import { Tool, ToolID } from "./Tool";
-import { Magazine, MagazineID } from "./Magazine";
-import { Comestible } from "./Comestible";
-import { Armor } from "./Armor";
-import { GunMod } from "./GunMod";
+import { ToolTrait, ToolID } from "./Tool";
+import { MagazineTrait, MagazineID } from "./Magazine";
+import { ComestibleID, ComestibleTrait } from "./Comestible";
+import { ArmorID, ArmorTrait } from "./Armor";
+import { GunModID, GunModTrait } from "./GunMod";
 import { UseAction } from "../ItemAction";
+import { AnyItemID } from "./ItemIndex";
 
 
 /**预定义的通用物品 列表 */
@@ -58,22 +59,12 @@ export const DefineGenericIDList = [
 /**预定义的通用物品 */
 export type DefineGenericID = typeof DefineGenericIDList[number];
 
-/**Generic ID格式  */
-export type GenericID = CddaID<"GENERIC">|DefineGenericID;
-
-/**通用物品 */
-export type Generic = CopyfromVar<{
-    type: "GENERIC";
-    id:GenericID;
-    flags?: GenericFlag[];
-}&GenericBase>;
-
 /**通用物品基础 */
 export type GenericBase = {
     /**物品flag */
     flags?: string[];
     /**物品类型 */
-    type: string;
+    type: "ITEM";
     /**物品唯一ID */
     id: string;
     /**物品显示名 */
@@ -298,13 +289,6 @@ export type ItemMaterial = MaterialID|{
     portion?:number;
 }
 
-/**任何物品 */
-export type AnyItem = Generic|Ammo|Gun|Tool|Magazine|Comestible|Armor|GunMod;
-/**任何物品ID */
-export type AnyItemID = AnyItem["id"];
-/**任何物品的Flag */
-export type AnyItemFlag = Exclude<AnyItem['flags'],undefined>[number];
-
 /**预定义的物品类别 列表 */
 export const DefineItemCategoryList = [
     "guns"                          , //
@@ -346,6 +330,7 @@ export const DefineItemCategoryList = [
 export type DefineItemCategory = typeof DefineItemCategoryList[number];
 /**物品类别 */
 export type ItemCategotyID = DefineItemCategory;
+
 
 
 /**
