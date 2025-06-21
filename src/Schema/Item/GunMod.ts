@@ -78,9 +78,13 @@ export type GunMod = CopyfromVar<{
 	aim_speed?: number;
 	/** 弹药效果类型的ID列表 */
 	ammo_effects?: AmmoEffectID[];
-	/** 枪械发射时消耗改装件被销毁的几率 (默认1/10000)  */
+	/** 枪械发射时消耗改装件被销毁的几率
+	 * @default 1/10000
+	 */
 	consume_chance?: number;
-	/** 将对改装件的伤害除以此数量 (默认 1) */
+	/** 将对改装件的伤害除以此数量
+	 * @default 1
+	 */
 	consume_divisor?: number;
 	/** 提高枪械的操控性. 例如, 前握把可能有6, 两脚架有18 */
 	handling_modifier?: number;

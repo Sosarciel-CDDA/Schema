@@ -209,7 +209,9 @@ export type PocketData = {
     volume_multiplier?: number;
     /**表示在最佳条件下从口袋中取出物品所需的移动次数.  */
     moves?: number;
-    /**默认 false.  如果为 true, 则该口袋的大小是固定的, 并且在填充时不会扩展.  玻璃罐是刚性的, 而塑料袋则不是.  */
+    /**如果为 true, 则该口袋的大小是固定的, 并且在填充时不会扩展.  玻璃罐是刚性的, 而塑料袋则不是
+     * @default false
+     */
     rigid?: boolean;
     /**默认 false.  如果属实, 则玩家无法使用该口袋 */
     forbidden?: boolean;

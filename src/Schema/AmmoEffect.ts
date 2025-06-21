@@ -63,15 +63,18 @@ export type AmmoEffect = {
      */
     explosion?: Explosion;
     /**做闪光弹  
-     * 在命中位置产生一次性EMP爆炸; 默认 false  
+     * 在命中位置产生一次性EMP爆炸
+     * @default false
      */
     do_flashbang?: boolean;
     /**做电磁脉冲爆炸  
-     * 产生硬编码的闪光弹爆炸; 默认 false  
+     * 产生硬编码的闪光弹爆炸
+     * @default false
      */
     do_emp_blast?: boolean;
     /**泡沫混凝土建筑  
-     * 在命中位置产生泡沫混凝土地块附着物和墙壁, 用于aftershock; 默认 false  
+     * 在命中位置产生泡沫混凝土地块附着物和墙壁, 用于aftershock
+     * @default false
      */
     foamcrete_build?: boolean;
     /**触发概率  
@@ -88,43 +91,53 @@ export type AmmoAoe = {
      */
     field_type?: FieldID;
     /**最小强度  
-     * 地块附着物的最小强度; 默认 0  
+     * 地块附着物的最小强度
+     * @default 0
      */
     intensity_min?: number;
     /**最大强度  
-     * 地块附着物的最大强度; 默认 0  
+     * 地块附着物的最大强度
+     * @default 0
      */
     intensity_max?: number;
     /**半径
-     * 要产生的地块附着物的半径; 默认 1
+     * 要产生的地块附着物的半径
+     * @default 1
      */
     radius?: number;
     /**Z轴半径  
-     * Z级别的半径; 默认 0
+     * Z级别的半径
+     * @default 0
      */
     radius_z?: number;
     /**概率  
-     * 产生1个单位地块附着物的概率, 从0到100; 默认100
+     * 产生1个单位地块附着物的概率, 从0到100
+     * @default 100
      */
     chance?: number;
     /**大小  
-     * 似乎是阈值, 当自动炮塔停止射击武器以防止友军伤害时; 默认 0  
+     * 似乎是阈值, 当自动炮塔停止射击武器以防止友军伤害时
+     * @default 0
      */
     size?: number;
     /**检查可通过性  
-     * 如果为false, 投射物能够穿透不可穿透的地形,  
-     * 如果定义了穿透 (如墙和窗户); 如果为true,  
-     * 投射物不能穿透甚至一片玻璃; 默认 false  
+     * 如果为false, 投射物能够穿透不可穿透的地形  
+     * 如果定义了穿透 (如墙和窗户)  
+     * 如果为true  
+     * 投射物不能穿透甚至一片玻璃  
+     * @default false
      */
     check_passable?: boolean;
     /**检查视线  
-     * 如果为false, 地块附着物可以在不透明的墙后产生(例如, 在混凝土墙后面);  
-     * 如果为true, 它不能; 默认 false  
+     * 如果为false, 地块附着物可以在不透明的墙后产生(例如, 在混凝土墙后面)  
+     * 如果为true, 它不能  
+     * @default false
      */
     check_sees?: boolean;
     /**检查视线半径  
      * 如果 "check_sees" 为 true, 并且此值小于 "radius", 则此值用作半径.   
-     * 目的和推理未知, 可能是微型核弹的一些遗留物, 所以就不要使用它了; 默认 0  
+     * 目的和推理未知, 可能是微型核弹的一些遗留物, 所以就不要使用它了  
+     * @default 0
      */
     check_sees_radius?: number;
 }
@@ -132,7 +145,8 @@ export type AmmoAoe = {
 /**弹药轨迹效果 */
 export type AmmoTrail = {
     /**地块附着物类型  
-     * 将产生的地块附着物; 默认 "fd_null"  
+     * 将产生的地块附着物  
+     * @default "fd_null"
      */
     field_type?: FieldID;
     /**最小强度  

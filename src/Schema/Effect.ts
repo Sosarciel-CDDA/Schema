@@ -46,7 +46,9 @@ export type EffectID = CddaID<"EFF">|DefineEffectID;
 export type Effect = {
     type: "effect_type";
     id: EffectID;
-    /**用于后面的许多字段, 默认为 1 */
+    /**用于后面的许多字段
+     * @default 1
+     */
     max_intensity?: number;
     /**将累积效果的最大强度级别.   
      * 其他强度级别只会增加持续时间.   

@@ -28,7 +28,9 @@ export type ArmorData = {
         type: MaterialID;
         /**材质覆盖率 0~100*/
         covered_by_mat: number;
-        /**厚度 基础1*/
+        /**厚度
+         * @default 1
+         */
         thickness: number;
     }[];
     /**覆盖 主肢体id */
