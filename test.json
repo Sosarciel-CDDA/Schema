@@ -3,5 +3,6 @@
     "type": "ITEM",
     "id": "s",
     "range": 0,
-    "copy-from":"123"
+    "description": "test",
+    "//":"uncopy"
 }

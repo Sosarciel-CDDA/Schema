@@ -45,7 +45,10 @@ type ItemTraitMap = {
 };
 
 /**通用物品基础 */
-type ItemBase = ({ id:AnyItemID;} & GenericBase);
+type ItemBase = ({
+    id:AnyItemID;
+    "//"?:"uncopy";
+} & GenericBase);
 
 
 /**具有某些特征的物品
@@ -102,7 +105,7 @@ export type CopyFromItem = {
      * { "lc_steel_chain": "hc_steel_chain" } //低碳钢换高碳钢
      */
     replace_materials?: {};
-}&Partial<AnyItemTrait>;
+}&Partial<AnyItemTrait>&Partial<GenericBase>;
 
 /**任何物品的Flag */
 export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];
