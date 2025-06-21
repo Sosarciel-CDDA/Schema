@@ -2,7 +2,7 @@ import { DamageTypeID, DefineDamageTypeIDList } from "./DamageType";
 import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
-import { BodyPartParam, CddaID, CharSymbol, Color, DefineMonFaction, DefineNpcFaction, Phase, Time, Volume, Weight } from "./GenericDefine";
+import { BodyPartParam, CddaID, CharSymbol, Color, DefineMonFaction, DefineNpcFaction, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { MaterialID } from "./Material";
@@ -28,7 +28,7 @@ export type Monster = {
     /**怪物的字符画ID */
     ascii_picture?:string;
     /**生命值 */
-    hp: number;
+    hp: (Int);
     /**体积 影响不同大小目标的近战命中率 */
     volume: (Volume);
     /**重量 */
@@ -42,7 +42,7 @@ export type Monster = {
     /**怪物身体类型 */
     bodytype?: MonBP;
     /**行动速度 */
-    speed: number;
+    speed: (Int);
     /** (字符串) 从另一个怪物继承怪物属性. 参见 JSON_INHERITANCE.md */
     "copy-from"?: MonsterID;
     /** (字符串数组) 怪物类别 (NULL, CLASSIC, 或 WILDLIFE) */
@@ -57,62 +57,64 @@ export type Monster = {
     material?: MaterialID[];
     /** (字符串) 怪物的身体物质状态, 例如 SOLID, LIQUID, GAS, PLASMA, NULL */
     phase?: Phase;
-    /** (整数) 每次常规攻击的移动次数. 如果未定义, 默认为100 */
-    attack_cost?: number;
-    /** (整数) 特殊和远程攻击的额外怪物难度  
-     *  如果超过 30, 则击杀将记录在纪念日志中.   
-     *  怪物难度是根据预期的近战伤害, 闪避, 护甲, 生命值, 速度, 士气, 攻击性和视野范围来计算的.   
-     *  该计算不能很好地处理远程特殊攻击或独特的特殊攻击, 可以使用基线难度来解释这一点.   
-     *    2    有限的防御能力, 如掠夺者的泰瑟枪, 或弱的特殊能力, 如尖叫僵尸的特殊能力, 以警告附近的怪物, 或攻击的小奖励, 如毒药或毒液.   
-     *    5    比喷吐僵尸的吐痰弱的有限范围攻击, 或者强大的防御能力, 如震撼僵尸的回击或酸僵尸的酸喷雾.   
-     *    10   强大的远程攻击, 如喷吐僵尸的喷水或炮塔的 9 毫米冲锋枪.   
-     *    15   强大的远程攻击, 带有额外的危险, 例如腐蚀性僵尸的口水  
-     *    20   非常强大的远程攻击, 例如激光炮塔或军用炮塔的5.56毫米步枪, 或者强大的特殊能力, 例如僵尸死灵法师复活其他僵尸的能力.   
-     *    30   即使对于装甲角色来说也是致命的远程攻击, 例如反物质炮塔的 0.50 BMG 步枪.   
+    /**每次常规攻击的移动次数. 如果未定义, 默认为100 
+     * @default 100
      */
-    diff?: number;
-    /** (整数) 初始侵略性, 当怪物达到10时会变得敌对 */
-    aggression?: number;
-    /** (整数) 初始士气, 当 (当前侵略性 + 当前士气) < 0 时, 怪物会逃跑 */
-    morale?: number;
+    attack_cost?: (Int);
+    /**特殊和远程攻击的额外怪物难度  
+     * 如果超过 30, 则击杀将记录在纪念日志中.   
+     * 怪物难度是根据预期的近战伤害, 闪避, 护甲, 生命值, 速度, 士气, 攻击性和视野范围来计算的.   
+     * 该计算不能很好地处理远程特殊攻击或独特的特殊攻击, 可以使用基线难度来解释这一点.   
+     *   2    有限的防御能力, 如掠夺者的泰瑟枪, 或弱的特殊能力, 如尖叫僵尸的特殊能力, 以警告附近的怪物, 或攻击的小奖励, 如毒药或毒液.   
+     *   5    比喷吐僵尸的吐痰弱的有限范围攻击, 或者强大的防御能力, 如震撼僵尸的回击或酸僵尸的酸喷雾.   
+     *   10   强大的远程攻击, 如喷吐僵尸的喷水或炮塔的 9 毫米冲锋枪.   
+     *   15   强大的远程攻击, 带有额外的危险, 例如腐蚀性僵尸的口水  
+     *   20   非常强大的远程攻击, 例如激光炮塔或军用炮塔的5.56毫米步枪, 或者强大的特殊能力, 例如僵尸死灵法师复活其他僵尸的能力.   
+     *   30   即使对于装甲角色来说也是致命的远程攻击, 例如反物质炮塔的 0.50 BMG 步枪.   
+     */
+    diff?: (Int);
+    /**初始侵略性, 当怪物达到10时会变得敌对 */
+    aggression?: (Int);
+    /**初始士气, 当 (当前侵略性 + 当前士气) < 0 时, 怪物会逃跑 */
+    morale?: (Int);
     /** (布尔值) 如果为真, 怪物在生气时总是会攻击角色 */
     aggro_character?: boolean;
-    /** (浮点数) 对于坐骑, 坐骑到骑手重量的最大比率, 例如 0.2 表示 <=20% */
-    mountable_weight_ratio?: number;
-    /** (整数) 怪物在近战战斗中的技能, 从0-10, 其中4是平均水平的怪物 */
-    melee_skill?: number;
-    /** (整数) 怪物躲避攻击的技能 */
-    dodge?: number;
+    /**对于坐骑, 坐骑到骑手重量的最大比率, 例如 0.2 表示 <=20% */
+    mountable_weight_ratio?: (Float);
+    /**怪物在近战战斗中的技能, 从0-10, 其中4是平均水平的怪物 */
+    melee_skill?: (Int);
+    /**怪物躲避攻击的技能 */
+    dodge?: (Int);
     /** (对象数组) 在怪物近战攻击时添加到骰子滚动上的伤害实例列表 */
     melee_damage?: MosnterMeleeDamage[];
-    /** (整数) 在怪物近战攻击时确定砸伤伤害的骰子滚动次数 */
-    melee_dice?: number;
-    /** (整数) 每个由 melee_dice 滚动的骰子的面数 */
-    melee_dice_sides?: number;
-    /** (整数) 抓取效果的强度, 从1到n, 模拟n个常规僵尸抓取 */
-    grab_strength?: number;
-    /** (整数) 通过与这个怪物战斗可以学习的最大近战技能等级. 如果未定义, 默认为 melee_skill + 2 */
-    melee_training_cap?: number;
+    /**在怪物近战攻击时确定砸伤伤害的骰子滚动次数 */
+    melee_dice?: (Int);
+    /**每个由 melee_dice 滚动的骰子的面数 */
+    melee_dice_sides?: (Int);
+    /**抓取效果的强度, 从1到n, 模拟n个常规僵尸抓取 */
+    grab_strength?: (Int);
+    /**通过与这个怪物战斗可以学习的最大近战技能等级. 如果未定义, 默认为 melee_skill + 2 */
+    melee_training_cap?: (Int);
     /** (对象) 怪物对不同类型伤害的保护 */
     armor?: Record<DamageTypeID,number>;
     /** (对象数组) 怪物保护中的弱点 */
     weakpoints?: MonWeakpoint[];
     /** (字符串数组) 应用于怪物的弱点集 */
     weakpoint_sets?: string[];
-    /** (浮点数) 当电伤害发生时, 应用电击的机会的乘数 (目前没有实现其他效果)  */
-    status_chance_multiplier?: number;
+    /**当电伤害发生时, 应用电击的机会的乘数 (目前没有实现其他效果)  */
+    status_chance_multiplier?: (Float);
     /** (对象或字符串数组) 怪物所属的弱点家族 */
     families?: MonWeakpointFamilie[];
-    /** (整数) 全日光下的视野范围, 其中50是典型的最大值 */
-    vision_day?: number;
-    /** (整数) 完全黑暗中的视野范围, 例如: coyote 5, bear 10, sewer rat 30, flaming eye 40 */
-    vision_night?: number;
-    /** (整数) 怪物在自己和当前被追踪的敌人或被跟随的领导者之间保持的瓦片数量. 默认为3 */
-    tracking_distance?: number;
+    /**全日光下的视野范围, 其中50是典型的最大值 */
+    vision_day?: (Int);
+    /**完全黑暗中的视野范围, 例如: coyote 5, bear 10, sewer rat 30, flaming eye 40 */
+    vision_night?: (Int);
+    /**怪物在自己和当前被追踪的敌人或被跟随的领导者之间保持的瓦片数量. 默认为3 */
+    tracking_distance?: (Int);
     /** (字符串数组) 这个怪物不会触发的陷阱的 trap_id. 默认行为是触发所有陷阱 */
     trap_avoids?: string[];
-    /** (浮点数) 怪物被动发出的光量, 必须大于0才能产生任何效果 */
-    luminance?: number;
+    /**怪物被动发出的光量, 必须大于0才能产生任何效果 */
+    luminance?: (Float);
     /** (字符串或物品组) 当怪物死亡时生成的物品组 */
     death_drops?:ItemGroupID|InlineItemGroup;
     /**死亡效果  

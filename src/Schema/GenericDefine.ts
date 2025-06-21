@@ -46,6 +46,11 @@ export type DescText = string|{
     ctxt?: string;
 };
 
+/**整数 */
+export type Int = number;
+/**浮点数 */
+export type Float = number;
+
 /**单字符 */
 export type CharSymbol = string;
 
