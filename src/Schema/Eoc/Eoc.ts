@@ -14,7 +14,7 @@ export type EocID = CddaID<"EOC">;
 export type Eoc = {
     type: "effect_on_condition";
     /**唯一ID */
-    id: EocID;
+    id: (EocID);
     /**效果 */
     effect?: EocEffect[];
     /**启用条件为假时的效果 */

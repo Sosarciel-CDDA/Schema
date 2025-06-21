@@ -1,12 +1,12 @@
 import { CddaID, CharSymbol, DescText, Volume } from "./GenericDefine";
 
-/**TalkTopic ID格式 */
+/**Terrain ID */
 export type TerrainID = CddaID<"TERRAIN">;
 
-/**对话选项 */
+/**Terrain */
 export type Terrain = {
     type: "terrain";
-    id: TerrainID;
+    id: (TerrainID);
     name: (DescText);
     /**ascii显示符号 */
     symbol: (CharSymbol);

@@ -3,12 +3,12 @@ import { MaterialID } from "../Material";
 import { GenericFlagID } from "./Generic"
 
 
-/**Armor ID格式 */
+/**ArmorID */
 export type ArmorID = CddaID<"ARMOR">;
 
 /**一件护甲 */
 export type ArmorTrait = {
-    id: ArmorID;
+    id: (ArmorID);
     trait_type: "ARMOR";
     /**保暖度 */
     warmth?: number;
@@ -24,7 +24,7 @@ export type ArmorData = {
     /**材质 */
     material?: {
         /**材质 */
-        type: MaterialID;
+        type: (MaterialID);
         /**材质覆盖率 0~100*/
         covered_by_mat: number;
         /**厚度

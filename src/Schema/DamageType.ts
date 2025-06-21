@@ -36,13 +36,14 @@ export type DamageTypeID = DefineDamageTypeID|CddaID<"DT">;
 /**伤害类型 */
 export type DamageType = {
     type: "damage_type";
-    id:DamageTypeID;
+    /**伤害类型唯一ID */
+    id:(DamageTypeID);
     /** 伤害类型的名称, 如在物品信息屏幕中的保护值中显示 */
     name: (DescText);
     /** (可选) 确定处理此伤害类型时使用的技能
      * @default none
     */
-    skill?: SkillID;
+    skill?: (SkillID);
     /** (可选) 将此伤害类型标识为来自物理源
      * @default false
      */
@@ -100,7 +101,7 @@ export type DamageType = {
 export type DamageInfoOrder = {
     type: "damage_info_order";
     /** 唯一标识符, 必须对应一个已存在的 damage_type */
-    id: DamageTypeID;
+    id: (DamageTypeID);
     /**(可选) 确定在保护值中显示此伤害类型的详细程度. 有效值为 "detailed", "basic" 和 "none"
      * @default "none"
      */

@@ -6,15 +6,15 @@ import { CddaID, DescText, Float, Int, StatusSimple } from "./GenericDefine";
 import { SkillID } from "./Skill";
 import { WeaponCategoryID } from "./WeaponCategory";
 
-/**技巧ID格式 */
+/**技巧ID */
 export type TechniqueID = CddaID<"TECH">;
 
 /**技巧定义 */
 export type Technique = {
     /**固定为"technique" */
     type: "technique";
-    /**技巧ID */
-    id: TechniqueID;
+    /**技巧唯一ID */
+    id: (TechniqueID);
     /**技巧名称 */
     name: (DescText);
     /**攻击向量 */
@@ -30,14 +30,14 @@ export type Technique = {
     /**需要的技能等级 */
     skill_requirements?: {
         /**技能ID */
-        name: SkillID;
+        name: (SkillID);
         /**需要的最低等级 */
         level: Int;
     }[];
     /**武器伤害要求 */
     weapon_damage_requirements?: {
         /**伤害类型 */
-        type: DamageTypeID;
+        type: (DamageTypeID);
         /**最小伤害值 */
         min: Int;
     }[];
@@ -119,7 +119,7 @@ export type Technique = {
 
 
 
-/**技巧ID格式 */
+/**技巧ID */
 export type TechniqueEffectID = CddaID<"TECHE">;
 /**技巧效果定义 */
 export type TechniqueEffect = {
@@ -154,7 +154,7 @@ export type TechniqueBonus = {
      */
     stat: "hit" | "dodge" | "block" | "speed" | "movecost" | "damage" | "armor" | "arpen";
     /**伤害类型(仅当stat为damage/armor/arpen时需要) */
-    type?: DamageTypeID;
+    type?: (DamageTypeID);
     /**加成数值
      * @example 0.3 // 30%加成
      */

@@ -12,8 +12,8 @@ export type MutationCategoryID = CddaID<"MUTC">|DefineMutationCategoryID;
 /**变异类别 */
 export type MutationCategory = {
     type :"mutation_category";
-    /**唯一ID */
-    id: MutationCategoryID;
+    /**变异类别唯一ID */
+    id: (MutationCategoryID);
     /**突变种类的可读名称，供玩家查看。 */
     name: (DescText);
     /**突变门槛。当角色达到此突变后，身份将发生本质改变。 */

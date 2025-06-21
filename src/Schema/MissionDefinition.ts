@@ -10,8 +10,9 @@ export type MissionDefinitionID = CddaID<"MISDEF">;
 
 /**任务定义 */
 export type MissionDefinition = {
-    id: MissionDefinitionID;
     type: "mission_definition";
+    /**任务定义唯一ID */
+    id: (MissionDefinitionID);
     /**任务名 */
     name: (DescText);
     /**任务说明 */
@@ -23,7 +24,7 @@ export type MissionDefinition = {
     /**未知 */
     value: number;
     /**如果目标是寻找道具, 目标的道具ID */
-    item?: AnyItemID;
+    item?: (AnyItemID);
     /**可选布尔值, 默认为 false.  如果为 true,   
      * 则此任务完成后, 它将不会显示在已完成的任务或失败的任务列表中.   
      */
@@ -35,7 +36,7 @@ export type MissionDefinition = {
     /**任务来源 */
     origins?: MissionOrigin[];
     /**下一段任务 */
-    followup?: MissionDefinitionID;
+    followup?: (MissionDefinitionID);
     /**任务对话文本
      * 如果是npc来源的任务必须设置
      */

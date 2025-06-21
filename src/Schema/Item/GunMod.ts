@@ -6,12 +6,12 @@ import { FireMode, GunBase } from "./Gun";
 import { MagazineID } from "./Magazine";
 
 
-/**Gun Mod ID格式 */
+/**Gun ModID */
 export type GunModID = CddaID<"GMOD">;
 
 /**枪械模组 */
 export type GunModTrait = {
-	id: GunModID;
+	id: (GunModID);
 	trait_type: "GUNMOD";
 	/** 必填. 这个枪械改装件安装在哪里？ */
 	location: GunModSlot;

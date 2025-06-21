@@ -42,7 +42,7 @@ type PaletteNestMap = {
 /**载具映射 */
 type PaletteVehiclesMap = {
     [key:string]:{
-        vehicle: VehicleID;
+        vehicle: (VehicleID);
         chance: number;
     }
 }
@@ -52,7 +52,7 @@ export type PaletteItemMap = {
     [key: string]: {
         /**重复n次 */
         repeat: number|[number, number];
-        item: AnyItemID;
+        item: (AnyItemID);
         chance: number;
     }[];
 };
@@ -60,7 +60,7 @@ export type PaletteItemMap = {
 /**地图符号定义 */
 export type Palette = {
     type: "palette";
-    id: PaletteID;
+    id: (PaletteID);
     /**地形映射 */
     terrain?: PaletteTerrainMap;
     /**家具映射 */

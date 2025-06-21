@@ -13,13 +13,14 @@ export type DefineFlagID = typeof DefineFlagIDList[number];
 /**自定的FlagID */
 export type CustomFlagID = CddaID<"FLAG">|DefineFlagID;
 
-/**Flag ID格式 */
+/**FlagID */
 export type FlagID = CustomFlagID|AnyItemFlag|MutFlag;
 
 /**一个自定义的Flag */
 export type Flag={
     type: "json_flag";
-    id: FlagID;
+    /**Flag唯一ID */
+    id: (FlagID);
     /** 标志的名称, 用于口袋限制, 显示为`兼容弹夹: 形状因素` */
     name?: DescText;
     /** 对于口袋限制, 这些信息将显示在口袋信息的`限制`字段中 */

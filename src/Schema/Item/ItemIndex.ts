@@ -5,7 +5,7 @@ import { GunTrait } from "./Gun";
 import { GunModTrait } from "./GunMod";
 import { MagazineTrait } from "./Magazine";
 import { ToolTrait } from "./Tool";
-import { GenericTrait } from "./Generic";
+import { ItemBase } from "./Generic";
 
 
 
@@ -42,16 +42,6 @@ type ItemTraitMap = {
     "TOOL"        : ToolTrait        ,
 };
 
-/**通用物品基础 */
-type ItemBase = ({
-    /**物品唯一ID */
-    id: AnyItemID;
-    /**物品类型 */
-    type: "ITEM";
-    "//"?:"uncopy";
-} & GenericTrait);
-
-type C = Pick<{a:1}&{b:2},'a'>
 
 /**具有某些特征的物品
  * @TJS-type object
@@ -66,50 +56,7 @@ export type AnyItemTrait = AmmoTrait|GunTrait|ToolTrait|MagazineTrait|Comestible
 export type AnyItemID = AnyItemTrait['id'];
 
 /**任何物品 */
-export type AnyItem = ItemBase&Partial<AnyItemTrait>&{subtype:ItemSubtype[]};
-/**复制的物品 */
-export type CopyFromItem = {
-    /**复制目标 */
-    "copy-from": (AnyItemID);
-    /**物品唯一ID */
-    id: AnyItemID;
-    /**物品类型 */
-    type: "ITEM";
-    subtype?:ItemSubtype[];
-    /**删除原物品的某些元素
-     * 字段: 原物品字段值
-     * @example
-     * {flag: ["some_flag"]} //删除some_flag
-     */
-    delete?: {};
-    /**扩展原物品的某些元素
-     * 字段: 原物品字段值
-     * @example
-     * {flag: ["some_flag"]} //添加some_flag
-     */
-    extend?: {};
-    /**在原物品的某些元素上做数值调整
-     * @example
-     * {
-     *    "range": 2, //调整射程
-     *    "damage": { "damage_type": "bullet", "amount": 4, "armor_penetration": 7 } //调整远程伤害
-     * }
-     */
-    relative?: {};
-    /**在原物品的某些元素上做数值倍率调整
-     * @example
-     * {
-     *    "price": 0.7,//调整价格
-     *    "damage": { "damage_type": "bullet", "amount": 0.9, "armor_penetration": 0.7 } //调整远程伤害
-     * }
-    */
-    proportional?: {};
-    /**将原物品的某些材质替换 原材质:替换材质
-     * @example
-     * { "lc_steel_chain": "hc_steel_chain" } //低碳钢换高碳钢
-     */
-    replace_materials?: {};
-}&Partial<AnyItemTrait>&Partial<GenericTrait>;
+export type AnyItem = ItemBase&Partial<AnyItemTrait>;
 
 /**任何物品的Flag */
 export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];

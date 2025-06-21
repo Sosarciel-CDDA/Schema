@@ -46,8 +46,8 @@ export type DefineAmmoEffectID = typeof DefineAmmoEffectIDList[number];
 export type AmmoEffectID = CddaID<"AEFF">|DefineAmmoEffectID;
 /**弹药效果 */
 export type AmmoEffect = {
-    /**效果ID */
-    id: AmmoEffectID;
+    /**弹药效果唯一ID */
+    id: (AmmoEffectID);
     /**类型 */
     type: "ammo_effect";
     /**命中区域  
@@ -90,7 +90,7 @@ export type AmmoAoe = {
      * 将在投射物中心周围产生的地块附着物  
      * @default "fd_null"
      */
-    field_type?: FieldID;
+    field_type?: (FieldID);
     /**最小强度  
      * 地块附着物的最小强度
      * @default 0
@@ -149,7 +149,7 @@ export type AmmoTrail = {
      * 将产生的地块附着物  
      * @default "fd_null"
      */
-    field_type?: FieldID;
+    field_type?: (FieldID);
     /**最小强度  
      * 地块附着物的最小强度  
      * @default 0

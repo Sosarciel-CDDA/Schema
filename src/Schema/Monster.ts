@@ -2,7 +2,7 @@ import { DamageTypeID, DefineDamageTypeIDList } from "./DamageType";
 import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
-import { BodyPartParam, CddaID, CharSymbol, Color, DefineMonFaction, DefineNpcFaction, DescText, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
+import { BodyPartParam, CddaID, CharSymbol, Color, CopyfromVar, DefineMonFaction, DefineNpcFaction, DescText, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { MaterialID } from "./Material";
@@ -13,15 +13,15 @@ import { TalkTopicID } from "./TalkTopic";
 
 
 
-/**Monster ID格式 */
+/**MonsterID */
 export type MonsterID = CddaID<"MON">;
 
 /**怪物 */
-export type Monster = {
+export type Monster = CopyfromVar<{
     /**看上去像哪个id的物品 */
     looks_like?: MonsterID|AnyItemID;
-    /**怪物ID */
-    id: MonsterID;
+    /**怪物唯一ID */
+    id: (MonsterID);
     type: "MONSTER";
     /**怪物名 */
     name: (DescText);
@@ -45,8 +45,6 @@ export type Monster = {
     bodytype?: MonBP;
     /**行动速度 */
     speed: Int;
-    /**从另一个怪物继承怪物属性. 参见 JSON_INHERITANCE.md */
-    "copy-from"?: MonsterID;
     /**怪物类别 (NULL, CLASSIC, 或 WILDLIFE) */
     categories?: MonsterCategory[];
     /**物种 ID, 例如 HUMAN, ROBOT, ZOMBIE, BIRD, MUTANT 等 */
@@ -133,7 +131,7 @@ export type Monster = {
     };
     /** (对象数组) 怪物发出的场以及频率 */
     emit_fields?:  {
-        emit_id  : EmitID;
+        emit_id  : (EmitID);
         delay    : (Time);
     }[];
     /**怪物每回合恢复的生命值数量 */
@@ -183,9 +181,9 @@ export type Monster = {
      */
     harvest?: string;
     /**这个怪物死后变成僵尸的 mtype_id */
-    zombify_into?: MonsterID;
+    zombify_into?: (MonsterID);
     /**这个怪物被孢子真菌化时变成什么 mtype_id */
-    fungalize_into?: MonsterID;
+    fungalize_into?: (MonsterID);
     /**当剪下这个怪物时产生的物品 */
     shearing?: MonShearing[];
     /**描述怪物速度字符串的 speed_description 类型的 ID */
@@ -214,7 +212,7 @@ export type Monster = {
     absorb_material?: MaterialID[];
     /**对于具有 SPLIT 特殊攻击的怪物. 确定分裂成自身副本时的移动成本 */
     split_move_cost?: Int;
-}&Pick<Species,'anger_triggers'|'fear_triggers'|'placate_triggers'>;
+}&Pick<Species,'anger_triggers'|'fear_triggers'|'placate_triggers'>>;
 
 /**怪物的身体类型 列表 */
 export const MonsterBPList = [
@@ -244,16 +242,16 @@ export type MonBP = typeof MonsterBPList[number];
 
 /**怪物初始拥有的物品 */
 export type MonMountItem = Partial<{
-    tied    ?: AnyItemID;
-    tack    ?: AnyItemID;
-    armor   ?: AnyItemID;
-    storage ?: AnyItemID;
+    tied    ?: (AnyItemID);
+    tack    ?: (AnyItemID);
+    armor   ?: (AnyItemID);
+    storage ?: (AnyItemID);
 }>
 
 /**怪物近战伤害 */
 export type MosnterMeleeDamage = {
     /** 伤害类型 */
-    damage_type: DamageTypeID;
+    damage_type: (DamageTypeID);
     /** 伤害量 */
     amount: number;
     /** 伤害实例忽略的护甲量 */
@@ -331,7 +329,7 @@ export type MonWeakpointDmg = {
 /**命中怪物弱点时产生的效果 */
 export type MonWeakpointEff = {
     /** 效果类型 */
-    effect: EffectID;
+    effect: (EffectID);
     /** 导致效果的概率 */
     chance: number;
     /** 效果持续时间. 可以是一个 (min, max) 对或一个单一值 */
@@ -385,12 +383,12 @@ export type MonReproduction = {
     /** (字符串, 可选) 对于生育幼崽的怪物, 繁殖时产生的怪物的 id.   
      * 你必须声明这个或 baby_egg 以使繁殖工作  
      */
-    baby_monster?: MonsterID;
+    baby_monster?: (MonsterID);
     /** (字符串, 可选) 对于产卵的怪物, 要生成的蛋类型的 id.   
      * 你必须声明这个或 "baby_monster" 以使繁殖工作.   
      *  (参见 JSON_INFO.md rot_spawn)  
      */
-    baby_egg?: AnyItemID;
+    baby_egg?: (AnyItemID);
     /** (整数) 繁殖时产生的新生物或蛋的数量 */
     baby_count: number;
     /** (整数) 繁殖事件之间的天数 */
@@ -400,7 +398,7 @@ export type MonReproduction = {
 /**可以从怪物身上剪下的东西 */
 export type MonShearing = {
     /**目标物品 */
-    result: AnyItemID;
+    result: (AnyItemID);
 }&({
     /**数量 或 [最小, 最大] */
     amount: number|[number,number];
@@ -415,7 +413,7 @@ export type MonShearing = {
 /**怪物的攻击效果 */
 export type MonAttackEffect = {
     /** (字符串, 必需) 要应用的效果的 id */
-    id: EffectID;
+    id: (EffectID);
     /** (整数或一对整数, 可选) 效果应持续多久 (以回合为单位) . 当用一对值定义时, 持续时间将在这些值之间随机化 */
     duration?: (Time) | [Time, Time];
     /** (整数或一对整数, 可选) 效果应以何种强度应用, 当定义为一对时, 强度将在它们之间随机化. 不能覆盖通过 int_dur_factor 从其持续时间派生其强度的效果 */

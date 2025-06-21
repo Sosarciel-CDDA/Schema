@@ -1,12 +1,12 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { EnchantmentID, InlineEnchantment } from "../Enchantment";
 import { CustomFlagID } from "../Flag";
-import { CharSymbol, Color, DescText, Explosion, Length, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
+import { CharSymbol, Color, CopyfromVar, DescText, Explosion, Length, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
 import { AmmoID } from "./Ammo";
 import { WeaponCategoryID } from "../WeaponCategory";
 import { MaterialID } from "../Material";
 import { UseAction } from "../ItemAction";
-import { AnyItemID } from "./ItemIndex";
+import { AnyItemID, ItemSubtype } from "./ItemIndex";
 
 
 /**预定义的通用物品 列表 */
@@ -54,7 +54,13 @@ export const DefineGenericIDList = [
 export type DefineGenericID = typeof DefineGenericIDList[number];
 
 /**通用物品基础 */
-export type GenericTrait = {
+export type ItemBase = CopyfromVar<{
+    /**子类型 */
+    subtype:ItemSubtype[];
+    /**物品唯一ID */
+    id: (AnyItemID);
+    /**物品类型 */
+    type: "ITEM";
     /**物品flag */
     flags?: GenericFlagID[];
     /**物品显示名 */
@@ -139,7 +145,7 @@ export type GenericTrait = {
     min_intelligence?: number;
     /**最小感知需求 */
     min_perception?: number;
-};
+}>;
 
 /**魔法物品数据 */
 export type RelicData = {

@@ -5,12 +5,12 @@ import { GenericFlagID } from "./Generic";
 import { AnyItemID } from "./ItemIndex";
 
 
-/**弹夹 ID格式 */
+/**弹夹ID */
 export type MagazineID = CddaID<"MAG">;
 
 /**弹夹 */
 export type MagazineTrait = {
-    id: MagazineID;
+    id: (MagazineID);
     trait_type: "MAGAZINE";
     /**该弹匣可以装载哪些类型的弹药 */
     ammo_type: AmmunitionTypeID[];
@@ -21,11 +21,11 @@ export type MagazineTrait = {
     /**如果指定则覆盖默认弹药 (可以为弹药带设置此项)
      * 仅控制 count 字段生成的子弹
      */
-    default_ammo?: AmmoID;
+    default_ammo?: (AmmoID);
     /**将每单位弹药装入弹匣需要多长时间 */
     reload_time?: number;
     /**如果设置, 则每消耗一单位弹药就会丢弃一个链接 (给定类型) (设置用于分解弹药带) */
-    linkage?: AnyItemID;
+    linkage?: (AnyItemID);
     /**弹夹的Flag */
     flags?: MagazineFlagID[];
 };

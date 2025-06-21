@@ -28,8 +28,8 @@ export type LimbScoreID = CddaID<"LS">|DefineLimbScoreID;
 /**肢体分数 */
 export type LimbScore = {
     type: "limb_score";
-    /**标识此肢体得分 */
-    id: LimbScoreID;
+    /**肢体分数唯一ID */
+    id: (LimbScoreID);
     /**定义将在用户界面中显示的此肢体得分的可翻译名称 */
     name: (DescText);
     /**确定此肢体得分是否受角色的肢体健康影响. 肢体健康越低 => 得分越低

@@ -1,7 +1,8 @@
 {
     "$schema": "./schema/AnyCddaJson.schema.json",
-    "type": "vehicle_part",
+    "type": "ITEM",
     "id": "s",
     "range": 0,
-    "description": "test"
+    "description": "test",
+    "copy-from": ""
 }

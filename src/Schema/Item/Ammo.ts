@@ -6,15 +6,15 @@ import { AnyItemID } from "./ItemIndex";
 
 
 
-/**Ammo ID格式 */
+/**AmmoID */
 export type AmmoID = CddaID<"AMMO">;
 
 /**Ammo 弹药物品 */
 export type AmmoTrait = {
-    id: AmmoID;
+    id: (AmmoID);
     trait_type: "AMMO";
     /**弹药类型 使用材质id */
-    ammo_type: AmmunitionTypeID;
+    ammo_type: (AmmunitionTypeID);
     /**远程伤害 */
     damage?: RangeDamage|RangeDamage[];
     /**将武器的伤害乘以数量 (覆盖 damage ) */

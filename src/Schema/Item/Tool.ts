@@ -5,12 +5,12 @@ import { GenericFlagID } from "./Generic";
 import { GunModTrait } from "./GunMod";
 
 
-/**TOOL ID格式 */
+/**TOOLID */
 export type ToolID = CddaID<"TOOL">;
 
 /**工具 */
 export type ToolTrait = {
-    id: ToolID;
+    id: (ToolID);
     trait_type: "TOOL";
     /**随着时间的推移消耗的费用, 不推荐使用 power_draw */
     turns_per_charge?: number;
@@ -43,11 +43,11 @@ export type ToolTrait = {
     /**每秒电能消耗 */
     power_draw?: Power;
     /**充能消耗后转化为物品 */
-    revert_to?: ToolID;
+    revert_to?: (ToolID);
     /**revert_to 触发时产生的信息 */
     revert_msg?: (DescText);
     /**该工具与其他工具具有相同的功能 */
-    sub?: ToolID;
+    sub?: (ToolID);
     /**变体 */
     variables?: {
         /**该工具是可折叠车辆, 可以绕过默认的可折叠规则;  这是将展开的车辆的名称 */

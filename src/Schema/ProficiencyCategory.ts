@@ -10,8 +10,8 @@ export type ProficiencyCategoryID = CddaID<"PROFC">;
 /**专长类别 */
 export type ProficiencyCategory = {
     type: "proficiency_category";
-    /**唯一ID */
-    id: ProficiencyCategoryID;
+    /**专长类别唯一ID */
+    id: (ProficiencyCategoryID);
     /**名称 */
     name: (DescText);
     /**描述 */

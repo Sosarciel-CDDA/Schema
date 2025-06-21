@@ -18,13 +18,14 @@ export const DefineSpellIDList = [
 /**预定义的法术ID */
 export type DefineSpellID = typeof DefineSpellIDList[number];
 
-/**法术ID  */
+/**法术ID */
 export type SpellID = CddaID<"SPELL">|DefineSpellID;
 
 
 /**法术 */
 export type Spell = {
-    id: SpellID;
+    /**法术唯一ID */
+    id: (SpellID);
     type: "SPELL";
     name: (DescText);
     description: (DescText);
@@ -120,7 +121,7 @@ export type Spell = {
     /**每级的法术穿甲调整 */
     pierce_increment?: (NumObj);
     /**法术在目标处创建的Field */
-    field_id?: FieldID;
+    field_id?: (FieldID);
     /**每个被法术影响到的地块有 1/n 的概率产生Field */
     field_chance?: (NumObj);
     /**初始法术地块效果强度 */
@@ -138,9 +139,9 @@ export type Spell = {
     /**视为环境声音 */
     sound_ambient?: boolean;
     /**声音ID */
-    sound_id?: SoundEffectID;
+    sound_id?: (SoundEffectID);
     /**声音变体ID */
-    sound_variant?: SoundEffectVariantID;
+    sound_variant?: (SoundEffectVariantID);
     /**当列表内所有法术到达指定等级时学会此法术  
      * Record<(SpellID)法术ID : (NumObj)需求等级>  
      */

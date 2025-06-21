@@ -23,21 +23,21 @@ type Place<T> = T&{
     chance: number;
 }
 export type FurnPlace = Place<{
-    furn: FurnitureID;
+    furn: (FurnitureID);
 }>;
 export type ItemPlace = Place<{
-    item: AnyItemID;
+    item: (AnyItemID);
 }>;
 export type GroupPlace = Place<{
-    group: ItemGroupID;
+    group: (ItemGroupID);
     magazine:number;
 }>;
 export type MonsterPlace = Place<{
-    monster: MonsterID;
+    monster: (MonsterID);
     density: number;
 }>;
 export type VehiclePlace = Place<{
-    vehicle: VehicleID;
+    vehicle: (VehicleID);
     chance: number;
     /**车辆状态 */
     status:1|-1;
@@ -63,7 +63,7 @@ export type Mapgen = {
     om_terrain: OvermapTerrainID|OvermapTerrainID[]|OvermapTerrainID[][];
     weight: number;
     object: {
-        fill_ter?: TerrainID;
+        fill_ter?: (TerrainID);
         rows: string[];
         palettes?: PaletteID[];
         place_furniture?: FurnPlace[];

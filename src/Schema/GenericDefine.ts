@@ -4,7 +4,7 @@ import { Effect } from "./Effect";
 import { Enchantment } from "./Enchantment";
 import { Eoc, IDObj } from "./Eoc";
 import { Flag, FlagID } from "./Flag";
-import { AmmoID, AnyItem, AnyItemID, AnyItemTrait, CopyFromItem } from "./Item";
+import { AmmoID, AnyItem, AnyItemID, AnyItemTrait } from "./Item";
 import { ItemGroup } from "./ItemGroup";
 import { MathFunction } from "./MathFuncion";
 import { Monster } from "./Monster";
@@ -142,7 +142,8 @@ export type CopyfromVar<T extends CopyfromAble> = (T&{"//"?:"uncopy"})|Copyfrom<
 /**copyfrom变体 */
 export type Copyfrom<T extends CopyfromAble> =
     Pick<T,CopyfromResFD>&{
-        "copy-from":T["id"],"//"?:"copy",
+        /**复制的目标 */
+        "copy-from":T["id"], "//"?:"copy",
         /**删除原物品的某些元素 */
         delete?: Partial<Omit<T,CopyfromResFD>>,
         /**扩展原物品的某些元素 */
@@ -264,7 +265,7 @@ export type PocketData = {
 /**远程武器伤害 */
 export type RangeDamage = {
     /**伤害类型 */
-    damage_type: DamageTypeID;
+    damage_type: (DamageTypeID);
     /**伤害值 */
     amount: number;
     /**穿甲值 */
@@ -324,7 +325,7 @@ export type ShrapnelData = {
     /**掉落  
      * 在着陆点掉落的物品
      */
-    drop?: AnyItemID;
+    drop?: (AnyItemID);
 }|number;
 
 /**物理状态 */
@@ -396,7 +397,7 @@ type AnyOtherObject = {
 };
 
 /**任何Cdda的Json */
-export type AnyCddaJson = CopyFromItem|AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInfoOrder|
+export type AnyCddaJson = AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInfoOrder|
     AmmunitionType|Enchantment|Flag|ItemGroup|Monster|
     NpcClass|NpcInstance|OverlayOrdering|SoundEffect|Requirement|
     Effect|Spell|MathFunction|AmmoEffect|MissionDefinition|

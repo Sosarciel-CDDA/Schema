@@ -1,5 +1,5 @@
-import { CddaID } from "./GenericDefine";
-import { AnyItemID } from "./Item/Generic";
+import { CddaID, CopyfromVar } from "./GenericDefine";
+import { AnyItemID } from "./Item/ItemIndex";
 
 
 /**预定义的物品组ID */
@@ -24,12 +24,13 @@ export const DefineItemGroupIDList = [
 /**预定义的物品组 */
 export type DefineItemGroupID = typeof DefineItemGroupIDList[number];
 
-/**ItemGroup ID格式  */
+/**物品组ID */
 export type ItemGroupID = CddaID<"ITEMGP">|DefineItemGroupID;
-/**ItemGroup  */
-export type ItemGroup = {
-    type: "item_group",
-    id: ItemGroupID,
+/**物品组  */
+export type ItemGroup = CopyfromVar<{
+    type: "item_group";
+    /**物品组唯一ID */
+    id: (ItemGroupID);
     /**是可选的. 它可以是 collection 或 distribution.   
      * 如果未指定, 则默认为old, 这表示该项目组使用旧格式 本质上是分布.   
      * collection   集合 为每个entries均独立概率  
@@ -47,11 +48,10 @@ export type ItemGroup = {
      * 物品组id 或者 [物品组id,概率(100为100%)]
      */
     groups?:GroupEntrieQuick[];
-    /**从某个物品组复制 */
-    "copy-from"?:ItemGroupID;
     /**扩展元素 */
     extend?:Pick<ItemGroup,"entries"|"items"|"groups">;
-}
+}>;
+
 /**一项Entry */
 export type ItemGroupEntrie = (ItemGroupEntrieItem|ItemGroupEntrieGroup|
     ItemGroupEntrieDist|ItemGroupEntrieColl)&ItemGroupEntrieOpt;
@@ -107,7 +107,7 @@ type ItemGroupEntrieOpt = Partial<{
      */
     sealed: boolean;
     /**该项目的有效 itype 变体 ID.  */
-    variant: AnyItemID;
+    variant: (AnyItemID);
     artifact: {};
     event: ItemGroutEvent;
 }>;

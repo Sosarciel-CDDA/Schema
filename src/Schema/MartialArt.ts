@@ -5,7 +5,7 @@ import { SkillID } from "./Skill";
 import { WeaponCategoryID } from "./WeaponCategory";
 
 
-/**武术流派ID格式 */
+/**武术流派ID */
 export type MartialArtID = CddaID<"MA">;
 
 
@@ -15,8 +15,8 @@ export type MartialArtID = CddaID<"MA">;
 export type MartialArt = {
     /**固定为"martial_art" */
     type: "martial_art";
-    /**武术流派ID */
-    id: MartialArtID;
+    /**武术流派唯一ID */
+    id: (MartialArtID);
     /**流派名称 */
     name: (DescText);
     /**流派描述 */
@@ -110,7 +110,7 @@ export type MartialArt = {
 
 
 
-/**武术流派BuffID格式 */
+/**武术流派BuffID */
 export type MartialArtBuffID = CddaID<"MAB">;
 
 

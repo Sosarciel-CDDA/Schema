@@ -15,8 +15,8 @@ export type VehiclePartID = CddaID<"VP">;
 /**载具部件 */
 export type VehiclePart = CopyfromVar<{
     type: "vehicle_part";
-    /**唯一标识符, 不能包含 # 符号 */
-    id: VehiclePartID;
+    /**载具部件唯一ID */
+    id: (VehiclePartID);
     /**显示名称 */
     name: (DescText);
     /**如果此部分没有图块, 向图块集提供提示, 使用 looks_like 图块.  */
@@ -40,7 +40,7 @@ export type VehiclePart = CopyfromVar<{
     /**部件消耗的燃料/弹药类型, 作为物品 id
      * @default "NULL"
      */
-    fuel_type?: AmmunitionTypeID;
+    fuel_type?: (AmmunitionTypeID);
     /**部件的电力使用量, 以瓦特为单位. 负值表示消耗电力, 正值表示产生电力.   
      * 通常, 电力消耗还需要 ENABLED_DRAINS_EPOWER 标志, 并且物品需要打开.   
      * 太阳能板的电力产生受到太阳角度的影响. 当太阳在 90 度时, 面板产生全部电力.   
@@ -76,7 +76,7 @@ export type VehiclePart = CopyfromVar<{
     /** 此部件提供的工艺工具 */
     pseudo_tools?: {
         /**目标工具 */
-        id: AnyItemID;
+        id: (AnyItemID);
         /**热键 */
         hotkey?: string;
     }[];
@@ -103,7 +103,7 @@ export type VehiclePart = CopyfromVar<{
         /** (可选, 默认为"f_null") 结果家具 (如果有)  */
         post_furniture: "f_boulder";
         /** (可选, 默认为"fd_null") 结果字段 (如果有)  */
-        post_field?: FieldID;
+        post_field?: (FieldID);
         /** (可选, 默认为0) 字段的强度 (如果有)  */
         post_field_intensity?: number;
         /** (可选, 默认为0转) 字段的生存时间 (如果有)  */

@@ -9,12 +9,13 @@ import { SpellID } from "./Spell";
 
 
 
-/**NpcClass ID格式 */
+/**Npc职业ID */
 export type NpcClassID = CddaID<"NPCCLS">;
 /**Npc职业 */
 export type NpcClass = {
     type: "npc_class";
-    id: NpcClassID;
+    /**NpcClass唯一ID */
+    id: (NpcClassID);
     name: (DescText) ;
     job_description: (DescText);
     /**false意味着这个NPC职业不会随机生成.   
@@ -37,11 +38,11 @@ export type NpcClass = {
     /**初始技能 */
     skills?: NPCClassBaseSkill[];
     /**npc穿戴的物品组 */
-    worn_override?: ItemGroupID;
+    worn_override?: (ItemGroupID);
     /**npc携带的物品组 */
-    carry_override?: ItemGroupID;
+    carry_override?: (ItemGroupID);
     /**npc拿起的物品组 */
-    weapon_override?: ItemGroupID;
+    weapon_override?: (ItemGroupID);
     /**仅当计划的 NPC 是店主, 拥有每三个游戏日更换一次的循环物品库存时, 才需要.   
      * 所有物品覆盖都将确保此类的任何 NPC 都会生成特定物品.    
      */

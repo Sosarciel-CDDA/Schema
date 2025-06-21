@@ -15,7 +15,7 @@ export type Enchantment = {
     /**附魔的名称 */
     name?: (DescText);
     /**附魔唯一ID */
-    id: EnchantmentID;
+    id: (EnchantmentID);
     /**物品在什么位置时启用 */
     has?: EnchConHas;
     /**启用条件 */
@@ -32,7 +32,7 @@ export type Enchantment = {
     /**附魔的数值增幅 */
     values?: EnchModVal[];
     /**生成Emit */
-    emitter?: EmitID;
+    emitter?: (EmitID);
     /**添加肢体 */
     modified_bodyparts?: ({
         /**获得肢体 */
@@ -45,7 +45,7 @@ export type Enchantment = {
     /**添加效果 */
     ench_effects?: {
         /**效果ID */
-        effect: EffectID;
+        effect: (EffectID);
         /**效果强度 */
         intensity: number;
     }[];
@@ -99,7 +99,7 @@ export type EnchModVal = {
 /**伪法术附加信息 */
 export type FakeSpell = {
     /**法术ID */
-    id: SpellID;
+    id: (SpellID);
     /**击中附魔拥有者而非命中目标  
      * @default false
      * 如果为true, 法术可能会影响施法者 (作为AoE法术的自我伤害, 或作为增益法术的效果应用) 

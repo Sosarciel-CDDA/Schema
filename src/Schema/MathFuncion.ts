@@ -8,7 +8,8 @@ export type MathFunctionID = CddaID<"FUNC">;
 /**数学函数 */
 export type MathFunction = {
     type: "jmath_function";
-    id: MathFunctionID;
+    /**数学函数唯一ID */
+    id: (MathFunctionID);
     /**参数个数  
      * 由 `_${number}` 取得参数  
      */

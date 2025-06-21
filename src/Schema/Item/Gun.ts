@@ -6,14 +6,14 @@ import { GenericFlagID } from "./Generic";
 import { GunModID, GunModSlot } from "./GunMod";
 
 
-/**GUN ID格式 */
+/**GUNID */
 export type GunID = CddaID<"GUN">;
 
 
 /**枪械基础 */
 export type GunBase = {
     /**用于射击的技能 */
-    skill: SkillID;
+    skill: (SkillID);
     /**接受重新加载的弹药类型 */
     ammo: AmmunitionTypeID[];
     /**发射时的远程伤害 */
@@ -90,7 +90,7 @@ export type GunBase = {
 
 /**枪械 */
 export type GunTrait = {
-    id: GunID;
+    id: (GunID);
     trait_type: "GUN";
 } & GunBase;
 

@@ -1,11 +1,12 @@
 import { EocID } from "./Eoc";
 import { CddaID, DescText } from "./GenericDefine";
 
-/**活动ID格式  */
+/**活动ID */
 export type ActivityTypeID = CddaID<"ACT">;
 /**活动类型 */
 export type ActivityType = {
-	id: ActivityTypeID;
+    /**活动唯一ID */
+	id: (ActivityTypeID);
 	type: "activity_type";
 	/** 用于描述活动的描述性术语, 用于停止活动的查询, 以及描述它的字符串, 例如: "verb": "mining" 或 "verb": { "ctxt": "instrument", "str": "playing" } */
 	verb: DescText;
@@ -37,7 +38,7 @@ export type ActivityType = {
 	/** 这个活动会重复, 直到它不能做更多的工作, 用于NPC和avatar区域活动 */
 	multi_activity?: boolean;
 	/** 当这个活动完成时运行的EOC */
-	completion_eoc?: EocID;
+	completion_eoc?: (EocID);
 	/** 当这个活动执行一个回合时运行的EOC */
-	do_turn_eoc?: EocID;
+	do_turn_eoc?: (EocID);
 };

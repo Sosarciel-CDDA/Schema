@@ -5,7 +5,8 @@ export type FurnitureID = CddaID<"FURN">;
 /**家具 */
 export type Furniture = {
     type: "furniture";
-    id: FurnitureID;
+    /**家具唯一ID */
+    id: (FurnitureID);
     name: (DescText);
     symbol: CharSymbol;
     looks_like: "chair";

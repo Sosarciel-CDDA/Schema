@@ -6,7 +6,7 @@ import { AnyItemID, ItemCategotyID } from "./Item";
 
 
 
-/**TalkTopic ID格式 */
+/**对话选项ID */
 export type TalkTopicID = DefineTopic|CddaID<"TALKTC">;
 
 
@@ -97,7 +97,7 @@ type RespBase = {
 /**无需技能鉴定的快速写法 */
 type RespShot={
     /**转移到哪个对话 */
-    topic: TalkTopicID;
+    topic: (TalkTopicID);
     /**产生的效果 */
     effect?: EocEffect;
 }
@@ -111,7 +111,7 @@ type RespLong ={
         /**如果 type 为 CONDITION 则使用条件代替鉴定难度 */
         condition?: (BoolObj);
         /**如果 type 为 SKILL_CHECK 则使用技能鉴定 */
-        skill_required?: SkillID;
+        skill_required?: (SkillID);
         /**难度 类型不为 NONE 或 CONDITION时需要设置难度*/
         difficulty?: number;
         /**根据npc的性格或态度进行成功率调整  
@@ -128,7 +128,7 @@ type RespLong ={
 /**玩家回复产生的效果 */
 export type RespEffect = {
     /**转移到哪个对话 */
-    topic: TalkTopicID;
+    topic: (TalkTopicID);
     /**产生的效果 */
     effect?: EocEffect;
     /**态度调整 */

@@ -45,7 +45,8 @@ export type EffectID = CddaID<"EFF">|DefineEffectID;
 /**效果 */
 export type Effect = {
     type: "effect_type";
-    id: EffectID;
+    /**效果唯一ID */
+    id: (EffectID);
     /**用于后面的许多字段
      * @default 1
      */
@@ -92,7 +93,7 @@ export type Effect = {
     /**效果被移除时产生的log */
     remove_memorial_log?: (DescText);
     /**可 抵抗 此效果的变异 */
-    resist_traits?: MutationID;
+    resist_traits?: (MutationID);
     /**可 抵抗 此效果的效果 */
     resist_effects?: EffectID[];
     /**可免疫此效果的Flag */
@@ -211,7 +212,7 @@ export type Effect = {
 /**效果维生素修正 */
 export type EffectVitaminsMod ={
     /**维生素ID */
-    vitamin: VitaminID;
+    vitamin: (VitaminID);
     /**每隔[0]~[1] tick 将会应用一次调整  
      * 按效果强度应用不同成员  
      */

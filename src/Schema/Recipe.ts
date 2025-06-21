@@ -6,7 +6,7 @@ import { ProficiencyID } from "./Proficiency";
 import { SkillID } from "./Skill";
 import { ToolQualityID } from "./ToolQuality";
 
-/**配方ID格式 */
+/**配方ID */
 export type RecipeID = CddaID<"RECIPE">;
 
 /**活动强度等级，表示制作该配方时的运动强度 */

@@ -5,25 +5,26 @@ import { TalkTopicID } from "./TalkTopic";
 
 
 
-/**NpcInstance ID格式 */
+/**Npc实例ID */
 export type NpcInstanceID = CddaID<"NPC">;
 
 /**Npc实例 */
 export type NpcInstance = {
     type: "npc";
-    id: NpcInstanceID;
+    /**Npc实例唯一ID */
+    id: (NpcInstanceID);
     /**独特名称 */
     name_unique?: (DescText);
     /**名称后缀 */
     name_suffix?: (DescText);
     /**职业 */
-    class: NpcClassID;
+    class: (NpcClassID);
     /**初始态度 */
     attitude: NpcAttitude;
     /**初始行为 */
     mission: NpcMission;
     /**初始的聊天 talktopic */
-    chat: TalkTopicID;
+    chat: (TalkTopicID);
     /**阵营 */
     faction?: DefineNpcFaction;
     /**死亡触发的eoc */

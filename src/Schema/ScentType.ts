@@ -1,14 +1,14 @@
 import { CddaID } from "./GenericDefine";
 import { SpeciesID } from "./Species";
 
-/**气味类型ID格式 */
+/**气味类型ID */
 export type ScentTypeID = CddaID<"SCENT">;
 
 /**气味类型定义 */
 export type ScentType = {
     type: "scent_type";
-    /**唯一ID，必须是一个连续的单词，必要时使用下划线 */
-    id: ScentTypeID;
+    /**气味类型唯一ID */
+    id: (ScentTypeID);
     /**能够追踪此气味的物种，必须使用species.json中定义的有效ID */
     receptive_species?: SpeciesID[];
 };

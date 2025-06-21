@@ -289,8 +289,8 @@ type UseActionHardcode = [
 type UAPlaceNpc = {
     /**在地图上放置一个NPC */
     type: "place_npc";
-    /**npc职业ID */
-    npc_class_id: NpcClassID;
+    /**npc职业唯一ID */
+    npc_class_id: (NpcClassID);
     /**生成时播报的消息 */
     summon_msg?: (DescText);
     /**将 npc 随机放置在玩家周围, 如果 false: 让玩家决定将其放置在哪里 (默认值: false)  */
@@ -350,7 +350,7 @@ type UACastSpell = {
     /**施法 */
     type: "cast_spell";
     /**法术ID */
-    spell_id: SpellID;
+    spell_id: (SpellID);
     /**不会失败 */
     no_fail?: boolean;
     /**法术等级 */

@@ -1,15 +1,14 @@
 import { CddaID, DescText, Float, Time } from "./GenericDefine";
 import { ProficiencyCategoryID } from "./ProficiencyCategory";
-import { SkillID } from "./Skill";
 
-/**Proficiency ID格式 */
+/**专长ID */
 export type ProficiencyID = CddaID<"PROF">;
 
-/**技能熟练度 */
+/**专长 */
 export type Proficiency = {
     type: "proficiency";
-    /**内部ID，用于所有JSON和代码引用 */
-    id: ProficiencyID;
+    /**专长唯一ID */
+    id: (ProficiencyID);
     /**关联的proficiency_category对象的内部ID */
     category: (ProficiencyCategoryID);
     /**名称，用于游戏内显示 */

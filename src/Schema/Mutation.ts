@@ -17,13 +17,14 @@ export const DefineMutionIdList = [
 ] as const;
 /**预定义的变异ID */
 export type DefineMutionId = typeof DefineMutionIdList[number];
-/**Mutation ID格式 */
+/**MutationID */
 export type MutationID = CddaID<"MUT">|DefineMutionId;
 
 /**变异 */
 export type Mutation = {
     type: "mutation";
-    id: MutationID;
+    /**变异唯一ID */
+    id: (MutationID);
     /**名称 */
     name: (DescText);
     /**描述 */
@@ -140,7 +141,7 @@ export type Mutation = {
     /**突变激活允许你射击假枪 */
     ranged_mutation?: {
         /**枪械ID */
-        type: GunID;
+        type: (GunID);
         /**射击时的消息 */
         message: (DescText);
     };
@@ -151,7 +152,7 @@ export type Mutation = {
     /**此突变激活产生一个物品 */
     spawn_item?: {
         /**生成的物品ID */
-        type: AnyItemID;
+        type: (AnyItemID);
         /**生成时的消息 */
         message: (DescText);
     };
@@ -262,7 +263,7 @@ export type Mutation = {
     /**变异激活时可以转变为什么 */
     transform?: {
         /**这个突变将转变成的特性_id.  */
-        target: MutationID;
+        target: (MutationID);
         /**变形时显示的消息.  */
         msg_transform: (DescText);
         /**如果为真, 突变将在激活时开始供电 (打开).  */
@@ -312,7 +313,7 @@ export type Mutation = {
 /**肢体的潮湿保护 */
 export type BPWetProte = {
     /**肢体 */
-    part: BodyPartID;
+    part: (BodyPartID);
     /**忽略潮湿点数 */
     ignored: number;
 };

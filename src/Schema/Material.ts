@@ -14,7 +14,8 @@ export type MaterialID = CddaID<"MATE">;
 /**材料 */
 export type Material = {
     type: "material";
-    id: MaterialID;
+    /**材料唯一ID */
+    id: (MaterialID);
     name: (DescText);
     /**密度 影响车辆碰撞损坏, 较致密的零件比较不致密的零件更具优势.  */
     density: number;

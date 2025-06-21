@@ -10,7 +10,7 @@ export type ComestibleID = CddaID<"COME">;
 
 /**Comestible 消耗品 */
 export type ComestibleTrait = {
-    id: ComestibleID;
+    id: (ComestibleID);
     trait_type: "COMESTIBLE";
     /**一个时间持续期: 食品保质期. 0 = 不会变质 */
     spoils_in?: (Time);
@@ -37,7 +37,7 @@ export type ComestibleTrait = {
     /**满足的饥饿感 (已过时)  */
     nutrition?: number;
     /**需要吃/喝的工具 */
-    tool?: AnyItemID;
+    tool?: (AnyItemID);
     /**生成时的使用次数 */
     charges?: number;
     /** (可选) 在上述定义的体积中有多少使用次数. 如果省略, 与'charges'相同 */
@@ -57,18 +57,18 @@ export type ComestibleTrait = {
     /**此食品由所有材料 (ID) 制成 */
     material?: {
         /**材料 */
-        type: MaterialID;
+        type: (MaterialID);
         /**组成占比 */
         portion: number;
     }[];
     /**主要材料ID是什么. 材料决定了比热.  */
-    primary_material?: MaterialID;
+    primary_material?: (MaterialID);
     /**食品变质时产生的怪物组 (用于孵化蛋)  */
     rot_spawn: string;
     /**食品腐烂时怪物组生成的百分比机会. 最大100.  */
     rot_spawn_chance?: number;
     /**在烟熏器中烘干此食品后得到的食品 */
-    smoking_result?: ComestibleID;
+    smoking_result?: (ComestibleID);
     /** (可选) 此物品所在的宠物食品类别 */
     petfood?: string[];
     /**消耗品的flag */
