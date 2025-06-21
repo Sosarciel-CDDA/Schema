@@ -6,14 +6,12 @@ import { EocEvent } from "./EocEvent";
 
 
 
-/**EOC ID格式  
- * @TJS-type string  
- */
+/**EOC ID */
 export type EocID = CddaID<"EOC">;
 /**EOC */
 export type Eoc = {
     type: "effect_on_condition";
-    /**唯一ID */
+    /**EOC唯一ID */
     id: (EocID);
     /**效果 */
     effect?: EocEffect[];
