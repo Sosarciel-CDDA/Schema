@@ -27,7 +27,9 @@ export type Monster = {
     description: string;
     /**怪物的字符画ID */
     ascii_picture?:string;
-    /**生命值 */
+    /**生命值
+     * @TJS-type integer
+     */
     hp: (Int);
     /**体积 影响不同大小目标的近战命中率 */
     volume: (Volume);
@@ -41,7 +43,9 @@ export type Monster = {
     default_faction: DefineMonFaction;
     /**怪物身体类型 */
     bodytype?: MonBP;
-    /**行动速度 */
+    /**行动速度
+     * @TJS-type integer
+     */
     speed: (Int);
     /** (字符串) 从另一个怪物继承怪物属性. 参见 JSON_INHERITANCE.md */
     "copy-from"?: MonsterID;
@@ -59,6 +63,7 @@ export type Monster = {
     phase?: Phase;
     /**每次常规攻击的移动次数. 如果未定义, 默认为100 
      * @default 100
+     * @TJS-type integer
      */
     attack_cost?: (Int);
     /**特殊和远程攻击的额外怪物难度  
@@ -67,33 +72,50 @@ export type Monster = {
      * 该计算不能很好地处理远程特殊攻击或独特的特殊攻击, 可以使用基线难度来解释这一点.   
      *   2    有限的防御能力, 如掠夺者的泰瑟枪, 或弱的特殊能力, 如尖叫僵尸的特殊能力, 以警告附近的怪物, 或攻击的小奖励, 如毒药或毒液.   
      *   5    比喷吐僵尸的吐痰弱的有限范围攻击, 或者强大的防御能力, 如震撼僵尸的回击或酸僵尸的酸喷雾.   
-     *   10   强大的远程攻击, 如喷吐僵尸的喷水或炮塔的 9 毫米冲锋枪.   
+     *   10   强大的远程攻击, 如喷吐僵尸的喷水或炮塔的 9 毫米冲锋枪.  
      *   15   强大的远程攻击, 带有额外的危险, 例如腐蚀性僵尸的口水  
      *   20   非常强大的远程攻击, 例如激光炮塔或军用炮塔的5.56毫米步枪, 或者强大的特殊能力, 例如僵尸死灵法师复活其他僵尸的能力.   
-     *   30   即使对于装甲角色来说也是致命的远程攻击, 例如反物质炮塔的 0.50 BMG 步枪.   
+     *   30   即使对于装甲角色来说也是致命的远程攻击, 例如反物质炮塔的 0.50 BMG 步枪.  
+     * @TJS-type integer
      */
     diff?: (Int);
-    /**初始侵略性, 当怪物达到10时会变得敌对 */
+    /**初始侵略性, 当怪物达到10时会变得敌对
+     * @TJS-type integer
+     */
     aggression?: (Int);
-    /**初始士气, 当 (当前侵略性 + 当前士气) < 0 时, 怪物会逃跑 */
+    /**初始士气, 当 (当前侵略性 + 当前士气) < 0 时, 怪物会逃跑
+     * @TJS-type integer
+     */
     morale?: (Int);
     /** (布尔值) 如果为真, 怪物在生气时总是会攻击角色 */
     aggro_character?: boolean;
     /**对于坐骑, 坐骑到骑手重量的最大比率, 例如 0.2 表示 <=20% */
     mountable_weight_ratio?: (Float);
-    /**怪物在近战战斗中的技能, 从0-10, 其中4是平均水平的怪物 */
+    /**怪物在近战战斗中的技能, 从0-10, 其中4是平均水平的怪物
+     * @TJS-type integer
+     */
     melee_skill?: (Int);
-    /**怪物躲避攻击的技能 */
+    /**怪物躲避攻击的技能
+     * @TJS-type integer
+     */
     dodge?: (Int);
     /** (对象数组) 在怪物近战攻击时添加到骰子滚动上的伤害实例列表 */
     melee_damage?: MosnterMeleeDamage[];
-    /**在怪物近战攻击时确定砸伤伤害的骰子滚动次数 */
+    /**在怪物近战攻击时确定砸伤伤害的骰子滚动次数
+     * @TJS-type integer
+     */
     melee_dice?: (Int);
-    /**每个由 melee_dice 滚动的骰子的面数 */
+    /**每个由 melee_dice 滚动的骰子的面数
+     * @TJS-type integer
+     */
     melee_dice_sides?: (Int);
-    /**抓取效果的强度, 从1到n, 模拟n个常规僵尸抓取 */
+    /**抓取效果的强度, 从1到n, 模拟n个常规僵尸抓取
+     * @TJS-type integer
+     */
     grab_strength?: (Int);
-    /**通过与这个怪物战斗可以学习的最大近战技能等级. 如果未定义, 默认为 melee_skill + 2 */
+    /**通过与这个怪物战斗可以学习的最大近战技能等级. 如果未定义, 默认为 melee_skill + 2
+     * @TJS-type integer
+     */
     melee_training_cap?: (Int);
     /** (对象) 怪物对不同类型伤害的保护 */
     armor?: Record<DamageTypeID,number>;
@@ -105,17 +127,25 @@ export type Monster = {
     status_chance_multiplier?: (Float);
     /** (对象或字符串数组) 怪物所属的弱点家族 */
     families?: MonWeakpointFamilie[];
-    /**全日光下的视野范围, 其中50是典型的最大值 */
+    /**全日光下的视野范围, 其中50是典型的最大值
+     * @TJS-type integer
+     */
     vision_day?: (Int);
-    /**完全黑暗中的视野范围, 例如: coyote 5, bear 10, sewer rat 30, flaming eye 40 */
+    /**完全黑暗中的视野范围  
+     * 例如: coyote 5, bear 10, sewer rat 30, flaming eye 40  
+     * @TJS-type integer
+     */
     vision_night?: (Int);
-    /**怪物在自己和当前被追踪的敌人或被跟随的领导者之间保持的瓦片数量. 默认为3 */
+    /**怪物在自己和当前被追踪的敌人或被跟随的领导者之间保持的瓦片数量
+     * @default 3
+     * @TJS-type integer
+     */
     tracking_distance?: (Int);
-    /** (字符串数组) 这个怪物不会触发的陷阱的 trap_id. 默认行为是触发所有陷阱 */
+    /**这个怪物不会触发的陷阱的 trap_id. 默认行为是触发所有陷阱 */
     trap_avoids?: string[];
     /**怪物被动发出的光量, 必须大于0才能产生任何效果 */
     luminance?: (Float);
-    /** (字符串或物品组) 当怪物死亡时生成的物品组 */
+    /**当怪物死亡时生成的物品组 */
     death_drops?:ItemGroupID|InlineItemGroup;
     /**死亡效果  
      * (字符串数组) 怪物死亡时的行为. 参见 JSON_FLAGS  
@@ -130,71 +160,93 @@ export type Monster = {
         emit_id  : EmitID;
         delay    : (Time);
     }[];
-    /** 怪物每回合恢复的生命值数量 */
+    /**怪物每回合恢复的生命值数量
+     * @TJS-type integer
+     */
     regenerates?: (Int);
-    /** (布尔值) 如果怪物在黑暗中快速恢复, 则为真 */
+    /**如果怪物在黑暗中快速恢复, 则为真 */
     regenerates_in_dark?: boolean;
-    /** 当怪物具有此效果时, 通过整数值修改恢复. 例如, -5 将每回合 40hp 的恢复值减少到 35hp. 不能将恢复减少到 0 以下 */
+    /**当怪物具有此效果时, 通过整数值修改恢复  
+     * 例如, -5 将每回合 40hp 的恢复值减少到 35hp. 不能将恢复减少到 0 以下  
+     * @TJS-type integer
+     */
     regeneration_modifiers?: [EffectID, (Int)];
-    /** (布尔值) 如果怪物在满血时会停止逃跑以恢复愤怒和士气, 则为真 */
+    /**如果怪物在满血时会停止逃跑以恢复愤怒和士气, 则为真 */
     regen_morale?: boolean;
-    /** (对象数组) 怪物拥有的特殊攻击 */
+    /**怪物拥有的特殊攻击 */
     special_attacks?: any[];
-    /** (字符串数组) 像 SEES, HEARS, SMELLS, STUMBLES, REVIVES 这样的任意数量的属性 */
+    /**像 SEES, HEARS, SMELLS, STUMBLES, REVIVES 这样的任意数量的属性 */
     flags?: MonsterFlag[];
-    /** (字符串数组) 如果与怪物开启对话, 会出现的对话主题 */
+    /**如果与怪物开启对话, 会出现的对话主题 */
     chat_topics?: TalkTopicID[];
-    /** (字符串) 当怪物友好时, 可以转换为的物品 (例如, 拆解炮塔)  */
+    /**当怪物友好时, 可以转换为的物品 (例如, 拆解炮塔)  */
     revert_to_itype?: string;
-    /** (字符串) 如果这个怪物是一个带有内置武器的可骑乘机甲, 这是武器 id */
+    /**如果这个怪物是一个带有内置武器的可骑乘机甲, 这是武器 id */
     mech_weapon?: string;
-    /** 如果这个怪物是一个可骑乘的机甲, 这是它给骑手的力量加成 */
+    /**如果这个怪物是一个可骑乘的机甲, 这是它给骑手的力量加成
+     * @TJS-type integer
+     */
     mech_str_bonus?: (Int);
-    /** (字符串) 如果这个怪物是一个可骑乘的机甲, 这是电池的 id. 不支持对象或数组 (即只有一个电池 id)  */
+    /**如果这个怪物是一个可骑乘的机甲, 这是电池的 id. 不支持对象或数组 (即只有一个电池 id)  */
     mech_battery?: string;
-    /** 新生成的怪物开始时拥有的弹药 */
+    /* 新生成的怪物开始时拥有的弹药 */
     starting_ammo?: Record<AnyItemID,number>;
-    /** (对象) 这个怪物生成时带有的坐骑特定物品. 接受绑定, 马具, 护甲和存储的条目 */
+    /**这个怪物生成时带有的坐骑特定物品. 接受绑定, 马具, 护甲和存储的条目 */
     mount_items?: MonMountItem;
-    /** (布尔值或对象) 如果怪物不升级, 则为 false, 或者定义一个升级的对象 */
+    /**如果怪物不升级, 则为 false, 或者定义一个升级的对象 */
     upgrades?: false | MonUpgrade;
-    /** (对象) 怪物的繁殖周期和时间 */
+    /**怪物的繁殖周期和时间 */
     reproduction?: MonReproduction;
-    /** (字符串数组) 这个怪物能够繁殖的季节 */
+    /**这个怪物能够繁殖的季节 */
     baby_flags?: string[];
-    /** (数组) 当怪物被攻击时触发的特殊防御 */
+    /**当怪物被攻击时触发的特殊防御 */
     special_when_hit?: any[];
-    /** (对象数组) 当怪物成功攻击时应用于被攻击生物的效果 */
+    /**当怪物成功攻击时应用于被攻击生物的效果 */
     attack_effs?: MonAttackEffect[];
-    /** (对象) 怪物如何找到路径, 打开门, 避开陷阱或破坏障碍 */
+    /**怪物如何找到路径, 打开门, 避开陷阱或破坏障碍 */
     path_settings?: MonPathSettings;
-    /** (对象) 动物或怪物留下的粪便或排泄物 */
+    /**动物或怪物留下的粪便或排泄物 */
     biosignature?: any;
-    /** (字符串) 描述可以从尸体中收获什么的 "harvest" 类型的 ID 
+    /**描述可以从尸体中收获什么的 "harvest" 类型的 ID  
      * "exempt" 为无收获
      */
     harvest?: string;
-    /** (字符串) 这个怪物死后变成僵尸的 mtype_id */
+    /**这个怪物死后变成僵尸的 mtype_id */
     zombify_into?: MonsterID;
-    /** (字符串) 这个怪物被孢子真菌化时变成什么 mtype_id */
+    /**这个怪物被孢子真菌化时变成什么 mtype_id */
     fungalize_into?: MonsterID;
-    /** (对象数组) 当剪下这个怪物时产生的物品 */
+    /**当剪下这个怪物时产生的物品 */
     shearing?: MonShearing[];
-    /** (字符串) 描述怪物速度字符串的 speed_description 类型的 ID */
+    /**描述怪物速度字符串的 speed_description 类型的 ID */
     speed_description?: string;
-    /** (对象) 关于将这个怪物喂食以将其变成宠物的数据 */
+    /**关于将这个怪物喂食以将其变成宠物的数据 */
     petfood?: any;
-    /** 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定必须吸收多少毫升才能获得 1 HP. 默认 250 */
+    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定必须吸收多少毫升才能获得 1 HP
+     * @default 250
+     * @TJS-type integer
+     */
     absorb_ml_per_hp?: (Int);
-    /** 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定基于被吸收物品的体积吸收物品的移动成本. 默认 0.025f */
+    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定基于被吸收物品的体积吸收物品的移动成本
+     * @default 0.025
+     */
     absorb_move_cost_per_ml?: (Float);
-    /** 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最小移动成本, 无论消耗物品的体积大小. 默认 1 */
+    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最小移动成本, 无论消耗物品的体积大小
+     * @default 1
+     * @TJS-type integer
+     */
     absorb_move_cost_min?: (Int);
-    /** 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最大移动成本, 无论消耗物品的体积大小. -1 表示无限制. 默认 -1 */
+    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最大移动成本, 无论消耗物品的体积大小. -1 表示无限制
+     * @default -1
+     * @TJS-type integer
+     */
     absorb_move_cost_max?: (Int);
-    /** (字符串数组) 对于具有 ABSORB_ITEMS 特殊攻击的怪物. 指定怪物将寻求吸收的材料类型. 只要物品由列表中的至少一种材料制成, 就会匹配该物品. 如果未指定, 怪物将吸收所有材料 */
+    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 指定怪物将寻求吸收的材料类型  
+     * 只要物品由列表中的至少一种材料制成, 就会匹配该物品. 如果未指定, 怪物将吸收所有材料
+     */
     absorb_material?: MaterialID[];
-    /** 对于具有 SPLIT 特殊攻击的怪物. 确定分裂成自身副本时的移动成本 */
+    /**对于具有 SPLIT 特殊攻击的怪物. 确定分裂成自身副本时的移动成本
+     * @TJS-type integer
+     */
     split_move_cost?: (Int);
 }&Pick<Species,'anger_triggers'|'fear_triggers'|'placate_triggers'>;
 
@@ -418,14 +470,17 @@ export type MonAttackEffect = {
 export type MonPathSettings = {
     /**路径的最大直接距离
      * @default 0
+     * @TJS-type integer
      */
     max_dist?: (Int);
     /**路径的最大总长度
      * @default -1
+     * @TJS-type integer
      */
     max_length?: (Int);
     /**怪物通过障碍物时的力量
      * @default -1
+     * @TJS-type integer
      */
     bash_strength?: (Int);
     /**怪物知道如何打开门
