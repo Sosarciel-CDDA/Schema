@@ -18,7 +18,7 @@ import { OvermapTerrainID } from "Schema/OvermapTerrain";
 import { MonBP } from "Schema/Monster";
 import { MartialArtID } from "Schema/MartialArt";
 import { SpeciesID } from "Schema/Species";
-import { RecipeID } from "Schema/Repice";
+import { RecipeID } from "Schema/Recipe";
 import { ProficiencyID } from "Schema/Proficiency";
 
 
