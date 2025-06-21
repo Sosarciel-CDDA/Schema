@@ -163,19 +163,19 @@ export type Effect = {
      */
     main_parts_only?: boolean;
     /**使玩家对止痛药的成瘾减少了给他们带来更多 pkill 效果的机会  
-     * 默认false  
+     * @default false
      */
     pkill_addict_reduces?: boolean;
     /**大型/巨大 体型提高疼痛效果触发的机会  
-     * 默认false  
+     * @default false
      */
     pain_sizing?   : boolean;
     /**大型/巨大 体型提高伤害效果触发的机会  
-     * 默认false  
+     * @default false
      */
     hurt_sizing?   : boolean;
     /**表示该效果引起的咳嗽会伤害玩家.   
-     * 默认false  
+     * @default false
      */
     harmful_cough? : boolean;
     /**维生素调节 */
@@ -246,16 +246,22 @@ export type EffectVitaminsMod ={
 export type EffectLimbMod ={
     /**目标能力 */
     limb_score: LimbScoreID,
-    /**乘数调整值 默认1 */
+    /**乘数调整值
+     * @default 1
+     */
     modifier?: number,
     /**在玩家 抵抗 此效果时  
-     * 乘数调整值 默认1  
+     * 乘数调整值
+     * @default 1
      */
     resist_modifier?: number,
-    /**每个强度等级添加到 modifier的值 默认0 */
+    /**每个强度等级添加到 modifier的值
+     * @default 0
+     */
     scaling?: number;
     /**在玩家 抵抗 此效果时  
-     * 每个强度等级添加到 modifier的值 默认0  
+     * 每个强度等级添加到 modifier的值
+     * @default 0
      */
     resist_scaling?: number;
 }

@@ -385,10 +385,10 @@ export type MonShearing = {
     amount: number|[number,number];
 }|{
     /**以怪物体重百分比计算数量 1为100% */
-    ratio_mass: number;
+    ratio_mass: (Float);
 }|{
     /**以怪物体积百分比计算数量 1为100% */
-    ratio_volume: number;
+    ratio_volume: (Float);
 });
 
 /**怪物的攻击效果 */
@@ -414,22 +414,36 @@ export type MonAttackEffect = {
     message?: string;
 }
 
-/** (对象, 可选) 怪物可能找到路径, 打开门, 避开陷阱或破坏障碍物的方式 */
+/**怪物可能找到路径, 打开门, 避开陷阱或破坏障碍物的方式 */
 export type MonPathSettings = {
-    /** (整数, 默认为 0) 路径的最大直接距离 */
-    max_dist: number;
-    /** (整数, 默认为 -1) 路径的最大总长度 */
-    max_length: number;
-    /** (整数, 默认为 -1) 怪物通过障碍物时的力量 */
-    bash_strength: number;
-    /** (布尔值, 默认为 false) 怪物知道如何打开门 */
-    allow_open_doors: boolean;
-    /** (布尔值, 默认为 false) 怪物避免踩入陷阱 */
-    avoid_traps: boolean;
-    /** (布尔值, 默认为 true) 怪物可能爬楼梯 */
+    /**路径的最大直接距离
+     * @default 0
+     */
+    max_dist?: (Int);
+    /**路径的最大总长度
+     * @default -1
+     */
+    max_length?: (Int);
+    /**怪物通过障碍物时的力量
+     * @default -1
+     */
+    bash_strength?: (Int);
+    /**怪物知道如何打开门
+     * @default false
+     */
+    allow_open_doors?: boolean;
+    /**怪物避免踩入陷阱
+     * @default false
+     */
+    avoid_traps?: boolean;
+    /**怪物可能爬楼梯
+     * @default true
+     */
     allow_climb_stairs: boolean;
-    /** (布尔值, 默认为 false) 怪物可能避开像铁丝网这样尖锐的东西 */
-    avoid_sharp: boolean;
+    /**怪物可能避开像铁丝网这样尖锐的东西
+     * @default false
+     */
+    avoid_sharp?: boolean;
 }
 
 

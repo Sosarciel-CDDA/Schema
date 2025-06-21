@@ -1,5 +1,5 @@
 import { DamageTypeID } from "./DamageType";
-import { CddaID, DescText, Energy, Volume } from "./GenericDefine";
+import { CddaID, DescText, Energy, Float, Volume } from "./GenericDefine";
 
 
 
@@ -17,19 +17,31 @@ export type Material = {
     name: (DescText);
     /**密度 影响车辆碰撞损坏, 较致密的零件比较不致密的零件更具优势.  */
     density: number;
-    /**材料未冷冻时的比热 (J/(g K)). 默认 4.186 - 水.  */
-    specific_heat_liquid: number;
-    /**材料冷冻时的比热 (J/(g K)). 默认 2.108 - 水.  */
-    specific_heat_solid: number;
-    /**材料的熔化潜热 (J/g). 默认 334.  */
+    /**材料未冷冻时的比热 (J/(g K))  
+     * 默认 4.186 - 水  
+     * @default 4.186
+    */
+    specific_heat_liquid: (Float);
+    /**材料冷冻时的比热 (J/(g K))  
+     * 默认 2.108 - 水
+     * @default 2.108
+     */
+    specific_heat_solid: (Float);
+    /**材料的熔化潜热 (J/g)
+     * @default 334
+     */
     latent_heat: number;
     /**材料的凝固点  
-     * 该材料的凝固点 (C). 默认 0 C (32 F).   
+     * 该材料的凝固点 (C). 默认 0 C (32 F).  
      */
     freezing_point: number;
-    /**可食用 默认false */
+    /**可食用
+     * @default false
+     */
     edible?:boolean;
-    /**会腐烂 默认false */
+    /**会腐烂
+     * @default false
+     */
     rotting?: boolean;
     /**作为护甲时每1厚度的伤害抗性 */
     resist: Record<DamageTypeID,number>;
