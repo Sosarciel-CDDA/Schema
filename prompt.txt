@@ -1,0 +1,73 @@
+
+接下来我要你帮我做一些文档转换任务, 我将给出说明文档, 你帮我转换为tstype并输出到文件
+输出格式如下:
+type {{name}}ID = CddaID<'{{NAME}}'>;
+type {{name}} = {
+    {{field}}: {{type}};
+    ...
+};
+其中{{xx}}为类似hbs的标记, 需替换为具体目标
+所有类型都以type xx = xx这样定义, 避免使用interface
+缩进为4空格
+jsdoc的开头部分不需要加空格, 直接尾随在*之后即可, 如/**持续时间 */
+
+你需要尽可能的保留文档里的注释或者说明, 并用@example/@default来尽可能的表达注释里明确给出的样例/默认值
+应把无用的文本类型标记如(array of strings)删除, 同时不应臆造任何注释, 如果文档没写, 你就就留空
+例如:
+Monster
+...
+weakpoint_sets	(array of strings) Weakpoint sets to apply to the monster. default "none". "zombie" Indicates the zombie's weakness. Defined in monster_weakpoints
+unknow_set	(string)
+volume	Volume of the creature's body, as an integer with metric units, ex. "35 L" or "1500 ml". Used to calculate monster size, size influences melee hit chances on different-sized targets.
+"affected_by_degradation": false, // default false. If true, the item degradation value would be added to fault weight on roll
+...
+转换为
+type Monster = {
+    ...
+    /**物弱点集
+     * 定义于 monster_weakpoints
+     * @example "zombie" //表示僵尸的弱点
+     * @default "none"
+     */
+    weakpoint_sets: (WeakpointSetID);
+    unknow_set: string;
+    /**生物体体积, 以公制单位的整数表示
+     * 用于计算怪物体型, 体型会影响近战对不同体型目标的命中率
+     * @example "35 L"
+     * @example "1500 ml"
+     */
+    volume: (Volume);
+    /**是否受退化影响
+     * 如果为 true, 则物品退化值将被添加到卷上的故障权重中
+     * @default false
+     */
+    affected_by_degradation?: boolean;
+    ...
+};
+
+任何非typescript默认类型的类型引用, 除Int和Float外, 你都应打上括号, 如 (DescText) (AnyItemID) (Volume)
+例子:
+type Monster = {
+    ...
+    /**持续时间 */
+    duration: (Time);
+    ...
+};
+
+转换结果期望上不应有string/object/any
+对于标记了类似于(可选的), 或是带有默认值标注的字段, 你要用 {{field}}?: xxx; 这样的形式表达, 但不需要用 @optional 这样的jsdoc标记
+对于明确给出可选项的string, 你要列举出字面量
+对于指定为某个对象的id的string, 你需要以 {{name}}ID 来表述
+对于明确表达为描述性文本的string, 你需要以DescText表达
+对于明确标明数字类型的字段, 如果是整数, 你要写为Int类型, 浮点则是Float, 不明确则保持number
+对于明确表达为时间类型的值, 如duration: "1 s", 你需要标记为 Time
+对于明确表达为 体积/重量 的值 你要标记为 Volume/Weight
+对于你无法理解的且文档没有具体说明的 object/any/string 你可以保留 object/any/string 以让我理解这是一个未处理的类型
+
+由于这是一个巨大项目, 你的任何操作, 如grep搜索, 都应该将范围限制到 Schema/src/Schema/ 目录下
+Schema/src/Schema/此目录下包含了所有写好的type和常用定义, 同时在Schema/tsconfig里用
+"Schema/*" : ["./src/Schema/*"],
+"@src/*"   : ["./src/*"],
+标注了路径别名
+尽可能使用 write_file 来一次完成任务
+如果需要输出, 那么直接输出到Schema/src/Schema/ 目录下的 {{对应名称}}.ts

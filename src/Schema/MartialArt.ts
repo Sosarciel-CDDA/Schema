@@ -3,6 +3,7 @@ import { AnyItemID } from "./Item";
 import { ParamsEoc } from "./Eoc";
 import { SkillID } from "./Skill";
 import { WeaponCategoryID } from "./WeaponCategory";
+import { TechniqueID } from "./Technique";
 
 
 /**武术流派ID */
@@ -101,7 +102,7 @@ export type MartialArt = {
     /**击杀时触发的效果条件 */
     onkill_eocs?: (ParamsEoc);
     /**可用技巧列表 */
-    techniques?: string[];
+    techniques?: TechniqueID[];
     /**可用武器列表 */
     weapons?: AnyItemID[];
     /**可用武器类别 */

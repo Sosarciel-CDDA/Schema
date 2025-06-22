@@ -1,24 +1,69 @@
-import { CddaID } from "./GenericDefine"
+import { CddaID } from "@src/SchemaTest";
+import { DescText, Float, Int } from "./GenericDefine";
+import { FlagID } from "./Flag";
 
+export type FaultID = CddaID<'FAULT'>;
 
+type DamageMod = {
+    /**伤害类型ID */
+    damage_id: string;
+    /**附加伤害值
+     * @default 0
+     */
+    add: Int;
+    /**伤害倍率
+     * @default 1
+     */
+    multiply: Float;
+};
 
-/**故障ID */
-export type FaultID = CddaID<"FAULT">;
-
-type template = {
-  "type": "fault",
-  "id": "fault_gun_chamber_spent", // unique id for the fault
-  "name": { "str": "Spent casing in chamber" }, // fault name for display
-  "description": "This gun currently...", // fault description
-  "item_prefix": "jammed", // optional string, items with this fault will be prefixed with this
-  "item_suffix": "no handle", // optional string, items with this fault will be suffixed with this. The string would be encased in parentheses, like `sword (no handle)`
-  "message": "%s has it's handle broken!", // Message, that would be shown when such fault is applied, unless supressed
-  "fault_type": "gun_mechanical_simple", // type of a fault, code may call for a random fault in a group instead of specific fault
-  "affected_by_degradation": false, // default false. If true, the item degradation value would be added to fault weight on roll
-  "degradation_mod": 50,  // default 0. Having this fault would add this amount of temporary degradation on the item, resulting in higher chance to trigger faults with "affected_by_degradation": true. Such degradation will be removed when fault is fixed
-  "price_modifier": 0.4, // (Optional, double) Defaults to 1 if not specified. A multiplier on the price of an item when this fault is present. Values above 1.0 will increase the item's value.
-  "melee_damage_mod": [ { "damage_id": "cut", "add": -5, "multiply": 0.8 } ], // (Optional) alters the melee damage of this type for item, if fault of this type is presented. `damage_id` is mandatory, `add` is 0 by default, `multiply` is 1 by default
-  "armor_mod": [ { "damage_id": "cut", "add": -5, "multiply": 0.8 } ], // (Optional) Same as armor_mod, changes the protection value of damage type of the faulted item if it's presented
-  "block_faults": [ "fault_handle_chipping", "fault_handle_cracked" ], // Faults, that cannot be applied if this fault is already presented on item. If there is already such a fault, it will be removed. Can't have chipped blade if the blade is gone
-  "flags": [ "JAMMED_GUN" ] // optional flags, see below
-}
+export type Fault = {
+    /**故障的唯一ID */
+    id: FaultID;
+    /**显示用的故障名称 */
+    name: (DescText);
+    /**故障描述 */
+    description: (DescText);
+    /**物品前缀
+     * 有此故障的物品将添加此前缀
+     */
+    item_prefix?: string;
+    /**物品后缀
+     * 有此故障的物品将添加此后缀(会放在括号内)
+     * @example "no handle" // 会显示为"sword (no handle)"
+     */
+    item_suffix?: string;
+    /**应用故障时显示的消息 */
+    message: string;
+    /**故障类型
+     * 代码可能会调用一组中的随机故障而非特定故障
+     */
+    fault_type: string;
+    /**是否受退化影响
+     * 如果为 true, 则物品降级值将被添加到卷上的故障权重中
+     * @default false
+     */
+    affected_by_degradation?: boolean;
+    /**退化修正值
+     * 有此故障会增加物品的临时退化值
+     * @default 0
+     */
+    degradation_mod?: Int;
+    /**价格修正系数
+     * @default 1
+     */
+    price_modifier?: Float;
+    /**近战伤害修正 */
+    melee_damage_mod?: DamageMod[];
+    /**护甲修正  */
+    armor_mod?: DamageMod[];
+    /**阻止的故障列表
+     * 如果已有此故障则无法应用这些故障
+     */
+    block_faults?: FaultID[];
+    /**标志列表
+     * 触发硬编码的C++效果
+     * @see JSON_FLAGS.md
+     */
+    flags?: FlagID[];
+};

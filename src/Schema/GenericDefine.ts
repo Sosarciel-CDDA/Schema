@@ -38,6 +38,7 @@ import { Proficiency } from "./Proficiency";
 import { Technique } from "./Technique";
 import { MartialArt } from "./MartialArt";
 import { AttackVector } from "./AttackVector";
+import { Fault } from "./Fault";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -403,6 +404,7 @@ export type AnyCddaJson = AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInf
     Effect|Spell|MathFunction|AmmoEffect|MissionDefinition|
     ModTileset|ActivityType|VehiclePart|ToolQuality|TalkTopic|Terrain|
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
-    Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector;
+    Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
+    Fault;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];
