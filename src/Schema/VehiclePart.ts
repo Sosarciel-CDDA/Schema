@@ -1,7 +1,7 @@
 import { AmmunitionTypeID } from "./AmmiunitionType";
 import { DamageTypeID } from "./DamageType";
 import { FieldID } from "./Field";
-import { CddaID, Color, CopyfromVar, DescText, Time, Volume } from "./GenericDefine";
+import { CddaID, Color, CopyfromVar, DescText, LookLikeID, Time, Volume } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { ItemGroupEntrie, ItemGroupID } from "./ItemGroup";
 import { MonsterID } from "./Monster";
@@ -20,7 +20,7 @@ export type VehiclePart = CopyfromVar<{
     /**显示名称 */
     name: (DescText);
     /**如果此部分没有图块, 向图块集提供提示, 使用 looks_like 图块.  */
-    looks_like?: MonsterID|AnyItemID;
+    looks_like?: (LookLikeID);
     /**功能取决于部件类型:  */
     bonus: number;
     /**部件工作时使用的颜色 */

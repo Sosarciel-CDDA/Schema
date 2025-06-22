@@ -3,7 +3,7 @@ import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
 import { BoolObj } from "./Eoc";
-import { BodyPartParam, CddaID, CharSymbol, Color, CopyfromVar, DescText, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
+import { BodyPartParam, CddaID, CharSymbol, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, Time, Volume, Weight } from "./GenericDefine";
 import { HarvestID } from "./Harvest";
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
@@ -25,7 +25,7 @@ export type MonsterID = CddaID<"MON">;
 /**怪物 */
 export type Monster = CopyfromVar<{
     /**看上去像哪个id的物品 */
-    looks_like?: MonsterID|AnyItemID;
+    looks_like?: (LookLikeID);
     /**怪物唯一ID */
     id: (MonsterID);
     type: "MONSTER";

@@ -106,7 +106,7 @@ export type ItemBase = CopyfromVar<{
      */
     degradation_multiplier?: number;
     /**ascii显示符号 */
-    symbol: CharSymbol;
+    symbol: (CharSymbol);
     /**颜色 */
     color?: Color;
     /**材质 */

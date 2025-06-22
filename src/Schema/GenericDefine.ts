@@ -7,7 +7,7 @@ import { Flag, FlagID } from "./Flag";
 import { AmmoID, AnyItem, AnyItemID, AnyItemTrait } from "./Item";
 import { ItemGroup } from "./ItemGroup";
 import { MathFunction } from "./MathFuncion";
-import { Monster } from "./Monster";
+import { Monster, MonsterID } from "./Monster";
 import { NpcClass } from "./NpcClass";
 import { NpcInstance } from "./NpcInstance";
 import { OverlayOrdering } from "./OverlayOrdering";
@@ -24,7 +24,7 @@ import { VehiclePart } from "./VehiclePart";
 import { ToolQuality } from "./ToolQuality";
 import { TalkTopic } from "./TalkTopic";
 import { Requirement } from "./Requirement";
-import { Terrain } from "./Terrain";
+import { Terrain, TerrainID } from "./Terrain";
 import { OverMapSpecial } from "./OvermapSpecial";
 import { Mapgen } from "./Mapgen";
 import { Palette } from "./Palette";
@@ -382,6 +382,9 @@ export type MessageRatType = typeof MessageRatTypeList[number];
 type AnyOtherObject = {
     "type":JToken;
 };
+
+/**有贴图可以被 look_like 指定的id */
+export type LookLikeID = (AnyItemID|MonsterID|TerrainID);
 
 /**任何Cdda的Json */
 export type AnyCddaJson = AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInfoOrder|
