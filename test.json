@@ -8,6 +8,5 @@
     "symbol": "",
     "volume": 1,
     "weight": 1,
-    "//T": "ARMOR",
-    "covers": []
+    "//GENERIC": true
 }

@@ -359,6 +359,7 @@ export type Festival = "none"|"new_year"|"easter"|
 /**有贴图可以被 look_like 指定的id */
 export type LookLikeID = (ItemID|MonsterID|TerrainID);
 
+type MGR<T extends string> = ((`//${T}`)&{});
 /**成对出现的字段 */
 export type RequirePair<F extends string,T> = T;
 //(Partial<{[K in keyof T]?:T[K]|undefined|never}>|Partial<{[K in keyof T]:undefined}>);

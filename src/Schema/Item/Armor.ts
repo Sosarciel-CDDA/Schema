@@ -8,9 +8,13 @@ import { GenericFlagID } from "./Generic"
 export type ArmorID = CddaID<"ARMOR">;
 
 /**一件护甲 */
-export type ArmorTrait = RequirePair<"ARMOR",{
-    /**标记具有Armor的特征, 用于补全 */
+export type ArmorTrait = RequirePair<"ARMOR",({
+    /**标记具有 ARMOR 的特征, 用于补全 */
     "//T": "ARMOR";
+}|{
+    /**标记具有 ARMOR 的特征, 用于补全 */
+    "//ARMOR": true;
+})&{
     /**覆盖的位置 */
     covers: BodyPartID[];
     /**保暖度 */

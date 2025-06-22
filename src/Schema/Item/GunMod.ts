@@ -10,9 +10,13 @@ import { MagazineID } from "./Magazine";
 export type GunModID = CddaID<"GMOD">;
 
 /**枪械模组 */
-export type GunModTrait = RequirePair<"GUNMOD",{
-	/**标记具有GunMod的特征, 用于补全 */
-	"//T": "GUNMOD";
+export type GunModTrait = RequirePair<"GUNMOD",({
+    /**标记具有 GUNMOD 的特征, 用于补全 */
+    "//T": "GUNMOD";
+}|{
+    /**标记具有 GUNMOD 的特征, 用于补全 */
+    "//GUNMOD": true;
+})&{
 	/**这个枪械改装件安装在哪里？ */
 	location: GunModSlot;
 	/**这个枪械改装件可以用于哪种武器？ */

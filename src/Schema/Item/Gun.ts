@@ -90,9 +90,13 @@ export type GunBase = {
 };
 
 /**枪械 */
-export type GunTrait = RequirePair<"GUN",{
-    /**标记具有Gun的特征, 用于补全 */
+export type GunTrait = RequirePair<"GUN",({
+    /**标记具有 GUN 的特征, 用于补全 */
     "//T": "GUN";
+}|{
+    /**标记具有 GUN 的特征, 用于补全 */
+    "//GUN": true;
+})&{
 } & GunBase>;
 
 

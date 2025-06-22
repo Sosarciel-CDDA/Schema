@@ -9,9 +9,13 @@ import { GunModTrait } from "./GunMod";
 export type ToolID = CddaID<"TOOL">;
 
 /**工具 */
-export type ToolTrait = RequirePair<"TOOL",{
-    /**标记具有Tool的特征, 用于补全 */
+export type ToolTrait = RequirePair<"TOOL",({
+    /**标记具有 TOOL 的特征, 用于补全 */
     "//T": "TOOL";
+}|{
+    /**标记具有 TOOL 的特征, 用于补全 */
+    "//TOOL": true;
+})&{
     /**随着时间的推移消耗的费用, 不推荐使用 power_draw */
     turns_per_charge?: number;
     /**当与 UPS 结合使用时, 该项目将燃烧燃料以获得给定的能量值,   

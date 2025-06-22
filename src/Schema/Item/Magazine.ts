@@ -9,9 +9,13 @@ import { ItemID } from "./ItemIndex";
 export type MagazineID = CddaID<"MAG">;
 
 /**弹夹 */
-export type MagazineTrait = RequirePair<"MAGAZINE",{
-    /**标记具有Magazine的特征, 用于补全 */
+export type MagazineTrait = RequirePair<"MAGAZINE",({
+    /**标记具有 MAGAZINE 的特征, 用于补全 */
     "//T": "MAGAZINE";
+}|{
+    /**标记具有 MAGAZINE 的特征, 用于补全 */
+    "//MAGAZINE": true;
+})&{
     /**该弹匣可以装载哪些类型的弹药 */
     ammo_type: AmmunitionTypeID[];
     /**弹匣容量 (与弹药量相当的单位) */

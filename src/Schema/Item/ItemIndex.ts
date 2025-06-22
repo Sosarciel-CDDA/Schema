@@ -34,14 +34,22 @@ export type ItemSubtype = typeof ItemSubtypeList[number];
 
 
 /**任何物品特征 */
-export type AnyItemTrait = (GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait|RequirePair<"GENERIC",{"//T":"GENERIC"}>);
+export type AnyItemTrait = (RequirePair<"GENERIC",({
+    /**标记具有 GENERIC 的特征, 用于补全 */
+    "//T": "GENERIC";
+}|{
+    /**标记具有 GENERIC 的特征, 用于补全 */
+    "//GENERIC": true;
+})&{
+}>|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait);
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
 
 /**物品ID */
 export type ItemID = CddaID<"ITEM">;
 
-/**物品
- * 需以 "//T":Subtype 标记其 subtype
+/**物品  
+ * 以 "//T"?:"xxx" as TypeA|TypeB 标记其 同时符合TypeA和TypeB的特征  
+ * 以 "//TypeA": true; "//TypeB": true; 标记其符合TypeA或TypeB的特征  
  */
 export type Item = GenericTrait&AnyItemTrait;
 
@@ -57,9 +65,10 @@ const a:Item = {
   weight: 1,
   volume: 1,
   symbol: "1",
-  "//T":"ARMOR" as "GENERIC"|"ARMOR"|"GUN",
-  covers:["arm_l"],
-  skill:"archery",
+  "//":"uncopy",
+  //"//T": "GUN" as "GUN"|"ARMOR",
+  "//GUN": true,
+  "//ARMOR": true,
   ammo:["50"],
-  "//":"uncopy"
+  covers: ["arm_r"],
 }

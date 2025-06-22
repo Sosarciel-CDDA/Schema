@@ -9,9 +9,13 @@ import { ItemID } from "./ItemIndex";
 export type ComestibleID = CddaID<"COME">;
 
 /**Comestible 消耗品 */
-export type ComestibleTrait = RequirePair<"COMESTIBLE",{
-    /**标记具有Comestible的特征, 用于补全 */
+export type ComestibleTrait = RequirePair<"COMESTIBLE",({
+    /**标记具有 COMESTIBLE 的特征, 用于补全 */
     "//T": "COMESTIBLE";
+}|{
+    /**标记具有 COMESTIBLE 的特征, 用于补全 */
+    "//COMESTIBLE": true;
+})&{
     /**一个时间持续期: 食品保质期. 0 = 不会变质 */
     spoils_in?: (Time);
     /**刺激效果 */
