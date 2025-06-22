@@ -173,14 +173,6 @@ export type BodyPartID = typeof BodyPartList[number]|CustBP;
  */
 export type BodyPartParam = IDObj<BodyPartID>|"RANDOM"|"whole body";
 
-/**npc阵营 列表 */
-export const DefineNpcFactionList = [
-    "your_followers",
-    "no_faction",
-] as const;
-/**npc阵营 */
-export type DefineNpcFaction = typeof DefineNpcFactionList[number];
-
 /**容器 */
 export type PocketData = {
     /**容器或弹夹 */

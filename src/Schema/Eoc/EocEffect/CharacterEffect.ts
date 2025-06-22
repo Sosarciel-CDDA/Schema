@@ -17,6 +17,7 @@ import { MonsterID } from "Schema/Monster";
 import { TalkTopicID } from "Schema/TalkTopic";
 import { MartialArtID } from "Schema/MartialArt";
 import { MutationCategoryID } from "Schema/MutationCategory";
+import { FactionRelationFlags } from "Schema/NPCFaction";
 
 
 
@@ -1034,7 +1035,7 @@ export type SetFacRelation = TalkerVar<{
     /**要设置的规则
      * 要设置的规则. 参见派系文档以获取规则列表及其涵盖的内容
      */
-    set_fac_relation: (StrObj);
+    set_fac_relation: (IDObj<keyof FactionRelationFlags>);
     /**设置值
      * @default true
      * 是设置还是取消设置此规则

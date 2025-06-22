@@ -1,6 +1,7 @@
 import { EocID } from "./Eoc";
-import { CddaID, DefineNpcFaction, DescText } from "./GenericDefine";
+import { CddaID, DescText } from "./GenericDefine";
 import { NpcClassID } from "./NpcClass";
+import { NPCFactionID } from "./NPCFaction";
 import { TalkTopicID } from "./TalkTopic";
 
 
@@ -26,7 +27,7 @@ export type NpcInstance = {
     /**初始的聊天 talktopic */
     chat: (TalkTopicID);
     /**阵营 */
-    faction?: DefineNpcFaction;
+    faction?: (NPCFactionID);
     /**死亡触发的eoc */
     death_eocs?: EocID[];
     /**性别 */

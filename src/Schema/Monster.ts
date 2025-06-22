@@ -1,9 +1,9 @@
-import { DamageTypeID, DefineDamageTypeIDList } from "./DamageType";
+import { DamageTypeID } from "./DamageType";
 import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
 import { BoolObj } from "./Eoc";
-import { BodyPartParam, CddaID, CharSymbol, Color, CopyfromVar, DefineNpcFaction, DescText, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
+import { BodyPartParam, CddaID, CharSymbol, Color, CopyfromVar, DescText, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
 import { HarvestID } from "./Harvest";
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
