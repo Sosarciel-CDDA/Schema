@@ -1,6 +1,6 @@
 import { CddaID, CopyfromVar, Float, Int, SeasonLc } from "./GenericDefine";
 import { FlagID } from "./Flag";
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 import { HarvestID } from "./Harvest";
 import { TrapID } from "./Trap";
 import { CommonToFurnitureAndTerrain } from "./CommonToFurnitureAndTerrain";
@@ -35,7 +35,7 @@ export type Terrain = CopyfromVar<CommonToFurnitureAndTerrain<{
     /**别名 */
     alias?: (TerrainID);
     /**可收获物品 */
-    harvestable?: (AnyItemID);
+    harvestable?: (ItemID);
     /**用于地形状态转换
      * 若设置, 必须为合法地形 ID
      * 常见用法包括: 
@@ -104,7 +104,7 @@ type HarvestSeason = {
 /**液体源 */
 type LiquidSource = {
     /**液体ID */
-    id: (AnyItemID);
+    id: (ItemID);
     /**最低可能温度(摄氏度) 
      * 仅适用于 "water_source" 动作
      */

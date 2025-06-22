@@ -4,7 +4,7 @@ import { Effect } from "./Effect";
 import { Enchantment } from "./Enchantment";
 import { Eoc, IDObj } from "./Eoc";
 import { Flag, FlagID } from "./Flag";
-import { AmmoID, AnyItem, AnyItemID, AnyItemTrait } from "./Item";
+import { AmmoID, Item, ItemID, AnyItemTrait } from "./Item";
 import { ItemGroup } from "./ItemGroup";
 import { MathFunction } from "./MathFuncion";
 import { Monster, MonsterID } from "./Monster";
@@ -208,7 +208,7 @@ export type PocketData = {
     /**只有当物品具有与这些标志之一匹配的标志时, 才能将其放入此口袋中.  */
     flag_restriction?: FlagID[];
     /**只有这些物品 ID 才能放入此口袋中.  超越弹药和旗帜限制.  */
-    item_restriction?: AnyItemID[];
+    item_restriction?: ItemID[];
     /**有主要由该材料制成的物品才能进入.  */
     material_restriction?: MaterialID[];
     /**如果口袋有 sealed_data, 则在物品生成时它将被密封.  口袋的密封版本将覆盖相同数据类型的未密封版本  */
@@ -262,26 +262,19 @@ export type Explosion = {
      */
     shrapnel?: ShrapnelData;
 }
+
 /**破片数据  
  * 为数字时则为壳体总质量, 其余碎片变量设置为合理的默认值.   
  */
 export type ShrapnelData = {
-    /**壳体质量  
-     * 壳体总质量, 壳体/功率比决定碎片速度.   
-     */
+    /**外壳的总质量，外壳/威力比决定碎片速度 */
     casing_mass: number;
-    /**碎片质量  
-     * 每个碎片的质量, 以克为单位. 大碎片打得更重, 小碎片打得更频繁.   
-     */
+    /**每个碎片的质量，以克为单位。大碎片打击更重，小碎片打击更频繁 */
     fragment_mass: number;
-    /**恢复  
-     * 在着陆点掉落物品的百分比机会. 
-     */
+    /**在落地点掉落物品的百分比几率 */
     recovery?: number;
-    /**掉落  
-     * 在着陆点掉落的物品
-     */
-    drop?: (AnyItemID);
+    /**在着陆点掉落的物品 */
+    drop?: (ItemID);
 }|number;
 
 /**物理状态 */
@@ -363,10 +356,10 @@ export type Festival = "none"|"new_year"|"easter"|
 "independence_day"|"halloween"|"thanksgiving"|"christmas";
 
 /**有贴图可以被 look_like 指定的id */
-export type LookLikeID = (AnyItemID|MonsterID|TerrainID);
+export type LookLikeID = (ItemID|MonsterID|TerrainID);
 
 /**任何Cdda的Json */
-export type AnyCddaJson = AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInfoOrder|
+export type AnyCddaJson = Item|AnyItemTrait|Eoc|Mutation|DamageType|DamageInfoOrder|
     AmmunitionType|Enchantment|Flag|ItemGroup|Monster|
     NpcClass|NpcInstance|OverlayOrdering|SoundEffect|Requirement|
     Effect|Spell|MathFunction|AmmoEffect|MissionDefinition|

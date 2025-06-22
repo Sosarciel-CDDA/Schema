@@ -5,7 +5,8 @@ import { GunTrait } from "./Gun";
 import { GunModTrait } from "./GunMod";
 import { MagazineTrait } from "./Magazine";
 import { ToolTrait } from "./Tool";
-import { ItemBase } from "./Generic";
+import { GenericTrait } from "./Generic";
+import { CddaID } from "Schema/GenericDefine";
 
 
 
@@ -46,17 +47,19 @@ type ItemTraitMap = {
 /**具有某些特征的物品
  * @TJS-type object
  */
-export type ItemTrait<T extends keyof ItemTraitMap> = ItemBase &
+export type ItemTrait<T extends keyof ItemTraitMap> = GenericTrait &
 Omit<ItemTraitMap[T],'trait_type'|'id'> &
 {subtype:ItemTraitMap[T]['trait_type'][]};
 
-/**任何物品 */
+/**任何物品特征 */
 export type AnyItemTrait = AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait;
-/**任何物品ID */
-export type AnyItemID = AnyItemTrait['id'];
+/**任何物品特征ID */
+export type AnyTraitID = AnyItemTrait['id'];
+/**物品ID */
+export type ItemID = CddaID<"ITEM">;
 
-/**任何物品 */
-export type AnyItem = ItemBase&Partial<AnyItemTrait>;
+/**物品 */
+export type Item = GenericTrait&Partial<AnyItemTrait>;
 
 /**任何物品的Flag */
 export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];

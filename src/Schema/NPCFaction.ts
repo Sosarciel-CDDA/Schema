@@ -2,7 +2,7 @@ import { CddaID, DescText, Float, Int } from "./GenericDefine";
 import { MonsterFactionID } from "./MonsterFaction";
 import { VitaminID } from "./Vitamin";
 import { BoolObj } from "./Eoc";
-import { AnyItemID, ItemCategotyID } from "./Item";
+import { ItemID, ItemCategotyID } from "./Item";
 import { ItemGroupID } from "./ItemGroup";
 
 /**NPC阵营ID */
@@ -20,7 +20,7 @@ type FoodSupply = {
 /**价格规则 */
 type PriceRule = {
     /**物品ID */
-    item?: (AnyItemID);
+    item?: (ItemID);
     /**物品类别 */
     category?: (ItemCategotyID);
     /**物品组 */
@@ -115,7 +115,7 @@ export type NPCFaction = {
     /**阵营偏好货币的物品ID
      * 阵营商人会以100%价值交易该货币
      */
-    currency: (AnyItemID);
+    currency: (ItemID);
     /**价格规则数组
      * 允许为物品/类别/组定义溢价, 加价, 价格和/或固定调整
      */

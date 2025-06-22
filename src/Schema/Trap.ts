@@ -1,6 +1,6 @@
 import { CddaID, CharSymbol, Color, DescText, Int, Weight } from "./GenericDefine";
 import { ParamsEoc } from "./Eoc";
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 import { FlagID } from "./Flag";
 import { SoundEffectID, SoundEffectVariantID } from "./SoundEffect";
 import { FakeSpell } from "./Enchantment";
@@ -52,7 +52,7 @@ export type Trap = {
      */
     trigger_weight?: (Weight);
     /**拆卸时生成的物品 */
-    drops?: (AnyItemID)[];
+    drops?: (ItemID)[];
     /**陷阱标志 
      * @example ["UNDODGEABLE", "AVATAR_ONLY"]
      */
@@ -85,7 +85,7 @@ type VehicleTrapData = {
     /**触发后是否移除陷阱 */
     remove_trap: boolean;
     /**生成的物品 */
-    spawn_items: AnyItemID[];
+    spawn_items: ItemID[];
 };
 
 /**陷阱硬编码动作 列表 */

@@ -1,6 +1,6 @@
 import { EocEffect, IDObj, LocObj, NumObj, StrObj } from "./Eoc";
 import { CddaID, DescText } from "./GenericDefine";
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 import { OverMapSpecialID } from "./OvermapSpecial";
 import { OvermapTerrainID } from "./OvermapTerrain";
 
@@ -24,7 +24,7 @@ export type MissionDefinition = {
     /**未知 */
     value: number;
     /**如果目标是寻找道具, 目标的道具ID */
-    item?: (AnyItemID);
+    item?: (ItemID);
     /**可选布尔值, 默认为 false.  如果为 true,   
      * 则此任务完成后, 它将不会显示在已完成的任务或失败的任务列表中.   
      */

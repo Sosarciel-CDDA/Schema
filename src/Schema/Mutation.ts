@@ -3,7 +3,7 @@ import { ParamsEnchantment } from "./Enchantment";
 import { BoolObj, EocID } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, DescText, EffectRatType, SocialType } from "./GenericDefine";
-import { AnyItemID, ArmorID, GunID } from "./Item";
+import { ItemID, ArmorID, GunID } from "./Item";
 import { MaterialID } from "./Material";
 import { MonsterID } from "./Monster";
 import { MutationCategory } from "./MutationCategory";
@@ -153,7 +153,7 @@ export type Mutation = {
     /**此突变激活产生一个物品 */
     spawn_item?: {
         /**生成的物品ID */
-        type: (AnyItemID);
+        type: (ItemID);
         /**生成时的消息 */
         message: (DescText);
     };
@@ -204,11 +204,11 @@ export type Mutation = {
     /**你受限于的`MED`列表, 包括变异剂, 血清, 阿司匹林, 绷带等  
      * @default []
      */
-    can_only_heal_with?: AnyItemID[];
+    can_only_heal_with?: ItemID[];
     /**只对你有效的`MED`列表. 查看`CANT_HEAL_EVERYONE`标志项  
      * @default []
      */
-    can_heal_with?: AnyItemID[];
+    can_heal_with?: ItemID[];
     /**你可以变异成的类别列表  
      * @default []
      */

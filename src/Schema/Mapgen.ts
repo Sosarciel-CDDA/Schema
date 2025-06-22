@@ -1,6 +1,6 @@
 import { FurnitureID } from "./Furniture";
 import { CddaID } from "./GenericDefine";
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 import { ItemGroupID } from "./ItemGroup";
 import { MonsterID } from "./Monster";
 import { OvermapTerrainID } from "./OvermapTerrain";
@@ -26,7 +26,7 @@ export type FurnPlace = Place<{
     furn: (FurnitureID);
 }>;
 export type ItemPlace = Place<{
-    item: (AnyItemID);
+    item: (ItemID);
 }>;
 export type GroupPlace = Place<{
     group: (ItemGroupID);

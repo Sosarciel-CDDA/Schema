@@ -6,7 +6,7 @@ import { Explosion, MessageRatType } from "Schema/GenericDefine";
 import { AssignMissionTarget } from "Schema/MissionDefinition";
 import { EffectID } from "Schema/Effect";
 import { MutationID } from "Schema/Mutation";
-import { AnyItemID } from "Schema/Item";
+import { ItemID } from "Schema/Item";
 import { ActivityTypeID } from "Schema/ActivityType";
 import { DamageTypeID } from "Schema/DamageType";
 import { TerrainID } from "Schema/Terrain";
@@ -1013,7 +1013,7 @@ export type ConsumeItemSum = TalkerVar<{
         /**物品ID
          * 应该移除的物品的ID
          */
-        item: IDObj<AnyItemID>;
+        item: IDObj<ItemID>;
         /**数量
          * 应该移除的物品或充能的数量
          */
@@ -1566,7 +1566,7 @@ export type Message = TalkerVar<{
 
 /**使用物品 */
 export type ConsumeItem = TalkerVar<{
-    consume_item: IDObj<AnyItemID>;
+    consume_item: IDObj<ItemID>;
     /**数量 */
     count?: (NumObj);
     /**充能数量 */

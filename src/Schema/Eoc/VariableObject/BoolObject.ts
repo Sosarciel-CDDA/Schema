@@ -6,7 +6,7 @@ import { FieldID } from "Schema/Field";
 import { WeaponCategoryID } from "Schema/WeaponCategory";
 import { FlagID } from "Schema/Flag";
 import { MutationID } from "Schema/Mutation";
-import { AnyItemID, ItemCategotyID } from "Schema/Item";
+import { ItemID, ItemCategotyID } from "Schema/Item";
 import { StrObj } from "./StringObjectIndex";
 import { EffectID } from "Schema/Effect";
 import { TerrainID } from "Schema/Terrain";
@@ -535,7 +535,7 @@ export type HasItem = TalkerVar<{
     /**有物品
      * 要检查的物品ID
      */
-    has_item: (IDObj<AnyItemID>);
+    has_item: (IDObj<ItemID>);
 }, 'has_item'>;
 
 /**有多个物品
@@ -551,7 +551,7 @@ export type HasItems = TalkerVar<{
      */
     has_items: {
         /**要检查的物品ID */
-        item: (IDObj<AnyItemID>);
+        item: (IDObj<ItemID>);
         /**需要的物品数量 */
         count?: (NumObj);
         /**物品的充能量 */
@@ -617,7 +617,7 @@ export type HasItemsSum = TalkerVar<{
      */
     has_items_sum: {
         /**要检查的物品ID */
-        item: (IDObj<AnyItemID>);
+        item: (IDObj<ItemID>);
         /**需要的物品数量 */
         amount: (NumObj);
     }[];

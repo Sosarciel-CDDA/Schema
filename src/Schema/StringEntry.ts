@@ -1,4 +1,4 @@
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 import { MutationID } from "./Mutation";
 import { SpellID } from "./Spell";
 
@@ -37,9 +37,9 @@ export const CONTEXT_VAL_VAR = (id:string)=>`<context_val:${id}>`;
 /** 全局变量VAR */
 export const GLOBAL_VAL_VAR = (id:string)=>`<global_val:${id}>`;
 /** 来自ID的物品的名字 */
-export const ITEM_NAME_ID = (id:AnyItemID)=>`<item_name:${id}>`;
+export const ITEM_NAME_ID = (id:ItemID)=>`<item_name:${id}>`;
 /** 来自ID的物品的描述 */
-export const ITEM_DESCRIPTION_ID = (id:AnyItemID)=>`<item_description:${id}>`;
+export const ITEM_DESCRIPTION_ID = (id:ItemID)=>`<item_description:${id}>`;
 /** 来自ID的特性的名字 */
 export const TRAIT_NAME_ID = (id:MutationID)=>`<trait_name:${id}>`;
 /** 来自ID的特性的描述 */

@@ -3,7 +3,7 @@ import { CddaID, Time, Weight } from "Schema/GenericDefine";
 import { GenericFlagID } from "./Generic";
 import { VitaminID } from "Schema/Vitamin";
 import { MaterialID } from "Schema/Material";
-import { AnyItemID } from "./ItemIndex";
+import { ItemID } from "./ItemIndex";
 
 /**Comestible ID格式   */
 export type ComestibleID = CddaID<"COME">;
@@ -37,7 +37,7 @@ export type ComestibleTrait = {
     /**满足的饥饿感 (已过时)  */
     nutrition?: number;
     /**需要吃/喝的工具 */
-    tool?: (AnyItemID);
+    tool?: (ItemID);
     /**生成时的使用次数 */
     charges?: number;
     /** (可选) 在上述定义的体积中有多少使用次数. 如果省略, 与'charges'相同 */

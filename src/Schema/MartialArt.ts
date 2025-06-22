@@ -1,5 +1,5 @@
 import { CddaID, DescText, Int } from "./GenericDefine";
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 import { ParamsEoc } from "./Eoc";
 import { SkillID } from "./Skill";
 import { WeaponCategoryID } from "./WeaponCategory";
@@ -104,7 +104,7 @@ export type MartialArt = {
     /**可用技巧列表 */
     techniques?: TechniqueID[];
     /**可用武器列表 */
-    weapons?: AnyItemID[];
+    weapons?: ItemID[];
     /**可用武器类别 */
     weapon_category?: WeaponCategoryID[];
 };

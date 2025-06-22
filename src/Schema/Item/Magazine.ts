@@ -2,7 +2,7 @@ import { AmmunitionTypeID } from "../AmmiunitionType";
 import { CddaID } from "../GenericDefine";
 import { AmmoID } from "./Ammo";
 import { GenericFlagID } from "./Generic";
-import { AnyItemID } from "./ItemIndex";
+import { ItemID } from "./ItemIndex";
 
 
 /**弹夹ID */
@@ -25,7 +25,7 @@ export type MagazineTrait = {
     /**将每单位弹药装入弹匣需要多长时间 */
     reload_time?: number;
     /**如果设置, 则每消耗一单位弹药就会丢弃一个链接 (给定类型) (设置用于分解弹药带) */
-    linkage?: (AnyItemID);
+    linkage?: (ItemID);
     /**弹夹的Flag */
     flags?: MagazineFlagID[];
 };

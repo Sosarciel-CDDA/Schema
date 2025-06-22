@@ -1,79 +1,57 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { EnchantmentID, InlineEnchantment } from "../Enchantment";
 import { CustomFlagID } from "../Flag";
-import { CddaID, CharSymbol, Color, CopyfromVar, DescText, Explosion, Float, Int, Length, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
+import { CddaID, CharSymbol, Color, CopyfromVar, DescText, Explosion, Float, Int, Length, LookLikeID, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
 import { AmmoID } from "./Ammo";
 import { WeaponCategoryID } from "../WeaponCategory";
 import { MaterialID } from "../Material";
 import { UseAction } from "../ItemAction";
-import { AnyItemID, ItemSubtype } from "./ItemIndex";
+import { ItemID, ItemSubtype } from "./ItemIndex";
 import { SnippetCategoryID } from "Schema/Snippet";
+import { ItemCategoryID } from "Schema/ItemCategory";
+import { MonsterID } from "Schema/Monster";
+import { DamageTypeID } from "Schema/DamageType";
+import { RecipeID } from "Schema/Recipe";
 
 
-/**预定义的通用物品 列表 */
-export const DefineGenericIDList = [
-    "null"                      ,//空物品
-    "afs_biomaterial_1"         ,//afs材料
-    "afs_biomaterial_2"         ,
-    "afs_biomaterial_3"         ,
-    "afs_biomaterial_4"         ,
-    "afs_biomaterial_5"         ,
-    "afs_circuitry_1"           ,
-    "afs_circuitry_2"           ,
-    "afs_circuitry_3"           ,
-    "afs_circuitry_4"           ,
-    "afs_circuitry_5"           ,
-    "afs_energy_storage_1"      ,
-    "afs_energy_storage_2"      ,
-    "afs_energy_storage_3"      ,
-    "afs_energy_storage_4"      ,
-    "afs_energy_storage_5"      ,
-    "afs_heat_2_salvage"        ,
-    "afs_heat_1"                ,
-    "afs_heat_2"                ,
-    "afs_heat_3"                ,
-    "afs_heat_4"                ,
-    "afs_heat_5"                ,
-    "afs_magnet_1"              ,
-    "afs_magnet_2"              ,
-    "afs_magnet_3"              ,
-    "afs_magnet_4"              ,
-    "afs_material_1"            ,
-    "afs_material_2"            ,
-    "afs_material_3"            ,
-    "afs_material_4"            ,
-    "afs_material_5"            ,
-    "afs_neural_io_1"           ,
-    "afs_neural_io_2"           ,
-    "afs_neural_io_3"           ,
-    "afs_neural_io_4"           ,
-    "afs_neural_io_5"           ,
-    "afs_optics_3"              ,
-    "afs_optics_4"              ,
-] as const;
-/**预定义的通用物品 */
-export type DefineGenericID = typeof DefineGenericIDList[number];
 
 /**通用物品基础 */
-export type ItemBase = CopyfromVar<{
+export type GenericTrait = CopyfromVar<{
     /**子类型 */
     subtype:ItemSubtype[];
     /**物品唯一ID */
-    id: (AnyItemID);
+    id: (ItemID);
     /**物品类型 */
     type: "ITEM";
     /**物品flag */
     flags?: GenericFlagID[];
     /**物品显示名 */
     name: (DescText);
+    /**在指定条件下应用的名称列表 */
+    conditional_names?: {
+        /**条件类型 */
+        type: (ItemNameConditionType);
+        /**要检查的条件
+         * 依照type应用不同值
+         * COMPONENT_ID_SUBSTRING  //递归搜索该物品的所有组件 ID，只要某一项组件 ID 包含条件字符串（区分大小写）即可匹配。例如条件 mutant 能匹配到 mutant_meat。
+         * COMPONENT_ID            //与 COMPONENT_ID_SUBSTRING 类似，但要求组件 ID 精确匹配。
+         * FLAG                    //检查物品是否具有指定标志（完全匹配）。
+         * VITAMIN                 //检查物品是否含有指定维生素（完全匹配）。
+         * VAR                     //检查物品是否拥有指定变量名及值（完全匹配）。
+         * SNIPPET_ID              //检查物品是否包含由某 effect_on_condition 设置的片段 ID，并与给定的 condition 和 value 完全匹配。
+         */
+        condition: string;
+        /**达成条件时的名称 */
+        name: (DescText);
+    }[];
     /**物品分类 */
-    category?:ItemCategotyID;
+    category?:(ItemCategoryID);
     /**该项目应在哪个容器 (如果有)中生成 */
-    container?:AnyItemID;
+    container?: (ItemID);
     /**如果该物品没有配方, 则修复该物品时等同于配方 */
-    repairs_like?: AnyItemID,
+    repairs_like?: (ItemID),
     /**提示图块集, 如果该项目没有图块 使用looks_like图块 */
-    looks_like?: string,
+    looks_like?: (LookLikeID),
     /**描述 */
     description: (DescText);
     /**是否解析snippet */
@@ -83,57 +61,110 @@ export type ItemBase = CopyfromVar<{
     /**用于该项目的 asci_art 的 ID */
     ascii_picture?:string;
     /**默认的状态 默认为固态 */
-    phase?: Phase;
+    phase?: (Phase);
     /**重量 0重量物品需要添加 ZERO_WEIGHT标签 */
     weight: (Weight);
     /**体积 0体积物品需要添加 ZERO_WEIGHT标签*/
     volume: (Volume);
     /**当物品集成到另一个物品中时添加到基础物品的体积  
-     * 例如, 集成到枪支的枪械 体积会添加到基础物品上.   
-     * 默认值与音量相同.  */
+     * 例如枪械模组集成到枪中 体积会添加到基础物品上.   
+     * 默认值与 volume 相同
+     */
     integral_volume?: (Volume);
     /**当物品集成到另一个物品中时  
-     * 例如, 集成到枪中的枪械 重量会添加到基础物品上.   
-     * 默认值与重量相同.  */
+     * 例如枪械模组集成到枪中 重量会添加到基础物品上.   
+     * 默认值与 weight 相同
+     */
     integral_weight?: (Weight);
-    /**最长物品尺寸的长度.  默认为体积的立方根 */
+    /**最长物品尺寸的长度  
+     * 默认为体积的立方根  
+     */
     longest_side?: (Length);
-    /**对于非刚性物品体积 (以及磨损物品负担)与内容成比例增加 */
+    /**是否为刚性
+     * 对于非刚性物品体积 (以及磨损物品负担)与内容成比例增加
+     */
     rigid?: boolean;
-    /** (可选, 默认 = 1)如果是容器或车辆部件, 它应为内容物提供多少绝缘程度 */
+    /**如果是容器或车辆部件, 它应为内容物提供多少绝缘程度
+     * @default 1
+     */
     insulation?:number;
     /**物品价格 */
     price?: (Price);
     /**大灾变后的物品价格 */
     price_postapoc?: (Price);
+    /**此物品可以堆叠在一起，类似于`charges` */
+    stackable?: boolean;
     /**控制物品在受到伤害时退化的速度.  0 = 无退化.   
-     * 默认为 1.0  
+     * @default 1.0  
      */
     degradation_multiplier?: Float;
+    /**太阳能包的太阳能转换效率
+     * 需要SOLARPACK_ON来发电
+     * @default 0
+     */
+    solar_efficiency?: number;
+    /**此物品是这个怪物的尸体(因此具有这个怪物的重量和体积)
+     * 并会复活成这个怪物
+     * 需要COPRSE标志
+     */
+    source_monster?: (MonsterID);
+    /**当你投掷此物品时会造成的伤害；
+     * 缺少此字段会回退使用近战伤害，包括玩家力量对近战攻击的加成
+     */
+    thrown_damage?: {
+        damage_type: DamageTypeID;
+        amount: Int;
+    }[];
     /**ascii显示符号 */
     symbol: (CharSymbol);
     /**颜色 */
     color?: Color;
-    /**材质 */
+    /**材料类型，可以有任意数量。参见materials.json获取可能选项 */
     material?: ItemMaterial[];
     /**材质 可用哪些材料修复 */
     repairs_with?: AmmunitionTypeID[];
     /**属于什么类型的武器 */
     weapon_category?: WeaponCategoryID[];
     /**作为近战武器的伤害 */
-    melee_damage?:MeleeDamage;
+    melee_damage?:(MeleeDamage);
     /**使用效果 */
     use_action?: UseAction|UseAction[];
     /**口袋数据 */
     pocket_data?: PocketData[];
-    /**命中数据 */
+    /**命中数据
+     * 如果物品不适合用作近战武器则省略
+     * 参见[GAME_BALANCE.md](/doc/design-balance-lore/GAME_BALANCE.md#to-hit-value)获取各个值的详细说明
+     */
     to_hit?: ToHit;
     /**超过该体积弹夹开始从物品中突出并增加额外的体积 */
     magazine_well?: (Volume);
-    /**每种弹药类型 (如果有)的杂志类型, 可用于重新加载该物品 */
+    /**每种弹药类型(如果有的话)可以用于重新装填此物品的弹匣类型
+     * @example
+     * [
+     *  [ "9mm", [ "glockmag" ] ]
+     *  [ "45", [ "m1911mag", "m1911bigmag" ] ],
+     * ]
+     */
     magazines?: GenericMagazines[];
-    /**掉进火里会爆炸 */
+    /**如果给定，物品可以在水/风磨中研磨 */
+    milling?: {
+        /**研磨结果的物品id */
+        into: (ItemID);
+        /**执行任务的配方的引用 */
+        recipe: (RecipeID);
+    };
+    /**物品着火时是否应该爆炸 */
     explode_in_fire?: boolean;
+    /**此物品是纳米制造机配方，并指向可能包含的物品的物品组；
+     * 需要nanofab_template_group
+     */
+    nanofab_template_group?: string;
+    /**制作任何这些模板所需的`requirement`；
+     * 用作"每250毫升物品体积一个完整需求"
+     * 体积750毫升的物品需要三倍的`requirement`
+     * 2L的物品需要八倍的`requirement`
+     */
+    template_requirements?: string;
     /**爆炸数据 */
     explosion?: Explosion;
     /**定时激活 一旦定时器的持续时间过去, 就会"countdown_action"执行 至少1 */
@@ -176,14 +207,16 @@ export type ItemBase = CopyfromVar<{
         /**允许使用代码片段标签，请参阅 #Snippets */
         expand_snippets?: boolean;
     }[];
+    /**如果物品(例如防毒面具)需要过滤器才能操作并且安装了此过滤器，则对环境效果的抵抗力
+     * 与使用动作'GASMASK'和'DIVE_TANK'结合使用
+     */
+    environmental_protection_with_filter?: number;
 }>;
 
 /**物品变体ID */
 export type ItemVariantID = CddaID<"ITEMV">;
-/**物品变体 */
-type VariantItem<T> = T & {};
 
-/**魔法物品数据 */
+/**物品附魔数据 */
 export type RelicData = {
     /**自动充能 */
     charge_info?: {
@@ -210,16 +243,28 @@ export type GenericMagazines = [
 
 /**命中数据 */
 export type ToHit ={
-    /**物品的抓握类型 */
+    /**物品的握持值 */
     grip: "bad"|"none"|"solid"|"weapon";
-    /**项目的长度值 */
+    /**物品的长度值 */
     length: "hand"|"short"|"long";
-    /**物品的供给表面 */
+    /**物品的打击面值 */
     surface: "point"|"line"|"any"|"every";
-    /**项目的余额值 */
+    /**物品的平衡值 */
     balance: "clumsy"|"uneven"|"neutral"|"good";
 } | number;
 
+
+/**物品条件名称的类型 列表 */
+export const ItemNameConditionTypeList = [
+    "COMPONENT_ID_SUBSTRING"           , //递归搜索该物品的所有组件 ID，只要某一项组件 ID 包含条件字符串（区分大小写）即可匹配。例如条件 mutant 能匹配到 mutant_meat。
+    "COMPONENT_ID"                     , //与 COMPONENT_ID_SUBSTRING 类似，但要求组件 ID 精确匹配。
+    "FLAG"                             , //检查物品是否具有指定标志（完全匹配）。
+    "VITAMIN"                          , //检查物品是否含有指定维生素（完全匹配）。
+    "VAR"                              , //检查物品是否拥有指定变量名及值（完全匹配）。
+    "SNIPPET_ID"                       , //检查物品是否包含由某 effect_on_condition 设置的片段 ID，并与给定的 condition 和 value 完全匹配。
+] as const;
+/**物品条件名称的类型 */
+export type ItemNameConditionType = typeof ItemNameConditionTypeList[number];
 
 
 /**武器Flag 列表 */
@@ -317,51 +362,62 @@ export type GenericFlagID = DefineGenericFlagID|WeaponFlagID|TechFlagID|CustomFl
 export type ItemMaterial = MaterialID|{
     /**材质类型 */
     type:MaterialID;
-    /**材质占比 */
+    /**材质占比
+     * @default 1
+     * @example
+     * [
+     *  { "type": "cotton", "portion": 9 },
+     *  { "type": "plastic" }
+     * ]
+     * //在这种情况下，物品是90%棉花和10%塑料
+     */
     portion?:number;
-}
+};
 
-/**预定义的物品类别 列表 */
-export const DefineItemCategoryList = [
-    "guns"                          , //
-    "magazines"                     , //
-    "ammo"                          , //
-    "weapons"                       , //
-    "tools"                         , //
-    "clothing"                      , //衣物
-    "food"                          , //
-    "drugs"                         , //
-    "manuals"                       , //
-    "books"                         , //
-    "maps"                          , //
-    "mods"                          , //
-    "mutagen"                       , //
-    "bionics"                       , //
-    "currency"                      , //
-    "veh_parts"                     , //
-    "other"                         , //
-    "fuel"                          , //
-    "seeds"                         , //
-    "ma_manuals"                    , //
-    "traps"                         , //
-    "chems"                         , //
-    "spare_parts"                   , //
-    "container"                     , //
-    "artifacts"                     , //
-    "keys"                          , //
-    "corpses"                       , //
-    "tool_magazine"                 , //
-    "armor"                         , //盔甲
-    "exosuit"                       , //
-    "ITEMS_WORN"                    , //
-    "INTEGRATED"                    , //
-    "BIONIC_FUEL_SOURCE"            , //
-    "WEAPON_HELD"                   , //
+/**预定义的通用物品 列表 */
+export const DefineGenericIDList = [
+    "null"                      ,//空物品
+    "afs_biomaterial_1"         ,//afs材料
+    "afs_biomaterial_2"         ,
+    "afs_biomaterial_3"         ,
+    "afs_biomaterial_4"         ,
+    "afs_biomaterial_5"         ,
+    "afs_circuitry_1"           ,
+    "afs_circuitry_2"           ,
+    "afs_circuitry_3"           ,
+    "afs_circuitry_4"           ,
+    "afs_circuitry_5"           ,
+    "afs_energy_storage_1"      ,
+    "afs_energy_storage_2"      ,
+    "afs_energy_storage_3"      ,
+    "afs_energy_storage_4"      ,
+    "afs_energy_storage_5"      ,
+    "afs_heat_2_salvage"        ,
+    "afs_heat_1"                ,
+    "afs_heat_2"                ,
+    "afs_heat_3"                ,
+    "afs_heat_4"                ,
+    "afs_heat_5"                ,
+    "afs_magnet_1"              ,
+    "afs_magnet_2"              ,
+    "afs_magnet_3"              ,
+    "afs_magnet_4"              ,
+    "afs_material_1"            ,
+    "afs_material_2"            ,
+    "afs_material_3"            ,
+    "afs_material_4"            ,
+    "afs_material_5"            ,
+    "afs_neural_io_1"           ,
+    "afs_neural_io_2"           ,
+    "afs_neural_io_3"           ,
+    "afs_neural_io_4"           ,
+    "afs_neural_io_5"           ,
+    "afs_optics_3"              ,
+    "afs_optics_4"              ,
 ] as const;
-/**预定义的物品类别 */
-export type DefineItemCategory = typeof DefineItemCategoryList[number];
-/**物品类别 */
-export type ItemCategotyID = DefineItemCategory;
+/**预定义的通用物品 */
+export type DefineGenericID = typeof DefineGenericIDList[number];
+
 
 
 

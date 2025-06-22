@@ -2,7 +2,7 @@ import { AmmunitionTypeID } from "./AmmiunitionType";
 import { DamageTypeID } from "./DamageType";
 import { FieldID } from "./Field";
 import { CddaID, Color, CopyfromVar, DescText, LookLikeID, Time, Volume } from "./GenericDefine";
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 import { ItemGroupEntrie, ItemGroupID } from "./ItemGroup";
 import { MonsterID } from "./Monster";
 import { ReqUsing } from "./Requirement";
@@ -47,9 +47,9 @@ export type VehiclePart = CopyfromVar<{
      */
     epower?: number;
     /**用于安装此部件的物品, 以及移除此部件时获得的物品.  */
-    item: (AnyItemID);
+    item: (ItemID);
     /**覆盖 "item", 移除此部件时返回的物品.  */
-    remove_as?: (AnyItemID);
+    remove_as?: (ItemID);
     /**你的机械技能必须至少达到这个级别才能安装这个部件 */
     difficulty: number;
     /**当车辆部件被销毁时, 此物品组中的物品 (参见 ITEM_SPAWN.md) 将在地面上的部件周围生成.   
@@ -76,18 +76,18 @@ export type VehiclePart = CopyfromVar<{
     /** 此部件提供的工艺工具 */
     pseudo_tools?: {
         /**目标工具 */
-        id: (AnyItemID);
+        id: (ItemID);
         /**热键 */
         hotkey?: string;
     }[];
     /** 此vpart在折叠形式下的体积, 未定义或null禁用折叠 */
     folded_volume?: (Volume);
     /** 折叠所需的工具 itype_ids */
-    folding_tools?: AnyItemID[];
+    folding_tools?: ItemID[];
     /** 折叠此部件的时间 */
     folding_time?: (Time);
     /** 展开所需的工具 itype_ids */
-    unfolding_tools?: AnyItemID[];
+    unfolding_tools?: ItemID[];
     /** 展开此部件的时间 */
     unfolding_time?: (Time);
     /** 伤害减少; 参见"部件阻力". 如果未指定, 则设为零 */
@@ -128,7 +128,7 @@ export type VehiclePart = CopyfromVar<{
         symbols_broken: "x";
     }[];
     /**允许挂载的工具 */
-    allowed_tools?:AnyItemID[];
+    allowed_tools?:ItemID[];
 }>;
 
 /**车辆部件的操作需求 */

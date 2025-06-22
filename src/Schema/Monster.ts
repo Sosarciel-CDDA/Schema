@@ -6,7 +6,7 @@ import { FakeSpell } from "./Enchantment";
 import { BoolObj } from "./Eoc";
 import { CddaID, CharSymbol, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, Season, Time, Volume, Weight } from "./GenericDefine";
 import { HarvestID } from "./Harvest";
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { MaterialID } from "./Material";
 import { MonsterFactionID } from "./MonsterFaction";
@@ -168,17 +168,17 @@ export type Monster = CopyfromVar<{
     /**如果与怪物开启对话, 会出现的对话主题 */
     chat_topics?: TalkTopicID[];
     /**当怪物友好时, 可以转换为的物品 (例如, 拆解炮塔)  */
-    revert_to_itype?: (AnyItemID);
+    revert_to_itype?: (ItemID);
     /**死亡时生成的损坏物品 */
-    broken_itype?: (AnyItemID);
+    broken_itype?: (ItemID);
     /**如果这个怪物是一个带有内置武器的可骑乘机甲, 这是武器 id */
-    mech_weapon?: (AnyItemID);
+    mech_weapon?: (ItemID);
     /**如果这个怪物是一个可骑乘的机甲, 这是它给骑手的力量加成 */
     mech_str_bonus?: Int;
     /**如果这个怪物是一个可骑乘的机甲, 这是电池的 id. 不支持对象或数组 (即只有一个电池 id)  */
-    mech_battery?: (AnyItemID);
+    mech_battery?: (ItemID);
     /* 新生成的怪物开始时拥有的弹药 */
-    starting_ammo?: Record<AnyItemID,number>;
+    starting_ammo?: Record<ItemID,number>;
     /**这个怪物生成时带有的坐骑特定物品. 接受绑定, 马具, 护甲和存储的条目 */
     mount_items?: MonMountItem;
     /**如果怪物不升级, 则为 false, 或者定义一个升级的对象 */
@@ -302,10 +302,10 @@ export type MonBP = typeof MonsterBPList[number];
 
 /**怪物初始拥有的物品 */
 export type MonMountItem = Partial<{
-    tied    ?: (AnyItemID);
-    tack    ?: (AnyItemID);
-    armor   ?: (AnyItemID);
-    storage ?: (AnyItemID);
+    tied    ?: (ItemID);
+    tack    ?: (ItemID);
+    armor   ?: (ItemID);
+    storage ?: (ItemID);
 }>
 
 /**怪物近战伤害 */
@@ -351,7 +351,7 @@ export type MonReproduction = {
      * 你必须声明这个或 "baby_monster" 以使繁殖工作.   
      *  (参见 JSON_INFO.md rot_spawn)  
      */
-    baby_egg?: (AnyItemID);
+    baby_egg?: (ItemID);
     /**繁殖时产生的新生物或蛋的数量 */
     baby_count: Int;
     /**繁殖事件之间的天数 */
@@ -361,7 +361,7 @@ export type MonReproduction = {
 /**可以从怪物身上剪下的东西 */
 export type MonShearing = {
     /**目标物品 */
-    result: (AnyItemID);
+    result: (ItemID);
 }&({
     /**数量 或 [最小, 最大] */
     amount: Int|[Int,Int];

@@ -2,7 +2,7 @@ import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
 import { CddaID, RangeDamage } from "../GenericDefine";
 import { GenericFlagID } from "./Generic";
-import { AnyItemID } from "./ItemIndex";
+import { ItemID } from "./ItemIndex";
 
 
 
@@ -64,7 +64,7 @@ export type AmmoTrait = {
     /**弹药的flag */
     flags?: GenericFlagID[];
     /**发射弹药后在弹药落点掉落的物品 */
-    drop?:AnyItemID;
+    drop?:ItemID;
 };
 
 

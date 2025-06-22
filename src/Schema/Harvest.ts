@@ -1,7 +1,7 @@
 import { FaultID } from "./Fault";
 import { FlagID } from "./Flag";
 import { CddaID, CopyfromVar, DescText, Float, Int } from "./GenericDefine";
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 import { ItemGroupID } from "./ItemGroup";
 
 /**收获定义ID */
@@ -12,7 +12,7 @@ export type HarvestEntry = {
     /**掉落物
      * 物品ID或物品组ID
      */
-    drop: AnyItemID | ItemGroupID;
+    drop: ItemID | ItemGroupID;
     /**类型
      * 收获物类型, 如"flesh", "offal"等
      */
@@ -55,7 +55,7 @@ export type Harvest = CopyfromVar<{
     /**残留物
      * 屠宰后剩余的物品ID
      */
-    leftovers?: AnyItemID;
+    leftovers?: ItemID;
     /**条目
      * 可能的收获物列表
      */

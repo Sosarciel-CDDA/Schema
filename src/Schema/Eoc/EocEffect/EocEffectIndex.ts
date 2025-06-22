@@ -1,4 +1,4 @@
-import { AnyItem, AnyItemID, ItemCategotyID } from "Schema/Item";
+import { Item, ItemID, ItemCategotyID } from "Schema/Item";
 import { MaterialID } from "Schema/Material";
 import { EocID, InlineEoc } from "../Eoc";
 import { IDObj } from "../VariableObject";
@@ -45,11 +45,11 @@ export type VarComment = {
 /**背包筛选数据 */
 export type ItemSearchData = {
     /**特定物品的id */
-    id?: IDObj<AnyItemID>;
+    id?: IDObj<ItemID>;
     /**物品的类别 (区分大小写, 应始终使用小写) */
     category?: (ItemCategotyID);
     /**物品具有的标志 */
-    flags?: Exclude<AnyItem["flags"],undefined>[number][];
+    flags?: Exclude<Item["flags"],undefined>[number][];
     /**物品的材料 */
     material?: (MaterialID);
     /**如果为true, 只返回穿着的物品 */

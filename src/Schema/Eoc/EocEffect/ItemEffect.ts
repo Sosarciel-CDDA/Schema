@@ -1,7 +1,7 @@
 import { FlagID } from "Schema/Flag";
 import { IDObj, LocObj, NumObj, StrObj, TimeObj } from "../VariableObject";
 import { TalkerVar } from "../Eoc";
-import { AnyItemID } from "Schema/Item";
+import { ItemID } from "Schema/Item";
 import { ItemGroupID } from "Schema/ItemGroup";
 import { OvermapTerrainID } from "Schema/OvermapTerrain";
 import { MonsterGroupID } from "Schema/MonsterGroup";
@@ -127,7 +127,7 @@ export type SetRandomFaultOfType = TalkerVar<{
  */
 export type MapSpawnItem = {
     /**要生成的物品ID或物品组 */
-    map_spawn_item: (IDObj<AnyItemID>|IDObj<ItemGroupID>);
+    map_spawn_item: (IDObj<ItemID>|IDObj<ItemGroupID>);
     /**位置
      * 物品生成的位置. 如果不使用, 则从玩家位置生成
      */
@@ -140,7 +140,7 @@ export type MapSpawnItem = {
     /**容器
      * 容器的ID. 如果指定, 物品将包含在容器中
      */
-    container?: (IDObj<AnyItemID>);
+    container?: (IDObj<ItemID>);
     /**使用物品组
      * @default false
      * 如果为true, 它将从给定的物品组创建物品.  ("count"和"container"将被忽略, 因为它们在物品组中定义) 
@@ -722,7 +722,7 @@ export type TransformItem = TalkerVar<{
     /**转换物品
      * 要转换成的物品ID
      */
-    transform_item: (IDObj<AnyItemID>);
+    transform_item: (IDObj<ItemID>);
     /**激活
      * 如果为true, 激活物品
      */

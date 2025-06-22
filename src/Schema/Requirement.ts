@@ -1,5 +1,5 @@
 import { CddaID } from "./GenericDefine";
-import { AnyItemID, ToolID } from "./Item";
+import { ItemID, ToolID } from "./Item";
 
 
 
@@ -19,7 +19,7 @@ export type Requirement = {
     /**列出制作配方所需的工具 (或几种可选工具) 的物品 id  
      * [ [ 工具, 消耗的充能 ] ]  
      */
-    tools: [AnyItemID,number][];
+    tools: [ItemID,number][];
     /**列出物品或需求 id, 主要用于材料成分  
      * [ [ 可选的物品1, 可选的物品2 ], [ 必须的物品1 ] ]  
      */
@@ -35,7 +35,7 @@ export type Requirement = {
  */
 type ReqFormat =
 [RequirementID, number, "LIST"] |
-[AnyItemID, number, "NO_RECOVER"? ];
+[ItemID, number, "NO_RECOVER"? ];
 
 /**using格式的需求 */
 export type ReqUsing = [RequirementID, number][];

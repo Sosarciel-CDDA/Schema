@@ -1,7 +1,7 @@
 import { ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, Int, Float, Time } from "./GenericDefine";
-import { AnyItemID, ItemVariantID } from "./Item";
+import { ItemID, ItemVariantID } from "./Item";
 import { ProficiencyID } from "./Proficiency";
 import { SkillID } from "./Skill";
 import { ToolQualityID } from "./ToolQuality";
@@ -21,7 +21,7 @@ export type ActivityLevel =
 /**副产品定义, 表示制作时额外生成的物品 */
 export type Byproduct = {
     /** 物品ID */
-    item: (AnyItemID);
+    item: (ItemID);
     /** 生成数量范围 [最小, 最大] */
     count?: [Int, Int];
     /** 生成充能范围 [最小, 最大] */
@@ -67,7 +67,7 @@ type ToolQualityRequirement = {
 /**物品使用定义 */
 type ToolUsage = {
     /** 工具ID */
-    id: (AnyItemID);
+    id: (ItemID);
     /** 消耗的充能数(-1表示不消耗) */
     charges: Int;
 }
@@ -77,13 +77,13 @@ export type Recipe = {
     id:RecipeID;
     type: "recipe",
     /**结果物品ID */
-    result: (AnyItemID);
+    result: (ItemID);
     /**活动强度等级 */
     activity_level: ActivityLevel;
     /**副产品, 制作时额外生成的物品ID数组
      * @example [["scrap", "string"]] // 可能生成废料或绳子
      */
-    byproducts?: AnyItemID[][];
+    byproducts?: ItemID[][];
     /**副产品组, 使用物品组定义的额外生成物品
      * @example
      * [{
@@ -162,7 +162,7 @@ export type Recipe = {
      */
     contained?: boolean;
     /**指定容器ID, 结果物品将放在该容器中 */
-    container?: (AnyItemID);
+    container?: (ItemID);
     /**容器变体ID, 覆盖默认的随机选择
      * @example "jar_glass_sealed_strawberry_picture" // 使用草莓图案的密封玻璃罐
      */
@@ -214,9 +214,9 @@ export type Recipe = {
      *   [ ["item_b", 2], ["item_c", 4] ] // 需要2个item_b或4个item_c
      * ]
      */
-    components?: [AnyItemID, Int][][];
+    components?: [ItemID, Int][][];
     /**组件黑名单, 这些物品不会添加到结果物品组件中
      * @example ["item_a", "item_b"] // 排除item_a和item_b
      */
-    component_blacklist?: AnyItemID[];
+    component_blacklist?: ItemID[];
 };

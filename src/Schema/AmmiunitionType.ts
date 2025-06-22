@@ -1,5 +1,5 @@
 import { CddaID, DescText } from "./GenericDefine";
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 
 
 /**预定义的弹药类型 列表 */
@@ -20,6 +20,6 @@ export type AmmunitionType = {
     /**弹药名称 */
     name: (DescText);
     /**弹药的默认物品ID */
-    default: (AnyItemID);
+    default: (ItemID);
 };
 

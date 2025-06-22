@@ -1,5 +1,5 @@
 import { CddaID, DescText, Float, Int, LookLikeID, Volume } from "./GenericDefine";
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 import { FlagID } from "./Flag";
 import { CommonToFurnitureAndTerrain } from "./CommonToFurnitureAndTerrain";
 
@@ -20,7 +20,7 @@ export type Furniture = CommonToFurnitureAndTerrain<{
     /**部署物品ID
      * 允许玩家与家具互动以"将其拆下" (将其转化为物品形式)
      */
-    deployed_item?: (AnyItemID);
+    deployed_item?: (ItemID);
     /**移动所需力量(负值表示不可移动) */
     required_str?: Int;
     /**家具标志 
@@ -30,7 +30,7 @@ export type Furniture = CommonToFurnitureAndTerrain<{
     /**制造伪物品ID
      * 该家具视作某工具使用, 可在附近进行相关合成
      */
-    crafting_pseudo_item?: (AnyItemID);
+    crafting_pseudo_item?: (ItemID);
     /**工作台数据
      * 表示该家具为可用工作台
      * 需要指定速度倍数, 质量和体积上限

@@ -1,5 +1,5 @@
 import { CddaID, CopyfromVar, Festival } from "./GenericDefine";
-import { AnyItemID } from "./Item/ItemIndex";
+import { ItemID } from "./Item/ItemIndex";
 
 
 /**预定义的物品组ID */
@@ -58,7 +58,7 @@ export type ItemGroupEntrie = (ItemGroupEntrieItem|ItemGroupEntrieGroup|
 /**物品Entry */
 type ItemGroupEntrieItem = {
     /**物品ID */
-    item:AnyItemID;
+    item:ItemID;
 };
 /**物品组Entry */
 type ItemGroupEntrieGroup = {
@@ -92,7 +92,7 @@ type ItemGroupEntrieOpt = Partial<{
      * 不检查它们是否可以放入项目中.   
      * 这允许水, 其中包含一本书, 其中包含一个钢架, 其中包含一具尸体.   
      */
-    "contents-item": AnyItemID|AnyItemID[];
+    "contents-item": ItemID|ItemID[];
     /**添加为创建项目的内容.   
      * 不检查它们是否可以放入项目中.   
      * 这允许水, 其中包含一本书, 其中包含一个钢架, 其中包含一具尸体.   
@@ -107,7 +107,7 @@ type ItemGroupEntrieOpt = Partial<{
      */
     sealed: boolean;
     /**该项目的有效 itype 变体 ID.  */
-    variant: (AnyItemID);
+    variant: (ItemID);
     artifact: {};
     /**物品可生成的时间点 */
     event: (Festival);
@@ -116,7 +116,7 @@ type ItemGroupEntrieOpt = Partial<{
 /**物品快速定义  
  * 物品id 或者 [物品id,概率(100为100%)]  
  */
-export type ItemEntrieQuick = AnyItemID|[AnyItemID,number]|ItemGroupEntrie;
+export type ItemEntrieQuick = ItemID|[ItemID,number]|ItemGroupEntrie;
 
 /**物品组快速定义  
  * 物品组id 或者 [物品组id,概率(100为100%)]  

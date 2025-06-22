@@ -1,7 +1,7 @@
 import { EmitID } from "./Emit";
 import { FurnitureID } from "./Furniture";
 import { CharSymbol, Color, DescText, Float, Int, LookLikeID, Time, Volume } from "./GenericDefine";
-import { AnyItemID } from "./Item";
+import { ItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { SkillID } from "./Skill";
 import { TerrainID } from "./Terrain";
@@ -388,7 +388,7 @@ type ToolInteraction<T extends FurnitureOrTerrain> = {
 /**交互产物 */
 type Byproduct = {
     /**物品ID */
-    item: (AnyItemID);
+    item: (ItemID);
     /**数量(精确值或范围) */
     count: Int | [Int, Int];
 };
