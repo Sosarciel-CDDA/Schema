@@ -3,11 +3,12 @@ import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
 import { BoolObj } from "./Eoc";
-import { BodyPartParam, CddaID, CharSymbol, Color, CopyfromVar, DefineMonFaction, DefineNpcFaction, DescText, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
+import { BodyPartParam, CddaID, CharSymbol, Color, CopyfromVar, DefineNpcFaction, DescText, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
 import { HarvestID } from "./Harvest";
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { MaterialID } from "./Material";
+import { MonsterFactionID } from "./MonsterFaction";
 import { MonsterGroupID } from "./MonsterGroup";
 import { ProficiencyID } from "./Proficiency";
 import { ScentTypeID } from "./ScentType";
@@ -45,7 +46,7 @@ export type Monster = CopyfromVar<{
     /**符号的显示颜色 */
     color?: Color;
     /**怪物所属的默认阵营 */
-    default_faction: DefineMonFaction;
+    default_faction: (MonsterFactionID);
     /**怪物身体类型 */
     bodytype?: MonBP;
     /**速度

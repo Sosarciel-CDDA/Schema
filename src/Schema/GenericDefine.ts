@@ -181,16 +181,6 @@ export const DefineNpcFactionList = [
 /**npc阵营 */
 export type DefineNpcFaction = typeof DefineNpcFactionList[number];
 
-/**怪物阵营 列表 */
-export const DefineMonFactionList = [
-    "player",
-    "human",
-    "zombie",
-    "passive_machine",
-] as const;
-/**怪物阵营 */
-export type DefineMonFaction = typeof DefineMonFactionList[number];
-
 /**容器 */
 export type PocketData = {
     /**容器或弹夹 */
