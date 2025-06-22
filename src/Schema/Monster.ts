@@ -13,6 +13,7 @@ import { ScentTypeID } from "./ScentType";
 import { SkillID } from "./Skill";
 import { MonsterTrigger, Species, SpeciesID } from "./Species";
 import { TalkTopicID } from "./TalkTopic";
+import { Weakpoint, WeakpointFamilie } from "./WeakpointSet";
 
 
 
@@ -107,7 +108,7 @@ export type Monster = CopyfromVar<{
     /**怪物对不同类型伤害的保护 */
     armor?: Record<DamageTypeID,number>;
     /**怪物保护中的弱点 */
-    weakpoints?: MonWeakpoint[];
+    weakpoints?: Weakpoint[];
     /** (字符串数组) 应用于怪物的弱点集 */
     weakpoint_sets?: string[];
     /**状态效果触发几率乘数
@@ -115,7 +116,7 @@ export type Monster = CopyfromVar<{
      */
     status_chance_multiplier?: Float;
     /**怪物所属的弱点族 */
-    families?: MonWeakpointFamilie[];
+    families?: WeakpointFamilie[];
     /**全日光下的视野范围, 其中50是典型的最大值 */
     vision_day?: Int;
     /**完全黑暗中的视野范围  
@@ -316,103 +317,6 @@ export type MosnterMeleeDamage = {
     damage_multiplier: Float;
 }
 
-/** (对象数组, 可选) 怪物保护中的弱点 */
-export type MonWeakpoint = {
-    /** 弱点的 id  
-     * 如果未指定, 默认为名称
-     */
-    id: string;
-    /** 弱点的名称  
-     * 用于命中消息  
-     */
-    name: string;
-    /** 命中弱点的基础百分比概率  
-     *  (例如, 覆盖率为 5 意味着命中弱点的基础概率为 5%)   
-     */
-    coverage: number;
-    /** 将武器类型映射到常数覆盖率乘数的对象 */
-    coverage_mult: MonWeakpointDiff;
-    /** 将武器类型映射到难度值的对象.   
-     *  难度在攻击者的技能上起到软 "门" 的作用.   
-     *  如果攻击者的技能等于难度, 覆盖率将减少到 50%  
-     */
-    difficulty: MonWeakpointDiff;
-    /** 将伤害类型映射到在击中弱点时对怪物基础保护的乘数的对象 */
-    armor_mult: MonWeakpointDmg;
-    /** 将伤害类型映射到在乘数之后应用于怪物保护的平坦惩罚的对象 */
-    armor_penalty: MonWeakpointDmg;
-    /** 将伤害类型映射到在击中弱点时对护甲后伤害的乘数的对象 */
-    damage_mult: MonWeakpointDmg;
-    /** 将伤害类型映射到在对弱点进行关键打击时对护甲后伤害的乘数的对象. 如果未指定, 默认为 damage_mult */
-    crit_mult: MonWeakpointDmg;
-    /** 应用于怪物以命中弱点所需的效果名称列表  
-     * 只有怪物有以下状态时, 才可命中此弱点  
-      */
-    required_effects: EffectID[];
-    /** 可能通过击中弱点应用于怪物的效果对象列表 */
-    effects: MonWeakpointEff[];
-}
-/**怪物弱点针对不同类型武器的难度设置 */
-export type MonWeakpointDiff = {
-    /**任意 如果没有提供更具体的内容, 则为默认值.  */
-    all?: number;
-    /** 用于近战砸击武器的值.  */
-    bash?: number;
-    /**用于近战切割武器的值.  */
-    cut?: number;
-    /**用于近战刺击武器的值.  */
-    stab?: number;
-    /**用于远程武器, 包括投射物和投掷武器.  */
-    ranged?: number;
-    /**近战武器 (bash, cut 和 stab) 的默认值. 优先于 point 和 broad.  */
-    melee?: number;
-    /**针对尖锐武器 (stab 和 ranged) 的默认值.  */
-    point?: number;
-    /**针对宽阔武器 (bash 和 cut) 的默认值 */
-    broad?: number;
-}
-/**怪物弱点针对不同伤害的设置 */
-export type MonWeakpointDmg = {
-    /**任意 如果没有提供更具体的内容, 则为所有字段的默认值.  */
-    all?: number;
-    /**物理伤害类型 (bash, cut, stab 和 bullet) 的默认值 */
-    physical?: number;
-    /**非物理伤害类型 (biological, acid, heat, cold 和 electric) 的默认值 */
-    non_physical?: number;
-} & Partial<Record<DamageTypeID,number>>
-/**命中怪物弱点时产生的效果 */
-export type MonWeakpointEff = {
-    /** 效果类型 */
-    effect: (EffectID);
-    /** 导致效果的概率 */
-    chance: number;
-    /** 效果持续时间. 可以是一个 (min, max) 对或一个单一值 */
-    duration: (Time) | [number, number];
-    /** 效果是否是永久性的 */
-    permanent: boolean;
-    /** 效果的强度. 可以是一个 (min, max) 对或一个单一值 */
-    intensity: number | [number, number];
-    /** 触发效果所需的伤害范围, 作为最大健康百分比 */
-    damage_required: number;
-    /** 如果玩家触发效果, 要打印的消息. 应该带有一个模板参数, 引用怪物的名称 */
-    message: string;
-}
-
-/**怪物的弱点族
- * 字符串时为 proficiency
- */
-export type MonWeakpointFamilie = {
-    /**族id
-     * @default "proficiency"
-     */
-    id?: string;
-    /**族对应的专长ID */
-    proficiency?: (ProficiencyID);
-    /**如果攻击者掌握专长, 则对弱点技能的奖励 */
-    bonus?: number;
-    /**如果攻击者缺乏专长, 则会对弱点技能进行惩罚 */
-    penalty?: number;
-}|ProficiencyID;
 
 /**怪物的升级项 */
 export type MonUpgrade = {
