@@ -1,4 +1,6 @@
 import { CddaID } from "./GenericDefine";
+import { SkillID } from "./Skill";
+import { SnippetCategoryID } from "./Snippet";
 
 /**收获物类型ID */
 export type HarvestDropTypeID = CddaID<"HVDT">;
@@ -19,29 +21,29 @@ export type HarvestDropType = {
     /**收获技能
      * 影响收获的技能ID列表
      */
-    harvest_skills?: string[];
+    harvest_skills?: SkillID[];
     /**野外处理失败消息
      * 野外处理失败时显示的文本ID
      */
-    msg_fielddress_fail?: string;
+    msg_fielddress_fail?: (SnippetCategoryID);
     /**野外处理成功消息
      * 野外处理成功时显示的文本ID
      */
-    msg_fielddress_success?: string;
+    msg_fielddress_success?: (SnippetCategoryID);
     /**屠宰失败消息
      * 屠宰失败时显示的文本ID
      */
-    msg_butcher_fail?: string;
+    msg_butcher_fail?: (SnippetCategoryID);
     /**屠宰成功消息
      * 屠宰成功时显示的文本ID
      */
-    msg_butcher_success?: string;
+    msg_butcher_success?: (SnippetCategoryID);
     /**解剖失败消息
      * 解剖失败时显示的文本ID
      */
-    msg_dissect_fail?: string;
+    msg_dissect_fail?: (SnippetCategoryID);
     /**解剖成功消息
      * 解剖成功时显示的文本ID
      */
-    msg_dissect_success?: string;
+    msg_dissect_success?: (SnippetCategoryID);
 }

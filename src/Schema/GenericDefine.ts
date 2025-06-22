@@ -49,6 +49,7 @@ import { HarvestDropType } from "./HarvestDropType";
 import { BodyPart } from "./BodyPart";
 import { LimbScore } from "./LimbScore";
 import { CharacterMod } from "./CharacterMod";
+import { Snippet } from "./Snippet";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -369,6 +370,6 @@ export type AnyCddaJson = AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInf
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
-    BodyPart|LimbScore|CharacterMod;
+    BodyPart|LimbScore|CharacterMod|Snippet;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];
