@@ -190,7 +190,7 @@ export type BodyPart = {
      */
     limb_scores?: [string, Float, Float?][];
     /**每当肢体受损时可以应用的效果数组 */
-    effects_on_hit?: any[];
+    effects_on_hit?: OnHitEffect[];
     /**对象数组, 每个详细说明身体部位对徒手攻击的伤害贡献及其护甲穿透
      * 每个肢体的徒手伤害相加并添加到基础徒手伤害中
      * 应该用于角色预期总是用来攻击的肢体, 
@@ -282,3 +282,62 @@ export type DefineBodyPartID = typeof DefineBodyPartIDList[number];
  * RANDOM为随机  
  */
 export type BodyPartParam = IDObj<BodyPartID>|"RANDOM"|"whole body";
+
+
+
+/**身体部位受击时应用的效果 */
+type OnHitEffect = {
+    /**要应用的效果ID */
+    id: (EffectID);
+    /**如果为true, 效果不会应用于身体部位而是整个角色
+     * @default false
+     */
+    global?: boolean;
+    /**有资格应用效果的伤害类型ID
+     * @default 所有伤害类型
+     */
+    dmg_type?: (DamageTypeID);
+    /**触发效果所需的伤害量
+     * 对于主要部位用作肢体最大生命值的百分比, 
+     * 对于次要部位用作绝对伤害量
+     * @default 1
+     */
+    dmg_threshold?: Int;
+    /**基于超过damage_threshold的伤害的缩放步长
+     * @default 1
+     */
+    dmg_scale_increment?: Float;
+    /**触发效果的百分比几率
+     * @default 100
+     */
+    chance?: Int;
+    /**每超过dmg_threshold一个dmg_scale_increment, 几率增加的值
+     * @default 0
+     */
+    chance_dmg_scaling?: Float;
+    /**要应用的效果强度
+     * @default 1
+     */
+    intensity?: Int;
+    /**每超过dmg_threshold一个dmg_scale_increment, 强度增加的值
+     * @default 0
+     */
+    intensity_dmg_scaling?: Float;
+    /**作为受击效果一部分肢体可以获得的最大强度 -
+     * 其他效果来源(如法术或明确的特殊攻击效果)仍然可以应用更高的强度
+     * @default INT_MAX
+     */
+    max_intensity?: Int;
+    /**要应用的效果持续时间(秒)
+     * @default 1
+     */
+    duration?: Int;
+    /**每超过dmg_threshold一个dmg_scale_increment, 持续时间增加的值
+     * @default 0
+     */
+    duration_dmg_scaling?: Float;
+    /**作为受击效果一部分肢体可以获得的最大持续时间(秒) - 参见max_intensity
+     * @default INT_MAX
+     */
+    max_duration?: Int;
+};
