@@ -1,4 +1,4 @@
-import { CddaID, Int } from "./GenericDefine";
+import { CddaID, CopyfromVar, Int } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { ItemGroupID } from "./ItemGroup";
 
@@ -42,7 +42,7 @@ export type HarvestEntry = {
 }
 
 /**收获定义 */
-export interface Harvest {
+export type Harvest = CopyfromVar<{
     type: "harvest";
     /**收获定义唯一ID */
     id: HarvestID;
@@ -58,4 +58,4 @@ export interface Harvest {
      * 可能的收获物列表
      */
     entries: HarvestEntry[];
-}
+}>;

@@ -4,6 +4,7 @@ import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
 import { BoolObj } from "./Eoc";
 import { BodyPartParam, CddaID, CharSymbol, Color, CopyfromVar, DefineMonFaction, DefineNpcFaction, DescText, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
+import { HarvestID } from "./Harvest";
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { MaterialID } from "./Material";
@@ -195,7 +196,7 @@ export type Monster = CopyfromVar<{
     /**描述可以从尸体中收获什么的 "harvest" 类型的 ID  
      * "exempt" 为无收获
      */
-    harvest?: string;
+    harvest?: (HarvestID);
     /**这个怪物死后变成僵尸的 mtype_id */
     zombify_into?: (MonsterID);
     /**这个怪物被孢子真菌化时变成什么 mtype_id */
