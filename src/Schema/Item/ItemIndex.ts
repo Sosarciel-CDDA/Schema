@@ -40,7 +40,9 @@ export type AnyItemTrait = (GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|Arm
 /**物品ID */
 export type ItemID = CddaID<"ITEM">;
 
-/**物品 */
+/**物品
+ * 需以 "//T":Subtype 标记其 subtype
+ */
 export type Item = GenericTrait&AnyItemTrait;
 
 /**任何物品的Flag */
