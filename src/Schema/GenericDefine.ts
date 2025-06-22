@@ -46,6 +46,7 @@ import { NPCFaction } from "./NPCFaction";
 import { Trap } from "./Trap";
 import { Harvest } from "./Harvest";
 import { HarvestDropType } from "./HarvestDropType";
+import { BodyPart } from "./BodyPart";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -105,35 +106,6 @@ export const ColorList = [
 /**可用的颜色 */
 export type Color = typeof ColorList[number];
 
-
-/**必要的肢体组 */
-export const VitalBPList = [
-    "torso" ,
-    "head"  ,
-] as const;
-/**必要的肢体 */
-export type VitalBP = typeof VitalBPList[number];
-
-/**四肢/主要肢体组 */
-export const LimbBPList = [
-    "leg_l" , "leg_r" ,
-    "arm_l" , "arm_r" ,
-    ...VitalBPList    ,
-] as const;
-/**四肢/主要肢体 */
-export type LimbBP = typeof LimbBPList[number];
-
-/**子肢体组 */
-export const SubBPList = [
-    "foot_l", "foot_r",
-    "hand_l", "hand_r",
-] as const;
-/**子肢体 */
-export type SubBP = typeof SubBPList[number];
-
-/**自定义的肢体 */
-export type CustBP = CddaID<"BP">;
-
 /**@TJS-type string */
 export type SchemaString = (String&string);
 
@@ -167,16 +139,6 @@ export type Copyfrom<T extends CopyfromAble> =
     //    ? Partial<TMP[P]> & {delete?: TMP[P],extend?: TMP[P]}
     //    : Partial<TMP[P]>
     //}>;
-
-/**组肢体 */
-export const BodyPartList = [...LimbBPList,...SubBPList] as const;
-/**肢体 */
-export type BodyPartID = typeof BodyPartList[number]|CustBP;
-/**目标肢体参数  
- * whole body为全身  
- * RANDOM为随机  
- */
-export type BodyPartParam = IDObj<BodyPartID>|"RANDOM"|"whole body";
 
 /**容器 */
 export type PocketData = {
@@ -397,6 +359,7 @@ export type AnyCddaJson = AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInf
     ModTileset|ActivityType|VehiclePart|ToolQuality|TalkTopic|Terrain|
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
-    Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType;
+    Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
+    BodyPart;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];

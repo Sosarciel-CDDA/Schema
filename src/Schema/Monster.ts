@@ -1,19 +1,18 @@
+import { BodyPartParam } from "./BodyPart";
 import { DamageTypeID } from "./DamageType";
 import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
 import { BoolObj } from "./Eoc";
-import { BodyPartParam, CddaID, CharSymbol, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, Time, Volume, Weight } from "./GenericDefine";
+import { CddaID, CharSymbol, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, Time, Volume, Weight } from "./GenericDefine";
 import { HarvestID } from "./Harvest";
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { MaterialID } from "./Material";
 import { MonsterFactionID } from "./MonsterFaction";
 import { MonsterGroupID } from "./MonsterGroup";
-import { ProficiencyID } from "./Proficiency";
 import { ScentTypeID } from "./ScentType";
-import { SkillID } from "./Skill";
-import { MonsterTrigger, Species, SpeciesID } from "./Species";
+import { Species, SpeciesID } from "./Species";
 import { TalkTopicID } from "./TalkTopic";
 import { Weakpoint, WeakpointFamilie } from "./WeakpointSet";
 
@@ -111,7 +110,7 @@ export type Monster = CopyfromVar<{
     armor?: Record<DamageTypeID,number>;
     /**怪物保护中的弱点 */
     weakpoints?: Weakpoint[];
-    /** (字符串数组) 应用于怪物的弱点集 */
+    /**(字符串数组) 应用于怪物的弱点集 */
     weakpoint_sets?: string[];
     /**状态效果触发几率乘数
      * 当电伤害发生时, 应用电击的机会的乘数 (目前没有实现其他效果) 
@@ -307,52 +306,52 @@ export type MonMountItem = Partial<{
 
 /**怪物近战伤害 */
 export type MosnterMeleeDamage = {
-    /** 伤害类型 */
+    /**伤害类型 */
     damage_type: (DamageTypeID);
-    /** 伤害量 */
+    /**伤害量 */
     amount: Int;
-    /** 伤害实例忽略的护甲量 */
+    /**伤害实例忽略的护甲量 */
     armor_penetration: Int;
-    /** 护甲穿透的乘数 */
+    /**护甲穿透的乘数 */
     armor_multiplier: Float;
-    /** 伤害量的乘数 */
+    /**伤害量的乘数 */
     damage_multiplier: Float;
 }
 
 
 /**怪物的升级项 */
 export type MonUpgrade = {
-    /** (整数) 根据近似的指数进程, 一半的怪物在多少天内升级. 它与进化缩放因子相乘 (在撰写本文时, 为4)  */
-    half_life: number;
-    /** (字符串, 可选) 升级后的怪物类型取自指定的组 */
+    /**根据近似的指数进程, 一半的怪物在多少天内升级. 它与进化缩放因子相乘 (在撰写本文时, 为4)  */
+    half_life: Int;
+    /**升级后的怪物类型取自指定的组 */
     into_group?: string;
-    /** (字符串, 可选) 升级后的怪物类型 */
+    /**升级后的怪物类型 */
     into?: string;
-    /** (整数, 可选) 怪物需要多少天才能变成另一个怪物. 不会随着进化因子的变化而变化 */
-    age_grow?: number;
-    /** (布尔值, 可选) 如果使用 into_group, 所选条目将根据条目的 pack_size 生成一定数量的怪物 */
+    /**怪物需要多少天才能变成另一个怪物. 不会随着进化因子的变化而变化 */
+    age_grow?: Int;
+    /**如果使用 into_group, 所选条目将根据条目的 pack_size 生成一定数量的怪物 */
     multiple_spawns?: boolean;
-    /** (整数, 可选) 当 multiple_spawns 为真时是必需的. 确定升级后的怪物可以在原始怪物多远的地方生成 */
-    spawn_range?: number;
-    /** (布尔值, 可选) 对于 into_group, 当 mon_null 被选择为组条目升级时, 如果此值为真, 则怪物将消失不见, 不留下任何痕迹. 否则, 怪物会"自然死亡". 默认为 false */
+    /**当 multiple_spawns 为真时是必需的. 确定升级后的怪物可以在原始怪物多远的地方生成 */
+    spawn_range?: Int;
+    /**(布尔值, 可选) 对于 into_group, 当 mon_null 被选择为组条目升级时, 如果此值为真, 则怪物将消失不见, 不留下任何痕迹. 否则, 怪物会"自然死亡". 默认为 false */
     despawn_when_null?: boolean;
 }
 
 /**怪物的繁殖 */
 export type MonReproduction = {
-    /** (字符串, 可选) 对于生育幼崽的怪物, 繁殖时产生的怪物的 id.   
+    /**对于生育幼崽的怪物, 繁殖时产生的怪物的 id.   
      * 你必须声明这个或 baby_egg 以使繁殖工作  
      */
     baby_monster?: (MonsterID);
-    /** (字符串, 可选) 对于产卵的怪物, 要生成的蛋类型的 id.   
+    /**对于产卵的怪物, 要生成的蛋类型的 id.   
      * 你必须声明这个或 "baby_monster" 以使繁殖工作.   
      *  (参见 JSON_INFO.md rot_spawn)  
      */
     baby_egg?: (AnyItemID);
-    /** (整数) 繁殖时产生的新生物或蛋的数量 */
-    baby_count: number;
-    /** (整数) 繁殖事件之间的天数 */
-    baby_timer: number;
+    /**繁殖时产生的新生物或蛋的数量 */
+    baby_count: Int;
+    /**繁殖事件之间的天数 */
+    baby_timer: Int;
 }
 
 /**可以从怪物身上剪下的东西 */
@@ -361,7 +360,7 @@ export type MonShearing = {
     result: (AnyItemID);
 }&({
     /**数量 或 [最小, 最大] */
-    amount: number|[number,number];
+    amount: Int|[Int,Int];
 }|{
     /**以怪物体重百分比计算数量 1为100% */
     ratio_mass: Float;
@@ -372,25 +371,25 @@ export type MonShearing = {
 
 /**怪物的攻击效果 */
 export type MonAttackEffect = {
-    /** (字符串, 必需) 要应用的效果的 id */
+    /**要应用的效果的 id */
     id: (EffectID);
-    /** (整数或一对整数, 可选) 效果应持续多久 (以回合为单位) . 当用一对值定义时, 持续时间将在这些值之间随机化 */
-    duration?: (Time) | [Time, Time];
-    /** (整数或一对整数, 可选) 效果应以何种强度应用, 当定义为一对时, 强度将在它们之间随机化. 不能覆盖通过 int_dur_factor 从其持续时间派生其强度的效果 */
-    intensity?: number | [number, number];
-    /** (布尔值, 可选) 效果是否应用于被击中的身体部位而不是下面设置的部位 */
+    /**效果应持续多久 (以回合为单位) . 当用一对值定义时, 持续时间将在这些值之间随机化 */
+    duration?: Int | [Int, Int];
+    /**效果应以何种强度应用, 当定义为一对时, 强度将在它们之间随机化. 不能覆盖通过 int_dur_factor 从其持续时间派生其强度的效果 */
+    intensity?: Int | [Int, Int];
+    /**效果是否应用于被击中的身体部位而不是下面设置的部位 */
     affect_hit_bp?: boolean;
-    /** (字符串, 可选) 应用效果的身体部位. 默认是将效果应用于整个身体.   
+    /**应用效果的身体部位. 默认是将效果应用于整个身体.   
      * 注意, 某些效果可能需要特定的身体部位 (例如 "hot") ,   
      * 而其他效果可能需要整个身体 (例如 "meth")   
      */
-    bp?: BodyPartParam;
-    /** (布尔值, 可选) 效果是否是永久性的, 在这种情况下, 将忽略 "duration". 默认为非永久性 */
+    bp?: (BodyPartParam);
+    /**效果是否是永久性的, 在这种情况下, 将忽略 "duration". 默认为非永久性 */
     permanent?: boolean;
-    /** (整数, 可选) 效果被应用的机会 */
-    chance?: number;
-    /** (字符串, 可选) 当效果应用于玩家时打印的消息. 支持使用语法 %s = <怪物的名字> 的动态行 */
-    message?: string;
+    /**效果被应用的机会 */
+    chance?: Int;
+    /**当效果应用于玩家时打印的消息. 支持使用语法 %s = <怪物的名字> 的动态行 */
+    message?: (DescText);
 }
 
 /**怪物可能找到路径, 打开门, 避开陷阱或破坏障碍物的方式 */

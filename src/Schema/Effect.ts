@@ -1,7 +1,7 @@
+import { BodyPartID } from "./BodyPart";
 import { ParamsEnchantment } from "./Enchantment";
-import { EocID } from "./Eoc";
 import { FlagID } from "./Flag";
-import { BodyPartID, CddaID, DescText, EffectRatType, Time } from "./GenericDefine";
+import { CddaID, DescText, EffectRatType, Time } from "./GenericDefine";
 import { LimbScoreID } from "./LimbScore";
 import { MutationID } from "./Mutation";
 import { VitaminID } from "./Vitamin";

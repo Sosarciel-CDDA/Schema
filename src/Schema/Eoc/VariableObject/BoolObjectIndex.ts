@@ -59,7 +59,7 @@ export type BoolOperateList = [
     HasBionics              ,//有仿生学
     HasEffect               ,//有效果
     HasAnyEffect            ,//有任意效果
-    HasProficiency          ,//有熟练度
+    HasProficiency          ,//有专长
     CanStowWeapon           ,//可收起武器
     CanDropWeapon           ,//可丢弃武器
     HasWeapon               ,//有武器

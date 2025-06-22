@@ -1,5 +1,6 @@
+import { BodyPartID } from "./BodyPart";
 import { FlagID } from "./Flag";
-import { BodyPartID, CddaID, Int } from "./GenericDefine";
+import { CddaID, Int } from "./GenericDefine";
 
 /**攻击向量ID */
 export type AttackVectorID = CddaID<"ATKV">;

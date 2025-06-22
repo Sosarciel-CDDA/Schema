@@ -1,14 +1,12 @@
 import { MissionDefinitionID } from "Schema/MissionDefinition";
 import { EocID, TalkerStr, TalkerVar } from "../Eoc";
 import { BoolObj } from "./BoolObjectIndex";
-import { AnyObj, CompareOpera, CondObj, IDObj, LocObj, NumObj } from "./VariableObjectIndex";
-import { BodyPartID, DescText, Time } from "Schema/GenericDefine";
+import { CompareOpera, CondObj, IDObj, LocObj, NumObj } from "./VariableObjectIndex";
 import { FieldID } from "Schema/Field";
 import { WeaponCategoryID } from "Schema/WeaponCategory";
 import { FlagID } from "Schema/Flag";
 import { MutationID } from "Schema/Mutation";
-import { AnyItem, AnyItemID, ItemCategotyID } from "Schema/Item";
-import { VarComment } from "../EocEffect";
+import { AnyItemID, ItemCategotyID } from "Schema/Item";
 import { StrObj } from "./StringObjectIndex";
 import { EffectID } from "Schema/Effect";
 import { TerrainID } from "Schema/Terrain";
@@ -20,6 +18,7 @@ import { MartialArtID } from "Schema/MartialArt";
 import { SpeciesID } from "Schema/Species";
 import { RecipeID } from "Schema/Recipe";
 import { ProficiencyID } from "Schema/Proficiency";
+import { BodyPartID } from "Schema/BodyPart";
 
 
 //#region 不在文档内的

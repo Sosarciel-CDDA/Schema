@@ -1,9 +1,10 @@
-import { BodyPartID, Time, CddaID, DescText } from "./GenericDefine";
+import { Time, CddaID, DescText } from "./GenericDefine";
 import { SpellID } from "./Spell";
 import { EmitID } from "./Emit";
 import { MutationID } from "./Mutation";
 import { EffectID } from "./Effect";
 import { BoolObj, NumObj } from "./Eoc";
+import { BodyPartID } from "./BodyPart";
 
 /**附魔ID */
 export type EnchantmentID = CddaID<"ENCH">;

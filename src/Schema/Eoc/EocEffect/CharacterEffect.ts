@@ -1,14 +1,13 @@
 import { FakeSpell } from "Schema/Enchantment";
-import { EocID, TalkerStr, TalkerVar } from "../Eoc";
-import { ParamsEoc, VarComment } from "./EocEffectIndex";
+import { TalkerStr, TalkerVar } from "../Eoc";
+import { ParamsEoc } from "./EocEffectIndex";
 import { BoolObj, CondObj, GenericObj, IDObj, LocObj, NumObj, StrObj, TimeObj } from "../VariableObject";
-import { BodyPartID, BodyPartParam, DescText, Explosion, MessageRatType, Time } from "Schema/GenericDefine";
+import { Explosion, MessageRatType } from "Schema/GenericDefine";
 import { AssignMissionTarget } from "Schema/MissionDefinition";
 import { EffectID } from "Schema/Effect";
 import { MutationID } from "Schema/Mutation";
 import { AnyItemID } from "Schema/Item";
 import { ActivityTypeID } from "Schema/ActivityType";
-import { FlagID } from "Schema/Flag";
 import { DamageTypeID } from "Schema/DamageType";
 import { TerrainID } from "Schema/Terrain";
 import { FurnitureID } from "Schema/Furniture";
@@ -19,6 +18,7 @@ import { MartialArtID } from "Schema/MartialArt";
 import { MutationCategoryID } from "Schema/MutationCategory";
 import { FactionRelationFlags } from "Schema/NPCFaction";
 import { TrapID } from "Schema/Trap";
+import { BodyPartParam } from "Schema/BodyPart";
 
 
 

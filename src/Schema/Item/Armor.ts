@@ -1,4 +1,5 @@
-import { BodyPartID, CddaID } from "../GenericDefine"
+import { BodyPartID } from "Schema/BodyPart";
+import { CddaID } from "../GenericDefine"
 import { MaterialID } from "../Material";
 import { GenericFlagID } from "./Generic"
 

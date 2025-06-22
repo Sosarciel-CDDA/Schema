@@ -1,8 +1,9 @@
+import { BodyPartID } from "./BodyPart";
 import { DamageTypeID } from "./DamageType";
 import { FakeSpell } from "./Enchantment";
 import { NumObj } from "./Eoc";
 import { FieldID } from "./Field";
-import { BodyPartID, CddaID, DescText } from "./GenericDefine";
+import { CddaID, DescText } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { MonsterID } from "./Monster";
 import { SoundEffectID, SoundEffectVariantID } from "./SoundEffect";

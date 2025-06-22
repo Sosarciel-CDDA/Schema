@@ -1,7 +1,8 @@
-import { EnchantmentID, InlineEnchantment, ParamsEnchantment } from "./Enchantment";
+import { BodyPartID } from "./BodyPart";
+import { ParamsEnchantment } from "./Enchantment";
 import { BoolObj, EocID } from "./Eoc";
 import { FlagID } from "./Flag";
-import { BodyPartID, CddaID, DescText, EffectRatType, SocialType } from "./GenericDefine";
+import { CddaID, DescText, EffectRatType, SocialType } from "./GenericDefine";
 import { AnyItemID, ArmorID, GunID } from "./Item";
 import { MaterialID } from "./Material";
 import { MonsterID } from "./Monster";
