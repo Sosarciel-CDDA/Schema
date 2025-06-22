@@ -1,7 +1,7 @@
 import { ComestibleTrait } from "./Comestible";
 import { GunTrait } from "./Gun";
 import { GenericTrait } from "./Generic";
-import { CddaID } from "Schema/GenericDefine";
+import { CddaID, RequirePair } from "Schema/GenericDefine";
 import { ArmorTrait } from "./Armor";
 import { AmmoTrait } from "./Ammo";
 import { ToolTrait } from "./Tool";
@@ -34,7 +34,7 @@ export type ItemSubtype = typeof ItemSubtypeList[number];
 
 
 /**任何物品特征 */
-export type AnyItemTrait = (GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait);
+export type AnyItemTrait = (GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait|RequirePair<"Generic",{}>);
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
 
 /**物品ID */
@@ -55,6 +55,8 @@ const a:Item = {
   weight: 1,
   volume: 1,
   symbol: "1",
+  ammo: [""],
   skill: "archery",
+  covers: [""],
   "//":"uncopy"
 }

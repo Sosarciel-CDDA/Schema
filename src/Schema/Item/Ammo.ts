@@ -10,9 +10,9 @@ import { ItemID } from "./ItemIndex";
 export type AmmoID = CddaID<"AMMO">;
 
 /**Ammo 弹药物品 */
-export type AmmoTrait = RequirePair<{
+export type AmmoTrait = RequirePair<"AMMO",{
     /**标记具有Ammo的特征, 用于补全 */
-    "//1"?: "AMMO";
+    "//T": "AMMO";
     /**弹药类型 使用材质id */
     ammo_type: (AmmunitionTypeID);
     /**远程伤害 */
