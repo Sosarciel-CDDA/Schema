@@ -34,7 +34,7 @@ export type ItemSubtype = typeof ItemSubtypeList[number];
 
 
 /**任何物品特征 */
-export type AnyItemTrait = (GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait|RequirePair<"Generic",{}>);
+export type AnyItemTrait = (GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait|RequirePair<"GENERIC",{"//T":"GENERIC"}>);
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
 
 /**物品ID */
@@ -55,8 +55,9 @@ const a:Item = {
   weight: 1,
   volume: 1,
   symbol: "1",
-  ammo: [""],
-  skill: "archery",
-  covers: [""],
+  "//T":"ARMOR" as "GENERIC",
+  covers:["arm_l"],
+  skill:"archery",
+  ammo:["50"],
   "//":"uncopy"
 }

@@ -360,7 +360,7 @@ export type Festival = "none"|"new_year"|"easter"|
 export type LookLikeID = (ItemID|MonsterID|TerrainID);
 
 /**成对出现的字段 */
-export type RequirePair<F extends string,T> = Partial<T>;
+export type RequirePair<F extends string,T> = T;
 //(Partial<{[K in keyof T]?:T[K]|undefined|never}>|Partial<{[K in keyof T]:undefined}>);
 
 /**任何Cdda的Json */
