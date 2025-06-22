@@ -1,6 +1,5 @@
-import { CddaID } from "@src/SchemaTest";
 import { FaultID } from "./Fault";
-import { DescText, Float, Int, Time } from "./GenericDefine";
+import { CddaID, DescText, Float, Int, Time } from "./GenericDefine";
 import { SkillID } from "./Skill";
 import { ProficiencyID } from "./Proficiency";
 import { FlagID } from "./Flag";

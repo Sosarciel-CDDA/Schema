@@ -9,7 +9,7 @@ export type ScentType = {
     type: "scent_type";
     /**气味类型唯一ID */
     id: (ScentTypeID);
-    /**能够追踪此气味的物种，必须使用species.json中定义的有效ID */
+    /**能够追踪此气味的物种, 必须使用species.json中定义的有效ID */
     receptive_species?: SpeciesID[];
 };
 

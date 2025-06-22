@@ -9,7 +9,7 @@ import { ToolQualityID } from "./ToolQuality";
 /**配方ID */
 export type RecipeID = CddaID<"RECIPE">;
 
-/**活动强度等级，表示制作该配方时的运动强度 */
+/**活动强度等级, 表示制作该配方时的运动强度 */
 export type ActivityLevel =
     | "NO_EXERCISE"
     | "LIGHT_EXERCISE"
@@ -18,7 +18,7 @@ export type ActivityLevel =
     | "ACTIVE_EXERCISE"
     | "EXTRA_EXERCISE";
 
-/**副产品定义，表示制作时额外生成的物品 */
+/**副产品定义, 表示制作时额外生成的物品 */
 export type Byproduct = {
     /** 物品ID */
     item: (AnyItemID);
@@ -80,11 +80,11 @@ export type Recipe = {
     result: (AnyItemID);
     /**活动强度等级 */
     activity_level: ActivityLevel;
-    /**副产品，制作时额外生成的物品ID数组
+    /**副产品, 制作时额外生成的物品ID数组
      * @example [["scrap", "string"]] // 可能生成废料或绳子
      */
     byproducts?: AnyItemID[][];
-    /**副产品组，使用物品组定义的额外生成物品
+    /**副产品组, 使用物品组定义的额外生成物品
      * @example
      * [{
      *   "item": "scrap",
@@ -100,11 +100,11 @@ export type Recipe = {
      * @example "CSC_WEAPON_PIERCING" // 穿刺武器
      */
     subcategory?: string;
-    /**ID后缀，用于使配方ID唯一
+    /**ID后缀, 用于使配方ID唯一
      * @example "_striped" // 完整配方ID将是"<result>_striped"
      */
     id_suffix?: string;
-    /**结果变体，指定总是生成该变体
+    /**结果变体, 指定总是生成该变体
      * @example "javelin_striped" // 总是生成条纹标枪
      */
     variant?: string;
@@ -134,9 +134,9 @@ export type Recipe = {
     difficulty: Int;
     /**制作时间 */
     time: (Time);
-    /**是否可逆(可拆解)，可指定拆解时间
-     * @example true // 可拆解，时间与制作相同
-     * @example { "time": "30 s" } // 可拆解，需要30秒
+    /**是否可逆(可拆解), 可指定拆解时间
+     * @example true // 可拆解, 时间与制作相同
+     * @example { "time": "30 s" } // 可拆解, 需要30秒
      */
     reversible?: boolean | { time: Time };
     /**自动学习设置
@@ -161,9 +161,9 @@ export type Recipe = {
      * @example true // 结果物品放在其默认容器中
      */
     contained?: boolean;
-    /**指定容器ID，结果物品将放在该容器中 */
+    /**指定容器ID, 结果物品将放在该容器中 */
     container?: (AnyItemID);
-    /**容器变体ID，覆盖默认的随机选择
+    /**容器变体ID, 覆盖默认的随机选择
      * @example "jar_glass_sealed_strawberry_picture" // 使用草莓图案的密封玻璃罐
      */
     container_variant?: string;
@@ -179,11 +179,11 @@ export type Recipe = {
     flags?: FlagID[];
     /**制作完成时触发的效果条件 */
     result_eocs?: (ParamsEoc);
-    /**建筑蓝图ID，用于派系营地升级建筑
+    /**建筑蓝图ID, 用于派系营地升级建筑
      * @example "camp" // 营地升级蓝图
      */
     construction_blueprint?: string;
-    /**是否在游戏中显示，用于派系营地计算建筑时间但不显示给玩家 */
+    /**是否在游戏中显示, 用于派系营地计算建筑时间但不显示给玩家 */
     on_display?: boolean;
     /**所需工具质量
      * @example
@@ -207,7 +207,7 @@ export type Recipe = {
      * ]
      */
     using?: [string, Int][];
-    /**组件材料，每组内是替代选择
+    /**组件材料, 每组内是替代选择
      * @example
      * [
      *   [ ["item_a", 5] ], // 需要5个item_a
@@ -215,7 +215,7 @@ export type Recipe = {
      * ]
      */
     components?: [string, Int][][];
-    /**组件黑名单，这些物品不会添加到结果物品组件中
+    /**组件黑名单, 这些物品不会添加到结果物品组件中
      * @example ["item_a", "item_b"] // 排除item_a和item_b
      */
     component_blacklist?: string[];

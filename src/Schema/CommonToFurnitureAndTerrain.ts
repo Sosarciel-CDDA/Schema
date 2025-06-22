@@ -13,11 +13,25 @@ import { TerrainID } from "./Terrain";
 type FurnitureOrTerrain = {id:string};
 /**地形和家具共有的属性 */
 export type CommonToFurnitureAndTerrain<T extends FurnitureOrTerrain> = T&{
-    /**显示名称，会被翻译 */
+    /**显示名称, 会被翻译 */
     name: (DescText);
+    /**发出的光照
+     * 该地形发出的光照强度. 
+     * 10 会使自身格子明亮, 15 会照亮自身与相邻格子, 并微微照亮两格以外的范围. 
+     * 示例: 顶灯为 120, 工具灯为 240, 控制台为 10. 
+     */
+    light_emitted?: Int;
+    /**锁开后变成的家具
+     * 当该家具被成功撬锁时, 将变成的家具 ID
+     */
+    lockpick_result?: (T['id']);
+    /**锁开成功消息
+     * 撬锁成功时显示给玩家的信息. 如果省略, 则显示通用的“锁打开了……”提示
+     */
+    lockpick_message?: (DescText);
     /**使该类型成为一个或多个连接组的成员
-     * 不会使类型自身连接或旋转，而是作为被动方。
-     * 对于主动连接或旋转方，参见connects_to和rotates_to
+     * 不会使类型自身连接或旋转, 而是作为被动方. 
+     * 对于主动连接或旋转方, 参见connects_to和rotates_to
      * 
      * 当前连接组包括:
      * NONE, SAND, WALL, PIT_DEEP, CHAINFENCE, LINOLEUM, WOODFENCE, CARPET,
@@ -26,46 +40,46 @@ export type CommonToFurnitureAndTerrain<T extends FurnitureOrTerrain> = T&{
      * CLAYMOUND, DIRTMOUND, SANDMOUND, SANDGLASS, SANDPILE, BRICKFLOOR,
      * MARBLEFLOOR, BEACH_FORMATIONS, GRAVELPILE, LIXATUBE
      * 
-     * WALL组由WALL和CONNECT_WITH_WALL标志隐含。
-     * INDOORFLOOR组由INDOORS标志隐含。
+     * WALL组由WALL和CONNECT_WITH_WALL标志隐含. 
+     * INDOORFLOOR组由INDOORS标志隐含. 
      * 可以使用波浪号~作为组名前缀来移除隐含组
      */
     connect_groups?: ConnectGroupType[];
     /**使该类型连接到给定组中的地形类型(参见connect_groups)
-     * 这会影响瓦片旋转和连接，以及带有"AUTO_WALL_SYMBOL"标志的地形绘制的ASCII符号
+     * 这会影响瓦片旋转和连接, 以及带有"AUTO_WALL_SYMBOL"标志的地形绘制的ASCII符号
      * 
      * @example
-     * // -, |, X和Y是共享connect_groups和connects_to组的地形。O没有。
-     * // X和Y也有AUTO_WALL_SYMBOL标志。
-     * // X将被绘制为T形交叉(连接到西、南和东)，
-     * // Y将被绘制为水平线(从西到东，没有连接到南)
+     * // -, |, X和Y是共享connect_groups和connects_to组的地形. O没有. 
+     * // X和Y也有AUTO_WALL_SYMBOL标志. 
+     * // X将被绘制为T形交叉(连接到西, 南和东), 
+     * // Y将被绘制为水平线(从西到东, 没有连接到南)
      * 
      * -X-    -Y-
      *  |      O
      * 
-     * WALL组由WALL和CONNECT_WITH_WALL标志隐含。
+     * WALL组由WALL和CONNECT_WITH_WALL标志隐含. 
      * 可以使用波浪号~作为组名前缀来移除隐含组
      */
     connects_to?: T['id'][];
     /**使该类型朝向给定组中的地形类型旋转(参见connect_groups)
-     * 地形只能根据地形的不同而旋转，而家具可以根据地形和其他家具的不同而旋转
+     * 地形只能根据地形的不同而旋转, 而家具可以根据地形和其他家具的不同而旋转
      * 
-     * 这些参数可以用于例如仅在室内侧有窗帘的窗户，
+     * 这些参数可以用于例如仅在室内侧有窗帘的窗户, 
      * 或根据人行道方向定向交通信号灯
      * 
-     * INDOORFLOOR组由DOOR和WINDOW标志隐含。
+     * INDOORFLOOR组由DOOR和WINDOW标志隐含. 
      * 可以使用波浪号~作为组名前缀来移除隐含组
      */
     rotates_to?: T['id'][];
     /**游戏中的ASCII符号
-     * 符号字符串必须正好是一个字符长。
-     * 也可以是一个包含4个字符串的数组，分别定义不同季节的符号。
-     * 第一个条目定义春季的符号。如果不是数组，则全年使用相同的符号
+     * 符号字符串必须正好是一个字符长. 
+     * 也可以是一个包含4个字符串的数组, 分别定义不同季节的符号. 
+     * 第一个条目定义春季的符号. 如果不是数组, 则全年使用相同的符号
      */
     symbol: CharSymbol | [CharSymbol, CharSymbol, CharSymbol, CharSymbol];
     /**移动通过的成本
-     * 值为0表示不可通过(例如墙)。
-     * 不应使用负值。正值是50移动点的倍数，
+     * 值为0表示不可通过(例如墙). 
+     * 不应使用负值. 正值是50移动点的倍数, 
      * 例如值2表示玩家移动通过该地形时使用2*50=100移动点
      */
     move_cost_mod: Int;
@@ -85,7 +99,7 @@ export type CommonToFurnitureAndTerrain<T extends FurnitureOrTerrain> = T&{
     floor_bedding_warmth?: Int;
     /**坠落伤害减免
      * 如果是负数则为伤害增加
-     * 例如落在灌木丛、软椅、床垫或沙发上
+     * 例如落在灌木丛, 软椅, 床垫或沙发上
      */
     fall_damage_reduction?: Int;
     /**从附近火源获得的脚部温暖加成
@@ -93,34 +107,34 @@ export type CommonToFurnitureAndTerrain<T extends FurnitureOrTerrain> = T&{
      */
     bonus_fire_warmth_feet?: Int;
     /**相似物品的ID
-     * 图块加载器将尝试加载该物品的图块，如果此物品没有图块。
-     * looks_like条目是隐式链接的，
-     * 所以如果'throne'有looks_like 'big_chair'，
-     * 而'big_chair'有looks_like 'chair'，
-     * 当throne和big_chair的图块不存在时，将使用chair的图块显示throne。
-     * 如果图块集在looks_like链中找不到任何物品的图块，
+     * 图块加载器将尝试加载该物品的图块, 如果此物品没有图块. 
+     * looks_like条目是隐式链接的, 
+     * 所以如果'throne'有looks_like 'big_chair', 
+     * 而'big_chair'有looks_like 'chair', 
+     * 当throne和big_chair的图块不存在时, 将使用chair的图块显示throne. 
+     * 如果图块集在looks_like链中找不到任何物品的图块, 
      * 它将默认使用ASCII符号
      */
     looks_like?: (LookLikeID);
     /**前景色
      * "color"定义前景色(无背景色)
-     * 与"symbol"值一样，这可以是一个包含4个条目的数组，
+     * 与"symbol"值一样, 这可以是一个包含4个条目的数组, 
      * 每个条目是不同季节的颜色
      * 
-     * 注意：必须只使用"color"或"bgcolor"中的一个
+     * 注意: 必须只使用"color"或"bgcolor"中的一个
      */
     color?: Color | [Color, Color, Color, Color];
     /**背景色
      * "bgcolor"定义纯背景色
-     * 与"symbol"值一样，这可以是一个包含4个条目的数组，
+     * 与"symbol"值一样, 这可以是一个包含4个条目的数组, 
      * 每个条目是不同季节的颜色
      * 
-     * 注意：必须只使用"color"或"bgcolor"中的一个
+     * 注意: 必须只使用"color"或"bgcolor"中的一个
      */
     bgcolor?: Color | [Color, Color, Color, Color];
     /**覆盖百分比
      * <30不会阻挡视线
-     * (不与投射物、枪火或其他攻击互动。仅影响视线)
+     * (不与投射物, 枪火或其他攻击互动. 仅影响视线)
      */
     coverage?: Int;
     /**最大存储体积
@@ -134,21 +148,21 @@ export type CommonToFurnitureAndTerrain<T extends FurnitureOrTerrain> = T&{
     examine_action?: any;
     /**关闭时变成的对象
      * 值应该是地形ID(在地形条目内)或家具ID(在家具条目内)
-     * 如果定义了其中任何一个，玩家可以打开/关闭对象
+     * 如果定义了其中任何一个, 玩家可以打开/关闭对象
      * 打开/关闭会将受影响图块上的对象更改为给定的对象
      * 
      * @example
-     * // 可以有对象"safe_c"，它"open"到"safe_o"，
-     * // 而"safe_o"又"close"到"safe_c"。
+     * // 可以有对象"safe_c", 它"open"到"safe_o", 
+     * // 而"safe_o"又"close"到"safe_c". 
      * // 这里"safe_c"和"safe_o"是两个具有不同属性的不同地形(或家具)类型
      */
-    close?: T['id'];
+    close?: (T['id']);
     /**打开时变成的对象
      * 值应该是地形ID(在地形条目内)或家具ID(在家具条目内)
-     * 如果定义了其中任何一个，玩家可以打开/关闭对象
+     * 如果定义了其中任何一个, 玩家可以打开/关闭对象
      * 打开/关闭会将受影响图块上的对象更改为给定的对象
      */
-    open?: T['id'];
+    open?: (T['id']);
     /**破坏信息
      * 定义玩家或其他东西破坏地形或家具时发生的各种事情
      */
@@ -166,11 +180,11 @@ export type CommonToFurnitureAndTerrain<T extends FurnitureOrTerrain> = T&{
     /**断线钳交互数据
      * @example
      * {
-     *  "result": "furniture_id",    // （可选）完成后变成的家具 ID，默认 f_null
-     *  "duration": "1 seconds",     // （可选）切割所需时间，默认 1 秒
-     *  "message": "You finish cutting the metal.",  // （可选）完成切割时显示的信息
-     *  "sound": "Gachunk!",         // （可选）完成时的声音描述
-     *  "byproducts": [              // （可选）完成后生成的物品列表
+     *  "result": "furniture_id",    //  (可选) 完成后变成的家具 ID, 默认 f_null
+     *  "duration": "1 seconds",     //  (可选) 切割所需时间, 默认 1 秒
+     *  "message": "You finish cutting the metal.",  //  (可选) 完成切割时显示的信息
+     *  "sound": "Gachunk!",         //  (可选) 完成时的声音描述
+     *  "byproducts": [              //  (可选) 完成后生成的物品列表
      *      { "item": "item_id", "count": 100 },
      *      { "item": "item_id", "count": [10, 100] }
      *  ]
@@ -178,29 +192,29 @@ export type CommonToFurnitureAndTerrain<T extends FurnitureOrTerrain> = T&{
      */
     boltcut?: (ToolInteraction<T>);
     /**钢锯交互数据
-     * 用于钢锯的交互数据（字段含义同 boltcut ）
+     * 用于钢锯的交互数据 (字段含义同 boltcut ) 
      */
     hacksaw?: (ToolInteraction<T>);
     /**氧乙炔切割交互数据
-     * 用于气焊枪的交互数据（字段含义同 boltcut ）
+     * 用于气焊枪的交互数据 (字段含义同 boltcut ) 
      */
     oxytorch?: (ToolInteraction<T>);
     /**撬动交互数据
      * 用于撬棍类工具的交互数据
      * @example
      * {
-     *  "result": "furniture_id",  // （可选）成功撬开后变成的家具 ID，默认 f_null
-     *  "duration": "1 seconds",   // （可选）撬开所需时间，默认 1 秒
-     *  "message": "You finish prying the door.",  // （可选）撬开成功时显示的信息
-     *  "byproducts": [ ... ],     // （可选）成功撬开后生成的物品列表
+     *  "result": "furniture_id",  //  (可选) 成功撬开后变成的家具 ID, 默认 f_null
+     *  "duration": "1 seconds",   //  (可选) 撬开所需时间, 默认 1 秒
+     *  "message": "You finish prying the door.",  //  (可选) 撬开成功时显示的信息
+     *  "byproducts": [ ... ],     //  (可选) 成功撬开后生成的物品列表
      *  "prying_data": {
-     *      "prying_nails": false,   // （可选，默认 false）为 true 时忽略下列所有字段
-     *      "difficulty": 0,         // （可选，默认 0）撬开行为的基础难度
-     *      "prying_level": 0,       // （可选，默认 0）工具所需的最小撬棍等级
-     *      "noisy": false,          // （可选，默认 false）撬开成功是否会产生声音
-     *      "alarm": false,          // （可选）是否含报警器，成功后会触发警报
-     *      "breakable": false,      // （可选）撬开失败时是否有概率触发破坏效果
-     *      "failure": "You try to pry the window but fail." // （可选）失败时显示的信息
+     *      "prying_nails": false,   //  (可选, 默认 false) 为 true 时忽略下列所有字段
+     *      "difficulty": 0,         //  (可选, 默认 0) 撬开行为的基础难度
+     *      "prying_level": 0,       //  (可选, 默认 0) 工具所需的最小撬棍等级
+     *      "noisy": false,          //  (可选, 默认 false) 撬开成功是否会产生声音
+     *      "alarm": false,          //  (可选) 是否含报警器, 成功后会触发警报
+     *      "breakable": false,      //  (可选) 撬开失败时是否有概率触发破坏效果
+     *      "failure": "You try to pry the window but fail." //  (可选) 失败时显示的信息
      *  }
      * }
      */
@@ -210,7 +224,7 @@ export type CommonToFurnitureAndTerrain<T extends FurnitureOrTerrain> = T&{
 /**破坏信息 */
 type MapBashInfo = {
     /**最小力量
-     * 如果str >= 在str_min和str_max之间的随机数，则破坏成功
+     * 如果str >= 在str_min和str_max之间的随机数, 则破坏成功
      */
     str_min: Int;
     /**最大力量 */
@@ -240,7 +254,7 @@ type MapBashInfo = {
     /**失败音效音量 */
     sound_fail_vol?: Int;
     /**破坏后设置的地形
-     * 对于地形中的bash条目是必需的，
+     * 对于地形中的bash条目是必需的, 
      * 但对于家具中的条目是可选的(默认为无家具)
      */
     ter_set?: (TerrainID);
@@ -251,15 +265,15 @@ type MapBashInfo = {
      */
     ter_set_bashed_from_above?: (TerrainID);
     /**爆炸强度
-     * 如果大于0，破坏对象会导致具有此强度的爆炸
+     * 如果大于0, 破坏对象会导致具有此强度的爆炸
      * 参见game::explosion
      */
     explosive?: Int;
     /**坍塌半径
-     * 对于作为帐篷一部分的家具，
-     * 这定义了中心部分的id，
-     * 当帐篷的其他部分被破坏时，中心部分也会被破坏
-     * 中心在给定的"collapse_radius"半径内搜索，
+     * 对于作为帐篷一部分的家具, 
+     * 这定义了中心部分的id, 
+     * 当帐篷的其他部分被破坏时, 中心部分也会被破坏
+     * 中心在给定的"collapse_radius"半径内搜索, 
      * 它应该与帐篷的大小匹配
      */
     collapse_radius?: Int;
@@ -268,18 +282,18 @@ type MapBashInfo = {
      */
     tent_centers?: FurnitureID[];
     /**仅用于破坏
-     * 如果为true，仅用于破坏，不可正常破坏
+     * 如果为true, 仅用于破坏, 不可正常破坏
      */
     destroy_only?: boolean;
     /**同时破坏下方
-     * 此地形是下方图块的屋顶，尝试也破坏它
+     * 此地形是下方图块的屋顶, 尝试也破坏它
      * 需要进一步调查
      */
     bash_below?: boolean;
     /**破坏后生成的物品
-     * 一个物品组(内联)或一个物品组的id，
-     * 参见ITEM_SPAWN.md。默认子类型是"collection"。
-     * 成功破坏后，将生成该组中的物品
+     * 一个物品组(内联)或一个物品组的id, 
+     * 参见ITEM_SPAWN.md. 默认子类型是"collection". 
+     * 成功破坏后, 将生成该组中的物品
      */
     items?: InlineItemGroup|ItemGroupID;
 };
@@ -287,20 +301,20 @@ type MapBashInfo = {
 /**解构信息 */
 type MapDeconstructInfo = {
     /**解构后设置的家具
-     * 是可选的(默认为无家具)，
-     * "ter_set"仅在"deconstruct"条目在地形中使用，
+     * 是可选的(默认为无家具), 
+     * "ter_set"仅在"deconstruct"条目在地形中使用, 
      * 并且在那里是必需的
      */
     furn_set?: (FurnitureID);
     /**解构后设置的地形 */
     ter_set?: (TerrainID);
     /**相关技能
-     * 解构后将练习的技能。
-     * min是获得经验的最低等级，
-     * max是之后不再获得经验但练习仍会发生的等级上限，
-     * 延迟生锈，
-     * multiplier乘以基于min和max平均值的基准经验值。
-     * 如果指定了skill，multiplier默认为1.0，min为0，max为10
+     * 解构后将练习的技能. 
+     * min是获得经验的最低等级, 
+     * max是之后不再获得经验但练习仍会发生的等级上限, 
+     * 延迟生锈, 
+     * multiplier乘以基于min和max平均值的基准经验值. 
+     * 如果指定了skill, multiplier默认为1.0, min为0, max为10
      */
     skill?: {
         /**技能ID */
@@ -319,9 +333,9 @@ type MapDeconstructInfo = {
         max: Int;
     };
     /**解构后生成的物品
-     * 一个物品组(内联)或一个物品组的id，
-     * 参见ITEM_SPAWN.md。默认子类型是"collection"。
-     * 解构对象时，将生成该组中的物品
+     * 一个物品组(内联)或一个物品组的id, 
+     * 参见ITEM_SPAWN.md. 默认子类型是"collection". 
+     * 解构对象时, 将生成该组中的物品
      */
     items?: InlineItemGroup|ItemGroupID;
 };
@@ -329,24 +343,24 @@ type MapDeconstructInfo = {
 /**植物数据 */
 type PlantData = {
     /**生长后转变为什么
-     * 当PLANT家具生长一个阶段时，或当PLANTABLE家具被种植时
+     * 当PLANT家具生长一个阶段时, 或当PLANTABLE家具被种植时
      */
     transform: (FurnitureID);
     /**基础家具
-     * PLANT家具的"基础"家具 - 如果没有植物生长在那里，它会是什么。
-     * 当怪物"吃"植物时使用，以保留它是什么家具
+     * PLANT家具的"基础"家具 - 如果没有植物生长在那里, 它会是什么. 
+     * 当怪物"吃"植物时使用, 以保留它是什么家具
      */
     base: (FurnitureID);
     /**生长速度倍率
-     * 植物生长速度的平坦倍率。
-     * 对于大于1的数字，需要更长的时间生长，
-     * 对于小于1的数字，需要更少的时间生长
+     * 植物生长速度的平坦倍率. 
+     * 对于大于1的数字, 需要更长的时间生长, 
+     * 对于小于1的数字, 需要更少的时间生长
      */
     growth_multiplier: Float;
     /**收获数量倍率
-     * 植物收获数量的平坦倍率。
-     * 对于大于1的数字，植物会从收获中产生更多的产品，
-     * 对于小于1的数字，会产生更少的产品
+     * 植物收获数量的平坦倍率. 
+     * 对于大于1的数字, 植物会从收获中产生更多的产品, 
+     * 对于小于1的数字, 会产生更少的产品
      */
     harvest_multiplier: Float;
 };

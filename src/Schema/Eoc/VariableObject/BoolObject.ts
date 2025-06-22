@@ -588,7 +588,7 @@ export type HasItemCategory = TalkerVar<{
  *     { "item": "electric_blanket", "amount": 10 }
  *   ]
  * }
- * // 检查你是否有足够的毯子覆盖所需数量 (例如, 如果你有5条毯子和10条电热毯（每个贡献所需数量的50%) , 则返回true）
+ * // 检查你是否有足够的毯子覆盖所需数量 (例如, 如果你有5条毯子和10条电热毯 (每个贡献所需数量的50%) , 则返回true) 
  * {
  *   "u_has_items_sum": [
  *     { "item": "blanket", "amount": 10 },

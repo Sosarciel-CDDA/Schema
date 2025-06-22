@@ -1,5 +1,4 @@
-import { CddaID } from "@src/SchemaTest";
-import { DescText, Float, Int } from "./GenericDefine";
+import { CddaID, DescText, Float, Int } from "./GenericDefine";
 import { FlagID } from "./Flag";
 
 export type FaultID = CddaID<'FAULT'>;

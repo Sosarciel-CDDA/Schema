@@ -1,5 +1,4 @@
-import { CddaID } from "@src/SchemaTest";
-import { DescText, Float, Int } from "./GenericDefine";
+import { CddaID, DescText, Float, Int } from "./GenericDefine";
 import { MonsterFactionID } from "./MonsterFaction";
 import { VitaminID } from "./Vitamin";
 import { BoolObj } from "./Eoc";
@@ -26,7 +25,7 @@ type PriceRule = {
     category?: (ItemCategotyID);
     /**物品组 */
     group?: (ItemGroupID);
-    /**价格乘数，适用于买卖双方 */
+    /**价格乘数, 适用于买卖双方 */
     premium?: Float;
     /**仅当NPC出售给玩家时使用的乘数
      * @default 1
@@ -34,7 +33,7 @@ type PriceRule = {
     markup?: Float;
     /**替换物品的末日价格 */
     price?: Float;
-    /**固定调整值，替代基于社交技能和智力属性的调整 */
+    /**固定调整值, 替代基于社交技能和智力属性的调整 */
     fixed_adj?: Float;
     /**应用规则的条件 */
     condition?: (BoolObj);
@@ -78,11 +77,11 @@ export type NPCFaction = {
     /**阵营常用名称 */
     name: (DescText);
     /**阵营对玩家的初始好感度
-     * 如果低于-10，阵营成员会变得敌对
+     * 如果低于-10, 阵营成员会变得敌对
      */
     likes_u: Int;
     /**阵营对玩家的初始尊重度
-     * 目前没有实际效果，未来可能移除
+     * 目前没有实际效果, 未来可能移除
      */
     respects_u: Int;
     /**阵营对玩家的初始信任度
@@ -118,7 +117,7 @@ export type NPCFaction = {
      */
     currency: string;
     /**价格规则数组
-     * 允许为物品/类别/组定义溢价、加价、价格和/或固定调整
+     * 允许为物品/类别/组定义溢价, 加价, 价格和/或固定调整
      */
     price_rules?: PriceRule[];
     /**阵营关系字典

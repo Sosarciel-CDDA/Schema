@@ -12,7 +12,7 @@ export type HarvestEntry = {
      */
     drop: AnyItemID | ItemGroupID;
     /**类型
-     * 收获物类型，如"flesh"、"offal"等
+     * 收获物类型, 如"flesh", "offal"等
      */
     type: string;
     /**质量比例

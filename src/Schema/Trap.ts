@@ -1,6 +1,4 @@
-import { CddaID } from "@src/SchemaTest";
-import { CharSymbol, Color, DescText, Int, Weight } from "./GenericDefine";
-import { SpellID } from "./Spell";
+import { CddaID, CharSymbol, Color, DescText, Int, Weight } from "./GenericDefine";
 import { ParamsEoc } from "./Eoc";
 import { AnyItemID } from "./Item";
 import { FlagID } from "./Flag";
@@ -22,11 +20,11 @@ export type Trap = {
     color: (Color);
     /**地图符号 */
     symbol: (CharSymbol);
-    /**可见度(0表示非常明显，值越高越难发现) */
+    /**可见度(0表示非常明显, 值越高越难发现) */
     visibility: Int;
-    /**躲避难度(0表示非常容易，值越高越难) */
+    /**躲避难度(0表示非常容易, 值越高越难) */
     avoidance: Int;
-    /**解除难度(0表示总能成功，99表示不可能解除) */
+    /**解除难度(0表示总能成功, 99表示不可能解除) */
     difficulty: Int;
     /**陷阱部署所需空间半径 */
     trap_radius: Int;
@@ -34,11 +32,11 @@ export type Trap = {
     action: (TrapActionType);
     /**地图再生用的overmap ID */
     map_regen?: string;
-    /**是否为良性陷阱(如漏斗等，无法被触发) */
+    /**是否为良性陷阱(如漏斗等, 无法被触发) */
     benign?: boolean;
     /**是否总是不可见(玩家永远无法发现) */
     always_invisible?: boolean;
-    /**漏斗半径(毫米，值越高收集雨水越多) */
+    /**漏斗半径(毫米, 值越高收集雨水越多) */
     funnel_radius?: Int;
     /**舒适度(影响休息和治疗效果) */
     comfort?: Int;

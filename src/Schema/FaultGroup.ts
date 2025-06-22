@@ -1,12 +1,11 @@
-import { CddaID } from "@src/SchemaTest";
 import { FaultID } from "./Fault";
-import { Int } from "./GenericDefine";
+import { CddaID, Int } from "./GenericDefine";
 
 /**故障组ID */
 export type FaultGroupID = CddaID<'FAULTG'>;
 
 /**故障组定义
- * 故障组是故障和相应权重的组合，可以组合和重用多个类似的故障组（手柄、刀片、棉质衣物等）
+ * 故障组是故障和相应权重的组合, 可以组合和重用多个类似的故障组 (手柄, 刀片, 棉质衣物等) 
  * @example
  * {
  *   "type": "fault_group",
@@ -22,7 +21,7 @@ export type FaultGroup = {
     /**故障组唯一ID */
     id: FaultGroupID;
     /**故障项列表
-     * 可能的故障列表、权重和实际几率可以在调试模式下通过物品信息查看
+     * 可能的故障列表, 权重和实际几率可以在调试模式下通过物品信息查看
      */
     group: {
         /** 故障ID */

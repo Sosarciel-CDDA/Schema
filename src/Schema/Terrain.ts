@@ -16,37 +16,55 @@ export type Terrain = CopyfromVar<CommonToFurnitureAndTerrain<{
     id: (TerrainID);
     /**移动消耗 */
     move_cost?: Int;
-    /**发出的热量(0表示无火) */
+    /**该地形发出的热量值. 
+     * 数值为 0 表示无火 (即不具备此属性) . 
+     * 数值为 1 表示相当于强度为 1 的火焰. 
+     */
     heat_radiation?: Int;
-    /**发出的光照 */
-    light_emitted?: Int;
-    /**内置陷阱ID */
+    /**内置陷阱ID
+     * 例如: 地形 t_pit 内建陷阱为 tr_pit
+     * 游戏中所有使用 t_pit 的格子也就自动包含该陷阱
+     * 两者不可分离 (玩家无法拆除该陷阱, 修改地形将移除其绑定陷阱) 
+     * 内建陷阱无法与其它陷阱共存 (无论是由玩家布设还是地图生成) 
+     */
     trap?: (TrapID);
     /**地形标志
      * @example ["TRANSPARENT", "DIGGABLE"]
      */
     flags?: FlagID[];
-    /**锁开后变成的地形 */
-    lockpick_result?: (TerrainID);
-    /**锁开成功消息 */
-    lockpick_message?: string;
     /**别名 */
     alias?: (TerrainID);
     /**可收获物品 */
     harvestable?: (AnyItemID);
-    /**转换目标地形 */
+    /**用于地形状态转换
+     * 若设置, 必须为合法地形 ID
+     * 常见用法包括: 
+     * 采集水果后转换为已收获状态
+     * 配合 HARVESTED 标志和 harvest_by_season, 在季节更替时切换为结果期状态
+     */
     transforms_into?: (TerrainID);
-    /**允许的模板ID */
+    /**允许某纳米制造机创建的模板 ID 列表 */
     allowed_template_ids?: string[];
-    /**窗帘转换目标 */
+    /**当使用窗帘相关的 examine_action 且选择撕下窗帘时, 转换为此指定的地形 ID */
     curtain_transform?: (TerrainID);
-    /**射击交互数据 */
+    /**描述该地形对远程射击的反应 */
     shoot?: (ShootData);
-    /**季节性收获数据 */
+    /**每季采集配置数组. 
+     * 指定在哪些季节进行收获, 以及使用的 harvest 条目 ID
+     * @example
+     * {
+     *  "harvest_by_season": [
+     *      {
+     *          "seasons": ["spring", "summer", "autumn", "winter"],
+     *          "harvest":"id": "blackjack_harv"
+     *      }
+     *  ]
+     * }
+     */
     harvest_by_season?: HarvestSeason[];
-    /**液体源数据 */
+    /**表示该地形或家具可供取液的设置对象 */
     liquid_source?: (LiquidSource);
-    /**屋顶地形 */
+    /**当前地形上方对应的屋顶地形 ID */
     roof?: (TerrainID);
 }>>;
 
@@ -57,9 +75,9 @@ type ShootData = {
      * @default 100
      */
     chance_to_hit?: Int;
-    /**最小伤害减免 */
+    /**击中时的最小伤害减免 */
     reduce_dmg_min?: Int;
-    /**最大伤害减免 */
+    /**击中时的最大伤害减免 */
     reduce_dmg_max?: Int;
     /**激光最小伤害减免 */
     reduce_dmg_min_laser?: Int;
@@ -87,8 +105,13 @@ type HarvestSeason = {
 type LiquidSource = {
     /**液体ID */
     id: (AnyItemID);
-    /**最低可能温度(摄氏度) */
+    /**最低可能温度(摄氏度) 
+     * 仅适用于 "water_source" 动作
+     */
     min_temp: Float;
-    /**液体数量(精确值或范围，省略表示无限) */
+    /**液体数量(精确值或范围, 省略表示无限)
+     * 若为有限液源, 则此处表示总量 (可为单值或区间) ; 
+     * 用于 "finite_water_source"
+     */
     count?: Int | [Int, Int];
 };

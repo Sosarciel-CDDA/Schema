@@ -50,7 +50,7 @@ export type Monster = CopyfromVar<{
     /**怪物身体类型 */
     bodytype?: MonBP;
     /**速度
-     * 基础移动速度，100为人类标准
+     * 基础移动速度, 100为人类标准
      */
     speed: Int;
     /**怪物类别 (NULL, CLASSIC, 或 WILDLIFE) */
@@ -243,15 +243,15 @@ export type Monster = CopyfromVar<{
 /**怪物在复杂地形上的移动能力 */
 type MonMoveSkill = {
     /**游泳怪物会忽略可 SWIMMABLE 地形消耗
-     * 相反，它会施加与技能成反比的固定移动消耗惩罚
+     * 相反, 它会施加与技能成反比的固定移动消耗惩罚
      */
     swim ?: Int,
     /**游泳怪物会忽略 DIGGABLE 地形消耗
-     * 相反，它会施加与技能成反比的固定移动消耗惩罚
+     * 相反, 它会施加与技能成反比的固定移动消耗惩罚
      */
     dig  ?: Int,
     /**攀爬怪物可以攀爬 CLIMBABLE 的地形/家具
-     * 也可以使用难度等级为DIFFICULT_Z的地形/家具（例如梯子）
+     * 也可以使用难度等级为DIFFICULT_Z的地形/家具 (例如梯子) 
      * 地形/家具消耗会乘以技能修正值
      */
     climb?: Int,
@@ -259,14 +259,14 @@ type MonMoveSkill = {
 
 /**表示尸体复活形态的定义项 */
 type ReviveForm = {
-    /**复活条件（可选项），类似对话条件，但不包含 alpha 或 beta 对话者；
-     * 可使用上下文变量：`loc`（尸体位置）、`corpse_damage`（尸体损坏程度）。
-     * 若省略该字段，则默认为始终成立。
+    /**复活条件 (可选项) , 类似对话条件, 但不包含 alpha 或 beta 对话者; 
+     * 可使用上下文变量: `loc` (尸体位置) , `corpse_damage` (尸体损坏程度) . 
+     * 若省略该字段, 则默认为始终成立. 
      */
     condition?: (BoolObj);
-    /**复活后生成的怪物 ID（与 monster_group 二选一填写） */
+    /**复活后生成的怪物 ID (与 monster_group 二选一填写)  */
     monster?: (MonsterID);
-    /**复活后生成的怪物组 ID（与 monster 二选一填写） */
+    /**复活后生成的怪物组 ID (与 monster 二选一填写)  */
     monster_group?: (MonsterGroupID);
 }
 
@@ -445,9 +445,9 @@ export type MonsterFlag = (typeof MonsterFlagList)[number];
 
 /**可用的怪物类型 列表 */
 export const MonsterCategoryList = [
-  "NULL",     // 空类别；系统保留，不具备实际分类含义
-  "CLASSIC",  // 仅包含经典僵尸电影中的怪物；仅在 classic 模式中生成
-  "WILDLIFE", // 自然动物类怪物；可在 classic 模式中生成
+  "NULL",     // 空类别; 系统保留, 不具备实际分类含义
+  "CLASSIC",  // 仅包含经典僵尸电影中的怪物; 仅在 classic 模式中生成
+  "WILDLIFE", // 自然动物类怪物; 可在 classic 模式中生成
 ] as const;
 /**可用的怪物类型 */
 export type MonsterCategory = typeof MonsterCategoryList[number];
