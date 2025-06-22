@@ -18,6 +18,7 @@ import { TalkTopicID } from "Schema/TalkTopic";
 import { MartialArtID } from "Schema/MartialArt";
 import { MutationCategoryID } from "Schema/MutationCategory";
 import { FactionRelationFlags } from "Schema/NPCFaction";
+import { TrapID } from "Schema/Trap";
 
 
 
@@ -685,7 +686,7 @@ export type LocationVariable = TalkerVar<{
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体; 
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体
      */
-    trap?: (StrObj);
+    trap?: (IDObj<TrapID>);
     /**怪物
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体; 
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体

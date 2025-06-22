@@ -3,6 +3,7 @@ import { CharSymbol, Color, DescText, Float, Int, LookLikeID, Time, Volume } fro
 import { FlagID } from "./Flag";
 import { AnyItemID } from "./Item";
 import { HarvestID } from "./Harvest";
+import { TrapID } from "./Trap";
 
 
 /**地形ID */
@@ -30,7 +31,7 @@ export type Terrain = {
     /**发出的光照 */
     light_emitted?: Int;
     /**内置陷阱ID */
-    trap?: string;
+    trap?: (TrapID);
     /**最大体积
      * @example "1000 L"
      */

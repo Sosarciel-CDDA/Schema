@@ -43,6 +43,9 @@ import { FaultFix } from "./FaultFix";
 import { FaultGroup } from "./FaultGroup";
 import { MonsterFaction } from "./MonsterFaction";
 import { NPCFaction } from "./NPCFaction";
+import { Trap } from "./Trap";
+import { Harvest } from "./Harvest";
+import { HarvestDropType } from "./HarvestDropType";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -394,6 +397,6 @@ export type AnyCddaJson = AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInf
     ModTileset|ActivityType|VehiclePart|ToolQuality|TalkTopic|Terrain|
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
-    Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction;
+    Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];
