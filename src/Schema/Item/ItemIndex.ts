@@ -34,7 +34,7 @@ export type ItemSubtype = typeof ItemSubtypeList[number];
 
 
 /**任何物品特征 */
-export type AnyItemTrait = GunTrait&ToolTrait&MagazineTrait&ComestibleTrait&ArmorTrait&GunModTrait&AmmoTrait;
+export type AnyItemTrait = (GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait);
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
 
 /**物品ID */
@@ -44,8 +44,7 @@ export type ItemID = CddaID<"ITEM">;
 export type Item = GenericTrait&AnyItemTrait;
 
 /**任何物品的Flag */
-export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];
-
+//export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];
 
 const a:Item = {
   type: "ITEM",
@@ -56,8 +55,6 @@ const a:Item = {
   weight: 1,
   volume: 1,
   symbol: "1",
-  flags: [],
-  skill:"archery",
-  ammo: [""],
+  skill: "archery",
   "//":"uncopy"
 }

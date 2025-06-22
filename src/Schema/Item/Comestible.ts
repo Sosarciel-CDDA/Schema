@@ -10,7 +10,8 @@ export type ComestibleID = CddaID<"COME">;
 
 /**Comestible 消耗品 */
 export type ComestibleTrait = RequirePair<{
-    trait_type?: "COMESTIBLE";
+    /**标记具有Comestible的特征, 用于补全 */
+    "//1"?: "COMESTIBLE";
     /**一个时间持续期: 食品保质期. 0 = 不会变质 */
     spoils_in?: (Time);
     /**刺激效果 */

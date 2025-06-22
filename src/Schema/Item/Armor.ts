@@ -1,5 +1,5 @@
 import { BodyPartID } from "Schema/BodyPart";
-import { CddaID } from "../GenericDefine"
+import { CddaID, RequirePair } from "../GenericDefine"
 import { MaterialID } from "../Material";
 import { GenericFlagID } from "./Generic"
 
@@ -8,9 +8,9 @@ import { GenericFlagID } from "./Generic"
 export type ArmorID = CddaID<"ARMOR">;
 
 /**一件护甲 */
-export type ArmorTrait = {
-    id:ArmorID;
-    trait_type?: "ARMOR";
+export type ArmorTrait = RequirePair<{
+    /**标记具有Armor的特征, 用于补全 */
+    "//1"?: "ARMOR";
     /**覆盖的位置 */
     covers: BodyPartID[];
     /**保暖度 */
@@ -20,7 +20,7 @@ export type ArmorTrait = {
     flags?: ArmorFlagID[];
     /**护甲数据 必须设置覆盖层 */
     armor?: ArmorData[];
-};
+}>;
 
 /**护甲数据 */
 export type ArmorData = {

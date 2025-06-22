@@ -11,7 +11,8 @@ export type GunModID = CddaID<"GMOD">;
 
 /**枪械模组 */
 export type GunModTrait = RequirePair<{
-	trait_type?: "GUNMOD";
+	/**标记具有GunMod的特征, 用于补全 */
+	"//1"?: "GUNMOD";
 	/**这个枪械改装件安装在哪里？ */
 	location: GunModSlot;
 	/**这个枪械改装件可以用于哪种武器？ */

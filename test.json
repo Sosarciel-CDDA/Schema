@@ -7,7 +7,5 @@
     "id": "test",
     "symbol": "",
     "volume": 1,
-    "weight": 1,
-    "trait_type":"GUN",
-    "skill": ""
+    "weight": 1
 }

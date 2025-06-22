@@ -1,5 +1,5 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
-import { CddaID } from "../GenericDefine";
+import { CddaID, RequirePair } from "../GenericDefine";
 import { AmmoID } from "./Ammo";
 import { GenericFlagID } from "./Generic";
 import { ItemID } from "./ItemIndex";
@@ -9,8 +9,9 @@ import { ItemID } from "./ItemIndex";
 export type MagazineID = CddaID<"MAG">;
 
 /**弹夹 */
-export type MagazineTrait = {
-    trait_type?: "MAGAZINE";
+export type MagazineTrait = RequirePair<{
+    /**标记具有Magazine的特征, 用于补全 */
+    "//1"?: "MAGAZINE";
     /**该弹匣可以装载哪些类型的弹药 */
     ammo_type: AmmunitionTypeID[];
     /**弹匣容量 (与弹药量相当的单位) */
@@ -27,7 +28,7 @@ export type MagazineTrait = {
     linkage?: (ItemID);
     /**弹夹的Flag */
     flags?: MagazineFlagID[];
-};
+}>;
 
 
 /**弹夹可用的flag 列表 */
