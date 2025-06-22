@@ -1,5 +1,5 @@
 import { MonsterID } from "./Monster";
-import { CddaID, Int, Period, Season, Time } from "./GenericDefine";
+import { CddaID, Festival, Int, Period, Season, Time } from "./GenericDefine";
 import { AmmoID } from "./Item";
 
 /**怪物组ID */
@@ -43,7 +43,7 @@ type MonsterGroupEntry = {
     /**如果存在, 此条目只能在指定事件期间生成
      * @example "halloween"
      */
-    event?: string;
+    event?: (Festival);
 };
 
 /**怪物组定义 */

@@ -1,6 +1,6 @@
 import { FaultID } from "./Fault";
 import { FlagID } from "./Flag";
-import { CddaID, CopyfromVar, DescText, Int } from "./GenericDefine";
+import { CddaID, CopyfromVar, DescText, Float, Int } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { ItemGroupID } from "./ItemGroup";
 
@@ -16,11 +16,11 @@ export type HarvestEntry = {
     /**类型
      * 收获物类型, 如"flesh", "offal"等
      */
-    type: string;
+    type: (HarvestEntryType);
     /**质量比例
      * 占怪物总重的比例(0-1)
      */
-    mass_ratio?: number;
+    mass_ratio?: Float;
     /**基础数量
      * [最小值, 最大值]
      */
@@ -28,7 +28,7 @@ export type HarvestEntry = {
     /**技能加成
      * [最小加成, 最大加成]
      */
-    scale_num?: [number, number];
+    scale_num?: [Float, Float];
     /**最大数量
      * 掉落数量的上限
      */
@@ -61,3 +61,6 @@ export type Harvest = CopyfromVar<{
      */
     entries: HarvestEntry[];
 }>;
+
+/**可用的收获条目类型 */
+type HarvestEntryType = "blood" | "bone" | "flesh" | "offal" | "skin";

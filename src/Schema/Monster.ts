@@ -4,7 +4,7 @@ import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
 import { BoolObj } from "./Eoc";
-import { CddaID, CharSymbol, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, Time, Volume, Weight } from "./GenericDefine";
+import { CddaID, CharSymbol, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, Season, Time, Volume, Weight } from "./GenericDefine";
 import { HarvestID } from "./Harvest";
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
@@ -13,6 +13,7 @@ import { MonsterFactionID } from "./MonsterFaction";
 import { MonsterGroupID } from "./MonsterGroup";
 import { ScentTypeID } from "./ScentType";
 import { Species, SpeciesID } from "./Species";
+import { SpeedDescriptionID } from "./SpeedDescription";
 import { TalkTopicID } from "./TalkTopic";
 import { TrapID } from "./Trap";
 import { Weakpoint, WeakpointFamilie, WeakpointSetID } from "./WeakpointSet";
@@ -185,7 +186,7 @@ export type Monster = CopyfromVar<{
     /**怪物的繁殖周期和时间 */
     reproduction?: MonReproduction;
     /**这个怪物能够繁殖的季节 */
-    baby_flags?: string[];
+    baby_flags?: Season[];
     /**当怪物被攻击时触发的特殊防御 */
     special_when_hit?: any[];
     /**当怪物成功攻击时应用于被攻击生物的效果 */
@@ -204,8 +205,10 @@ export type Monster = CopyfromVar<{
     fungalize_into?: (MonsterID);
     /**当剪下这个怪物时产生的物品 */
     shearing?: MonShearing[];
-    /**描述怪物速度字符串的 speed_description 类型的 ID */
-    speed_description?: string;
+    /**描述怪物速度字符串的 speed_description 类型的 ID
+     * @default "DEFAULT"
+     */
+    speed_description?: (SpeedDescriptionID);
     /**关于将这个怪物喂食以将其变成宠物的数据 */
     petfood?: any;
     /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定必须吸收多少毫升才能获得 1 HP
@@ -325,9 +328,9 @@ export type MonUpgrade = {
     /**根据近似的指数进程, 一半的怪物在多少天内升级. 它与进化缩放因子相乘 (在撰写本文时, 为4)  */
     half_life: Int;
     /**升级后的怪物类型取自指定的组 */
-    into_group?: string;
+    into_group?: (MonsterGroupID);
     /**升级后的怪物类型 */
-    into?: string;
+    into?: (MonsterID);
     /**怪物需要多少天才能变成另一个怪物. 不会随着进化因子的变化而变化 */
     age_grow?: Int;
     /**如果使用 into_group, 所选条目将根据条目的 pack_size 生成一定数量的怪物 */

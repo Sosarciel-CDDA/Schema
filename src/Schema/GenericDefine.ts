@@ -50,6 +50,7 @@ import { BodyPart } from "./BodyPart";
 import { LimbScore } from "./LimbScore";
 import { CharacterMod } from "./CharacterMod";
 import { Snippet } from "./Snippet";
+import { SpeedDescription } from "./SpeedDescription";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -357,6 +358,9 @@ export type Season = "SUMMER" | "WINTER" | "AUTUMN" | "SPRING";
 export type SeasonLc = "summer" | "winter" | "autumn" | "spring";
 /**时期 */
 export type Period = "DAY" | "NIGHT" | "DUSK" | "DAWN";
+/**节日 */
+export type Festival = "none"|"new_year"|"easter"|
+"independence_day"|"halloween"|"thanksgiving"|"christmas";
 
 /**有贴图可以被 look_like 指定的id */
 export type LookLikeID = (AnyItemID|MonsterID|TerrainID);
@@ -370,6 +374,6 @@ export type AnyCddaJson = AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInf
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
-    BodyPart|LimbScore|CharacterMod|Snippet;
+    BodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];

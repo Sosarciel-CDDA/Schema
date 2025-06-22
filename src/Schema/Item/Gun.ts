@@ -1,3 +1,4 @@
+import { FaultID } from "Schema/Fault";
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
 import { RangeDamage, Energy, Volume, CddaID, Length } from "../GenericDefine";
@@ -79,7 +80,7 @@ export type GunBase = {
     /**重装时发出的声音大小 */
     reload_noise_volume?: number;
     /**可能适用于该枪的故障类型;  通常继承自单个抽象, 例如rifle_base, 但也存在例外 */
-    faults?:string[];
+    faults?:FaultID[];
     /**武器的处理;  更好的操控性意味着更少的后坐力 */
     handling?:number;
     heat_per_shot?:undefined;

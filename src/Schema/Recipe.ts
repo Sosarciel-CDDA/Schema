@@ -1,7 +1,7 @@
 import { ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, Int, Float, Time } from "./GenericDefine";
-import { AnyItemID } from "./Item";
+import { AnyItemID, ItemVariantID } from "./Item";
 import { ProficiencyID } from "./Proficiency";
 import { SkillID } from "./Skill";
 import { ToolQualityID } from "./ToolQuality";
@@ -166,7 +166,7 @@ export type Recipe = {
     /**容器变体ID, 覆盖默认的随机选择
      * @example "jar_glass_sealed_strawberry_picture" // 使用草莓图案的密封玻璃罐
      */
-    container_variant?: string;
+    container_variant?: (ItemVariantID);
     /**批量制作时间因子[最大时间减少百分比, 达到该减少的最小批量]
      * @example [25, 15] // 批量15时最多减少25%时间
      */
@@ -214,9 +214,9 @@ export type Recipe = {
      *   [ ["item_b", 2], ["item_c", 4] ] // 需要2个item_b或4个item_c
      * ]
      */
-    components?: [string, Int][][];
+    components?: [AnyItemID, Int][][];
     /**组件黑名单, 这些物品不会添加到结果物品组件中
      * @example ["item_a", "item_b"] // 排除item_a和item_b
      */
-    component_blacklist?: string[];
+    component_blacklist?: AnyItemID[];
 };

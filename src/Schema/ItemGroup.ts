@@ -1,4 +1,4 @@
-import { CddaID, CopyfromVar } from "./GenericDefine";
+import { CddaID, CopyfromVar, Festival } from "./GenericDefine";
 import { AnyItemID } from "./Item/ItemIndex";
 
 
@@ -109,11 +109,9 @@ type ItemGroupEntrieOpt = Partial<{
     /**该项目的有效 itype 变体 ID.  */
     variant: (AnyItemID);
     artifact: {};
-    event: ItemGroutEvent;
+    /**物品可生成的时间点 */
+    event: (Festival);
 }>;
-/**可用的生成时间点 */
-type ItemGroutEvent = "none"|"new_year"|"easter"|
-"independence_day"|"halloween"|"thanksgiving"|"christmas";
 
 /**物品快速定义  
  * 物品id 或者 [物品id,概率(100为100%)]  

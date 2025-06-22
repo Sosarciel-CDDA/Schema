@@ -1,13 +1,13 @@
 import { DamageTypeID } from "./DamageType";
 import { EffectID } from "./Effect";
-import { CddaID, Int, Time } from "./GenericDefine";
+import { CddaID, DescText, Int, Time } from "./GenericDefine";
 import { ProficiencyID } from "./Proficiency";
 
 /**弱点集合ID */
 export type WeakpointSetID = CddaID<"WPS">;
 
 /**弱点集合定义 */
-export interface WeakpointSet {
+export type WeakpointSet = {
     type: "weakpoint_set";
     /**弱点集合唯一ID */
     id: WeakpointSetID;
@@ -17,48 +17,50 @@ export interface WeakpointSet {
     weakpoints: Weakpoint[];
 }
 
+/**弱点集合ID */
+export type WeakpointID = CddaID<"WP">;
 
 /**怪物保护中的弱点 */
 export type Weakpoint = {
-    /** 弱点的 id  
+    /**弱点的 id  
      * 如果未指定, 默认为名称
      */
-    id: string;
+    id: (WeakpointID);
     /**弱点的名称  
      * 用于命中消息  
      */
-    name: string;
-    /** 命中弱点的基础百分比概率  
+    name: (DescText);
+    /**命中弱点的基础百分比概率  
      *  (例如, 覆盖率为 5 意味着命中弱点的基础概率为 5%)   
      */
     coverage: number;
-    /** 将武器类型映射到常数覆盖率乘数的对象 */
+    /**将武器类型映射到常数覆盖率乘数的对象 */
     coverage_mult: WeakpointDiff;
-    /** 将武器类型映射到难度值的对象.   
+    /**将武器类型映射到难度值的对象.   
      *  难度在攻击者的技能上起到软 "门" 的作用.   
      *  如果攻击者的技能等于难度, 覆盖率将减少到 50%  
      */
     difficulty: WeakpointDiff;
-    /** 将伤害类型映射到在击中弱点时对怪物基础保护的乘数的对象 */
+    /**将伤害类型映射到在击中弱点时对怪物基础保护的乘数的对象 */
     armor_mult: WeakpointDmg;
-    /** 将伤害类型映射到在乘数之后应用于怪物保护的平坦惩罚的对象 */
+    /**将伤害类型映射到在乘数之后应用于怪物保护的平坦惩罚的对象 */
     armor_penalty: WeakpointDmg;
-    /** 将伤害类型映射到在击中弱点时对护甲后伤害的乘数的对象 */
+    /**将伤害类型映射到在击中弱点时对护甲后伤害的乘数的对象 */
     damage_mult: WeakpointDmg;
-    /** 将伤害类型映射到在对弱点进行关键打击时对护甲后伤害的乘数的对象. 如果未指定, 默认为 damage_mult */
+    /**将伤害类型映射到在对弱点进行关键打击时对护甲后伤害的乘数的对象. 如果未指定, 默认为 damage_mult */
     crit_mult: WeakpointDmg;
-    /** 应用于怪物以命中弱点所需的效果名称列表  
+    /**应用于怪物以命中弱点所需的效果名称列表  
      * 只有怪物有以下状态时, 才可命中此弱点  
       */
     required_effects: EffectID[];
-    /** 可能通过击中弱点应用于怪物的效果对象列表 */
+    /**可能通过击中弱点应用于怪物的效果对象列表 */
     effects: WeakpointEffect[];
 }
 /**怪物弱点针对不同类型武器的难度设置 */
 export type WeakpointDiff = {
     /**任意 如果没有提供更具体的内容, 则为默认值.  */
     all?: Int;
-    /** 用于近战砸击武器的值.  */
+    /**用于近战砸击武器的值.  */
     bash?: Int;
     /**用于近战切割武器的值.  */
     cut?: Int;
@@ -84,19 +86,19 @@ export type WeakpointDmg = {
 } & Partial<Record<DamageTypeID,number>>
 /**命中怪物弱点时产生的效果 */
 export type WeakpointEffect = {
-    /** 效果类型 */
+    /**效果类型 */
     effect: (EffectID);
-    /** 导致效果的概率 */
+    /**导致效果的概率 */
     chance: number;
-    /** 效果持续时间. 可以是一个 (min, max) 对或一个单一值 */
+    /**效果持续时间. 可以是一个 (min, max) 对或一个单一值 */
     duration: (Time) | [number, number];
-    /** 效果是否是永久性的 */
+    /**效果是否是永久性的 */
     permanent: boolean;
-    /** 效果的强度. 可以是一个 (min, max) 对或一个单一值 */
+    /**效果的强度. 可以是一个 (min, max) 对或一个单一值 */
     intensity: number | [number, number];
-    /** 触发效果所需的伤害范围, 作为最大健康百分比 */
+    /**触发效果所需的伤害范围, 作为最大健康百分比 */
     damage_required: number;
-    /** 如果玩家触发效果, 要打印的消息. 应该带有一个模板参数, 引用怪物的名称 */
+    /**如果玩家触发效果, 要打印的消息. 应该带有一个模板参数, 引用怪物的名称 */
     message: string;
 }
 

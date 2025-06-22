@@ -115,7 +115,7 @@ export type NPCFaction = {
     /**阵营偏好货币的物品ID
      * 阵营商人会以100%价值交易该货币
      */
-    currency: string;
+    currency: (AnyItemID);
     /**价格规则数组
      * 允许为物品/类别/组定义溢价, 加价, 价格和/或固定调整
      */
@@ -139,7 +139,7 @@ export type NPCFaction = {
     /**阵营描述
      * 在阵营菜单中显示的玩家描述
      */
-    description?: string;
+    description?: (DescText);
     /**结局数组
      * 定义阵营不同力量水平下的结局文本
      */
