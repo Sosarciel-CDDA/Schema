@@ -3,6 +3,7 @@ import { FlagID } from "./Flag";
 import { CddaID, Int, Float, Time } from "./GenericDefine";
 import { ItemID, ItemVariantID } from "./Item";
 import { ProficiencyID } from "./Proficiency";
+import { Requirement, RequirementID } from "./Requirement";
 import { SkillID } from "./Skill";
 import { ToolQualityID } from "./ToolQuality";
 
@@ -107,7 +108,7 @@ export type Recipe = {
     /**结果变体, 指定总是生成该变体
      * @example "javelin_striped" // 总是生成条纹标枪
      */
-    variant?: string;
+    variant?: (ItemVariantID);
     /**是否覆盖同名配方 */
     override?: boolean;
     /**需要从结果物品中删除的标志
@@ -129,7 +130,7 @@ export type Recipe = {
      *   }
      * }
      */
-    book_learn?: {[k:string]:BookLearn};
+    book_learn?: Record<ItemID,BookLearn>;
     /**制作难度  */
     difficulty: Int;
     /**制作时间 */
@@ -185,38 +186,8 @@ export type Recipe = {
     construction_blueprint?: string;
     /**是否在游戏中显示, 用于派系营地计算建筑时间但不显示给玩家 */
     on_display?: boolean;
-    /**所需工具质量
-     * @example
-     * [{
-     *   "id": "CUT",
-     *   "level": 1,
-     *   "amount": 1
-     * }] // 需要1个具有1级切割质量的工具
-     */
-    qualities?: ToolQualityRequirement[];
-    /**所需工具
-     * @example
-     * [[ { "id": "fire", "charges": -1 } ]] // 需要火源但不消耗充能
-     */
-    tools?: ToolUsage[][];
-    /**使用需求ID和倍数
-     * @example
-     * [
-     *   ["req_a", 3], // 需要3倍req_a中的所有材料
-     *   ["req_b", 5]  // 需要5倍req_b中的所有材料
-     * ]
-     */
-    using?: [string, Int][];
-    /**组件材料, 每组内是替代选择
-     * @example
-     * [
-     *   [ ["item_a", 5] ], // 需要5个item_a
-     *   [ ["item_b", 2], ["item_c", 4] ] // 需要2个item_b或4个item_c
-     * ]
-     */
-    components?: [ItemID, Int][][];
     /**组件黑名单, 这些物品不会添加到结果物品组件中
      * @example ["item_a", "item_b"] // 排除item_a和item_b
      */
     component_blacklist?: ItemID[];
-};
+}&Omit<Requirement,'id'|'type'|'extend'>;

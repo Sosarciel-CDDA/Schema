@@ -12,6 +12,7 @@ import { ItemCategoryID } from "Schema/ItemCategory";
 import { MonsterID } from "Schema/Monster";
 import { DamageTypeID } from "Schema/DamageType";
 import { RecipeID } from "Schema/Recipe";
+import { RequirementID } from "Schema/Requirement";
 
 
 
@@ -164,13 +165,13 @@ export type GenericTrait = CopyfromVar<{
      * 体积750毫升的物品需要三倍的`requirement`
      * 2L的物品需要八倍的`requirement`
      */
-    template_requirements?: string;
+    template_requirements?: (RequirementID);
     /**爆炸数据 */
     explosion?: Explosion;
     /**定时激活 一旦定时器的持续时间过去, 就会"countdown_action"执行 至少1 */
     countdown_interval?: (Time);
     /**定时激活的动作 */
-    countdown_action?: UseAction;
+    countdown_action?: (UseAction);
     /**附魔数据 */
     relic_data?: (RelicData),
     /**最小力量需求 */
