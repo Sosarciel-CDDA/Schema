@@ -55,24 +55,6 @@ export type RecipeProficiency = {
     max_experience?: (Time);
 }
 
-/**工具质量要求 */
-type ToolQualityRequirement = {
-    /** 质量类型ID */
-    id: (ToolQualityID);
-    /** 需要的最低质量等级 */
-    level: Int;
-    /** 需要该质量工具的数量 */
-    amount: Int;
-}
-
-/**物品使用定义 */
-type ToolUsage = {
-    /** 工具ID */
-    id: (ItemID);
-    /** 消耗的充能数(-1表示不消耗) */
-    charges: Int;
-}
-
 /**配方定义 */
 export type Recipe = {
     id:RecipeID;
