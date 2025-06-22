@@ -1,6 +1,6 @@
 {
     "$schema": "./schema/AnyCddaJson.schema.json",
-    "type": "ITEM",
+    "type": "MONSTER",
     "id": "s",
     "range": 0,
     "description": "test",

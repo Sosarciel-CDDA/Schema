@@ -2,12 +2,15 @@ import { DamageTypeID, DefineDamageTypeIDList } from "./DamageType";
 import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
+import { BoolObj } from "./Eoc";
 import { BodyPartParam, CddaID, CharSymbol, Color, CopyfromVar, DefineMonFaction, DefineNpcFaction, DescText, Float, Int, Phase, Time, Volume, Weight } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { MaterialID } from "./Material";
+import { MonsterGroupID } from "./MonsterGroup";
 import { ProficiencyID } from "./Proficiency";
 import { ScentTypeID } from "./ScentType";
+import { SkillID } from "./Skill";
 import { MonsterTrigger, Species, SpeciesID } from "./Species";
 import { TalkTopicID } from "./TalkTopic";
 
@@ -27,26 +30,30 @@ export type Monster = CopyfromVar<{
     name: (DescText);
     /**怪物说明 */
     description: (DescText);
-    /**怪物的字符画ID */
-    ascii_picture?:string;
     /**生命值 */
     hp: Int;
     /**体积 影响不同大小目标的近战命中率 */
     volume: (Volume);
     /**重量 */
     weight: (Weight);
-    /**ASCII模式的显示 */
+    /**符号
+     * 游戏中显示的ASCII符号
+     */
     symbol: (CharSymbol);
-    /**颜色 */
+    /**符号的显示颜色 */
     color?: Color;
-    /**默认阵营 */
+    /**怪物所属的默认阵营 */
     default_faction: DefineMonFaction;
     /**怪物身体类型 */
     bodytype?: MonBP;
-    /**行动速度 */
+    /**速度
+     * 基础移动速度，100为人类标准
+     */
     speed: Int;
     /**怪物类别 (NULL, CLASSIC, 或 WILDLIFE) */
     categories?: MonsterCategory[];
+    /**怪物的字符画ID */
+    ascii_picture?:string;
     /**物种 ID, 例如 HUMAN, ROBOT, ZOMBIE, BIRD, MUTANT 等 */
     species?: SpeciesID[];
     /**怪物追踪这些气味 */
@@ -55,9 +62,9 @@ export type Monster = CopyfromVar<{
     scents_ignored?: ScentTypeID[];
     /**怪物由哪些材料构成 */
     material?: MaterialID[];
-    /** (字符串) 怪物的身体物质状态, 例如 SOLID, LIQUID, GAS, PLASMA, NULL */
+    /**怪物的身体物质状态, 例如 SOLID, LIQUID, GAS, PLASMA, NULL */
     phase?: Phase;
-    /**每次常规攻击的移动次数. 如果未定义, 默认为100 
+    /**每次常规攻击消耗的行动点数
      * @default 100
      */
     attack_cost?: Int;
@@ -77,7 +84,7 @@ export type Monster = CopyfromVar<{
     aggression?: Int;
     /**初始士气, 当 (当前侵略性 + 当前士气) < 0 时, 怪物会逃跑 */
     morale?: Int;
-    /** (布尔值) 如果为真, 怪物在生气时总是会攻击角色 */
+    /**如果为真, 怪物在生气时总是会攻击角色 */
     aggro_character?: boolean;
     /**对于坐骑, 坐骑到骑手重量的最大比率, 例如 0.2 表示 <=20% */
     mountable_weight_ratio?: Float;
@@ -85,23 +92,27 @@ export type Monster = CopyfromVar<{
     melee_skill?: Int;
     /**怪物躲避攻击的技能 */
     dodge?: Int;
-    /** (对象数组) 在怪物近战攻击时添加到骰子滚动上的伤害实例列表 */
+    /**在怪物近战攻击时添加到骰子上的伤害实例列表 */
     melee_damage?: MosnterMeleeDamage[];
-    /**在怪物近战攻击时确定砸伤伤害的骰子滚动次数 */
+    /**近战攻击的骰子数量 */
     melee_dice?: Int;
-    /**每个由 melee_dice 滚动的骰子的面数 */
+    /**每个 melee_dice 骰子的面数 */
     melee_dice_sides?: Int;
     /**抓取效果的强度, 从1到n, 模拟n个常规僵尸抓取 */
     grab_strength?: Int;
-    /**通过与这个怪物战斗可以学习的最大近战技能等级. 如果未定义, 默认为 melee_skill + 2 */
+    /**通过与这个怪物战斗可以学习的最大近战技能等级
+     * 如果未定义, 默认为 melee_skill + 2
+     */
     melee_training_cap?: Int;
-    /** (对象) 怪物对不同类型伤害的保护 */
+    /**怪物对不同类型伤害的保护 */
     armor?: Record<DamageTypeID,number>;
-    /** (对象数组) 怪物保护中的弱点 */
+    /**怪物保护中的弱点 */
     weakpoints?: MonWeakpoint[];
     /** (字符串数组) 应用于怪物的弱点集 */
     weakpoint_sets?: string[];
-    /**当电伤害发生时, 应用电击的机会的乘数 (目前没有实现其他效果)  */
+    /**状态效果触发几率乘数
+     * 当电伤害发生时, 应用电击的机会的乘数 (目前没有实现其他效果) 
+     */
     status_chance_multiplier?: Float;
     /**怪物所属的弱点族 */
     families?: MonWeakpointFamilie[];
@@ -111,38 +122,40 @@ export type Monster = CopyfromVar<{
      * 例如: coyote 5, bear 10, sewer rat 30, flaming eye 40   
      */
     vision_night?: Int;
-    /**怪物在自己和当前被追踪的敌人或被跟随的领导者之间保持的瓦片数量
+    /**怪物在自己和当前被追踪的敌人或被跟随的领导者之间保持的距离
      * @default 3
      */
     tracking_distance?: Int;
-    /**这个怪物不会触发的陷阱的 trap_id. 默认行为是触发所有陷阱 */
+    /**这个怪物不会触发的陷阱的 trap_id
+     * 默认行为是触发所有陷阱
+     */
     trap_avoids?: string[];
     /**怪物被动发出的光量, 必须大于0才能产生任何效果 */
     luminance?: Float;
     /**当怪物死亡时生成的物品组 */
     death_drops?:ItemGroupID|InlineItemGroup;
     /**死亡效果  
-     * (字符串数组) 怪物死亡时的行为. 参见 JSON_FLAGS  
+     * 怪物死亡时的行为. 参见 JSON_FLAGS  
      */
     death_function?: {
         corpse_type?: "NO_CORPSE";
         message?:(DescText);
         effect?:FakeSpell;
     };
-    /** (对象数组) 怪物发出的场以及频率 */
+    /**怪物发出的场以及频率 */
     emit_fields?:  {
         emit_id  : (EmitID);
         delay    : (Time);
     }[];
     /**怪物每回合恢复的生命值数量 */
     regenerates?: Int;
-    /**如果怪物在黑暗中快速恢复, 则为真 */
+    /**在黑暗中能否快速再生 */
     regenerates_in_dark?: boolean;
     /**当怪物具有此效果时, 通过整数值修改恢复  
      * 例如, -5 将每回合 40hp 的恢复值减少到 35hp. 不能将恢复减少到 0 以下  
      */
     regeneration_modifiers?: [EffectID, Int];
-    /**如果怪物在满血时会停止逃跑以恢复愤怒和士气, 则为真 */
+    /**满血时是否恢复愤怒和士气 */
     regen_morale?: boolean;
     /**怪物拥有的特殊攻击 */
     special_attacks?: any[];
@@ -152,6 +165,8 @@ export type Monster = CopyfromVar<{
     chat_topics?: TalkTopicID[];
     /**当怪物友好时, 可以转换为的物品 (例如, 拆解炮塔)  */
     revert_to_itype?: (AnyItemID);
+    /**死亡时生成的损坏物品 */
+    broken_itype?: (AnyItemID);
     /**如果这个怪物是一个带有内置武器的可骑乘机甲, 这是武器 id */
     mech_weapon?: (AnyItemID);
     /**如果这个怪物是一个可骑乘的机甲, 这是它给骑手的力量加成 */
@@ -210,9 +225,48 @@ export type Monster = CopyfromVar<{
      * 只要物品由列表中的至少一种材料制成, 就会匹配该物品. 如果未指定, 怪物将吸收所有材料
      */
     absorb_material?: MaterialID[];
+    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物 无法吸收的材料类型 */
+    no_absorb_material?: MaterialID[];
     /**对于具有 SPLIT 特殊攻击的怪物. 确定分裂成自身副本时的移动成本 */
     split_move_cost?: Int;
+    /**复活形态
+     * 复活后的怪物形态
+     */
+    revive_forms?: ReviveForm|ReviveForm[];
+    /**在复杂地形上的移动能力 type:0-10 */
+    move_skills?: MonMoveSkill;
 }&Pick<Species,'anger_triggers'|'fear_triggers'|'placate_triggers'>>;
+
+/**怪物在复杂地形上的移动能力 */
+type MonMoveSkill = {
+    /**游泳怪物会忽略可 SWIMMABLE 地形消耗
+     * 相反，它会施加与技能成反比的固定移动消耗惩罚
+     */
+    swim ?: Int,
+    /**游泳怪物会忽略 DIGGABLE 地形消耗
+     * 相反，它会施加与技能成反比的固定移动消耗惩罚
+     */
+    dig  ?: Int,
+    /**攀爬怪物可以攀爬 CLIMBABLE 的地形/家具
+     * 也可以使用难度等级为DIFFICULT_Z的地形/家具（例如梯子）
+     * 地形/家具消耗会乘以技能修正值
+     */
+    climb?: Int,
+}
+
+/**表示尸体复活形态的定义项 */
+type ReviveForm = {
+    /**复活条件（可选项），类似对话条件，但不包含 alpha 或 beta 对话者；
+     * 可使用上下文变量：`loc`（尸体位置）、`corpse_damage`（尸体损坏程度）。
+     * 若省略该字段，则默认为始终成立。
+     */
+    condition?: (BoolObj);
+    /**复活后生成的怪物 ID（与 monster_group 二选一填写） */
+    monster?: (MonsterID);
+    /**复活后生成的怪物组 ID（与 monster 二选一填写） */
+    monster_group?: (MonsterGroupID);
+}
+
 
 /**怪物的身体类型 列表 */
 export const MonsterBPList = [
@@ -253,13 +307,13 @@ export type MosnterMeleeDamage = {
     /** 伤害类型 */
     damage_type: (DamageTypeID);
     /** 伤害量 */
-    amount: number;
+    amount: Int;
     /** 伤害实例忽略的护甲量 */
-    armor_penetration: number;
+    armor_penetration: Int;
     /** 护甲穿透的乘数 */
-    armor_multiplier: number;
+    armor_multiplier: Float;
     /** 伤害量的乘数 */
-    damage_multiplier: number;
+    damage_multiplier: Float;
 }
 
 /** (对象数组, 可选) 怪物保护中的弱点 */

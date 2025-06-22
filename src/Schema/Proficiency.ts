@@ -1,5 +1,6 @@
 import { CddaID, DescText, Float, Time } from "./GenericDefine";
 import { ProficiencyCategoryID } from "./ProficiencyCategory";
+import { SkillID } from "./Skill";
 
 /**专长ID */
 export type ProficiencyID = CddaID<"PROF">;
@@ -35,15 +36,13 @@ export type Proficiency = {
     required_proficiencies?: ProficiencyID[];
     /**熟练度经验获取将无视实际专注度，视为专注度始终为100 */
     ignore_focus?: boolean;
-    /**根据玩家拥有特定熟练度而应用于某些活动的加成 
-     * 键值应为SkillID
-     */
-    bonuses?: {[k:string]:{
+    /**根据玩家拥有特定熟练度而应用于某些活动的加成 */
+    bonuses?: Record<SkillID,{
         /**加成类型 */
         type: ProfBonusType;
         /**加成值 */
         value: Float;
-    }[]};
+    }[]>;
 };
 
 
