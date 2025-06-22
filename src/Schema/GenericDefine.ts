@@ -51,6 +51,7 @@ import { LimbScore } from "./LimbScore";
 import { CharacterMod } from "./CharacterMod";
 import { Snippet } from "./Snippet";
 import { SpeedDescription } from "./SpeedDescription";
+import { WeaponCategory } from "./WeaponCategory";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -367,6 +368,6 @@ export type AnyCddaJson = Item|AnyItemTrait|Eoc|Mutation|DamageType|DamageInfoOr
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
-    BodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription;
+    BodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];
