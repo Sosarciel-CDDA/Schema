@@ -55,7 +55,7 @@ const a:Item = {
   weight: 1,
   volume: 1,
   symbol: "1",
-  "//T":"ARMOR" as "GENERIC",
+  "//T":"ARMOR" as "GENERIC"|"ARMOR"|"GUN",
   covers:["arm_l"],
   skill:"archery",
   ammo:["50"],
