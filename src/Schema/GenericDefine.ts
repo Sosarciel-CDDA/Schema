@@ -41,6 +41,8 @@ import { AttackVector } from "./AttackVector";
 import { Fault } from "./Fault";
 import { FaultFix } from "./FaultFix";
 import { FaultGroup } from "./FaultGroup";
+import { MonsterFaction } from "./MonsterFaction";
+import { NPCFaction } from "./NPCFaction";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -389,6 +391,6 @@ export type AnyCddaJson = AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInf
     ModTileset|ActivityType|VehiclePart|ToolQuality|TalkTopic|Terrain|
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
-    Fault|FaultFix|FaultGroup;
+    Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];

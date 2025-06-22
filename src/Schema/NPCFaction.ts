@@ -43,21 +43,21 @@ type PriceRule = {
 /**阵营关系标志 */
 export type FactionRelationFlags = {
     /**成员见到就杀 */
-    "kill on sight"?: boolean;
+    "kill on sight"     ?: boolean;
     /**成员会将对该阵营的攻击视为对自己的攻击 */
-    "watch your back"?: boolean;
+    "watch your back"   ?: boolean;
     /**成员不会反对该阵营成员拿走自己的物品 */
-    "share my stuff"?: boolean;
+    "share my stuff"    ?: boolean;
     /**营地允许该阵营成员从食物储备中进食(包括饮水) */
     "share public goods"?: boolean;
     /**成员会反对他人拿走该阵营的物品 */
-    "guard your stuff"?: boolean;
+    "guard your stuff"  ?: boolean;
     /**成员不会反对该阵营成员进入自己控制的领地 */
-    "lets you in"?: boolean;
+    "lets you in"       ?: boolean;
     /**成员会对进入该阵营领地的人变得敌对 */
     "defends your space"?: boolean;
     /**成员不会评论该阵营成员的言论 */
-    "knows your voice"?: boolean;
+    "knows your voice"  ?: boolean;
 };
 
 /**结局定义 */
