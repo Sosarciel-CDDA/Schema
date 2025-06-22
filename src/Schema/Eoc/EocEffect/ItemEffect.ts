@@ -13,6 +13,7 @@ import { MutationID } from "Schema/Mutation";
 import { EmitID } from "Schema/Emit";
 import { FieldID } from "Schema/Field";
 import { FaultID } from "Schema/Fault";
+import { UpdateMapgenID } from "Schema/Mapgen";
 
 
 
@@ -173,7 +174,7 @@ export type MapgenUpdate = {
      * 没有其他参数时, 使用update_mapgen_id ID中的更改更新玩家当前位置的地图图块. 
      * 如果使用数组, 则会为每个ID更新地图
      */
-    mapgen_update: (StrObj) | (StrObj)[];
+    mapgen_update: (IDObj<UpdateMapgenID>) | (IDObj<UpdateMapgenID>)[];
     /**未来时间
      * 如果使用, 地图更改将延迟这段时间. 可以使用"infinity", 使位置不更新, 直到关键事件发生
      */

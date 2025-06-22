@@ -1,5 +1,6 @@
 import { BodyPartID } from "./BodyPart";
 import { ParamsEnchantment } from "./Enchantment";
+import { EocEvent } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, DescText, EffectRatType, Time } from "./GenericDefine";
 import { LimbScoreID } from "./LimbScore";
@@ -193,7 +194,7 @@ export type Effect = {
     /**因此效果而死亡时产生的消息 */
     death_msg?: (DescText);
     /**因此效果而死亡时产生的事件 */
-    death_event?: string;
+    death_event?: (EocEvent);
     /**效果肢体能力修正 */
     limb_score_mods?:EffectLimbMod[];
     /**效果的基础调整 */

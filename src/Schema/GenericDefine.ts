@@ -350,6 +350,13 @@ type AnyOtherObject = {
     "type":JToken;
 };
 
+/**季节 */
+export type Season = "SUMMER" | "WINTER" | "AUTUMN" | "SPRING";
+/**季节 小写 */
+export type SeasonLc = "summer" | "winter" | "autumn" | "spring";
+/**时期 */
+export type Period = "DAY" | "NIGHT" | "DUSK" | "DAWN";
+
 /**有贴图可以被 look_like 指定的id */
 export type LookLikeID = (AnyItemID|MonsterID|TerrainID);
 

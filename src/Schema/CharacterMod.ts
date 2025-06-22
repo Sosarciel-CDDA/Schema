@@ -1,3 +1,4 @@
+import { LimbType } from "./BodyPart";
 import { CddaID, DescText, Float } from "./GenericDefine";
 import { LimbScoreID } from "./LimbScore";
 
@@ -24,7 +25,7 @@ export type CharacterMod = {
          * 对于加法计算(limb_score_op: "+")分数乘以权重, 
          * 对于乘法计算(limb_score_op: "x")分数提高到权重次方
          */
-        limb_score?: string | [string, Float][] | string[];
+        limb_score?: LimbScoreID | [LimbScoreID, Float][] | LimbScoreID[];
         /**定义多个肢体评分时的操作(相加+或相乘x)
          * 例如: x => score1 x score2 x score3 ...
          * @default "x"
@@ -33,7 +34,7 @@ export type CharacterMod = {
         /**引用body_part中定义的limb_type
          * 如果存在, 仅使用具有该肢体类型的身体部位的肢体评分
          */
-        limb_type?: string;
+        limb_type?: LimbType;
         /**如果指定, 强制肢体评分受/不受肢体负重影响
          * (覆盖limb_score中的affected_by_encumb)
          */

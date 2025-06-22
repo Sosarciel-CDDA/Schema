@@ -1,4 +1,4 @@
-import { CddaID } from "./GenericDefine"
+import { CddaID, SeasonLc } from "./GenericDefine"
 
 
 
@@ -19,7 +19,7 @@ export type SoundEffect = {
     /**文件路径 从音效包起始 */
     files: string[];
     /**如果定义, 声音将仅在指定季节播放.  (可能的值为spring, summer, autumn和winter).  */
-    season?: "spring"|"summer"|"autumn"|"winter";
+    season?: (SeasonLc);
     /** 如果已定义, 则只有当玩家在室内/室外 (true/false 时)时才会播放声音.  */
     is_indoors?: boolean;
     /**如果已定义, 则仅当当前时间为夜间/白天 (当 true/false 时)时才会播放声音.  */

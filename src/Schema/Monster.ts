@@ -14,7 +14,8 @@ import { MonsterGroupID } from "./MonsterGroup";
 import { ScentTypeID } from "./ScentType";
 import { Species, SpeciesID } from "./Species";
 import { TalkTopicID } from "./TalkTopic";
-import { Weakpoint, WeakpointFamilie } from "./WeakpointSet";
+import { TrapID } from "./Trap";
+import { Weakpoint, WeakpointFamilie, WeakpointSetID } from "./WeakpointSet";
 
 
 
@@ -110,8 +111,8 @@ export type Monster = CopyfromVar<{
     armor?: Record<DamageTypeID,number>;
     /**怪物保护中的弱点 */
     weakpoints?: Weakpoint[];
-    /**(字符串数组) 应用于怪物的弱点集 */
-    weakpoint_sets?: string[];
+    /**应用于怪物的弱点集 */
+    weakpoint_sets?: WeakpointSetID[];
     /**状态效果触发几率乘数
      * 当电伤害发生时, 应用电击的机会的乘数 (目前没有实现其他效果) 
      */
@@ -131,7 +132,7 @@ export type Monster = CopyfromVar<{
     /**这个怪物不会触发的陷阱的 trap_id
      * 默认行为是触发所有陷阱
      */
-    trap_avoids?: string[];
+    trap_avoids?: TrapID[];
     /**怪物被动发出的光量, 必须大于0才能产生任何效果 */
     luminance?: Float;
     /**当怪物死亡时生成的物品组 */

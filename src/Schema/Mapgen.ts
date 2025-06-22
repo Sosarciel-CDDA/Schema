@@ -49,18 +49,23 @@ export type VehiclePlace = Place<{
 
 /**嵌套生成子地图生成定义 */
 export type NestMapgen = {
-    nested_mapgen_id:NestedMapgenID;
+    nested_mapgen_id:(NestedMapgenID);
     object:{
         mapgensize: [ number, number ],
         rotation: [ number, number ],
     }
 }&Omit<Mapgen,'om_terrain'>;
 
+/**地图更新定义ID */
+export type UpdateMapgenID = CddaID<"UMPG">;
+
 /**地图生成定义 */
 export type Mapgen = {
     type: "mapgen";
     method: "json";
     om_terrain: OvermapTerrainID|OvermapTerrainID[]|OvermapTerrainID[][];
+    /**更地图更新定义唯一ID */
+    update_mapgen_id: (UpdateMapgenID);
     weight: number;
     object: {
         fill_ter?: (TerrainID);

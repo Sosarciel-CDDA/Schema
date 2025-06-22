@@ -54,5 +54,5 @@ type WorkbenchData = {
     /**允许的最大体积 
      * @example "50L"
      */
-    volume: string;
+    volume: (Volume);
 };

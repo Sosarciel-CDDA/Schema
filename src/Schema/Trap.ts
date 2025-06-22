@@ -4,6 +4,7 @@ import { AnyItemID } from "./Item";
 import { FlagID } from "./Flag";
 import { SoundEffectID, SoundEffectVariantID } from "./SoundEffect";
 import { FakeSpell } from "./Enchantment";
+import { UpdateMapgenID } from "./Mapgen";
 
 
 /**陷阱ID */
@@ -31,7 +32,7 @@ export type Trap = {
     /**触发时运行的C++函数 */
     action: (TrapActionType);
     /**地图再生用的overmap ID */
-    map_regen?: string;
+    map_regen?: (UpdateMapgenID);
     /**是否为良性陷阱(如漏斗等, 无法被触发) */
     benign?: boolean;
     /**是否总是不可见(玩家永远无法发现) */

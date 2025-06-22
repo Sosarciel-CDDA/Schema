@@ -19,6 +19,7 @@ import { SpeciesID } from "Schema/Species";
 import { RecipeID } from "Schema/Recipe";
 import { ProficiencyID } from "Schema/Proficiency";
 import { BodyPartID } from "Schema/BodyPart";
+import { SeasonLc } from "Schema/GenericDefine";
 
 
 //#region 不在文档内的
@@ -59,6 +60,12 @@ export type SurvivalNeed = TalkerVar<{
     amount?: number;
     level?: "TIRED";
 },"need">
+
+/**季节判断 */
+export type IsSeason = {
+    /**季节判断 */
+    is_season: (SeasonLc);
+}
 
 //#endregion
 

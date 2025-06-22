@@ -3,6 +3,7 @@ import { EffectID } from "./Effect";
 import { IDObj } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, DescText, Float, Int } from "./GenericDefine";
+import { LimbScoreID } from "./LimbScore";
 import { TechniqueID } from "./Technique";
 
 
@@ -13,7 +14,7 @@ export type BodyPartID = CddaID<'BP'>|DefineBodyPartID;
 /**身体部位定义 */
 export type BodyPart = {
     /**身体部位定义唯一ID */
-    id: string;
+    id: (BodyPartID);
     /**游戏中显示的名称 */
     name: (DescText);
     /**肢体类型, 由bodypart.h定义
@@ -188,7 +189,7 @@ export type BodyPart = {
      * (主要用于操纵器分数)
      * @example [ [ "manip", 0.1, 0.2 ], [ "lift", 0.5 ], [ "block", 1.0 ], [ "swim", 0.1 ] ]
      */
-    limb_scores?: [string, Float, Float?][];
+    limb_scores?: [LimbScoreID, Float, Float?][];
     /**每当肢体受损时可以应用的效果数组 */
     effects_on_hit?: OnHitEffect[];
     /**对象数组, 每个详细说明身体部位对徒手攻击的伤害贡献及其护甲穿透
@@ -213,7 +214,7 @@ export type BodyPart = {
      * 覆盖肘部的装甲将覆盖其他肢体上的类似肘部, 
      * 但不覆盖任何其他位置
      */
-    similar_bodyparts?: string[];
+    similar_bodyparts?: BodyPartID[];
     /**包含伤害抵抗值的对象
      * @example { "bash": 2, "cut": 1 }
      */

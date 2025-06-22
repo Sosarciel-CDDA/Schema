@@ -1,7 +1,6 @@
 import { EmitID } from "./Emit";
-import { FlagID } from "./Flag";
 import { FurnitureID } from "./Furniture";
-import { CharSymbol, Color, DescText, Float, Int, LookLikeID, Volume } from "./GenericDefine";
+import { CharSymbol, Color, DescText, Float, Int, LookLikeID, Time, Volume } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { SkillID } from "./Skill";
@@ -375,11 +374,11 @@ type ToolInteraction<T extends FurnitureOrTerrain> = {
     /**所需时间 
      * @default "1 seconds"
      */
-    duration?: string;
+    duration?: (Time);
     /**完成时显示的消息 */
-    message?: string;
+    message?: (DescText);
     /**完成时的声音描述 */
-    sound?: string;
+    sound?: (DescText);
     /**产生的物品 */
     byproducts?: Byproduct[];
     /**撬动特定数据 */
@@ -413,7 +412,7 @@ type PryingData = {
     /**失败时是否有几率触发破坏动作 */
     breakable?: boolean;
     /**失败消息 */
-    failure?: string;
+    failure?: (DescText);
 };
 
 /**连接组的类型 列表 */

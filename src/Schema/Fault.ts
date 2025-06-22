@@ -1,5 +1,6 @@
 import { CddaID, DescText, Float, Int } from "./GenericDefine";
 import { FlagID } from "./Flag";
+import { DamageTypeID } from "./DamageType";
 
 export type FaultID = CddaID<'FAULT'>;
 
@@ -7,7 +8,7 @@ export type FaultTypeID = CddaID<'FAULTT'>;
 
 type DamageMod = {
     /**伤害类型ID */
-    damage_id: string;
+    damage_id: (DamageTypeID);
     /**附加伤害值
      * @default 0
      */
@@ -35,7 +36,7 @@ export type Fault = {
      */
     item_suffix?: string;
     /**应用故障时显示的消息 */
-    message: string;
+    message: (DescText);
     /**故障类型
      * 代码可能会调用一组中的随机故障而非特定故障
      */

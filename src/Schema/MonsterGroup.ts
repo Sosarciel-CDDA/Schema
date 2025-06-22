@@ -1,5 +1,6 @@
 import { MonsterID } from "./Monster";
-import { CddaID, Int, Time } from "./GenericDefine";
+import { CddaID, Int, Period, Season, Time } from "./GenericDefine";
+import { AmmoID } from "./Item";
 
 /**怪物组ID */
 export type MonsterGroupID = CddaID<'MONG'>;
@@ -29,7 +30,7 @@ type MonsterGroupEntry = {
      * 多个季节条件 (夏季, 冬季, 秋季, 春季) 将组合在一起, 使任意一个条件都可使怪物生成有效
      * @example ["DUSK","DAWN","SUMMER"]
      */
-    conditions?: ("SUMMER" | "WINTER" | "AUTUMN" | "SPRING" | "DAY" | "NIGHT" | "DUSK" | "DAWN")[];
+    conditions?: (Season | Period)[];
     /**此条目在经过此时间乘以进化缩放因子后变为活动状态 */
     starts?: (Time);
     /**此条目在经过此时间乘以进化缩放因子后变为非活动状态 */
@@ -37,7 +38,7 @@ type MonsterGroupEntry = {
     /**怪物在此组中生成时才有的属性 */
     spawn_data?: {
         /**怪物生成时携带的弹药类型和数量 */
-        ammo?: Record<string, Int>;
+        ammo?: Record<AmmoID, Int>;
     };
     /**如果存在, 此条目只能在指定事件期间生成
      * @example "halloween"

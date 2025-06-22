@@ -1,4 +1,4 @@
-import { CddaID, CopyfromVar, Float, Int } from "./GenericDefine";
+import { CddaID, CopyfromVar, Float, Int, SeasonLc } from "./GenericDefine";
 import { FlagID } from "./Flag";
 import { AnyItemID } from "./Item";
 import { HarvestID } from "./Harvest";
@@ -96,7 +96,7 @@ type ShootData = {
 /**季节性收获 */
 type HarvestSeason = {
     /**可收获的季节 */
-    seasons: ("spring" | "summer" | "autumn" | "winter")[];
+    seasons: SeasonLc[];
     /**收获条目ID */
     id: (HarvestID);
 };

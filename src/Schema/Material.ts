@@ -1,5 +1,6 @@
 import { DamageTypeID } from "./DamageType";
 import { CddaID, DescText, Energy, Float, Volume } from "./GenericDefine";
+import { TerrainID } from "./Terrain";
 import { VitaminID } from "./Vitamin";
 
 
@@ -105,7 +106,7 @@ export type FuelData = {
     /**是类似 风力/太阳光 的无限能源 */
     perpetual?: boolean;
     /**可从什么地形上泵出 */
-    pump_terrain?: string;
+    pump_terrain?: (TerrainID);
     /**燃料爆炸数据 */
     explosion_data?: {
         /**1/x 的概率因为 heat 类型伤害武器击中而爆炸 */

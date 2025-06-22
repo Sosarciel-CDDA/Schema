@@ -1,4 +1,6 @@
-import { CddaID, CopyfromVar, Int } from "./GenericDefine";
+import { FaultID } from "./Fault";
+import { FlagID } from "./Flag";
+import { CddaID, CopyfromVar, DescText, Int } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { ItemGroupID } from "./ItemGroup";
 
@@ -34,11 +36,11 @@ export type HarvestEntry = {
     /**标志
      * 物品附加的标志
      */
-    flags?: string[];
+    flags?: (FlagID)[];
     /**缺陷
      * 物品附加的缺陷ID
      */
-    faults?: string[];
+    faults?: (FaultID)[];
 }
 
 /**收获定义 */
@@ -49,7 +51,7 @@ export type Harvest = CopyfromVar<{
     /**消息
      * 屠宰时显示的提示信息
      */
-    message?: string;
+    message?: (DescText);
     /**残留物
      * 屠宰后剩余的物品ID
      */
