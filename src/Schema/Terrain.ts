@@ -1,5 +1,4 @@
-import { CddaID } from "@src/SchemaTest";
-import { Float, Int } from "./GenericDefine";
+import { CddaID, CopyfromVar, Float, Int } from "./GenericDefine";
 import { FlagID } from "./Flag";
 import { AnyItemID } from "./Item";
 import { HarvestID } from "./Harvest";
@@ -8,10 +7,10 @@ import { CommonToFurnitureAndTerrain } from "./CommonToFurnitureAndTerrain";
 
 
 /**地形ID */
-export type TerrainID = CddaID<'TERRAIN'>;
+export type TerrainID = CddaID<'TER'>;
 
 /**地形定义 */
-export type Terrain = CommonToFurnitureAndTerrain<{
+export type Terrain = CopyfromVar<CommonToFurnitureAndTerrain<{
     type: "terrain";
     /**地形唯一ID */
     id: (TerrainID);
@@ -49,7 +48,7 @@ export type Terrain = CommonToFurnitureAndTerrain<{
     liquid_source?: (LiquidSource);
     /**屋顶地形 */
     roof?: (TerrainID);
-}>;
+}>>;
 
 
 /**射击交互数据 */

@@ -33,12 +33,12 @@ console.log(JSON.stringify(schema,null,2))
 /**自定义的ID  
  * @TJS-type string  
  */
-export type CddaID<T extends string> = `${`${string}_`|''}${T}_${string}`;
+type CddaID<T extends string> = `${`${string}_`|''}${T}_${string}`;
 
 /**自定义的ID  
  * @TJS-type string  
  */
-export type OR<T1 extends string> = `${string}JustString`;
+type OR<T1 extends string> = `${string}JustString`;
 
 /**测试1  
  */
@@ -57,7 +57,7 @@ type AnyString = String&string|"1111111"|"nnnnnn"
 type TestFlag2 = OR<AnyString>|DefineGenericFlag;
 
 /**通用物品的flag列表 */
-export const GenericFlagList = [
+const GenericFlagList = [
     "ACTIVATE_ON_PLACE" , // 放置时激活
     "SINGLE_USE"        , // 使用后删除
     "ZERO_WEIGHT"       , // 允许0重量/体积
@@ -68,7 +68,7 @@ export const GenericFlagList = [
     "DURABLE_MELEE"     , // 坚固的近战武器
 ] as const;
 /**预定义的通用物品的flag */
-export type DefineGenericFlag = typeof GenericFlagList[number];
+type DefineGenericFlag = typeof GenericFlagList[number];
 
 
 

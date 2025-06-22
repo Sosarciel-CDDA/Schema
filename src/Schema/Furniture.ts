@@ -1,5 +1,4 @@
-import { CddaID } from "@src/SchemaTest";
-import { DescText, Float, Int, LookLikeID, Volume } from "./GenericDefine";
+import { CddaID, DescText, Float, Int, LookLikeID, Volume } from "./GenericDefine";
 import { AnyItemID } from "./Item";
 import { FlagID } from "./Flag";
 import { CommonToFurnitureAndTerrain } from "./CommonToFurnitureAndTerrain";
