@@ -1,12 +1,13 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { EnchantmentID, InlineEnchantment } from "../Enchantment";
 import { CustomFlagID } from "../Flag";
-import { CharSymbol, Color, CopyfromVar, DescText, Explosion, Length, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
+import { CddaID, CharSymbol, Color, CopyfromVar, DescText, Explosion, Float, Int, Length, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
 import { AmmoID } from "./Ammo";
 import { WeaponCategoryID } from "../WeaponCategory";
 import { MaterialID } from "../Material";
 import { UseAction } from "../ItemAction";
 import { AnyItemID, ItemSubtype } from "./ItemIndex";
+import { SnippetCategoryID } from "Schema/Snippet";
 
 
 /**预定义的通用物品 列表 */
@@ -75,6 +76,10 @@ export type ItemBase = CopyfromVar<{
     looks_like?: string,
     /**描述 */
     description: (DescText);
+    /**是否解析snippet */
+    expand_snippets?: boolean;
+    /**如果作者希望用多种方式描述某项内容，可以用它来代替描述。参见 #Snippets */
+    snippet_category: (SnippetCategoryID);
     /**用于该项目的 asci_art 的 ID */
     ascii_picture?:string;
     /**默认的状态 默认为固态 */
@@ -104,7 +109,7 @@ export type ItemBase = CopyfromVar<{
     /**控制物品在受到伤害时退化的速度.  0 = 无退化.   
      * 默认为 1.0  
      */
-    degradation_multiplier?: number;
+    degradation_multiplier?: Float;
     /**ascii显示符号 */
     symbol: (CharSymbol);
     /**颜色 */
@@ -123,8 +128,8 @@ export type ItemBase = CopyfromVar<{
     pocket_data?: PocketData[];
     /**命中数据 */
     to_hit?: ToHit;
-    /**超过该体积杂志开始从物品中突出并增加额外的体积 */
-    magazine_well?: number;
+    /**超过该体积弹夹开始从物品中突出并增加额外的体积 */
+    magazine_well?: (Volume);
     /**每种弹药类型 (如果有)的杂志类型, 可用于重新加载该物品 */
     magazines?: GenericMagazines[];
     /**掉进火里会爆炸 */
@@ -136,16 +141,47 @@ export type ItemBase = CopyfromVar<{
     /**定时激活的动作 */
     countdown_action?: UseAction;
     /**附魔数据 */
-    relic_data?: RelicData,
+    relic_data?: (RelicData),
     /**最小力量需求 */
-    min_strength?: number;
+    min_strength?: Int;
     /**最小敏捷需求 */
-    min_dexterity?: number;
+    min_dexterity?: Int;
     /**最小智力需求 */
-    min_intelligence?: number;
+    min_intelligence?: Int;
     /**最小感知需求 */
-    min_perception?: number;
+    min_perception?: Int;
+    /**可能的选项："gun"、"generic" - 控制哪些选项启用/禁用查看此物品的变体。 */
+    variant_type?: "gun" | "generic";
+    /**此物品可以拥有的外观变体 */
+    variants?: {
+        /**生成时用于专门生成此变体的 ID */
+        id: (ItemVariantID);
+        /**选择此变体时使用的名称，而非默认名称 */
+        name?: (DescText);
+        /**选择此变体时使用的描述，而非默认描述 */
+        description?: (DescText);
+        /**选择此变体时使用的 ASCII 艺术图片。如果没有，则使用默认值（如果存在）。 */
+        ascii_picture?: string;
+        /**用于替换物品符号的有效 Unicode 字符。如果未指定，则不会进行任何更改。 */
+        symbol?: (CharSymbol);
+        /**物品符号的替换颜色。如果未指定，则不会进行任何更改。 */
+        color?: (Color)
+        /**当此物品生成时，若没有明确的变体，则此变体被选中的相对概率。
+         * 如果为 0，则不会选中此变体。
+         * @default 1
+         */
+        weight?: Int;
+        /**此描述是否应仅附加到基础物品描述，而不是完全覆盖它 */
+        append?: boolean;
+        /**允许使用代码片段标签，请参阅 #Snippets */
+        expand_snippets?: boolean;
+    }[];
 }>;
+
+/**物品变体ID */
+export type ItemVariantID = CddaID<"ITEMV">;
+/**物品变体 */
+type VariantItem<T> = T & {};
 
 /**魔法物品数据 */
 export type RelicData = {
