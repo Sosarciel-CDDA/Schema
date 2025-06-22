@@ -1,5 +1,5 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
-import { CddaID, Power, DescText } from "../GenericDefine";
+import { CddaID, Power, DescText, RequirePair } from "../GenericDefine";
 import { ToolQualityID } from "../ToolQuality";
 import { GenericFlagID } from "./Generic";
 import { GunModTrait } from "./GunMod";
@@ -9,9 +9,8 @@ import { GunModTrait } from "./GunMod";
 export type ToolID = CddaID<"TOOL">;
 
 /**工具 */
-export type ToolTrait = {
-    id: (ToolID);
-    trait_type: "TOOL";
+export type ToolTrait = RequirePair<{
+    trait_type?: "TOOL";
     /**随着时间的推移消耗的费用, 不推荐使用 power_draw */
     turns_per_charge?: number;
     /**当与 UPS 结合使用时, 该项目将燃烧燃料以获得给定的能量值,   
@@ -20,11 +19,11 @@ export type ToolTrait = {
      */
     fuel_efficiency?: number;
     /**固有的工具品质, 如锤击, 锯切, 拧紧 (参见 tool_qualities.json) */
-    quality?: ItemToolQuality[];
+    quality: ItemToolQuality[];
     /**如果工具至少还剩 charges_per_use 费用, 则可用的工具品质 */
     charged_qualities?: ItemToolQuality[];
     /**用于装弹的弹药类型 */
-    ammo?: AmmunitionTypeID[];
+    tool_ammo?: AmmunitionTypeID[];
     /**此工具对配方中所需的每次充电使用 charge_factor 费用  
      * 适用于具有 sub 字段但使用与原始工具不同的弹药的工具  
      */
@@ -61,7 +60,7 @@ export type ToolTrait = {
     flags?:ToolFlagID[];
     /**同时作为枪械模组的数据 */
     gunmod_data?: Omit<GunModTrait,"id"|"type">;
-};
+}>;
 
 /**物品的工具品质 [调整值类型, 品质等级] */
 export type ItemToolQuality = [ToolQualityID,number];

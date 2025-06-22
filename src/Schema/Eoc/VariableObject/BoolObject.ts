@@ -6,7 +6,7 @@ import { FieldID } from "Schema/Field";
 import { WeaponCategoryID } from "Schema/WeaponCategory";
 import { FlagID } from "Schema/Flag";
 import { MutationID } from "Schema/Mutation";
-import { ItemID, ItemCategotyID } from "Schema/Item";
+import { ItemID } from "Schema/Item";
 import { StrObj } from "./StringObjectIndex";
 import { EffectID } from "Schema/Effect";
 import { TerrainID } from "Schema/Terrain";
@@ -20,6 +20,7 @@ import { RecipeID } from "Schema/Recipe";
 import { ProficiencyID } from "Schema/Proficiency";
 import { BodyPartID } from "Schema/BodyPart";
 import { SeasonLc } from "Schema/GenericDefine";
+import { ItemCategoryID } from "Schema/ItemCategory";
 
 
 //#region 不在文档内的
@@ -573,7 +574,7 @@ export type HasItemCategory = TalkerVar<{
     /**有物品类别
      * 要检查的物品类别
      */
-    has_item_category: (IDObj<ItemCategotyID>);
+    has_item_category: (IDObj<ItemCategoryID>);
     /**数量
      * 需要的物品数量
      */

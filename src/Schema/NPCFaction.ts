@@ -2,8 +2,9 @@ import { CddaID, DescText, Float, Int } from "./GenericDefine";
 import { MonsterFactionID } from "./MonsterFaction";
 import { VitaminID } from "./Vitamin";
 import { BoolObj } from "./Eoc";
-import { ItemID, ItemCategotyID } from "./Item";
+import { ItemID } from "./Item";
 import { ItemGroupID } from "./ItemGroup";
+import { ItemCategoryID } from "./ItemCategory";
 
 /**NPC阵营ID */
 export type NPCFactionID = CddaID<'NPCF'>|DefineNpcFaction;
@@ -22,7 +23,7 @@ type PriceRule = {
     /**物品ID */
     item?: (ItemID);
     /**物品类别 */
-    category?: (ItemCategotyID);
+    category?: (ItemCategoryID);
     /**物品组 */
     group?: (ItemGroupID);
     /**价格乘数, 适用于买卖双方 */

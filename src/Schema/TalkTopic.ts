@@ -1,8 +1,8 @@
-import { JArray, JObject } from "@zwa73/utils";
 import { CddaID, DescText } from "./GenericDefine";
 import { BoolObj, BoolOperateList, Eoc, EocEffect, NoParamCond } from "./Eoc";
 import { SkillID } from "./Skill";
-import { ItemID, ItemCategotyID } from "./Item";
+import { ItemID } from "./Item";
+import { ItemCategoryID } from "./ItemCategory";
 
 
 
@@ -30,7 +30,7 @@ export type TalkTopic = {
         /**根据所有存在背包里的 对应类型物品 生成对话  
          * 选择的物品id将存于 topic_item 上下文变量中  
          */
-        for_category?:ItemCategotyID[];
+        for_category?:ItemCategoryID[];
         /**如果为true则检查npc背包 */
         is_npc?:boolean;
         /**是一个可选的布尔值, 如果为真  

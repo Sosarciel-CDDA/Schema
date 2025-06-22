@@ -359,8 +359,11 @@ export type Festival = "none"|"new_year"|"easter"|
 /**有贴图可以被 look_like 指定的id */
 export type LookLikeID = (ItemID|MonsterID|TerrainID);
 
+/**成对出现的字段 */
+export type RequirePair<T> = (T|{});
+
 /**任何Cdda的Json */
-export type AnyCddaJson = Item|AnyItemTrait|Eoc|Mutation|DamageType|DamageInfoOrder|
+export type AnyCddaJson = Item|Eoc|Mutation|DamageType|DamageInfoOrder|
     AmmunitionType|Enchantment|Flag|ItemGroup|Monster|
     NpcClass|NpcInstance|OverlayOrdering|SoundEffect|Requirement|
     Effect|Spell|MathFunction|AmmoEffect|MissionDefinition|

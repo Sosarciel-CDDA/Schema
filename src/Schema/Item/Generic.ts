@@ -58,7 +58,7 @@ export type GenericTrait = CopyfromVar<{
     /**是否解析snippet */
     expand_snippets?: boolean;
     /**如果作者希望用多种方式描述某项内容，可以用它来代替描述。参见 #Snippets */
-    snippet_category: (SnippetCategoryID);
+    snippet_category?: (SnippetCategoryID);
     /**用于该项目的 asci_art 的 ID */
     ascii_picture?:string;
     /**默认的状态 默认为固态 */

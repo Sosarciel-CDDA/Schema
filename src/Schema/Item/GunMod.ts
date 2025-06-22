@@ -1,6 +1,6 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { Energy, CddaID, Length, Time, DescText } from "../GenericDefine";
+import { Energy, CddaID, Length, Time, DescText, RequirePair } from "../GenericDefine";
 import { SkillID } from "../Skill";
 import { FireMode, GunBase } from "./Gun";
 import { MagazineID } from "./Magazine";
@@ -10,14 +10,13 @@ import { MagazineID } from "./Magazine";
 export type GunModID = CddaID<"GMOD">;
 
 /**枪械模组 */
-export type GunModTrait = {
-	id: (GunModID);
-	trait_type: "GUNMOD";
-	/**必填. 这个枪械改装件安装在哪里？ */
+export type GunModTrait = RequirePair<{
+	trait_type?: "GUNMOD";
+	/**这个枪械改装件安装在哪里？ */
 	location: GunModSlot;
-	/**必填. 这个枪械改装件可以用于哪种武器？ */
+	/**这个枪械改装件可以用于哪种武器？ */
 	mod_targets: SkillID[];
-	/**必填. 安装需要多长时间？一个整数将被读取为移动, 或者可以使用时间字符串 */
+	/**安装需要多长时间？一个整数将被读取为移动, 或者可以使用时间字符串 */
 	install_time: (Time);
 	/**限制改装件到那些基础 (在修饰符之前) 弹药类型的枪 */
 	acceptable_ammo?: AmmunitionTypeID[];
@@ -118,7 +117,7 @@ export type GunModTrait = {
 	blacklist_slot?: GunModSlot[];
 	/**如果枪上存在指定的改装件, 阻止安装枪械改装件 */
 	blacklist_mod?: GunModID[];
-} & Partial<GunBase>;
+} & Partial<GunBase>>;
 
 /**枪械模组槽位 */
 export type GunModSlot = string;

@@ -10,8 +10,7 @@ export type MagazineID = CddaID<"MAG">;
 
 /**弹夹 */
 export type MagazineTrait = {
-    id: (MagazineID);
-    trait_type: "MAGAZINE";
+    trait_type?: "MAGAZINE";
     /**该弹匣可以装载哪些类型的弹药 */
     ammo_type: AmmunitionTypeID[];
     /**弹匣容量 (与弹药量相当的单位) */

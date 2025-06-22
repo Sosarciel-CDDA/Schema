@@ -1,12 +1,12 @@
-import { AmmoTrait } from "./Ammo";
-import { ArmorTrait } from "./Armor";
 import { ComestibleTrait } from "./Comestible";
 import { GunTrait } from "./Gun";
-import { GunModTrait } from "./GunMod";
-import { MagazineTrait } from "./Magazine";
-import { ToolTrait } from "./Tool";
 import { GenericTrait } from "./Generic";
 import { CddaID } from "Schema/GenericDefine";
+import { ArmorTrait } from "./Armor";
+import { AmmoTrait } from "./Ammo";
+import { ToolTrait } from "./Tool";
+import { MagazineTrait } from "./Magazine";
+import { GunModTrait } from "./GunMod";
 
 
 
@@ -32,34 +32,32 @@ const ItemSubtypeList = [
 ] as const;
 export type ItemSubtype = typeof ItemSubtypeList[number];
 
-/**物品特征表 */
-type ItemTraitMap = {
-    "AMMO"        : AmmoTrait        ,
-    "ARMOR"       : ArmorTrait       ,
-    "COMPOSTABLE" : ComestibleTrait  ,
-    "GUN"         : GunTrait         ,
-    "GUNMOD"      : GunModTrait      ,
-    "MAGAZINE"    : MagazineTrait    ,
-    "TOOL"        : ToolTrait        ,
-};
-
-
-/**具有某些特征的物品
- * @TJS-type object
- */
-export type ItemTrait<T extends keyof ItemTraitMap> = GenericTrait &
-Omit<ItemTraitMap[T],'trait_type'|'id'> &
-{subtype:ItemTraitMap[T]['trait_type'][]};
 
 /**任何物品特征 */
-export type AnyItemTrait = AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait;
-/**任何物品特征ID */
-export type AnyTraitID = AnyItemTrait['id'];
+export type AnyItemTrait = GunTrait&ToolTrait&MagazineTrait&ComestibleTrait&ArmorTrait&GunModTrait&AmmoTrait;
+//(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
+
 /**物品ID */
 export type ItemID = CddaID<"ITEM">;
 
 /**物品 */
-export type Item = GenericTrait&Partial<AnyItemTrait>;
+export type Item = GenericTrait&AnyItemTrait;
 
 /**任何物品的Flag */
 export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];
+
+
+const a:Item = {
+  type: "ITEM",
+  id: "a",
+  name: "a",
+  description: "a",
+  subtype: ["TOOL"],
+  weight: 1,
+  volume: 1,
+  symbol: "1",
+  flags: [],
+  skill:"archery",
+  ammo: [""],
+  "//":"uncopy"
+}

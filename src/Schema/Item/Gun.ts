@@ -1,7 +1,7 @@
 import { FaultID } from "Schema/Fault";
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { RangeDamage, Energy, Volume, CddaID, Length } from "../GenericDefine";
+import { RangeDamage, Energy, Volume, CddaID, Length, RequirePair } from "../GenericDefine";
 import { SkillID } from "../Skill";
 import { GenericFlagID } from "./Generic";
 import { GunModID, GunModSlot } from "./GunMod";
@@ -16,7 +16,7 @@ export type GunBase = {
     /**用于射击的技能 */
     skill: (SkillID);
     /**接受重新加载的弹药类型 */
-    ammo: AmmunitionTypeID[];
+    ammo: (AmmunitionTypeID[]);
     /**发射时的远程伤害 */
     ranged_damage?: RangeDamage|RangeDamage[];
     /**发射时的范围 */
@@ -90,10 +90,9 @@ export type GunBase = {
 };
 
 /**枪械 */
-export type GunTrait = {
-    id: (GunID);
-    trait_type: "GUN";
-} & GunBase;
+export type GunTrait = RequirePair<{
+    trait_type?: "GUN";
+} & GunBase>;
 
 
 

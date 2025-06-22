@@ -1,5 +1,5 @@
 import { ParamsEoc } from "Schema/Eoc";
-import { CddaID, Time, Weight } from "Schema/GenericDefine";
+import { CddaID, Int, RequirePair, Time, Weight } from "Schema/GenericDefine";
 import { GenericFlagID } from "./Generic";
 import { VitaminID } from "Schema/Vitamin";
 import { MaterialID } from "Schema/Material";
@@ -9,9 +9,8 @@ import { ItemID } from "./ItemIndex";
 export type ComestibleID = CddaID<"COME">;
 
 /**Comestible 消耗品 */
-export type ComestibleTrait = {
-    id: (ComestibleID);
-    trait_type: "COMESTIBLE";
+export type ComestibleTrait = RequirePair<{
+    trait_type?: "COMESTIBLE";
     /**一个时间持续期: 食品保质期. 0 = 不会变质 */
     spoils_in?: (Time);
     /**刺激效果 */
@@ -19,7 +18,7 @@ export type ComestibleTrait = {
     /**这种食品可以消除多少疲劳.  (负值增加疲劳)  */
     fatigue_mod?: number;
     /**食品类型, 用于库存排序. 'FOOD', 'DRINK', 'MED'或'INVALID'之一 (如果使用INVALID, 考虑使用与COMESTIBLE不同的“type”)  */
-    comestible_type?: ComestibleType;
+    comestible_type: ComestibleType;
     /**消费后运行的条件影响. 支持内联或字符串id */
     consumption_effect_on_conditions?: (ParamsEoc);
     /**解渴程度 */
@@ -30,7 +29,9 @@ export type ComestibleTrait = {
     addiction_potential?: number;
     /**成瘾类型 (如果没有给出潜力, 将使用"addiction_potential"字段来确定该成瘾的强度)  */
     addiction_type?: ["crack", { addiction: "cocaine"; potential: number }];
-    /** (可选, 默认: 2) 在过去的48小时内, 每消费一个, 乐趣就减少这个数值. 除非食品也有"NEGATIVE_MONOTONY_OK"标志, 否则不能将乐趣降低到0以下.  */
+    /**在过去的48小时内, 每消费一个, 乐趣就减少这个数值. 除非食品也有"NEGATIVE_MONOTONY_OK"标志, 否则不能将乐趣降低到0以下
+     * @default 2
+     */
     monotony_penalty?: number;
     /**满足的饥饿感 (以千卡计)  */
     calories?: number;
@@ -39,28 +40,21 @@ export type ComestibleTrait = {
     /**需要吃/喝的工具 */
     tool?: (ItemID);
     /**生成时的使用次数 */
-    charges?: number;
-    /** (可选) 在上述定义的体积中有多少使用次数. 如果省略, 与'charges'相同 */
+    charges?: Int;
+    /**在上述定义的体积中有多少使用次数. 如果省略, 与'charges'相同 */
     stack_size?: number;
     /**使用时的士气效果 */
     fun?: number;
-    /** (可选) 物品冻结的温度, 以摄氏度为单位, 默认为水 (32F/0C)  */
+    /**物品冻结的温度, 以摄氏度为单位, 默认为水 (32F/0C)  */
     freezing_point?: number;
-    /** (可选) 如果该物品在配方中被使用, 将其替换为cooks_like */
+    /**如果该物品在配方中被使用, 将其替换为cooks_like */
     cooks_like?: "meat_cooked";
-    /** (可选) 吃东西时变成寄生虫的概率 */
+    /**吃东西时变成寄生虫的概率 */
     parasites?: number;
-    /** (可选) 此食品携带的疾病列表及其相关概率. 值必须在[0, 100]范围内.  */
+    /**此食品携带的疾病列表及其相关概率. 值必须在[0, 100]范围内.  */
     contamination?: [{ disease: "bad_food"; probability: number }];
     /**通过消费此物品的一次 (部分) 提供的维生素. 某些维生素 ("calcium", "iron", "vitC") 可以用该食品中维生素的重量来指定. 按重量指定的维生素可以是克 ("g") , 毫克 ("mg") 或微克 ("μg", "ug", "mcg") . 如果维生素未按重量指定, 则按"单位"指定, 含义根据维生素定义而定. 营养维生素 ("calcium", "iron", "vitC") 是理想每日价值平均的整数百分比. 维生素数组键包括以下内容: calcium, iron, vitC, mutant_toxin, bad_food, blood和redcells.  */
     vitamins?: [VitaminID, Weight][];
-    /**此食品由所有材料 (ID) 制成 */
-    material?: {
-        /**材料 */
-        type: (MaterialID);
-        /**组成占比 */
-        portion: number;
-    }[];
     /**主要材料ID是什么. 材料决定了比热.  */
     primary_material?: (MaterialID);
     /**食品变质时产生的怪物组 (用于孵化蛋)  */
@@ -69,11 +63,11 @@ export type ComestibleTrait = {
     rot_spawn_chance?: number;
     /**在烟熏器中烘干此食品后得到的食品 */
     smoking_result?: (ComestibleID);
-    /** (可选) 此物品所在的宠物食品类别 */
+    /**此物品所在的宠物食品类别 */
     petfood?: string[];
     /**消耗品的flag */
     flags?: ComestibleFlagID[];
-};
+}>;
 
 /**消耗品类型 列表*/
 export const  ComestibleTypeList = [

@@ -9,8 +9,10 @@ export type ArmorID = CddaID<"ARMOR">;
 
 /**一件护甲 */
 export type ArmorTrait = {
-    id: (ArmorID);
-    trait_type: "ARMOR";
+    id:ArmorID;
+    trait_type?: "ARMOR";
+    /**覆盖的位置 */
+    covers: BodyPartID[];
     /**保暖度 */
     warmth?: number;
     /**环境保护 */

@@ -1,4 +1,4 @@
-import { Item, ItemID, ItemCategotyID } from "Schema/Item";
+import { Item, ItemID } from "Schema/Item";
 import { MaterialID } from "Schema/Material";
 import { EocID, InlineEoc } from "../Eoc";
 import { IDObj } from "../VariableObject";
@@ -47,7 +47,7 @@ export type ItemSearchData = {
     /**特定物品的id */
     id?: IDObj<ItemID>;
     /**物品的类别 (区分大小写, 应始终使用小写) */
-    category?: (ItemCategotyID);
+    category?: (ItemCategoryID);
     /**物品具有的标志 */
     flags?: Exclude<Item["flags"],undefined>[number][];
     /**物品的材料 */
@@ -66,6 +66,7 @@ import {SpawnItem, RemoveItem} from './EocEffect'
 import {MathAssignExp, SoundEffect, OpenDialogue, TakeControl, TakeControlMenu, GiveAchievement, AssignMission, RemoveActiveMission, FinishMission, OfferMission, RunEocs, RunNpcEocs, RunMonsterEocs, RunInvEocs, MapRunEocs, MapRunItemEocs, RevealMap, RevealRoute, ClosestCity, WeightedListEocs, RunEocSelector, RollRemainder, IfCondition, SwitchStatement, ForEach} from './GenericEffect'
 import {DealDamage, GetMutate, GetMutateCategory, MutateTowards, SetTraitPurifiability, AddEffect, AddBionic, LoseBionic, AddTrait, LoseEffect, LoseTrait, ActivateTrait, DeactivateTrait, LearnMartialArt, ForgetMartialArt, AddVar, LoseVar, CopyVar, SetStringVar, SetCondition, LearnRecipe, ForgetRecipe, AssignActivity, CancelActivity, LocationVariable, LocationVariableAdjust, BarberHair, BarberBeard, NpcFirstTopic, Teleport, AddWet, MakeSound, ModHealthy, AddMorale, LoseMorale, ConsumeItemSum, SetFacRelation, AddFactionTrust, Die, PreventDeath, Attack, CreateExplosion, Knockback, CastSpell, LevelSpellClass, QueryOmt, QueryTile, ChooseAdjacentHighlight, MirrorCoordinates, Message, ConsumeItem} from './CharacterEffect'
 import {SetFlag, UnsetFlag, Activate, SetFault, SetRandomFaultOfType, MapSpawnItem, MapgenUpdate, RevertLocation, AlterTimedEvents, Lightning, NextWeather, CustomLightLevel, TransformRadius, TransformLine, PlaceOverride, SpawnMonster, SpawnNpc, SetField, SetEmit, TurnCost} from './ItemEffect'
+import { ItemCategoryID } from "Schema/ItemCategory";
 /**Eoc效果表导出 */
 export type EocEffectList = [
     SpawnItem               ,//生成物品

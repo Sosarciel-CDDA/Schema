@@ -1,7 +1,5 @@
 {
     "$schema": "./schema/AnyCddaJson.schema.json",
     "type": "terrain",
-    "id": "tt",
-    "copy-from":""
-
+    "id": "tt"
 }
