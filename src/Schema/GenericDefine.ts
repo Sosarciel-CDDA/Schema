@@ -39,6 +39,8 @@ import { Technique } from "./Technique";
 import { MartialArt } from "./MartialArt";
 import { AttackVector } from "./AttackVector";
 import { Fault } from "./Fault";
+import { FaultFix } from "./FaultFix";
+import { FaultGroup } from "./FaultGroup";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -405,6 +407,6 @@ export type AnyCddaJson = AnyItem|AnyItemTrait|Eoc|Mutation|DamageType|DamageInf
     ModTileset|ActivityType|VehiclePart|ToolQuality|TalkTopic|Terrain|
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
-    Fault;
+    Fault|FaultFix|FaultGroup;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];

@@ -4,6 +4,8 @@ import { FlagID } from "./Flag";
 
 export type FaultID = CddaID<'FAULT'>;
 
+export type FaultTypeID = CddaID<'FAULTT'>;
+
 type DamageMod = {
     /**伤害类型ID */
     damage_id: string;
@@ -38,7 +40,7 @@ export type Fault = {
     /**故障类型
      * 代码可能会调用一组中的随机故障而非特定故障
      */
-    fault_type: string;
+    fault_type: (FaultTypeID);
     /**是否受退化影响
      * 如果为 true, 则物品降级值将被添加到卷上的故障权重中
      * @default false
