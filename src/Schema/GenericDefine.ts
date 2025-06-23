@@ -52,7 +52,7 @@ import { CharacterMod } from "./CharacterMod";
 import { Snippet } from "./Snippet";
 import { SpeedDescription } from "./SpeedDescription";
 import { WeaponCategory } from "./WeaponCategory";
-import { UncraftRecipe } from "./UncraftRecipe";
+import { Uncraft } from "./Uncraft";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -388,6 +388,6 @@ export type AnyCddaJson = Item|Eoc|Mutation|DamageType|DamageInfoOrder|
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
-    BodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory|UncraftRecipe;
+    BodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory|Uncraft;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];

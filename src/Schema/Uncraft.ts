@@ -7,7 +7,7 @@ import { SkillID } from "./Skill";
 
 
 /** 解构配方定义 - 用于定义物品拆解 */
-export type UncraftRecipe = {
+export type Uncraft = {
     /**拆解配方不需要id
      * 注意事项：
      * 1. 简单的拆解(如砸碎头骨或用钢锯切割金属)可能不需要任何技能
