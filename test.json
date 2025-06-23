@@ -12,7 +12,8 @@
     "use_action":[{
         "type": "consume_drug",
         "stat_adjustments": {
-            "fatigue": 0
+            "fatigue": 0,
+            "thirst": 0
         }
     }]
 }

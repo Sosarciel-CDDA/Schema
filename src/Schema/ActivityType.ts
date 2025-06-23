@@ -9,7 +9,7 @@ export type ActivityType = {
     /**活动唯一ID */
 	id: (ActivityTypeID);
 	/** 用于描述活动的描述性术语, 用于停止活动的查询, 以及描述它的字符串, 例如: "verb": "mining" 或 "verb": { "ctxt": "instrument", "str": "playing" } */
-	verb: DescText;
+	verb: (DescText);
 	/** 活动的活动级别, 更难的活动会随着时间消耗更多的卡路里.   
      * 有效值为, 从最容易到最需要身体的:   
      * NO_EXERCISE, LIGHT_EXERCISE, MODERATE_EXERCISE, BRISK_EXERCISE, ACTIVE_EXERCISE, EXTRA_EXERCISE   
