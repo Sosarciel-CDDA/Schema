@@ -1,4 +1,4 @@
-import { Item, ItemID } from "Schema/Item";
+import { AnyItemFlag, Item, ItemID } from "Schema/Item";
 import { MaterialID } from "Schema/Material";
 import { EocID, InlineEoc } from "../Eoc";
 import { IDObj } from "../VariableObject";
@@ -20,7 +20,7 @@ export type ItemSearchData = {
     /**物品的类别 (区分大小写, 应始终使用小写) */
     category?: (ItemCategoryID);
     /**物品具有的标志 */
-    flags?: Exclude<Item["flags"],undefined>[number][];
+    flags?: AnyItemFlag[];
     /**物品的材料 */
     material?: (MaterialID);
     /**如果为true, 只返回穿着的物品 */
