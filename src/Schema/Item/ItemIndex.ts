@@ -72,4 +72,10 @@ const a:Item = {
   "//ARMOR": true,
   ammo:["50"],
   covers: ["arm_r"],
+  encumbrance: 0,
+  cover_melee:0,
+  cover_ranged:0,
+  material_thickness:1,
+  cover_vitals:0,
+  coverage:0
 }
