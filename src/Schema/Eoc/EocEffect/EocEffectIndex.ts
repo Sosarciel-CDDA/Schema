@@ -11,21 +11,6 @@ export type EocEffect = EocEffectList[number];
 /**参数Eoc */
 export type ParamsEoc = (IDObj<EocID>|InlineEoc)|(IDObj<EocID>|InlineEoc)[];
 
-
-
-/**变量操作的注释用字段  
- * { "u_add_var": "gunsmith_ammo_ammount", "type": "number", "context": "artisans", "value": "800" }  
- * 等价于  
- * {math: [ "u_number_artisans_gunsmith_ammo_amount", "=", "800" ]}  
- * type_context_variable_name  
- */
-export type VarComment = {
-    /**注释用字段 type */
-    type?: string;
-    /**注释用字段 context */
-    context?: string;
-}
-
 /**背包筛选数据 */
 export type ItemSearchData = {
     /**特定物品的id */
@@ -41,8 +26,6 @@ export type ItemSearchData = {
     /** 如果为true, 只返回手持的物品 */
     wielded_only?: boolean;
 };
-
-
 
 
 //#region Eoc效果表导出
