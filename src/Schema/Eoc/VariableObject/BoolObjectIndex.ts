@@ -9,7 +9,7 @@ export type NoParamCond = [
 
 
 //#region BoolOperate导出
-import {MathCompareExp, GetCond, OneInChance, ModIsLoad, HasMission, SurvivalNeed, IsSeason, BoolAnd, BoolOr, BoolNot, HasAlpha, HasBeta, Male, Female, IsAvatar, IsNpc, IsCharacter, IsMonster, IsItem, IsFurniture, IsVehicle, AtOmLocation, HasTrait, HasAnyTrait, HasVisibleTrait, IsTraitPurifiable, HasMartialArt, UsingMartialArt, HasFlag, HasPartFlag, HasSpecies, HasBodytype, ExpectsVars, CompareString, CompareStringMatchAll, HasProfession, HasStrength, HasDexterity, HasIntelligence, HasPerception, HasPartTemp, HasItem, HasItems, HasItemCategory, HasItemsSum, HasBionics, HasEffect, HasAnyEffect, HasProficiency, CanStowWeapon, CanDropWeapon, HasWeapon, ControllingVehicle, Driving, KnowRecipe, HasWornWithFlag, HasWieldedWithFlag, HasWieldedWithWeaponCategory, HasWieldedWithSkill, HasWieldedWithAmmotype, CanSee, IsDeaf, IsAlive, IsWarm, Exists, IsOnTerrain, IsOnTerrainWithFlag, IsInField, Query, MapTerrainWithFlag, MapFurnitureWithFlag, MapTerrainId, MapFurnitureId, MapFieldId, MapInCity, PlayerSeeU, PlayerSeeNpc, CanSeeLocation, USeeNpc, NpcSeeYou, USeeNpcLoc, NpcSeeYouLoc, LineOfSight, IsDriven, IsRemoteControlled, CanFly, IsFlying, CanFloat, IsFloating, IsFalling, IsSkidding, IsSinking, IsOnRails, IsAvatarPassenger, HasAmmo} from './BoolObject'
+import {MathCompareExp, GetCond, OneInChance, ModIsLoad, HasMission, HasSurvivalNeed, IsSeason, BoolAnd, BoolOr, BoolNot, HasAlpha, HasBeta, Male, Female, IsAvatar, IsNpc, IsCharacter, IsMonster, IsItem, IsFurniture, IsVehicle, AtOmLocation, HasTrait, HasAnyTrait, HasVisibleTrait, IsTraitPurifiable, HasMartialArt, UsingMartialArt, HasFlag, HasPartFlag, HasSpecies, HasBodytype, ExpectsVars, CompareString, CompareStringMatchAll, HasProfession, HasStrength, HasDexterity, HasIntelligence, HasPerception, HasPartTemp, HasItem, HasItems, HasItemCategory, HasItemsSum, HasBionics, HasEffect, HasAnyEffect, HasProficiency, CanStowWeapon, CanDropWeapon, HasWeapon, ControllingVehicle, Driving, KnowRecipe, HasWornWithFlag, HasWieldedWithFlag, HasWieldedWithWeaponCategory, HasWieldedWithSkill, HasWieldedWithAmmotype, CanSee, IsDeaf, IsAlive, IsWarm, Exists, IsOnTerrain, IsOnTerrainWithFlag, IsInField, Query, MapTerrainWithFlag, MapFurnitureWithFlag, MapTerrainId, MapFurnitureId, MapFieldId, MapInCity, PlayerSeeU, PlayerSeeNpc, CanSeeLocation, USeeNpc, NpcSeeYou, USeeNpcLoc, NpcSeeYouLoc, LineOfSight, IsDriven, IsRemoteControlled, CanFly, IsFlying, CanFloat, IsFloating, IsFalling, IsSkidding, IsSinking, IsOnRails, IsAvatarPassenger, HasAmmo} from './BoolObject'
 /**BoolOperate导出 */
 export type BoolOperateList = [
     MathCompareExp          ,//math比较表达式
@@ -17,7 +17,7 @@ export type BoolOperateList = [
     OneInChance             ,//1/n的概率返回true
     ModIsLoad               ,//某个mod是否加载
     HasMission              ,//有某个任务
-    SurvivalNeed            ,//生存需求
+    HasSurvivalNeed         ,//生存需求
     IsSeason                ,//季节判断
     BoolAnd                 ,//And条件
     BoolOr                  ,//Or条件

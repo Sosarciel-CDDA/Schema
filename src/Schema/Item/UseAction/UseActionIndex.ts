@@ -11,12 +11,13 @@
 export type UseAction = UseActionList[number]|HardcodeUseAction;
 
 //#region UseAction导出
-import {UseActionTransform, UseActionExplosion, UseActionChangeScent, UseActionPlaceMonster, UseActionPlaceNpc, UseActionLinkUp, UseActionDeployFurn, UseActionDeployAppliance, UseActionDelayedTransform, UseActionFirestarter, UseActionUnpack, UseActionSalvage, UseActionInscribe, UseActionFireweaponOff, UseActionFireweaponOn, UseActionMusicalInstrument, UseActionHolster, UseActionBandolier, UseActionRevealMap, UseActionHeal, UseActionPlaceTrap, UseActionSewAdvanced, UseActionEffectOnConditions, UseActionMessage, UseActionSound, UseActionManualnoise, UseActionLearnSpell} from './UseAction'
+import {UseActionTransform, UseActionExplosion, UseActionChangeScent, UseActionConsumeDrug, UseActionPlaceMonster, UseActionPlaceNpc, UseActionLinkUp, UseActionDeployFurn, UseActionDeployAppliance, UseActionDelayedTransform, UseActionFirestarter, UseActionUnpack, UseActionSalvage, UseActionInscribe, UseActionFireweaponOff, UseActionFireweaponOn, UseActionMusicalInstrument, UseActionHolster, UseActionBandolier, UseActionRevealMap, UseActionHeal, UseActionPlaceTrap, UseActionSewAdvanced, UseActionEffectOnConditions, UseActionMessage, UseActionSound, UseActionManualnoise, UseActionLearnSpell, UseActionCastSpell} from './UseAction'
 /**UseAction导出 */
 export type UseActionList = [
     UseActionTransform      ,//转换方法类型, 此处为将物品转换为另一种物品
     UseActionExplosion      ,//物品在耗尽充能时爆炸
     UseActionChangeScent    ,//改变使用者的气味类型
+    UseActionConsumeDrug    ,//玩家可以食用的药物
     UseActionPlaceMonster   ,//在地图上放置炮塔/人形机等怪物
     UseActionPlaceNpc       ,//在地图上放置特定类别的NPC
     UseActionLinkUp         ,//将物品连接到车辆或电器, 例如将可充电设备插入电源
@@ -29,7 +30,7 @@ export type UseActionList = [
     UseActionInscribe       ,//在物品或地面上刻写信息
     UseActionFireweaponOff  ,//激活基于火焰的武器
     UseActionFireweaponOn   ,//用于激活 (燃烧) 基于火焰的武器的功能
-    UseActionMusicalInstrument,//角色在走动时演奏乐器 (此物品) 
+    UseActionMusicalInstrument,//角色在走动时演奏乐器 (此物品)
     UseActionHolster        ,//收起或拔出武器
     UseActionBandolier      ,//存储弹药并稍后用于重新装填
     UseActionRevealMap      ,//在大地图上显示特定地形
@@ -41,6 +42,7 @@ export type UseActionList = [
     UseActionSound          ,//发出声音
     UseActionManualnoise    ,//发出声音, 包括弹药检查并可能从玩家处消耗移动点数
     UseActionLearnSpell     ,//学习法术
+    UseActionCastSpell      ,//施放以下法术, 参见MAGIC.md获取更多详情
 ];
 //#endregion
 

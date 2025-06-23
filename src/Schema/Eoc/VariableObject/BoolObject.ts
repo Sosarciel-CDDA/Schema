@@ -57,7 +57,7 @@ export type HasMission = TalkerVar<{
 
 
 /**生存需求 */
-export type SurvivalNeed = TalkerVar<{
+export type HasSurvivalNeed = TalkerVar<{
     need: "thirst"|"hunger"|"fatigue";
     amount?: number;
     level?: "TIRED";

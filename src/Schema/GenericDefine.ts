@@ -329,6 +329,17 @@ export const StatusUcList = [
 /**属性大写 */
 export type StatusUc = typeof StatusUcList[number];
 
+
+/**生存需求 列表 */
+export const SurvivalNeedList = [
+    "thirst"    ,
+    "hunger"    ,
+    "fatigue"   ,
+] as const;
+/**生存需求 */
+export type SurvivalNeed = typeof SurvivalNeedList[number];
+
+
 /**社交技能 列表 */
 export const SocialTypeList = [
     "intimidate", //威胁

@@ -1,10 +1,13 @@
+import { PRecord } from "@zwa73/utils";
 import { AmmunitionTypeID } from "Schema/AmmiunitionType";
+import { BodyPartID } from "Schema/BodyPart";
+import { DamageTypeID } from "Schema/DamageType";
 import { EffectID } from "Schema/Effect";
 import { EocID, ParamsEoc } from "Schema/Eoc";
 import { FieldID } from "Schema/Field";
 import { FlagID } from "Schema/Flag";
 import { FurnitureID } from "Schema/Furniture";
-import { Color, DescText, Explosion, Float, Int, Power, Time, Volume } from "Schema/GenericDefine";
+import { Color, DescText, Explosion, Float, Int, Power, SurvivalNeed, Time, Volume } from "Schema/GenericDefine";
 import { ItemID, ItemVariantID } from "Schema/Item";
 import { ItemGroupID } from "Schema/ItemGroup";
 import { MaterialID } from "Schema/Material";
@@ -17,6 +20,7 @@ import { SpellID } from "Schema/Spell";
 import { TerrainID } from "Schema/Terrain";
 import { ToolQualityID } from "Schema/ToolQuality";
 import { TrapID } from "Schema/Trap";
+import { VitaminID } from "Schema/Vitamin";
 
 
 /**转换方法类型, 此处为将物品转换为另一种物品 */
@@ -145,6 +149,41 @@ export type UseActionChangeScent = {
     waterproof?: boolean;
     /**过程中所需的移动点数 */
     moves: Int;
+};
+
+/**玩家可以食用的药物 */
+export type UseActionConsumeDrug = {
+    /**玩家可以食用的药物 */
+    type: "consume_drug";
+    /**激活时显示的消息 */
+    activation_message: (DescText);
+    /**效果及其持续时间 */
+    effects: Record<EffectID, Int>;
+    /**随时间造成的伤害 */
+    damage_over_time: {
+        /**伤害类型 */
+        damage_type: (DamageTypeID);
+        /**伤害将持续多长时间 */
+        duration: (Time);
+        /**每回合造成的伤害量，负值表示治疗 */
+        amount: Int;
+        /**受到伤害的身体部位 */
+        bodyparts: BodyPartID[];
+    }[];
+    /**对玩家状态的调整 */
+    stat_adjustments: PRecord<SurvivalNeed, Int>;
+    /**产生的领域，主要用于烟雾 */
+    fields_produced: Record<(FieldID), Int>;
+    /**在食用药物过程中需要使用的充能 */
+    charges_needed: Record<(ItemID), Int>;
+    /**食用药物所需的工具 */
+    tools_needed: Record<(ItemID), Int>;
+    /**过程中所需的移动点数
+     * @default 100
+     */
+    moves?: Int;
+    /**此药物提供的维生素及数量 */
+    vitamins: [(VitaminID), Int][];
 };
 
 /**在地图上放置炮塔/人形机等怪物 */
@@ -684,3 +723,6 @@ export type UseActionCastSpell = {
      */
     mundane?: boolean;
 };
+
+
+
