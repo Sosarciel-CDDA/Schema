@@ -34,12 +34,12 @@ export type GenericTrait = CopyfromVar<{
         type: (ItemNameConditionType);
         /**要检查的条件
          * 依照type应用不同值
-         * COMPONENT_ID_SUBSTRING  //递归搜索该物品的所有组件 ID，只要某一项组件 ID 包含条件字符串（区分大小写）即可匹配。例如条件 mutant 能匹配到 mutant_meat。
-         * COMPONENT_ID            //与 COMPONENT_ID_SUBSTRING 类似，但要求组件 ID 精确匹配。
-         * FLAG                    //检查物品是否具有指定标志（完全匹配）。
-         * VITAMIN                 //检查物品是否含有指定维生素（完全匹配）。
-         * VAR                     //检查物品是否拥有指定变量名及值（完全匹配）。
-         * SNIPPET_ID              //检查物品是否包含由某 effect_on_condition 设置的片段 ID，并与给定的 condition 和 value 完全匹配。
+         * COMPONENT_ID_SUBSTRING  //递归搜索该物品的所有组件 ID, 只要某一项组件 ID 包含条件字符串 (区分大小写) 即可匹配. 例如条件 mutant 能匹配到 mutant_meat. 
+         * COMPONENT_ID            //与 COMPONENT_ID_SUBSTRING 类似, 但要求组件 ID 精确匹配. 
+         * FLAG                    //检查物品是否具有指定标志 (完全匹配) . 
+         * VITAMIN                 //检查物品是否含有指定维生素 (完全匹配) . 
+         * VAR                     //检查物品是否拥有指定变量名及值 (完全匹配) . 
+         * SNIPPET_ID              //检查物品是否包含由某 effect_on_condition 设置的片段 ID, 并与给定的 condition 和 value 完全匹配. 
          */
         condition: string;
         /**达成条件时的名称 */
@@ -57,7 +57,7 @@ export type GenericTrait = CopyfromVar<{
     description: (DescText);
     /**是否解析snippet */
     expand_snippets?: boolean;
-    /**如果作者希望用多种方式描述某项内容，可以用它来代替描述。参见 #Snippets */
+    /**如果作者希望用多种方式描述某项内容, 可以用它来代替描述. 参见 #Snippets */
     snippet_category?: (SnippetCategoryID);
     /**用于该项目的 asci_art 的 ID */
     ascii_picture?:string;
@@ -93,7 +93,7 @@ export type GenericTrait = CopyfromVar<{
     price?: (Price);
     /**大灾变后的物品价格 */
     price_postapoc?: (Price);
-    /**此物品可以堆叠在一起，类似于`charges` */
+    /**此物品可以堆叠在一起, 类似于`charges` */
     stackable?: boolean;
     /**控制物品在受到伤害时退化的速度.  0 = 无退化.   
      * @default 1.0  
@@ -109,8 +109,8 @@ export type GenericTrait = CopyfromVar<{
      * 需要COPRSE标志
      */
     source_monster?: (MonsterID);
-    /**当你投掷此物品时会造成的伤害；
-     * 缺少此字段会回退使用近战伤害，包括玩家力量对近战攻击的加成
+    /**当你投掷此物品时会造成的伤害; 
+     * 缺少此字段会回退使用近战伤害, 包括玩家力量对近战攻击的加成
      */
     thrown_damage?: {
         damage_type: DamageTypeID;
@@ -120,7 +120,7 @@ export type GenericTrait = CopyfromVar<{
     symbol: (Char);
     /**颜色 */
     color?: Color;
-    /**材料类型，可以有任意数量。参见materials.json获取可能选项 */
+    /**材料类型, 可以有任意数量. 参见materials.json获取可能选项 */
     material?: ItemMaterial[];
     /**材质 可用哪些材料修复 */
     repairs_with?: AmmunitionTypeID[];
@@ -145,7 +145,7 @@ export type GenericTrait = CopyfromVar<{
      * ]
      */
     magazines?: GenericMagazines[];
-    /**如果给定，物品可以在水/风磨中研磨 */
+    /**如果给定, 物品可以在水/风磨中研磨 */
     milling?: {
         /**研磨结果的物品id */
         into: (ItemID);
@@ -154,11 +154,11 @@ export type GenericTrait = CopyfromVar<{
     };
     /**物品着火时是否应该爆炸 */
     explode_in_fire?: boolean;
-    /**此物品是纳米制造机配方，并指向可能包含的物品的物品组；
+    /**此物品是纳米制造机配方, 并指向可能包含的物品的物品组; 
      * 需要nanofab_template_group
      */
     nanofab_template_group?: string;
-    /**制作任何这些模板所需的`requirement`；
+    /**制作任何这些模板所需的`requirement`; 
      * 用作"每250毫升物品体积一个完整需求"
      * 体积750毫升的物品需要三倍的`requirement`
      * 2L的物品需要八倍的`requirement`
@@ -180,33 +180,33 @@ export type GenericTrait = CopyfromVar<{
     min_intelligence?: Int;
     /**最小感知需求 */
     min_perception?: Int;
-    /**可能的选项："gun"、"generic" - 控制哪些选项启用/禁用查看此物品的变体。 */
+    /**可能的选项: "gun", "generic" - 控制哪些选项启用/禁用查看此物品的变体.  */
     variant_type?: "gun" | "generic";
     /**此物品可以拥有的外观变体 */
     variants?: {
         /**生成时用于专门生成此变体的 ID */
         id: (ItemVariantID);
-        /**选择此变体时使用的名称，而非默认名称 */
+        /**选择此变体时使用的名称, 而非默认名称 */
         name?: (DescText);
-        /**选择此变体时使用的描述，而非默认描述 */
+        /**选择此变体时使用的描述, 而非默认描述 */
         description?: (DescText);
-        /**选择此变体时使用的 ASCII 艺术图片。如果没有，则使用默认值（如果存在）。 */
+        /**选择此变体时使用的 ASCII 艺术图片. 如果没有, 则使用默认值 (如果存在) .  */
         ascii_picture?: string;
-        /**用于替换物品符号的有效 Unicode 字符。如果未指定，则不会进行任何更改。 */
+        /**用于替换物品符号的有效 Unicode 字符. 如果未指定, 则不会进行任何更改.  */
         symbol?: (Char);
-        /**物品符号的替换颜色。如果未指定，则不会进行任何更改。 */
+        /**物品符号的替换颜色. 如果未指定, 则不会进行任何更改.  */
         color?: (Color)
-        /**当此物品生成时，若没有明确的变体，则此变体被选中的相对概率。
-         * 如果为 0，则不会选中此变体。
+        /**当此物品生成时, 若没有明确的变体, 则此变体被选中的相对概率. 
+         * 如果为 0, 则不会选中此变体. 
          * @default 1
          */
         weight?: Int;
-        /**此描述是否应仅附加到基础物品描述，而不是完全覆盖它 */
+        /**此描述是否应仅附加到基础物品描述, 而不是完全覆盖它 */
         append?: boolean;
-        /**允许使用代码片段标签，请参阅 #Snippets */
+        /**允许使用代码片段标签, 请参阅 #Snippets */
         expand_snippets?: boolean;
     }[];
-    /**如果物品(例如防毒面具)需要过滤器才能操作并且安装了此过滤器，则对环境效果的抵抗力
+    /**如果物品(例如防毒面具)需要过滤器才能操作并且安装了此过滤器, 则对环境效果的抵抗力
      * 与使用动作'GASMASK'和'DIVE_TANK'结合使用
      */
     environmental_protection_with_filter?: number;
@@ -255,12 +255,12 @@ export type ToHit ={
 
 /**物品条件名称的类型 列表 */
 export const ItemNameConditionTypeList = [
-    "COMPONENT_ID_SUBSTRING"           , //递归搜索该物品的所有组件 ID，只要某一项组件 ID 包含条件字符串（区分大小写）即可匹配。例如条件 mutant 能匹配到 mutant_meat。
-    "COMPONENT_ID"                     , //与 COMPONENT_ID_SUBSTRING 类似，但要求组件 ID 精确匹配。
-    "FLAG"                             , //检查物品是否具有指定标志（完全匹配）。
-    "VITAMIN"                          , //检查物品是否含有指定维生素（完全匹配）。
-    "VAR"                              , //检查物品是否拥有指定变量名及值（完全匹配）。
-    "SNIPPET_ID"                       , //检查物品是否包含由某 effect_on_condition 设置的片段 ID，并与给定的 condition 和 value 完全匹配。
+    "COMPONENT_ID_SUBSTRING"           , //递归搜索该物品的所有组件 ID, 只要某一项组件 ID 包含条件字符串 (区分大小写) 即可匹配. 例如条件 mutant 能匹配到 mutant_meat. 
+    "COMPONENT_ID"                     , //与 COMPONENT_ID_SUBSTRING 类似, 但要求组件 ID 精确匹配. 
+    "FLAG"                             , //检查物品是否具有指定标志 (完全匹配) . 
+    "VITAMIN"                          , //检查物品是否含有指定维生素 (完全匹配) . 
+    "VAR"                              , //检查物品是否拥有指定变量名及值 (完全匹配) . 
+    "SNIPPET_ID"                       , //检查物品是否包含由某 effect_on_condition 设置的片段 ID, 并与给定的 condition 和 value 完全匹配. 
 ] as const;
 /**物品条件名称的类型 */
 export type ItemNameConditionType = typeof ItemNameConditionTypeList[number];
@@ -369,7 +369,7 @@ export type ItemMaterial = MaterialID|{
      *  { "type": "cotton", "portion": 9 },
      *  { "type": "plastic" }
      * ]
-     * //在这种情况下，物品是90%棉花和10%塑料
+     * //在这种情况下, 物品是90%棉花和10%塑料
      */
     portion?:number;
 };

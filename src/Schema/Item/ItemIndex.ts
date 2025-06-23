@@ -8,6 +8,7 @@ import { ToolTrait } from "./Tool";
 import { MagazineTrait } from "./Magazine";
 import { GunModTrait } from "./GunMod";
 import { BatteryTrait } from "./Battery";
+import { BionicItemTrait } from "./BionicItem";
 
 
 
@@ -43,7 +44,7 @@ export type AnyItemTrait = (ItemTrait<"GENERIC",({
     "//GENERIC": true;
 })&{
   flags:GenericTrait["flags"];
-}>|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait|BatteryTrait);
+}>|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait|BatteryTrait|BionicItemTrait);
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
 
 /**物品ID */

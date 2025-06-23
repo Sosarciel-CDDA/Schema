@@ -65,7 +65,7 @@ export type Enchantment = {
 export type InlineEnchantment = Omit<Enchantment,"type"|"id">;
 
 /**作为参数传入的附魔 */
-export type ParamsEnchantment = InlineEnchantment|EnchantmentID;
+export type ParamsEnchantment = InlineEnchantment|EnchantmentID|(InlineEnchantment|EnchantmentID)[];
 
 /**装备附魔启用条件 */
 export type EnchConHas = (

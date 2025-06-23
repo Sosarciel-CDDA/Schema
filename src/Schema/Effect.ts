@@ -204,7 +204,7 @@ export type Effect = {
     /**此效果所应用的附魔列表 值可以是附魔 id 或附魔的内联定义  
      * 按效果强度应用不同成员  
      */
-    enchantments?:ParamsEnchantment[];
+    enchantments?:(ParamsEnchantment);
     /**拥有此效果时进行血液分析可得出的说明 */
     blood_analysis_description?: (DescText);
 };

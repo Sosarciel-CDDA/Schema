@@ -2,7 +2,7 @@ import { AttackVectorID } from "./AttackVector";
 import { DamageTypeID } from "./DamageType";
 import { BoolObj, ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";
-import { CddaID, DescText, Float, Int, StatusSimple } from "./GenericDefine";
+import { CddaID, DescText, Float, Int, StatusLc } from "./GenericDefine";
 import { SkillID } from "./Skill";
 import { WeaponCategoryID } from "./WeaponCategory";
 
@@ -160,5 +160,5 @@ export type TechniqueBonus = {
      */
     scale: Float;
     /**缩放属性(基础属性或技能) */
-    "scaling-stat"?: StatusSimple | SkillID;
+    "scaling-stat"?: StatusLc | SkillID;
 };

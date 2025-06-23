@@ -19,6 +19,7 @@ import { MutationCategoryID } from "Schema/MutationCategory";
 import { FactionRelationFlags } from "Schema/NPCFaction";
 import { TrapID } from "Schema/Trap";
 import { BodyPartParam } from "Schema/BodyPart";
+import { BionicID } from "Schema/Bionic";
 
 
 
@@ -132,8 +133,7 @@ export type GetMutate = TalkerVar<{
  */
 export type GetMutateCategory = TalkerVar<{
     /**突变类别 */
-    //mutate_category: (IDObj<MutateCategoryID>);
-    mutate_category: (StrObj);
+    mutate_category: (IDObj<MutationCategoryID>);
     /**是否使用维生素
      * @default true
      */
@@ -236,8 +236,7 @@ export type AddBionic = TalkerVar<{
     /**要安装的仿生装置
      * 你的角色或NPC将获得该仿生装置; 每个效果只能安装一个仿生装置
      */
-    //add_bionic: (IDObj<BionicID>);
-    add_bionic: (StrObj);
+    add_bionic: (IDObj<BionicID>);
 }, 'add_bionic'>;
 
 
@@ -254,8 +253,7 @@ export type LoseBionic = TalkerVar<{
     /**要卸载的仿生装置
      * 你的角色或NPC将失去该仿生装置
      */
-    //lose_bionic: (IDObj<BionicID>);
-    lose_bionic: (StrObj);
+    lose_bionic: (IDObj<BionicID>);
 }, 'lose_bionic'>;
 
 

@@ -29,15 +29,15 @@ export type ArmorTrait = ItemTrait<"ARMOR",({
     /**基础累赘度(未适配值) */
     encumbrance: Int;
     /**最大累赘度
-     * 当角色完全装满体积时，非刚性存储容器的累赘度将设置为这个值
-     * 否则它将介于encumbrance和max_encumbrance之间，遵循方程：
+     * 当角色完全装满体积时, 非刚性存储容器的累赘度将设置为这个值
+     * 否则它将介于encumbrance和max_encumbrance之间, 遵循方程: 
      * encumbrance + (max_encumbrance - encumbrance) * 非刚性体积 / 非刚性容量
-     * 默认情况下，max_encumbrance是encumbrance + (非刚性体积 / 250ml)
+     * 默认情况下, max_encumbrance是encumbrance + (非刚性体积 / 250ml)
      */
     max_encumbrance?: Int;
-    /**如果为true，这是一件分边护甲
-     * 分边护甲是即使它描述了覆盖双腿、双臂、双手等
-     * 实际上一次只覆盖一个"边"，但玩家可以随意在两边之间移动
+    /**如果为true, 这是一件分边护甲
+     * 分边护甲是即使它描述了覆盖双腿, 双臂, 双手等
+     * 实际上一次只覆盖一个"边", 但玩家可以随意在两边之间移动
      * @default false
      */
     sided?: boolean;
@@ -58,7 +58,7 @@ export type ArmorTrait = ItemTrait<"ARMOR",({
      */
     cover_vitals: Int;
     /**材料厚度(mm)
-     * 材料的厚度，以毫米为单位(大约)
+     * 材料的厚度, 以毫米为单位(大约)
      * 普通衣服范围从0.1到0.5
      * 特别坚固的布料可能高达1-2mm
      * 护甲或防护设备可以高达10或更高
@@ -74,17 +74,17 @@ export type ArmorTrait = ItemTrait<"ARMOR",({
     max_worn?: Int;
     /**确定ENERGY_SHIELD_HP和ENERGY_SHIELD_MAX_HP物品变量的初始值
      * 用于能量护盾
-     * 对于没有ENERGY_SHIELD标志的护甲部件，此字段无效
+     * 对于没有ENERGY_SHIELD标志的护甲部件, 此字段无效
      */
     energy_shield_max_hp?: Int;
-    /**当被摧毁时，这个物品会变成的itype_id
+    /**当被摧毁时, 这个物品会变成的itype_id
      * 目前仅适用于可消耗护甲
      */
     non_functional?: (ItemID);
-    /**如果物品使用non-functional，这将是它变成非功能性变体时的描述 */
+    /**如果物品使用non-functional, 这将是它变成非功能性变体时的描述 */
     damage_verb?: (DescText);
     /**有效服装改装列表
-     * 注意：如果服装改装没有列出"restricted"，则不需要这个
+     * 注意: 如果服装改装没有列出"restricted", 则不需要这个
      */
     valid_mods?: string[];
     /**护甲数据 必须设置覆盖层 */
@@ -96,14 +96,14 @@ export type ArmorTrait = ItemTrait<"ARMOR",({
 export type ArmorPortion = {
     /**基础累赘度(未适配值)
      * [每件累赘度, 多件累赘度惩罚]  重复穿着3件时 [0]*3+[1]
-     * 如果是数组，第一个值是基础累赘度(未适配值)，第二个值是最大累赘度
-     * 当这件护甲的口袋完全装满物品时，非刚性物品的累赘度将设置为这个值
-     * 否则它将介于第一个值和第二个值之间，遵循公式：
+     * 如果是数组, 第一个值是基础累赘度(未适配值), 第二个值是最大累赘度
+     * 当这件护甲的口袋完全装满物品时, 非刚性物品的累赘度将设置为这个值
+     * 否则它将介于第一个值和第二个值之间, 遵循公式: 
      * 第一个值 + (第二个值 - 第一个值) * 非刚性体积 / 非刚性容量
-     * 默认情况下，最大累赘度是累赘度 + (非刚性体积 / 250ml)
+     * 默认情况下, 最大累赘度是累赘度 + (非刚性体积 / 250ml)
      */
     encumbrance: Int | [Int, Int];
-    /**覆盖护甲的透气性，由护甲材料驱动
+    /**覆盖护甲的透气性, 由护甲材料驱动
      * @example "IMPERMEABLE" // 0%
      * @example "POOR" // 30%
      * @example "AVERAGE" // 50%
@@ -118,12 +118,12 @@ export type ArmorPortion = {
      * 详见 ARMOR_BALANCE_AND_DESIGN.md#layers
      */
     layers: ArmorLayer[];
-    /**如果为true，这部分护甲是刚性的，会与同一层次上的其他刚性服装冲突
+    /**如果为true, 这部分护甲是刚性的, 会与同一层次上的其他刚性服装冲突
      * @default false
      */
     rigid_layer_only?: boolean;
     /**基础覆盖率(%)
-     * 当攻击命中covers中的身体部位时，这件护甲会被命中(并因此用作护甲)的时间百分比
+     * 当攻击命中covers中的身体部位时, 这件护甲会被命中(并因此用作护甲)的时间百分比
      */
     coverage: Int;
     /**近战攻击覆盖率(%)
@@ -146,7 +146,7 @@ export type ArmorPortion = {
      * 更现代的方法是直接在护甲上设置一个比例因子
      * 这样更容易阅读和快速解析(不需要心算)
      * 并且直接缩放250ml常数
-     * 所以如果我设置"volume_encumber_modifier"为0.25，意味着每1000ml(250ml/0.25)增加一点累赘度
+     * 所以如果我设置"volume_encumber_modifier"为0.25, 意味着每1000ml(250ml/0.25)增加一点累赘度
      */
     volume_encumber_modifier?: Float;
     /**活动噪音 */
@@ -163,8 +163,8 @@ export type ArmorPortion = {
     /**具体覆盖的子部位 子肢体id
      * 使用body_parts.json中定义的sub_bodypart_id作为有效值
      * 这些用于在同一层次上穿戴多件护甲而不会获得累赘惩罚
-     * 如果不指定，则假定该部分完全覆盖它覆盖的所有身体部位
-     * 绑带层物品和外层护甲应始终指定这些，否则会与其他部件冲突
+     * 如果不指定, 则假定该部分完全覆盖它覆盖的所有身体部位
+     * 绑带层物品和外层护甲应始终指定这些, 否则会与其他部件冲突
      */
     specifically_covers?: BodyPartID[];
     /**护甲材料定义 */

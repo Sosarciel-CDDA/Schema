@@ -14,7 +14,7 @@ export type Snippet = {
     type: "snippet";
     /**片段的类别ID */
     category: (SnippetCategoryID);
-    /** 片段文本内容，可以是两种格式：
+    /** 片段文本内容, 可以是两种格式: 
      * 1. 带ID和元数据的复杂格式
      * 2. 纯文本数组的简单格式
      */
@@ -25,7 +25,7 @@ export type Snippet = {
 type SnippetText = {
     /** 此特定文本的ID */
     id: (SnippetTextID);
-    /** 片段的名称，实际上仅用于描述片段 */
+    /** 片段的名称, 实际上仅用于描述片段 */
     name?: (DescText);
     /** 如果调用此片段类别将使用的文本 */
     text: (DescText);

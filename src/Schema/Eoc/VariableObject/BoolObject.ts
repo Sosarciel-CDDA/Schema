@@ -21,6 +21,7 @@ import { ProficiencyID } from "Schema/Proficiency";
 import { BodyPartID } from "Schema/BodyPart";
 import { SeasonLc } from "Schema/GenericDefine";
 import { ItemCategoryID } from "Schema/ItemCategory";
+import { BionicID } from "Schema/Bionic";
 
 
 //#region 不在文档内的
@@ -640,8 +641,7 @@ export type HasBionics = TalkerVar<{
     /**有仿生学
      * 要检查的仿生学ID
      */
-    //has_bionics: (IDObj<BionicID>);
-    has_bionics: (StrObj);
+    has_bionics: (IDObj<BionicID|"ANY">);
 }, 'has_bionics'>;
 
 /**有效果

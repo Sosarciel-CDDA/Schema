@@ -285,7 +285,7 @@ export type Mutation = {
     /**试图在此突变成功停用时激活的effect_on_conditions列表.  */
     deactivated_eocs?: EocID[];
     /**由此突变授予的附魔列表. 可以是ID或附魔的内联定义 (参见MAGIC.md) */
-    enchantments?: ParamsEnchantment[];
+    enchantments?: (ParamsEnchantment);
     /**如果非零, 在寒冷时变慢, 在热时变快 (1.0为每度高于或低于65 F给予+/-1%速度).  */
     temperature_speed_modifier?: number;
     /**对接收到的疼痛量的平坦增加 (对于正数)\减少 (对于负数). 减少可以一直到0. 在疼痛附魔后应用.  (所以如果你有抗痛特性和5点平坦疼痛减少, 并接收20点疼痛, 你会获得20*(1-0.25)-5=10点疼痛) */

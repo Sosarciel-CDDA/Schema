@@ -284,9 +284,9 @@ export type Explosion = {
  * 为数字时则为壳体总质量, 其余碎片变量设置为合理的默认值.   
  */
 export type ShrapnelData = {
-    /**外壳的总质量，外壳/威力比决定碎片速度 */
+    /**外壳的总质量, 外壳/威力比决定碎片速度 */
     casing_mass: number;
-    /**每个碎片的质量，以克为单位。大碎片打击更重，小碎片打击更频繁 */
+    /**每个碎片的质量, 以克为单位. 大碎片打击更重, 小碎片打击更频繁 */
     fragment_mass: number;
     /**在落地点掉落物品的百分比几率 */
     recovery?: number;
@@ -308,15 +308,25 @@ export const StatusList = [
 /**属性 */
 export type Status = typeof StatusList[number];
 
-/**属性简写 列表 */
-export const StatusSimpleList = [
+/**属性小写 列表 */
+export const StatusLcList = [
     'str'    ,
     'dex'    ,
     'int'    ,
     'per'    ,
 ] as const;
-/**属性简写 */
-export type StatusSimple = typeof StatusSimpleList[number];
+/**属性小写 */
+export type StatusLc = typeof StatusLcList[number];
+
+/**属性大写 列表 */
+export const StatusUcList = [
+    "DEX" ,
+    "INT" ,
+    "STR" ,
+    "PER" ,
+] as const;
+/**属性大写 */
+export type StatusUc = typeof StatusUcList[number];
 
 /**社交技能 列表 */
 export const SocialTypeList = [
