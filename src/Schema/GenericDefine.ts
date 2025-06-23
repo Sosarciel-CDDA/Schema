@@ -52,6 +52,7 @@ import { CharacterMod } from "./CharacterMod";
 import { Snippet } from "./Snippet";
 import { SpeedDescription } from "./SpeedDescription";
 import { WeaponCategory } from "./WeaponCategory";
+import { UncraftRecipe } from "./UncraftRecipe";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -364,6 +365,20 @@ type MGR<T extends string> = ((`//${T}`)&{});
 export type RequirePair<F extends string,T> = T;
 //(Partial<{[K in keyof T]?:T[K]|undefined|never}>|Partial<{[K in keyof T]:undefined}>);
 
+
+/**活动强度等级 列表 */
+export const ActivityLevelList =[
+    "NO_EXERCISE"       ,
+    "LIGHT_EXERCISE"    ,
+    "MODERATE_EXERCISE" ,
+    "BRISK_EXERCISE"    ,
+    "ACTIVE_EXERCISE"   ,
+    "EXTRA_EXERCISE"    ,
+] as const;
+/**活动强度等级 */
+export type ActivityLevel = typeof ActivityLevelList[number];
+
+
 /**任何Cdda的Json */
 export type AnyCddaJson = Item|Eoc|Mutation|DamageType|DamageInfoOrder|
     AmmunitionType|Enchantment|Flag|ItemGroup|Monster|
@@ -373,6 +388,6 @@ export type AnyCddaJson = Item|Eoc|Mutation|DamageType|DamageInfoOrder|
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
-    BodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory;
+    BodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory|UncraftRecipe;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];

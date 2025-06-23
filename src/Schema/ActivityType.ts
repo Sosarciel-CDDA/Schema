@@ -1,20 +1,20 @@
 import { EocID } from "./Eoc";
-import { CddaID, DescText } from "./GenericDefine";
+import { ActivityLevel, CddaID, DescText } from "./GenericDefine";
 
 /**活动ID */
 export type ActivityTypeID = CddaID<"ACT">;
 /**活动类型 */
 export type ActivityType = {
+	type: "activity_type";
     /**活动唯一ID */
 	id: (ActivityTypeID);
-	type: "activity_type";
 	/** 用于描述活动的描述性术语, 用于停止活动的查询, 以及描述它的字符串, 例如: "verb": "mining" 或 "verb": { "ctxt": "instrument", "str": "playing" } */
 	verb: DescText;
 	/** 活动的活动级别, 更难的活动会随着时间消耗更多的卡路里.   
      * 有效值为, 从最容易到最需要身体的:   
      * NO_EXERCISE, LIGHT_EXERCISE, MODERATE_EXERCISE, BRISK_EXERCISE, ACTIVE_EXERCISE, EXTRA_EXERCISE 
      */
-	activity_level: "NO_EXERCISE"|"LIGHT_EXERCISE"|"MODERATE_EXERCISE"|"BRISK_EXERCISE"|"ACTIVE_EXERCISE"|"EXTRA_EXERCISE";
+	activity_level: (ActivityLevel);
 	/** 是否可以中断. 如果为false, 则会抑制与例如疼痛或看到怪物相关的弹出窗口 */
 	interruptable?: boolean;
 	/** 是否可以通过按键中断 */

@@ -24,8 +24,8 @@ export type Requirement = {
         id:(ToolID);
         /**要求等级 */
         level:Int;
-        /** 需要该质量工具的数量 */
-        amount: Int;
+        /**需要该质量工具的数量 */
+        amount?: Int;
     }[],
     /**列出制作配方所需的工具 (或几种可选工具) 的物品 id  
      * [ [ 工具, 消耗的充能 ] ]  
@@ -39,6 +39,7 @@ export type Requirement = {
      */
     tools?: [ItemID,number][][];
     /**列出物品或需求 id, 主要用于材料成分  
+     * 如果是拆解, 则是配方结果  
      * [ [ 可选的物品1, 可选的物品2 ], [ 必须的物品1 ] ]  
      * @example
      * [

@@ -1,6 +1,6 @@
 import { ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";
-import { CddaID, Int, Float, Time } from "./GenericDefine";
+import { CddaID, Int, Float, Time, ActivityLevel } from "./GenericDefine";
 import { ItemID, ItemVariantID } from "./Item";
 import { ProficiencyID } from "./Proficiency";
 import { Requirement, RequirementID } from "./Requirement";
@@ -10,14 +10,7 @@ import { ToolQualityID } from "./ToolQuality";
 /**配方ID */
 export type RecipeID = CddaID<"RECIPE">;
 
-/**活动强度等级, 表示制作该配方时的运动强度 */
-export type ActivityLevel =
-    | "NO_EXERCISE"
-    | "LIGHT_EXERCISE"
-    | "MODERATE_EXERCISE"
-    | "BRISK_EXERCISE"
-    | "ACTIVE_EXERCISE"
-    | "EXTRA_EXERCISE";
+
 
 /**副产品定义, 表示制作时额外生成的物品 */
 export type Byproduct = {
@@ -62,7 +55,7 @@ export type Recipe = {
     /**结果物品ID */
     result: (ItemID);
     /**活动强度等级 */
-    activity_level: ActivityLevel;
+    activity_level: (ActivityLevel);
     /**副产品, 制作时额外生成的物品ID数组
      * @example [["scrap", "string"]] // 可能生成废料或绳子
      */
