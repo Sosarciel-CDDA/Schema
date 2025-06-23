@@ -77,21 +77,24 @@ export type CharSymbol = string;
 /**辅助Schema解析的字符串构造浮点数字 */
 type SchemaNumber = `${number}${"."|""}${number|""}`;
 /**重量 */
-export type Weight = Int|`${number} ${"kg"|"g"}`;
+export type Weight = Int|`${number} ${"mg"|"kg"|"g"}`;
 /**体积 */
 export type Volume = Int|`${number} ${"L"|"ml"}`;
 /**长度 */
-export type Length = Int|`${number} ${"mm"|"cm"|"m"|"km"}`;
+export type Length = Int|`${number} ${"mm"|"cm"|"meter"|"km"}`;
 /**能量 */
-export type Energy = Int|`${number} ${"mJ"|"kJ"}`;
+export type Energy = Int|`${number} ${"mJ"|"J"|"kJ"}`;
 /**能耗 */
-export type Power = Int|`${number} ${"mW"}`;
+export type Power = Int|`${number} ${"mW"|"W"|"kW"}`;
 /**价格 */
-export type Price = Int|`${number} ${"USD"|"cent"|"kUSD"}`;
+export type Price = Int|`${number} ${"cent"|"cents"|"dollar"|"dollars"|"USD"|"kUSD"}`;
 /**时间 无符号为秒 1turn=1s PERMANENT 为永久 */
 export type Time = Int|`${number} ${"s"|"m"|"h"|"d"}`|"PERMANENT";
-/**传输带宽 无符号为KB */
-export type Bandwidth = Int|`${number} ${"KB"|"GB"|"GB"|"TB"}`;
+/**电子数据单位 无符号为KB */
+export type Ememory = Int|`${number} ${"KB"|"GB"|"GB"|"TB"}`;
+///**温度 */
+//export type Temperature = Int|`${number} ${"K"}`;
+
 /**可用的颜色列表 */
 export const ColorList = [
     "black"         ,

@@ -1,6 +1,6 @@
 import { TechniqueID } from "Schema/Technique";
 import { AmmunitionTypeID } from "../AmmiunitionType";
-import { CddaID, Power, DescText, RequirePair, Float, Int, Bandwidth } from "../GenericDefine";
+import { CddaID, Power, DescText, RequirePair, Float, Int, Ememory } from "../GenericDefine";
 import { ToolQualityID } from "../ToolQuality";
 import { GenericFlagID } from "./Generic";
 import { GunModTrait } from "./GunMod";
@@ -63,7 +63,7 @@ export type ToolTrait = RequirePair<"TOOL",({
     /**该工具与其他工具具有相同的功能 */
     sub?: (ToolID);
     /**此电子设备支持的每秒电子传输速率 */
-    etransfer_rate?: (Bandwidth);
+    etransfer_rate?: (Ememory);
     /**定义快速文件传输的连接类型字符串
      * 注意：如果希望用于一般连接，请创建更通用的系统，这仅适用于处理文件的电子设备
      */
