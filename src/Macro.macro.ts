@@ -10,6 +10,7 @@ UtilMacro.exportComment('src/**/*.ts');
 const SRC_DIR = path.join(__dirname);
 const SCHEMA_DIR = path.join(SRC_DIR,'Schema');
 const EOC_DIR = path.join(SCHEMA_DIR,'Eoc');
+const Item_DIR = path.join(SCHEMA_DIR,'Item');
 
 /**生成TypeList并导出 */
 function exportTypeList(arg:{
@@ -86,4 +87,11 @@ void (async () => {
         typeFileList:[path.join(EOC_DIR,"VariableObject","StringObject.ts")],
         region:'StrOperate导出'
     });
+    void exportTypeList({
+        listName:'UseActionList',
+        targetFile:path.join(Item_DIR,"UseAction","UseActionIndex.ts"),
+        typeFileList:[path.join(Item_DIR,"UseAction","UseAction.ts")],
+        region:'UseAction导出'
+    });
+
 })();

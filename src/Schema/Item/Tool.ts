@@ -3,9 +3,8 @@ import { AmmunitionTypeID } from "../AmmiunitionType";
 import { CddaID, Power, DescText, Float, Int, Ememory } from "../GenericDefine";
 import { ToolQualityID } from "../ToolQuality";
 import { GenericFlagID } from "./Generic";
-import { GunModTrait } from "./GunMod";
-import { UseAction } from "Schema/ItemAction";
 import { ItemID, ItemTrait } from "./ItemIndex";
+import { UseAction } from "./UseAction";
 
 
 /**TOOLID */

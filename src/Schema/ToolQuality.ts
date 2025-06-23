@@ -1,5 +1,4 @@
 import { CddaID, DescText } from "./GenericDefine";
-import { UseAction } from "./ItemAction";
 
 /**预定义的工具品质ID 列表 */
 export const DefineToolQualityIDList = [

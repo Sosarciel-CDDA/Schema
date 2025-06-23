@@ -5,7 +5,6 @@ import { CddaID, Char, Color, CopyfromVar, DescText, Explosion, Float, Int, Leng
 import { AmmoID } from "./Ammo";
 import { WeaponCategoryID } from "../WeaponCategory";
 import { MaterialID } from "../Material";
-import { UseAction } from "../ItemAction";
 import { ItemID, ItemSubtype } from "./ItemIndex";
 import { SnippetCategoryID } from "Schema/Snippet";
 import { ItemCategoryID } from "Schema/ItemCategory";
@@ -13,6 +12,7 @@ import { MonsterID } from "Schema/Monster";
 import { DamageTypeID } from "Schema/DamageType";
 import { RecipeID } from "Schema/Recipe";
 import { RequirementID } from "Schema/Requirement";
+import { UseAction } from "./UseAction";
 
 
 
