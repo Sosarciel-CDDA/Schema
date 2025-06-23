@@ -19,22 +19,22 @@ import { ToolQualityID } from "Schema/ToolQuality";
 import { TrapID } from "Schema/Trap";
 
 
-/**转换方法类型，此处为将物品转换为另一种物品 */
+/**转换方法类型, 此处为将物品转换为另一种物品 */
 export type UseActionTransform = {
-    /**转换方法类型，此处为将物品转换为另一种物品 */
+    /**转换方法类型, 此处为将物品转换为另一种物品 */
     type: "transform";
     /**要转换的目标物品ID */
     target: (ItemID);
-    /**如果使用此字段，target表示从itemgroup中随机选择的物品 */
+    /**如果使用此字段, target表示从itemgroup中随机选择的物品 */
     target_group?: (ItemGroupID);
     /**设置转换后物品的特定变体类型
-     * 特殊字符串"<any>"将从所有可用变体中随机选择一个变体，基于变体的定义权重
+     * 特殊字符串"<any>"将从所有可用变体中随机选择一个变体, 基于变体的定义权重
      * @default "<any>"
      */
     variant_type?: (ItemVariantID);
     /**转换后物品是否处于激活状态 */
     active: boolean;
-    /**当物品弹药降至0时自动转换为目标物品，或允许枪支在0弹药时转换 */
+    /**当物品弹药降至0时自动转换为目标物品, 或允许枪支在0弹药时转换 */
     ammo_scale: Int;
     /**激活物品时显示给玩家的消息 */
     msg: (DescText);
@@ -50,27 +50,27 @@ export type UseActionTransform = {
      * @default false
      */
     need_empty?: boolean;
-    /**物品是否必须被穿着才能进行转换、施法或使用EOC
+    /**物品是否必须被穿着才能进行转换, 施法或使用EOC
      * @default false
      */
     need_worn?: boolean;
-    /**物品是否必须被手持才能进行转换、施法或使用EOC
+    /**物品是否必须被手持才能进行转换, 施法或使用EOC
      * @default false
      */
     need_wielding?: boolean;
-    /**转换所需的工具品质及其等级，例如"fine bolt turning 1" */
+    /**转换所需的工具品质及其等级, 例如"fine bolt turning 1" */
     qualities_needed: Record<ToolQualityID, Int>;
     /**转换后物品的初始充能数量 */
     target_charges: Int;
     /**随机化转换后物品的充能数量
-     * 例如[10,15,25]表示有50%几率获得10-15充能，50%几率获得15-25充能(包含端点)
+     * 例如[10,15,25]表示有50%几率获得10-15充能, 50%几率获得15-25充能(包含端点)
      */
     rand_target_charges?: [Int, Int, Int];
-    /**如果为零或正数，将转换后物品的剩余弹药设置为此固定值 */
+    /**如果为零或正数, 将转换后物品的剩余弹药设置为此固定值 */
     ammo_qty: Int;
-    /**如果设置此值，将转换后物品的剩余弹药随机设置为数组中的某个值 */
+    /**如果设置此值, 将转换后物品的剩余弹药随机设置为数组中的某个值 */
     random_ammo_qty?: [Int, Int];
-    /**如果同时指定了此字段和ammo_qty，则将转换后的物品设置为此特定弹药类型 */
+    /**如果同时指定了此字段和ammo_qty, 则将转换后的物品设置为此特定弹药类型 */
     ammo_type?: (AmmunitionTypeID);
     /**存放目标物品的容器物品ID */
     container?: (ItemID);
@@ -82,7 +82,7 @@ export type UseActionTransform = {
      * @default "Turn on"
      */
     menu_text?: (DescText);
-    /**转换物品所需的额外移动点数，超出正常动作所需的部分 */
+    /**转换物品所需的额外移动点数, 超出正常动作所需的部分 */
     moves: Int;
 };
 
@@ -132,7 +132,7 @@ export type UseActionChangeScent = {
     scent_mod?: Int;
     /**效果持续时间 */
     duration: (Time);
-    /**应用的效果列表，包含效果ID、持续时间、作用部位和是否永久 */
+    /**应用的效果列表, 包含效果ID, 持续时间, 作用部位和是否永久 */
     effects: {
         id: (EffectID);
         duration: Int;
@@ -151,9 +151,9 @@ export type UseActionChangeScent = {
 export type UseActionPlaceMonster = {
     /**在地图上放置炮塔/人形机等怪物 */
     type: "place_monster";
-    /**怪物ID，参见monsters.json */
+    /**怪物ID, 参见monsters.json */
     monster_id: (MonsterID);
-    /**编程难度（人形机为4，炮塔为6等） */
+    /**编程难度 (人形机为4, 炮塔为6等)  */
     difficulty: Int;
     /**编程失败怪物敌对时显示的消息 */
     hostile_msg?: (DescText);
@@ -163,12 +163,12 @@ export type UseActionPlaceMonster = {
      * @default false
      */
     place_randomly?: boolean;
-    /**技能ID数组，技能等级越高越可能放置友好怪物 */
+    /**技能ID数组, 技能等级越高越可能放置友好怪物 */
     skills?: SkillID[];
     /**行动消耗的移动点数 */
     moves: Int;
     /**生成的怪物是否为宠物
-     * 只有作为友好怪物生成时才会成为宠物，敌对怪物永远不会成为宠物
+     * 只有作为友好怪物生成时才会成为宠物, 敌对怪物永远不会成为宠物
      * @default false
      */
     is_pet?: boolean;
@@ -178,7 +178,7 @@ export type UseActionPlaceMonster = {
 export type UseActionPlaceNpc = {
     /**在地图上放置特定类别的NPC */
     type: "place_npc";
-    /**NPC ID，参见npcs/npc.json */
+    /**NPC ID, 参见npcs/npc.json */
     npc_class_id: (NpcClassID);
     /**召唤NPC时显示的消息 */
     summon_msg?: (DescText);
@@ -192,30 +192,30 @@ export type UseActionPlaceNpc = {
     moves: Int;
 };
 
-/**将物品连接到车辆或电器，例如将可充电设备插入电源
- * 如果物品有CABLE_SPOOL标志，则有特殊行为，如连接车辆
+/**将物品连接到车辆或电器, 例如将可充电设备插入电源
+ * 如果物品有CABLE_SPOOL标志, 则有特殊行为, 如连接车辆
  */
 export type UseActionLinkUp = {
-    /**将物品连接到车辆或电器，例如将可充电设备插入电源
-     * 如果物品有CABLE_SPOOL标志，则有特殊行为，如连接车辆
+    /**将物品连接到车辆或电器, 例如将可充电设备插入电源
+     * 如果物品有CABLE_SPOOL标志, 则有特殊行为, 如连接车辆
      */
     type: "link_up";
     /**电缆的最大长度
      * @default 物品类型的最大充能值
-     * 如果被其他电缆延长，将使用所有电缆长度的总和
+     * 如果被其他电缆延长, 将使用所有电缆长度的总和
      */
     cable_length?: Int;
-    /**插入设备电池的充电速率（瓦特）
+    /**插入设备电池的充电速率 (瓦特) 
      * @default "0 W"
      * 正值将以连接的电网为代价为设备的可充电电池充电
      * 负值将以设备为代价为连接的电网电池充电
-     * 值为0不会为设备电池充电，但仍允许设备从连接的电网运行
+     * 值为0不会为设备电池充电, 但仍允许设备从连接的电网运行
      */
     charge_rate?: (Power);
-    /**成功在每个充电间隔添加1充能的概率（0.0-1.0）
+    /**成功在每个充电间隔添加1充能的概率 (0.0-1.0) 
      * @default 0.85
      * 小于0.001的值意味着电缆不会传输任何电力
-     * 如果被其他电缆延长，将使用所有电缆效率的乘积
+     * 如果被其他电缆延长, 将使用所有电缆效率的乘积
      */
     efficiency?: Float;
     /**激活屏幕上显示的文本
@@ -245,7 +245,7 @@ export type UseActionLinkUp = {
      * @example
      * "extension_cable"
      * "long_extension_cable"
-     * "ELECTRICAL_DEVICES" // 特殊关键字，允许此电缆延长所有具有link_up动作的电子设备
+     * "ELECTRICAL_DEVICES" // 特殊关键字, 允许此电缆延长所有具有link_up动作的电子设备
      */
     can_extend?: ItemID[];
 };
@@ -266,25 +266,25 @@ export type UseActionDeployAppliance = {
     base: (ItemID);
 };
 
-/**类似transform，但只有当物品达到特定年龄时才会转变 */
+/**类似transform, 但只有当物品达到特定年龄时才会转变 */
 export type UseActionDelayedTransform = {
-    /**类似transform，但只有当物品达到特定年龄时才会转变 */
+    /**类似transform, 但只有当物品达到特定年龄时才会转变 */
     type: "delayed_transform";
-    /**物品的最小年龄，年龄较小的物品不会转变（60回合=1分钟） */
+    /**物品的最小年龄, 年龄较小的物品不会转变 (60回合=1分钟)  */
     transform_age: Int;
     /**当物品不够老时显示的消息 */
     not_ready_msg: (DescText);
 };
 
-/**生火，如用打火机 */
+/**生火, 如用打火机 */
 export type UseActionFirestarter = {
-    /**生火，如用打火机 */
+    /**生火, 如用打火机 */
     type: "firestarter";
-    /**生火所需的移动点数，会被生存技能减少 */
+    /**生火所需的移动点数, 会被生存技能减少 */
     moves: Int;
-    /**点燃难以燃烧物品所需的移动点数，会被生存技能减少 */
+    /**点燃难以燃烧物品所需的移动点数, 会被生存技能减少 */
     moves_slow: Int;
-    /**角色是否需要处于阳光直射下，例如使用放大镜 */
+    /**角色是否需要处于阳光直射下, 例如使用放大镜 */
     need_sunlight: boolean;
 };
 
@@ -298,21 +298,21 @@ export type UseActionUnpack = {
      * @default false
      */
     items_fit?: boolean;
-    /**如果从此物品解包的物品有体积，且此物品肮脏，在持有多少体积时它们会变脏 */
+    /**如果从此物品解包的物品有体积, 且此物品肮脏, 在持有多少体积时它们会变脏 */
     filthy_volume_threshold?: (Volume);
 };
 
-/**尝试从物品中回收基础材料，例如剪碎布料获取破布或皮革 */
+/**尝试从物品中回收基础材料, 例如剪碎布料获取破布或皮革 */
 export type UseActionSalvage = {
-    /**尝试从物品中回收基础材料，例如剪碎布料获取破布或皮革 */
+    /**尝试从物品中回收基础材料, 例如剪碎布料获取破布或皮革 */
     type: "salvage";
     /**每个部分消耗的移动点数
      * @default 未指定
      */
     moves_per_part?: Int;
-    /**可以从中回收的材料ID（不是物品ID！）列表
-     * 如果没有给出明确列表，则使用此默认列表
-     * 如果要切割的物品有任何不在此列表中的材料，则无法切割
+    /**可以从中回收的材料ID (不是物品ID！) 列表
+     * 如果没有给出明确列表, 则使用此默认列表
+     * 如果要切割的物品有任何不在此列表中的材料, 则无法切割
      */
     material_whitelist?: MaterialID[];
 };
@@ -325,11 +325,11 @@ export type UseActionInscribe = {
     on_items: boolean;
     /**是否可以在地面上刻写 */
     on_terrain: boolean;
-    /**是否仅限于特定物品材料刻写，不用于在地面刻写时 */
+    /**是否仅限于特定物品材料刻写, 不用于在地面刻写时 */
     material_restricted: boolean;
-    /**可以刻写的材料ID（不是物品ID！）列表
-     * 仅用于在物品上刻写，且仅当material_restricted为true时
-     * 如果没有给出明确列表，则使用此默认列表
+    /**可以刻写的材料ID (不是物品ID！) 列表
+     * 仅用于在物品上刻写, 且仅当material_restricted为true时
+     * 如果没有给出明确列表, 则使用此默认列表
      */
     material_whitelist?: MaterialID[];
 };
@@ -343,7 +343,7 @@ export type UseActionFireweaponOff = {
     /**动作成功时显示的消息 */
     success_message: (DescText);
     /**动作失败时显示的消息
-     * 如果未给出，则不显示任何消息
+     * 如果未给出, 则不显示任何消息
      */
     failure_message?: (DescText);
     /**物品没有充能时显示的消息 */
@@ -352,7 +352,7 @@ export type UseActionFireweaponOff = {
      * @default 0 //表示完全没有声音
      */
     noise?: Int;
-    /**角色尝试此动作消耗的移动点数（与结果无关） */
+    /**角色尝试此动作消耗的移动点数 (与结果无关)  */
     moves: Int;
     /**动作成功的概率
      * @default 总是成功
@@ -361,13 +361,13 @@ export type UseActionFireweaponOff = {
     success_chance?: Int;
 };
 
-/**用于激活（燃烧）基于火焰的武器的功能 */
+/**用于激活 (燃烧) 基于火焰的武器的功能 */
 export type UseActionFireweaponOn = {
-    /**用于激活（燃烧）基于火焰的武器的功能 */
+    /**用于激活 (燃烧) 基于火焰的武器的功能 */
     type: "fireweapon_on";
-    /**物品发出声音的概率（1/X），每回合检查 */
+    /**物品发出声音的概率 (1/X) , 每回合检查 */
     noise_chance: Int;
-    /**如果发出声音的音量，如果为0则不发出声音，但仍会打印噪声消息 */
+    /**如果发出声音的音量, 如果为0则不发出声音, 但仍会打印噪声消息 */
     noise: Int;
     /**当物品发出声音时出现的消息/声音描述 */
     noise_message: (DescText);
@@ -377,7 +377,7 @@ export type UseActionFireweaponOn = {
     charges_extinguish_message: (DescText);
     /**当角色走入水中且物品火焰熄灭时出现的消息 */
     water_extinguish_message: (DescText);
-    /**如果>0，这是物品自行熄灭的概率（1/X）
+    /**如果>0, 这是物品自行熄灭的概率 (1/X) 
      * @default 0
      */
     auto_extinguish_chance?: Int;
@@ -387,9 +387,9 @@ export type UseActionFireweaponOn = {
     auto_extinguish_message?: (DescText);
 };
 
-/**角色在走动时演奏乐器（此物品） */
+/**角色在走动时演奏乐器 (此物品)  */
 export type UseActionMusicalInstrument = {
-    /**角色在走动时演奏乐器（此物品） */
+    /**角色在走动时演奏乐器 (此物品)  */
     type: "musical_instrument";
     /**从角色速度中减去的值 */
     speed_penalty: Int;
@@ -402,7 +402,7 @@ export type UseActionMusicalInstrument = {
     fun: Int;
     /**与fun一起定义角色从演奏乐器中获得多少士气 */
     fun_bonus: Int;
-    /**每N回合一次，从该数组中随机选择一个描述显示 */
+    /**每N回合一次, 从该数组中随机选择一个描述显示 */
     description_frequency: Int;
     /**玩家演奏乐器的描述数组 */
     player_descriptions: DescText[];
@@ -414,7 +414,7 @@ export type UseActionHolster = {
     type: "holster";
     /**选择物品时使用的提示 */
     holster_prompt: (DescText);
-    /**收起物品时显示的消息，%s将被物品名称替换 */
+    /**收起物品时显示的消息, %s将被物品名称替换 */
     holster_msg: (DescText);
     /**可以收起的每个物品的最大体积
      * 可以使用ml和L单位 - "50 ml"或"2 L"
@@ -431,7 +431,7 @@ export type UseActionHolster = {
     max_weight?: Int;
     /**收起可以容纳的物品总数 */
     multi: Int;
-    /**拔出包含物品时的基本移动消耗（每单位体积） */
+    /**拔出包含物品时的基本移动消耗 (每单位体积)  */
     draw_cost: Int;
     /**使用这些技能中任意一个的枪支可以被收起 */
     skills?: SkillID[];
@@ -453,31 +453,31 @@ export type UseActionBandolier = {
 export type UseActionRevealMap = {
     /**在大地图上显示特定地形 */
     type: "reveal_map";
-    /**玩家周围要显示事物的半径，单个大地图为180x180瓦片 */
+    /**玩家周围要显示事物的半径, 单个大地图为180x180瓦片 */
     radius: Int;
-    /**应该显示的大地图地形类型ID（可以任意数量） */
+    /**应该显示的大地图地形类型ID (可以任意数量)  */
     terrain: TerrainID[];
     /**显示后显示的消息 */
     message: (DescText);
 };
 
-/**治疗伤害，可能包括一些状态 */
+/**治疗伤害, 可能包括一些状态 */
 export type UseActionHeal = {
-    /**治疗伤害，可能包括一些状态 */
+    /**治疗伤害, 可能包括一些状态 */
     type: "heal";
-    /**治疗肢体时恢复多少hp，必需值 */
+    /**治疗肢体时恢复多少hp, 必需值 */
     limb_power: Int;
     /**治疗头部时恢复多少hp
-     * 如果未设置，默认为0.8 * limb_power
+     * 如果未设置, 默认为0.8 * limb_power
      */
     head_power?: Int;
     /**治疗躯干时恢复多少hp
-     * 如果未设置，默认为1.5 * limb_power
+     * 如果未设置, 默认为1.5 * limb_power
      */
     torso_power?: Int;
-    /**可以减少多少出血效果强度等级，基础值 */
+    /**可以减少多少出血效果强度等级, 基础值 */
     bleed: Int;
-    /**消毒质量，消毒剂为4，酒精棉为2；浮点数 */
+    /**消毒质量, 消毒剂为4, 酒精棉为2; 浮点数 */
     disinfectant_power: Float;
     /**移除咬伤效果的几率 */
     bite: Float;
@@ -497,13 +497,13 @@ export type UseActionHeal = {
      * @default "(limb_scaling / limb_power) * torso_power"
      */
     torso_scaling?: Float;
-    /**治疗完成后应用于患者的效果，语法与consume_drug effects相同 */
+    /**治疗完成后应用于患者的效果, 语法与consume_drug effects相同 */
     effects?: {
         id: (EffectID);
         duration: (Time);
     }[];
     /**成功治疗后产生的物品
-     * 如果治疗物品是工具，则转换为新类型，否则产生新物品
+     * 如果治疗物品是工具, 则转换为新类型, 否则产生新物品
      */
     used_up_item?: (ItemID);
 };
@@ -516,31 +516,31 @@ export type UseActionPlaceTrap = {
      * @default false
      */
     allow_underwater?: boolean;
-    /**是否允许在玩家角色同一格放置陷阱（例如无害陷阱）
+    /**是否允许在玩家角色同一格放置陷阱 (例如无害陷阱) 
      * @default false
      */
     allow_under_player?: boolean;
-    /**陷阱必须放置在两个固体瓦片之间（例如绊线）
+    /**陷阱必须放置在两个固体瓦片之间 (例如绊线) 
      * @default false
      */
     needs_solid_neighbor?: boolean;
-    /**如果非空：地形ID，陷阱必须放置在该地形旁边
+    /**如果非空: 地形ID, 陷阱必须放置在该地形旁边
      * @default 空
      */
     needs_neighbor_terrain?: (TerrainID);
-    /**如果非空：陷阱ID，使游戏放置3x3的陷阱区域
-     * 中心陷阱由"trap"定义，周围8个陷阱由此定义
+    /**如果非空: 陷阱ID, 使游戏放置3x3的陷阱区域
+     * 中心陷阱由"trap"定义, 周围8个陷阱由此定义
      * @default 空
      */
     outer_layer_trap?: (TrapID);
-    /**如果非空：当玩家角色有挖掘工具且目标位置可挖掘时询问的问题
+    /**如果非空: 当玩家角色有挖掘工具且目标位置可挖掘时询问的问题
      * 允许放置埋藏的陷阱
-     * 如果玩家回答问题（例如"埋藏X陷阱？"）为是，则使用"bury"对象中的数据
+     * 如果玩家回答问题 (例如"埋藏X陷阱？") 为是, 则使用"bury"对象中的数据
      * @default 空
      */
     bury_question?: (DescText);
-    /**如果bury_question回答为是，则使用此条目中的数据代替外部数据
-     * 此json对象应包含"trap"、"done_message"、"practice"和"moves"，含义如下
+    /**如果bury_question回答为是, 则使用此条目中的数据代替外部数据
+     * 此json对象应包含"trap", "done_message", "practice"和"moves", 含义如下
      */
     bury?: {
         trap: (TrapID);
@@ -550,7 +550,7 @@ export type UseActionPlaceTrap = {
     };
     /**要放置的陷阱 */
     trap: (TrapID);
-    /**放置陷阱后出现的消息，%s被放置陷阱位置的地形名称替换 */
+    /**放置陷阱后出现的消息, %s被放置陷阱位置的地形名称替换 */
     done_message: (DescText);
     /**放置陷阱给"陷阱"技能多少练习 */
     practice: Int;
@@ -606,7 +606,7 @@ export type UseActionSound = {
      * @default "Activate"
      */
     name?: (DescText);
-    /**如果玩家能听到声音，则显示给玩家的消息
+    /**如果玩家能听到声音, 则显示给玩家的消息
      * %s被物品名称替换
      */
     sound_message: (DescText);
@@ -623,9 +623,9 @@ export type UseActionSound = {
     sound_volume: Int;
 };
 
-/**发出声音，包括弹药检查并可能从玩家处消耗移动点数 */
+/**发出声音, 包括弹药检查并可能从玩家处消耗移动点数 */
 export type UseActionManualnoise = {
-    /**发出声音，包括弹药检查并可能从玩家处消耗移动点数 */
+    /**发出声音, 包括弹药检查并可能从玩家处消耗移动点数 */
     type: "manualnoise";
     /**显示给激活它的玩家的消息 */
     use_message: (DescText);
@@ -660,13 +660,13 @@ export type UseActionLearnSpell = {
     spells: SpellID[];
 }
 
-/**施放以下法术，参见MAGIC.md获取更多详情 */
+/**施放以下法术, 参见MAGIC.md获取更多详情 */
 export type UseActionCastSpell = {
-    /**施放以下法术，参见MAGIC.md获取更多详情 */
+    /**施放以下法术, 参见MAGIC.md获取更多详情 */
     type: "cast_spell";
     /**要施放的法术ID */
     spell_id: (SpellID);
-    /**施放时是否允许法术失败（例如高难度可能导致施放失败） */
+    /**施放时是否允许法术失败 (例如高难度可能导致施放失败)  */
     no_fail: boolean;
     /**法术等级 */
     level: Int;
@@ -678,8 +678,8 @@ export type UseActionCastSpell = {
      * @default false
      */
     need_wielding?: boolean;
-    /**此法术使用魔法相关功能，但其本身不是魔法
-     * 描述从"此物品施放spell_name等级spell_level"改为"此物品激活时：spell_name"
+    /**此法术使用魔法相关功能, 但其本身不是魔法
+     * 描述从"此物品施放spell_name等级spell_level"改为"此物品激活时: spell_name"
      * @default false
      */
     mundane?: boolean;

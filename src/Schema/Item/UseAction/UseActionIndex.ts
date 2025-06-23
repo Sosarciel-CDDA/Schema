@@ -14,32 +14,32 @@ export type UseAction = UseActionList[number]|HardcodeUseAction;
 import {UseActionTransform, UseActionExplosion, UseActionChangeScent, UseActionPlaceMonster, UseActionPlaceNpc, UseActionLinkUp, UseActionDeployFurn, UseActionDeployAppliance, UseActionDelayedTransform, UseActionFirestarter, UseActionUnpack, UseActionSalvage, UseActionInscribe, UseActionFireweaponOff, UseActionFireweaponOn, UseActionMusicalInstrument, UseActionHolster, UseActionBandolier, UseActionRevealMap, UseActionHeal, UseActionPlaceTrap, UseActionSewAdvanced, UseActionEffectOnConditions, UseActionMessage, UseActionSound, UseActionManualnoise, UseActionLearnSpell} from './UseAction'
 /**UseAction导出 */
 export type UseActionList = [
-    UseActionTransform      ,//转换方法类型，此处为将物品转换为另一种物品
+    UseActionTransform      ,//转换方法类型, 此处为将物品转换为另一种物品
     UseActionExplosion      ,//物品在耗尽充能时爆炸
     UseActionChangeScent    ,//改变使用者的气味类型
     UseActionPlaceMonster   ,//在地图上放置炮塔/人形机等怪物
     UseActionPlaceNpc       ,//在地图上放置特定类别的NPC
-    UseActionLinkUp         ,//将物品连接到车辆或电器，例如将可充电设备插入电源
+    UseActionLinkUp         ,//将物品连接到车辆或电器, 例如将可充电设备插入电源
     UseActionDeployFurn     ,//将物品部署为家具
     UseActionDeployAppliance,//将物品部署为电器
-    UseActionDelayedTransform,//类似transform，但只有当物品达到特定年龄时才会转变
-    UseActionFirestarter    ,//生火，如用打火机
+    UseActionDelayedTransform,//类似transform, 但只有当物品达到特定年龄时才会转变
+    UseActionFirestarter    ,//生火, 如用打火机
     UseActionUnpack         ,//解包此物品
-    UseActionSalvage        ,//尝试从物品中回收基础材料，例如剪碎布料获取破布或皮革
+    UseActionSalvage        ,//尝试从物品中回收基础材料, 例如剪碎布料获取破布或皮革
     UseActionInscribe       ,//在物品或地面上刻写信息
     UseActionFireweaponOff  ,//激活基于火焰的武器
-    UseActionFireweaponOn   ,//用于激活（燃烧）基于火焰的武器的功能
-    UseActionMusicalInstrument,//角色在走动时演奏乐器（此物品）
+    UseActionFireweaponOn   ,//用于激活 (燃烧) 基于火焰的武器的功能
+    UseActionMusicalInstrument,//角色在走动时演奏乐器 (此物品) 
     UseActionHolster        ,//收起或拔出武器
     UseActionBandolier      ,//存储弹药并稍后用于重新装填
     UseActionRevealMap      ,//在大地图上显示特定地形
-    UseActionHeal           ,//治疗伤害，可能包括一些状态
+    UseActionHeal           ,//治疗伤害, 可能包括一些状态
     UseActionPlaceTrap      ,//放置陷阱
     UseActionSewAdvanced    ,//修改服装
     UseActionEffectOnConditions,//激活effect_on_conditions
     UseActionMessage        ,//显示消息文本
     UseActionSound          ,//发出声音
-    UseActionManualnoise    ,//发出声音，包括弹药检查并可能从玩家处消耗移动点数
+    UseActionManualnoise    ,//发出声音, 包括弹药检查并可能从玩家处消耗移动点数
     UseActionLearnSpell     ,//学习法术
 ];
 //#endregion
