@@ -1,15 +1,15 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
-import { CddaID, RequirePair } from "../GenericDefine";
+import { CddaID } from "../GenericDefine";
 import { AmmoID } from "./Ammo";
 import { GenericFlagID } from "./Generic";
-import { ItemID } from "./ItemIndex";
+import { ItemID, ItemTrait } from "./ItemIndex";
 
 
 /**弹夹ID */
 export type MagazineID = CddaID<"MAG">;
 
 /**弹夹 */
-export type MagazineTrait = RequirePair<"MAGAZINE",({
+export type MagazineTrait = ItemTrait<"MAGAZINE",({
     /**标记具有 MAGAZINE 的特征, 用于补全 */
     "//T": "MAGAZINE";
 }|{

@@ -1,11 +1,11 @@
 import { TechniqueID } from "Schema/Technique";
 import { AmmunitionTypeID } from "../AmmiunitionType";
-import { CddaID, Power, DescText, RequirePair, Float, Int, Ememory } from "../GenericDefine";
+import { CddaID, Power, DescText, Float, Int, Ememory } from "../GenericDefine";
 import { ToolQualityID } from "../ToolQuality";
 import { GenericFlagID } from "./Generic";
 import { GunModTrait } from "./GunMod";
 import { UseAction } from "Schema/ItemAction";
-import { ItemID } from "./ItemIndex";
+import { ItemID, ItemTrait } from "./ItemIndex";
 
 
 /**TOOLID */
@@ -15,7 +15,7 @@ export type ToolID = CddaID<"TOOL">;
 export type PortID = CddaID<"PORT">;
 
 /**工具 */
-export type ToolTrait = RequirePair<"TOOL",({
+export type ToolTrait = ItemTrait<"TOOL",({
     /**标记具有 TOOL 的特征, 用于补全 */
     "//T": "TOOL";
 }|{

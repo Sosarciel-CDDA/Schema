@@ -1,8 +1,9 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { Energy, CddaID, Length, Time, DescText, RequirePair } from "../GenericDefine";
+import { Energy, CddaID, Length, Time, DescText } from "../GenericDefine";
 import { SkillID } from "../Skill";
 import { FireMode, GunBase } from "./Gun";
+import { ItemTrait } from "./ItemIndex";
 import { MagazineID } from "./Magazine";
 
 
@@ -10,7 +11,7 @@ import { MagazineID } from "./Magazine";
 export type GunModID = CddaID<"GMOD">;
 
 /**枪械模组 */
-export type GunModTrait = RequirePair<"GUNMOD",({
+export type GunModTrait = ItemTrait<"GUNMOD",({
     /**标记具有 GUNMOD 的特征, 用于补全 */
     "//T": "GUNMOD";
 }|{

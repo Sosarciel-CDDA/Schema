@@ -1,8 +1,8 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { CddaID, Int, RangeDamage, RequirePair } from "../GenericDefine";
+import { CddaID, Int, RangeDamage } from "../GenericDefine";
 import { GenericFlagID } from "./Generic";
-import { ItemID } from "./ItemIndex";
+import { ItemID, ItemTrait } from "./ItemIndex";
 
 
 
@@ -10,7 +10,7 @@ import { ItemID } from "./ItemIndex";
 export type AmmoID = CddaID<"AMMO">;
 
 /**Ammo 弹药物品 */
-export type AmmoTrait = RequirePair<"AMMO",({
+export type AmmoTrait = ItemTrait<"AMMO",({
     /**标记具有 AMMO 的特征, 用于补全 */
     "//T": "AMMO";
 }|{

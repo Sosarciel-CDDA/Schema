@@ -1,15 +1,15 @@
 import { BodyPartID } from "Schema/BodyPart";
-import { CddaID, DescText, Float, Int, RequirePair } from "../GenericDefine"
+import { CddaID, DescText, Float, Int } from "../GenericDefine"
 import { MaterialID } from "../Material";
 import { GenericFlagID } from "./Generic"
-import { ItemID } from "./ItemIndex";
+import { ItemID, ItemTrait } from "./ItemIndex";
 
 
 /**ArmorID */
 export type ArmorID = CddaID<"ARMOR">;
 
 /**一件护甲 */
-export type ArmorTrait = RequirePair<"ARMOR",({
+export type ArmorTrait = ItemTrait<"ARMOR",({
     /**标记具有 ARMOR 的特征, 用于补全 */
     "//T": "ARMOR";
 }|{

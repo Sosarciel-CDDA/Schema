@@ -1,15 +1,26 @@
 import { FaultID } from "Schema/Fault";
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { RangeDamage, Energy, Volume, CddaID, Length, RequirePair } from "../GenericDefine";
+import { RangeDamage, Energy, Volume, CddaID, Length } from "../GenericDefine";
 import { SkillID } from "../Skill";
 import { GenericFlagID } from "./Generic";
 import { GunModID, GunModSlot } from "./GunMod";
+import { ItemTrait } from "./ItemIndex";
 
 
 /**GUNID */
 export type GunID = CddaID<"GUN">;
 
+
+/**枪械 */
+export type GunTrait = ItemTrait<"GUN",({
+    /**标记具有 GUN 的特征, 用于补全 */
+    "//T": "GUN";
+}|{
+    /**标记具有 GUN 的特征, 用于补全 */
+    "//GUN": true;
+})&{
+} & GunBase>;
 
 /**枪械基础 */
 export type GunBase = {
@@ -88,18 +99,6 @@ export type GunBase = {
     overheat_threshold?:undefined;
     hurt_part_when_fired?:undefined;
 };
-
-/**枪械 */
-export type GunTrait = RequirePair<"GUN",({
-    /**标记具有 GUN 的特征, 用于补全 */
-    "//T": "GUN";
-}|{
-    /**标记具有 GUN 的特征, 用于补全 */
-    "//GUN": true;
-})&{
-} & GunBase>;
-
-
 
 
 

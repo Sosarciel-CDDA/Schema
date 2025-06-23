@@ -1,15 +1,15 @@
 import { ParamsEoc } from "Schema/Eoc";
-import { CddaID, Int, RequirePair, Time, Weight } from "Schema/GenericDefine";
+import { CddaID, Int, Time, Weight } from "Schema/GenericDefine";
 import { GenericFlagID } from "./Generic";
 import { VitaminID } from "Schema/Vitamin";
 import { MaterialID } from "Schema/Material";
-import { ItemID } from "./ItemIndex";
+import { ItemID, ItemTrait } from "./ItemIndex";
 
 /**Comestible ID格式   */
 export type ComestibleID = CddaID<"COME">;
 
 /**Comestible 消耗品 */
-export type ComestibleTrait = RequirePair<"COMESTIBLE",({
+export type ComestibleTrait = ItemTrait<"COMESTIBLE",({
     /**标记具有 COMESTIBLE 的特征, 用于补全 */
     "//T": "COMESTIBLE";
 }|{
