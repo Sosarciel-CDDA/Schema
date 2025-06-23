@@ -6,6 +6,7 @@ import { FieldID } from "./Field";
 import { CddaID, DescText } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { MonsterID } from "./Monster";
+import { MutationID } from "./Mutation";
 import { SoundEffectID, SoundEffectVariantID } from "./SoundEffect";
 import { SpeciesID } from "./Species";
 
@@ -54,7 +55,7 @@ export type Spell = {
     /**法术flag */
     flags?: SpellFlag[];
     /**属于哪个职业的法术 */
-    spell_class?: string;
+    spell_class?: (MutationID);
     /**初始施法时间 */
     base_casting_time?: (NumObj);
     /**极限的施法时间 */
@@ -68,7 +69,7 @@ export type Spell = {
     /**每级的能量消耗调整 */
     energy_increment?: (NumObj);
     /**法术使用的能量池 默认魔力 */
-    energy_source?: SpellEnergySource;
+    energy_source?: (SpellEnergySource);
     /**施法材料ID */
     components?: ItemID[];
     /**法术难度 */
@@ -90,7 +91,7 @@ export type Spell = {
     /**法术的伤害类型  
      * 伤害法术必须定义伤害类型  
      */
-    damage_type?:DamageTypeID;
+    damage_type?:(DamageTypeID);
     /**初始法术aoe范围 */
     min_aoe?: (NumObj);
     /**极限法术aoe范围 */
@@ -134,7 +135,7 @@ export type Spell = {
     /**法术地块效果强度的浮动值 0.1时为 +-10% */
     field_intensity_variance?: (NumObj);
     /**法术产生的声音类型 */
-    sound_type?: SpellSoundType;
+    sound_type?: (SpellSoundType);
     /**发书产生的声音描述 起效于"You hear %s" 默认为 "an explosion" */
     sound_description?: (DescText);
     /**视为环境声音 */

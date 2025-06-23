@@ -377,7 +377,7 @@ export type LookLikeID = (ItemID|MonsterID|TerrainID);
 
 type MGR<T extends string> = ((`//${T}`)&{});
 /**成对出现的字段 */
-export type RequirePair<F extends string,T> = T;
+export type RequirePair<T> = T&{[K in keyof T]?:undefined};
 //(Partial<{[K in keyof T]?:T[K]|undefined|never}>|Partial<{[K in keyof T]:undefined}>);
 
 

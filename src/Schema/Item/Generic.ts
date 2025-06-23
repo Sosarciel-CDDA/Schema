@@ -165,7 +165,7 @@ export type GenericTrait = CopyfromVar<{
      */
     template_requirements?: (RequirementID);
     /**爆炸数据 */
-    explosion?: Explosion;
+    explosion?: (Explosion);
     /**定时激活 一旦定时器的持续时间过去, 就会"countdown_action"执行 至少1 */
     countdown_interval?: (Time);
     /**定时激活的动作 */

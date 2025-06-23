@@ -1273,7 +1273,7 @@ export type LevelSpellClass = TalkerVar<{
     /**法术类别
      * 将受影响的spell_class, 可以指定"all"而不是类别来影响角色知道的所有法术
      */
-    level_spell_class: (StrObj)|"all";
+    level_spell_class: (IDObj<MutationID|"all">);
     /**等级
      * @default 1
      * 将添加或移除的等级
