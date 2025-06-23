@@ -128,8 +128,6 @@ export type GenericTrait = CopyfromVar<{
     weapon_category?: WeaponCategoryID[];
     /**作为近战武器的伤害 */
     melee_damage?:(MeleeDamage);
-    /**使用效果 */
-    use_action?: UseAction|UseAction[];
     /**口袋数据 */
     pocket_data?: PocketData[];
     /**命中数据

@@ -41,6 +41,7 @@ export type AnyItemTrait = (RequirePair<"GENERIC",({
     /**标记具有 GENERIC 的特征, 用于补全 */
     "//GENERIC": true;
 })&{
+  flags:GenericTrait["flags"];
 }>|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait);
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
 
@@ -54,7 +55,7 @@ export type ItemID = CddaID<"ITEM">;
 export type Item = GenericTrait&AnyItemTrait;
 
 /**任何物品的Flag */
-//export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];
+export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];
 
 const a:Item = {
   type: "ITEM",

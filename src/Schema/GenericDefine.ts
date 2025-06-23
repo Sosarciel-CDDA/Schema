@@ -90,6 +90,8 @@ export type Power = Int|`${number} ${"mW"}`;
 export type Price = Int|`${number} ${"USD"|"cent"|"kUSD"}`;
 /**时间 无符号为秒 1turn=1s PERMANENT 为永久 */
 export type Time = Int|`${number} ${"s"|"m"|"h"|"d"}`|"PERMANENT";
+/**传输带宽 无符号为KB */
+export type Bandwidth = Int|`${number} ${"KB"|"GB"|"GB"|"TB"}`;
 /**可用的颜色列表 */
 export const ColorList = [
     "black"         ,

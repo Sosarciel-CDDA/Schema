@@ -1,12 +1,18 @@
+import { TechniqueID } from "Schema/Technique";
 import { AmmunitionTypeID } from "../AmmiunitionType";
-import { CddaID, Power, DescText, RequirePair } from "../GenericDefine";
+import { CddaID, Power, DescText, RequirePair, Float, Int, Bandwidth } from "../GenericDefine";
 import { ToolQualityID } from "../ToolQuality";
 import { GenericFlagID } from "./Generic";
 import { GunModTrait } from "./GunMod";
+import { UseAction } from "Schema/ItemAction";
+import { ItemID } from "./ItemIndex";
 
 
 /**TOOLID */
 export type ToolID = CddaID<"TOOL">;
+
+/**电子设备接口类型ID */
+export type PortID = CddaID<"PORT">;
 
 /**工具 */
 export type ToolTrait = RequirePair<"TOOL",({
@@ -16,13 +22,17 @@ export type ToolTrait = RequirePair<"TOOL",({
     /**标记具有 TOOL 的特征, 用于补全 */
     "//TOOL": true;
 })&{
+    /**工具使用的战斗技巧 */
+    techniques?: TechniqueID[];
     /**随着时间的推移消耗的费用, 不推荐使用 power_draw */
-    turns_per_charge?: number;
+    turns_per_charge?: Int;
     /**当与 UPS 结合使用时, 该项目将燃烧燃料以获得给定的能量值,   
      * 以产生具有所提供效率的能量.   
      * 需要 > 0 才能正常工作  
      */
-    fuel_efficiency?: number;
+    fuel_efficiency?: Float;
+    /**使用效果 */
+    use_action?: UseAction|UseAction[];
     /**固有的工具品质, 如锤击, 锯切, 拧紧 (参见 tool_qualities.json) */
     quality: ItemToolQuality[];
     /**如果工具至少还剩 charges_per_use 费用, 则可用的工具品质 */
@@ -32,26 +42,34 @@ export type ToolTrait = RequirePair<"TOOL",({
     /**此工具对配方中所需的每次充电使用 charge_factor 费用  
      * 适用于具有 sub 字段但使用与原始工具不同的弹药的工具  
      */
-    charge_factor?: number;
+    charge_factor?: Int;
     /**每次使用工具消耗的费用 */
-    charges_per_use?: number;
+    charges_per_use?: Int;
     /**生成时充能 */
-    initial_charges?: number;
+    initial_charges?: Int;
     /**最大充能 */
-    max_charges?: number;
-    /**生成时随机化充能.   
-     * [10, 15, 25] 此示例有 50% 的机会发生 rng(10, 15) 费用,   
-     * 也有 50% 的机会发生 rng(15, 25)  
-     */
-    rand_charges?: number[];
+    max_charges?: Int;
+    ///**生成时随机化充能.   
+    // * [10, 15, 25] 此示例有 50% 的机会发生 rng(10, 15) 费用,   
+    // * 也有 50% 的机会发生 rng(15, 25)  
+    // */
+    //rand_charges?: Int[];
     /**每秒电能消耗 */
-    power_draw?: Power;
+    power_draw?: (Power);
     /**充能消耗后转化为物品 */
-    revert_to?: (ToolID);
+    revert_to?: (ItemID);
     /**revert_to 触发时产生的信息 */
     revert_msg?: (DescText);
     /**该工具与其他工具具有相同的功能 */
     sub?: (ToolID);
+    /**此电子设备支持的每秒电子传输速率 */
+    etransfer_rate?: (Bandwidth);
+    /**定义快速文件传输的连接类型字符串
+     * 注意：如果希望用于一般连接，请创建更通用的系统，这仅适用于处理文件的电子设备
+     */
+    e_port?: (PortID);
+    /**定义禁止连接类型的字符串数组 */
+    e_port_banned?: PortID[];
     /**变体 */
     variables?: {
         /**该工具是可折叠车辆, 可以绕过默认的可折叠规则;  这是将展开的车辆的名称 */
@@ -63,8 +81,8 @@ export type ToolTrait = RequirePair<"TOOL",({
     };
     /**工具的Flag */
     flags?:ToolFlagID[];
-    /**同时作为枪械模组的数据 */
-    gunmod_data?: Omit<GunModTrait,"id"|"type">;
+    ///**同时作为枪械模组的数据 */
+    //gunmod_data?: Omit<GunModTrait,"id"|"type">;
 }>;
 
 /**物品的工具品质 [调整值类型, 品质等级] */
