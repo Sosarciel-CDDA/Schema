@@ -10,24 +10,24 @@ export type MonsterFaction = {
     type: "MONSTER_FACTION";
     /**怪物阵营唯一ID */
     name: (MonsterFactionID);
-    /**可选基础阵营. 与其他阵营的关系继承自它, 
-     * 其他阵营对此阵营的关系也会检查此基础阵营
+    /**可选基础阵营. 与其他阵营的关系继承自它,   
+     * 其他阵营对此阵营的关系也会检查此基础阵营  
      */
     base_faction?: (MonsterFactionID);
-    /**当愤怒时敌对, 否则中立. 对所有其他阵营的默认态度
-     * @example ["slime"] // 对粘液怪根据情绪决定敌对与否
+    /**当愤怒时敌对, 否则中立. 对所有其他阵营的默认态度  
+     * @example ["slime"] // 对粘液怪根据情绪决定敌对与否  
      */
     by_mood?: (MonsterFactionID)[];
-    /**始终对此阵营保持中立
-     * @example ["nether"] // 对地狱生物保持中立
+    /**始终对此阵营保持中立  
+     * @example ["nether"] // 对地狱生物保持中立  
      */
     neutral?: (MonsterFactionID)[];
-    /**始终对此阵营保持友好. 默认情况下, 阵营对自己是友好的
-     * @example ["slime"] // 对粘液怪保持友好
+    /**始终对此阵营保持友好. 默认情况下, 阵营对自己是友好的  
+     * @example ["slime"] // 对粘液怪保持友好  
      */
     friendly?: (MonsterFactionID)[];
-    /**始终对此阵营保持敌对. 如果有此阵营的怪物可用, 将优先攻击它们
-     * @example ["fungus"] // 对真菌生物保持敌对
+    /**始终对此阵营保持敌对. 如果有此阵营的怪物可用, 将优先攻击它们  
+     * @example ["fungus"] // 对真菌生物保持敌对  
      */
     hate?: (MonsterFactionID)[];
 };

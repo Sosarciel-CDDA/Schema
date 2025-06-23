@@ -14,9 +14,9 @@ export type Snippet = {
     type: "snippet";
     /**片段的类别ID */
     category: (SnippetCategoryID);
-    /** 片段文本内容, 可以是两种格式: 
-     * 1. 带ID和元数据的复杂格式
-     * 2. 纯文本数组的简单格式
+    /** 片段文本内容, 可以是两种格式:   
+     * 1. 带ID和元数据的复杂格式  
+     * 2. 纯文本数组的简单格式  
      */
     text: SnippetText[] | string[];
 };
@@ -31,9 +31,9 @@ type SnippetText = {
     text: (DescText);
     /**检查此片段时将调用的effect_on_condition效果 */
     effect_on_examine?: (ParamsEoc);
-    /**此特定片段的权重
-     * 在此组中获得此片段的概率为 weight/total_weight
-     * @example 10 // 在此组中概率为 10/13 ≈ 76%
+    /**此特定片段的权重  
+     * 在此组中获得此片段的概率为 weight/total_weight  
+     * @example 10 // 在此组中概率为 10/13 ≈ 76%  
      */
     weight?: Int;
 };

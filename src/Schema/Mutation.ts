@@ -51,7 +51,7 @@ export type Mutation = {
     /**是一个开始可选的变异 */
     starting_trait?: boolean,
     /**内置护甲  
-     * 这个物品永远穿在你的角色身上, 直到你摆脱这个突变
+     * 这个物品永远穿在你的角色身上, 直到你摆脱这个突变  
      */
     integrated_armor?: ArmorID[];
     /**可否净化 */
@@ -70,49 +70,49 @@ export type Mutation = {
     remove_rigid?: BodyPartID[];
     /**如果有"restricts_gear"列表, 则设置该位置是否仍然允许由软材料制成的物品  
      * 只有其中一种类型需要是软的才能被视为软  
-     * @default false
+     * @default false  
      */
     allow_soft_gear?: boolean;
     /**如果为 true, 则在突变时会销毁"restricts_gear"位置中的齿轮  
-     * @default false
+     * @default false  
      */
     destroys_gear?: boolean;
     /**变异带来的累赘度 */
     encumbrance_always?: [BodyPartID,number][];
     /**在对应肢体上穿戴非 OVERSIZE 装备时, 变异带来的额外累赘度 */
     encumbrance_covered?: [BodyPartID,number][];
-    /**如果身体部位有由突变引起的负担, 则将该负担惩罚乘以该乘数. 
-     * 注意: 不影响衣物负担. 
+    /**如果身体部位有由突变引起的负担, 则将该负担惩罚乘以该乘数.   
+     * 注意: 不影响衣物负担.   
      */
     encumbrance_multiplier_always?: Partial<Record<BodyPartID,number>>;
     /**从玩家的可见范围中减去的百分比, 上限为60. 负值有效, 但由于视觉范围的上限方式, 效果不是很明显 */
     stealth_modifier?: number;
     /**当设置时, 突变是玩家需要激活的活动突变  
-     * @default false
+     * @default false  
      */
     active?: boolean;
     /**当为true时, 这个'active'突变开始活动 (需要'active')  
-     * @default false
+     * @default false  
      */
     starts_active?: boolean;
     /**激活此突变的成本. 需要将饥饿, 口渴或疲劳值设置为true  
-     * @default 0
+     * @default 0  
      */
     cost?: number;
     /**设置需要经过多少时间单位 (回合 * 当前玩家速度)才能再次支付成本. 需要大于一才有任何效果  
-     * @default 0
+     * @default 0  
      */
     time?: number;
     /**如果为true, 激活突变消耗`cost` kcal.  
-     * @default false
+     * @default false  
      */
     kcal?: boolean;
     /**如果为true, 激活突变增加口渴成本  
-     * @default false
+     * @default false  
      */
     thirst?: boolean;
     /**如果为true, 激活突变增加疲劳成本  
-     * @default false
+     * @default false  
      */
     fatigue?: boolean;
     /**突变激活在你的角色上应用此标志 */
@@ -160,65 +160,65 @@ export type Mutation = {
     /**胃大小调节剂, 增加您一次可以消耗的食物量 */
     stomach_size_multiplier?: number;
     /**影响你气味强度的浮点数  
-     * @default 1.0
+     * @default 1.0  
      */
     scent_modifier?: number;
     /**影响你当前气味倾向的目标气味的整数  
-     * @default 500
+     * @default 500  
      */
     scent_intensity?: number;
     /**添加到你的目标气味值的整数  
-     * @default 0
+     * @default 0  
      */
     scent_mask?: number;
     /**你散发出的气味类型, 如在scent_types.json中定义  
-     * @default ""
+     * @default ""  
      */
     scent_type?: (ScentTypeID);
     /**吃或喝的时间乘以这个数 */
     consume_time_modifier?: number;
     /**每个bmi单位超过character_weight_category::normal, 增加的hp_max数量  
-     * @default 0.0
+     * @default 0.0  
      */
     fat_to_max_hp?: number;
     /**你的健康可以改变得有多快. 如果设置为0, 它永远不会改变  
-     * @default 1.0
+     * @default 1.0  
      */
     healthy_rate?: number;
     /**水对你造成多少伤害, 负值代表治疗  
-     * @default 0
+     * @default 0  
      */
     weakness_to_water?: number;
     /**忽视你的物种列表  
-     * @default []
+     * @default []  
      */
     ignored_by?: string[];
     /**被你激怒的物种列表以及多少, 负值代表平静  
-     * @default []
+     * @default []  
      */
     anger_relations?: [string, number][];
     /**可食用材料列表  
-     * @default []
+     * @default []  
      */
     can_only_eat?: MaterialID[];
     /**你受限于的`MED`列表, 包括变异剂, 血清, 阿司匹林, 绷带等  
-     * @default []
+     * @default []  
      */
     can_only_heal_with?: ItemID[];
     /**只对你有效的`MED`列表. 查看`CANT_HEAL_EVERYONE`标志项  
-     * @default []
+     * @default []  
      */
     can_heal_with?: ItemID[];
     /**你可以变异成的类别列表  
-     * @default []
+     * @default []  
      */
     allowed_category?: MutationCategory[];
     /**不能接收CBMs的身体部位列表  
-     * @default []
+     * @default []  
      */
     no_cbm_on_bp?: BodyPartID[];
     /**发光身体部位列表以及发光强度作为浮点数  
-     * @default []
+     * @default []  
      */
     lumination?: [BodyPartID, number][];
     /**额外代谢率乘数 (1.0倍, -0.5减半) */

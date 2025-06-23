@@ -32,8 +32,8 @@ export type GenericTrait = CopyfromVar<{
     conditional_names?: {
         /**条件类型 */
         type: (ItemNameConditionType);
-        /**要检查的条件
-         * 依照type应用不同值
+        /**要检查的条件  
+         * 依照type应用不同值  
          * COMPONENT_ID_SUBSTRING  //递归搜索该物品的所有组件 ID, 只要某一项组件 ID 包含条件字符串 (区分大小写) 即可匹配. 例如条件 mutant 能匹配到 mutant_meat. 
          * COMPONENT_ID            //与 COMPONENT_ID_SUBSTRING 类似, 但要求组件 ID 精确匹配. 
          * FLAG                    //检查物品是否具有指定标志 (完全匹配) . 
@@ -69,24 +69,24 @@ export type GenericTrait = CopyfromVar<{
     volume: (Volume);
     /**当物品集成到另一个物品中时添加到基础物品的体积  
      * 例如枪械模组集成到枪中 体积会添加到基础物品上.   
-     * 默认值与 volume 相同
+     * 默认值与 volume 相同  
      */
     integral_volume?: (Volume);
     /**当物品集成到另一个物品中时  
      * 例如枪械模组集成到枪中 重量会添加到基础物品上.   
-     * 默认值与 weight 相同
+     * 默认值与 weight 相同  
      */
     integral_weight?: (Weight);
     /**最长物品尺寸的长度  
      * 默认为体积的立方根  
      */
     longest_side?: (Length);
-    /**是否为刚性
-     * 对于非刚性物品体积 (以及磨损物品负担)与内容成比例增加
+    /**是否为刚性  
+     * 对于非刚性物品体积 (以及磨损物品负担)与内容成比例增加  
      */
     rigid?: boolean;
-    /**如果是容器或车辆部件, 它应为内容物提供多少绝缘程度
-     * @default 1
+    /**如果是容器或车辆部件, 它应为内容物提供多少绝缘程度  
+     * @default 1  
      */
     insulation?:number;
     /**物品价格 */
@@ -99,18 +99,18 @@ export type GenericTrait = CopyfromVar<{
      * @default 1.0  
      */
     degradation_multiplier?: Float;
-    /**太阳能包的太阳能转换效率
-     * 需要SOLARPACK_ON来发电
-     * @default 0
+    /**太阳能包的太阳能转换效率  
+     * 需要SOLARPACK_ON来发电  
+     * @default 0  
      */
     solar_efficiency?: number;
-    /**此物品是这个怪物的尸体(因此具有这个怪物的重量和体积)
-     * 并会复活成这个怪物
-     * 需要COPRSE标志
+    /**此物品是这个怪物的尸体(因此具有这个怪物的重量和体积)  
+     * 并会复活成这个怪物  
+     * 需要COPRSE标志  
      */
     source_monster?: (MonsterID);
-    /**当你投掷此物品时会造成的伤害; 
-     * 缺少此字段会回退使用近战伤害, 包括玩家力量对近战攻击的加成
+    /**当你投掷此物品时会造成的伤害;   
+     * 缺少此字段会回退使用近战伤害, 包括玩家力量对近战攻击的加成  
      */
     thrown_damage?: {
         damage_type: DamageTypeID;
@@ -130,19 +130,19 @@ export type GenericTrait = CopyfromVar<{
     melee_damage?:(MeleeDamage);
     /**口袋数据 */
     pocket_data?: PocketData[];
-    /**命中数据
-     * 如果物品不适合用作近战武器则省略
-     * 参见[GAME_BALANCE.md](/doc/design-balance-lore/GAME_BALANCE.md#to-hit-value)获取各个值的详细说明
+    /**命中数据  
+     * 如果物品不适合用作近战武器则省略  
+     * 参见[GAME_BALANCE.md](/doc/design-balance-lore/GAME_BALANCE.md#to-hit-value)获取各个值的详细说明  
      */
     to_hit?: ToHit;
     /**超过该体积弹夹开始从物品中突出并增加额外的体积 */
     magazine_well?: (Volume);
-    /**每种弹药类型(如果有的话)可以用于重新装填此物品的弹匣类型
-     * @example
-     * [
-     *  [ "9mm", [ "glockmag" ] ]
-     *  [ "45", [ "m1911mag", "m1911bigmag" ] ],
-     * ]
+    /**每种弹药类型(如果有的话)可以用于重新装填此物品的弹匣类型  
+     * @example  
+     * [  
+     *  [ "9mm", [ "glockmag" ] ]  
+     *  [ "45", [ "m1911mag", "m1911bigmag" ] ],  
+     * ]  
      */
     magazines?: GenericMagazines[];
     /**如果给定, 物品可以在水/风磨中研磨 */
@@ -154,14 +154,14 @@ export type GenericTrait = CopyfromVar<{
     };
     /**物品着火时是否应该爆炸 */
     explode_in_fire?: boolean;
-    /**此物品是纳米制造机配方, 并指向可能包含的物品的物品组; 
-     * 需要nanofab_template_group
+    /**此物品是纳米制造机配方, 并指向可能包含的物品的物品组;   
+     * 需要nanofab_template_group  
      */
     nanofab_template_group?: string;
-    /**制作任何这些模板所需的`requirement`; 
-     * 用作"每250毫升物品体积一个完整需求"
-     * 体积750毫升的物品需要三倍的`requirement`
-     * 2L的物品需要八倍的`requirement`
+    /**制作任何这些模板所需的`requirement`;   
+     * 用作"每250毫升物品体积一个完整需求"  
+     * 体积750毫升的物品需要三倍的`requirement`  
+     * 2L的物品需要八倍的`requirement`  
      */
     template_requirements?: (RequirementID);
     /**爆炸数据 */
@@ -196,9 +196,9 @@ export type GenericTrait = CopyfromVar<{
         symbol?: (Char);
         /**物品符号的替换颜色. 如果未指定, 则不会进行任何更改.  */
         color?: (Color)
-        /**当此物品生成时, 若没有明确的变体, 则此变体被选中的相对概率. 
-         * 如果为 0, 则不会选中此变体. 
-         * @default 1
+        /**当此物品生成时, 若没有明确的变体, 则此变体被选中的相对概率.   
+         * 如果为 0, 则不会选中此变体.   
+         * @default 1  
          */
         weight?: Int;
         /**此描述是否应仅附加到基础物品描述, 而不是完全覆盖它 */
@@ -206,8 +206,8 @@ export type GenericTrait = CopyfromVar<{
         /**允许使用代码片段标签, 请参阅 #Snippets */
         expand_snippets?: boolean;
     }[];
-    /**如果物品(例如防毒面具)需要过滤器才能操作并且安装了此过滤器, 则对环境效果的抵抗力
-     * 与使用动作'GASMASK'和'DIVE_TANK'结合使用
+    /**如果物品(例如防毒面具)需要过滤器才能操作并且安装了此过滤器, 则对环境效果的抵抗力  
+     * 与使用动作'GASMASK'和'DIVE_TANK'结合使用  
      */
     environmental_protection_with_filter?: number;
 }>;
@@ -362,14 +362,14 @@ export type GenericFlagID = DefineGenericFlagID|WeaponFlagID|TechnicalFlagID|Cus
 export type ItemMaterial = MaterialID|{
     /**材质类型 */
     type:(MaterialID);
-    /**材质占比
-     * @default 1
-     * @example
-     * [
-     *  { "type": "cotton", "portion": 9 },
-     *  { "type": "plastic" }
-     * ]
-     * //在这种情况下, 物品是90%棉花和10%塑料
+    /**材质占比  
+     * @default 1  
+     * @example  
+     * [  
+     *  { "type": "cotton", "portion": 9 },  
+     *  { "type": "plastic" }  
+     * ]  
+     * //在这种情况下, 物品是90%棉花和10%塑料  
      */
     portion?:number;
 };

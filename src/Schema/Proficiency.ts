@@ -18,8 +18,8 @@ export type Proficiency = {
     description: (DescText);
     /**是否可以通过游戏中的正常方式学习该熟练度 */
     can_learn: boolean;
-    /**是否可以在角色之间教授该熟练度
-     * @default true
+    /**是否可以在角色之间教授该熟练度  
+     * @default true  
      */
     teachable?: boolean;
     /**制作配方的时间乘数 */

@@ -24,17 +24,17 @@ export type Eoc = {
     eoc_type?:"RECURRING";
     /**循环间隔 */
     recurrence?: (Time);
-    /**deactivate_condition 是否仅在玩家上运行
-     * 如果为 True, 此循环 EOC 将在玩家和全局队列中的每个 NPC 上运行. 
-     * 停用条件将根据角色设定生效. 
-     * 如果为 False, 则角色和每个角色将拥有各自的副本和各自的停用列表. 
-     * @default false
+    /**deactivate_condition 是否仅在玩家上运行  
+     * 如果为 True, 此循环 EOC 将在玩家和全局队列中的每个 NPC 上运行.   
+     * 停用条件将根据角色设定生效.   
+     * 如果为 False, 则角色和每个角色将拥有各自的副本和各自的停用列表.   
+     * @default false  
      */
     global?:boolean;
-    /**是否可在NPC上运行 global生效时才可用
-     * 如果为False, 则 EOC 将仅针对角色运行
-     * 如果为True, 则 EOC 将针对角色和所有 NPC 运行
-     * @default false
+    /**是否可在NPC上运行 global生效时才可用  
+     * 如果为False, 则 EOC 将仅针对角色运行  
+     * 如果为True, 则 EOC 将针对角色和所有 NPC 运行  
+     * @default false  
      */
     run_for_npcs?:boolean;
     /**关闭条件  

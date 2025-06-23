@@ -11,8 +11,8 @@ export type WeakpointSet = {
     type: "weakpoint_set";
     /**弱点集合唯一ID */
     id: WeakpointSetID;
-    /**弱点列表
-     * 包含的所有弱点定义
+    /**弱点列表  
+     * 包含的所有弱点定义  
      */
     weakpoints: Weakpoint[];
 }
@@ -23,7 +23,7 @@ export type WeakpointID = CddaID<"WP">;
 /**怪物保护中的弱点 */
 export type Weakpoint = {
     /**弱点的 id  
-     * 如果未指定, 默认为名称
+     * 如果未指定, 默认为名称  
      */
     id: (WeakpointID);
     /**弱点的名称  
@@ -102,12 +102,12 @@ export type WeakpointEffect = {
     message: string;
 }
 
-/**怪物的弱点族
- * 字符串时为 proficiency
+/**怪物的弱点族  
+ * 字符串时为 proficiency  
  */
 export type WeakpointFamilie = {
-    /**族id
-     * @default "proficiency"
+    /**族id  
+     * @default "proficiency"  
      */
     id?: string;
     /**族对应的专长ID */

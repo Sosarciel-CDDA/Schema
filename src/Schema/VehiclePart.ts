@@ -32,16 +32,16 @@ export type VehiclePart = CopyfromVar<{
     broken_color: Color;
     /**可选. 确定部件是否可以安装在给定瓦片上的检查之一. 如果任何现有部件占用同一位置, 则不能安装部件.  */
     location?: "fuel_source";
-    /**当此部件击中某物时, 所造成的伤害乘数, 以百分比表示. 越高 = 对被击中的生物造成更多的伤害
-     * @default 100
+    /**当此部件击中某物时, 所造成的伤害乘数, 以百分比表示. 越高 = 对被击中的生物造成更多的伤害  
+     * @default 100  
      */
     damage_modifier?: number;
     /**部件在损坏前可以承受多少伤害 */
     durability: number;
     /**安装此车辆部件时的描述 */
     description: (DescText);
-    /**部件消耗的燃料/弹药类型, 作为物品 id
-     * @default "NULL"
+    /**部件消耗的燃料/弹药类型, 作为物品 id  
+     * @default "NULL"  
      */
     fuel_type?: (AmmunitionTypeID);
     /**部件的电力使用量, 以瓦特为单位. 负值表示消耗电力, 正值表示产生电力.   
@@ -101,24 +101,24 @@ export type VehiclePart = CopyfromVar<{
     transform_terrain?: {
         /** 可以转换的地形的标志列表 */
         pre_flags: FlagID[];
-        /**结果地形
-         * @default "t_null"
+        /**结果地形  
+         * @default "t_null"  
          */
         post_terrain?: (TerrainID);
-        /**结果家具
-         * @default "f_null"
+        /**结果家具  
+         * @default "f_null"  
          */
         post_furniture?: (FurnitureID);
-        /**结果地块效果
-         * @default "fd_null"
+        /**结果地块效果  
+         * @default "fd_null"  
          */
         post_field?: (FieldID);
-        /**地块效果的强度
-         * @default 0
+        /**地块效果的强度  
+         * @default 0  
          */
         post_field_intensity?: Int;
-        /**地块效果的持续时间
-         * @default 0
+        /**地块效果的持续时间  
+         * @default 0  
          */
         post_field_age?: (Time);
     };

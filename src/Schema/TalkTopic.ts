@@ -57,7 +57,7 @@ export type Resp = (RespShot|RespLong)&RespBase;
 
 /**回复的基本字段 */
 type RespBase = {
-    /**玩家的文本回复/选项显示文本
+    /**玩家的文本回复/选项显示文本  
      * 目前, 您可以添加 & 作为对话中的第一个字符,   
      * 这会删除输出文本周围的引号, 表示显示文本的描述性性质,   
      * 使用 \" 转义双引号来指示实际对话的开始.   
@@ -87,7 +87,7 @@ type RespBase = {
     /**显示此回复的条件 */
     condition?: (BoolObj);
     /**回复的条件不满足时仍然显示选项 但采用此字段而非text  
-     * 玩家的文本回复/选项显示文本
+     * 玩家的文本回复/选项显示文本  
      */
     failure_explanation?: (DescText);
     /**回复的条件不满足时 选择此选项将跳转到的对话 */
@@ -185,7 +185,7 @@ export type DefineTopic = typeof DefineTopicList[number];
 
 /**动态回复构造器  
  * 如果是数组 则为随机选择其中一条回复  
- * 以字符 & 开头的对话将会删除引号
+ * 以字符 & 开头的对话将会删除引号  
  */
 export type DynamicLine = DynmaicLineOpera[number][]|DynmaicLineOpera[number];
 

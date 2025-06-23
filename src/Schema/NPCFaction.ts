@@ -28,8 +28,8 @@ type PriceRule = {
     group?: (ItemGroupID);
     /**价格乘数, 适用于买卖双方 */
     premium?: Float;
-    /**仅当NPC出售给玩家时使用的乘数
-     * @default 1
+    /**仅当NPC出售给玩家时使用的乘数  
+     * @default 1  
      */
     markup?: Float;
     /**替换物品的末日价格 */
@@ -77,72 +77,72 @@ export type NPCFaction = {
     id: (NPCFactionID);
     /**阵营常用名称 */
     name: (DescText);
-    /**阵营对玩家的初始好感度
-     * 如果低于-10, 阵营成员会变得敌对
+    /**阵营对玩家的初始好感度  
+     * 如果低于-10, 阵营成员会变得敌对  
      */
     likes_u: Int;
-    /**阵营对玩家的初始尊重度
-     * 目前没有实际效果, 未来可能移除
+    /**阵营对玩家的初始尊重度  
+     * 目前没有实际效果, 未来可能移除  
      */
     respects_u: Int;
-    /**阵营对玩家的初始信任度
-     * 决定NPC交易时可用的物品组
+    /**阵营对玩家的初始信任度  
+     * 决定NPC交易时可用的物品组  
      */
     trusts_u: Int;
-    /**玩家是否已接触过该阵营成员
-     * 未知阵营不会显示在阵营菜单中
+    /**玩家是否已接触过该阵营成员  
+     * 未知阵营不会显示在阵营菜单中  
      */
     known_by_u: boolean;
-    /**阵营成员的大致数量
-     * 目前没有实际效果
+    /**阵营成员的大致数量  
+     * 目前没有实际效果  
      */
     size: Int;
-    /**阵营力量的大致评估
-     * 目前没有实际效果
+    /**阵营力量的大致评估  
+     * 目前没有实际效果  
      */
     power: Int;
-    /**阵营的总体食物供应
-     * @example [[0, { "calories": 115200, "vitamins": { "iron": 800, "calcium": 800, "vitC": 600 } }]]
+    /**阵营的总体食物供应  
+     * @example [[0, { "calories": 115200, "vitamins": { "iron": 800, "calcium": 800, "vitC": 600 } }]]  
      */
     fac_food_supply: [[Int, FoodSupply]];
-    /**控制角色从食物储备中进食是否会减少食物量
-     * @default false
+    /**控制角色从食物储备中进食是否会减少食物量  
+     * @default false  
      */
     consumes_food?: boolean;
-    /**阵营拥有的末日货币数量(分)
-     * 作为NPC补充物品的上限
+    /**阵营拥有的末日货币数量(分)  
+     * 作为NPC补充物品的上限  
      */
     wealth: Int;
-    /**阵营偏好货币的物品ID
-     * 阵营商人会以100%价值交易该货币
+    /**阵营偏好货币的物品ID  
+     * 阵营商人会以100%价值交易该货币  
      */
     currency: (ItemID);
-    /**价格规则数组
-     * 允许为物品/类别/组定义溢价, 加价, 价格和/或固定调整
+    /**价格规则数组  
+     * 允许为物品/类别/组定义溢价, 加价, 价格和/或固定调整  
      */
     price_rules?: PriceRule[];
-    /**阵营关系字典
-     * 描述该阵营如何看待其他阵营
+    /**阵营关系字典  
+     * 描述该阵营如何看待其他阵营  
      */
     relations: Record<NPCFactionID, FactionRelationFlags>;
-    /**该阵营所属的怪物阵营名称
-     * @default "human"
+    /**该阵营所属的怪物阵营名称  
+     * @default "human"  
      */
     mon_faction?: (MonsterFactionID);
-    /**这是一个用于动态生成NPC的原型/微型阵营模板
-     * @default false
+    /**这是一个用于动态生成NPC的原型/微型阵营模板  
+     * @default false  
      */
     lone_wolf_faction?: boolean;
-    /**该阵营营地是否只认领特定地图瓦片
-     * @default false
+    /**该阵营营地是否只认领特定地图瓦片  
+     * @default false  
      */
     limited_area_claim?: boolean;
-    /**阵营描述
-     * 在阵营菜单中显示的玩家描述
+    /**阵营描述  
+     * 在阵营菜单中显示的玩家描述  
      */
     description?: (DescText);
-    /**结局数组
-     * 定义阵营不同力量水平下的结局文本
+    /**结局数组  
+     * 定义阵营不同力量水平下的结局文本  
      */
     epilogues?: FactionEpilogue[];
 };

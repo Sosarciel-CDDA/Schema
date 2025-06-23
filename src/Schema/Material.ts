@@ -22,29 +22,29 @@ export type Material = {
     density: number;
     /**材料未冷冻时的比热 (J/(g K))  
      * 默认 4.186 - 水  
-     * @default 4.186
+     * @default 4.186  
     */
     specific_heat_liquid: Float;
     /**材料冷冻时的比热 (J/(g K))  
-     * 默认 2.108 - 水
-     * @default 2.108
+     * 默认 2.108 - 水  
+     * @default 2.108  
      */
     specific_heat_solid: Float;
-    /**材料的熔化潜热 (J/g)
-     * @default 334
+    /**材料的熔化潜热 (J/g)  
+     * @default 334  
      */
     latent_heat: number;
     /**材料的凝固点  
      * 该材料的凝固点 (C). 默认 0 C (32 F).  
-     * @default 0
+     * @default 0  
      */
     freezing_point: number;
-    /**可食用
-     * @default false
+    /**可食用  
+     * @default false  
      */
     edible?:boolean;
-    /**会腐烂
-     * @default false
+    /**会腐烂  
+     * @default false  
      */
     rotting?: boolean;
     /**作为护甲时每1厚度的伤害抗性 */
@@ -90,7 +90,7 @@ export type MateBurnData ={
     fuel: number;
     /**决定该材质燃烧时产生多少烟雾 */
     smoke: number;
-    /**如果非零且低于物品体积, 则按 volume_per_turn / 回合 燃烧体积
+    /**如果非零且低于物品体积, 则按 volume_per_turn / 回合 燃烧体积  
      */
     volume_per_turn?: (Volume);
     /**决定火灾将由该材料制成的物品转化为燃料的速度.   

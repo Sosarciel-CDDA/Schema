@@ -63,8 +63,8 @@ export type ToolTrait = ItemTrait<"TOOL",({
     sub?: (ToolID);
     /**此电子设备支持的每秒电子传输速率 */
     etransfer_rate?: (Ememory);
-    /**定义快速文件传输的连接类型字符串
-     * 注意: 如果希望用于一般连接, 请创建更通用的系统, 这仅适用于处理文件的电子设备
+    /**定义快速文件传输的连接类型字符串  
+     * 注意: 如果希望用于一般连接, 请创建更通用的系统, 这仅适用于处理文件的电子设备  
      */
     e_port?: (PortID);
     /**定义禁止连接类型的字符串数组 */
@@ -74,7 +74,7 @@ export type ToolTrait = ItemTrait<"TOOL",({
         /**该工具是可折叠车辆, 可以绕过默认的可折叠规则;  这是将展开的车辆的名称 */
         vehicle_name?: "Wheelchair";
         /**这是这辆车拥有的部件 - 它使用自己的语法,  
-         * 与 `"type": "vehicle"` 不同, 所以最好阅读 `unfoldable.json` 中的示例
+         * 与 `"type": "vehicle"` 不同, 所以最好阅读 `unfoldable.json` 中的示例  
          */
         folded_parts?: "folded_parts_syntax";
     };

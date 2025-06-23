@@ -12,7 +12,7 @@ export type ActivityType = {
 	verb: DescText;
 	/** 活动的活动级别, 更难的活动会随着时间消耗更多的卡路里.   
      * 有效值为, 从最容易到最需要身体的:   
-     * NO_EXERCISE, LIGHT_EXERCISE, MODERATE_EXERCISE, BRISK_EXERCISE, ACTIVE_EXERCISE, EXTRA_EXERCISE 
+     * NO_EXERCISE, LIGHT_EXERCISE, MODERATE_EXERCISE, BRISK_EXERCISE, ACTIVE_EXERCISE, EXTRA_EXERCISE   
      */
 	activity_level: (ActivityLevel);
 	/** 是否可以中断. 如果为false, 则会抑制与例如疼痛或看到怪物相关的弹出窗口 */

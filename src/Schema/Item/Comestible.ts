@@ -34,8 +34,8 @@ export type ComestibleTrait = ItemTrait<"COMESTIBLE",({
     addiction_potential?: number;
     /**成瘾类型 (如果没有给出潜力, 将使用"addiction_potential"字段来确定该成瘾的强度)  */
     addiction_type?: ["crack", { addiction: "cocaine"; potential: number }];
-    /**在过去的48小时内, 每消费一个, 乐趣就减少这个数值. 除非食品也有"NEGATIVE_MONOTONY_OK"标志, 否则不能将乐趣降低到0以下
-     * @default 2
+    /**在过去的48小时内, 每消费一个, 乐趣就减少这个数值. 除非食品也有"NEGATIVE_MONOTONY_OK"标志, 否则不能将乐趣降低到0以下  
+     * @default 2  
      */
     monotony_penalty?: number;
     /**满足的饥饿感 (以千卡计)  */

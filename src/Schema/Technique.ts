@@ -142,21 +142,21 @@ export type TechniqueEffect = {
 
 /**技巧加成定义 */
 export type TechniqueBonus = {
-    /**影响的属性
-     * - hit: 命中
-     * - dodge: 闪避
-     * - block: 格挡
-     * - speed: 速度(技巧中无效)
-     * - movecost: 移动消耗
-     * - damage: 伤害
-     * - armor: 护甲
-     * - arpen: 护甲穿透
+    /**影响的属性  
+     * - hit: 命中  
+     * - dodge: 闪避  
+     * - block: 格挡  
+     * - speed: 速度(技巧中无效)  
+     * - movecost: 移动消耗  
+     * - damage: 伤害  
+     * - armor: 护甲  
+     * - arpen: 护甲穿透  
      */
     stat: "hit" | "dodge" | "block" | "speed" | "movecost" | "damage" | "armor" | "arpen";
     /**伤害类型(仅当stat为damage/armor/arpen时需要) */
     type?: (DamageTypeID);
-    /**加成数值
-     * @example 0.3 // 30%加成
+    /**加成数值  
+     * @example 0.3 // 30%加成  
      */
     scale: Float;
     /**缩放属性(基础属性或技能) */

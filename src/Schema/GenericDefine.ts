@@ -185,37 +185,37 @@ export type PocketData = {
     /**表示在最佳条件下从口袋中取出物品所需的移动次数.  */
     moves?: number;
     /**如果为 true, 则该口袋的大小是固定的, 并且在填充时不会扩展.  玻璃罐是刚性的, 而塑料袋则不是
-     * @default false
+     * @default false  
      */
     rigid?: boolean;
-    /**如果属实, 则玩家无法使用该口袋
-     * @default false
+    /**如果属实, 则玩家无法使用该口袋  
+     * @default false  
      */
     forbidden?: boolean;
     /**在口袋开始膨胀之前可以放置物品的空间量.  仅当rigid = false 时才有效.  */
     magazine_well?: (Volume);
     /**如果属实, 可能含有液体  
-     * @default false
+     * @default false  
      */
     watertight?: boolean;
     /**如果属实, 可能含有气体  
-     * @default false
+     * @default false  
      */
     airtight?: boolean;
     /**如果属实, 该物品包含一个烧蚀板.  确保在可以添加的车牌类型上包含 flag_restriction  
-     * @default false
+     * @default false  
      */
     ablative?: boolean;
     /**如果为 true, 则只能将一堆物品放入此口袋内, 如果该物品不是 count_by_charges, 则只能放置一件物品  
-     * @default false
+     * @default false  
      */
     holster?: boolean;
     /**如果为 true, 则如果将此物品放入另一个物品中, 该口袋中的物品将会溢出  
-     * @default false
+     * @default false  
      */
     open_container?: boolean;
     /**如果属实, 口袋可以保护里面的物品在扔进火里时不会爆炸  
-     * @default false
+     * @default false  
      */
     fire_protection?: boolean;
     /**将口袋限制为给定的弹药类型和数量.  这会覆盖强制性的体积, 重量, 水密和气密, 以使用给定的弹药类型.   
@@ -266,7 +266,7 @@ export type Explosion = {
      * 爆炸衰减有多快, 接近1意味着每个瓷砖损失的"力量"较少  
      * 0.8意味着每个瓷砖损失20%的力量  
      * 值应大于0但小于1  
-     * @default 0.75
+     * @default 0.75  
      */
     distance_factor?: Float;
     /**爆炸可能产生的最大 (听觉)噪音.  */

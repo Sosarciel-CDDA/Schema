@@ -16,9 +16,9 @@ export type BatteryTrait = ItemTrait<"AMMO",({
     /**标记具有 BATTERY 的特征, 用于补全 */
     "//BATTERY": true;
 })&{
-    /**最大能量容量
-     * 电池可以容纳的最大能量值
-     * @example "30 kJ"
+    /**最大能量容量  
+     * 电池可以容纳的最大能量值  
+     * @example "30 kJ"  
      */
     max_energy: (Energy);
     flags?:GenericFlagID[];

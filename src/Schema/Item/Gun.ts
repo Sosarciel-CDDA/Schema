@@ -55,8 +55,8 @@ export type GunBase = {
      * 这也适用于模组.  附加带有 energy_drain 的模组将增加/增加武器的消耗. 
      */
     energy_drain?: Energy;
-    /**使用的弹药量
-     * @default 1
+    /**使用的弹药量  
+     * @default 1  
      */
     ammo_to_fire?: number;
     /**这把枪的射击模式 DEFAULT,AUTO, MELEE  

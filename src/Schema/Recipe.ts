@@ -56,95 +56,95 @@ export type Recipe = {
     result: (ItemID);
     /**活动强度等级 */
     activity_level: (ActivityLevel);
-    /**副产品, 制作时额外生成的物品ID数组
-     * @example [["scrap", "string"]] // 可能生成废料或绳子
+    /**副产品, 制作时额外生成的物品ID数组  
+     * @example [["scrap", "string"]] // 可能生成废料或绳子  
      */
     byproducts?: ItemID[][];
-    /**副产品组, 使用物品组定义的额外生成物品
-     * @example
-     * [{
-     *   "item": "scrap",
-     *   "count": [1, 4]
-     * }]
+    /**副产品组, 使用物品组定义的额外生成物品  
+     * @example  
+     * [{  
+     *   "item": "scrap",  
+     *   "count": [1, 4]  
+     * }]  
      */
     byproduct_group?: Byproduct[];
-    /**配方类别
-     * @example "CC_WEAPON" // 武器类
+    /**配方类别  
+     * @example "CC_WEAPON" // 武器类  
      */
     category: string;
-    /**配方子类别
-     * @example "CSC_WEAPON_PIERCING" // 穿刺武器
+    /**配方子类别  
+     * @example "CSC_WEAPON_PIERCING" // 穿刺武器  
      */
     subcategory?: string;
-    /**ID后缀, 用于使配方ID唯一
-     * @example "_striped" // 完整配方ID将是"<result>_striped"
+    /**ID后缀, 用于使配方ID唯一  
+     * @example "_striped" // 完整配方ID将是"<result>_striped"  
      */
     id_suffix?: string;
-    /**结果变体, 指定总是生成该变体
-     * @example "javelin_striped" // 总是生成条纹标枪
+    /**结果变体, 指定总是生成该变体  
+     * @example "javelin_striped" // 总是生成条纹标枪  
      */
     variant?: (ItemVariantID);
     /**是否覆盖同名配方 */
     override?: boolean;
-    /**需要从结果物品中删除的标志
-     * @example ["CANNIBALISM"] // 删除食人标志
+    /**需要从结果物品中删除的标志  
+     * @example ["CANNIBALISM"] // 删除食人标志  
      */
     delete_flags?: FlagID[];
     /**使用的主要技能 */
     skill_used: (SkillID);
-    /**解锁配方需要的技能
-     * @example [["survival", 1], ["throw", 2]] // 需要生存1级和投掷2级
+    /**解锁配方需要的技能  
+     * @example [["survival", 1], ["throw", 2]] // 需要生存1级和投掷2级  
      */
     skills_required?: [SkillID, Int][];
-    /**可以从哪些书中学习该配方
-     * @example
-     * {
-     *   "textbook_anarch": {
+    /**可以从哪些书中学习该配方  
+     * @example  
+     * {  
+     *   "textbook_anarch": {  
      *     "skill_level": 7,
      *     "hidden": true
-     *   }
-     * }
+     *   }  
+     * }  
      */
     book_learn?: Record<ItemID,BookLearn>;
     /**制作难度  */
     difficulty: Int;
     /**制作时间 */
     time: (Time);
-    /**是否可逆(可拆解), 可指定拆解时间
-     * @example true // 可拆解, 时间与制作相同
-     * @example { "time": "30 s" } // 可拆解, 需要30秒
+    /**是否可逆(可拆解), 可指定拆解时间  
+     * @example true // 可拆解, 时间与制作相同  
+     * @example { "time": "30 s" } // 可拆解, 需要30秒  
      */
     reversible?: boolean | { time: Time };
-    /**自动学习设置
-     * @example true // 达到所需技能后自动学习
-     * @example [["survival", 2], ["fabrication", 3]] // 生存2级和制造3级时自动学习
+    /**自动学习设置  
+     * @example true // 达到所需技能后自动学习  
+     * @example [["survival", 2], ["fabrication", 3]] // 生存2级和制造3级时自动学习  
      */
     autolearn?: boolean | [SkillID, Int][];
-    /**通过拆解学习设置
-     * @example 4 // 使用该配方的主要技能达到4级时可通过拆解学习
-     * @example [["survival", 1], ["fabrication", 2]] // 生存1级和制造2级时可通过拆解学习
+    /**通过拆解学习设置  
+     * @example 4 // 使用该配方的主要技能达到4级时可通过拆解学习  
+     * @example [["survival", 1], ["fabrication", 2]] // 生存1级和制造2级时可通过拆解学习  
      */
     decomp_learn?: Int | [SkillID, Int][];
-    /**相关专长设置
-     * @example
-     * [{
-     *   "proficiency": "prof_knapping",
-     *   "time_multiplier": 2.0
-     * }]
+    /**相关专长设置  
+     * @example  
+     * [{  
+     *   "proficiency": "prof_knapping",  
+     *   "time_multiplier": 2.0  
+     * }]  
      */
     proficiencies?: RecipeProficiency[];
-    /**结果物品是否包含在指定容器中
-     * @example true // 结果物品放在其默认容器中
+    /**结果物品是否包含在指定容器中  
+     * @example true // 结果物品放在其默认容器中  
      */
     contained?: boolean;
     /**指定容器ID, 结果物品将放在该容器中 */
     container?: (ItemID);
-    /**容器变体ID, 覆盖默认的随机选择
-     * @example "jar_glass_sealed_strawberry_picture" // 使用草莓图案的密封玻璃罐
+    /**容器变体ID, 覆盖默认的随机选择  
+     * @example "jar_glass_sealed_strawberry_picture" // 使用草莓图案的密封玻璃罐  
      */
     container_variant?: (ItemVariantID);
-    /**批量制作时间因子[最大时间减少百分比, 达到该减少的最小批量]
-     * @example [25, 15] // 批量15时最多减少25%时间
+    /**批量制作时间因子[最大时间减少百分比, 达到该减少的最小批量]  
+     * @example [25, 15] // 批量15时最多减少25%时间  
      */
     batch_time_factors?: [Int, Int];
     /**结果物品数量/充能数 */
@@ -155,14 +155,14 @@ export type Recipe = {
     flags?: FlagID[];
     /**制作完成时触发的效果条件 */
     result_eocs?: (ParamsEoc);
-    /**建筑蓝图ID, 用于派系营地升级建筑
-     * @example "camp" // 营地升级蓝图
+    /**建筑蓝图ID, 用于派系营地升级建筑  
+     * @example "camp" // 营地升级蓝图  
      */
     construction_blueprint?: string;
     /**是否在游戏中显示, 用于派系营地计算建筑时间但不显示给玩家 */
     on_display?: boolean;
-    /**组件黑名单, 这些物品不会添加到结果物品组件中
-     * @example ["item_a", "item_b"] // 排除item_a和item_b
+    /**组件黑名单, 这些物品不会添加到结果物品组件中  
+     * @example ["item_a", "item_b"] // 排除item_a和item_b  
      */
     component_blacklist?: ItemID[];
 }&Omit<Requirement,'id'|'type'|'extend'>;

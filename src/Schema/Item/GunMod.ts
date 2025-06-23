@@ -81,12 +81,12 @@ export type GunModTrait = ItemTrait<"GUNMOD",({
 	aim_speed?: number;
 	/**弹药效果类型的ID列表 */
 	ammo_effects?: AmmoEffectID[];
-	/**枪械发射时消耗改装件被销毁的几率
-	 * @default 1/10000
+	/**枪械发射时消耗改装件被销毁的几率  
+	 * @default 1/10000  
 	 */
 	consume_chance?: number;
-	/**将对改装件的伤害除以此数量
-	 * @default 1
+	/**将对改装件的伤害除以此数量  
+	 * @default 1  
 	 */
 	consume_divisor?: number;
 	/**提高枪械的操控性. 例如, 前握把可能有6, 两脚架有18 */
@@ -100,7 +100,7 @@ export type GunModTrait = ItemTrait<"GUNMOD",({
      */
 	overheat_threshold_modifier?: number;
 	/**通过这个数字乘以枪的"overheat_threshold";   
-     * 如果阈值是100, 乘数是1.5, 结果是150; 如果乘数是0.8, 结果是80
+     * 如果阈值是100, 乘数是1.5, 结果是150; 如果乘数是0.8, 结果是80  
      */
 	overheat_threshold_multiplier?: number;
 	/**在枪的"cooling_value"上添加一个固定的数量;   

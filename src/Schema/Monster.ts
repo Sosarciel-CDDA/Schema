@@ -40,8 +40,8 @@ export type Monster = CopyfromVar<{
     volume: (Volume);
     /**重量 */
     weight: (Weight);
-    /**符号
-     * 游戏中显示的ASCII符号
+    /**符号  
+     * 游戏中显示的ASCII符号  
      */
     symbol: (Char);
     /**符号的显示颜色 */
@@ -50,8 +50,8 @@ export type Monster = CopyfromVar<{
     default_faction: (MonsterFactionID);
     /**怪物身体类型 */
     bodytype?: MonBP;
-    /**速度
-     * 基础移动速度, 100为人类标准
+    /**速度  
+     * 基础移动速度, 100为人类标准  
      */
     speed: Int;
     /**怪物类别 (NULL, CLASSIC, 或 WILDLIFE) */
@@ -68,8 +68,8 @@ export type Monster = CopyfromVar<{
     material?: MaterialID[];
     /**怪物的身体物质状态, 例如 SOLID, LIQUID, GAS, PLASMA, NULL */
     phase?: Phase;
-    /**每次常规攻击消耗的行动点数
-     * @default 100
+    /**每次常规攻击消耗的行动点数  
+     * @default 100  
      */
     attack_cost?: Int;
     /**特殊和远程攻击的额外怪物难度  
@@ -104,8 +104,8 @@ export type Monster = CopyfromVar<{
     melee_dice_sides?: Int;
     /**抓取效果的强度, 从1到n, 模拟n个常规僵尸抓取 */
     grab_strength?: Int;
-    /**通过与这个怪物战斗可以学习的最大近战技能等级
-     * 如果未定义, 默认为 melee_skill + 2
+    /**通过与这个怪物战斗可以学习的最大近战技能等级  
+     * 如果未定义, 默认为 melee_skill + 2  
      */
     melee_training_cap?: Int;
     /**怪物对不同类型伤害的保护 */
@@ -114,8 +114,8 @@ export type Monster = CopyfromVar<{
     weakpoints?: Weakpoint[];
     /**应用于怪物的弱点集 */
     weakpoint_sets?: WeakpointSetID[];
-    /**状态效果触发几率乘数
-     * 当电伤害发生时, 应用电击的机会的乘数 (目前没有实现其他效果) 
+    /**状态效果触发几率乘数  
+     * 当电伤害发生时, 应用电击的机会的乘数 (目前没有实现其他效果)   
      */
     status_chance_multiplier?: Float;
     /**怪物所属的弱点族 */
@@ -126,12 +126,12 @@ export type Monster = CopyfromVar<{
      * 例如: coyote 5, bear 10, sewer rat 30, flaming eye 40   
      */
     vision_night?: Int;
-    /**怪物在自己和当前被追踪的敌人或被跟随的领导者之间保持的距离
-     * @default 3
+    /**怪物在自己和当前被追踪的敌人或被跟随的领导者之间保持的距离  
+     * @default 3  
      */
     tracking_distance?: Int;
-    /**这个怪物不会触发的陷阱的 trap_id
-     * 默认行为是触发所有陷阱
+    /**这个怪物不会触发的陷阱的 trap_id  
+     * 默认行为是触发所有陷阱  
      */
     trap_avoids?: TrapID[];
     /**怪物被动发出的光量, 必须大于0才能产生任何效果 */
@@ -196,7 +196,7 @@ export type Monster = CopyfromVar<{
     /**动物或怪物留下的粪便或排泄物 */
     biosignature?: any;
     /**描述可以从尸体中收获什么的 "harvest" 类型的 ID  
-     * "exempt" 为无收获
+     * "exempt" 为无收获  
      */
     harvest?: (HarvestID);
     /**这个怪物死后变成僵尸的 mtype_id */
@@ -205,38 +205,38 @@ export type Monster = CopyfromVar<{
     fungalize_into?: (MonsterID);
     /**当剪下这个怪物时产生的物品 */
     shearing?: MonShearing[];
-    /**描述怪物速度字符串的 speed_description 类型的 ID
-     * @default "DEFAULT"
+    /**描述怪物速度字符串的 speed_description 类型的 ID  
+     * @default "DEFAULT"  
      */
     speed_description?: (SpeedDescriptionID);
     /**关于将这个怪物喂食以将其变成宠物的数据 */
     petfood?: any;
-    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定必须吸收多少毫升才能获得 1 HP
-     * @default 250
+    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定必须吸收多少毫升才能获得 1 HP  
+     * @default 250  
      */
     absorb_ml_per_hp?: Int;
-    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定基于被吸收物品的体积吸收物品的移动成本
-     * @default 0.025
+    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定基于被吸收物品的体积吸收物品的移动成本  
+     * @default 0.025  
      */
     absorb_move_cost_per_ml?: Float;
-    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最小移动成本, 无论消耗物品的体积大小
-     * @default 1
+    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最小移动成本, 无论消耗物品的体积大小  
+     * @default 1  
      */
     absorb_move_cost_min?: Int;
-    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最大移动成本, 无论消耗物品的体积大小. -1 表示无限制
-     * @default -1
+    /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 设置吸收物品的最大移动成本, 无论消耗物品的体积大小. -1 表示无限制  
+     * @default -1  
      */
     absorb_move_cost_max?: Int;
     /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 指定怪物将寻求吸收的材料类型  
-     * 只要物品由列表中的至少一种材料制成, 就会匹配该物品. 如果未指定, 怪物将吸收所有材料
+     * 只要物品由列表中的至少一种材料制成, 就会匹配该物品. 如果未指定, 怪物将吸收所有材料  
      */
     absorb_material?: MaterialID[];
     /**对于具有 ABSORB_ITEMS 特殊攻击的怪物 无法吸收的材料类型 */
     no_absorb_material?: MaterialID[];
     /**对于具有 SPLIT 特殊攻击的怪物. 确定分裂成自身副本时的移动成本 */
     split_move_cost?: Int;
-    /**复活形态
-     * 复活后的怪物形态
+    /**复活形态  
+     * 复活后的怪物形态  
      */
     revive_forms?: ReviveForm|ReviveForm[];
     /**在复杂地形上的移动能力 type:0-10 */
@@ -245,26 +245,26 @@ export type Monster = CopyfromVar<{
 
 /**怪物在复杂地形上的移动能力 */
 type MonMoveSkill = {
-    /**游泳怪物会忽略可 SWIMMABLE 地形消耗
-     * 相反, 它会施加与技能成反比的固定移动消耗惩罚
+    /**游泳怪物会忽略可 SWIMMABLE 地形消耗  
+     * 相反, 它会施加与技能成反比的固定移动消耗惩罚  
      */
     swim ?: Int,
-    /**游泳怪物会忽略 DIGGABLE 地形消耗
-     * 相反, 它会施加与技能成反比的固定移动消耗惩罚
+    /**游泳怪物会忽略 DIGGABLE 地形消耗  
+     * 相反, 它会施加与技能成反比的固定移动消耗惩罚  
      */
     dig  ?: Int,
-    /**攀爬怪物可以攀爬 CLIMBABLE 的地形/家具
-     * 也可以使用难度等级为DIFFICULT_Z的地形/家具 (例如梯子) 
-     * 地形/家具消耗会乘以技能修正值
+    /**攀爬怪物可以攀爬 CLIMBABLE 的地形/家具  
+     * 也可以使用难度等级为DIFFICULT_Z的地形/家具 (例如梯子)   
+     * 地形/家具消耗会乘以技能修正值  
      */
     climb?: Int,
 }
 
 /**表示尸体复活形态的定义项 */
 type ReviveForm = {
-    /**复活条件 (可选项) , 类似对话条件, 但不包含 alpha 或 beta 对话者; 
-     * 可使用上下文变量: `loc` (尸体位置) , `corpse_damage` (尸体损坏程度) . 
-     * 若省略该字段, 则默认为始终成立. 
+    /**复活条件 (可选项) , 类似对话条件, 但不包含 alpha 或 beta 对话者;   
+     * 可使用上下文变量: `loc` (尸体位置) , `corpse_damage` (尸体损坏程度) .   
+     * 若省略该字段, 则默认为始终成立.   
      */
     condition?: (BoolObj);
     /**复活后生成的怪物 ID (与 monster_group 二选一填写)  */
@@ -398,32 +398,32 @@ export type MonAttackEffect = {
 
 /**怪物可能找到路径, 打开门, 避开陷阱或破坏障碍物的方式 */
 export type MonPathSettings = {
-    /**路径的最大直接距离
-     * @default 0
+    /**路径的最大直接距离  
+     * @default 0  
      */
     max_dist?: Int;
-    /**路径的最大总长度
-     * @default -1
+    /**路径的最大总长度  
+     * @default -1  
      */
     max_length?: Int;
-    /**怪物通过障碍物时的力量
-     * @default -1
+    /**怪物通过障碍物时的力量  
+     * @default -1  
      */
     bash_strength?: Int;
-    /**怪物知道如何打开门
-     * @default false
+    /**怪物知道如何打开门  
+     * @default false  
      */
     allow_open_doors?: boolean;
-    /**怪物避免踩入陷阱
-     * @default false
+    /**怪物避免踩入陷阱  
+     * @default false  
      */
     avoid_traps?: boolean;
-    /**怪物可能爬楼梯
-     * @default true
+    /**怪物可能爬楼梯  
+     * @default true  
      */
     allow_climb_stairs: boolean;
-    /**怪物可能避开像铁丝网这样尖锐的东西
-     * @default false
+    /**怪物可能避开像铁丝网这样尖锐的东西  
+     * @default false  
      */
     avoid_sharp?: boolean;
 }

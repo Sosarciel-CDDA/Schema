@@ -22,15 +22,15 @@ export type MartialArt = {
     name: (DescText);
     /**流派描述 */
     description: (DescText);
-    /**激活时的消息
-     * @example 
-     * ["You stand ready.", "%s stands ready."] 
-     * // 第一个元素是玩家激活时的消息, 第二个是NPC激活时的消息(%s会被替换为NPC名称)
+    /**激活时的消息  
+     * @example   
+     * ["You stand ready.", "%s stands ready."]   
+     * // 第一个元素是玩家激活时的消息, 第二个是NPC激活时的消息(%s会被替换为NPC名称)  
      */
     initiate?: [DescText, DescText];
-    /**自动学习条件
-     * @example
-     * [["unarmed", 2]] // 当徒手技能达到2级时自动学习
+    /**自动学习条件  
+     * @example  
+     * [["unarmed", 2]] // 当徒手技能达到2级时自动学习  
      */
     autolearn?: [SkillID, Int][];
     /**是否可教学 */

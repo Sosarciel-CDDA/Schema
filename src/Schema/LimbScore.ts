@@ -12,14 +12,14 @@ export type LimbScore = {
     id: (LimbScoreID);
     /**定义此肢体分数在UI中显示的可翻译名称 */
     name: (DescText);
-    /**确定此肢体分数是否受角色肢体健康影响
-     * 肢体健康越低 => 分数越低
-     * @default true
+    /**确定此肢体分数是否受角色肢体健康影响  
+     * 肢体健康越低 => 分数越低  
+     * @default true  
      */
     affected_by_wounds?: boolean;
-    /**确定此肢体分数是否受角色肢体负重影响
-     * 负重越高 => 分数越低
-     * @default true
+    /**确定此肢体分数是否受角色肢体负重影响  
+     * 负重越高 => 分数越低  
+     * @default true  
      */
     affected_by_encumb?: boolean;
 };

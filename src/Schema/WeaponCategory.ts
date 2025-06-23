@@ -11,8 +11,8 @@ export type WeaponCategory = {
     id: (WeaponCategoryID);
     /**类别名称 */
     name: (DescText);
-    /**使用此类武器时可能应用加成的熟练度列表
-     * 参见熟练度文档获取更多细节
+    /**使用此类武器时可能应用加成的熟练度列表  
+     * 参见熟练度文档获取更多细节  
      */
     proficiencies?: ProficiencyID[];
 };

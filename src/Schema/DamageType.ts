@@ -40,36 +40,36 @@ export type DamageType = {
     id:(DamageTypeID);
     /** 伤害类型的名称, 如在物品信息屏幕中的保护值中显示 */
     name: (DescText);
-    /** (可选) 确定处理此伤害类型时使用的技能
-     * @default none
+    /** (可选) 确定处理此伤害类型时使用的技能  
+     * @default none  
     */
     skill?: (SkillID);
-    /** (可选) 将此伤害类型标识为来自物理源
-     * @default false
+    /** (可选) 将此伤害类型标识为来自物理源  
+     * @default false  
      */
     physical?: boolean;
-    /** (可选) 将此伤害类型标识为来自近战武器和攻击
-     * @default false
+    /** (可选) 将此伤害类型标识为来自近战武器和攻击  
+     * @default false  
      */
     melee_only?: boolean;
-    /** (可选) 将此伤害类型标识为来自尖锐或尖端的武器或工具
-     * @default false
+    /** (可选) 将此伤害类型标识为来自尖锐或尖端的武器或工具  
+     * @default false  
      */
     edged?: boolean;
-    /** (可选) 此伤害类型对应于环境源. 当前影响物品或护甲是否包含对此伤害类型的环境抗性
-     * @default false
+    /** (可选) 此伤害类型对应于环境源. 当前影响物品或护甲是否包含对此伤害类型的环境抗性  
+     * @default false  
      */
     environmental?: boolean;
-    /** (可选) 确定材料是否必须为此伤害类型定义抗性
-     * @default false
+    /** (可选) 确定材料是否必须为此伤害类型定义抗性  
+     * @default false  
      */
     material_required?: boolean;
-    /** (可选) 确定此伤害类型是否应该有助于怪物的难度等级
-     * @default false
+    /** (可选) 确定此伤害类型是否应该有助于怪物的难度等级  
+     * @default false  
      */
     mon_difficulty?: boolean;
-    /** (可选) 将此伤害类型标识为无法抵抗的 (即“纯”伤害)
-     * @default false
+    /** (可选) 将此伤害类型标识为无法抵抗的 (即“纯”伤害)  
+     * @default false  
      */
     no_resist?: boolean;
     /**(可选) 一个带有两个可选字段的对象: "character" 和 "monster".   
@@ -79,8 +79,8 @@ export type DamageType = {
         character?: FlagID[];
         monster?: FlagID[];
     };
-    /** (可选) 确定在法术中使用时哪种颜色标识此伤害类型
-     * @default "black"
+    /** (可选) 确定在法术中使用时哪种颜色标识此伤害类型  
+     * @default "black"  
      */
     magic_color?: Color;
     /**(可选) 一个数组, 确定应如何计算此伤害类型在护甲保护和怪物抗性值方面的计算.   
@@ -102,11 +102,11 @@ export type DamageInfoOrder = {
     type: "damage_info_order";
     /** 唯一标识符, 必须对应一个已存在的 damage_type */
     id: (DamageTypeID);
-    /**(可选) 确定在保护值中显示此伤害类型的详细程度. 有效值为 "detailed", "basic" 和 "none"
-     * @default "none"
+    /**(可选) 确定在保护值中显示此伤害类型的详细程度. 有效值为 "detailed", "basic" 和 "none"  
+     * @default "none"  
      */
     info_display?: "detailed" | "basic" | "none";
-    /**(可选) 描述如何应用此伤害类型的动词 (例如: "bashing") . 在物品信息的近战部分使用
+    /**(可选) 描述如何应用此伤害类型的动词 (例如: "bashing") . 在物品信息的近战部分使用  
      */
     verb?: (DescText);
     /**(可选) 确定在物品信息的指定部分中此伤害类型的顺序和可见性  */

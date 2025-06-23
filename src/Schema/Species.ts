@@ -46,8 +46,8 @@ export const MonsterTriggerList = [
 
 export type MonsterTrigger = typeof MonsterTriggerList[number];
 
-/**定义的 Species 列表 
- * data/json/species.json
+/**定义的 Species 列表   
+ * data/json/species.json  
  */
 export const DefineSpeciesIDList = [
     "MAMMAL",

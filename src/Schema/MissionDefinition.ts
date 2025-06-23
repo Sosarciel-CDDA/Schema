@@ -37,8 +37,8 @@ export type MissionDefinition = {
     origins?: MissionOrigin[];
     /**下一段任务 */
     followup?: (MissionDefinitionID);
-    /**任务对话文本
-     * 如果是npc来源的任务必须设置
+    /**任务对话文本  
+     * 如果是npc来源的任务必须设置  
      */
     dialogue?: MissionDialog;
 };

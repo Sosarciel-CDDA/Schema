@@ -25,31 +25,31 @@ export type Bionic = {
     name: string | { str: string };
     /**游戏内描述 */
     description: string;
-    /**激活消耗的能量
-     * 可以使用字符串 "1 kJ"/"1000 J"/"1000000 mJ"
-     * @default 0
+    /**激活消耗的能量  
+     * 可以使用字符串 "1 kJ"/"1000 J"/"1000000 mJ"  
+     * @default 0  
      */
     act_cost?: (Energy);
-    /**停用消耗的能量
-     * 可以使用字符串 "1 kJ"/"1000 J"/"1000000 mJ"
-     * @default 0
+    /**停用消耗的能量  
+     * 可以使用字符串 "1 kJ"/"1000 J"/"1000000 mJ"  
+     * @default 0  
      */
     deact_cost?: (Energy);
-    /**持续激活消耗的能量
-     * 需要非零的"time"字段才有效
-     * 可以使用字符串 "1 kJ"/"1000 J"/"1000000 mJ"
-     * @default 0
+    /**持续激活消耗的能量  
+     * 需要非零的"time"字段才有效  
+     * 可以使用字符串 "1 kJ"/"1000 J"/"1000000 mJ"  
+     * @default 0  
      */
     react_cost?: (Energy);
-    /**触发特殊效果消耗的能量
-     * 可以是对特定条件的反应或激活时采取的行动
-     * 可以使用字符串 "1 kJ"/"1000 J"/"1000000 mJ"
-     * @default 0
+    /**触发特殊效果消耗的能量  
+     * 可以是对特定条件的反应或激活时采取的行动  
+     * 可以使用字符串 "1 kJ"/"1000 J"/"1000000 mJ"  
+     * @default 0  
      */
     trigger_cost?: (Energy);
-    /**激活后, 两次消耗能量之间的时间间隔
-     * 如果为0, 则只消耗一次能量
-     * @default 0
+    /**激活后, 两次消耗能量之间的时间间隔  
+     * 如果为0, 则只消耗一次能量  
+     * @default 0  
      */
     time?: (Time);
     /**可被此仿生升级的仿生ID */
@@ -66,9 +66,9 @@ export type Bionic = {
     mutation_conflicts?: MutationID[];
     /**安装此仿生时自动安装的额外仿生列表 */
     included_bionics?: (BionicID)[];
-    /**是否包含在另一个仿生中
-     * 如果为true, 此仿生不需要定义CBM物品
-     * @default false
+    /**是否包含在另一个仿生中  
+     * 如果为true, 此仿生不需要定义CBM物品  
+     * @default false  
      */
     included?: boolean;
     /**对指定身体部位提供的环境防护值 */
@@ -77,35 +77,35 @@ export type Bionic = {
     protec?: [BodyPartID, Record<DamageTypeID,Int>][];
     /**此仿生占据的身体部位及槽位数列表 */
     occupied_bodyparts?: [BodyPartID, Int][];
-    /**增加的电力存储容量
-     * 可以使用字符串 "1 kJ"/"1000 J"/"1000000 mJ"
-     * @default 0
+    /**增加的电力存储容量  
+     * 可以使用字符串 "1 kJ"/"1000 J"/"1000000 mJ"  
+     * @default 0  
      */
     capacity?: (Energy);
     /**可用于产生能量的材料列表 */
     fuel_options?: string[];
-    /**是否可以通过外部电源供电
-     * @default false
+    /**是否可以通过外部电源供电  
+     * @default false  
      */
     is_remote_fueled?: boolean;
     /**可存储的燃料体积 */
     fuel_capacity?: Int;
-    /**燃料能量转换为能量的效率
-     * @default 0
+    /**燃料能量转换为能量的效率  
+     * @default 0  
      */
     fuel_efficiency?: Float;
-    /**燃料能量被动转换为能量的效率
-     * 适用于使用PERPETUAL燃料(如肌肉, 风, 阳光)的CBM
-     * @default 0
+    /**燃料能量被动转换为能量的效率  
+     * 适用于使用PERPETUAL燃料(如肌肉, 风, 阳光)的CBM  
+     * @default 0  
      */
     passive_fuel_efficiency?: Float;
-    /**产生能量时是否发热
-     * @default false
+    /**产生能量时是否发热  
+     * @default false  
      */
     exothermic_power_gen?: boolean;
-    /**覆盖率降低燃料效率的比例
-     * 0.0到1.0之间的浮点数
-     * @default null
+    /**覆盖率降低燃料效率的比例  
+     * 0.0到1.0之间的浮点数  
+     * @default null  
      */
     coverage_power_gen_penalty?: Float;
     /**产生能量时发射的场类型ID */
@@ -126,8 +126,8 @@ export type Bionic = {
     learned_proficiencies?: ProficiencyID[];
     /**安装所需的工具和组件要求ID */
     installation_requirement?: (RequirementID);
-    /**是否允许安装多个副本
-     * @default false
+    /**是否允许安装多个副本  
+     * @default false  
      */
     dupes_allowed?: boolean;
     /**不能卸载的原因消息 */

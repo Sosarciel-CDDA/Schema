@@ -47,14 +47,14 @@ export type Trap = {
     eocs?: (ParamsEoc);
     /**法术数据(仅当action为"spell"时使用) */
     spell_data?: (FakeSpell);
-    /**触发重量(当物品重量达到此值时触发) 
-     * @default "500 g"
+    /**触发重量(当物品重量达到此值时触发)   
+     * @default "500 g"  
      */
     trigger_weight?: (Weight);
     /**拆卸时生成的物品 */
     drops?: (ItemID)[];
-    /**陷阱标志 
-     * @example ["UNDODGEABLE", "AVATAR_ONLY"]
+    /**陷阱标志   
+     * @example ["UNDODGEABLE", "AVATAR_ONLY"]  
      */
     flags?: (FlagID)[];
     /**车辆相关数据 */
@@ -63,8 +63,8 @@ export type Trap = {
     trigger_message_u?: (DescText);
     /**NPC/怪物触发时的消息 */
     trigger_message_npc?: (DescText);
-    /**声音触发阈值
-     * @default [0,0]
+    /**声音触发阈值  
+     * @default [0,0]  
      */
     sound_threshold?: [Int, Int];
 };

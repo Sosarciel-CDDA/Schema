@@ -10,8 +10,8 @@ type OMSpawn = {
     chance: number;
 };
 
-/**大地图地块显示设置
- * 生成设置位于mapgen
+/**大地图地块显示设置  
+ * 生成设置位于mapgen  
  */
 export type OvermapTerrain = {
     type: "overmap_terrain";

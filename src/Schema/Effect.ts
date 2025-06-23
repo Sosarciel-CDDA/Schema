@@ -48,8 +48,8 @@ export type Effect = {
     type: "effect_type";
     /**效果唯一ID */
     id: (EffectID);
-    /**用于后面的许多字段
-     * @default 1
+    /**用于后面的许多字段  
+     * @default 1  
      */
     max_intensity?: number;
     /**将累积效果的最大强度级别.   
@@ -114,29 +114,29 @@ export type Effect = {
     /**在已有效果的情况下再次添加效果时  
      * 所增加时间的修正值  
      * duration = duration + (dur_add_perc/100) * max_duration  
-     * @default 100
+     * @default 100  
      */
     dur_add_perc?: number;
     /**在已有效果的情况下再次添加效果时  
      * 所增加的强度  
-     * @default 0
+     * @default 0  
      */
     int_add_val?: number;
     /**强度衰减量  
      * 每经过int_decay_tick 的时间后  
      * 效果强度将会调整此数值  
-     * @default -1
+     * @default -1  
      */
     int_decay_step?: number;
     /**强度衰减间隔  
      * 效果做出自然增减的间隔 秒  
      * 0即不会改变  
-     * @default 0
+     * @default 0  
      */
     int_decay_tick?: number;
     /**强度衰减移除  
      * 在强度衰减为0时移除效果  
-     * @default false
+     * @default false  
      */
     int_decay_remove?: boolean;
     /**时间强度系数  
@@ -147,7 +147,7 @@ export type Effect = {
     int_dur_factor?: number;
     /**这允许或禁止在“效果”选项卡中给定效果的名称旁边显示强度值.   
      * 例如显示“弱点[142]”或简单的“弱点”文本.   
-     * @default true
+     * @default true  
      */
     show_intensity?: boolean;
     /**豁免效果时产生的消息  
@@ -161,33 +161,33 @@ export type Effect = {
      */
     decay_messages?: [DescText,EffectRatType][];
     /**这个效果是否只能应用于主肢体  
-     * @default false
+     * @default false  
      */
     main_parts_only?: boolean;
     /**使玩家对止痛药的成瘾减少了给他们带来更多 pkill 效果的机会  
-     * @default false
+     * @default false  
      */
     pkill_addict_reduces?: boolean;
     /**大型/巨大 体型提高疼痛效果触发的机会  
-     * @default false
+     * @default false  
      */
     pain_sizing?   : boolean;
     /**大型/巨大 体型提高伤害效果触发的机会  
-     * @default false
+     * @default false  
      */
     hurt_sizing?   : boolean;
     /**表示该效果引起的咳嗽会伤害玩家.   
-     * @default false
+     * @default false  
      */
     harmful_cough? : boolean;
     /**维生素调节 */
     vitamins?:EffectVitaminsMod[];
-    /**每回合有 [0]/[1] 的概率杀死玩家
+    /**每回合有 [0]/[1] 的概率杀死玩家  
      * 按效果强度应用不同成员  
      */
     chance_kill?: [number,number][];
     /**在玩家 抵抗 此效果时  
-     * 每回合有 [0]/[1] 的概率杀死玩家
+     * 每回合有 [0]/[1] 的概率杀死玩家  
      * 按效果强度应用不同成员  
      */
     chance_kill_resist?: [number,number][];
@@ -248,22 +248,22 @@ export type EffectVitaminsMod ={
 export type EffectLimbMod ={
     /**目标能力 */
     limb_score: LimbScoreID,
-    /**乘数调整值
-     * @default 1
+    /**乘数调整值  
+     * @default 1  
      */
     modifier?: number,
     /**在玩家 抵抗 此效果时  
-     * 乘数调整值
-     * @default 1
+     * 乘数调整值  
+     * @default 1  
      */
     resist_modifier?: number,
-    /**每个强度等级添加到 modifier的值
-     * @default 0
+    /**每个强度等级添加到 modifier的值  
+     * @default 0  
      */
     scaling?: number;
     /**在玩家 抵抗 此效果时  
-     * 每个强度等级添加到 modifier的值
-     * @default 0
+     * 每个强度等级添加到 modifier的值  
+     * @default 0  
      */
     resist_scaling?: number;
 }
@@ -281,8 +281,8 @@ export type EffectLimbMod ={
  */
 
 /**效果调整类型 列表  
- * chance_bot 如果不存在, 则触发机会为 1/X_chance
- * 如果确实存在, 那么机会是 X_chance/X_chance_bot
+ * chance_bot 如果不存在, 则触发机会为 1/X_chance  
+ * 如果确实存在, 那么机会是 X_chance/X_chance_bot  
  */
 export const EffectModTypeList = [
 "str_mod"                 , // 正值提高统计数据, 负值降低统计数据

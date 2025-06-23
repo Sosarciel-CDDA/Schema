@@ -20,7 +20,7 @@ export type SpriteCfgBase = {
     id:string;
     /**是动画 以weight为随机权重, 在随机起始位置循环播放Image  
      * weight为对应图片停留帧数  
-     * 游戏默认60帧
+     * 游戏默认60帧  
      */
     animated?: boolean;
     /**在游戏中随朝向旋转瓦块 */
@@ -63,9 +63,9 @@ export type PkgSpriteCfg = {
 export type SpriteCfg = {
     /**前景 */
     fg:ImageCfg;
-    /**背景
-     * 单个值表示视野外遮罩
-     * [number, number]时第一个值表示底图, 第二个值为视野外遮罩
+    /**背景  
+     * 单个值表示视野外遮罩  
+     * [number, number]时第一个值表示底图, 第二个值为视野外遮罩  
      */
     bg?:ImageCfg;
 } & SpriteCfgBase;

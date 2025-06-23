@@ -14,44 +14,44 @@ export type CharacterMod = {
     id: (CharacterModID);
     /**描述此修饰符功能的可翻译文本, 将显示在UI中 */
     description: (DescText);
-    /**描述此修饰符如何应用
-     * 可以是 "+" (相加), "x" (相乘) 或 "" (未指定)
+    /**描述此修饰符如何应用  
+     * 可以是 "+" (相加), "x" (相乘) 或 "" (未指定)  
      */
     mod_type: "+" | "x" | "";
     /**描述此修饰符如何计算的对象 */
     value: {
-        /**引用limb_score id或limb_score id数组(可以是加权列表)
-         * 这些是派生此修饰符的肢体评分
-         * 对于加法计算(limb_score_op: "+")分数乘以权重, 
-         * 对于乘法计算(limb_score_op: "x")分数提高到权重次方
+        /**引用limb_score id或limb_score id数组(可以是加权列表)  
+         * 这些是派生此修饰符的肢体评分  
+         * 对于加法计算(limb_score_op: "+")分数乘以权重,   
+         * 对于乘法计算(limb_score_op: "x")分数提高到权重次方  
          */
         limb_score?: LimbScoreID | [LimbScoreID, Float][] | LimbScoreID[];
-        /**定义多个肢体评分时的操作(相加+或相乘x)
-         * 例如: x => score1 x score2 x score3 ...
-         * @default "x"
+        /**定义多个肢体评分时的操作(相加+或相乘x)  
+         * 例如: x => score1 x score2 x score3 ...  
+         * @default "x"  
          */
         limb_score_op?: "+" | "x";
-        /**引用body_part中定义的limb_type
-         * 如果存在, 仅使用具有该肢体类型的身体部位的肢体评分
+        /**引用body_part中定义的limb_type  
+         * 如果存在, 仅使用具有该肢体类型的身体部位的肢体评分  
          */
         limb_type?: LimbType;
-        /**如果指定, 强制肢体评分受/不受肢体负重影响
-         * (覆盖limb_score中的affected_by_encumb)
+        /**如果指定, 强制肢体评分受/不受肢体负重影响  
+         * (覆盖limb_score中的affected_by_encumb)  
          */
         override_encumb?: boolean;
-        /**如果指定, 强制肢体评分受/不受肢体健康影响
-         * (覆盖limb_score中的affected_by_wounds)
+        /**如果指定, 强制肢体评分受/不受肢体健康影响  
+         * (覆盖limb_score中的affected_by_wounds)  
          */
         override_wounds?: boolean;
-        /**定义此修饰符的最小值
-         * 通常仅用于提供好处的"奖励"乘数
-         * 不应与max一起使用
+        /**定义此修饰符的最小值  
+         * 通常仅用于提供好处的"奖励"乘数  
+         * 不应与max一起使用  
          */
         min?: Float;
-        /**定义此修饰符的最大值
-         * 通常用于提供减益的"成本"乘数
-         * 不应与min一起使用
-         * 可以定义为小数或特殊值"max_move_cost"
+        /**定义此修饰符的最大值  
+         * 通常用于提供减益的"成本"乘数  
+         * 不应与min一起使用  
+         * 可以定义为小数或特殊值"max_move_cost"  
          */
         max?: Float | "max_move_cost";
         /**使肢体评分除以指定值, 如 nominator / ( limb_score * denominator ) */
@@ -84,38 +84,38 @@ type list = [
 
 /**修饰符计算示例 */
 type CharacterModExamples = {
-    /**仅指定一个"limb_score":
-     * mod = limb_score;
+    /**仅指定一个"limb_score":  
+     * mod = limb_score;  
      */
     example1: CharacterMod;
     
-    /**在"limb_score"数组中指定3个score id(使用"x"操作):
-     * mod = limb_score1 * limb_score2 * limb_score3;
+    /**在"limb_score"数组中指定3个score id(使用"x"操作):  
+     * mod = limb_score1 * limb_score2 * limb_score3;  
      */
     example2: CharacterMod;
     
-    /**指定"max":
-     * mod = min( max, limb_score );
+    /**指定"max":  
+     * mod = min( max, limb_score );  
      */
     example3: CharacterMod;
     
-    /**指定"min":
-     * mod = max( min, limb_score );
+    /**指定"min":  
+     * mod = max( min, limb_score );  
      */
     example4: CharacterMod;
     
-    /**同时指定"max"和"nominator":
-     * mod = min( max, nominator / limb_score );
+    /**同时指定"max"和"nominator":  
+     * mod = min( max, nominator / limb_score );  
      */
     example5: CharacterMod;
     
-    /**指定"max", "nominator"和"subtract":
-     * mod = min( max, ( nominator / limb_score ) - subtract );
+    /**指定"max", "nominator"和"subtract":  
+     * mod = min( max, ( nominator / limb_score ) - subtract );  
      */
     example6: CharacterMod;
     
-    /**指定"max", "denominator"和"subtract":
-     * mod = min( max, ( limb_score / denominator ) - subtract );
+    /**指定"max", "denominator"和"subtract":  
+     * mod = min( max, ( limb_score / denominator ) - subtract );  
      */
     example7: CharacterMod;
 };
