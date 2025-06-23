@@ -1,7 +1,7 @@
 import { BodyPartID } from "./BodyPart";
 import { ParamsEnchantment } from "./Enchantment";
 import { BoolObj, EocID } from "./Eoc";
-import { FlagID } from "./Flag";
+import { CustomFlagID, FlagID } from "./Flag";
 import { CddaID, DescText, EffectRatType, SocialType } from "./GenericDefine";
 import { ItemID, ArmorID, GunID } from "./Item";
 import { MaterialID } from "./Material";
@@ -297,7 +297,7 @@ export type Mutation = {
     /**在mana_modifier和任何其他奖励之后, 对你总法力量的乘数. 0.75是正常的75%, 1.5是正常的150%.  */
     mana_multiplier?: number;
     /**由突变授予的flag_IDs和json_flag_IDs列表. 注意: trait_IDs可以设置并且不会产生错误, 但它们实际上并不"活跃".  */
-    flags?: MutFlag[];
+    flags?: MutationFlagID[];
     /**怪物摄像机, 能够使用列表中友好怪物作为额外视觉来源的能力. 最大视距等于怪物的白天视觉. 数字指定它可以向化身"传输"视觉的范围. */
     moncams?: [MonsterID, number][];
     /**将角色的外观更改为具有指定 ID 和图块类别的另一个指定事物  
@@ -319,14 +319,6 @@ export type BPWetProte = {
     ignored: number;
 };
 
-/**变异Flag 列表 */
-export const MutFlagList = [
-    "UNARMED_BONUS",// 你获得徒手猛击的奖励, 并减少等于 unarmed_skill/2 的伤害, 最高可达 4. 
-] as const;
-/**变异Flag */
-export type MutFlag = typeof MutFlagList[number];
-
-
 /**变异触发器 */
 export type MutTigger = {
     condition: BoolObj;
@@ -342,3 +334,14 @@ type RatMessage = {
     /**评价类型 */
     rating?: EffectRatType;
 };
+
+
+/**定义的变异Flag 列表 */
+export const DefineMutationFlagIDList = [
+    "UNARMED_BONUS",// 你获得徒手猛击的奖励, 并减少等于 unarmed_skill/2 的伤害, 最高可达 4
+] as const;
+/**定义的变异Flag */
+export type DefineMutationFlagID = typeof DefineMutationFlagIDList[number];
+
+/**变异Flag */
+type MutationFlagID = DefineMutationFlagID|CustomFlagID;

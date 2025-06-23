@@ -265,6 +265,7 @@ export const ItemNameConditionTypeList = [
 /**物品条件名称的类型 */
 export type ItemNameConditionType = typeof ItemNameConditionTypeList[number];
 
+//#region 定义的Flag
 
 /**武器Flag 列表 */
 export const WeaponFlagList = [
@@ -289,9 +290,7 @@ export const WeaponFlagList = [
     "WHIP"             , //有一定几率解除对手的武装. 
 ] as const;
 /**武器Flag */
-export type WeaponFlagID = typeof WeaponFlagList[number];
-
-
+export type WeaponFlagID = typeof WeaponFlagList[number]|CustomFlagID;
 
 /**近战武器的Flag列表 */
 export const MeleeItemFlagList = [
@@ -333,7 +332,7 @@ export const GenericFlagList = [
 export type DefineGenericFlagID = typeof GenericFlagList[number];
 
 /**动态产生的Flag 列表 */
-export const TechFlagList = [
+export const TechnicalFlagList = [
     "COLD"                , //物品是冷的. 另请参阅EATEN_COLD. 
     "DIRTY"               , //物品 (液体) 被丢在地上, 现在已经无法修复的脏了. 
     "FIELD_DRESS_FAILED"  , //尸体被不熟练的现场处理损坏. 影响屠宰结果. 
@@ -352,15 +351,17 @@ export const TechFlagList = [
     "WET"                 , //物品是湿的, 会慢慢干掉 (例如毛巾) . 
 ] as const;
 /**动态产生的Flag */
-export type TechFlagID = typeof TechFlagList[number];
+export type TechnicalFlagID = typeof TechnicalFlagList[number];
 
 /**通用物品的flag */
-export type GenericFlagID = DefineGenericFlagID|WeaponFlagID|TechFlagID|CustomFlagID;
+export type GenericFlagID = DefineGenericFlagID|WeaponFlagID|TechnicalFlagID|CustomFlagID;
+
+//#endregion
 
 /**物品的材质 字符串时为材质类型 */
 export type ItemMaterial = MaterialID|{
     /**材质类型 */
-    type:MaterialID;
+    type:(MaterialID);
     /**材质占比
      * @default 1
      * @example

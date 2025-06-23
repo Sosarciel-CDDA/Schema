@@ -1,12 +1,15 @@
 import { AmmunitionTypeID } from "./AmmiunitionType";
 import { DamageTypeID } from "./DamageType";
 import { FieldID } from "./Field";
-import { CddaID, Color, CopyfromVar, DescText, LookLikeID, Time, Volume } from "./GenericDefine";
+import { CustomFlagID, FlagID } from "./Flag";
+import { FurnitureID } from "./Furniture";
+import { CddaID, Color, CopyfromVar, DescText, Int, LookLikeID, Time, Volume } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { ItemGroupEntrie, ItemGroupID } from "./ItemGroup";
 import { MonsterID } from "./Monster";
 import { ReqUsing } from "./Requirement";
 import { SkillID } from "./Skill";
+import { TerrainID } from "./Terrain";
 import { ToolQualityID } from "./ToolQuality";
 
 /**载具部件ID */
@@ -57,8 +60,8 @@ export type VehiclePart = CopyfromVar<{
      */
     breaks_into?: ItemGroupEntrie[]|ItemGroupID;
     /**与部件相关的标志 */
-    flags?: VPFlag[];
-    /** (可选) 部件的特殊安装, 移除或修理要求.   
+    flags?: VehiclePartFlagID[];
+    /**部件的特殊安装, 移除或修理要求.   
      * 每个字段都由一个对象组成, 字段为 "skills", "time" 和 "using".   
      */
     requirements?: {
@@ -66,7 +69,7 @@ export type VehiclePart = CopyfromVar<{
         removal?: VPRequirement;
         repair?: VPRequirement;
     };
-    /** (可选) 安装此部件的车辆的控制要求 */
+    /**安装此部件的车辆的控制要求 */
     control_requirements?: {
         /** 飞行在空中的要求 */
         air?: ControlReq;
@@ -92,21 +95,31 @@ export type VehiclePart = CopyfromVar<{
     unfolding_time?: (Time);
     /** 伤害减少; 参见"部件阻力". 如果未指定, 则设为零 */
     damage_reduction: Partial<Record<DamageTypeID|"non_physical"|"physical"|"all",number>>;
-    /** (可选) 一个列表, 每个列表都是一个工具质量和质量等级, 该车辆部件提供 */
+    /**一个列表, 每个列表都是一个工具质量和质量等级, 该车辆部件提供 */
     qualities?: [ToolQualityID, number][];
-    /** (可选) 此部件可以转换地形, 如犁 */
+    /**此部件可以转换地形, 如犁 */
     transform_terrain?: {
         /** 可以转换的地形的标志列表 */
-        pre_flags: ["PLOWABLE"];
-        /** (可选, 默认为"t_null") 结果地形 (如果有)  */
-        post_terrain: "t_dirtmound";
-        /** (可选, 默认为"f_null") 结果家具 (如果有)  */
-        post_furniture: "f_boulder";
-        /** (可选, 默认为"fd_null") 结果字段 (如果有)  */
+        pre_flags: FlagID[];
+        /**结果地形
+         * @default "t_null"
+         */
+        post_terrain?: (TerrainID);
+        /**结果家具
+         * @default "f_null"
+         */
+        post_furniture?: (FurnitureID);
+        /**结果地块效果
+         * @default "fd_null"
+         */
         post_field?: (FieldID);
-        /** (可选, 默认为0) 字段的强度 (如果有)  */
-        post_field_intensity?: number;
-        /** (可选, 默认为0转) 字段的生存时间 (如果有)  */
+        /**地块效果的强度
+         * @default 0
+         */
+        post_field_intensity?: Int;
+        /**地块效果的持续时间
+         * @default 0
+         */
         post_field_age?: (Time);
     };
     /** 要生成的变体基础 (参见下文) */
@@ -149,8 +162,8 @@ type ControlReq = {
     proficiencies?: string[];
 };
 
-/**车辆部件flag 列表 */
-export const VPFlagList = [
+/**定义的车辆部件flag 列表 */
+export const DefineVehiclePartFlagIDList = [
     "ADVANCED_PLANTER"             , // 这个种植器不会洒出种子, 也不会在无法挖掘的表面上损坏自己
     "AIRCRAFT_REPAIRABLE_NOPROF"   , // 允许玩家在没有任何熟练度的情况下安全地从飞机上取下部件
     "AISLE_LIGHT"                  , // 这个部件可以照亮周围环境
@@ -280,5 +293,8 @@ export const VPFlagList = [
     "WIRING"                       , // 待定, 似乎与check_no_wiring有关
     "WORKBENCH"                    , // 可以在这个部件上工艺, 必须与工作台json条目配对
 ] as const;
+/**定义的车辆部件flag 列表 */
+export type DefineVehiclePartFlagID = typeof DefineVehiclePartFlagIDList[number];
+
 /**车辆部件flag */
-export type VPFlag = typeof VPFlagList[number];
+type VehiclePartFlagID = DefineVehiclePartFlagID|CustomFlagID;

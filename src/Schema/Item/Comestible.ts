@@ -84,8 +84,8 @@ export const  ComestibleTypeList = [
 /**消耗品类型*/
 export type ComestibleType = typeof ComestibleTypeList[number];
 
-/**消耗品Flag 列表*/
-export const ComestibleFlagIDList = [
+/**定义的消耗品Flag 列表*/
+export const DefineComestibleFlagIDList = [
     "ACID"                  , // 使用 BLECH 功能消耗时, 如果角色具有 ACIDPROOF 或 ACIDBLOOD 特性, 惩罚会减少. 
     "CARNIVORE_OK"          , // 可以被具有 Carnivore 突变的角色食用. 
     "CANT_HEAL_EVERYONE"    , // 这种药不能被所有人使用, 它需要一个特殊的突变. 参见 mutation 中的 can_heal_with. 
@@ -121,7 +121,9 @@ export const ComestibleFlagIDList = [
     "USE_ON_NPC"            , // 可以用在 NPC 上 (不一定由他们使用) . 
     "ZOOM"                  , // 缩放物品可以增加你的地图视野范围. 
 ] as const;
+/**定义的消耗品Flag */
+export type DefineComestibleFlagID = typeof DefineComestibleFlagIDList[number];
 
 /**消耗品Flag */
-export type ComestibleFlagID = typeof ComestibleFlagIDList[number]|GenericFlagID;
+type ComestibleFlagID = DefineComestibleFlagID|GenericFlagID;
 

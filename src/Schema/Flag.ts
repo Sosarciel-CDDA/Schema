@@ -1,20 +1,14 @@
 import { CddaID, DescText } from "./GenericDefine";
 import { AnyItemFlag } from "./Item";
-import { MutFlag } from "./Mutation";
+import { DefineMutationFlagID } from "./Mutation";
+import { DefineVehiclePartFlagID } from "./VehiclePart";
 
-
-/**预定义的FlagID 列表 */
-export const DefineFlagIDList = [
-    "DIAMOND",//钻刃
-] as const;
-/**预定义的FlagID */
-export type DefineFlagID = typeof DefineFlagIDList[number];
 
 /**自定的FlagID */
-export type CustomFlagID = CddaID<"FLAG">|DefineFlagID;
+export type CustomFlagID = CddaID<"FLAG">;
 
 /**FlagID */
-export type FlagID = CustomFlagID|AnyItemFlag|MutFlag;
+export type FlagID = CustomFlagID|AnyItemFlag|DefineVehiclePartFlagID|DefineMutationFlagID|DefineFlagID;
 
 /**一个自定义的Flag */
 export type Flag={
@@ -44,3 +38,10 @@ export type Flag={
     /**物品的后缀 */
     item_suffix?: DescText;
 }
+
+/**预定义的FlagID 列表 */
+export const DefineFlagIDList = [
+    "DIAMOND",//钻刃
+] as const;
+/**预定义的FlagID */
+export type DefineFlagID = typeof DefineFlagIDList[number];
