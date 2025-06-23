@@ -11,8 +11,8 @@ UtilDT.fileMacro(({text})=>{
     .replace(/(，|、)/g,', ')
     .replace(/。/g,'. ')
     .replace(/：/g,': ')
-    .replace(/；/g,'; ');
-    //.replace(/^(\s*?)(( \* )|(\/\*\*))(.+)$/gm,'$1$2$5  ');
+    .replace(/；/g,'; ')
+    .replace(/^(\s*?)(( \* )|(\/\*\*))((.(?!  ))+)$/gm,'$1$2$5  ');
 },{
     glob:true,
     filePath:'./src/Schema/**/*.ts'
