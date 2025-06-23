@@ -3,7 +3,7 @@ import { DamageTypeID } from "./DamageType";
 import { FieldID } from "./Field";
 import { CustomFlagID, FlagID } from "./Flag";
 import { FurnitureID } from "./Furniture";
-import { CddaID, Color, CopyfromVar, DescText, Int, LookLikeID, Time, Volume } from "./GenericDefine";
+import { CddaID, Color, CopyfromVar, DescText, Int, LookLikeID, PRecord, Time, Volume } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { ItemGroupEntrie, ItemGroupID } from "./ItemGroup";
 import { MonsterID } from "./Monster";
@@ -94,7 +94,7 @@ export type VehiclePart = CopyfromVar<{
     /** 展开此部件的时间 */
     unfolding_time?: (Time);
     /** 伤害减少; 参见"部件阻力". 如果未指定, 则设为零 */
-    damage_reduction: Partial<Record<DamageTypeID|"non_physical"|"physical"|"all",number>>;
+    damage_reduction: PRecord<DamageTypeID|"non_physical"|"physical"|"all",number>;
     /**一个列表, 每个列表都是一个工具质量和质量等级, 该车辆部件提供 */
     qualities?: [ToolQualityID, number][];
     /**此部件可以转换地形, 如犁 */

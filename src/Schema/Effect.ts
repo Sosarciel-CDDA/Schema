@@ -2,7 +2,7 @@ import { BodyPartID } from "./BodyPart";
 import { ParamsEnchantment } from "./Enchantment";
 import { EocEvent } from "./Eoc";
 import { FlagID } from "./Flag";
-import { CddaID, DescText, EffectRatType, Time } from "./GenericDefine";
+import { CddaID, DescText, EffectRatType, PRecord, Time } from "./GenericDefine";
 import { LimbScoreID } from "./LimbScore";
 import { MutationID } from "./Mutation";
 import { VitaminID } from "./Vitamin";
@@ -428,4 +428,4 @@ export type EffectModType = typeof EffectModTypeList[number];
 /**效果的调整值格式  
  * {字段: [加成,被抵抗时的加成]}  
  */
-export type EffectMod = Partial<Record<EffectModType,number[]>>;
+export type EffectMod = PRecord<EffectModType,number[]>;

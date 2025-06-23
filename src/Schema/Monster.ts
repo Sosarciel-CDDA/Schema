@@ -4,7 +4,7 @@ import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
 import { BoolObj } from "./Eoc";
-import { CddaID, Char, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, Season, Time, Volume, Weight } from "./GenericDefine";
+import { CddaID, Char, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, PRecord, Season, Time, Volume, Weight } from "./GenericDefine";
 import { HarvestID } from "./Harvest";
 import { ItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
@@ -109,7 +109,7 @@ export type Monster = CopyfromVar<{
      */
     melee_training_cap?: Int;
     /**怪物对不同类型伤害的保护 */
-    armor?: Record<DamageTypeID,number>;
+    armor?: PRecord<DamageTypeID,number>;
     /**怪物保护中的弱点 */
     weakpoints?: Weakpoint[];
     /**应用于怪物的弱点集 */
@@ -178,7 +178,7 @@ export type Monster = CopyfromVar<{
     /**如果这个怪物是一个可骑乘的机甲, 这是电池的 id. 不支持对象或数组 (即只有一个电池 id)  */
     mech_battery?: (ItemID);
     /* 新生成的怪物开始时拥有的弹药 */
-    starting_ammo?: Record<ItemID,number>;
+    starting_ammo?: PRecord<ItemID,number>;
     /**这个怪物生成时带有的坐骑特定物品. 接受绑定, 马具, 护甲和存储的条目 */
     mount_items?: MonMountItem;
     /**如果怪物不升级, 则为 false, 或者定义一个升级的对象 */

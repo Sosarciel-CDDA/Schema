@@ -5,8 +5,14 @@
     "description": "test",
     "subtype": [],
     "id": "test",
-    "symbol": "",
+    "symbol": "s",
     "volume": 1,
     "weight": 1,
-    "//GENERIC": true
+    "//TOOL": true,
+    "use_action":[{
+        "type": "consume_drug",
+        "stat_adjustments": {
+            "fatigue": 0
+        }
+    }]
 }

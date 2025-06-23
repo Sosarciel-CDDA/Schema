@@ -1,4 +1,3 @@
-import { PRecord } from "@zwa73/utils";
 import { AmmunitionTypeID } from "Schema/AmmiunitionType";
 import { BodyPartID } from "Schema/BodyPart";
 import { DamageTypeID } from "Schema/DamageType";
@@ -7,7 +6,7 @@ import { EocID, ParamsEoc } from "Schema/Eoc";
 import { FieldID } from "Schema/Field";
 import { FlagID } from "Schema/Flag";
 import { FurnitureID } from "Schema/Furniture";
-import { Color, DescText, Explosion, Float, Int, Power, SurvivalNeed, Time, Volume } from "Schema/GenericDefine";
+import { Color, DescText, Explosion, Float, Int, Power, PRecord, SurvivalNeed, Time, Volume } from "Schema/GenericDefine";
 import { ItemID, ItemVariantID } from "Schema/Item";
 import { ItemGroupID } from "Schema/ItemGroup";
 import { MaterialID } from "Schema/Material";
@@ -63,7 +62,7 @@ export type UseActionTransform = {
      */
     need_wielding?: boolean;
     /**转换所需的工具品质及其等级, 例如"fine bolt turning 1" */
-    qualities_needed: Record<ToolQualityID, Int>;
+    qualities_needed: PRecord<ToolQualityID, Int>;
     /**转换后物品的初始充能数量 */
     target_charges: Int;
     /**随机化转换后物品的充能数量  
@@ -158,7 +157,7 @@ export type UseActionConsumeDrug = {
     /**激活时显示的消息 */
     activation_message: (DescText);
     /**效果及其持续时间 */
-    effects: Record<EffectID, Int>;
+    effects: PRecord<EffectID, Int>;
     /**随时间造成的伤害 */
     damage_over_time: {
         /**伤害类型 */
@@ -173,11 +172,11 @@ export type UseActionConsumeDrug = {
     /**对玩家状态的调整 */
     stat_adjustments: PRecord<SurvivalNeed, Int>;
     /**产生的领域，主要用于烟雾 */
-    fields_produced: Record<(FieldID), Int>;
+    fields_produced: PRecord<(FieldID), Int>;
     /**在食用药物过程中需要使用的充能 */
-    charges_needed: Record<(ItemID), Int>;
+    charges_needed: PRecord<(ItemID), Int>;
     /**食用药物所需的工具 */
-    tools_needed: Record<(ItemID), Int>;
+    tools_needed: PRecord<(ItemID), Int>;
     /**过程中所需的移动点数
      * @default 100
      */

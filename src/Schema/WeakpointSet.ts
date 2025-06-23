@@ -1,6 +1,6 @@
 import { DamageTypeID } from "./DamageType";
 import { EffectID } from "./Effect";
-import { CddaID, DescText, Int, Time } from "./GenericDefine";
+import { CddaID, DescText, Int, PRecord, Time } from "./GenericDefine";
 import { ProficiencyID } from "./Proficiency";
 
 /**弱点集合ID */
@@ -83,7 +83,7 @@ export type WeakpointDmg = {
     physical?: number;
     /**非物理伤害类型 (biological, acid, heat, cold 和 electric) 的默认值 */
     non_physical?: number;
-} & Partial<Record<DamageTypeID,number>>
+} & PRecord<DamageTypeID,number>
 /**命中怪物弱点时产生的效果 */
 export type WeakpointEffect = {
     /**效果类型 */

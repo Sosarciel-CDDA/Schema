@@ -1,4 +1,4 @@
-import { CddaID, DescText, Float, Int } from "./GenericDefine";
+import { CddaID, DescText, Float, Int, PRecord } from "./GenericDefine";
 import { MonsterFactionID } from "./MonsterFaction";
 import { VitaminID } from "./Vitamin";
 import { BoolObj } from "./Eoc";
@@ -15,7 +15,7 @@ type FoodSupply = {
     /**卡路里数量(不是千卡!) */
     calories: Int;
     /**维生素供应 */
-    vitamins?: Record<VitaminID,Int>;
+    vitamins?: PRecord<VitaminID,Int>;
 };
 
 /**价格规则 */
@@ -124,7 +124,7 @@ export type NPCFaction = {
     /**阵营关系字典  
      * 描述该阵营如何看待其他阵营  
      */
-    relations: Record<NPCFactionID, FactionRelationFlags>;
+    relations: PRecord<NPCFactionID, FactionRelationFlags>;
     /**该阵营所属的怪物阵营名称  
      * @default "human"  
      */

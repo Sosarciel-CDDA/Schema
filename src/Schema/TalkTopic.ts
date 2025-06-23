@@ -1,4 +1,4 @@
-import { CddaID, DescText } from "./GenericDefine";
+import { CddaID, DescText, PRecord } from "./GenericDefine";
 import { BoolObj, BoolOperateList, Eoc, EocEffect, NoParamCond } from "./Eoc";
 import { SkillID } from "./Skill";
 import { ItemID } from "./Item";
@@ -226,7 +226,7 @@ type EocCond = TransEocCond&{
 }
 /**将BoolObj转换为适用于TalkTopic的条件 */
 type TransEocCond = Exclude<BoolObj,NoParamCond>|
-    Partial<Record<NoParamCond,boolean>>;
+    PRecord<NoParamCond,boolean>;
 
 
 /**说话者效果 */

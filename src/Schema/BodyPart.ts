@@ -2,7 +2,7 @@ import { DamageTypeID } from "./DamageType";
 import { EffectID } from "./Effect";
 import { IDObj } from "./Eoc";
 import { FlagID } from "./Flag";
-import { CddaID, DescText, Float, Int } from "./GenericDefine";
+import { CddaID, DescText, Float, Int, PRecord } from "./GenericDefine";
 import { LimbScoreID } from "./LimbScore";
 import { TechniqueID } from "./Technique";
 
@@ -218,7 +218,7 @@ export type BodyPart = {
     /**包含伤害抵抗值的对象  
      * @example { "bash": 2, "cut": 1 }  
      */
-    armor?: Record<DamageTypeID,Int>;
+    armor?: PRecord<DamageTypeID,Int>;
     /**子部位列表 */
     sub_parts?: BodyPartID[];
     /**左侧或右侧 */

@@ -2,7 +2,7 @@ import { JToken } from "@zwa73/utils";
 import { AmmunitionType } from "./AmmiunitionType";
 import { Effect } from "./Effect";
 import { Enchantment } from "./Enchantment";
-import { Eoc, IDObj } from "./Eoc";
+import { Eoc } from "./Eoc";
 import { Flag, FlagID } from "./Flag";
 import { AmmoID, Item, ItemID, AnyItemTrait } from "./Item";
 import { ItemGroup } from "./ItemGroup";
@@ -155,7 +155,7 @@ export type Copyfrom<T extends CopyfromAble> =
         /**在原物品的某些元素上做数值倍率调整 */
         proportional?: Partial<Omit<T,CopyfromResFD>>,
         /**将原物品的某些材质替换 原材质:替换材质 */
-        replace_materials?: Record<MaterialID,MaterialID>,
+        replace_materials?: PRecord<MaterialID,MaterialID>,
     }& Partial<Omit<T,CopyfromResFD>>;
     //Partial<{[P in keyof TMP]:TMP[P] extends object
     //    ? Partial<TMP[P]> & {delete?: TMP[P],extend?: TMP[P]}
@@ -220,9 +220,9 @@ export type PocketData = {
     fire_protection?: boolean;
     /**将口袋限制为给定的弹药类型和数量.  这会覆盖强制性的体积, 重量, 水密和气密, 以使用给定的弹药类型.   
      * 一个口袋可以容纳任意数量的独特弹药类型, 每种弹药类型的数量不同, 并且容器只能容纳一种类型 (截至目前).  如果省略它, 它将是空的.   
-     * Record<(AmmoID)子弹类型 : (number)容纳数量}>  
+     * PRecord<(AmmoID)子弹类型 : (number)容纳数量}>  
      */
-    ammo_restriction?: Partial<Record<AmmoID,number>>;
+    ammo_restriction?: PRecord<AmmoID,number>;
     /**只有当物品具有与这些标志之一匹配的标志时, 才能将其放入此口袋中.  */
     flag_restriction?: FlagID[];
     /**只有这些物品 ID 才能放入此口袋中.  超越弹药和旗帜限制.  */
@@ -253,8 +253,10 @@ export type RangeDamage = {
     }[]
 }
 /**近战武器伤害 伤害类型 : 伤害值 不能为负数* */
-export type MeleeDamage = Partial<Record<DamageTypeID,number>>;
+export type MeleeDamage = PRecord<DamageTypeID,number>;
 
+
+export type PRecord<K extends string|number, V> = Partial<Record<K, V>>;
 
 /**爆炸 */
 export type Explosion = {

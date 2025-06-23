@@ -1,5 +1,5 @@
 import { MonsterID } from "./Monster";
-import { CddaID, Festival, Int, Period, Season, Time } from "./GenericDefine";
+import { CddaID, Festival, Int, Period, PRecord, Season, Time } from "./GenericDefine";
 import { AmmoID } from "./Item";
 
 /**怪物组ID */
@@ -38,7 +38,7 @@ type MonsterGroupEntry = {
     /**怪物在此组中生成时才有的属性 */
     spawn_data?: {
         /**怪物生成时携带的弹药类型和数量 */
-        ammo?: Record<AmmoID, Int>;
+        ammo?: PRecord<AmmoID, Int>;
     };
     /**如果存在, 此条目只能在指定事件期间生成  
      * @example "halloween"  

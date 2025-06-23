@@ -4,7 +4,7 @@ import { EmitID } from "./Emit";
 import { ParamsEnchantment } from "./Enchantment";
 import { ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";
-import { CddaID, DescText, Energy, Float, Int, SocialType, StatusUc, Time } from "./GenericDefine";
+import { CddaID, DescText, Energy, Float, Int, PRecord, SocialType, StatusUc, Time } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { MartialArtID } from "./MartialArt";
 import { MutationID } from "./Mutation";
@@ -74,7 +74,7 @@ export type Bionic = {
     /**对指定身体部位提供的环境防护值 */
     env_protec?: [BodyPartID, Int][];
     /**对指定身体部位提供的保护值数组 */
-    protec?: [BodyPartID, Record<DamageTypeID,Int>][];
+    protec?: [BodyPartID, PRecord<DamageTypeID,Int>][];
     /**此仿生占据的身体部位及槽位数列表 */
     occupied_bodyparts?: [BodyPartID, Int][];
     /**增加的电力存储容量  
@@ -121,7 +121,7 @@ export type Bionic = {
     /**应用的附魔列表 */
     enchantments?: (ParamsEnchantment);
     /**安装时获得, 卸载时失去的法术及等级映射 */
-    learned_spells?: Record<SpellID, Int>;
+    learned_spells?: PRecord<SpellID, Int>;
     /**安装时获得, 卸载时失去的熟练度ID数组 */
     learned_proficiencies?: ProficiencyID[];
     /**安装所需的工具和组件要求ID */
@@ -133,7 +133,7 @@ export type Bionic = {
     /**不能卸载的原因消息 */
     cant_remove_reason?: (DescText);
     /**社交检查修正值 */
-    social_modifiers?: Partial<Record<SocialType,Int>>;
+    social_modifiers?: PRecord<SocialType,Int>;
     /**安装时自动激活 */
     activated_on_install?: boolean;
     /**安装此仿生所需的仿生ID */

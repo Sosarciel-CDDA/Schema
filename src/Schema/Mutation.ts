@@ -2,7 +2,7 @@ import { BodyPartID } from "./BodyPart";
 import { ParamsEnchantment } from "./Enchantment";
 import { BoolObj, EocID } from "./Eoc";
 import { CustomFlagID, FlagID } from "./Flag";
-import { CddaID, DescText, EffectRatType, SocialType } from "./GenericDefine";
+import { CddaID, DescText, EffectRatType, PRecord, SocialType } from "./GenericDefine";
 import { ItemID, ArmorID, GunID } from "./Item";
 import { MaterialID } from "./Material";
 import { MonsterID } from "./Monster";
@@ -84,7 +84,7 @@ export type Mutation = {
     /**如果身体部位有由突变引起的负担, 则将该负担惩罚乘以该乘数.   
      * 注意: 不影响衣物负担.   
      */
-    encumbrance_multiplier_always?: Partial<Record<BodyPartID,number>>;
+    encumbrance_multiplier_always?: PRecord<BodyPartID,number>;
     /**从玩家的可见范围中减去的百分比, 上限为60. 负值有效, 但由于视觉范围的上限方式, 效果不是很明显 */
     stealth_modifier?: number;
     /**当设置时, 突变是玩家需要激活的活动突变  
@@ -258,7 +258,7 @@ export type Mutation = {
     /**社交修饰符. 可以是: 恐吓, 撒谎, 说服.   
      * intimidate, lie, persuade  
      */
-    social_modifiers?:Partial<Record<SocialType,number>>;
+    social_modifiers?:PRecord<SocialType,number>;
     /**学习的法术和获得特性/突变后的等级.  */
     spells_learned?: [SpellID, number][];
     /**变异激活时可以转变为什么 */

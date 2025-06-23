@@ -3,7 +3,7 @@ import { DamageTypeID } from "./DamageType";
 import { FakeSpell } from "./Enchantment";
 import { NumObj } from "./Eoc";
 import { FieldID } from "./Field";
-import { CddaID, DescText } from "./GenericDefine";
+import { CddaID, DescText, PRecord } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { MonsterID } from "./Monster";
 import { MutationID } from "./Mutation";
@@ -145,9 +145,9 @@ export type Spell = {
     /**声音变体ID */
     sound_variant?: (SoundEffectVariantID);
     /**当列表内所有法术到达指定等级时学会此法术  
-     * Record<(SpellID)法术ID : (NumObj)需求等级>  
+     * PRecord<(SpellID)法术ID : (NumObj)需求等级>  
      */
-    learn_spells?: Partial<Record<SpellID,NumObj>>;
+    learn_spells?: PRecord<SpellID,NumObj>;
 };
 
 /**法术有效目标 列表 */

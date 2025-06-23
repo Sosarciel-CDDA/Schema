@@ -1,5 +1,5 @@
 import { DamageTypeID } from "./DamageType";
-import { CddaID, DescText, Energy, Float, Volume } from "./GenericDefine";
+import { CddaID, DescText, Energy, Float, PRecord, Volume } from "./GenericDefine";
 import { TerrainID } from "./Terrain";
 import { VitaminID } from "./Vitamin";
 
@@ -48,7 +48,7 @@ export type Material = {
      */
     rotting?: boolean;
     /**作为护甲时每1厚度的伤害抗性 */
-    resist: Record<DamageTypeID,number>;
+    resist: PRecord<DamageTypeID,number>;
     /**此材质物品被直接攻击时 物品的防御力 */
     chip_resist: number;
     /**描述材料损坏程度的形容词  

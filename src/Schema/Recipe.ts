@@ -1,6 +1,6 @@
 import { ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";
-import { CddaID, Int, Float, Time, ActivityLevel } from "./GenericDefine";
+import { CddaID, Int, Float, Time, ActivityLevel, PRecord } from "./GenericDefine";
 import { ItemID, ItemVariantID } from "./Item";
 import { ProficiencyID } from "./Proficiency";
 import { Requirement, RequirementID } from "./Requirement";
@@ -105,7 +105,7 @@ export type Recipe = {
      *   }  
      * }  
      */
-    book_learn?: Record<ItemID,BookLearn>;
+    book_learn?: PRecord<ItemID,BookLearn>;
     /**制作难度  */
     difficulty: Int;
     /**制作时间 */

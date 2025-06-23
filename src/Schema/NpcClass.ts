@@ -1,5 +1,5 @@
 import { NpcNumObj, NumObj } from "./Eoc";
-import { CddaID, DescText } from "./GenericDefine";
+import { CddaID, DescText, PRecord } from "./GenericDefine";
 import { ItemGroupID } from "./ItemGroup";
 import { MutationID } from "./Mutation";
 import { SkillID } from "./Skill";
@@ -86,7 +86,7 @@ type ShopPriceRules = [
 ]
 export type NpcBaseTraits = ({ group: string }|{ trait: MutationID }|[MutationID,number])[];
 export type NpcBaseSpells = {id:SpellID,level:number}[];
-type MutationRounds = Partial<Record<"ANY",NpcNumObj>>;
+type MutationRounds = PRecord<"ANY",NpcNumObj>;
 /**npc职业的基础技能 */
 export type NPCClassBaseSkill = {
     /**目标技能 ALL为全部 */
