@@ -8,7 +8,9 @@ import { ItemCategoryID } from "Schema/ItemCategory";
 export type EocEffect = EocEffectList[number];
 
 
-/**参数Eoc */
+/**作为参数的Eoc  
+ * 单个eocid或内联eoc 或是他们组成的数组  
+ */
 export type ParamsEoc = (IDObj<EocID>|InlineEoc)|(IDObj<EocID>|InlineEoc)[];
 
 /**背包筛选数据 */
