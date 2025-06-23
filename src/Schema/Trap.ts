@@ -1,4 +1,4 @@
-import { CddaID, CharSymbol, Color, DescText, Int, Weight } from "./GenericDefine";
+import { CddaID, Char, Color, DescText, Int, Weight } from "./GenericDefine";
 import { ParamsEoc } from "./Eoc";
 import { ItemID } from "./Item";
 import { FlagID } from "./Flag";
@@ -20,7 +20,7 @@ export type Trap = {
     /**颜色 */
     color: (Color);
     /**地图符号 */
-    symbol: (CharSymbol);
+    symbol: (Char);
     /**可见度(0表示非常明显, 值越高越难发现) */
     visibility: Int;
     /**躲避难度(0表示非常容易, 值越高越难) */

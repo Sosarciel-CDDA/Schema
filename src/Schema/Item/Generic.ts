@@ -1,7 +1,7 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { EnchantmentID, InlineEnchantment } from "../Enchantment";
 import { CustomFlagID } from "../Flag";
-import { CddaID, CharSymbol, Color, CopyfromVar, DescText, Explosion, Float, Int, Length, LookLikeID, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
+import { CddaID, Char, Color, CopyfromVar, DescText, Explosion, Float, Int, Length, LookLikeID, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
 import { AmmoID } from "./Ammo";
 import { WeaponCategoryID } from "../WeaponCategory";
 import { MaterialID } from "../Material";
@@ -117,7 +117,7 @@ export type GenericTrait = CopyfromVar<{
         amount: Int;
     }[];
     /**ascii显示符号 */
-    symbol: (CharSymbol);
+    symbol: (Char);
     /**颜色 */
     color?: Color;
     /**材料类型，可以有任意数量。参见materials.json获取可能选项 */
@@ -193,7 +193,7 @@ export type GenericTrait = CopyfromVar<{
         /**选择此变体时使用的 ASCII 艺术图片。如果没有，则使用默认值（如果存在）。 */
         ascii_picture?: string;
         /**用于替换物品符号的有效 Unicode 字符。如果未指定，则不会进行任何更改。 */
-        symbol?: (CharSymbol);
+        symbol?: (Char);
         /**物品符号的替换颜色。如果未指定，则不会进行任何更改。 */
         color?: (Color)
         /**当此物品生成时，若没有明确的变体，则此变体被选中的相对概率。

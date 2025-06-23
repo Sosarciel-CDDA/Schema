@@ -4,7 +4,7 @@ import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
 import { BoolObj } from "./Eoc";
-import { CddaID, CharSymbol, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, Season, Time, Volume, Weight } from "./GenericDefine";
+import { CddaID, Char, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, Season, Time, Volume, Weight } from "./GenericDefine";
 import { HarvestID } from "./Harvest";
 import { ItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
@@ -43,7 +43,7 @@ export type Monster = CopyfromVar<{
     /**符号
      * 游戏中显示的ASCII符号
      */
-    symbol: (CharSymbol);
+    symbol: (Char);
     /**符号的显示颜色 */
     color?: Color;
     /**怪物所属的默认阵营 */

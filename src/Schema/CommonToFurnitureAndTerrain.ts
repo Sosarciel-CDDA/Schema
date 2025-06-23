@@ -1,6 +1,6 @@
 import { EmitID } from "./Emit";
 import { FurnitureID } from "./Furniture";
-import { CharSymbol, Color, DescText, Float, Int, LookLikeID, Time, Volume } from "./GenericDefine";
+import { Char, Color, DescText, Float, Int, LookLikeID, Time, Volume } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { SkillID } from "./Skill";
@@ -75,7 +75,7 @@ export type CommonToFurnitureAndTerrain<T extends FurnitureOrTerrain> = T&{
      * 也可以是一个包含4个字符串的数组, 分别定义不同季节的符号. 
      * 第一个条目定义春季的符号. 如果不是数组, 则全年使用相同的符号
      */
-    symbol: CharSymbol | [CharSymbol, CharSymbol, CharSymbol, CharSymbol];
+    symbol: Char | [Char, Char, Char, Char];
     /**移动通过的成本
      * 值为0表示不可通过(例如墙). 
      * 不应使用负值. 正值是50移动点的倍数, 

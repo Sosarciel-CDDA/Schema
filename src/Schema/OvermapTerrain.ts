@@ -1,4 +1,4 @@
-import { CddaID, CharSymbol, Color, DescText } from "./GenericDefine";
+import { CddaID, Char, Color, DescText } from "./GenericDefine";
 import { MonsterGroupID } from "./MonsterGroup";
 
 /**大地图地块ID */
@@ -18,7 +18,7 @@ export type OvermapTerrain = {
     id: OvermapTerrainID | OvermapTerrainID[];
     "copy-from"?: (OvermapTerrainID);
     name: DescText;
-    sym: CharSymbol;
+    sym: Char;
     color: Color;
     spawns: OMSpawn;
 };
