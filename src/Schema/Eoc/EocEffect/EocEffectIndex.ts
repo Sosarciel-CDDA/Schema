@@ -12,22 +12,6 @@ export type EocEffect = EocEffectList[number];
 export type ParamsEoc = (IDObj<EocID>|InlineEoc)|(IDObj<EocID>|InlineEoc)[];
 
 
-/**无参效果 */
-export type NoParamEffect = [
-    "follow_only"       ,//让npc跟随玩家
-    "leave"             ,//让npc停止跟随玩家并离开追随者阵营
-    "drop_weapon"       ,//丢下手持物品 仅限npc
-    NoParamTalkerEffect ,
-][number];
-
-/**双Talker无参效果表 */
-export const NoParamTalkerEffectList = [
-    "prevent_death" ,//在死亡事件中阻止将要发生的死亡
-    "die"           ,//让talker死亡或是删除物品
-] as const;
-/**双Talker无参效果 */
-export type NoParamTalkerEffect = `${`u_`|`npc_`}${typeof NoParamTalkerEffectList[number]}`
-
 
 /**变量操作的注释用字段  
  * { "u_add_var": "gunsmith_ammo_ammount", "type": "number", "context": "artisans", "value": "800" }  
@@ -64,7 +48,7 @@ export type ItemSearchData = {
 //#region Eoc效果表导出
 import {SpawnItem, RemoveItem} from './EocEffect'
 import {MathAssignExp, SoundEffect, OpenDialogue, TakeControl, TakeControlMenu, GiveAchievement, AssignMission, RemoveActiveMission, FinishMission, OfferMission, RunEocs, RunNpcEocs, RunMonsterEocs, RunInvEocs, MapRunEocs, MapRunItemEocs, RevealMap, RevealRoute, ClosestCity, WeightedListEocs, RunEocSelector, RollRemainder, IfCondition, SwitchStatement, ForEach} from './GenericEffect'
-import {DealDamage, GetMutate, GetMutateCategory, MutateTowards, SetTraitPurifiability, AddEffect, AddBionic, LoseBionic, AddTrait, LoseEffect, LoseTrait, ActivateTrait, DeactivateTrait, LearnMartialArt, ForgetMartialArt, AddVar, LoseVar, CopyVar, SetStringVar, SetCondition, LearnRecipe, ForgetRecipe, AssignActivity, CancelActivity, LocationVariable, LocationVariableAdjust, BarberHair, BarberBeard, NpcFirstTopic, Teleport, AddWet, MakeSound, ModHealthy, AddMorale, LoseMorale, ConsumeItemSum, SetFacRelation, AddFactionTrust, Die, PreventDeath, Attack, CreateExplosion, Knockback, CastSpell, LevelSpellClass, QueryOmt, QueryTile, ChooseAdjacentHighlight, MirrorCoordinates, Message, ConsumeItem} from './CharacterEffect'
+import {ConsumeItem, FollowOnly, Leave, DropWeapon, DealDamage, GetMutate, GetMutateCategory, MutateTowards, SetTraitPurifiability, AddEffect, AddBionic, LoseBionic, AddTrait, LoseEffect, LoseTrait, ActivateTrait, DeactivateTrait, LearnMartialArt, ForgetMartialArt, AddVar, LoseVar, CopyVar, SetStringVar, SetCondition, LearnRecipe, ForgetRecipe, AssignActivity, CancelActivity, LocationVariable, LocationVariableAdjust, BarberHair, BarberBeard, NpcFirstTopic, Teleport, AddWet, MakeSound, ModHealthy, AddMorale, LoseMorale, ConsumeItemSum, SetFacRelation, AddFactionTrust, Die, PreventDeath, Attack, CreateExplosion, Knockback, CastSpell, LevelSpellClass, QueryOmt, QueryTile, ChooseAdjacentHighlight, MirrorCoordinates, Message} from './CharacterEffect'
 import {SetFlag, UnsetFlag, Activate, SetFault, SetRandomFaultOfType, MapSpawnItem, MapgenUpdate, RevertLocation, AlterTimedEvents, Lightning, NextWeather, CustomLightLevel, TransformRadius, TransformLine, PlaceOverride, SpawnMonster, SpawnNpc, SetField, SetEmit, TurnCost} from './ItemEffect'
 /**Eoc效果表导出 */
 export type EocEffectList = [
@@ -95,6 +79,10 @@ export type EocEffectList = [
     IfCondition             ,//条件判断
     SwitchStatement         ,//开关语句
     ForEach                 ,//遍历类型
+    ConsumeItem             ,//使用物品
+    FollowOnly              ,//让npc跟随玩家
+    Leave                   ,//让npc停止跟随玩家并离开追随者阵营
+    DropWeapon              ,//丢下手持物品 仅限npc
     DealDamage              ,//造成伤害
     GetMutate               ,//突变
     GetMutateCategory       ,//分类突变
@@ -145,7 +133,6 @@ export type EocEffectList = [
     ChooseAdjacentHighlight ,//选择相邻高亮图块
     MirrorCoordinates       ,//镜像坐标
     Message                 ,//消息
-    ConsumeItem             ,//使用物品
     SetFlag                 ,//设置标志
     UnsetFlag               ,//移除标志
     Activate                ,//激活

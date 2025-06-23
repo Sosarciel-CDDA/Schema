@@ -22,6 +22,32 @@ import { BodyPartParam } from "Schema/BodyPart";
 
 
 
+
+//#region 不在eoc doc定义内的
+
+/**使用物品 */
+export type ConsumeItem = TalkerVar<{
+    consume_item: IDObj<ItemID>;
+    /**数量 */
+    count?: (NumObj);
+    /**充能数量 */
+    charges?: (NumObj);
+    /**为true时将显示消息给予npc物品 */
+    popup?: boolean;
+},"consume_item">;
+
+/**让npc跟随玩家 */
+export type FollowOnly = "follow_only"
+
+/**让npc停止跟随玩家并离开追随者阵营 */
+export type Leave = "leave"
+
+/**丢下手持物品 仅限npc */
+export type DropWeapon = "drop_weapon"
+
+//#endregion
+
+
 /**造成伤害
  * 以近战攻击的方式造成伤害; 不能被闪避, 但可以被护甲减免
  * 适用于: Avatar Character NPC Monster
@@ -1064,6 +1090,7 @@ export type AddFactionTrust = TalkerVar<{
 
 
 /**死亡
+ * 让talker死亡或是删除物品
  * Alpha或beta talker将立即死亡. 如果目标是物品, 它将被删除
  * 适用于: Avatar Character NPC Monster Item
  * @example
@@ -1095,8 +1122,9 @@ export type Die = TalkerStr<'die'>|TalkerVar<{
 
 
 /**防止死亡
- * 你或NPC将被防止死亡. 旨在用于具有NPC_DEATH或EVENT(character_dies)类型的EoC
- *  (注意在这些事件中u将是垂死的npc) 
+ * 在死亡事件中阻止将要发生的死亡  
+ * 你或NPC将被防止死亡. 旨在用于具有NPC_DEATH或EVENT(character_dies)类型的EoC  
+ *  (注意在这些事件中u将是垂死的npc)  
  * 适用于: Avatar Character NPC
  * @example
  * // NPC被防止死亡
@@ -1561,17 +1589,4 @@ export type Message = TalkerVar<{
     interrupt_type?: (StrObj);
 }, 'message'>;
 
-
-//未转换的
-
-/**使用物品 */
-export type ConsumeItem = TalkerVar<{
-    consume_item: IDObj<ItemID>;
-    /**数量 */
-    count?: (NumObj);
-    /**充能数量 */
-    charges?: (NumObj);
-    /**为true时将显示消息给予npc物品 */
-    popup?: boolean;
-},"consume_item">;
 
