@@ -12,6 +12,7 @@
         "baseUrl": ".",
         "paths": {
             "Schema/*" : ["./src/Schema/*"],
+            "Macro"    : ["./src/Macro"],
 			"@src/*"   : ["./src/*"],
 			"@/*"      : ["./*"]
         }
