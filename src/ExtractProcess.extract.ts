@@ -4,7 +4,7 @@ import { UtilFT } from '@zwa73/utils';
 
 //#region 预定义IDList生成
 void extractDefineList({
-    region: "物品类别提取",
+    region: "ItemCategoryID提取",
     targetFile: path.join(SCHEMA_DIR, "ItemCategory.ts"),
     sourceFileGlob: "data/json/item_category.json",
     typeName: "ExtractDefineItemCategoryID",
@@ -36,6 +36,18 @@ void extractDefineList({
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(async v=>
             `${`"${v.id}"`.padEnd(20)}, // ${await zh(v.name)}`
+        );
+    }
+});
+void extractDefineList({
+    region: "FlagID提取",
+    targetFile: path.join(SCHEMA_DIR, "Flag.ts"),
+    sourceFileGlob: "data/json/flags.json",
+    typeName: "ExtractDefineFlagID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        return jsonlist.map(async v=>
+            `${`"${v.id}"`.padEnd(20)}, // ${await zh(v.info)}`
         );
     }
 });

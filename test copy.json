@@ -1,5 +1,7 @@
 {
     "$schema": "./schema/AnyCddaJson.schema.json",
-    "type": "terrain",
-    "id": "tt"
+    "type": "vitamin",
+    "id":"genshin",
+    "name":"启动",
+    "vit_type": "drug"
 }

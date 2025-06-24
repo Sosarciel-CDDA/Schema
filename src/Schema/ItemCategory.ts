@@ -56,8 +56,8 @@ const ExampleItemCategory: ItemCategory = {
 };
 
 
-//#region 物品类别提取
-/**物品类别提取 列表*/
+//#region ItemCategoryID提取
+/**ItemCategoryID提取 列表*/
 const ExtractDefineItemCategoryIDList = [
     "e_files"           , // [object Object]
     "software"          , // [object Object]
@@ -96,7 +96,7 @@ const ExtractDefineItemCategoryIDList = [
     "BIONIC_FUEL_SOURCE", // [object Object]
     "WEAPON_HELD"       , // [object Object]
 ] as const;
-/**物品类别提取 列表*/
+/**ItemCategoryID提取 列表*/
 type ExtractDefineItemCategoryID = typeof ExtractDefineItemCategoryIDList[number];
 //#endregion
 
