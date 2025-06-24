@@ -59,42 +59,42 @@ const ExampleItemCategory: ItemCategory = {
 //#region 物品类别提取
 /**物品类别提取 列表*/
 const ExtractDefineItemCategoryIDList = [
-    "e_files"           ,
-    "software"          ,
-    "guns"              ,
-    "magazines"         ,
-    "ammo"              ,
-    "weapons"           ,
-    "tools"             ,
-    "clothing"          ,
-    "food"              ,
-    "drugs"             ,
-    "manuals"           ,
-    "books"             ,
-    "maps"              ,
-    "mods"              ,
-    "mutagen"           ,
-    "bionics"           ,
-    "currency"          ,
-    "veh_parts"         ,
-    "other"             ,
-    "fuel"              ,
-    "seeds"             ,
-    "ma_manuals"        ,
-    "traps"             ,
-    "chems"             ,
-    "spare_parts"       ,
-    "container"         ,
-    "artifacts"         ,
-    "keys"              ,
-    "corpses"           ,
-    "tool_magazine"     ,
-    "armor"             ,
-    "exosuit"           ,
-    "ITEMS_WORN"        ,
-    "INTEGRATED"        ,
-    "BIONIC_FUEL_SOURCE",
-    "WEAPON_HELD"       ,
+    "e_files"           , // [object Object]
+    "software"          , // [object Object]
+    "guns"              , // [object Object]
+    "magazines"         , // [object Object]
+    "ammo"              , // [object Object]
+    "weapons"           , // [object Object]
+    "tools"             , // [object Object]
+    "clothing"          , // [object Object]
+    "food"              , // [object Object]
+    "drugs"             , // [object Object]
+    "manuals"           , // [object Object]
+    "books"             , // [object Object]
+    "maps"              , // [object Object]
+    "mods"              , // [object Object]
+    "mutagen"           , // [object Object]
+    "bionics"           , // [object Object]
+    "currency"          , // [object Object]
+    "veh_parts"         , // [object Object]
+    "other"             , // [object Object]
+    "fuel"              , // [object Object]
+    "seeds"             , // [object Object]
+    "ma_manuals"        , // [object Object]
+    "traps"             , // [object Object]
+    "chems"             , // [object Object]
+    "spare_parts"       , // [object Object]
+    "container"         , // [object Object]
+    "artifacts"         , // [object Object]
+    "keys"              , // [object Object]
+    "corpses"           , // [object Object]
+    "tool_magazine"     , // [object Object]
+    "armor"             , // [object Object]
+    "exosuit"           , // [object Object]
+    "ITEMS_WORN"        , // [object Object]
+    "INTEGRATED"        , // [object Object]
+    "BIONIC_FUEL_SOURCE", // [object Object]
+    "WEAPON_HELD"       , // [object Object]
 ] as const;
 /**物品类别提取 列表*/
 type ExtractDefineItemCategoryID = typeof ExtractDefineItemCategoryIDList[number];

@@ -51,9 +51,9 @@ void extractDefineList({
     sourceFileGlob: "data/json/item_category.json",
     typeName: "ExtractDefineItemCategoryID",
     func:async fp=>{
-        const jsonlist = await UtilFT.loadJSONFile(fp) as ItemCategory[];
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(v=>
-            `${`"${v.id}"`.padEnd(20)},`
+            `${`"${v.id}"`.padEnd(20)}, // ${v.name_header}`
         );
     }
 });
@@ -66,6 +66,18 @@ void extractDefineList({
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(async v=>
             `${`"${v.id}"`.padEnd(20)}, // ${await zhcn(v.name)} ${await zhcn(v.description)}`
+        );
+    }
+});
+void extractDefineList({
+    region: "VitaminID提取",
+    targetFile: path.join(SCHEMA_DIR, "Vitamin.ts"),
+    sourceFileGlob: "data/json/vitamin.json",
+    typeName: "ExtractDefineVitaminID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        return jsonlist.map(async v=>
+            `${`"${v.id}"`.padEnd(20)}, // ${await zhcn(v.name)}`
         );
     }
 });

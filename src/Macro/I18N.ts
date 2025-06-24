@@ -3,7 +3,7 @@ import fs from 'fs';
 import { memoize, PRecord, UtilFunc } from '@zwa73/utils';
 //import gettextParser  from 'gettext-parser';
 import { loadBuildInfo } from './Utils';
-import { DescText } from 'Schema/GenericDefine';
+import type { DescText } from 'Schema/GenericDefine';
 
 
 
