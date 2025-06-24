@@ -54,7 +54,7 @@ ${importList}
 export type ${listName} = [
     ${exportList}
 ];
-`,{filePath:targetFile})
+`.trim(),{filePath:targetFile})
 }
 
 /**生成数组 */
@@ -80,5 +80,5 @@ const ${typeName}List = [
 ] as const;
 /**${region} 列表*/
 type ${typeName} = typeof ${typeName}List[number];
-`,{filePath:targetFile})
+`.trim(),{filePath:targetFile})
 }
