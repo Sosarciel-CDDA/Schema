@@ -56,43 +56,53 @@ const ExampleItemCategory: ItemCategory = {
 };
 
 
+//#region 物品类别提取
+/**物品类别提取 列表*/
+const ExtractDefineItemCategoryIDList = [
+    "e_files"           ,
+    "software"          ,
+    "guns"              ,
+    "magazines"         ,
+    "ammo"              ,
+    "weapons"           ,
+    "tools"             ,
+    "clothing"          ,
+    "food"              ,
+    "drugs"             ,
+    "manuals"           ,
+    "books"             ,
+    "maps"              ,
+    "mods"              ,
+    "mutagen"           ,
+    "bionics"           ,
+    "currency"          ,
+    "veh_parts"         ,
+    "other"             ,
+    "fuel"              ,
+    "seeds"             ,
+    "ma_manuals"        ,
+    "traps"             ,
+    "chems"             ,
+    "spare_parts"       ,
+    "container"         ,
+    "artifacts"         ,
+    "keys"              ,
+    "corpses"           ,
+    "tool_magazine"     ,
+    "armor"             ,
+    "exosuit"           ,
+    "ITEMS_WORN"        ,
+    "INTEGRATED"        ,
+    "BIONIC_FUEL_SOURCE",
+    "WEAPON_HELD"       ,
+] as const;
+/**物品类别提取 列表*/
+type ExtractDefineItemCategoryID = typeof ExtractDefineItemCategoryIDList[number];
+//#endregion
+
 
 /**预定义的物品类别 列表 */
-export const DefineItemCategoryIDList = [
-    "guns"                          , //
-    "magazines"                     , //
-    "ammo"                          , //
-    "weapons"                       , //
-    "tools"                         , //
-    "clothing"                      , //衣物
-    "food"                          , //
-    "drugs"                         , //
-    "manuals"                       , //
-    "books"                         , //
-    "maps"                          , //
-    "mods"                          , //
-    "mutagen"                       , //
-    "bionics"                       , //
-    "currency"                      , //
-    "veh_parts"                     , //
-    "other"                         , //
-    "fuel"                          , //
-    "seeds"                         , //
-    "ma_manuals"                    , //
-    "traps"                         , //
-    "chems"                         , //
-    "spare_parts"                   , //
-    "container"                     , //
-    "artifacts"                     , //
-    "keys"                          , //
-    "corpses"                       , //
-    "tool_magazine"                 , //
-    "armor"                         , //盔甲
-    "exosuit"                       , //
-    "ITEMS_WORN"                    , //
-    "INTEGRATED"                    , //
-    "BIONIC_FUEL_SOURCE"            , //
-    "WEAPON_HELD"                   , //
-] as const;
+export const DefineItemCategoryIDList = ExtractDefineItemCategoryIDList;
 /**预定义的物品类别 */
 export type DefineItemCategoryID = typeof DefineItemCategoryIDList[number];
+

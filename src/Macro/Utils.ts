@@ -13,7 +13,7 @@ export const EOC_DIR = path.join(SCHEMA_DIR,'Eoc');
 export const Item_DIR = path.join(SCHEMA_DIR,'Item');
 
 
-const loadBuildInfo = memoize(async ()=>{
+export const loadBuildInfo = memoize(async ()=>{
     return await UtilFT.loadJSONFile(INFO_PATH) as {gamepath:string};
 });
 
@@ -75,15 +75,20 @@ export async function extractDefineList(arg:{
     /**读取的来源文件
      * 路劲将以gamepath为起点
      */
-    sourceFileList:string[];
-    /**转换函数 */
-    func:(content:string)=>MPromise<string[]>;
+    sourceFileGlob:string|string[];
+    /**转换函数
+     * 需自行控制行尾逗号
+     */
+    func:(filepath:string)=>MPromise<MPromise<string>[]>;
 }){
     const info = await loadBuildInfo();
-    const {typeName,targetFile,sourceFileList,region,func} = arg;
-    const contextList = await Promise.all(sourceFileList.map(fp=>fs.promises.readFile(path.join(info.gamepath,fp),'utf-8')));
-    const exportStringList = (await Promise.all(contextList.map(context => func(context)))).flat();
-    const exportList = exportStringList.map(str=>`"${str}"`).join(',\n    ');
+    const {typeName,targetFile,sourceFileGlob: sourceFileGlobList,region,func} = arg;
+
+    const sourceFileList = await UtilFT.fileSearchGlob(info.gamepath,sourceFileGlobList);
+
+    //const contextList = await Promise.all(sourceFileList.map(fp=>fs.promises.readFile(path.join(info.gamepath,fp),'utf-8')));
+    const exportStringList = await Promise.all((await Promise.all(sourceFileList.map(fp => func(fp)))).flat());
+    const exportList = exportStringList.join('\n    ');
     return regionMacro(region,() => `
 /**${region} 列表*/
 const ${typeName}List = [
