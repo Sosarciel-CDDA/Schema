@@ -64,7 +64,7 @@ export const i18n = memoize(async (langFlag:LangFlag,text?:DescText)=>{
     const strtext = typeof text == 'string' ? text : text.ctxt??text.str??text.str_sp??text.str_pl??"undefined";
     const data = await loadI18NData(langFlag);
     const result = data[strtext] ?? strtext;
-    return result;
+    return result.startsWith("Project-Id-Version") ? strtext : result;
 });
 
 export const zh = (text?:DescText)=> i18n("zh_CN",text);

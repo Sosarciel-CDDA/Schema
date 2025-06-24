@@ -1,6 +1,7 @@
 import path from 'pathe';
 import { extractDefineList, SCHEMA_DIR, zh } from 'Macro';
 import { UtilFT } from '@zwa73/utils';
+import { Effect } from 'Schema/Effect';
 
 //#region 预定义IDList生成
 void extractDefineList({
@@ -48,6 +49,18 @@ void extractDefineList({
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(async v=>
             `${`"${v.id}"`.padEnd(20)}, // ${await zh(v.info)}`
+        );
+    }
+});
+void extractDefineList({
+    region: "EffectID提取",
+    targetFile: path.join(SCHEMA_DIR, "Effect.ts"),
+    sourceFileGlob: "data/json/effects.json",
+    typeName: "ExtractDefineEffectID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as Effect[];
+        return jsonlist.map(async v=>
+            `${`"${v.id}"`.padEnd(20)}, // ${(await zh(v.name?.[0])).replace(/(\n|\r\n)/g,'')} ${(await zh(v.desc?.[0])).replace(/(\n|\r\n)/g,'')}`
         );
     }
 });

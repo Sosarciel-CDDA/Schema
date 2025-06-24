@@ -3,5 +3,7 @@
     "type": "vitamin",
     "id":"genshin",
     "name":"启动",
-    "vit_type": "drug"
+    "vit_type": "drug",
+    "flags": ["DRO"],
+    "disease": [[1,2]]
 }
