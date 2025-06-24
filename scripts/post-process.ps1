@@ -1,2 +1,2 @@
-﻿Write-Output 开始展开宏
+﻿Write-Output 开始后处理
 npx zcli Expand-Macro --include src/**/*.post.ts

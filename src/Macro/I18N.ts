@@ -66,4 +66,4 @@ export const i18n = memoize(async (langFlag:LangFlag,text:DescText)=>{
     return result;
 });
 
-export const zhcn = (text:DescText)=> i18n("zh_CN",text);
+export const zh = (text:DescText)=> i18n("zh_CN",text);

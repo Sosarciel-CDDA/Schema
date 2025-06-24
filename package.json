@@ -6,9 +6,11 @@
   "scripts": {
     "expand-macro": "powershell scripts/expand-macro",
     "post-process": "powershell scripts/post-process",
+    "extract-process": "powershell scripts/extract-process",
     "compile": "powershell scripts/compile",
     "package": "powershell scripts/package",
-    "build-schema": "powershell scripts/build-schema"
+    "build-schema": "powershell scripts/build-schema",
+    "build": "powershell scripts/build"
   },
   "author": "zwa73",
   "license": "ISC",

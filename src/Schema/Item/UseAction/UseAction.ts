@@ -164,21 +164,21 @@ export type UseActionConsumeDrug = {
         damage_type: (DamageTypeID);
         /**伤害将持续多长时间 */
         duration: (Time);
-        /**每回合造成的伤害量，负值表示治疗 */
+        /**每回合造成的伤害量, 负值表示治疗 */
         amount: Int;
         /**受到伤害的身体部位 */
         bodyparts: BodyPartID[];
     }[];
     /**对玩家状态的调整 */
     stat_adjustments: PRecord<SurvivalNeed, Int>;
-    /**产生的领域，主要用于烟雾 */
+    /**产生的领域, 主要用于烟雾 */
     fields_produced: PRecord<(FieldID), Int>;
     /**在食用药物过程中需要使用的充能 */
     charges_needed: PRecord<(ItemID), Int>;
     /**食用药物所需的工具 */
     tools_needed: PRecord<(ItemID), Int>;
-    /**过程中所需的移动点数
-     * @default 100
+    /**过程中所需的移动点数  
+     * @default 100  
      */
     moves?: Int;
     /**此药物提供的维生素及数量 */
