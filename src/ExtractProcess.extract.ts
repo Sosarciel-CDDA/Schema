@@ -1,9 +1,10 @@
 import path from 'pathe';
-import { extractDefineList, SCHEMA_DIR, zh } from 'Macro';
+import { awt, extractDefineList, SCHEMA_DIR, zh, zhl } from 'Macro';
 import { UtilFT } from '@zwa73/utils';
 import { Effect } from 'Schema/Effect';
 
 //#region 预定义IDList生成
+//ItemCategoryID提取
 void extractDefineList({
     region: "ItemCategoryID提取",
     targetFile: path.join(SCHEMA_DIR, "ItemCategory.ts"),
@@ -12,10 +13,10 @@ void extractDefineList({
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(v=>
-            `${`"${v.id}"`.padEnd(20)}, // ${v.name_header}`
-        );
+            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.name_header)}`);
     }
 });
+//SkillID提取
 void extractDefineList({
     region: "SkillID提取",
     targetFile: path.join(SCHEMA_DIR, "Skill.ts"),
@@ -24,10 +25,10 @@ void extractDefineList({
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(async v=>
-            `${`"${v.id}"`.padEnd(20)}, // ${await zh(v.name)} ${await zh(v.description)}`
-        );
+            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.name)} ${zhl(v.description)}`);
     }
 });
+//VitaminID提取
 void extractDefineList({
     region: "VitaminID提取",
     targetFile: path.join(SCHEMA_DIR, "Vitamin.ts"),
@@ -36,10 +37,10 @@ void extractDefineList({
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(async v=>
-            `${`"${v.id}"`.padEnd(20)}, // ${await zh(v.name)}`
-        );
+            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.name)}`);
     }
 });
+//FlagID提取
 void extractDefineList({
     region: "FlagID提取",
     targetFile: path.join(SCHEMA_DIR, "Flag.ts"),
@@ -48,10 +49,10 @@ void extractDefineList({
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(async v=>
-            `${`"${v.id}"`.padEnd(20)}, // ${await zh(v.info)}`
-        );
+            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.info)}`);
     }
 });
+//EffectID提取
 void extractDefineList({
     region: "EffectID提取",
     targetFile: path.join(SCHEMA_DIR, "Effect.ts"),
@@ -60,8 +61,7 @@ void extractDefineList({
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as Effect[];
         return jsonlist.map(async v=>
-            `${`"${v.id}"`.padEnd(20)}, // ${(await zh(v.name?.[0])).replace(/(\n|\r\n)/g,'')} ${(await zh(v.desc?.[0])).replace(/(\n|\r\n)/g,'')}`
-        );
+            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.name?.[0])} ${zhl(v.desc?.[0])}`);
     }
 });
 //#endregion

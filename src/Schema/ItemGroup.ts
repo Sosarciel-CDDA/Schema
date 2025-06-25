@@ -31,8 +31,8 @@ export type ItemGroup = CopyfromVar<{
     type: "item_group";
     /**物品组唯一ID */
     id: (ItemGroupID);
-    /**是可选的. 它可以是 collection 或 distribution.   
-     * 如果未指定, 则默认为old, 这表示该项目组使用旧格式 本质上是分布.   
+    /**是可选的. 它可以是 collection 或 distribution  
+     * 如果未指定, 则默认为old, 这表示该项目组使用旧格式 本质上是 distribution   
      * collection   集合 为每个entries均独立概率  
      * distribution 分布 为加权轮盘随机  
      * @default "distribution"  

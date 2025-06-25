@@ -19,7 +19,7 @@ export type FaultGroupID = CddaID<'FAULTG'>;
  */
 export type FaultGroup = {
     /**故障组唯一ID */
-    id: FaultGroupID;
+    id: (FaultGroupID);
     /**故障项列表  
      * 可能的故障列表, 权重和实际几率可以在调试模式下通过物品信息查看  
      */

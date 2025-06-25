@@ -59,12 +59,24 @@ export const loadI18NData = memoize(async (langFlag:LangFlag)=>{
     return out;
 });
 
-export const i18n = memoize(async (langFlag:LangFlag,text?:DescText)=>{
+/**自动等待传入值的模板字符串 */
+export async function awt(
+    strings: TemplateStringsArray,
+    ...values: Array<string | number | boolean | Promise<any>>
+): Promise<string> {
+    const resolved = await Promise.all(values);
+    return strings.reduce((acc, str, i) => acc + str + (i < resolved.length ? resolved[i] : ""), "");
+}
+
+
+export const i18n = memoize(async (langFlag:LangFlag,text?:DescText,line:boolean=false)=>{
     if(text==undefined) return "";
     const strtext = typeof text == 'string' ? text : text.ctxt??text.str??text.str_sp??text.str_pl??"undefined";
     const data = await loadI18NData(langFlag);
     const result = data[strtext] ?? strtext;
-    return result.startsWith("Project-Id-Version") ? strtext : result;
+    const fxres = result.startsWith("Project-Id-Version") ? strtext : result;
+    return line ? fxres.replace(/(\n|\r\n)/g,'') : fxres;
 });
 
-export const zh = (text?:DescText)=> i18n("zh_CN",text);
+export const zh = (text?:DescText,line?:boolean)=> i18n("zh_CN",text,line);
+export const zhl = (text?:DescText)=> zh(text,true);

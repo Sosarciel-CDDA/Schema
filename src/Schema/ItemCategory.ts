@@ -59,42 +59,42 @@ const ExampleItemCategory: ItemCategory = {
 //#region ItemCategoryID提取
 /**ItemCategoryID提取 列表*/
 const ExtractDefineItemCategoryIDList = [
-    "e_files"           , // [object Object]
-    "software"          , // [object Object]
-    "guns"              , // [object Object]
-    "magazines"         , // [object Object]
-    "ammo"              , // [object Object]
-    "weapons"           , // [object Object]
-    "tools"             , // [object Object]
-    "clothing"          , // [object Object]
-    "food"              , // [object Object]
-    "drugs"             , // [object Object]
-    "manuals"           , // [object Object]
-    "books"             , // [object Object]
-    "maps"              , // [object Object]
-    "mods"              , // [object Object]
-    "mutagen"           , // [object Object]
-    "bionics"           , // [object Object]
-    "currency"          , // [object Object]
-    "veh_parts"         , // [object Object]
-    "other"             , // [object Object]
-    "fuel"              , // [object Object]
-    "seeds"             , // [object Object]
-    "ma_manuals"        , // [object Object]
-    "traps"             , // [object Object]
-    "chems"             , // [object Object]
-    "spare_parts"       , // [object Object]
-    "container"         , // [object Object]
-    "artifacts"         , // [object Object]
-    "keys"              , // [object Object]
-    "corpses"           , // [object Object]
-    "tool_magazine"     , // [object Object]
-    "armor"             , // [object Object]
-    "exosuit"           , // [object Object]
-    "ITEMS_WORN"        , // [object Object]
-    "INTEGRATED"        , // [object Object]
-    "BIONIC_FUEL_SOURCE", // [object Object]
-    "WEAPON_HELD"       , // [object Object]
+    "e_files"           , // 文件
+    "software"          , // 软件
+    "guns"              , // 枪械
+    "magazines"         , // 弹匣
+    "ammo"              , // 弹药
+    "weapons"           , // 武器
+    "tools"             , // 工具
+    "clothing"          , // 服装
+    "food"              , // 食物
+    "drugs"             , // 药物
+    "manuals"           , // 指南
+    "books"             , // 书籍
+    "maps"              , // 地图
+    "mods"              , // 改装模组
+    "mutagen"           , // 诱变剂
+    "bionics"           , // 生化插件
+    "currency"          , // 货币
+    "veh_parts"         , // 载具部件
+    "other"             , // 杂项部件
+    "fuel"              , // 燃料
+    "seeds"             , // 种子
+    "ma_manuals"        , // 武术手册
+    "traps"             , // 陷阱
+    "chems"             , // 化学制品
+    "spare_parts"       , // 零件
+    "container"         , // 容器
+    "artifacts"         , // 神器
+    "keys"              , // 钥匙
+    "corpses"           , // 尸体
+    "tool_magazine"     , // 工具料匣
+    "armor"             , // 护甲
+    "exosuit"           , // 动力装甲
+    "ITEMS_WORN"        , // 穿戴物品
+    "INTEGRATED"        , // 身体内置
+    "BIONIC_FUEL_SOURCE", // 生化插件供能
+    "WEAPON_HELD"       , // 手持武器
 ] as const;
 /**ItemCategoryID提取 列表*/
 type ExtractDefineItemCategoryID = typeof ExtractDefineItemCategoryIDList[number];
