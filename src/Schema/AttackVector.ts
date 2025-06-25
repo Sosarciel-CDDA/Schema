@@ -18,9 +18,13 @@ export type AttackVector = {
     limbs: BodyPartID[];
     /**接触区域列表 */
     contact_area: BodyPartID[];
-    /**是否严格限定肢体定义(默认false) */
+    /**是否严格限定肢体定义
+     * @default false
+     */
     strict_limb_definition?: boolean;
-    /**是否计算护甲加成(默认true) */
+    /**是否计算护甲加成
+     * @default true
+     */
     armor_bonus?: boolean;
     /**需要的肢体标志 */
     required_limb_flags?: FlagID[];
@@ -28,7 +32,9 @@ export type AttackVector = {
     forbidden_limb_flags?: FlagID[];
     /**负重限制(默认100) */
     encumbrance_limit?: Int;
-    /**肢体生命值百分比限制(默认10) */
+    /**肢体生命值百分比限制
+     * @default 10
+     */
     bp_hp_limit?: Int;
     /**肢体要求 */
     limb_req?: LimbRequirement[];
