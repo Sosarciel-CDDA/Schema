@@ -1,4 +1,4 @@
-import { FieldID } from "./Field";
+import { FieldTypeID } from "./FieldType";
 import { CddaID, Explosion } from "./GenericDefine";
 
 /**定义的子弹效果 列表 */
@@ -90,7 +90,7 @@ export type AmmoAoe = {
      * 将在投射物中心周围产生的地块附着物  
      * @default "fd_null"  
      */
-    field_type?: (FieldID);
+    field_type?: (FieldTypeID);
     /**最小强度  
      * 地块附着物的最小强度  
      * @default 0  
@@ -149,7 +149,7 @@ export type AmmoTrail = {
      * 将产生的地块附着物  
      * @default "fd_null"  
      */
-    field_type?: (FieldID);
+    field_type?: (FieldTypeID);
     /**最小强度  
      * 地块附着物的最小强度  
      * @default 0  

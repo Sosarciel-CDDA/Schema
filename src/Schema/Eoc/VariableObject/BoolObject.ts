@@ -2,7 +2,7 @@ import { MissionDefinitionID } from "Schema/MissionDefinition";
 import { EocID, TalkerStr, TalkerVar } from "../Eoc";
 import { BoolObj } from "./BoolObjectIndex";
 import { CompareOpera, CondObj, IDObj, LocObj, NumObj } from "./VariableObjectIndex";
-import { FieldID } from "Schema/Field";
+import { FieldTypeID } from "Schema/FieldType";
 import { WeaponCategoryID } from "Schema/WeaponCategory";
 import { FlagID } from "Schema/Flag";
 import { MutationID } from "Schema/Mutation";
@@ -958,7 +958,7 @@ export type IsInField = TalkerVar<{
     /**在场地中  
      * 要检查的场地ID  
      */
-    is_in_field: (IDObj<FieldID>);
+    is_in_field: (IDObj<FieldTypeID>);
 }, 'is_in_field'>;
 
 
@@ -1064,7 +1064,7 @@ export type MapFieldId = {
     /**地图场地ID  
      * 要检查的场地ID  
      */
-    map_field_id: (IDObj<FieldID>);
+    map_field_id: (IDObj<FieldTypeID>);
     /**位置  
      * 要检查的位置  
      */

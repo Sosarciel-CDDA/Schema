@@ -1,4 +1,4 @@
-import { FieldID } from "./Field";
+import { FieldTypeID } from "./FieldType";
 import { FlagID } from "./Flag";
 import { CddaID, DescText } from "./GenericDefine";
 
@@ -15,7 +15,7 @@ export type Species = {
     /**描述 */
     description: (DescText);
     /**血液对应的fd类型 */
-    bleeds?: (FieldID);
+    bleeds?: (FieldTypeID);
     /**脚步声的文本描述 */
     footsteps?: (DescText);
     /**物种携带的Flag */

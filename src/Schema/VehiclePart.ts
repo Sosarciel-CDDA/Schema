@@ -1,6 +1,6 @@
 import { AmmunitionTypeID } from "./AmmiunitionType";
 import { DamageTypeID } from "./DamageType";
-import { FieldID } from "./Field";
+import { FieldTypeID } from "./FieldType";
 import { CustomFlagID, FlagID } from "./Flag";
 import { FurnitureID } from "./Furniture";
 import { CddaID, Color, CopyfromVar, DescText, Int, LookLikeID, PRecord, Time, Volume } from "./GenericDefine";
@@ -112,7 +112,7 @@ export type VehiclePart = CopyfromVar<{
         /**结果地块效果  
          * @default "fd_null"  
          */
-        post_field?: (FieldID);
+        post_field?: (FieldTypeID);
         /**地块效果的强度  
          * @default 0  
          */

@@ -3,7 +3,7 @@ import { BodyPartID } from "Schema/BodyPart";
 import { DamageTypeID } from "Schema/DamageType";
 import { EffectID } from "Schema/Effect";
 import { EocID, ParamsEoc } from "Schema/Eoc";
-import { FieldID } from "Schema/Field";
+import { FieldTypeID } from "Schema/FieldType";
 import { FlagID } from "Schema/Flag";
 import { FurnitureID } from "Schema/Furniture";
 import { Color, DescText, Explosion, Float, Int, Power, PRecord, SurvivalNeed, Time, Volume } from "Schema/GenericDefine";
@@ -108,7 +108,7 @@ export type UseActionExplosion = {
     /**爆炸产生的领域扩散半径 */
     fields_radius: Int;
     /**爆炸产生的领域类型 */
-    fields_type: (FieldID);
+    fields_type: (FieldTypeID);
     /**爆炸生成领域的最小强度 */
     fields_min_intensity: Int;
     /**爆炸生成领域的最大强度 */
@@ -172,7 +172,7 @@ export type UseActionConsumeDrug = {
     /**对玩家状态的调整 */
     stat_adjustments: PRecord<SurvivalNeed, Int>;
     /**产生的领域, 主要用于烟雾 */
-    fields_produced: PRecord<(FieldID), Int>;
+    fields_produced: PRecord<(FieldTypeID), Int>;
     /**在食用药物过程中需要使用的充能 */
     charges_needed: PRecord<(ItemID), Int>;
     /**食用药物所需的工具 */

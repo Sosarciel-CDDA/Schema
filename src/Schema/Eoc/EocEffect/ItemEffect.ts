@@ -11,7 +11,7 @@ import { NpcClassID } from "Schema/NpcClass";
 import { NpcInstanceID } from "Schema/NpcInstance";
 import { MutationID } from "Schema/Mutation";
 import { EmitID } from "Schema/Emit";
-import { FieldID } from "Schema/Field";
+import { FieldTypeID } from "Schema/FieldType";
 import { FaultID } from "Schema/Fault";
 import { UpdateMapgenID } from "Schema/Mapgen";
 
@@ -620,7 +620,7 @@ export type SetField = TalkerVar<{
     /**生成场地  
      * 要在玩家周围生成的场地的ID  
      */
-    set_field: (IDObj<FieldID>);
+    set_field: (IDObj<FieldTypeID>);
     /**强度  
      * @default 1  
      * 要生成的场地的强度  

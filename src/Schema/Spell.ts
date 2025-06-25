@@ -2,7 +2,7 @@ import { BodyPartID } from "./BodyPart";
 import { DamageTypeID } from "./DamageType";
 import { FakeSpell } from "./Enchantment";
 import { NumObj } from "./Eoc";
-import { FieldID } from "./Field";
+import { FieldTypeID } from "./FieldType";
 import { CddaID, DescText, PRecord } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { MonsterID } from "./Monster";
@@ -123,7 +123,7 @@ export type Spell = {
     /**每级的法术穿甲调整 */
     pierce_increment?: (NumObj);
     /**法术在目标处创建的Field */
-    field_id?: (FieldID);
+    field_id?: (FieldTypeID);
     /**每个被法术影响到的地块有 1/n 的概率产生Field */
     field_chance?: (NumObj);
     /**初始法术地块效果强度 */

@@ -8,7 +8,7 @@ import { ExtractDefineFaultFixeID } from "Extract";
 
 
 /**故障修复定义ID */
-export type FaultFixID = CddaID<'FAULT_FIX'>|DefineFaultId;
+export type FaultFixID = CddaID<'FAULT_FIX'>|DefineFaultFixId;
 
 /**故障修复方法定义 */
 export type FaultFix = {
@@ -72,4 +72,4 @@ export type FaultFix = {
 
 
 /**预定义的FaultFixID */
-export type DefineFaultId = ExtractDefineFaultFixeID;
+export type DefineFaultFixId = ExtractDefineFaultFixeID;

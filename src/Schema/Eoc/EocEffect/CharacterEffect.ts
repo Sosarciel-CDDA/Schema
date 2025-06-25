@@ -11,7 +11,7 @@ import { ActivityTypeID } from "Schema/ActivityType";
 import { DamageTypeID } from "Schema/DamageType";
 import { TerrainID } from "Schema/Terrain";
 import { FurnitureID } from "Schema/Furniture";
-import { FieldID } from "Schema/Field";
+import { FieldTypeID } from "Schema/FieldType";
 import { MonsterID } from "Schema/Monster";
 import { TalkTopicID } from "Schema/TalkTopic";
 import { MartialArtID } from "Schema/MartialArt";
@@ -705,7 +705,7 @@ export type LocationVariable = TalkerVar<{
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体;   
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体  
      */
-    field?: (IDObj<FieldID>);
+    field?: (IDObj<FieldTypeID>);
     /**陷阱  
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体;   
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体  
