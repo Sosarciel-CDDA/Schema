@@ -91,7 +91,7 @@ export type BodyPart = {
      * @default 2 // 潜水时忽略  
      */
     drench_increment?: Int;
-    /**(可选 float) 从身体部位干燥一定量湿度所需时间的除数,   
+    /**从身体部位干燥一定量湿度所需时间的除数,   
      * 由服装修改  
      * 最终干燥速率取决于透气性, 天气和身体部位的drying_capacity  
      */
