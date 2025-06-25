@@ -84,4 +84,24 @@ void extractDefineIdList({
             awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)}`);
     }
 });
+//FieldTypeID提取
+void extractDefineIdList({
+    sourceFileGlob: "data/json/field_type.json",
+    typeName: "FieldTypeID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        return jsonlist.map(async v=>
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.intensity_levels?.[0].name)}`);
+    }
+});
+//EmitID提取
+void extractDefineIdList({
+    sourceFileGlob: "data/json/emit.json",
+    typeName: "EmitID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        return jsonlist.map(async v=>
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v['//'])}`);
+    }
+});
 //#endregion

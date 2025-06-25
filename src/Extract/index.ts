@@ -1,2 +1,2 @@
 // export *
-export * from './VitaminID';export * from './SkillID';export * from './ItemCategoryID';export * from './FlagID';export * from './FaultID';export * from './FaultGroupID';export * from './FaultFixeID';export * from './EffectID';
+export * from './VitaminID';export * from './SkillID';export * from './ItemCategoryID';export * from './FlagID';export * from './FieldTypeID';export * from './FaultID';export * from './FaultGroupID';export * from './FaultFixeID';export * from './EmitID';export * from './EffectID';
