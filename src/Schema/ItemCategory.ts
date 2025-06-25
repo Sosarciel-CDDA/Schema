@@ -104,5 +104,5 @@ type ExtractDefineItemCategoryID = typeof ExtractDefineItemCategoryIDList[number
 /**预定义的物品类别 列表 */
 export const DefineItemCategoryIDList = ExtractDefineItemCategoryIDList;
 /**预定义的物品类别 */
-export type DefineItemCategoryID = typeof DefineItemCategoryIDList[number];
+export type DefineItemCategoryID = ExtractDefineItemCategoryID;
 
