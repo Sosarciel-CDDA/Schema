@@ -56,6 +56,8 @@ import { Uncraft } from "./Uncraft";
 import { ItemAction } from "./ItemAction";
 import { Vitamin } from "./Vitamin";
 import { Skill } from "./Skill";
+import { FieldType } from "./FieldType";
+import { Emit } from "./Emit";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -430,6 +432,6 @@ export type AnyCddaJson = Item|Eoc|Mutation|DamageType|DamageInfoOrder|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
     BodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory|Uncraft|ItemAction|
-    Vitamin|Skill;
+    Vitamin|Skill|Emit|FieldType;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];
