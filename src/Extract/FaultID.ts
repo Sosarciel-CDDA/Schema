@@ -1,9 +1,9 @@
 /**从文件提取的预定义的FaultID 列表*/
 export const ExtractDefineFaultIDList = [
     "fault_wet"                   , // 淋湿 这件物品湿透了，需要烘干后使用。
-    "mend_fault_wet"              , // 晾干 
-    "mend_fault_wet_oven"         , // 烤箱烘干（需温控） 
-    "mend_fault_wet_hot_air"      , // 吹干 
+    "mend_fault_wet"              , // 晾干
+    "mend_fault_wet_oven"         , // 烤箱烘干（需温控）
+    "mend_fault_wet_hot_air"      , // 吹干
     "fault_engine_belt_drive"     , // 磨损的传动皮带 一个交流发电机保障正常运转的必需配件。
     "fault_engine_glow_plug"      , // 故障的电热塞 帮助你在低温环境下启动引擎。
     "fault_engine_immobiliser"    , // 启动的防盗装置 一个防盗设备，防止有人不用钥匙就发动汽车。
@@ -52,11 +52,11 @@ export const ExtractDefineFaultIDList = [
     "fault_stovepipe"             , // 抛壳窗卡弹 弹壳未能正确抛出，卡在了抛壳窗，形成类似烟囱的形状。
     "fault_double_feed"           , // 双进弹 枪械弹匣试图将两发子弹一起装入枪膛。
     "fault_electronic_blown_fuse" , // 保险丝熔断 受保险丝保护的电子电路。
-    "mend_fault_electronic_blown_fuse", // 更换保险丝 
+    "mend_fault_electronic_blown_fuse", // 更换保险丝
     "fault_electronic_blown_capacitor", // 电容烧毁 储存电荷的电子电路。
-    "mend_fault_electronic_blown_capacitor", // 更换保险丝 
+    "mend_fault_electronic_blown_capacitor", // 更换保险丝
     "fault_electronic_shorted_circuit", // 电器短路 电子电路被过量电流损坏了。
-    "mend_fault_electronic_shorted_circuit", // 更换短路器件 
+    "mend_fault_electronic_shorted_circuit", // 更换短路器件
     "fault_emp_reboot"            , // 重设 这个设备在经受EMP短路之后被重新设置
     "fault_bionic_salvaged"       , // 已安装过 这个生化插件需要被恢复到出厂设置。
 ] as const;

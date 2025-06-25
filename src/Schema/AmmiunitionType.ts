@@ -1,17 +1,12 @@
+import { ExtractDefineAmmiunitionTypeID, ExtractDefineAmmiunitionTypeIDList } from "Extract";
 import { CddaID, DescText } from "./GenericDefine";
 import { ItemID } from "./Item";
 
 
-/**预定义的弹药类型 列表 */
-export const DefineAmmoTypeIDList = [
-    "50"    ,
-    "500"   ,
-] as const;
-/**预定义的弹药类型 */
-export type DefineAmmoTypeID = typeof DefineAmmoTypeIDList[number];
+
 
 /**弹药类型ID */
-export type AmmunitionTypeID = CddaID<"AMMUNIT">|DefineAmmoTypeID;
+export type AmmunitionTypeID = CddaID<"AMMUNIT">|DefineAmmiunitionTypeID;
 /**弹药类型 */
 export type AmmunitionType = {
     type: "ammunition_type";
@@ -23,3 +18,7 @@ export type AmmunitionType = {
     default: (ItemID);
 };
 
+/**预定义的弹药类型ID 列表 */
+export const DefineAmmiunitionTypeIDList = ExtractDefineAmmiunitionTypeIDList;
+/**预定义的弹药类型ID */
+export type DefineAmmiunitionTypeID = ExtractDefineAmmiunitionTypeID;

@@ -1,3 +1,4 @@
+import { ExtractDefineWeaponCategoryID } from "Extract";
 import { CddaID, DescText } from "./GenericDefine";
 import { ProficiencyID } from "./Proficiency";
 
@@ -47,4 +48,4 @@ export const DefineWeaponCategoryIDList = [
     "WHIPS"                 , //鞭子
 ] as const;
 /**预定义的武器类型 */
-export type DefineWeaponCategoryID = typeof DefineWeaponCategoryIDList[number];
+export type DefineWeaponCategoryID = typeof DefineWeaponCategoryIDList[number]|ExtractDefineWeaponCategoryID;

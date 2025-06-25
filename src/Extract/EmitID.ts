@@ -21,46 +21,46 @@ export const ExtractDefineEmitIDList = [
     "emit_toxic_cloud"            , // Small cloud of toxic gas emitted infrequently
     "emit_toxic_belch"            , // Large cloud of toxic gas emitted infrequently
     "emit_acid_drop"              , // Small amount of strong acid - will need more to melt anything
-    "emit_shadow_field"           , // 
+    "emit_shadow_field"           ,
     "emit_spark"                  , // small sparks
     "emit_shock_burst"            , // small cloud of lightning
     "emit_shock_burst_rat"        , // small cloud of lightning
     "emit_shock_cloud"            , // Thick cloud of lightning (example: incandescent husk)
     "emit_shock_cloud_big"        , // Large cloud of lightning (example: supercharged incandescent husk)
-    "emit_cold_air2_stream"       , // 
-    "emit_cold_air2_blast"        , // 
-    "emit_hot_air2_stream"        , // 
-    "emit_pollen_stream"          , // 
-    "emit_hot_air2_blast"         , // 
-    "emit_heater_vehicle"         , // 
-    "emit_cooler_vehicle"         , // 
-    "emit_hot_air_migo_seep"      , // 
-    "emit_hot_air_migo_blast"     , // 
-    "emit_migo_atmosphere"        , // 
-    "emit_glimmer"                , // 
-    "emit_plasma"                 , // 
-    "emit_plasma_continuously"    , // 
-    "emit_fungicidal_stream"      , // 
-    "emit_insecticidal_stream"    , // 
-    "emit_small_fungicidal_stream", // 
-    "emit_small_insecticidal_stream", // 
-    "emit_fungal_haze_plume"      , // 
-    "emit_fungal_leak"            , // 
-    "emit_fungal_blast"           , // 
+    "emit_cold_air2_stream"       ,
+    "emit_cold_air2_blast"        ,
+    "emit_hot_air2_stream"        ,
+    "emit_pollen_stream"          ,
+    "emit_hot_air2_blast"         ,
+    "emit_heater_vehicle"         ,
+    "emit_cooler_vehicle"         ,
+    "emit_hot_air_migo_seep"      ,
+    "emit_hot_air_migo_blast"     ,
+    "emit_migo_atmosphere"        ,
+    "emit_glimmer"                ,
+    "emit_plasma"                 ,
+    "emit_plasma_continuously"    ,
+    "emit_fungicidal_stream"      ,
+    "emit_insecticidal_stream"    ,
+    "emit_small_fungicidal_stream",
+    "emit_small_insecticidal_stream",
+    "emit_fungal_haze_plume"      ,
+    "emit_fungal_leak"            ,
+    "emit_fungal_blast"           ,
     "emit_hallucinogenic_spores"  , // Slow infrequent leak of hallucinogenic cloud
-    "emit_hallucinogenic_spores_blast", // 
-    "emit_swamp_gas_leak"         , // 
-    "emit_fog_plume"              , // 
-    "emit_extinguisher_burst"     , // 
-    "emit_rad_leak"               , // 
+    "emit_hallucinogenic_spores_blast",
+    "emit_swamp_gas_leak"         ,
+    "emit_fog_plume"              ,
+    "emit_extinguisher_burst"     ,
+    "emit_rad_leak"               ,
     "emit_rad_cloud"              , // Negative, negative, it's a large reactor leak, very dangerous
     "emit_web_small"              , // Occasionally leave a web, not too often because we spawn in mixed groups
     "emit_sludge_puddle"          , // Infrequent emission of sludge along the ground, made because sludge trail is too frequent
-    "emit_tiny_fire"              , // 
-    "emit_clairvoyant"            , // 
+    "emit_tiny_fire"              ,
+    "emit_clairvoyant"            ,
     "emit_bees"                   , // Periodic swarm of bees
-    "emit_monster_gas_1"          , // 
-    "emit_monster_gas_2"          , // 
+    "emit_monster_gas_1"          ,
+    "emit_monster_gas_2"          ,
 ] as const;
 /**从文件提取的预定义的EmitID */
 export type ExtractDefineEmitID = typeof ExtractDefineEmitIDList[number];

@@ -1,18 +1,18 @@
+import { ExtractDefineAttackVectorID, ExtractDefineAttackVectorIDList } from "Extract";
 import { BodyPartID } from "./BodyPart";
 import { FlagID } from "./Flag";
 import { CddaID, Int } from "./GenericDefine";
 
-/**攻击向量ID */
-export type AttackVectorID = CddaID<"ATKV">;
+/**攻击方式ID */
+export type AttackVectorID = CddaID<"ATKV">|ExtractDefineAttackVectorID;
 
 /**肢体要求类型 */
 export type LimbRequirement = [BodyPartID, Int];
 
-/**攻击向量定义 */
+/**攻击方式定义 */
 export type AttackVector = {
-    /**固定为"attack_vector" */
     type: "attack_vector";
-    /**攻击向量唯一ID */
+    /**攻击方式唯一ID */
     id: (AttackVectorID);
     /**使用的肢体列表 */
     limbs: BodyPartID[];
@@ -33,3 +33,8 @@ export type AttackVector = {
     /**肢体要求 */
     limb_req?: LimbRequirement[];
 };
+
+/**预定义的攻击方式ID 列表 */
+export const DefineAttackVectorIDList = ExtractDefineAttackVectorIDList;
+/**预定义的攻击方式ID */
+export type DefineAttackVectorID = ExtractDefineAttackVectorID;

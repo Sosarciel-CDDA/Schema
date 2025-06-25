@@ -1,3 +1,4 @@
+import { ExtractDefineItemActionID } from "Extract";
 import { CddaID, DescText } from "./GenericDefine";
 
 
@@ -238,7 +239,7 @@ export const DefineItemActionIDList = [
     "sound"                   , // 制造声音
 ] as const;
 /**预定义的物品动作ID */
-export type DefineItemActionID = typeof DefineItemActionIDList[number];
+export type DefineItemActionID = typeof DefineItemActionIDList[number]|ExtractDefineItemActionID;
 
 
 //https://github.com/CleverRaven/Cataclysm-DDA/blob/master/src/iuse_actor.cpp
