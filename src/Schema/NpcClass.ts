@@ -19,12 +19,12 @@ export type NpcClass = {
     name: (DescText) ;
     job_description: (DescText);
     /**false意味着这个NPC职业不会随机生成.   
-     * 如果未指定, 则默认为 . true  
+     * @default true  
      */
     common?: boolean;
     /**false意味着该NPC的磨损或持有的物品将被严格排除在其店主名单之外;  
      * 否则, 他们会很乐意出售裤子之类的东西.   
-     * 如果未指定, 则默认为 . true  
+     * @default true  
      */
     sells_belongings?: boolean;
     /**初始力量 */

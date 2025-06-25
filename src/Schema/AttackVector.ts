@@ -30,7 +30,9 @@ export type AttackVector = {
     required_limb_flags?: FlagID[];
     /**禁止的肢体标志 */
     forbidden_limb_flags?: FlagID[];
-    /**负重限制(默认100) */
+    /**负重限制
+     * @default 100
+     */
     encumbrance_limit?: Int;
     /**肢体生命值百分比限制
      * @default 10
