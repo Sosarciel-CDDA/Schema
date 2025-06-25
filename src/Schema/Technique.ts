@@ -1,3 +1,4 @@
+import { ExtractDefineTechniqueID, ExtractDefineTechniqueIDList } from "Extract";
 import { AttackVectorID } from "./AttackVector";
 import { DamageTypeID } from "./DamageType";
 import { BoolObj, ParamsEoc } from "./Eoc";
@@ -6,16 +7,16 @@ import { CddaID, DescText, Float, Int, StatusLc } from "./GenericDefine";
 import { SkillID } from "./Skill";
 import { WeaponCategoryID } from "./WeaponCategory";
 
-/**技巧ID */
-export type TechniqueID = CddaID<"TECH">;
+/**武术技巧ID */
+export type TechniqueID = CddaID<"TECH">|DefineTechniqueID;
 
-/**技巧定义 */
+/**武术技巧定义 */
 export type Technique = {
     /**固定为"technique" */
     type: "technique";
-    /**技巧唯一ID */
+    /**武术技巧唯一ID */
     id: (TechniqueID);
-    /**技巧名称 */
+    /**武术技巧名称 */
     name: (DescText);
     /**攻击向量 */
     attack_vectors?: AttackVectorID[];
@@ -101,7 +102,7 @@ export type Technique = {
     dodge_counter?: boolean;
     /**选择权重 */
     weighting?: Int;
-    /**是否防御性技巧 */
+    /**是否防御性武术技巧 */
     defensive?: boolean;
     /**失误恢复 */
     miss_recovery?: boolean;
@@ -113,15 +114,15 @@ export type Technique = {
     flat_bonuses?: TechniqueBonus[];
     /**倍率加成 */
     mult_bonuses?: TechniqueBonus[];
-    /**技巧效果 */
+    /**武术技巧效果 */
     tech_effects?: TechniqueEffect[];
 };
 
 
 
-/**技巧ID */
+/**武术技巧ID */
 export type TechniqueEffectID = CddaID<"TECHE">;
-/**技巧效果定义 */
+/**武术技巧效果定义 */
 export type TechniqueEffect = {
     /**效果ID */
     id: (TechniqueEffectID);
@@ -140,13 +141,13 @@ export type TechniqueEffect = {
 }
 
 
-/**技巧加成定义 */
+/**武术技巧加成定义 */
 export type TechniqueBonus = {
     /**影响的属性  
      * - hit: 命中  
      * - dodge: 闪避  
      * - block: 格挡  
-     * - speed: 速度(技巧中无效)  
+     * - speed: 速度(武术技巧中无效)  
      * - movecost: 移动消耗  
      * - damage: 伤害  
      * - armor: 护甲  
@@ -162,3 +163,9 @@ export type TechniqueBonus = {
     /**缩放属性(基础属性或技能) */
     "scaling-stat"?: StatusLc | SkillID;
 };
+
+
+/**预定义的武术技巧ID 列表 */
+export const DefineTechniqueIDList = ExtractDefineTechniqueIDList;
+/**预定义的武术技巧ID */
+export type DefineTechniqueID = ExtractDefineTechniqueID;

@@ -104,4 +104,37 @@ void extractDefineIdList({
             awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v['//'])}`);
     }
 });
+//MartialID提取
+void extractDefineIdList({
+    sourceFileGlob: [
+        "data/json/martialarts.json",
+        "data/json/martialarts_fictional.json"
+    ],
+    typeName: "MartialID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        return jsonlist.map(async v=>
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)} ${zhl(v.description)}`);
+    }
+});
+//TechniqueID提取
+void extractDefineIdList({
+    sourceFileGlob: "data/json/techniques.json",
+    typeName: "TechniqueID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        return jsonlist.map(async v=>
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)} ${zhl(v.description)}`);
+    }
+});
+//ToolQualityID提取
+void extractDefineIdList({
+    sourceFileGlob: "data/json/tool_qualities.json",
+    typeName: "ToolQualityID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        return jsonlist.map(async v=>
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)}`);
+    }
+});
 //#endregion

@@ -22,6 +22,7 @@ import { BodyPartID } from "Schema/BodyPart";
 import { SeasonLc } from "Schema/GenericDefine";
 import { ItemCategoryID } from "Schema/ItemCategory";
 import { BionicID } from "Schema/Bionic";
+import { FurnitureID } from "Schema/Furniture";
 
 
 //#region 不在文档内的
@@ -443,7 +444,7 @@ export type HasProfession = TalkerVar<{
     /**职业  
      * 要检查的职业ID  
      */
-    //u_profession: (IDObj<ProfessionID>);
+    //profession: (IDObj<ProfessionID>);
     profession: (StrObj);
 }, 'profession'>;
 
@@ -1048,8 +1049,7 @@ export type MapFurnitureId = {
     /**地图家具ID  
      * 要检查的家具ID  
      */
-    //map_furniture_id: (IDObj<FurnitureID>);
-    map_furniture_id: (StrObj);
+    map_furniture_id: (IDObj<FurnitureID>);
     /**位置  
      * 要检查的位置  
      */

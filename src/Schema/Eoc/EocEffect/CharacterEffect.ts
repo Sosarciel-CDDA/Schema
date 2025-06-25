@@ -20,6 +20,9 @@ import { FactionRelationFlags } from "Schema/NPCFaction";
 import { TrapID } from "Schema/Trap";
 import { BodyPartParam } from "Schema/BodyPart";
 import { BionicID } from "Schema/Bionic";
+import { RecipeID } from "Schema/Recipe";
+import { NpcInstanceID } from "Schema/NpcInstance";
+import { TechniqueID } from "Schema/Technique";
 
 
 
@@ -569,8 +572,7 @@ export type SetCondition = {
  */
 export type LearnRecipe = TalkerVar<{
     /**要学习的配方 */
-    //learn_recipe: (IDObj<RecipeID>);
-    learn_recipe: (StrObj);
+    learn_recipe: (IDObj<RecipeID>);
 }, 'learn_recipe'>;
 
 
@@ -587,8 +589,7 @@ export type LearnRecipe = TalkerVar<{
  */
 export type ForgetRecipe = TalkerVar<{
     /**要忘记的配方/配方类别 */
-    //forget_recipe: (IDObj<RecipeID>);
-    forget_recipe: (StrObj);
+    forget_recipe: (IDObj<RecipeID>);
     /**是否为类别  
      * @default false, 除非指定了subcategory  
      * 上述字段是否应该被解释为类别而不是单个配方  
@@ -725,7 +726,7 @@ export type LocationVariable = TalkerVar<{
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体;   
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体  
      */
-    npc?: (StrObj);
+    npc?: (IDObj<NpcInstanceID>);
     /**目标最小半径  
      * @default 0  
      * 如果使用了前一个字段, 则搜索的最小半径  
@@ -1148,7 +1149,7 @@ export type Attack = TalkerVar<{
     /**要使用的技术  
      * 将使用的技术; 可以使用"tec_none", 在这种情况下将使用默认的自动攻击  
      */
-    attack: (StrObj) | boolean;
+    attack: (IDObj<TechniqueID>) | boolean;
     /**允许特殊  
      * @default true  
      * 如果为true, 应该选择特殊攻击 (怪物可以使用的special_attack, 如monster_attack或spell)   

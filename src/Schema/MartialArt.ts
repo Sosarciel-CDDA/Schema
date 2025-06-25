@@ -4,10 +4,11 @@ import { ParamsEoc } from "./Eoc";
 import { SkillID } from "./Skill";
 import { WeaponCategoryID } from "./WeaponCategory";
 import { TechniqueID } from "./Technique";
+import { ExtractDefineMartialID, ExtractDefineMartialIDList } from "Extract";
 
 
 /**武术流派ID */
-export type MartialArtID = CddaID<"MA">;
+export type MartialArtID = CddaID<"MA">|DefineMartialID;
 
 
 
@@ -148,3 +149,9 @@ export type MartialArtBuff = {
     /**倍率加成 */
     mult_bonuses?: any[];
 }
+
+
+/**预定义的武术流派ID 列表 */
+export const DefineMartialIDList = ExtractDefineMartialIDList;
+/**预定义的武术流派ID */
+export type DefineMartialID = ExtractDefineMartialID;

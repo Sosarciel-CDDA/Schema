@@ -1,4 +1,23 @@
+import { ExtractDefineToolQualityID } from "Extract";
 import { CddaID, DescText } from "./GenericDefine";
+
+/**工具品质ID */
+export type ToolQualityID = CddaID<"TQ">|DefineToolQualityID;
+
+/**工具品质 */
+export type ToolQuality = {
+    /**工具品质类型 */
+    type: "tool_quality";
+    /**在游戏中查看具有该 id 的条目时, 选项卡中使用的描述 */
+    name: (DescText);
+    /**工具品质唯一ID */
+    id: (ToolQualityID);
+    /**不是必需的. 可能使用该物品执行的特殊操作.   
+     * [ 物品的最小品质等级, [...可进行的动作]]  
+     */
+    usages?: [ number, ToolQualityID[] ][];
+}
+
 
 /**预定义的工具品质ID 列表 */
 export const DefineToolQualityIDList = [
@@ -90,21 +109,4 @@ export const DefineToolQualityIDList = [
     "MANA_WEAVE"     , // 魔力编织
 ] as const;
 /**预定义的工具品质ID */
-export type DefineToolQualityID = typeof DefineToolQualityIDList[number];
-/**工具品质ID */
-export type ToolQualityID = CddaID<"TQ">|DefineToolQualityID;
-
-/**工具品质 */
-export type ToolQuality = {
-    /**工具品质类型 */
-    type: "tool_quality";
-    /**在游戏中查看具有该 id 的条目时, 选项卡中使用的描述 */
-    name: (DescText);
-    /**工具品质唯一ID */
-    id: (ToolQualityID);
-    /**不是必需的. 可能使用该物品执行的特殊操作.   
-     * [ 物品的最小品质等级, [...可进行的动作]]  
-     */
-    usages?: [ number, ToolQualityID[] ][];
-}
-
+export type DefineToolQualityID = typeof DefineToolQualityIDList[number]|ExtractDefineToolQualityID;

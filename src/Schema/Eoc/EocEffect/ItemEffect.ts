@@ -14,6 +14,9 @@ import { EmitID } from "Schema/Emit";
 import { FieldTypeID } from "Schema/FieldType";
 import { FaultID } from "Schema/Fault";
 import { UpdateMapgenID } from "Schema/Mapgen";
+import { ActivityTypeID } from "Schema/ActivityType";
+import { ItemActionID } from "Schema/ItemAction";
+import { FurnitureID } from "Schema/Furniture";
 
 
 
@@ -53,8 +56,7 @@ export type UnsetFlag = TalkerVar<{
  */
 export type Activate = TalkerVar<{
     /**要激活的物品的use action ID */
-    //activate: (IDObj<ActivateID>);
-    activate: (StrObj);
+    activate: (IDObj<ItemActionID>);
     /**目标变量  
      * 如果设置, 目标位置被强制为此变量的坐标  
      */
@@ -309,7 +311,7 @@ export type TransformRadius = TalkerVar<{
     /**地形家具转换  
      * 用于转换区域的ter_furn_transform  
      */
-    ter_furn_transform: (StrObj);
+    ter_furn_transform: (IDObj<FurnitureID>);
     /**目标变量  
      * 如果使用, 将使用变量中的目标而不是玩家的当前位置. 它使用assign_mission_target语法  
      */
