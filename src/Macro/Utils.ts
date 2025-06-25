@@ -68,12 +68,9 @@ export type ${listName} = [
 }
 
 /**生成预定义的数组数据 */
-export async function extractDefineList(arg:{
-    comment:string;
+export async function extractDefineIdList(arg:{
     /**输出的类型名 */
     typeName:string;
-    /**生成的list所在文件 */
-    targetFile:string;
     /**读取的来源文件
      * 路劲将以gamepath为起点
      */
@@ -84,7 +81,9 @@ export async function extractDefineList(arg:{
     func:(filepath:string)=>MPromise<MPromise<string>[]>;
 }){
     const info = await loadBuildInfo();
-    const {typeName,targetFile,sourceFileGlob,comment,func} = arg;
+    const {typeName,sourceFileGlob,func} = arg;
+
+    const extractName = `ExtractDefine${typeName}`;
 
     const sourceFileList = await UtilFT.fileSearchGlob(info.gamepath,sourceFileGlob);
 
@@ -92,11 +91,11 @@ export async function extractDefineList(arg:{
     const exportStringList = await Promise.all((await Promise.all(sourceFileList.map(fp => func(fp)))).flat());
     const exportList = exportStringList.join('\n    ');
     return fileMacro(() => `
-/**${comment} 列表*/
-export const ${typeName}List = [
+/**从文件提取的预定义的${typeName} 列表*/
+export const ${extractName}List = [
     ${exportList}
 ] as const;
-/**${comment} */
-export type ${typeName} = typeof ${typeName}List[number];
-`.trim(),{filePath:path.join(EXTRACT_DIR,targetFile)})
+/**从文件提取的预定义的${typeName} */
+export type ${extractName} = typeof ${extractName}List[number];
+`.trim(),{filePath:path.join(EXTRACT_DIR,`${typeName}.ts`)})
 }

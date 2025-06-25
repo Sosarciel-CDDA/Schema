@@ -1,9 +1,12 @@
 import { CddaID, DescText, Float, Int } from "./GenericDefine";
 import { FlagID } from "./Flag";
 import { DamageTypeID } from "./DamageType";
+import { ExtractDefineFaultID } from "Extract";
 
-export type FaultID = CddaID<'FAULT'>;
+/**故障ID */
+export type FaultID = CddaID<'FAULT'>|DefineFaultId;
 
+/**故障类型ID */
 export type FaultTypeID = CddaID<'FAULTT'>;
 
 type DamageMod = {
@@ -21,7 +24,7 @@ type DamageMod = {
 
 export type Fault = {
     /**故障的唯一ID */
-    id: FaultID;
+    id: (FaultID);
     /**显示用的故障名称 */
     name: (DescText);
     /**故障描述 */
@@ -69,3 +72,6 @@ export type Fault = {
      */
     flags?: FlagID[];
 };
+
+/**预定义的FaultID */
+export type DefineFaultId = ExtractDefineFaultID;

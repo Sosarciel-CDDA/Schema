@@ -1,91 +1,77 @@
 import path from 'pathe';
-import { awt, extractDefineList, SCHEMA_DIR, zh, zhl } from 'Macro';
+import { awt, extractDefineIdList, SCHEMA_DIR, zh, zhl } from 'Macro';
 import { UtilFT } from '@zwa73/utils';
 import { Effect } from 'Schema/Effect';
 
 //#region 预定义IDList生成
 //ItemCategoryID提取
-void extractDefineList({
-    comment: "ItemCategoryID提取",
-    targetFile: path.join(SCHEMA_DIR, "ItemCategory.ts"),
+void extractDefineIdList({
     sourceFileGlob: "data/json/item_category.json",
     typeName: "ItemCategoryID",
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(v=>
-            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.name_header)}`);
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name_header)}`);
     }
 });
 //SkillID提取
-void extractDefineList({
-    comment: "SkillID提取",
-    targetFile: path.join(SCHEMA_DIR, "Skill.ts"),
+void extractDefineIdList({
     sourceFileGlob: "data/json/skills.json",
-    typeName: "ExtractDefineSkillID",
+    typeName: "SkillID",
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(async v=>
-            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.name)} ${zhl(v.description)}`);
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)} ${zhl(v.description)}`);
     }
 });
 //VitaminID提取
-void extractDefineList({
-    comment: "VitaminID提取",
-    targetFile: path.join(SCHEMA_DIR, "Vitamin.ts"),
+void extractDefineIdList({
     sourceFileGlob: "data/json/vitamin.json",
-    typeName: "ExtractDefineVitaminID",
+    typeName: "VitaminID",
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(async v=>
-            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.name)}`);
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)}`);
     }
 });
 //FlagID提取
-void extractDefineList({
-    comment: "FlagID提取",
-    targetFile: path.join(SCHEMA_DIR, "Flag.ts"),
+void extractDefineIdList({
     sourceFileGlob: "data/json/flags.json",
-    typeName: "ExtractDefineFlagID",
+    typeName: "FlagID",
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(async v=>
-            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.info)}`);
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.info)}`);
     }
 });
 //EffectID提取
-void extractDefineList({
-    comment: "EffectID提取",
-    targetFile: path.join(SCHEMA_DIR, "Effect.ts"),
+void extractDefineIdList({
     sourceFileGlob: "data/json/effects.json",
-    typeName: "ExtractDefineEffectID",
+    typeName: "EffectID",
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as Effect[];
         return jsonlist.map(async v=>
-            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.name?.[0])} ${zhl(v.desc?.[0])}`);
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name?.[0])} ${zhl(v.desc?.[0])}`);
     }
 });
 //FaultGroupID提取
-void extractDefineList({
-    comment: "FaultGroupID提取",
-    targetFile: path.join(SCHEMA_DIR, "FaultGroup.ts"),
-    sourceFileGlob: "data/json/fault_groups_*.json",
-    typeName: "ExtractDefineFaultGroupID",
+void extractDefineIdList({
+    sourceFileGlob: "data/json/faults/fault_groups_*.json",
+    typeName: "FaultGroupID",
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(async v=>
-            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v['//'])}`);
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v['//'])}`);
     }
 });
 //FaultID提取
-void extractDefineList({
-    comment: "FaultID提取",
-    targetFile: path.join(SCHEMA_DIR, "Fault.ts"),
-    sourceFileGlob: "data/json/faults_*.json",
-    typeName: "ExtractDefineFaultID",
+void extractDefineIdList({
+    sourceFileGlob: "data/json/faults/faults_*.json",
+    typeName: "FaultID",
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(async v=>
-            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.name)} ${zhl(v.description)}`);
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)} ${zhl(v.description)}`);
     }
 });
 //#endregion

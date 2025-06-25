@@ -1,8 +1,9 @@
+import { ExtractDefineFaultGroupID } from "Extract";
 import { FaultID } from "./Fault";
 import { CddaID, Int } from "./GenericDefine";
 
 /**故障组ID */
-export type FaultGroupID = CddaID<'FAULTG'>;
+export type FaultGroupID = CddaID<'FAULTG'>|DefineFaultGroupID;
 
 /**故障组定义  
  * 故障组是故障和相应权重的组合, 可以组合和重用多个类似的故障组 (手柄, 刀片, 棉质衣物等)   
@@ -32,3 +33,8 @@ export type FaultGroup = {
         weight?: Int;
     }[];
 };
+
+
+
+/**预定义的FaultGroupID */
+export type DefineFaultGroupID = ExtractDefineFaultGroupID;
