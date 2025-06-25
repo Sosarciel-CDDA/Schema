@@ -1,4 +1,4 @@
-import { regionMacro } from '@zwa73/dev-utils';
+import { fileMacro, regionMacro } from '@zwa73/dev-utils';
 import { memoize, MPromise, UtilFT } from '@zwa73/utils';
 import fs from 'fs';
 import path from 'pathe';
@@ -10,7 +10,9 @@ export const INFO_PATH = path.join(DATA_PATH,'buildinfo.json');
 
 export const SCHEMA_DIR = path.join(SRC_DIR,'Schema');
 export const EOC_DIR = path.join(SCHEMA_DIR,'Eoc');
-export const Item_DIR = path.join(SCHEMA_DIR,'Item');
+export const ITEM_DIR = path.join(SCHEMA_DIR,'Item');
+
+export const EXTRACT_DIR = path.join(SRC_DIR,'Extract');
 
 
 export const loadBuildInfo = memoize(async ()=>{
@@ -67,7 +69,7 @@ export type ${listName} = [
 
 /**生成预定义的数组数据 */
 export async function extractDefineList(arg:{
-    region:string;
+    comment:string;
     /**输出的类型名 */
     typeName:string;
     /**生成的list所在文件 */
@@ -82,19 +84,19 @@ export async function extractDefineList(arg:{
     func:(filepath:string)=>MPromise<MPromise<string>[]>;
 }){
     const info = await loadBuildInfo();
-    const {typeName,targetFile,sourceFileGlob: sourceFileGlobList,region,func} = arg;
+    const {typeName,targetFile,sourceFileGlob,comment,func} = arg;
 
-    const sourceFileList = await UtilFT.fileSearchGlob(info.gamepath,sourceFileGlobList);
+    const sourceFileList = await UtilFT.fileSearchGlob(info.gamepath,sourceFileGlob);
 
     //const contextList = await Promise.all(sourceFileList.map(fp=>fs.promises.readFile(path.join(info.gamepath,fp),'utf-8')));
     const exportStringList = await Promise.all((await Promise.all(sourceFileList.map(fp => func(fp)))).flat());
     const exportList = exportStringList.join('\n    ');
-    return regionMacro(region,() => `
-/**${region} 列表*/
-const ${typeName}List = [
+    return fileMacro(() => `
+/**${comment} 列表*/
+export const ${typeName}List = [
     ${exportList}
 ] as const;
-/**${region} 列表*/
-type ${typeName} = typeof ${typeName}List[number];
-`.trim(),{filePath:targetFile})
+/**${comment} */
+export type ${typeName} = typeof ${typeName}List[number];
+`.trim(),{filePath:path.join(EXTRACT_DIR,targetFile)})
 }

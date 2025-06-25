@@ -1,6 +1,6 @@
 import {UtilMacro} from '@zwa73/dev-utils';
 import path from 'pathe';
-import { EOC_DIR, exportTypeList, Item_DIR } from 'Macro';
+import { EOC_DIR, exportTypeList, ITEM_DIR } from 'Macro';
 
 //自动导出
 UtilMacro.exportComment('src/**/*.ts');
@@ -35,8 +35,8 @@ void exportTypeList({
 
 void exportTypeList({
     listName:'UseActionList',
-    targetFile:path.join(Item_DIR,"UseAction","UseActionIndex.ts"),
-    typeFileList:[path.join(Item_DIR,"UseAction","UseAction.ts")],
+    targetFile:path.join(ITEM_DIR,"UseAction","UseActionIndex.ts"),
+    typeFileList:[path.join(ITEM_DIR,"UseAction","UseAction.ts")],
     region:'UseAction导出'
 });
 //#endregion

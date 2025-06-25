@@ -6,10 +6,10 @@ import { Effect } from 'Schema/Effect';
 //#region 预定义IDList生成
 //ItemCategoryID提取
 void extractDefineList({
-    region: "ItemCategoryID提取",
+    comment: "ItemCategoryID提取",
     targetFile: path.join(SCHEMA_DIR, "ItemCategory.ts"),
     sourceFileGlob: "data/json/item_category.json",
-    typeName: "ExtractDefineItemCategoryID",
+    typeName: "ItemCategoryID",
     func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         return jsonlist.map(v=>
@@ -18,7 +18,7 @@ void extractDefineList({
 });
 //SkillID提取
 void extractDefineList({
-    region: "SkillID提取",
+    comment: "SkillID提取",
     targetFile: path.join(SCHEMA_DIR, "Skill.ts"),
     sourceFileGlob: "data/json/skills.json",
     typeName: "ExtractDefineSkillID",
@@ -30,7 +30,7 @@ void extractDefineList({
 });
 //VitaminID提取
 void extractDefineList({
-    region: "VitaminID提取",
+    comment: "VitaminID提取",
     targetFile: path.join(SCHEMA_DIR, "Vitamin.ts"),
     sourceFileGlob: "data/json/vitamin.json",
     typeName: "ExtractDefineVitaminID",
@@ -42,7 +42,7 @@ void extractDefineList({
 });
 //FlagID提取
 void extractDefineList({
-    region: "FlagID提取",
+    comment: "FlagID提取",
     targetFile: path.join(SCHEMA_DIR, "Flag.ts"),
     sourceFileGlob: "data/json/flags.json",
     typeName: "ExtractDefineFlagID",
@@ -54,7 +54,7 @@ void extractDefineList({
 });
 //EffectID提取
 void extractDefineList({
-    region: "EffectID提取",
+    comment: "EffectID提取",
     targetFile: path.join(SCHEMA_DIR, "Effect.ts"),
     sourceFileGlob: "data/json/effects.json",
     typeName: "ExtractDefineEffectID",
@@ -62,6 +62,30 @@ void extractDefineList({
         const jsonlist = await UtilFT.loadJSONFile(fp) as Effect[];
         return jsonlist.map(async v=>
             awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.name?.[0])} ${zhl(v.desc?.[0])}`);
+    }
+});
+//FaultGroupID提取
+void extractDefineList({
+    comment: "FaultGroupID提取",
+    targetFile: path.join(SCHEMA_DIR, "FaultGroup.ts"),
+    sourceFileGlob: "data/json/fault_groups_*.json",
+    typeName: "ExtractDefineFaultGroupID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        return jsonlist.map(async v=>
+            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v['//'])}`);
+    }
+});
+//FaultID提取
+void extractDefineList({
+    comment: "FaultID提取",
+    targetFile: path.join(SCHEMA_DIR, "Fault.ts"),
+    sourceFileGlob: "data/json/faults_*.json",
+    typeName: "ExtractDefineFaultID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        return jsonlist.map(async v=>
+            awt`${`"${v.id}"`.padEnd(20)}, // ${zhl(v.name)} ${zhl(v.description)}`);
     }
 });
 //#endregion
