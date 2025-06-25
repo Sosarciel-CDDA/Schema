@@ -74,4 +74,14 @@ void extractDefineIdList({
             awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)} ${zhl(v.description)}`);
     }
 });
+//FaultFixID提取
+void extractDefineIdList({
+    sourceFileGlob: "data/json/faults/fault_fixes_*.json",
+    typeName: "FaultFixeID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        return jsonlist.map(async v=>
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)}`);
+    }
+});
 //#endregion

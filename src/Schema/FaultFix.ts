@@ -4,10 +4,11 @@ import { SkillID } from "./Skill";
 import { ProficiencyID } from "./Proficiency";
 import { FlagID } from "./Flag";
 import { Requirement, RequirementID } from "./Requirement";
+import { ExtractDefineFaultFixeID } from "Extract";
 
 
 /**故障修复定义ID */
-export type FaultFixID = CddaID<'FAULT_FIX'>;
+export type FaultFixID = CddaID<'FAULT_FIX'>|DefineFaultId;
 
 /**故障修复方法定义 */
 export type FaultFix = {
@@ -68,3 +69,7 @@ export type FaultFix = {
      */
     time_save_flags?: PRecord<FlagID, Float>;
 };
+
+
+/**预定义的FaultFixID */
+export type DefineFaultId = ExtractDefineFaultFixeID;
