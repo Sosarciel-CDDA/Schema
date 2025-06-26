@@ -47,7 +47,7 @@ export type Spell = {
      */
     effect_str?: string;
     /**法术范围形状 */
-    shape: SpellShape;
+    shape: (SpellShape);
     /**法术子效果 */
     extra_effects?: FakeSpell[];
     /**受影响的身体部位 */

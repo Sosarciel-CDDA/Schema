@@ -1259,10 +1259,10 @@ export type CastSpell = TalkerVar<{
      */
     cast_spell: FakeSpell;
     /**是否瞄准  
-     * @default false  
      * 如果为true, 允许你瞄准施放的法术, 否则在"loc"设置的位置施放  
      * 否则将其施放于随机位置, 就像RANDOM_TARGET使用了法术标志一样  
      * RANDOM_TARGET法术需要此项目为true才能正常索敌  
+     * @default false  
      */
     targeted?: boolean;
     /**位置  
