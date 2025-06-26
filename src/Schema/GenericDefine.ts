@@ -103,8 +103,8 @@ export type Energy = Int|`${number} ${"mJ"|"J"|"kJ"}`;
 export type Power = Int|`${number} ${"mW"|"W"|"kW"}`;
 /**价格 */
 export type Price = Int|`${number} ${"cent"|"cents"|"dollar"|"dollars"|"USD"|"kUSD"}`;
-/**时间 无符号为秒 1turn=1s PERMANENT 为永久 */
-export type Time = Int|`${number} ${"s"|"m"|"h"|"d"}`|"PERMANENT";
+/**时间 无符号为秒 1turn=1s */
+export type Time = Int|`${number} ${"turns"|"turn"|"t"|"seconds"|"second"|"s"|"minutes"|"minute"|"m"|"hours"|"hour"|"h"|"day"|"days"|"d"}`;
 /**电子数据单位 无符号为KB */
 export type Ememory = Int|`${number} ${"KB"|"GB"|"GB"|"TB"}`;
 ///**温度 */

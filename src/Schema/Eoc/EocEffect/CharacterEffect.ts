@@ -206,9 +206,9 @@ export type AddEffect = TalkerVar<{
     add_effect: (IDObj<EffectID>);
     /**效果持续时间  
      * 效果的长度; 整数("duration": 60)和持续时间字符串("duration": "1 m")都有效;   
-     * 可以使用PERMANENT来给予永久效果  
+     * 可以使用PERMANENT来给予永久(365d)效果  
      */
-    duration: (TimeObj);
+    duration: (TimeObj|IDObj<"PERMANENT">);
     /**目标身体部位  
      * @default "whole body"  
      * 如果使用, 只会影响指定的身体部位. 可以使用RANDOM来随机选择一个身体部位  

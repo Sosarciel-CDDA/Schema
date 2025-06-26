@@ -1,5 +1,5 @@
 import { NpcNumObj, NumObj } from "./Eoc";
-import { CddaID, DescText, PRecord } from "./GenericDefine";
+import { CddaID, DescText, PRecord, Time } from "./GenericDefine";
 import { ItemGroupID } from "./ItemGroup";
 import { MutationID } from "./Mutation";
 import { SkillID } from "./Skill";
@@ -54,7 +54,7 @@ export type NpcClass = {
     /**可选为此店主定义黑名单 */
     shopkeeper_blacklist?: string;
     /**默认值为 6 天 */
-    restock_interval?: `${number} days`;
+    restock_interval?: (Time);
     /**基础变异 */
     traits?: NpcBaseTraits;
     /**基础法术 */

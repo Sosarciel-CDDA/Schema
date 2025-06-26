@@ -139,7 +139,7 @@ export type UseActionChangeScent = {
     effects: {
         id: (EffectID);
         duration: Int;
-        bp: string;
+        bp: (BodyPartID);
         permanent: boolean;
     }[];
     /**效果是否防水  

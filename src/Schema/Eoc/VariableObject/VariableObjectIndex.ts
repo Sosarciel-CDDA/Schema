@@ -72,14 +72,14 @@ export type CondObj = GenericObj|string;
 export type LocObj = GenericObj;
 
 /**时间Obj */
-export type TimeObj = NumObj|Time;
+export type TimeObj = NumObj|IDObj<Time>;
 
 /**talkerObj */
 export type TalekrObj = GenericObj;
 
 
 /**专用于某种ID的字符串对象  */
-export type IDObj<T extends string> = Exclude<StrObj,string>|T;
+export type IDObj<T extends string|number> = Exclude<StrObj,string>|T;
 
 
 
