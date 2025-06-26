@@ -1,7 +1,8 @@
 import {
     AmmunitionTypeID, BoolObj, Eoc, EocEffect, EocEffectList, SpellID,
     EffectID, TalkTopicID, EocID ,FlagID,AmmoID, ArmorID, GunID,
-    ItemGroupID,MonsterID,MutationID,NpcClassID,NpcInstanceID, EnchantmentID
+    ItemGroupID,MonsterID,MutationID,NpcClassID,NpcInstanceID, EnchantmentID,
+    ItemID
 } from "./Schema";
 
 /**ModID生成工具 */
@@ -38,6 +39,10 @@ export class ModDefine{
     /**生成适用于此mod的 物品组ID */
     genItemGroupID(id:string):ItemGroupID{
         return `${this.MOD_PREFIX}_ITEMGP_${id}`;
+    }
+    /**生成适用于此mod的 物品ID */
+    genItemID(id:string):ItemID{
+        return `${this.MOD_PREFIX}_ITEM_${id}`;
     }
     /**生成适用于此mod的 变异ID */
     genMutationID(id: string):MutationID{

@@ -854,3 +854,5 @@ export type SetTalker = TalkerVar<{
     /**存储你的character_id的变量对象 */
     set_talker?: (TalekrObj);
 },'set_talker'>;
+
+

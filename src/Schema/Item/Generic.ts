@@ -13,13 +13,17 @@ import { DamageTypeID } from "Schema/DamageType";
 import { RecipeID } from "Schema/Recipe";
 import { RequirementID } from "Schema/Requirement";
 import { UseAction } from "./UseAction";
+import { TalkTopicID } from "Schema/TalkTopic";
+import { SkillID } from "Schema/Skill";
+import { TechniqueID } from "Schema/Technique";
+import { ItemToolQuality } from "./Tool";
 
 
 
 /**通用物品基础 */
 export type GenericTrait = CopyfromVar<{
     /**子类型 */
-    subtype:ItemSubtype[];
+    subtype?:ItemSubtype[];
     /**物品唯一ID */
     id: (ItemID);
     /**物品类型 */
@@ -166,10 +170,16 @@ export type GenericTrait = CopyfromVar<{
     template_requirements?: (RequirementID);
     /**爆炸数据 */
     explosion?: (Explosion);
+    /**使用效果 */
+    use_action?: UseAction|UseAction[];
+    /**使用效果 */
+    tick_action?: UseAction|UseAction[];
     /**定时激活 一旦定时器的持续时间过去, 就会"countdown_action"执行 至少1 */
     countdown_interval?: (Time);
     /**定时激活的动作 */
     countdown_action?: (UseAction);
+    /**使用效果 */
+    drop_action?: UseAction|UseAction[];
     /**附魔数据 */
     relic_data?: (RelicData),
     /**最小力量需求 */
@@ -210,6 +220,15 @@ export type GenericTrait = CopyfromVar<{
      * 与使用动作'GASMASK'和'DIVE_TANK'结合使用  
      */
     environmental_protection_with_filter?: number;
+    chat_topics?:(TalkTopicID);
+    min_skills?:(Record<SkillID,Int>);
+    /**工具使用的战斗技巧 */
+    techniques?: TechniqueID[];
+    /**固有的工具品质, 如锤击, 锯切, 拧紧 (参见 tool_qualities.json) */
+    quality?: ItemToolQuality[];
+    /**如果工具至少还剩 charges_per_use 费用, 则可用的工具品质 */
+    charged_qualities?: ItemToolQuality[];
+
 }>;
 
 /**物品变体ID */

@@ -21,8 +21,6 @@ export type ToolTrait = ItemTrait<"TOOL",({
     /**标记具有 TOOL 的特征, 用于补全 */
     "//TOOL": true;
 })&{
-    /**工具使用的战斗技巧 */
-    techniques?: TechniqueID[];
     /**随着时间的推移消耗的费用, 不推荐使用 power_draw */
     turns_per_charge?: Int;
     /**当与 UPS 结合使用时, 该项目将燃烧燃料以获得给定的能量值,   
@@ -30,12 +28,6 @@ export type ToolTrait = ItemTrait<"TOOL",({
      * 需要 > 0 才能正常工作  
      */
     fuel_efficiency?: Float;
-    /**使用效果 */
-    use_action?: UseAction|UseAction[];
-    /**固有的工具品质, 如锤击, 锯切, 拧紧 (参见 tool_qualities.json) */
-    quality: ItemToolQuality[];
-    /**如果工具至少还剩 charges_per_use 费用, 则可用的工具品质 */
-    charged_qualities?: ItemToolQuality[];
     /**用于装弹的弹药类型 */
     tool_ammo?: AmmunitionTypeID[];
     /**此工具对配方中所需的每次充电使用 charge_factor 费用  

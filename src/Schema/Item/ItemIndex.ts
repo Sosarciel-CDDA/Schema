@@ -43,7 +43,7 @@ export type AnyItemTrait = (ItemTrait<"GENERIC",({
     /**标记具有 GENERIC 的特征, 用于补全 */
     "//GENERIC": true;
 })&{
-  flags:GenericTrait["flags"];
+  flags?:GenericTrait["flags"];
 }>|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait|BatteryTrait|BionicItemTrait);
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
 

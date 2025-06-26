@@ -32,9 +32,9 @@ export type ItemSearchData = {
 
 //#region Eoc效果表导出
 import {SpawnItem, RemoveItem} from './EocEffect'
-import {MathAssignExp, SoundEffect, OpenDialogue, TakeControl, TakeControlMenu, GiveAchievement, AssignMission, RemoveActiveMission, FinishMission, OfferMission, RunEocs, RunNpcEocs, RunMonsterEocs, RunInvEocs, MapRunEocs, MapRunItemEocs, RevealMap, RevealRoute, ClosestCity, WeightedListEocs, RunEocSelector, RollRemainder, IfCondition, SwitchStatement, ForEach} from './GenericEffect'
+import {MathAssignExp, SoundEffect, OpenDialogue, TakeControl, TakeControlMenu, GiveAchievement, AssignMission, RemoveActiveMission, FinishMission, OfferMission, RunEocs, RunNpcEocs, RunMonsterEocs, RunInvEocs, MapRunEocs, MapRunItemEocs, RevealMap, RevealRoute, ClosestCity, WeightedListEocs, RunEocSelector, RollRemainder, IfCondition, SwitchStatement, ForEach, SetTalker} from './GenericEffect'
 import {ConsumeItem, FollowOnly, Leave, DropWeapon, DealDamage, GetMutate, GetMutateCategory, MutateTowards, SetTraitPurifiability, AddEffect, AddBionic, LoseBionic, AddTrait, LoseEffect, LoseTrait, ActivateTrait, DeactivateTrait, LearnMartialArt, ForgetMartialArt, AddVar, LoseVar, CopyVar, SetStringVar, SetCondition, LearnRecipe, ForgetRecipe, AssignActivity, CancelActivity, LocationVariable, LocationVariableAdjust, BarberHair, BarberBeard, NpcFirstTopic, Teleport, AddWet, MakeSound, ModHealthy, AddMorale, LoseMorale, ConsumeItemSum, SetFacRelation, AddFactionTrust, Die, PreventDeath, Attack, CreateExplosion, Knockback, CastSpell, LevelSpellClass, QueryOmt, QueryTile, ChooseAdjacentHighlight, MirrorCoordinates, Message} from './CharacterEffect'
-import {SetFlag, UnsetFlag, Activate, SetFault, SetRandomFaultOfType, MapSpawnItem, MapgenUpdate, RevertLocation, AlterTimedEvents, Lightning, NextWeather, CustomLightLevel, TransformRadius, TransformLine, PlaceOverride, SpawnMonster, SpawnNpc, SetField, SetEmit, TurnCost} from './ItemEffect'
+import {SetFlag, UnsetFlag, Activate, SetFault, SetRandomFaultOfType, MapSpawnItem, MapgenUpdate, RevertLocation, AlterTimedEvents, Lightning, NextWeather, CustomLightLevel, TransformRadius, TransformLine, PlaceOverride, SpawnMonster, SpawnNpc, SetField, SetEmit, TurnCost, TransformItem} from './ItemEffect'
 /**Eoc效果表导出 */
 export type EocEffectList = [
     SpawnItem               ,//生成物品
@@ -64,6 +64,7 @@ export type EocEffectList = [
     IfCondition             ,//条件判断
     SwitchStatement         ,//开关语句
     ForEach                 ,//遍历类型
+    SetTalker               ,//设置talker
     ConsumeItem             ,//使用物品
     FollowOnly              ,//让npc跟随玩家
     Leave                   ,//让npc停止跟随玩家并离开追随者阵营
@@ -138,5 +139,6 @@ export type EocEffectList = [
     SetField                ,//生成场地
     SetEmit                 ,//发出场地
     TurnCost                ,//回合消耗
+    TransformItem           ,//转换物品
 ];
 //#endregion

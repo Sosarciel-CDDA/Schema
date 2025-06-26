@@ -35,5 +35,5 @@ export type BionicItemTrait = ItemTrait<"BIONIC_ITEM",({
      * 允许几乎保证安装对应仿生的物品ID  
      */
     installation_data?: (ItemID);
-    flags:GenericFlagID[];
+    flags?:GenericFlagID[];
 }>;
