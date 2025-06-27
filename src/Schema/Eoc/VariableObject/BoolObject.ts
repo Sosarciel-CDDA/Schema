@@ -1168,8 +1168,8 @@ export type LineOfSight = {
      */
     loc_2: (LocObj);
     /**包含场地  
-     * @default true  
      * 如果为false, 忽略不透明场地  
+     * @default true  
      */
     with_fields?: boolean;
 }

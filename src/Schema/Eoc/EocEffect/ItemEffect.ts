@@ -76,13 +76,13 @@ export type SetFault = TalkerVar<{
     /**要应用的故障ID */
     set_fault: (IDObj<FaultID>);
     /**强制  
-     * @default false  
      * 如果为true, 即使物品没有定义它作为可能的故障, 也会应用故障  
+     * @default false  
      */
     force?: boolean;
     /**消息  
-     * @default true  
      * 如果为true, 故障会打印故障消息字段中定义的消息  
+     * @default true  
      */
     message?: boolean;
 }, 'set_fault'>;
@@ -100,13 +100,13 @@ export type SetRandomFaultOfType = TalkerVar<{
     /**要应用的故障类型 */
     set_random_fault_of_type: (IDObj<FaultID>);
     /**强制  
-     * @default false  
      * 如果为true, 即使物品没有定义它作为可能的故障, 也会应用故障  
+     * @default false  
      */
     force?: boolean;
     /**消息  
-     * @default true  
      * 如果为true, 故障会打印故障消息字段中定义的消息  
+     * @default true  
      */
     message?: boolean;
 }, 'set_random_fault_of_type'>;
@@ -135,8 +135,8 @@ export type MapSpawnItem = {
      */
     loc?: (LocObj);
     /**数量  
-     * @default 1  
      * 物品副本的数量  
+     * @default 1  
      */
     count?: (NumObj);
     /**容器  
@@ -144,8 +144,8 @@ export type MapSpawnItem = {
      */
     container?: (IDObj<ItemID>);
     /**使用物品组  
+     * 如果为true, 它将从给定的物品组创建物品.  ("count"和"container"将被忽略, 因为它们在物品组中定义)
      * @default false  
-     * 如果为true, 它将从给定的物品组创建物品.  ("count"和"container"将被忽略, 因为它们在物品组中定义) 
      */
     use_item_group?: boolean;
     /**标志  
@@ -428,48 +428,48 @@ export type SpawnMonster = TalkerVar<{
      */
     spawn_monster: (IDObj<MonsterGroupID>|IDObj<MonsterID>);
     /**实际数量  
-     * @default 0  
      * 将生成的怪物数量  
+     * @default 0  
      */
     real_count?: (NumObj);
     /**幻觉数量  
-     * @default 0  
      * 将生成的怪物幻觉版本的数量  
+     * @default 0  
      */
     hallucination_count?: (NumObj);
     /**组  
-     * @default false  
      * 如果为true, _spawn_monster将从怪物组生成怪物  
+     * @default false  
      */
     group?: boolean;
     /**单一目标  
-     * @default false  
      * 如果为true, _spawn_monster游戏只会从提供的怪物组或附近的怪物中选择一个怪物  
+     * @default false  
      */
     single_target?: boolean;
     /**最小半径  
-     * @default 1  
      * 目标周围怪物将生成的范围  
+     * @default 1  
      */
     min_radius?: (NumObj);
     /**最大半径  
-     * @default 10  
      * 目标周围怪物将生成的范围  
+     * @default 10  
      */
     max_radius?: (NumObj);
     /**仅户外  
-     * @default false  
      * 如果使用, 怪物只能在户外生成  
+     * @default false  
      */
     outdoor_only?: boolean;
     /**仅室内  
-     * @default false  
      * 如果使用, 怪物只能在建筑物内部生成  
+     * @default false  
      */
     indoor_only?: boolean;
     /**允许露天  
-     * @default false  
      * 如果为true, 怪物可以在露天处生成  
+     * @default false  
      */
     open_air_allowed?: boolean;
     /**目标范围  
@@ -485,8 +485,8 @@ export type SpawnMonster = TalkerVar<{
      */
     target_var?: (LocObj);
     /**临时掉落物品  
-     * @default false  
      * 如果为true, 带有寿命的召唤怪物仍会掉落物品并留下尸体  
+     * @default false  
      */
     temporary_drop_items?: boolean;
     /**怪物变量  
@@ -550,38 +550,38 @@ export type SpawnNpc = TalkerVar<{
      */
     traits?: (IDObj<MutationID>) | (IDObj<MutationID>)[];
     /**实际数量  
-     * @default 0  
      * 将生成的NPC数量  
+     * @default 0  
      */
     real_count?: (NumObj);
     /**幻觉数量  
-     * @default 0  
      * 将生成的NPC幻觉版本的数量  
+     * @default 0  
      */
     hallucination_count?: (NumObj)
     /**最小半径  
-     * @default 1  
      * 目标周围NPC将生成的范围  
+     * @default 1  
      */
     min_radius?: (NumObj);
     /**最大半径  
-     * @default 10  
      * 目标周围NPC将生成的范围  
+     * @default 10  
      */
     max_radius?: (NumObj);
     /**仅户外  
-     * @default false  
      * 如果使用, NPC只能在户外生成  
+     * @default false  
      */
     outdoor_only?: boolean;
     /**仅室内  
-     * @default false  
      * 如果使用, NPC只能在建筑物内部生成  
+     * @default false  
      */
     indoor_only?: boolean;
     /**允许露天  
-     * @default false  
      * 如果为true, NPC可以在露天处生成  
+     * @default false  
      */
     open_air_allowed?: boolean;
     /**寿命  
@@ -624,13 +624,13 @@ export type SetField = TalkerVar<{
      */
     set_field: (IDObj<FieldTypeID>);
     /**强度  
-     * @default 1  
      * 要生成的场地的强度  
+     * @default 1  
      */
     intensity?: (NumObj);
     /**半径  
-     * @default 10000000  
      * 要生成的场地的半径  
+     * @default 10000000  
      */
     radius?: (NumObj);
     /**持续时间  
@@ -638,18 +638,18 @@ export type SetField = TalkerVar<{
      */
     age?: (TimeObj);
     /**仅户外  
-     * @default false  
      * 如果使用, 场地只能在户外生成  
+     * @default false  
      */
     outdoor_only?: boolean;
     /**仅室内  
-     * @default false  
      * 如果使用, 场地只能在建筑物内部生成  
+     * @default false  
      */
     indoor_only?: boolean;
     /**影响玩家  
-     * @default true  
      * 如果场地生成在玩家所在位置, 处理就像玩家踩在这个场地上  
+     * @default true  
      */
     hit_player?: boolean;
     /**目标变量  
@@ -674,8 +674,8 @@ export type SetEmit = TalkerVar<{
      */
     emit: (IDObj<EmitID>);
     /**概率倍数  
-     * @default 1  
      * 将emit概率字段乘以此数字  
+     * @default 1  
      */
     chance_mult?: (NumObj);
     /**目标变量  

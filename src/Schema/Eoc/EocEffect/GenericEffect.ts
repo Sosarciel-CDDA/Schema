@@ -297,9 +297,9 @@ export type RunNpcEocs = TalkerVar<{
      */
     unique_ids?: (StrObj) | (StrObj)[];
     /**是否为本地  
-     * @default false  
      * 如果为true, 效果将在世界上的每个NPC上运行;   
      * 如果为false, 效果仅在你的现实气泡中的NPC上运行  
+     * @default false  
      */
     local?: boolean;
     /**NPC范围  
@@ -307,8 +307,8 @@ export type RunNpcEocs = TalkerVar<{
      */
     npc_range?: (NumObj);
     /**是否必须可见  
-     * @default false  
      * 如果为true, 只有你能看到的NPC会受到影响  
+     * @default false  
      */
     npc_must_see?: boolean;
 },'run_npc_eocs'>
@@ -341,8 +341,8 @@ export type RunMonsterEocs = TalkerVar<{
      */
     monster_range?: (NumObj);
     /**是否必须可见  
-     * @default false  
      * 如果为true, 只有你能看到的怪物会受到影响  
+     * @default false  
      */
     monster_must_see?: boolean;
 },'run_monster_eocs'>
@@ -549,8 +549,8 @@ export type RevealRoute = {
      */
     radius?: (NumObj);
     /**仅道路  
-     * @default false  
      * 如果为true, 只揭示道路地块  
+     * @default false  
      */
     road_only?: boolean;
 };
@@ -573,9 +573,9 @@ export type ClosestCity = {
      */
     closest_city: (LocObj);
     /**是否已知  
-     * @default true  
      * 如果为true, 选择你知道的最近城市 (在地图上有黄色文本的城市名称) ,   
      * 否则选择最近的城市, 即使你还没有访问过它  
+     * @default true  
      */
     known?: boolean;
 }

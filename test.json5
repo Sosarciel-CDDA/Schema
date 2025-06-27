@@ -1,0 +1,28 @@
+{
+    "$schema": "./schema/AnyCddaJson.schema.json",
+    "type": "ITEM",
+    "name": "test",
+    "description": "test",
+    "subtype": [],
+    "id": "test",
+    "symbol": "s",
+    "volume": 1,
+    "//T": "TOOL",
+    weight:1,
+    use_action:[{
+        type: "effect_on_conditions",
+        description:"",
+        effect_on_conditions:[{
+            type: "effect_on_condition",
+            eoc_type: "ACTIVATION",
+            id:"",
+            effect: [{
+                if:{u_has_effect:"onfire"},
+                then:[{
+                    u_lose_effect:"onfire",
+                    target_part: "whole body"
+                }]
+            }]
+        }]
+    }]
+}

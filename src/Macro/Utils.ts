@@ -72,7 +72,7 @@ export async function extractDefineIdList(arg:{
     /**输出的类型名 */
     typeName:string;
     /**读取的来源文件
-     * 路劲将以gamepath为起点
+     * 路径将以gamepath为起点
      */
     sourceFileGlob:string|string[];
     /**转换函数
@@ -98,4 +98,20 @@ export const ${extractName}List = [
 /**从文件提取的预定义的${typeName} */
 export type ${extractName} = typeof ${extractName}List[number];
 `.trim(),{filePath:path.join(EXTRACT_DIR,`${typeName}.ts`)})
+}
+
+
+export async function expandTalkVar(arg:{
+    /**读取的来源文件
+     * 路径将以gamepath为起点
+     */
+    sourceFileGlob:string|string[];
+}){
+    const {sourceFileGlob} = arg;
+
+    const regex = /export type (.+) = TalkerVar<[\s\S]+, '.+'>/
+    return fileMacro(async ({text})=>{
+        return ''
+    },{filePath:sourceFileGlob,glob:true});
+
 }

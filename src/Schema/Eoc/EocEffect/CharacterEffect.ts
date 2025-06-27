@@ -2,7 +2,7 @@ import { FakeSpell } from "Schema/Enchantment";
 import { TalkerStr, TalkerVar } from "../Eoc";
 import { ParamsEoc } from "./EocEffectIndex";
 import { BoolObj, CondObj, GenericObj, IDObj, LocObj, NumObj, StrObj, TimeObj } from "../VariableObject";
-import { Explosion, MessageRatType } from "Schema/GenericDefine";
+import { Explosion, Int, MessageRatType } from "Schema/GenericDefine";
 import { AssignMissionTarget } from "Schema/MissionDefinition";
 import { EffectID } from "Schema/Effect";
 import { MutationID } from "Schema/Mutation";
@@ -160,8 +160,8 @@ export type MutateTowards = TalkerVar<{
     /**目标特征ID */
     mutate_towards: (IDObj<MutationID>);
     /**突变类别  
-     * @default "ANY"  
      * 定义用于突变步骤的类别 - 对于维生素使用是必需的  
+     * @default "ANY"  
      */
     category?: (IDObj<MutationCategoryID>);
     /**是否使用维生素  
@@ -210,8 +210,8 @@ export type AddEffect = TalkerVar<{
      */
     duration: (TimeObj|IDObj<"PERMANENT">);
     /**目标身体部位  
-     * @default "whole body"  
      * 如果使用, 只会影响指定的身体部位. 可以使用RANDOM来随机选择一个身体部位  
+     * @default "whole body"  
      */
     target_part?: (BodyPartParam);
     /**效果强度  
@@ -219,8 +219,8 @@ export type AddEffect = TalkerVar<{
      */
     intensity?: (NumObj);
     /**强制应用  
-     * @default false  
      * 如果为true, 将忽略所有免疫  
+     * @default false  
      */
     force_bool?: boolean;
 }, 'add_effect'>;
@@ -301,8 +301,8 @@ export type LoseEffect = TalkerVar<{
      */
     lose_effect: IDObj<EffectID>|IDObj<EffectID>[];
     /**目标身体部位  
-     * @default "whole body"  
      * 如果使用, 只会影响指定的身体部位. 可以使用ALL来移除talker所有身体部位上的效果  
+     * @default "whole body"  
      */
     target_part?: (BodyPartParam);
 }, 'lose_effect'>;
@@ -412,9 +412,9 @@ export type AddVar = TalkerVar<{
      */
     possible_values?: string[];
     /**时间  
-     * 已弃用. 请使用time()数学语法.   
-     * @default false  
+     * 已弃用. 请使用time()数学语法.  
      * 如果为true, 当前时间将保存在变量中; 与"value"和"possible_values"不兼容  
+     * @default false  
      */
     time?: boolean;
     /**类型  
@@ -591,8 +591,9 @@ export type ForgetRecipe = TalkerVar<{
     /**要忘记的配方/配方类别 */
     forget_recipe: (IDObj<RecipeID>);
     /**是否为类别  
-     * @default false, 除非指定了subcategory  
      * 上述字段是否应该被解释为类别而不是单个配方  
+     * 除非指定了subcategory, 否则默认false  
+     * @default false  
      */
     category?: boolean;
     /**子类别  
@@ -651,23 +652,23 @@ export type LocationVariable = TalkerVar<{
      */
     location_variable: (LocObj);
     /**最小半径  
-     * @default 0  
      * 玩家或NPC周围搜索位置的半径  
+     * @default 0  
      */
     min_radius?: (NumObj);
     /**最大半径  
-     * @default 0  
      * 玩家或NPC周围搜索位置的半径  
+     * @default 0  
      */
     max_radius?: (NumObj);
     /**仅户外  
-     * @default false  
      * 如果为true, 只选择户外值  
+     * @default false  
      */
     outdoor_only?: boolean;
     /**仅可通行  
-     * @default false  
      * 如果为true, 只选择可通行的值  
+     * @default false  
      */
     passable_only?: boolean;
     /**目标参数  
@@ -687,9 +688,9 @@ export type LocationVariable = TalkerVar<{
      */
     z_adjust?: (NumObj);
     /**Z覆盖  
-     * @default false  
      * 如果为true, 不是添加到z级别, 而是用绝对值覆盖它;   
      * "z_adjust": 3与"z_override": true将z的值变为3  
+     * @default false  
      */
     z_override?: boolean;
     /**地形  
@@ -728,13 +729,13 @@ export type LocationVariable = TalkerVar<{
      */
     npc?: (IDObj<NpcInstanceID>);
     /**目标最小半径  
-     * @default 0  
      * 如果使用了前一个字段, 则搜索的最小半径  
+     * @default 0  
      */
     target_min_radius?: (NumObj);
     /**目标最大半径  
-     * @default 0  
      * 如果使用了前一个字段, 则搜索的最大半径  
+     * @default 0  
      */
     target_max_radius?: (NumObj);
     /**成功时运行的EOCs  
@@ -781,14 +782,14 @@ export type LocationVariableAdjust = {
      */
     z_adjust?: (NumObj);
     /**Z覆盖  
-     * @default false  
      * 如果为true, 不是添加到z级别, 而是用绝对值覆盖它;   
      * "z_adjust": 3与"z_override": true将z的值变为3  
+     * @default false  
      */
     z_override?: boolean;
     /**地图图块  
-     * @default false  
      * 如果为true, 调整将以地图图块而不是地图图块进行  
+     * @default false  
      */
     overmap_tile?: boolean;
 }
@@ -858,15 +859,15 @@ export type Teleport = TalkerVar<{
      */
     fail_message?: (StrObj);
     /**强制  
-     * @default false  
      * 如果为true, 传送不能失败 - 任何站在目标坐标上的生物都会被残忍地传送杀死,   
      * 如果出现不可通行的障碍物, 则会选择最近的点  
+     * @default false  
      */
     force?: boolean;
     /**强制安全  
-     * @default false  
-     * 如果为true, 传送"不能"失败. 如果目标坐标有生物或障碍物,   
+     * 如果为true, 传送"不能"失败. 如果目标坐标有生物或障碍物,  
      * 将选择5个水平图块内最近的可通行点. 如果没有点, 生物保持原位  
+     * @default false  
      */
     force_safe?: boolean;
 }, 'teleport'>;
@@ -919,14 +920,14 @@ export type MakeSound = TalkerVar<{
      */
     target_var?: (LocObj);
     /**片段  
-     * @default false  
      * 如果为true, _make_sound将使用提供的ID的片段而不是消息  
+     * @default false  
      */
     snippet?: boolean;
     /**相同片段  
-     * @default false  
      * 如果为true, 它将连接talker和片段, 并且如果由此talker使用, 将始终提供相同的片段;   
      * 需要片段设置ID  
+     * @default false  
      */
     same_snippet?: boolean;
 }, 'make_sound'>;
@@ -973,29 +974,29 @@ export type AddMorale = TalkerVar<{
      */
     add_morale: (StrObj);
     /**加成  
-     * @default 1  
      * 效果给予的心情加成或惩罚; 可以堆叠到max_bonus上限, 但每个加成都比前一个低  
-     *  (例如, 100的加成给予心情加成为100, 141, 172, 198, 221等)   
+     *  (例如, 100的加成给予心情加成为100, 141, 172, 198, 221等)  
+     * @default 1  
      */
     bonus?: (NumObj) | (NumObj)[];
     /**最大加成  
-     * @default false  
      * 心情不会增加或减少超过的上限  
+     * @default false  
      */
     max_bonus?: (NumObj) | (NumObj)[];
     /**持续时间  
-     * @default "1 hour"  
      * 士气效果持续多长时间  
+     * @default "1 hour"  
      */
     duration?: (TimeObj);
     /**衰减开始  
-     * @default "30 min"  
      * 士气效果何时开始衰减  
+     * @default "30 min"  
      */
     decay_start?: (TimeObj);
     /**是否封顶  
-     * @default false  
      * 如果为true, 堆叠时加成不会减少 (例如, 100的加成给予心情加成为100, 200, 300等)   
+     * @default false  
      */
     capped?: boolean;
 }, 'add_morale'>;
@@ -1063,8 +1064,8 @@ export type SetFacRelation = TalkerVar<{
      */
     set_fac_relation: (IDObj<keyof FactionRelationFlags>);
     /**设置值  
-     * @default true  
      * 是设置还是取消设置此规则  
+     * @default true  
      */
     set_value_to?: boolean;
 }, 'set_fac_relation'>;
@@ -1101,19 +1102,19 @@ export type AddFactionTrust = TalkerVar<{
 export type Die = TalkerStr<'die'>|TalkerVar<{
     die:{
         /**移除尸体  
-         * @default false  
          * 如果为true, 尸体和其中的所有物品在死亡时不会生成  
+         * @default false  
          */
         remove_corpse?: boolean;
         /**抑制消息  
-         * @default false  
          * 如果为true, 死亡会省略死亡消息  
+         * @default false  
          */
         supress_message?: boolean;
         /**从生物追踪器中移除  
-         * @default false  
          * 如果为true, 且talker是怪物, 怪物不仅会在没有消息和尸体的情况下消失,   
          * 而且会绕过他们在死亡前可能触发的任何死亡效果  
+         * @default false  
          */
         remove_from_creature_tracker?: boolean;
     }
@@ -1151,19 +1152,19 @@ export type Attack = TalkerVar<{
      */
     attack: (IDObj<TechniqueID>) | boolean;
     /**允许特殊  
+     * 如果为true, 应该选择特殊攻击 (怪物可以使用的special_attack, 如monster_attack或spell)  
      * @default true  
-     * 如果为true, 应该选择特殊攻击 (怪物可以使用的special_attack, 如monster_attack或spell)   
      */
     allow_special?: boolean;
     /**允许徒手  
-     * @default true  
      * 如果为true, 可以考虑徒手技术  
+     * @default true  
      */
     allow_unarmed?: boolean;
     /**强制移动消耗  
-     * @default -1  
-     * 如果使用, 攻击将消耗这个数量的移动点 (100移动点 = 1秒) ;   
+     * 如果使用, 攻击将消耗这个数量的移动点 (100移动点 = 1秒) ;  
      * 负值使其使用攻击的默认移动消耗  
+     * @default -1  
      */
     forced_movecost?: (NumObj);
 }, 'attack'>;
@@ -1302,13 +1303,13 @@ export type LevelSpellClass = TalkerVar<{
      */
     level_spell_class: (IDObj<MutationID|"all">);
     /**等级  
-     * @default 1  
      * 将添加或移除的等级  
+     * @default 1  
      */
-    levels?: number;
+    levels?: Int;
     /**随机  
-     * @default false  
      * 如果为true, 只有指定类别的单个法术将受到影响  
+     * @default false  
      */
     random?: boolean;
 }, 'level_spell_class'>;
@@ -1347,15 +1348,15 @@ export type QueryOmt = TalkerVar<{
      */
     target_var?: (LocObj);
     /**距离限制  
-     * @default 无限  
      * 玩家能够选择的半径, 否则不存储变量. 边界会为用户高亮显示  
+     * @default 无限  
      */
     distance_limit?: (NumObj);
     /**扩散  
-     * @default 1  
      * 由于地图只允许OMT级别的精度, 玩家的选择然后转换为绝对坐标, 并调整为指向地图的中心;   
      * 扩散响应额外的精度损失, "图块将从OMT中心选择多远";   
      * 默认值将导致你大致选择OM的中心  
+     * @default 1  
      */
     spread?: (NumObj);
 }, 'query_omt'>;
@@ -1533,57 +1534,57 @@ export type Message = TalkerVar<{
      */
     message: (StrObj);
     /**消息类型  
-     * @default "neutral"  
      * 消息在日志中的显示方式 (通常表示颜色) ;   
      * 可以是good (绿色) , neutral (白色) , bad (红色) , mixed (紫色) ,   
      * warning (黄色) , info (蓝色) , debug (仅在调试模式下显示) ,   
      * headshot (紫色) , critical (黄色) , grazing (蓝色) 中的任何一种  
+     * @default "neutral"  
      */
     type?: (IDObj<MessageRatType>);
     /**是否有声音  
-     * @default false  
      * 如果为true, 仅在玩家不聋时显示消息  
+     * @default false  
      */
     sound?: boolean;
     /**仅户外  
-     * @default false  
      * 如果为true, 且sound为true, 如果你在地下, 消息会更难听到  
+     * @default false  
      */
     outdoor_only?: boolean;
     /**片段  
-     * @default false  
      * 如果为true, 效果会显示来自u_message的随机片段  
+     * @default false  
      */
     snippet?: boolean;
     /**存储在知识中  
-     * @default false  
      * 如果为true, 且message是片段, 片段将存储在知识标签中  
+     * @default false  
      */
     store_in_lore?: boolean;
     /**相同片段  
-     * @default false  
      * 如果为true, 且snippet为true, 它将连接talker和片段, 并且如果由此talker使用, 将始终提供相同的片段;   
      * 需要片段设置ID  
+     * @default false  
      */
     same_snippet?: boolean;
     /**弹出  
-     * @default false  
      * 如果为true, 消息将生成带有u_message的弹出窗口  
+     * @default false  
      */
     popup?: boolean;
     /**弹出标志  
-     * @default "PF_NONE"  
      * 如果指定, 弹出窗口将由指定的标志修改, 允许的值见下文  
+     * @default "PF_NONE"  
      */
     popup_flag?: (StrObj);
     /**弹出中断查询  
-     * @default false  
      * 如果为true, 且popup为true, 弹出窗口将中断任何活动以发送消息  
+     * @default false  
      */
     popup_w_interrupt_query?: boolean;
     /**中断类型  
-     * @default "neutral"  
      * 用于中断的distraction_type, 用于分心管理器; 完整列表存在于activity_type.cpp中  
+     * @default "neutral"  
      */
     interrupt_type?: (StrObj);
 }, 'message'>;

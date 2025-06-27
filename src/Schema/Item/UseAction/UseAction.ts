@@ -239,21 +239,21 @@ export type UseActionLinkUp = {
      */
     type: "link_up";
     /**电缆的最大长度  
-     * @default 物品类型的最大充能值  
      * 如果被其他电缆延长, 将使用所有电缆长度的总和  
+     * @default 物品类型的最大充能值  
      */
     cable_length?: Int;
     /**插入设备电池的充电速率 (瓦特)   
-     * @default "0 W"  
      * 正值将以连接的电网为代价为设备的可充电电池充电  
      * 负值将以设备为代价为连接的电网电池充电  
      * 值为0不会为设备电池充电, 但仍允许设备从连接的电网运行  
+     * @default "0 W"  
      */
     charge_rate?: (Power);
     /**成功在每个充电间隔添加1充能的概率 (0.0-1.0)   
-     * @default 0.85  
      * 小于0.001的值意味着电缆不会传输任何电力  
      * 如果被其他电缆延长, 将使用所有电缆效率的乘积  
+     * @default 0.85  
      */
     efficiency?: Float;
     /**激活屏幕上显示的文本  
@@ -393,8 +393,8 @@ export type UseActionFireweaponOff = {
     /**角色尝试此动作消耗的移动点数 (与结果无关)  */
     moves: Int;
     /**动作成功的概率  
-     * @default 总是成功  
      * 尝试使用0-10范围内的数字  
+     * @default 总是成功  
      */
     success_chance?: Int;
 };
@@ -649,8 +649,8 @@ export type UseActionSound = {
      */
     sound_message: (DescText);
     /**要播放的音频ID  
-     * @default "misc"  
      * 参见SOUNDPACKS.md获取更多详情  
+     * @default "misc"  
      */
     sound_id?: (SoundEffectID);
     /**声音变体  
@@ -672,8 +672,8 @@ export type UseActionManualnoise = {
      */
     noise_message?: (DescText);
     /**要播放的音频ID  
-     * @default "misc"  
      * 参见SOUNDPACKS.md获取更多详情  
+     * @default "misc"  
      */
     noise_id?: (SoundEffectID);
     /**噪声变体  
