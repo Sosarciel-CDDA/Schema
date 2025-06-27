@@ -1,7 +1,7 @@
 import { MissionDefinitionID } from "Schema/MissionDefinition";
 import { EocID, TalkerStr, TalkerVar } from "../Eoc";
 import { BoolExpr } from "./BoolExprIndex";
-import { CompareOpera, CondExpr, IDExpr, LocExpr, NumberExpr } from "./ExpressionIndex";
+import { CompareOpera, CondExpr, IDExpr, NumberExpr } from "./ExpressionIndex";
 import { FieldTypeID } from "Schema/FieldType";
 import { WeaponCategoryID } from "Schema/WeaponCategory";
 import { FlagID } from "Schema/Flag";
@@ -23,6 +23,7 @@ import { SeasonLc } from "Schema/GenericDefine";
 import { ItemCategoryID } from "Schema/ItemCategory";
 import { BionicID } from "Schema/Bionic";
 import { FurnitureID } from "Schema/Furniture";
+import { LocExpr } from "./LocExprIndex";
 
 
 //#region 不在文档内的
