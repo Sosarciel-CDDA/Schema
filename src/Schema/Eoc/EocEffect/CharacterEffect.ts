@@ -1,7 +1,7 @@
 import { FakeSpell } from "Schema/Enchantment";
 import { TalkerStr, TalkerVar } from "../Eoc";
 import { ParamsEoc } from "./EocEffectIndex";
-import { BoolObj, CondObj, GenericObj, IDObj, LocObj, NumObj, StrObj, TimeObj } from "../VariableObject";
+import { BoolExpr, CondExpr, GenericExpr, IDExpr, LocExpr, NumberExpr, StringExpr, TimeExpr } from "../Expression";
 import { Explosion, Int, MessageRatType } from "Schema/GenericDefine";
 import { AssignMissionTarget } from "Schema/MissionDefinition";
 import { EffectID } from "Schema/Effect";
@@ -31,11 +31,11 @@ import { TechniqueID } from "Schema/Technique";
 
 /**使用物品 */
 export type ConsumeItem = TalkerVar<{
-    consume_item: IDObj<ItemID>;
+    consume_item: IDExpr<ItemID>;
     /**数量 */
-    count?: (NumObj);
+    count?: (NumberExpr);
     /**充能数量 */
-    charges?: (NumObj);
+    charges?: (NumberExpr);
     /**为true时将显示消息给予npc物品 */
     popup?: boolean;
 },"consume_item">;
@@ -61,11 +61,11 @@ export type DropWeapon = "drop_weapon"
  */
 export type DealDamage = TalkerVar<{
     /**造成伤害的类型 */
-    deal_damage: (IDObj<DamageTypeID>);
+    deal_damage: (IDExpr<DamageTypeID>);
     /**伤害数值  
      * @default 0  
      */
-    amount?: (NumObj);
+    amount?: (NumberExpr);
     /**受伤的身体部位  
      * 注意只有角色才能有肢体.   
      * @default "RANDOM"  
@@ -74,32 +74,32 @@ export type DealDamage = TalkerVar<{
     /**护甲穿透  
      * @default 0  
      */
-    arpen?: (NumObj);
+    arpen?: (NumberExpr);
     /**护甲穿透倍率  
      * @default 1  
      */
-    arpen_mult?: (NumObj);
+    arpen_mult?: (NumberExpr);
     /**伤害倍率  
      * @default 1  
      */
-    dmg_mult?: (NumObj);
+    dmg_mult?: (NumberExpr);
     /**最小命中尺寸  
      * 如果bodypart是RANDOM, 只选择hit_size大于此值的身体部位  
      * @default -1  
      */
-    min_hit?: (NumObj);
+    min_hit?: (NumberExpr);
     /**最大命中尺寸  
      * 如果bodypart是RANDOM, 只选择hit_size小于此值的身体部位  
      * @default 你最大的身体部位尺寸  
      */
-    max_hit?: (NumObj);
+    max_hit?: (NumberExpr);
     /**是否可以攻击高处  
      * 如果为true, 可以攻击带有LIMB_UPPER标志的肢体, 如果为false, 这些肢体会被排除  
      * @default true  
      */
     can_attack_high?: boolean;
     /**命中检定 */
-    hit_roll?: (NumObj);
+    hit_roll?: (NumberExpr);
 }, 'deal_damage'>;
 
 
@@ -117,7 +117,7 @@ export type GetMutate = TalkerVar<{
     /**突变概率  
      * 1/int的概率导致随机突变, 如果为0则只使用最高类别  
      */
-    mutate: (NumObj);
+    mutate: (NumberExpr);
     /**是否使用维生素  
      * @default true  
      */
@@ -136,7 +136,7 @@ export type GetMutate = TalkerVar<{
  */
 export type GetMutateCategory = TalkerVar<{
     /**突变类别 */
-    mutate_category: (IDObj<MutationCategoryID>);
+    mutate_category: (IDExpr<MutationCategoryID>);
     /**是否使用维生素  
      * @default true  
      */
@@ -158,12 +158,12 @@ export type GetMutateCategory = TalkerVar<{
  */
 export type MutateTowards = TalkerVar<{
     /**目标特征ID */
-    mutate_towards: (IDObj<MutationID>);
+    mutate_towards: (IDExpr<MutationID>);
     /**突变类别  
      * 定义用于突变步骤的类别 - 对于维生素使用是必需的  
      * @default "ANY"  
      */
-    category?: (IDObj<MutationCategoryID>);
+    category?: (IDExpr<MutationCategoryID>);
     /**是否使用维生素  
      * 与mutate中相同, 需要定义类别  
      */
@@ -184,7 +184,7 @@ export type MutateTowards = TalkerVar<{
  */
 export type SetTraitPurifiability = TalkerVar<{
     /**要更改的特征ID */
-    set_trait_purifiability: (IDObj<MutationID>);
+    set_trait_purifiability: (IDExpr<MutationID>);
     /**是否可净化  
      * true将特征添加到不可净化特征列表, false将其移除  
      */
@@ -203,12 +203,12 @@ export type SetTraitPurifiability = TalkerVar<{
  */
 export type AddEffect = TalkerVar<{
     /**要添加的效果ID */
-    add_effect: (IDObj<EffectID>);
+    add_effect: (IDExpr<EffectID>);
     /**效果持续时间  
      * 效果的长度; 整数("duration": 60)和持续时间字符串("duration": "1 m")都有效;   
      * 可以使用PERMANENT来给予永久(365d)效果  
      */
-    duration: (TimeObj|IDObj<"PERMANENT">);
+    duration: (TimeExpr|IDExpr<"PERMANENT">);
     /**目标身体部位  
      * 如果使用, 只会影响指定的身体部位. 可以使用RANDOM来随机选择一个身体部位  
      * @default "whole body"  
@@ -217,7 +217,7 @@ export type AddEffect = TalkerVar<{
     /**效果强度  
      * @default 0  
      */
-    intensity?: (NumObj);
+    intensity?: (NumberExpr);
     /**强制应用  
      * 如果为true, 将忽略所有免疫  
      * @default false  
@@ -239,7 +239,7 @@ export type AddBionic = TalkerVar<{
     /**要安装的仿生装置  
      * 你的角色或NPC将获得该仿生装置; 每个效果只能安装一个仿生装置  
      */
-    add_bionic: (IDObj<BionicID>);
+    add_bionic: (IDExpr<BionicID>);
 }, 'add_bionic'>;
 
 
@@ -256,7 +256,7 @@ export type LoseBionic = TalkerVar<{
     /**要卸载的仿生装置  
      * 你的角色或NPC将失去该仿生装置  
      */
-    lose_bionic: (IDObj<BionicID>);
+    lose_bionic: (IDExpr<BionicID>);
 }, 'lose_bionic'>;
 
 
@@ -275,11 +275,11 @@ export type LoseBionic = TalkerVar<{
 export type AddTrait = TalkerVar<{
     /**要添加的特性ID  
      */
-    add_trait: (IDObj<MutationID>);
+    add_trait: (IDExpr<MutationID>);
     /**特性变体  
      * 特性变体的ID  
      */
-    variant?: (StrObj);
+    variant?: (StringExpr);
 }, 'add_trait'>;
 
 
@@ -299,7 +299,7 @@ export type LoseEffect = TalkerVar<{
     /**要移除的效果ID  
      * 要移除的效果或效果的ID; 如果角色或NPC没有此效果, 则不会发生任何事情  
      */
-    lose_effect: IDObj<EffectID>|IDObj<EffectID>[];
+    lose_effect: IDExpr<EffectID>|IDExpr<EffectID>[];
     /**目标身体部位  
      * 如果使用, 只会影响指定的身体部位. 可以使用ALL来移除talker所有身体部位上的效果  
      * @default "whole body"  
@@ -321,7 +321,7 @@ export type LoseTrait = TalkerVar<{
     /**要移除的突变ID  
      * 要移除的突变的ID; 如果角色或NPC没有此突变, 则不会发生任何事情  
      */
-    lose_trait: IDObj<MutationID>;
+    lose_trait: IDExpr<MutationID>;
 }, 'lose_trait'>;
 
 
@@ -336,7 +336,7 @@ export type LoseTrait = TalkerVar<{
  */
 export type ActivateTrait = TalkerVar<{
     /**要激活的特性/突变ID */
-    activate_trait: IDObj<MutationID>;
+    activate_trait: IDExpr<MutationID>;
 }, 'activate_trait'>;
 
 
@@ -351,7 +351,7 @@ export type ActivateTrait = TalkerVar<{
  */
 export type DeactivateTrait = TalkerVar<{
     /**要停用的特性/突变ID */
-    deactivate_trait: IDObj<MutationID>;
+    deactivate_trait: IDExpr<MutationID>;
 }, 'deactivate_trait'>;
 
 
@@ -367,7 +367,7 @@ export type DeactivateTrait = TalkerVar<{
  */
 export type LearnMartialArt = TalkerVar<{
     /**要学习的武术 */
-    learn_martial_art: (IDObj<MartialArtID>);
+    learn_martial_art: (IDExpr<MartialArtID>);
 }, 'learn_martial_art'>;
 
 
@@ -382,7 +382,7 @@ export type LearnMartialArt = TalkerVar<{
  */
 export type ForgetMartialArt = TalkerVar<{
     /**要忘记的武术ID */
-    forget_martial_art: (IDObj<MartialArtID>);
+    forget_martial_art: (IDExpr<MartialArtID>);
 }, 'forget_martial_art'>;
 
 
@@ -464,11 +464,11 @@ export type CopyVar = {
     /**源变量  
      * 源变量  
      */
-    copy_var: (GenericObj);
+    copy_var: (GenericExpr);
     /**目标变量  
      * 目标变量  
      */
-    target_var: (GenericObj);
+    target_var: (GenericExpr);
 }
 
 
@@ -486,11 +486,11 @@ export type SetStringVar = {
     /**字符串值  
      * 将放入target_var的值  
      */
-    set_string_var: (StrObj) | (StrObj)[];
+    set_string_var: (StringExpr) | (StringExpr)[];
     /**目标变量  
      * 接受值的变量; 通常是context_val  
      */
-    target_var: (StrObj);
+    target_var: (StringExpr);
     /**解析标签  
      * 在存储前是否解析字符串中的自定义条目  
      */
@@ -507,15 +507,15 @@ export type SetStringVar = {
         /**标题  
          * 输入弹出窗口的标题, 可以本地化  
          */
-        title?: (StrObj);
+        title?: (StringExpr);
         /**描述  
          * 输入弹出窗口的描述, 可以本地化  
          */
-        description?: (StrObj);
+        description?: (StringExpr);
         /**默认文本  
          * 输入弹出窗口中的默认文本, 可以本地化  
          */
-        default_text?: (StrObj);
+        default_text?: (StringExpr);
         /**宽度  
          * 输入框的字符长度  
          * @default 20  
@@ -552,11 +552,11 @@ export type SetStringVar = {
 export type SetCondition = {
     /**条件ID  
      */
-    set_condition: (CondObj);
+    set_condition: (CondExpr);
     /**条件  
      * 条件本身  
      */
-    condition: (BoolObj);
+    condition: (BoolExpr);
 }
 
 
@@ -572,7 +572,7 @@ export type SetCondition = {
  */
 export type LearnRecipe = TalkerVar<{
     /**要学习的配方 */
-    learn_recipe: (IDObj<RecipeID>);
+    learn_recipe: (IDExpr<RecipeID>);
 }, 'learn_recipe'>;
 
 
@@ -589,7 +589,7 @@ export type LearnRecipe = TalkerVar<{
  */
 export type ForgetRecipe = TalkerVar<{
     /**要忘记的配方/配方类别 */
-    forget_recipe: (IDObj<RecipeID>);
+    forget_recipe: (IDExpr<RecipeID>);
     /**是否为类别  
      * 上述字段是否应该被解释为类别而不是单个配方  
      * 除非指定了subcategory, 否则默认false  
@@ -599,7 +599,7 @@ export type ForgetRecipe = TalkerVar<{
     /**子类别  
      * 指定类别的配方子类别将被忘记  
      */
-    subcategory?: (StrObj);
+    subcategory?: (StringExpr);
 }, 'forget_recipe'>;
 
 
@@ -613,11 +613,11 @@ export type ForgetRecipe = TalkerVar<{
  */
 export type AssignActivity = TalkerVar<{
     /**要开始的活动ID */
-    assign_activity: (IDObj<ActivityTypeID>);
+    assign_activity: (IDExpr<ActivityTypeID>);
     /**持续时间  
      * 活动持续多长时间  
      */
-    duration: (TimeObj);
+    duration: (TimeExpr);
 }, 'assign_activity'>;
 
 /**取消活动  
@@ -650,17 +650,17 @@ export type LocationVariable = TalkerVar<{
     /**位置变量  
      * 保存位置的变量  
      */
-    location_variable: (LocObj);
+    location_variable: (LocExpr);
     /**最小半径  
      * 玩家或NPC周围搜索位置的半径  
      * @default 0  
      */
-    min_radius?: (NumObj);
+    min_radius?: (NumberExpr);
     /**最大半径  
      * 玩家或NPC周围搜索位置的半径  
      * @default 0  
      */
-    max_radius?: (NumObj);
+    max_radius?: (NumberExpr);
     /**仅户外  
      * 如果为true, 只选择户外值  
      * @default false  
@@ -678,15 +678,15 @@ export type LocationVariable = TalkerVar<{
     /**X调整  
      * 最后添加到x坐标的数量; "x_adjust": 2将保存坐标, 从目标右侧偏移2个图块  
      */
-    x_adjust?: (NumObj);
+    x_adjust?: (NumberExpr);
     /**Y调整  
      * 最后添加到y坐标的数量  
      */
-    y_adjust?: (NumObj);
+    y_adjust?: (NumberExpr);
     /**Z调整  
      * 最后添加到z坐标的数量  
      */
-    z_adjust?: (NumObj);
+    z_adjust?: (NumberExpr);
     /**Z覆盖  
      * 如果为true, 不是添加到z级别, 而是用绝对值覆盖它;   
      * "z_adjust": 3与"z_override": true将z的值变为3  
@@ -697,47 +697,47 @@ export type LocationVariable = TalkerVar<{
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体;   
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体  
      */
-    terrain?: (IDObj<TerrainID>);
+    terrain?: (IDExpr<TerrainID>);
     /**家具  
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体;   
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体  
      */
-    furniture?: (IDObj<FurnitureID>);
+    furniture?: (IDExpr<FurnitureID>);
     /**场地  
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体;   
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体  
      */
-    field?: (IDObj<FieldTypeID>);
+    field?: (IDExpr<FieldTypeID>);
     /**陷阱  
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体;   
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体  
      */
-    trap?: (IDObj<TrapID>);
+    trap?: (IDExpr<TrapID>);
     /**怪物  
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体;   
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体  
      */
-    monster?: (IDObj<MonsterID>);
+    monster?: (IDExpr<MonsterID>);
     /**区域  
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体;   
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体  
      */
-    zone?: (StrObj);
+    zone?: (StringExpr);
     /**NPC  
      * 如果使用, 在target_min_radius和target_max_radius之间搜索具有相应ID的实体;   
      * 如果使用空字符串 (例如"monster": "") , 则从相同半径返回任何实体  
      */
-    npc?: (IDObj<NpcInstanceID>);
+    npc?: (IDExpr<NpcInstanceID>);
     /**目标最小半径  
      * 如果使用了前一个字段, 则搜索的最小半径  
      * @default 0  
      */
-    target_min_radius?: (NumObj);
+    target_min_radius?: (NumberExpr);
     /**目标最大半径  
      * 如果使用了前一个字段, 则搜索的最大半径  
      * @default 0  
      */
-    target_max_radius?: (NumObj);
+    target_max_radius?: (NumberExpr);
     /**成功时运行的EOCs  
      * 如果找到位置, 将运行true_eocs中的所有EOC  
      */
@@ -768,19 +768,19 @@ export type LocationVariableAdjust = {
     /**位置变量  
      * 保存位置的变量  
      */
-    location_variable_adjust: (LocObj);
+    location_variable_adjust: (LocExpr);
     /**X调整  
      * 最后添加到x坐标的数量; "x_adjust": 2将保存坐标, 从目标右侧偏移2个图块  
      */
-    x_adjust?: (NumObj);
+    x_adjust?: (NumberExpr);
     /**Y调整  
      * 最后添加到y坐标的数量  
      */
-    y_adjust?: (NumObj);
+    y_adjust?: (NumberExpr);
     /**Z调整  
      * 最后添加到z坐标的数量  
      */
-    z_adjust?: (NumObj);
+    z_adjust?: (NumberExpr);
     /**Z覆盖  
      * 如果为true, 不是添加到z级别, 而是用绝对值覆盖它;   
      * "z_adjust": 3与"z_override": true将z的值变为3  
@@ -826,7 +826,7 @@ export type NpcFirstTopic = {
     /**首个话题  
      * 将使用的话题  
      */
-    npc_first_topic: (IDObj<TalkTopicID>);
+    npc_first_topic: (IDExpr<TalkTopicID>);
 };
 
 
@@ -849,15 +849,15 @@ export type Teleport = TalkerVar<{
     /**传送位置  
      * 传送的位置; 应使用之前创建的target_var  
      */
-    teleport: (LocObj);
+    teleport: (LocExpr);
     /**成功消息  
      * 如果传送成功, 将打印的消息  
      */
-    success_message?: (StrObj);
+    success_message?: (StringExpr);
     /**失败消息  
      * 如果传送失败, 将打印的消息, 例如如果坐标包含生物或不可通行的障碍物 (如墙)   
      */
-    fail_message?: (StrObj);
+    fail_message?: (StringExpr);
     /**强制  
      * 如果为true, 传送不能失败 - 任何站在目标坐标上的生物都会被残忍地传送杀死,   
      * 如果出现不可通行的障碍物, 则会选择最近的点  
@@ -885,7 +885,7 @@ export type AddWet = TalkerVar<{
     /**添加的湿度  
      * 将添加多少湿度 (以百分比计)   
      */
-    add_wet: (NumObj);
+    add_wet: (NumberExpr);
 }, 'add_wet'>;
 
 
@@ -905,20 +905,20 @@ export type AddWet = TalkerVar<{
  */
 export type MakeSound = TalkerVar<{
     /**声音描述 */
-    make_sound: (StrObj);
+    make_sound: (StringExpr);
     /**音量  
      * 声音有多大 (1单位 = 角色周围1个图块)   
      */
-    volume: (NumObj);
+    volume: (NumberExpr);
     /**类型  
      * 声音的类型; 可以是background, weather, music, movement, speech, electronic_speech,   
      * activity, destructive_activity, alarm, combat, alert或order之一  
      */
-    type: (StrObj);
+    type: (StringExpr);
     /**目标变量  
      * 如果设置, 声音的中心将位于此变量的坐标, 而不是你或NPC  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
     /**片段  
      * 如果为true, _make_sound将使用提供的ID的片段而不是消息  
      * @default false  
@@ -945,11 +945,11 @@ export type ModHealthy = TalkerVar<{
     /**健康修改量  
      * 要添加的健康量  
      */
-    mod_healthy: (NumObj);
+    mod_healthy: (NumberExpr);
     /**上限  
      * 健康度不能超过的上限  
      */
-    cap?: (NumObj);
+    cap?: (NumberExpr);
 }, 'mod_healthy'>;
 
 
@@ -972,28 +972,28 @@ export type AddMorale = TalkerVar<{
     /**要添加的士气类型  
      * 效果给予的morale_type  
      */
-    add_morale: (StrObj);
+    add_morale: (StringExpr);
     /**加成  
      * 效果给予的心情加成或惩罚; 可以堆叠到max_bonus上限, 但每个加成都比前一个低  
      *  (例如, 100的加成给予心情加成为100, 141, 172, 198, 221等)  
      * @default 1  
      */
-    bonus?: (NumObj) | (NumObj)[];
+    bonus?: (NumberExpr) | (NumberExpr)[];
     /**最大加成  
      * 心情不会增加或减少超过的上限  
      * @default false  
      */
-    max_bonus?: (NumObj) | (NumObj)[];
+    max_bonus?: (NumberExpr) | (NumberExpr)[];
     /**持续时间  
      * 士气效果持续多长时间  
      * @default "1 hour"  
      */
-    duration?: (TimeObj);
+    duration?: (TimeExpr);
     /**衰减开始  
      * 士气效果何时开始衰减  
      * @default "30 min"  
      */
-    decay_start?: (TimeObj);
+    decay_start?: (TimeExpr);
     /**是否封顶  
      * 如果为true, 堆叠时加成不会减少 (例如, 100的加成给予心情加成为100, 200, 300等)   
      * @default false  
@@ -1014,7 +1014,7 @@ export type AddMorale = TalkerVar<{
  */
 export type LoseMorale = TalkerVar<{
     /**要移除的士气类型 */
-    lose_morale: (StrObj);
+    lose_morale: (StringExpr);
 }, 'lose_morale'>;
 
 
@@ -1039,11 +1039,11 @@ export type ConsumeItemSum = TalkerVar<{
         /**物品ID  
          * 应该移除的物品的ID  
          */
-        item: IDObj<ItemID>;
+        item: IDExpr<ItemID>;
         /**数量  
          * 应该移除的物品或充能的数量  
          */
-        amount: (NumObj);
+        amount: (NumberExpr);
     }[];
 }, 'consume_item_sum'>;
 
@@ -1062,7 +1062,7 @@ export type SetFacRelation = TalkerVar<{
     /**要设置的规则  
      * 要设置的规则. 参见派系文档以获取规则列表及其涵盖的内容  
      */
-    set_fac_relation: (IDObj<keyof FactionRelationFlags>);
+    set_fac_relation: (IDExpr<keyof FactionRelationFlags>);
     /**设置值  
      * 是设置还是取消设置此规则  
      * @default true  
@@ -1084,7 +1084,7 @@ export type SetFacRelation = TalkerVar<{
  */
 export type AddFactionTrust = TalkerVar<{
     /**要添加或移除的信任量 */
-    add_faction_trust: (NumObj);
+    add_faction_trust: (NumberExpr);
 }, 'add_faction_trust'>;
 
 
@@ -1150,7 +1150,7 @@ export type Attack = TalkerVar<{
     /**要使用的技术  
      * 将使用的技术; 可以使用"tec_none", 在这种情况下将使用默认的自动攻击  
      */
-    attack: (IDObj<TechniqueID>) | boolean;
+    attack: (IDExpr<TechniqueID>) | boolean;
     /**允许特殊  
      * 如果为true, 应该选择特殊攻击 (怪物可以使用的special_attack, 如monster_attack或spell)  
      * @default true  
@@ -1166,7 +1166,7 @@ export type Attack = TalkerVar<{
      * 负值使其使用攻击的默认移动消耗  
      * @default -1  
      */
-    forced_movecost?: (NumObj);
+    forced_movecost?: (NumberExpr);
 }, 'attack'>;
 
 
@@ -1196,7 +1196,7 @@ export type CreateExplosion = TalkerVar<{
     /**目标变量  
      * 如果使用, 爆炸将发生在变量指向的位置  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
     /**EMP爆炸  
      * 如果使用, EMP爆炸将出现在爆炸中心 (仅在中心, 无论爆炸大小如何)   
      */
@@ -1220,25 +1220,25 @@ export type Knockback = TalkerVar<{
     /**击退强度  
      * 推力有多强, 以图块为单位  
      */
-    knockback: (NumObj);
+    knockback: (NumberExpr);
     /**眩晕  
      * 眩晕效果应用于talker的时间  
      */
-    stun?: (NumObj);
+    stun?: (NumberExpr);
     /**伤害倍率  
      * 如果目标在击退过程中撞到障碍物, 它会受到伤害并额外眩晕, 等于剩余击退乘以此dam_mult;   
      * 如果击退是10 (10个图块) , 生物在4个图块处撞到障碍物, 剩余的6个图块将转换为6点伤害, 乘以dam_mult (并增加6秒眩晕)   
      */
-    dam_mult?: (NumObj);
+    dam_mult?: (NumberExpr);
     /**目标变量  
      * 如果使用, 不是alpha或beta talker位置, 而是此位置的生物将被击飞  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
     /**方向变量  
      * 如果使用, 推力将被计算为来自此方向 (如果生物在中心, 方向_var是从西方, 生物将被击退到东方) .   
      * 如果不使用, 游戏将随机选择一个方向  
      */
-    direction_var?: (LocObj);
+    direction_var?: (LocExpr);
 }, 'knockback'>;
 
 
@@ -1269,7 +1269,7 @@ export type CastSpell = TalkerVar<{
     /**位置  
      * 设置法术的目标位置. 如果不使用, 则目标为施法者的位置  
      */
-    loc?: (LocObj);
+    loc?: (LocExpr);
     /**成功时运行的EOCs  
      * 如果法术成功施放, 将运行true_eocs中的所有EOC  
      */
@@ -1301,7 +1301,7 @@ export type LevelSpellClass = TalkerVar<{
     /**法术类别  
      * 将受影响的spell_class, 可以指定"all"而不是类别来影响角色知道的所有法术  
      */
-    level_spell_class: (IDObj<MutationID|"all">);
+    level_spell_class: (IDExpr<MutationID|"all">);
     /**等级  
      * 将添加或移除的等级  
      * @default 1  
@@ -1338,27 +1338,27 @@ export type QueryOmt = TalkerVar<{
      * 存储坐标的变量; 如果查询被取消或玩家选择的图块超过distance_limit, 则不存储变量,   
      * 因此应使用{ "math": [ "has_var(_pos)" ] }这样的条件来确保正确选择了变量  
      */
-    query_omt: (LocObj);
+    query_omt: (LocExpr);
     /**消息  
      * 在地图UI左上角打印的消息  
      */
-    message: (StrObj);
+    message: (StringExpr);
     /**目标变量  
      * 如果设置, 中心不是avatar所在的位置, 而是此坐标  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
     /**距离限制  
      * 玩家能够选择的半径, 否则不存储变量. 边界会为用户高亮显示  
      * @default 无限  
      */
-    distance_limit?: (NumObj);
+    distance_limit?: (NumberExpr);
     /**扩散  
      * 由于地图只允许OMT级别的精度, 玩家的选择然后转换为绝对坐标, 并调整为指向地图的中心;   
      * 扩散响应额外的精度损失, "图块将从OMT中心选择多远";   
      * 默认值将导致你大致选择OM的中心  
      * @default 1  
      */
-    spread?: (NumObj);
+    spread?: (NumberExpr);
 }, 'query_omt'>;
 
 
@@ -1400,11 +1400,11 @@ export type QueryTile = TalkerVar<{
      * 存储坐标的变量; 如果查询被取消, 则不存储变量,   
      * 因此应使用{ "math": [ "has_var(_pos)" ] }这样的条件来确保正确选择了变量  
      */
-    target_var: (LocObj);
+    target_var: (LocExpr);
     /**范围  
      * 定义line_of_sight的可选范围 (line_of_sight必需, 否则不需要)   
      */
-    range?: (NumObj);
+    range?: (NumberExpr);
     /**Z级别  
      * 如果选择了anywhere, 定义你是否可以选择其他z级别的图块  
      */
@@ -1412,11 +1412,11 @@ export type QueryTile = TalkerVar<{
     /**消息  
      * 选择时显示的文本  
      */
-    message?: (StrObj);
+    message?: (StringExpr);
     /**中心变量  
      * 如果使用, 查询将围绕这些坐标居中, 而不是从talker当前位置. 仅适用于anywhere类型  
      */
-    center_var?: (LocObj);
+    center_var?: (LocExpr);
 }, 'query_tile'>;
 
 
@@ -1442,16 +1442,16 @@ export type ChooseAdjacentHighlight = TalkerVar<{
      * 存储坐标的变量; 如果查询被取消, 玩家选择不允许的图块或取消输入, 则不存储变量,   
      * 因此应使用{ "math": [ "has_var(_pos)" ] }这样的条件来确保正确选择了变量  
      */
-    choose_adjacent_highlight: (LocObj);
+    choose_adjacent_highlight: (LocExpr);
     /**目标变量  
      * 如果使用, 3x3区域将不围绕talker居中, 而是围绕此点. 键绑定和选择将照常工作, 你可以使用数字键盘选择  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
     /**条件  
      * 可用于从列表中过滤特定图块. 如果不使用, 则允许所有图块.   
      * 图块的坐标存储在loc上下文变量中, 并在向玩家显示之前逐一检查  
      */
-    condition?: (BoolObj);
+    condition?: (BoolExpr);
     /**允许垂直  
      * 如果为true, 允许选择上方或下方1个z级别的图块  
      * @default false  
@@ -1466,11 +1466,11 @@ export type ChooseAdjacentHighlight = TalkerVar<{
     /**消息  
      * 选择时显示的文本  
      */
-    message?: (StrObj);
+    message?: (StringExpr);
     /**失败消息  
      * 如果allow_autoselect为true, 且条件没有返回允许的图块, 将打印此消息  
      */
-    failure_message?: (StrObj);
+    failure_message?: (StringExpr);
     /**失败时运行的EOCs  
      * 如果无法选择图块, 将运行此字段中的所有EOC, 与失败消息相同  
      */
@@ -1503,15 +1503,15 @@ export type MirrorCoordinates = TalkerVar<{
     /**镜像坐标  
      * 存储镜像坐标的变量  
      */
-    mirror_coordinates: (LocObj);
+    mirror_coordinates: (LocExpr);
     /**中心变量  
      * 将作为relative_var和mirror_coordinates之间中心的坐标变量  
      */
-    center_var: (LocObj);
+    center_var: (LocExpr);
     /**相对变量  
      * 用于生成mirror_coordinates的变量  
      */
-    relative_var: (LocObj);
+    relative_var: (LocExpr);
 }, 'mirror_coordinates'>;
 
 
@@ -1532,7 +1532,7 @@ export type Message = TalkerVar<{
     /**消息内容  
      * 将打印的消息; 如果snippet为true, 则为将打印的片段的ID  
      */
-    message: (StrObj);
+    message: (StringExpr);
     /**消息类型  
      * 消息在日志中的显示方式 (通常表示颜色) ;   
      * 可以是good (绿色) , neutral (白色) , bad (红色) , mixed (紫色) ,   
@@ -1540,7 +1540,7 @@ export type Message = TalkerVar<{
      * headshot (紫色) , critical (黄色) , grazing (蓝色) 中的任何一种  
      * @default "neutral"  
      */
-    type?: (IDObj<MessageRatType>);
+    type?: (IDExpr<MessageRatType>);
     /**是否有声音  
      * 如果为true, 仅在玩家不聋时显示消息  
      * @default false  
@@ -1576,7 +1576,7 @@ export type Message = TalkerVar<{
      * 如果指定, 弹出窗口将由指定的标志修改, 允许的值见下文  
      * @default "PF_NONE"  
      */
-    popup_flag?: (StrObj);
+    popup_flag?: (StringExpr);
     /**弹出中断查询  
      * 如果为true, 且popup为true, 弹出窗口将中断任何活动以发送消息  
      * @default false  
@@ -1586,7 +1586,7 @@ export type Message = TalkerVar<{
      * 用于中断的distraction_type, 用于分心管理器; 完整列表存在于activity_type.cpp中  
      * @default "neutral"  
      */
-    interrupt_type?: (StrObj);
+    interrupt_type?: (StringExpr);
 }, 'message'>;
 
 

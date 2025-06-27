@@ -1,4 +1,4 @@
-import { NpcNumObj, NumObj } from "./Eoc";
+import { NpcNumberExpr, NumberExpr } from "./Eoc";
 import { CddaID, DescText, PRecord, Time } from "./GenericDefine";
 import { ItemGroupID } from "./ItemGroup";
 import { MutationID } from "./Mutation";
@@ -28,13 +28,13 @@ export type NpcClass = {
      */
     sells_belongings?: boolean;
     /**初始力量 */
-    bonus_str?: NpcNumObj;
+    bonus_str?: NpcNumberExpr;
     /**初始敏捷 */
-    bonus_dex?: NpcNumObj;
+    bonus_dex?: NpcNumberExpr;
     /**初始智力 */
-    bonus_int?: NpcNumObj;
+    bonus_int?: NpcNumberExpr;
     /**初始感知 */
-    bonus_per?: NpcNumObj;
+    bonus_per?: NpcNumberExpr;
     /**初始技能 */
     skills?: NPCClassBaseSkill[];
     /**npc穿戴的物品组 */
@@ -86,13 +86,13 @@ type ShopPriceRules = [
 ]
 export type NpcBaseTraits = ({ group: string }|{ trait: MutationID }|[MutationID,number])[];
 export type NpcBaseSpells = {id:SpellID,level:number}[];
-type MutationRounds = PRecord<"ANY",NpcNumObj>;
+type MutationRounds = PRecord<"ANY",NpcNumberExpr>;
 /**npc职业的基础技能 */
 export type NPCClassBaseSkill = {
     /**目标技能 ALL为全部 */
     skill: "ALL"|SkillID,
     /**技能等级 */
-    level: NpcNumObj;
+    level: NpcNumberExpr;
 }
 
 /** NpcNumObj样例  

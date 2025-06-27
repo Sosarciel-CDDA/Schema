@@ -1,6 +1,6 @@
 import { BodyPartID } from "./BodyPart";
 import { ParamsEnchantment } from "./Enchantment";
-import { BoolObj, EocID } from "./Eoc";
+import { BoolExpr, EocID } from "./Eoc";
 import { CustomFlagID, FlagID } from "./Flag";
 import { CddaID, DescText, EffectRatType, PRecord, SocialType } from "./GenericDefine";
 import { ItemID, ArmorID, GunID } from "./Item";
@@ -321,7 +321,7 @@ export type BPWetProte = {
 
 /**变异触发器 */
 export type MutTigger = {
-    condition: BoolObj;
+    condition: BoolExpr;
     /**触发器激活时显示的消息.  */
     msg_on: RatMessage;
     /**触发器停用特性时显示的消息.  */

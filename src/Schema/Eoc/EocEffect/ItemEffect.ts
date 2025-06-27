@@ -1,5 +1,5 @@
 import { FlagID } from "Schema/Flag";
-import { IDObj, LocObj, NumObj, StrObj, TimeObj } from "../VariableObject";
+import { IDExpr, LocExpr, NumberExpr, StringExpr, TimeExpr } from "../Expression";
 import { TalkerVar } from "../Eoc";
 import { ItemID } from "Schema/Item";
 import { ItemGroupID } from "Schema/ItemGroup";
@@ -30,7 +30,7 @@ import { FurnitureID } from "Schema/Furniture";
  */
 export type SetFlag = TalkerVar<{
     /**要添加的标志ID */
-    set_flag: (IDObj<FlagID>);
+    set_flag: (IDExpr<FlagID>);
 }, 'set_flag'>;
 
 /**移除标志  
@@ -42,7 +42,7 @@ export type SetFlag = TalkerVar<{
  */
 export type UnsetFlag = TalkerVar<{
     /**要移除的标志ID */
-    unset_flag: (IDObj<FlagID>);
+    unset_flag: (IDExpr<FlagID>);
 }, 'unset_flag'>;
 
 
@@ -56,11 +56,11 @@ export type UnsetFlag = TalkerVar<{
  */
 export type Activate = TalkerVar<{
     /**要激活的物品的use action ID */
-    activate: (IDObj<ItemActionID>);
+    activate: (IDExpr<ItemActionID>);
     /**目标变量  
      * 如果设置, 目标位置被强制为此变量的坐标  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
 }, 'activate'>;
 
 
@@ -74,7 +74,7 @@ export type Activate = TalkerVar<{
  */
 export type SetFault = TalkerVar<{
     /**要应用的故障ID */
-    set_fault: (IDObj<FaultID>);
+    set_fault: (IDExpr<FaultID>);
     /**强制  
      * 如果为true, 即使物品没有定义它作为可能的故障, 也会应用故障  
      * @default false  
@@ -98,7 +98,7 @@ export type SetFault = TalkerVar<{
  */
 export type SetRandomFaultOfType = TalkerVar<{
     /**要应用的故障类型 */
-    set_random_fault_of_type: (IDObj<FaultID>);
+    set_random_fault_of_type: (IDExpr<FaultID>);
     /**强制  
      * 如果为true, 即使物品没有定义它作为可能的故障, 也会应用故障  
      * @default false  
@@ -129,20 +129,20 @@ export type SetRandomFaultOfType = TalkerVar<{
  */
 export type MapSpawnItem = {
     /**要生成的物品ID或物品组 */
-    map_spawn_item: (IDObj<ItemID>|IDObj<ItemGroupID>);
+    map_spawn_item: (IDExpr<ItemID>|IDExpr<ItemGroupID>);
     /**位置  
      * 物品生成的位置. 如果不使用, 则从玩家位置生成  
      */
-    loc?: (LocObj);
+    loc?: (LocExpr);
     /**数量  
      * 物品副本的数量  
      * @default 1  
      */
-    count?: (NumObj);
+    count?: (NumberExpr);
     /**容器  
      * 容器的ID. 如果指定, 物品将包含在容器中  
      */
-    container?: (IDObj<ItemID>);
+    container?: (IDExpr<ItemID>);
     /**使用物品组  
      * 如果为true, 它将从给定的物品组创建物品.  ("count"和"container"将被忽略, 因为它们在物品组中定义)
      * @default false  
@@ -151,7 +151,7 @@ export type MapSpawnItem = {
     /**标志  
      * 物品将具有数组中的所有标志  
      */
-    flags?: (IDObj<FlagID>)[];
+    flags?: (IDExpr<FlagID>)[];
 }
 
 /**地图更新  
@@ -176,23 +176,23 @@ export type MapgenUpdate = {
      * 没有其他参数时, 使用update_mapgen_id ID中的更改更新玩家当前位置的地图图块.   
      * 如果使用数组, 则会为每个ID更新地图  
      */
-    mapgen_update: (IDObj<UpdateMapgenID>) | (IDObj<UpdateMapgenID>)[];
+    mapgen_update: (IDExpr<UpdateMapgenID>) | (IDExpr<UpdateMapgenID>)[];
     /**未来时间  
      * 如果使用, 地图更改将延迟这段时间. 可以使用"infinity", 使位置不更新, 直到关键事件发生  
      */
-    time_in_future?: (TimeObj);
+    time_in_future?: (TimeExpr);
     /**键  
      * 可以在EoC外部调用以触发地图更新的事件的ID. 键应该是alter_timed_events  
      */
-    key?: (StrObj);
+    key?: (StringExpr);
     /**目标变量  
      * 如果使用, 将使用变量中的目标而不是玩家的当前位置. 它使用assign_mission_target语法  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
     /**地图地形  
      * 要更新的地图地形  
      */
-    om_terrain?: (IDObj<OvermapTerrainID>);
+    om_terrain?: (IDExpr<OvermapTerrainID>);
 }
 
 
@@ -214,15 +214,15 @@ export type RevertLocation = {
     /**恢复位置  
      * 存储位置的变量的ID  
      */
-    revert_location: (LocObj);
+    revert_location: (LocExpr);
     /**未来时间  
      * 位置应该何时恢复; 可以使用"infinity", 使位置不更新, 直到关键事件发生  
      */
-    time_in_future: (TimeObj);
+    time_in_future: (TimeExpr);
     /**键  
      * 可以在EoC外部调用以触发位置恢复的事件的ID. 键应该是alter_timed_events  
      */
-    key?: (StrObj);
+    key?: (StringExpr);
 }
 
 /**改变定时事件  
@@ -243,11 +243,11 @@ export type AlterTimedEvents = {
     /**改变定时事件  
      * 可以在EoC外部调用以触发地图更新的事件的ID. 键应该是alter_timed_events  
      */
-    alter_timed_events: (StrObj);
+    alter_timed_events: (StringExpr);
     /**未来时间  
      * 如果使用, 所有相关效果将不会立即触发, 而是在触发后的这段时间后触发  
      */
-    time_in_future?: (TimeObj);
+    time_in_future?: (TimeExpr);
 }
 
 
@@ -277,15 +277,15 @@ export type CustomLightLevel = {
     /**自定义光照级别  
      * 光照级别从0到125, 其中0是完全黑暗, 125是日光  
      */
-    custom_light_level: (NumObj);
+    custom_light_level: (NumberExpr);
     /**长度  
      * 效果持续多长时间  
      */
-    length: (TimeObj);
+    length: (TimeExpr);
     /**键  
      * 可以在EoC外部调用以触发地图更新的事件的ID. 键应该是alter_timed_events  
      */
-    key?: (StrObj);
+    key?: (StringExpr);
 }
 
 /**转换半径  
@@ -307,23 +307,23 @@ export type TransformRadius = TalkerVar<{
     /**转换半径  
      * 发生转换的范围  
      */
-    transform_radius: (NumObj);
+    transform_radius: (NumberExpr);
     /**地形家具转换  
      * 用于转换区域的ter_furn_transform  
      */
-    ter_furn_transform: (IDObj<FurnitureID>);
+    ter_furn_transform: (IDExpr<FurnitureID>);
     /**目标变量  
      * 如果使用, 将使用变量中的目标而不是玩家的当前位置. 它使用assign_mission_target语法  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
     /**未来时间  
      * 位置应该何时转换的延迟; 可以使用"infinity", 使位置不更新, 直到关键事件发生  
      */
-    time_in_future?: (TimeObj);
+    time_in_future?: (TimeExpr);
     /**键  
      * 可以在EoC外部调用以触发地图更新的事件的ID. 键应该是alter_timed_events  
      */
-    key?: (StrObj);
+    key?: (StringExpr);
 }, 'transform_radius'>;
 
 /**转换线  
@@ -341,15 +341,15 @@ export type TransformLine = {
     /**转换线  
      * 用于转换地形的ter_furn_transform  
      */
-    transform_line: (StrObj);
+    transform_line: (StringExpr);
     /**第一个坐标  
      * 由u_location_variable创建的坐标, 线将在这两个坐标之间绘制  
      */
-    first: (LocObj);
+    first: (LocExpr);
     /**第二个坐标  
      * 由u_location_variable创建的坐标, 线将在这两个坐标之间绘制  
      */
-    second: (LocObj);
+    second: (LocExpr);
 }
 
 
@@ -380,15 +380,15 @@ export type PlaceOverride = {
     /**位置覆盖  
      * 位置的新名称  
      */
-    place_override: (StrObj);
+    place_override: (StringExpr);
     /**长度  
      * 更改的名称持续多长时间; 可以使用"infinity", 使位置不恢复, 直到关键事件发生  
      */
-    length: (TimeObj);
+    length: (TimeExpr);
     /**键  
      * 可以在EoC外部调用以触发地图更新的事件的ID. 键应该是alter_timed_events  
      */
-    key?: (StrObj);
+    key?: (StringExpr);
 }
 
 /**生成怪物  
@@ -426,17 +426,17 @@ export type SpawnMonster = TalkerVar<{
     /**生成怪物  
      * 将生成的怪物或怪物组, 使用""从附近的怪物中随机选择  
      */
-    spawn_monster: (IDObj<MonsterGroupID>|IDObj<MonsterID>);
+    spawn_monster: (IDExpr<MonsterGroupID>|IDExpr<MonsterID>);
     /**实际数量  
      * 将生成的怪物数量  
      * @default 0  
      */
-    real_count?: (NumObj);
+    real_count?: (NumberExpr);
     /**幻觉数量  
      * 将生成的怪物幻觉版本的数量  
      * @default 0  
      */
-    hallucination_count?: (NumObj);
+    hallucination_count?: (NumberExpr);
     /**组  
      * 如果为true, _spawn_monster将从怪物组生成怪物  
      * @default false  
@@ -451,12 +451,12 @@ export type SpawnMonster = TalkerVar<{
      * 目标周围怪物将生成的范围  
      * @default 1  
      */
-    min_radius?: (NumObj);
+    min_radius?: (NumberExpr);
     /**最大半径  
      * 目标周围怪物将生成的范围  
      * @default 10  
      */
-    max_radius?: (NumObj);
+    max_radius?: (NumberExpr);
     /**仅户外  
      * 如果使用, 怪物只能在户外生成  
      * @default false  
@@ -475,15 +475,15 @@ export type SpawnMonster = TalkerVar<{
     /**目标范围  
      * 如果_spawn_monster为空, 从目标的这个图块数量内选择一个随机敌对生物  
      */
-    target_range?: (NumObj);
+    target_range?: (NumberExpr);
     /**寿命  
      * 如果使用, 生物将存活这段时间, 然后消失  
      */
-    lifespan?: (TimeObj);
+    lifespan?: (TimeExpr);
     /**目标变量  
      * 如果使用, 怪物将从此位置生成, 而不是你或NPC  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
     /**临时掉落物品  
      * 如果为true, 带有寿命的召唤怪物仍会掉落物品并留下尸体  
      * @default false  
@@ -504,11 +504,11 @@ export type SpawnMonster = TalkerVar<{
     /**生成消息  
      * 如果你看到生成的怪物, 将打印相关消息  
      */
-    spawn_message?: (StrObj);
+    spawn_message?: (StringExpr);
     /**生成消息 (复数)   
      * 如果你看到生成的怪物 (多个) , 将打印相关消息  
      */
-    spawn_message_plural?: (StrObj);
+    spawn_message_plural?: (StringExpr);
     /**成功时运行的EOCs  
      * 如果至少生成了1个怪物, 将运行true_eocs中的所有EOC  
      */
@@ -542,33 +542,33 @@ export type SpawnNpc = TalkerVar<{
     /**生成NPC  
      * 将生成的NPC的类别  
      */
-    spawn_npc: (IDObj<NpcClassID>|IDObj<NpcInstanceID>);
+    spawn_npc: (IDExpr<NpcClassID>|IDExpr<NpcInstanceID>);
     /**唯一ID */
-    unique_id?: (StrObj);
+    unique_id?: (StringExpr);
     /**特性  
      * NPC在生成时将拥有的额外特性/突变  
      */
-    traits?: (IDObj<MutationID>) | (IDObj<MutationID>)[];
+    traits?: (IDExpr<MutationID>) | (IDExpr<MutationID>)[];
     /**实际数量  
      * 将生成的NPC数量  
      * @default 0  
      */
-    real_count?: (NumObj);
+    real_count?: (NumberExpr);
     /**幻觉数量  
      * 将生成的NPC幻觉版本的数量  
      * @default 0  
      */
-    hallucination_count?: (NumObj)
+    hallucination_count?: (NumberExpr)
     /**最小半径  
      * 目标周围NPC将生成的范围  
      * @default 1  
      */
-    min_radius?: (NumObj);
+    min_radius?: (NumberExpr);
     /**最大半径  
      * 目标周围NPC将生成的范围  
      * @default 10  
      */
-    max_radius?: (NumObj);
+    max_radius?: (NumberExpr);
     /**仅户外  
      * 如果使用, NPC只能在户外生成  
      * @default false  
@@ -587,19 +587,19 @@ export type SpawnNpc = TalkerVar<{
     /**寿命  
      * 如果使用, NPC将存活这段时间, 然后消失  
      */
-    lifespan?: (TimeObj);
+    lifespan?: (TimeExpr);
     /**目标变量  
      * 如果使用, NPC将从此位置生成, 而不是你或NPC  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
     /**生成消息  
      * 如果你看到生成的NPC, 将打印相关消息  
      */
-    spawn_message?: (StrObj);
+    spawn_message?: (StringExpr);
     /**生成消息 (复数)   
      * 如果你看到生成的NPC (多个) , 将打印相关消息  
      */
-    spawn_message_plural?: (StrObj);
+    spawn_message_plural?: (StringExpr);
     /**成功时运行的EOCs  
      * 如果至少生成了1个怪物, 将运行true_eocs中的所有EOC  
      */
@@ -622,21 +622,21 @@ export type SetField = TalkerVar<{
     /**生成场地  
      * 要在玩家周围生成的场地的ID  
      */
-    set_field: (IDObj<FieldTypeID>);
+    set_field: (IDExpr<FieldTypeID>);
     /**强度  
      * 要生成的场地的强度  
      * @default 1  
      */
-    intensity?: (NumObj);
+    intensity?: (NumberExpr);
     /**半径  
      * 要生成的场地的半径  
      * @default 10000000  
      */
-    radius?: (NumObj);
+    radius?: (NumberExpr);
     /**持续时间  
      * 场地将持续多长时间  
      */
-    age?: (TimeObj);
+    age?: (TimeExpr);
     /**仅户外  
      * 如果使用, 场地只能在户外生成  
      * @default false  
@@ -655,7 +655,7 @@ export type SetField = TalkerVar<{
     /**目标变量  
      * 如果使用, 场地将从此位置生成, 而不是你或NPC  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
 }, 'set_field'>;
 
 
@@ -672,16 +672,16 @@ export type SetEmit = TalkerVar<{
     /**发出场地  
      * 将生成的emit的ID  
      */
-    emit: (IDObj<EmitID>);
+    emit: (IDExpr<EmitID>);
     /**概率倍数  
      * 将emit概率字段乘以此数字  
      * @default 1  
      */
-    chance_mult?: (NumObj);
+    chance_mult?: (NumberExpr);
     /**目标变量  
      * 如果使用, 发射将从此位置生成, 而不是你或NPC  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
 }, 'emit'>;
 
 
@@ -699,7 +699,7 @@ export type TurnCost = TalkerVar<{
     /**回合消耗  
      * 动作需要多长时间 (可以指定为回合数 (小数) , 或作为持续时间)   
      */
-    turn_cost: (TimeObj);
+    turn_cost: (TimeExpr);
 }, 'turn_cost'>;
 
 
@@ -724,7 +724,7 @@ export type TransformItem = TalkerVar<{
     /**转换物品  
      * 要转换成的物品ID  
      */
-    transform_item: (IDObj<ItemID>);
+    transform_item: (IDExpr<ItemID>);
     /**激活  
      * 如果为true, 激活物品  
      */

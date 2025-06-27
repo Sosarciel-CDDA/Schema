@@ -1,4 +1,4 @@
-import { BoolObj, CondObj, IDObj, LocObj, NumObj, StrObj, TalekrObj, TimeObj } from "../VariableObject";
+import { BoolExpr, CondExpr, IDExpr, LocExpr, NumberExpr, StringExpr, TalekrExpr, TimeExpr } from "../Expression";
 import { SoundEffectID, SoundEffectVariantID } from "Schema/SoundEffect";
 import { EocID, InlineEoc, TalkerStr, TalkerVar, ToFEffect } from "../Eoc";
 import { EocEffect, ItemSearchData, ParamsEoc } from "./EocEffectIndex";
@@ -25,11 +25,11 @@ export type SoundEffect = {
     /**要使用的声音效果  
      * 对应sound_effect类型中的variant字段  
      */
-    sound_effect: (IDObj<SoundEffectVariantID>);
+    sound_effect: (IDExpr<SoundEffectVariantID>);
     /**用于播放的ID  
      * 对应sound_effect类型中的id字段  
      */
-    id?: (IDObj<SoundEffectID>);
+    id?: (IDExpr<SoundEffectID>);
     /**是否为户外事件  
      * 如果为true且玩家在地下, 玩家听到声音的可能性较小  
      * @default false  
@@ -39,7 +39,7 @@ export type SoundEffect = {
      * 受听力修饰符影响  
      * @default 80  
      */
-    volume?: (NumObj);
+    volume?: (NumberExpr);
 }
 
 /**打开对话  
@@ -59,7 +59,7 @@ export type OpenDialogue = {
     /**对话主题  
      * 如果使用, 将使用此主题与一个空的talker进行对话, 而不是与参与者对话  
      */
-    topic?: (IDObj<TalkTopicID>);
+    topic?: (IDExpr<TalkTopicID>);
     /**对话成功时运行的EOCs  
      * 如果对话成功, 将运行所有true_eocs中的EOCs  
      */
@@ -106,7 +106,7 @@ export type TakeControlMenu = "take_control_menu";
 export type GiveAchievement = {
     /**要授予的成就 */
     //give_achievement: (IDObj<>);
-    give_achievement: (StrObj);
+    give_achievement: (StringExpr);
 }
 
 
@@ -119,11 +119,11 @@ export type GiveAchievement = {
  */
 export type AssignMission = {
     /**要分配给玩家的任务 */
-    assign_mission: IDObj<MissionDefinitionID>;
+    assign_mission: IDExpr<MissionDefinitionID>;
     /**任务截止时间  
      * 如果任务在此时间点前未完成, 将自动失败  
      */
-    deadline?: (TimeObj);
+    deadline?: (TimeExpr);
 }
 
 /**移除活动任务  
@@ -135,7 +135,7 @@ export type AssignMission = {
  */
 export type RemoveActiveMission = {
     /**要移除的任务 */
-    remove_active_mission: IDObj<MissionDefinitionID>;
+    remove_active_mission: IDExpr<MissionDefinitionID>;
 }
 
 
@@ -153,7 +153,7 @@ export type RemoveActiveMission = {
 export type FinishMission = {
     /**要完成的任务ID  
      */
-    finish_mission: IDObj<MissionDefinitionID>;
+    finish_mission: IDExpr<MissionDefinitionID>;
     /**是否成功完成  
      * @default false  
      */
@@ -177,7 +177,7 @@ export type FinishMission = {
  */
 export type OfferMission = {
     /**要提供的任务ID */
-    offer_mission: IDObj<MissionDefinitionID> | IDObj<MissionDefinitionID>[];
+    offer_mission: IDExpr<MissionDefinitionID> | IDExpr<MissionDefinitionID>[];
 }
 
 
@@ -205,19 +205,19 @@ export type RunEocs = {
      * 例如: "run_eocs": [ "A", "B" ], "repeat": 3 将执行 A, B, A, B, A, B  
      * @default 1  
      */
-    iterations?: (NumObj);
+    iterations?: (NumberExpr);
     /**条件  
      * 如果使用, 只要此条件返回true, EOC就会运行.   
      * 如果使用"condition", 可以使用"iterations"将运行次数限制为特定数量 (默认为100次, 直到终止)   
      */
-    condition?: (BoolObj);
+    condition?: (BoolExpr);
     /**延迟触发时间  
      * 如果使用, EOC将在未来此时间量后激活; 默认为0, 表示立即运行.   
      * 如果EOC是全局的, avatar将是u, npc将无效.   
      * 如果EOC不是全局的, 它将排队给当前alpha (如果他们是角色 (avatar或npc) ) 否则不会排队.   
      * 与"condition"和"iterations"不兼容  
      */
-    time_in_future?: (TimeObj);
+    time_in_future?: (TimeExpr);
     /**随机化延迟触发时间  
      * 与time_in_future一起使用;   
      * 如果为false, 整个EOC数组将在完全相同的时刻运行;   
@@ -228,12 +228,12 @@ export type RunEocs = {
      * 允许通过定义u_location_variable来交换talker, EOC应该在该位置运行.   
      * 将alpha talker设置为该位置的生物.   
      */
-    alpha_loc?: (LocObj);
+    alpha_loc?: (LocExpr);
     /**beta位置  
      * 允许通过定义u_location_variable来交换talker, EOC应该在该位置运行.   
      * 将beta talker设置为该位置的生物.   
      */
-    beta_loc?: (LocObj);
+    beta_loc?: (LocExpr);
     /**alpha talker  
      * 设置alpha talker. 这可以是character_id (可以从EOC事件或u_set_talker的结果获取) ,   
      * 或一些硬编码值:   
@@ -242,7 +242,7 @@ export type RunEocs = {
      * "avatar": 你的avatar  
      * 注意: 如果同时使用"alpha_loc"和"alpha_talker", 将忽略"alpha_talker", beta也是如此.   
      */
-    alpha_talker?: (TalekrObj);
+    alpha_talker?: (TalekrExpr);
     /**beta talker  
      * 设置beta talker. 这可以是character_id (可以从EOC事件或u_set_talker的结果获取) ,   
      * 或一些硬编码值:   
@@ -251,7 +251,7 @@ export type RunEocs = {
      * "avatar": 你的avatar  
      * 注意: 如果同时使用"beta_loc"和"beta_talker", 将忽略"beta_talker", alpha也是如此.   
      */
-    beta_talker?: (TalekrObj);
+    beta_talker?: (TalekrExpr);
     /**失败时运行的EOCs  
      * 在以下情况下运行false EOCs:   
      * 1. "alpha_loc"/"beta_loc"处没有生物, 或  
@@ -295,7 +295,7 @@ export type RunNpcEocs = TalkerVar<{
      * 或在世界上的每个NPC上运行 (如果"local": false) ;   
      * NPC的唯一ID在mapgen中使用npcs或place_npcs指定  
      */
-    unique_ids?: (StrObj) | (StrObj)[];
+    unique_ids?: (StringExpr) | (StringExpr)[];
     /**是否为本地  
      * 如果为true, 效果将在世界上的每个NPC上运行;   
      * 如果为false, 效果仅在你的现实气泡中的NPC上运行  
@@ -305,7 +305,7 @@ export type RunNpcEocs = TalkerVar<{
     /**NPC范围  
      * 如果使用, 只有在此范围内的NPC会受到影响  
      */
-    npc_range?: (NumObj);
+    npc_range?: (NumberExpr);
     /**是否必须可见  
      * 如果为true, 只有你能看到的NPC会受到影响  
      * @default false  
@@ -335,11 +335,11 @@ export type RunMonsterEocs = TalkerVar<{
     /**怪物类型ID  
      * 应该受到影响的mtype_id  
      */
-    mtype_ids?: (IDObj<MonsterID>)[];
+    mtype_ids?: (IDExpr<MonsterID>)[];
     /**怪物范围  
      * 如果使用, 只有在此范围内的怪物会受到影响  
      */
-    monster_range?: (NumObj);
+    monster_range?: (NumberExpr);
     /**是否必须可见  
      * 如果为true, 只有你能看到的怪物会受到影响  
      * @default false  
@@ -383,7 +383,7 @@ export type RunInvEocs = TalkerVar<{
     /**菜单标题  
      * 如果使用manual或manual_mult值时显示的菜单名称  
      */
-    title?: (StrObj);
+    title?: (StringExpr);
     /**成功时运行的EOCs  
      * 如果成功选择了物品, 将运行所有true_eocs中的EOCs  
      */
@@ -415,21 +415,21 @@ export type MapRunEocs = TalkerVar<{
     /**坐标存储变量  
      * 存储测试坐标的变量  
      */
-    store_coordinates_in?: (LocObj);
+    store_coordinates_in?: (LocExpr);
     /**条件  
      * 检查是否需要运行EOC的条件. 可以 (且应该) 使用store_coordinates_in中的变量.   
      * @default true  
      */
-    condition?: (BoolObj);
+    condition?: (BoolExpr);
     /**目标变量  
      * 游戏应该在其周围扫描的位置变量; 如果省略, 则使用u_或npc_位置  
      */
-    target_var?: (LocObj);
+    target_var?: (LocExpr);
     /**范围  
      * 搜索半径应该有多大  
      * @default 1 (以角色为中心的3x3方块)  
      */
-    range?: (NumObj);
+    range?: (NumberExpr);
     /**是否在第一次匹配后停止  
      * 如果为true, 在第一个条件满足后停止执行;   
      * 如果为false, 在所有满足条件的地块上运行EOC.   
@@ -464,19 +464,19 @@ export type MapRunItemEocs = TalkerVar<{
     /**位置  
      * 将扫描物品的位置; 如果没有指定, 则只扫描talker所在的地块  
      */
-    loc?: (LocObj);
+    loc?: (LocExpr);
     /**最小半径  
      * 将搜索的位置/talker周围的最小半径  
      */
-    min_radius?: (NumObj);
+    min_radius?: (NumberExpr);
     /**最大半径  
      * 将搜索的位置/talker周围的最大半径  
      */
-    max_radius?: (NumObj);
+    max_radius?: (NumberExpr);
     /**菜单标题  
      * 如果使用manual或manual_mult值时显示的菜单名称  
      */
-    title?: (StrObj);
+    title?: (StringExpr);
     /**搜索数据  
      * 设置目标物品的条件; 如果没有search_data, 则可以选择任何物品  
      */
@@ -507,12 +507,12 @@ export type RevealMap = {
     /**要揭示的位置  
      * 将揭示地图的位置变量  
      */
-    reveal_map: (LocObj);
+    reveal_map: (LocExpr);
     /**半径  
      * 揭示区域的大小  
      * @default 0  
      */
-    radius: (NumObj);
+    radius: (NumberExpr);
 };
 
 
@@ -539,15 +539,15 @@ export type RevealRoute = {
     /**起点  
      * 路线的起点位置变量  
      */
-    reveal_route: (LocObj);
+    reveal_route: (LocExpr);
     /**终点  
      * 路线的终点位置变量  
      */
-    target_var: (LocObj);
+    target_var: (LocExpr);
     /**半径  
      * 揭示路径的大小  
      */
-    radius?: (NumObj);
+    radius?: (NumberExpr);
     /**仅道路  
      * 如果为true, 只揭示道路地块  
      * @default false  
@@ -571,7 +571,7 @@ export type ClosestCity = {
      * 存储找到的城市中心的位置变量  
      * 额外发送上下文变量city_name (字符串) 和city_size (整数)   
      */
-    closest_city: (LocObj);
+    closest_city: (LocExpr);
     /**是否已知  
      * 如果为true, 选择你知道的最近城市 (在地图上有黄色文本的城市名称) ,   
      * 否则选择最近的城市, 即使你还没有访问过它  
@@ -602,7 +602,7 @@ export type WeightedListEocs = {
     /**EOC列表  
      * 将运行的EOC及其权重; EOC可以是ID或内联EOC, 权重可以是整数或变量对象  
      */
-    weighted_list_eocs: ((InlineEoc|EocID)|[(InlineEoc|EocID),NumObj])[];
+    weighted_list_eocs: ((InlineEoc|EocID)|[(InlineEoc|EocID),NumberExpr])[];
 }
 
 
@@ -629,15 +629,15 @@ export type RunEocSelector = {
     /**EOC列表  
      * 可以选择的EOC列表; 列出的EOC的条件将被检查, 不通过的将被灰显  
      */
-    run_eoc_selector: IDObj<EocID>[];
+    run_eoc_selector: IDExpr<EocID>[];
     /**选项名称  
      * 将在列表上显示的选项名称; 名称数量应等于EOC数量  
      */
-    names?: (StrObj)[];
+    names?: (StringExpr)[];
     /**选项描述  
      * 将在列表上显示的选项描述; 描述数量应等于EOC数量  
      */
-    descriptions?: (StrObj)[];
+    descriptions?: (StringExpr)[];
     /**快捷键  
      * 将用作选择每个EOC的快捷键的字符; 键数量应等于EOC数量  
      */
@@ -686,17 +686,17 @@ export type RollRemainder = TalkerVar<{
     /**要随机获取的项  
      * 将被随机选择并给予的项  
      */
-    roll_remainder?: (StrObj) | (StrObj)[];
+    roll_remainder?: (StringExpr) | (StringExpr)[];
     /**项的类型  
      * 将给予的项的类型; 可以是bionic, mutation, spell或recipe之一  
      */
-    type: (IDObj<"bionic"|"mutation"|"spell"|"recipe">);
+    type: (IDExpr<"bionic"|"mutation"|"spell"|"recipe">);
     /**消息  
      * 一旦remainder被使用, 将在日志中显示的消息;   
      * 可以在此消息中使用%s符号来写出将被给予的项的名称;   
      * 只有在roll成功时才会打印消息  
      */
-    message?: (StrObj);
+    message?: (StringExpr);
     /**成功时运行的EOCs  
      * 如果remainder为正, 将运行所有true_eocs中的EOCs  
      */
@@ -732,7 +732,7 @@ export type IfCondition = {
     /**条件  
      * 条件本身  
      */
-    if: BoolObj;
+    if: BoolExpr;
     /**条件满足时执行的效果  
      * 当条件满足时执行的效果  
      */
@@ -771,7 +771,7 @@ export type SwitchStatement = {
     /**要检查的值  
      * 将被读取的值; 只能使用数值  
      */
-    switch: NumObj;
+    switch: NumberExpr;
     /**case列表  
      * 如果switch的值大于或等于此case, 将运行的效果  
      */
@@ -822,7 +822,7 @@ export type ForEach = {
     /**变量  
      * 用于存储列表中值的变量  
      */
-    var: (StrObj);
+    var: (StringExpr);
     /**要执行的效果  
      * 将执行的效果  
      */
@@ -852,7 +852,7 @@ export type ForEach = {
  */
 export type SetTalker = TalkerVar<{
     /**存储你的character_id的变量对象 */
-    set_talker?: (TalekrObj);
+    set_talker?: (TalekrExpr);
 },'set_talker'>;
 
 

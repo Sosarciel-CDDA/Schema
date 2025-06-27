@@ -1,7 +1,7 @@
 import { CddaID, DescText, Float, Int, PRecord } from "./GenericDefine";
 import { MonsterFactionID } from "./MonsterFaction";
 import { VitaminID } from "./Vitamin";
-import { BoolObj } from "./Eoc";
+import { BoolExpr } from "./Eoc";
 import { ItemID } from "./Item";
 import { ItemGroupID } from "./ItemGroup";
 import { ItemCategoryID } from "./ItemCategory";
@@ -37,7 +37,7 @@ type PriceRule = {
     /**固定调整值, 替代基于社交技能和智力属性的调整 */
     fixed_adj?: Float;
     /**应用规则的条件 */
-    condition?: (BoolObj);
+    condition?: (BoolExpr);
 };
 
 /**阵营关系标志 */

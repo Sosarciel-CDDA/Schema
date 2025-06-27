@@ -3,7 +3,7 @@ import { DamageTypeID } from "./DamageType";
 import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
-import { BoolObj } from "./Eoc";
+import { BoolExpr } from "./Eoc";
 import { CddaID, Char, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, PRecord, Season, Time, Volume, Weight } from "./GenericDefine";
 import { HarvestID } from "./Harvest";
 import { ItemID } from "./Item";
@@ -266,7 +266,7 @@ type ReviveForm = {
      * 可使用上下文变量: `loc` (尸体位置) , `corpse_damage` (尸体损坏程度) .   
      * 若省略该字段, 则默认为始终成立.   
      */
-    condition?: (BoolObj);
+    condition?: (BoolExpr);
     /**复活后生成的怪物 ID (与 monster_group 二选一填写)  */
     monster?: (MonsterID);
     /**复活后生成的怪物组 ID (与 monster 二选一填写)  */

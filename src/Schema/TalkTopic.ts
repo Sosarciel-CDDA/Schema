@@ -1,5 +1,5 @@
 import { CddaID, DescText, PRecord } from "./GenericDefine";
-import { BoolObj, BoolOperateList, Eoc, EocEffect, NoParamCond } from "./Eoc";
+import { BoolExpr, BoolExprList, Eoc, EocEffect, NoParamCond } from "./Eoc";
 import { SkillID } from "./Skill";
 import { ItemID } from "./Item";
 import { ItemCategoryID } from "./ItemCategory";
@@ -68,7 +68,7 @@ type RespBase = {
      */
     truefalsetext?: {
         /**条件 */
-        condition: BoolObj;
+        condition: BoolExpr;
         /**条件为真时的text */
         true: (DescText);
         /**条件为假时的text */
@@ -85,7 +85,7 @@ type RespBase = {
      */
     default?: boolean;
     /**显示此回复的条件 */
-    condition?: (BoolObj);
+    condition?: (BoolExpr);
     /**回复的条件不满足时仍然显示选项 但采用此字段而非text  
      * 玩家的文本回复/选项显示文本  
      */
@@ -109,7 +109,7 @@ type RespLong ={
         /**基于哪种社交技能 */
         type: RespTraitType;
         /**如果 type 为 CONDITION 则使用条件代替鉴定难度 */
-        condition?: (BoolObj);
+        condition?: (BoolExpr);
         /**如果 type 为 SKILL_CHECK 则使用技能鉴定 */
         skill_required?: (SkillID);
         /**难度 类型不为 NONE 或 CONDITION时需要设置难度*/
@@ -225,7 +225,7 @@ type EocCond = TransEocCond&{
     no:DynamicLine;
 }
 /**将BoolObj转换为适用于TalkTopic的条件 */
-type TransEocCond = Exclude<BoolObj,NoParamCond>|
+type TransEocCond = Exclude<BoolExpr,NoParamCond>|
     PRecord<NoParamCond,boolean>;
 
 
@@ -234,7 +234,7 @@ export type SpeakerEffect = {
     /**唯一ID 确保只会运行一次 */
     sentinel?: string;
     /**条件 */
-    condition?: BoolObj;
+    condition?: BoolExpr;
     /**效果 */
     effect: EocEffect[]|EocEffect;
 }

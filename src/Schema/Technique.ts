@@ -1,7 +1,7 @@
 import { ExtractDefineTechniqueID, ExtractDefineTechniqueIDList } from "Extract";
 import { AttackVectorID } from "./AttackVector";
 import { DamageTypeID } from "./DamageType";
-import { BoolObj, ParamsEoc } from "./Eoc";
+import { BoolExpr, ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, DescText, Float, Int, StatusLc } from "./GenericDefine";
 import { SkillID } from "./Skill";
@@ -69,7 +69,7 @@ export type Technique = {
     /**是否允许远程攻击 */
     reach_ok?: boolean;
     /**触发条件 */
-    condition?: (BoolObj);
+    condition?: (BoolExpr);
     /**条件描述 */
     condition_desc?: (DescText);
     /**最小重复次数 */

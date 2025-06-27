@@ -1,5 +1,5 @@
 import {
-    AmmunitionTypeID, BoolObj, Eoc, EocEffect, EocEffectList, SpellID,
+    AmmunitionTypeID, BoolExpr, Eoc, EocEffect, EocEffectList, SpellID,
     EffectID, TalkTopicID, EocID ,FlagID,AmmoID, ArmorID, GunID,
     ItemGroupID,MonsterID,MutationID,NpcClassID,NpcInstanceID, EnchantmentID,
     ItemID
@@ -82,7 +82,7 @@ export class ModDefine{
      * @param condition - eoc条件  
      * @param forceId   - 强制使用原id  
      */
-    genActEoc(id:string,effect:EocEffect[],condition?: (BoolObj),forceId:boolean=false):Eoc{
+    genActEoc(id:string,effect:EocEffect[],condition?: (BoolExpr),forceId:boolean=false):Eoc{
         return {
             type:"effect_on_condition",
             id: forceId? id as any:this.genEOCID(id),

@@ -1,7 +1,7 @@
 import { BodyPartID } from "./BodyPart";
 import { DamageTypeID } from "./DamageType";
 import { FakeSpell } from "./Enchantment";
-import { NumObj } from "./Eoc";
+import { NumberExpr } from "./Eoc";
 import { FieldTypeID } from "./FieldType";
 import { CddaID, DescText, PRecord } from "./GenericDefine";
 import { ItemID } from "./Item";
@@ -57,83 +57,83 @@ export type Spell = {
     /**属于哪个职业的法术 */
     spell_class?: (MutationID);
     /**初始施法时间 */
-    base_casting_time?: (NumObj);
+    base_casting_time?: (NumberExpr);
     /**极限的施法时间 */
-    final_casting_time?: (NumObj);
+    final_casting_time?: (NumberExpr);
     /**每级的施法时间调整 */
-    casting_time_increment?: (NumObj);
+    casting_time_increment?: (NumberExpr);
     /**初始能量消耗 */
-    base_energy_cost?: (NumObj);
+    base_energy_cost?: (NumberExpr);
     /**极限的能量消耗 */
-    final_energy_cost?: (NumObj);
+    final_energy_cost?: (NumberExpr);
     /**每级的能量消耗调整 */
-    energy_increment?: (NumObj);
+    energy_increment?: (NumberExpr);
     /**法术使用的能量池 默认魔力 */
     energy_source?: (SpellEnergySource);
     /**施法材料ID */
     components?: ItemID[];
     /**法术难度 */
-    difficulty?: (NumObj);
+    difficulty?: (NumberExpr);
     /**法术最大等级 */
-    max_level?: (NumObj);
+    max_level?: (NumberExpr);
     /**初始法术准确度 -15 左右时总是能被格挡 */
-    min_accuracy?: (NumObj);
+    min_accuracy?: (NumberExpr);
     /**极限法术准确度 20 左右时几乎无法格挡 */
-    max_accuracy?: (NumObj);
+    max_accuracy?: (NumberExpr);
     /**每级的法术准确度调整 */
-    accuracy_increment?: (NumObj);
+    accuracy_increment?: (NumberExpr);
     /**初始法术伤害 必须填写 max_damage 才能造成伤害 */
-    min_damage?: (NumObj);
+    min_damage?: (NumberExpr);
     /**极限法术伤害 必须填写 max_damage 才能造成伤害 */
-    max_damage?: (NumObj);
+    max_damage?: (NumberExpr);
     /**每级的法术伤害调整 */
-    damage_increment?: (NumObj);
+    damage_increment?: (NumberExpr);
     /**法术的伤害类型  
      * 伤害法术必须定义伤害类型  
      */
     damage_type?:(DamageTypeID);
     /**初始法术aoe范围 */
-    min_aoe?: (NumObj);
+    min_aoe?: (NumberExpr);
     /**极限法术aoe范围 */
-    max_aoe?: (NumObj);
+    max_aoe?: (NumberExpr);
     /**每级的法术aoe范围调整 */
-    aoe_increment?: (NumObj);
+    aoe_increment?: (NumberExpr);
     /**初始法术施法范围 */
-    min_range?: (NumObj);
+    min_range?: (NumberExpr);
     /**极限法术施法范围 */
-    max_range?: (NumObj);
+    max_range?: (NumberExpr);
     /**每级的法术施法范围调整 */
-    range_increment?: (NumObj);
+    range_increment?: (NumberExpr);
     /**初始法术持续伤害 */
-    min_dot?: (NumObj);
+    min_dot?: (NumberExpr);
     /**极限法术持续伤害 */
-    max_dot?: (NumObj);
+    max_dot?: (NumberExpr);
     /**每级的法术持续伤害调整 */
-    dot_increment?: (NumObj);
+    dot_increment?: (NumberExpr);
     /**初始法术持续时间 单位为 1/100秒 */
-    min_duration?: (NumObj);
+    min_duration?: (NumberExpr);
     /**极限法术持续时间 单位为 1/100秒 */
-    max_duration?: (NumObj);
+    max_duration?: (NumberExpr);
     /**每级的法术持续时间调整 */
-    duration_increment?: (NumObj);
+    duration_increment?: (NumberExpr);
     /**初始法术穿甲 */
-    min_pierce?: (NumObj);
+    min_pierce?: (NumberExpr);
     /**极限法术穿甲 */
-    max_pierce?: (NumObj);
+    max_pierce?: (NumberExpr);
     /**每级的法术穿甲调整 */
-    pierce_increment?: (NumObj);
+    pierce_increment?: (NumberExpr);
     /**法术在目标处创建的Field */
     field_id?: (FieldTypeID);
     /**每个被法术影响到的地块有 1/n 的概率产生Field */
-    field_chance?: (NumObj);
+    field_chance?: (NumberExpr);
     /**初始法术地块效果强度 */
-    min_field_intensity?: (NumObj);
+    min_field_intensity?: (NumberExpr);
     /**极限法术地块效果强度 */
-    max_field_intensity?: (NumObj);
+    max_field_intensity?: (NumberExpr);
     /**每级的法术地块效果强度调整 */
-    field_intensity_increment?: (NumObj);
+    field_intensity_increment?: (NumberExpr);
     /**法术地块效果强度的浮动值 0.1时为 +-10% */
-    field_intensity_variance?: (NumObj);
+    field_intensity_variance?: (NumberExpr);
     /**法术产生的声音类型 */
     sound_type?: (SpellSoundType);
     /**发书产生的声音描述 起效于"You hear %s" 默认为 "an explosion" */
@@ -147,7 +147,7 @@ export type Spell = {
     /**当列表内所有法术到达指定等级时学会此法术  
      * PRecord<(SpellID)法术ID : (NumObj)需求等级>  
      */
-    learn_spells?: PRecord<SpellID,NumObj>;
+    learn_spells?: PRecord<SpellID,NumberExpr>;
 };
 
 /**法术有效目标 列表 */

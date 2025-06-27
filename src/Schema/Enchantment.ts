@@ -3,7 +3,7 @@ import { SpellID } from "./Spell";
 import { EmitID } from "./Emit";
 import { MutationID } from "./Mutation";
 import { EffectID } from "./Effect";
-import { BoolObj, NumObj } from "./Eoc";
+import { BoolExpr, NumberExpr } from "./Eoc";
 import { BodyPartID } from "./BodyPart";
 
 /**附魔ID */
@@ -85,7 +85,7 @@ export type EnchCon =(
     /**物品未激活时 */
     "INACTIVE"  |
     /**EOC对话条件 */
-    BoolObj
+    BoolExpr
 );
 
 /**附魔数值增幅 */
@@ -93,9 +93,9 @@ export type EnchModVal = {
     /**附魔增幅类型 */
     value    : EnchValType;
     /**倍率增幅 1为+100% */
-    multiply?: (NumObj);
+    multiply?: (NumberExpr);
     /**加值增幅 在计算倍率前先添加 */
-    add     ?: (NumObj);
+    add     ?: (NumberExpr);
 }
 /**伪法术附加信息 */
 export type FakeSpell = {
@@ -107,15 +107,15 @@ export type FakeSpell = {
      */
     hit_self?: boolean;
     /** 1/n 的几率触发 */
-    once_in?: (NumObj);
+    once_in?: (NumberExpr);
     /**释放时的消息 */
     message?: (DescText);
     /**npc释放时的消息 */
     npc_message?: (DescText);
     /**最小法术等级 */
-    min_level?: (NumObj);
+    min_level?: (NumberExpr);
     /**最大法术等级 */
-    max_level?: (NumObj);
+    max_level?: (NumberExpr);
 }
 
 /**附魔通用加值类型 列表 */

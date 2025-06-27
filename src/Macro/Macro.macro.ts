@@ -20,17 +20,17 @@ void exportTypeList({
 });
 
 void exportTypeList({
-    listName:'BoolOperateList',
-    targetFile:path.join(EOC_DIR,"VariableObject","BoolObjectIndex.ts"),
-    typeFileList:[path.join(EOC_DIR,"VariableObject","BoolObject.ts")],
-    region:'BoolOperate导出'
+    listName:'BoolExprList',
+    targetFile:path.join(EOC_DIR,"Expression","BoolExprIndex.ts"),
+    typeFileList:[path.join(EOC_DIR,"Expression","BoolExpr.ts")],
+    region:'BoolExpr导出'
 });
 
 void exportTypeList({
-    listName:'StrOperateList',
-    targetFile:path.join(EOC_DIR,"VariableObject","StringObjectIndex.ts"),
-    typeFileList:[path.join(EOC_DIR,"VariableObject","StringObject.ts")],
-    region:'StrOperate导出'
+    listName:'StringExprList',
+    targetFile:path.join(EOC_DIR,"Expression","StringExprIndex.ts"),
+    typeFileList:[path.join(EOC_DIR,"Expression","StringExpr.ts")],
+    region:'StringExpr导出'
 });
 
 void exportTypeList({

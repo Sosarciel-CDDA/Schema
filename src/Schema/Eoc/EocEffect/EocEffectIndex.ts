@@ -1,7 +1,7 @@
 import { AnyItemFlag, Item, ItemID } from "Schema/Item";
 import { MaterialID } from "Schema/Material";
 import { EocID, InlineEoc } from "../Eoc";
-import { IDObj } from "../VariableObject";
+import { IDExpr } from "../Expression";
 import { ItemCategoryID } from "Schema/ItemCategory";
 
 /**Eoc效果 */
@@ -11,12 +11,12 @@ export type EocEffect = EocEffectList[number];
 /**作为参数的Eoc  
  * 单个eocid或内联eoc 或是他们组成的数组  
  */
-export type ParamsEoc = (IDObj<EocID>|InlineEoc)|(IDObj<EocID>|InlineEoc)[];
+export type ParamsEoc = (IDExpr<EocID>|InlineEoc)|(IDExpr<EocID>|InlineEoc)[];
 
 /**背包筛选数据 */
 export type ItemSearchData = {
     /**特定物品的id */
-    id?: IDObj<ItemID>;
+    id?: IDExpr<ItemID>;
     /**物品的类别 (区分大小写, 应始终使用小写) */
     category?: (ItemCategoryID);
     /**物品具有的标志 */

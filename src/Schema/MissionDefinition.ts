@@ -1,4 +1,4 @@
-import { EocEffect, IDObj, LocObj, NumObj, StrObj } from "./Eoc";
+import { EocEffect, IDExpr, LocExpr, NumberExpr, StringExpr } from "./Eoc";
 import { CddaID, DescText } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { OverMapSpecialID } from "./OvermapSpecial";
@@ -121,15 +121,15 @@ type MissionEffect = {
 /**寻找大地图目标 */
 export type AssignMissionTarget = {
     /**将被选为目标的覆盖图地形的 ID */
-    om_terrain?: IDObj<OvermapTerrainID>;
+    om_terrain?: IDExpr<OvermapTerrainID>;
     /**与 om_terrain 一起使用的匹配规则. 默认为TYPE */
     om_terrain_match_type?:OMTMatchType;
     /**包含覆盖图地形的覆盖图特殊 ID */
-    om_special?:IDObj<OverMapSpecialID>;
+    om_special?:IDExpr<OverMapSpecialID>;
     /**要查找的覆盖地图地形的 ID, 如果om_terrain找不到则替换. */
-    om_terrain_replace?:IDObj<OvermapTerrainID>;
+    om_terrain_replace?:IDExpr<OvermapTerrainID>;
     /**要显示的覆盖地图地形坐标中的半径.  */
-    reveal_radius: (NumObj);
+    reveal_radius: (NumberExpr);
     /**如果属实, 那om_terrain肯定已经被看到了.  */
     must_see?:boolean;
     /**如果属实, 那么om_terrain一定还没有被看到.  */
@@ -137,15 +137,15 @@ export type AssignMissionTarget = {
     /**如果为 true, 则使用随机匹配​​. 如果为 false, 则使用最接近的om_terrain */
     random?:boolean;
     /**在覆盖地图地形坐标中寻找匹配的范围om_terrain.  */
-    search_range: (NumObj);
+    search_range: (NumberExpr);
     /**覆盖地图地形坐标中的范围. 此范围内的实例om_terrain将被忽略.  */
-    min_distance?: (NumObj);
+    min_distance?: (NumberExpr);
     /**从 NPC 的当前位置 (而不是玩家的当前位置) 开始搜索.  */
     origin_npc?:boolean;
     /**如果指定, 搜索时将使用而不是玩家或 NPC 的 z */
-    z?: (NumObj);
+    z?: (NumberExpr);
     /**一个variable_object (参见variable_objectdoc ) , 如果设置了该变量的值将被使用.  */
-    var?: (LocObj);
+    var?: (LocExpr);
     /**找到或创建 后om_terrain, 将任务目标地形偏移覆盖地图地形坐标中的偏移量.  */
     offset_x?: number;
     /**同offset_x */

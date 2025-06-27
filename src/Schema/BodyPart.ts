@@ -1,6 +1,6 @@
 import { DamageTypeID } from "./DamageType";
 import { EffectID } from "./Effect";
-import { IDObj } from "./Eoc";
+import { IDExpr } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, DescText, Float, Int, PRecord } from "./GenericDefine";
 import { LimbScoreID } from "./LimbScore";
@@ -282,7 +282,7 @@ export type DefineBodyPartID = typeof DefineBodyPartIDList[number];
  * whole body为全身  
  * RANDOM为随机  
  */
-export type BodyPartParam = IDObj<BodyPartID>|"RANDOM"|"whole body";
+export type BodyPartParam = IDExpr<BodyPartID>|"RANDOM"|"whole body";
 
 
 

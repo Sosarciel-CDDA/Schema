@@ -1,5 +1,5 @@
 import { CddaID, Time } from "../GenericDefine";
-import { BoolObj } from "./VariableObject";
+import { BoolExpr } from "./Expression";
 import { EocEffect } from "./EocEffect";
 import { JObject } from "@zwa73/utils";
 import { EocEvent } from "./EocEvent";
@@ -18,7 +18,7 @@ export type Eoc = {
     /**启用条件为假时的效果 */
     false_effect?: EocEffect[];
     /**启用条件 */
-    condition?: BoolObj;
+    condition?: BoolExpr;
 }&({
     /**循环eoc 默认值 */
     eoc_type?:"RECURRING";
@@ -50,7 +50,7 @@ export type Eoc = {
      * 当你没有目标仿生装置/特性时, 不会浪费时间运行.   
      * 请参阅 NPC 的 “Dialogue conditions” 部分以获取完整语法.   
      */
-    deactivate_condition?: BoolObj;
+    deactivate_condition?: BoolExpr;
 }|{
     /**事件eoc */
     eoc_type:"EVENT";
