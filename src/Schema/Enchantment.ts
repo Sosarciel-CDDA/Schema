@@ -1,4 +1,4 @@
-import { Time, CddaID, DescText } from "./GenericDefine";
+import { Time, CddaID, DescText, Int } from "./GenericDefine";
 import { SpellID } from "./Spell";
 import { EmitID } from "./Emit";
 import { MutationID } from "./Mutation";
@@ -48,7 +48,7 @@ export type Enchantment = {
         /**效果ID */
         effect: (EffectID);
         /**效果强度 */
-        intensity: number;
+        intensity: Int;
     }[];
     /**定时触发的效果 */
     intermittent_activation?: {

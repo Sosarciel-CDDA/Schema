@@ -1,6 +1,6 @@
 import { ExtractDefineAmmoEffectID } from "Extract";
 import { FieldTypeID } from "./FieldType";
-import { CddaID, Explosion } from "./GenericDefine";
+import { CddaID, Explosion, Int } from "./GenericDefine";
 
 
 
@@ -43,7 +43,7 @@ export type AmmoEffect = {
      * 应用这个效果的概率  
      * 单位为 1/x  
      */
-    trigger_chance?:number;
+    trigger_chance?: Int;
 }
 
 /**弹药AOE效果 */
@@ -57,32 +57,32 @@ export type AmmoAoe = {
      * 地块附着物的最小强度  
      * @default 0  
      */
-    intensity_min?: number;
+    intensity_min?: Int;
     /**最大强度  
      * 地块附着物的最大强度  
      * @default 0  
      */
-    intensity_max?: number;
+    intensity_max?: Int;
     /**半径  
      * 要产生的地块附着物的半径  
      * @default 1  
      */
-    radius?: number;
+    radius?: Int;
     /**Z轴半径  
      * Z级别的半径  
      * @default 0  
      */
-    radius_z?: number;
+    radius_z?: Int;
     /**概率  
      * 产生1个单位地块附着物的概率, 从0到100  
      * @default 100  
      */
-    chance?: number;
+    chance?: Int;
     /**大小  
      * 似乎是阈值, 当自动炮塔停止射击武器以防止友军伤害时  
      * @default 0  
      */
-    size?: number;
+    size?: Int;
     /**检查可通过性  
      * 如果为false, 投射物能够穿透不可穿透的地形  
      * 如果定义了穿透 (如墙和窗户)  
@@ -102,7 +102,7 @@ export type AmmoAoe = {
      * 目的和推理未知, 可能是微型核弹的一些遗留物, 所以就不要使用它了  
      * @default 0  
      */
-    check_sees_radius?: number;
+    check_sees_radius?: Int;
 }
 
 /**弹药轨迹效果 */
@@ -116,17 +116,17 @@ export type AmmoTrail = {
      * 地块附着物的最小强度  
      * @default 0  
      */
-    intensity_min?: number;
+    intensity_min?: Int;
     /**最大强度  
      * 地块附着物的最大强度  
      * @default 0  
      */
-    intensity_max?: number;
+    intensity_max?: Int;
     /**概率  
      * 产生1个单位地块附着物的概率, 从0到100  
      * @default 100  
      */
-    chance?: number;
+    chance?: Int;
 }
 
 

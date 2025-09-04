@@ -3,7 +3,7 @@ import { BodyPartID } from "./BodyPart";
 import { ParamsEnchantment } from "./Enchantment";
 import { EocEvent } from "./Eoc";
 import { FlagID } from "./Flag";
-import { CddaID, DescText, EffectRatType, PRecord, Time } from "./GenericDefine";
+import { CddaID, DescText, EffectRatType, Float, Int, PRecord, Time } from "./GenericDefine";
 import { LimbScoreID } from "./LimbScore";
 import { MutationID } from "./Mutation";
 import { VitaminID } from "./Vitamin";
@@ -20,11 +20,11 @@ export type Effect = {
     /**用于后面的许多字段  
      * @default 1  
      */
-    max_intensity?: number;
+    max_intensity?: Int;
     /**将累积效果的最大强度级别.   
      * 其他强度级别只会增加持续时间.   
      */
-    max_effective_intensity?: number;
+    max_effective_intensity?: Int;
     /**如果“max_intensity”> 1 并且“name”中的条目数>=“max_intensity”, 那么它将尝试使用正确的强度名称.   
      * ["ABC","XYZ","123"]  
      * 在这种情况下, 这意味着强度 1 将给出名称“ABC”, 2 将给出“XYZ”, 3 将给出“123”.   
@@ -85,24 +85,24 @@ export type Effect = {
      * duration = duration + (dur_add_perc/100) * max_duration  
      * @default 100  
      */
-    dur_add_perc?: number;
+    dur_add_perc?: Int;
     /**在已有效果的情况下再次添加效果时  
      * 所增加的强度  
      * @default 0  
      */
-    int_add_val?: number;
+    int_add_val?: Int;
     /**强度衰减量  
      * 每经过int_decay_tick 的时间后  
      * 效果强度将会调整此数值  
      * @default -1  
      */
-    int_decay_step?: number;
+    int_decay_step?: Int;
     /**强度衰减间隔  
      * 效果做出自然增减的间隔 秒  
      * 0即不会改变  
      * @default 0  
      */
-    int_decay_tick?: number;
+    int_decay_tick?: Int;
     /**强度衰减移除  
      * 在强度衰减为0时移除效果  
      * @default false  
@@ -113,7 +113,7 @@ export type Effect = {
      * 并强制强度为定义为 强度=持续时间/int_dur_factor 向上舍入的数字  
      * (因此从0到“int_dur_factor”是强度1).   
      */
-    int_dur_factor?: number;
+    int_dur_factor?: (Time);
     /**这允许或禁止在“效果”选项卡中给定效果的名称旁边显示强度值.   
      * 例如显示“弱点[142]”或简单的“弱点”文本.   
      * @default true  
@@ -123,7 +123,7 @@ export type Effect = {
      * [消息,发送此消息的权重][]  
      * 按效果强度应用不同成员  
      */
-    miss_messages?: [DescText,number][];
+    miss_messages?: [DescText,Int][];
     /**效果产生自然调整时产生的消息  
      * [消息,效果评价][]  
      * 按效果强度应用不同成员  
@@ -154,12 +154,12 @@ export type Effect = {
     /**每回合有 [0]/[1] 的概率杀死玩家  
      * 按效果强度应用不同成员  
      */
-    chance_kill?: [number,number][];
+    chance_kill?: [Int,Int][];
     /**在玩家 抵抗 此效果时  
      * 每回合有 [0]/[1] 的概率杀死玩家  
      * 按效果强度应用不同成员  
      */
-    chance_kill_resist?: [number,number][];
+    chance_kill_resist?: [Int,Int][];
     /**因此效果而死亡时产生的消息 */
     death_msg?: (DescText);
     /**因此效果而死亡时产生的事件 */
@@ -186,23 +186,23 @@ export type EffectVitaminsMod ={
     /**每隔[0]~[1] tick 将会应用一次调整  
      * 按效果强度应用不同成员  
      */
-    rate?: [ number, number ][];
+    rate?: [ Int, Int ][];
     /**在玩家 抵抗 此效果时  
      * 每隔 [0]~[1] tick将会应用一次调整  
      * 按效果强度应用不同成员  
      */
-    resist_rate?: [ number, number ][];
+    resist_rate?: [ Int, Int ][];
     /**吸收维生素时的调整值  
      * 维生素 = 维生素 + (将要获得的维生素*absorb_mult)  
      * 按效果强度应用不同成员  
      */
-    absorb_mult?: number[];
+    absorb_mult?: Float[];
     /**在玩家 抵抗 此效果时  
      * 吸收维生素时的调整值  
      * 维生素 = 维生素 + (将要获得的维生素*absorb_mult)  
      * 按效果强度应用不同成员  
      */
-    resist_absorb_mult?: number[];
+    resist_absorb_mult?: Float[];
     /**rate的基础单位  
      * 按效果强度应用不同成员  
      */
@@ -220,21 +220,21 @@ export type EffectLimbMod ={
     /**乘数调整值  
      * @default 1  
      */
-    modifier?: number,
+    modifier?: Float,
     /**在玩家 抵抗 此效果时  
      * 乘数调整值  
      * @default 1  
      */
-    resist_modifier?: number,
+    resist_modifier?: Float,
     /**每个强度等级添加到 modifier的值  
      * @default 0  
      */
-    scaling?: number;
+    scaling?: Float;
     /**在玩家 抵抗 此效果时  
      * 每个强度等级添加到 modifier的值  
      * @default 0  
      */
-    resist_scaling?: number;
+    resist_scaling?: Float;
 }
 
 

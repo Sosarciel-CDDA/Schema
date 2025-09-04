@@ -1,4 +1,4 @@
-import { CddaID, CopyfromVar, Festival } from "./GenericDefine";
+import { CddaID, CopyfromVar, Festival, Int } from "./GenericDefine";
 import { ItemID } from "./Item/ItemIndex";
 
 
@@ -72,22 +72,22 @@ type ItemGroupEntrieColl = {collection:ItemGroupEntrie[]};
 /**物品Entry的可选项 */
 type ItemGroupEntrieOpt = Partial<{
     /**概率 */
-    prob:number;
-    damage: number|number[];
-    "damage-min": number;
-    "damage-max": number;
+    prob:Int;
+    damage: Int|Int[];
+    "damage-min": Int;
+    "damage-max": Int;
     /**使项目重复生成, 每次创建一个新项目.   
      * [1, 10] 为1~10个  
      */
-    count: number|number[];
-    "count-min": number;
-    "count-max": number;
+    count: Int|Int[];
+    "count-min": Int;
+    "count-max": Int;
     /**仅设置最小值而不是最大值将使游戏根据容器或弹药/弹匣容量计算最大费用.   
      * 将 max 设置得太高会将其减少到最大容量. 当设置 max 时, 不设置 min 会将其设置为 0.   
      */
-    charges: number|number[]
-    "charges-min": number;
-    "charges-max": number;
+    charges: Int|Int[];
+    "charges-min": Int;
+    "charges-max": Int;
     /**添加为创建项目的内容.   
      * 不检查它们是否可以放入项目中.   
      * 这允许水, 其中包含一本书, 其中包含一个钢架, 其中包含一具尸体.   
@@ -116,12 +116,12 @@ type ItemGroupEntrieOpt = Partial<{
 /**物品快速定义  
  * 物品id 或者 [物品id,概率(100为100%)]  
  */
-export type ItemEntrieQuick = ItemID|[ItemID,number]|ItemGroupEntrie;
+export type ItemEntrieQuick = ItemID|[ItemID,Int]|ItemGroupEntrie;
 
 /**物品组快速定义  
  * 物品组id 或者 [物品组id,概率(100为100%)]  
  */
-export type GroupEntrieQuick = ItemGroupID|[ItemGroupID,number]|ItemGroupEntrie;
+export type GroupEntrieQuick = ItemGroupID|[ItemGroupID,Int]|ItemGroupEntrie;
 
 /**内联物品组 */
 export type InlineItemGroup = Omit<ItemGroup,"id"|"type">;

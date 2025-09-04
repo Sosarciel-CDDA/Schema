@@ -47,7 +47,7 @@ export type HarvestEntry = {
 export type Harvest = CopyfromVar<{
     type: "harvest";
     /**收获定义唯一ID */
-    id: HarvestID;
+    id: (HarvestID);
     /**消息  
      * 屠宰时显示的提示信息  
      */

@@ -2,7 +2,7 @@ import { BodyPartID } from "./BodyPart";
 import { ParamsEnchantment } from "./Enchantment";
 import { BoolExpr, EocID } from "./Eoc";
 import { CustomFlagID, FlagID } from "./Flag";
-import { CddaID, DescText, EffectRatType, PRecord, SocialType } from "./GenericDefine";
+import { CddaID, DescText, EffectRatType, Float, Int, PRecord, SocialType } from "./GenericDefine";
 import { ItemID, ArmorID, GunID } from "./Item";
 import { MaterialID } from "./Material";
 import { MonsterID } from "./Monster";
@@ -31,11 +31,11 @@ export type Mutation = {
     /**描述 */
     description: (DescText);
     /**消耗的点数 */
-    points: number;
+    points: Int;
     /**可见性 */
-    visibility?: number;
+    visibility?: Int;
     /**丑陋度 */
-    ugliness?: number;
+    ugliness?: Int;
     /**位置类型 */
     types?: string[];
     /**需要前置变异 */
@@ -78,15 +78,15 @@ export type Mutation = {
      */
     destroys_gear?: boolean;
     /**变异带来的累赘度 */
-    encumbrance_always?: [BodyPartID,number][];
+    encumbrance_always?: [BodyPartID,Int][];
     /**在对应肢体上穿戴非 OVERSIZE 装备时, 变异带来的额外累赘度 */
-    encumbrance_covered?: [BodyPartID,number][];
+    encumbrance_covered?: [BodyPartID,Int][];
     /**如果身体部位有由突变引起的负担, 则将该负担惩罚乘以该乘数.   
      * 注意: 不影响衣物负担.   
      */
-    encumbrance_multiplier_always?: PRecord<BodyPartID,number>;
+    encumbrance_multiplier_always?: PRecord<BodyPartID,Float>;
     /**从玩家的可见范围中减去的百分比, 上限为60. 负值有效, 但由于视觉范围的上限方式, 效果不是很明显 */
-    stealth_modifier?: number;
+    stealth_modifier?: Int;
     /**当设置时, 突变是玩家需要激活的活动突变  
      * @default false  
      */
@@ -98,11 +98,11 @@ export type Mutation = {
     /**激活此突变的成本. 需要将饥饿, 口渴或疲劳值设置为true  
      * @default 0  
      */
-    cost?: number;
+    cost?: Int;
     /**设置需要经过多少时间单位 (回合 * 当前玩家速度)才能再次支付成本. 需要大于一才有任何效果  
      * @default 0  
      */
-    time?: number;
+    time?: Int;
     /**如果为true, 激活突变消耗`cost` kcal.  
      * @default false  
      */
@@ -120,7 +120,7 @@ export type Mutation = {
     /**你可以穿着这个标志的物品与这个突变一起, 绕过restricts_gear限制 */
     allowed_items?: ArmorID[];
     /**改变你的施法速度; 0.5表示你只花费原来施法时间的50%, 2表示你花费两倍时间. 只对魔法mod有用 */
-    casting_time_multiplier?: number;
+    casting_time_multiplier?: Float;
     /**从角色中添加或减去平坦量的闪避 */
     dodge_modifier?: number;
     /**呕吐机会的修饰符 */
@@ -147,9 +147,9 @@ export type Mutation = {
         message: (DescText);
     };
     /**改变你阅读书籍有多快, `0.5`将其减半, `2`将其加倍 */
-    reading_speed_multiplier?: number;
+    reading_speed_multiplier?: Float;
     /**技能锈迟延的乘数 */
-    skill_rust_multiplier?: number;
+    skill_rust_multiplier?: Float;
     /**此突变激活产生一个物品 */
     spawn_item?: {
         /**生成的物品ID */
@@ -158,33 +158,33 @@ export type Mutation = {
         message: (DescText);
     };
     /**胃大小调节剂, 增加您一次可以消耗的食物量 */
-    stomach_size_multiplier?: number;
+    stomach_size_multiplier?: Float;
     /**影响你气味强度的浮点数  
      * @default 1.0  
      */
-    scent_modifier?: number;
+    scent_modifier?: Float;
     /**影响你当前气味倾向的目标气味的整数  
      * @default 500  
      */
-    scent_intensity?: number;
+    scent_intensity?: Int;
     /**添加到你的目标气味值的整数  
      * @default 0  
      */
-    scent_mask?: number;
+    scent_mask?: Int;
     /**你散发出的气味类型, 如在scent_types.json中定义  
      * @default ""  
      */
     scent_type?: (ScentTypeID);
     /**吃或喝的时间乘以这个数 */
-    consume_time_modifier?: number;
+    consume_time_modifier?: Float;
     /**每个bmi单位超过character_weight_category::normal, 增加的hp_max数量  
      * @default 0.0  
      */
-    fat_to_max_hp?: number;
+    fat_to_max_hp?: Float;
     /**你的健康可以改变得有多快. 如果设置为0, 它永远不会改变  
      * @default 1.0  
      */
-    healthy_rate?: number;
+    healthy_rate?: Float;
     /**水对你造成多少伤害, 负值代表治疗  
      * @default 0  
      */
@@ -222,19 +222,19 @@ export type Mutation = {
      */
     lumination?: [BodyPartID, number][];
     /**额外代谢率乘数 (1.0倍, -0.5减半) */
-    metabolism_modifier?: number;
+    metabolism_modifier?: Float;
     /**额外口渴修饰符 (1.0倍, -0.5减半) */
-    thirst_modifier?: number;
+    thirst_modifier?: Float;
     /**额外疲劳率乘数 (1.0倍使用, -0.5减半) */
-    fatigue_modifier?: number;
+    fatigue_modifier?: Float;
     /**休息时疲劳和睡眠剥夺下降速率的修饰符 */
-    fatigue_regen_modifier?: number;
+    fatigue_regen_modifier?: Float;
     /**增加这个比例的耐力恢复 (1.0是正常恢复的100%) */
-    stamina_regen_modifier?: number;
+    stamina_regen_modifier?: Float;
     /**将总心肺健康度乘以这个数 */
-    cardio_multiplier?: number;
+    cardio_multiplier?: Float;
     /**将你总体工艺速度乘以这个数. 0.5是正常速度的50%, 1.2比正常速度快20%. */
-    crafting_speed_multiplier?: number;
+    crafting_speed_multiplier?: Float;
     /**对PLAYER/NPC_HEALING_RATE的乘数. */
     healing_multiplier?: number;
     /**清醒时每回合的恢复率. 正数会增加恢复, 负数会减少恢复. */
@@ -242,25 +242,25 @@ export type Mutation = {
     /**休息时每回合的恢复率. 正数会增加恢复, 负数会减少恢复. */
     healing_resting?: number;
     /**你的肢体愈合有多快的乘数 (1.2是20%更快). */
-    mending_modifier?: number;
+    mending_modifier?: Float;
     /**攻击成本修饰符 (0.9是10%更快, 1.1是10%更慢). */
-    attackcost_modifier?: number;
+    attackcost_modifier?: Float;
     /**整体移动速度成本修饰符 (0.9是10%更快, 1.1是10%更慢). */
-    movecost_modifier?: number;
+    movecost_modifier?: Float;
     /**在平坦地形上的移动速度成本修饰符, 没有障碍 (0.9是10%更快, 1.1是10%更慢) */
-    movecost_flatground_modifier?: number;
+    movecost_flatground_modifier?: Float;
     /**在粗糙, 不平坦地形上的移动速度成本修饰符 (0.9是10%更快, 1.1是10%更慢) */
-    movecost_obstacle_modifier?: number;
+    movecost_obstacle_modifier?: Float;
     /**游泳速度成本修饰符 (0.9是10%更快, 1.1是10%更慢) */
-    movecost_swim_modifier?: number;
+    movecost_swim_modifier?: Float;
     /**承载能力调节剂 (0.9 表示减少 10%, 1.1 表示增加 10%).  */
-    weight_capacity_modifier?: number;
+    weight_capacity_modifier?: Float;
     /**社交修饰符. 可以是: 恐吓, 撒谎, 说服.   
      * intimidate, lie, persuade  
      */
     social_modifiers?:PRecord<SocialType,number>;
     /**学习的法术和获得特性/突变后的等级.  */
-    spells_learned?: [SpellID, number][];
+    spells_learned?: [SpellID, Int][];
     /**变异激活时可以转变为什么 */
     transform?: {
         /**这个突变将转变成的特性_id.  */
@@ -270,7 +270,7 @@ export type Mutation = {
         /**如果为真, 突变将在激活时开始供电 (打开).  */
         active?: boolean;
         /**每次激活的移动成本 (默认值: 0).  */
-        moves?: number;
+        moves?: Int;
         /**如果为真, 转变将使用正常的突变进展规则 - 移除冲突特性, 需要阈值 (但不使用任何维生素或引起不稳定) */
         safe?: boolean;
     };
