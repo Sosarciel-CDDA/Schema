@@ -131,4 +131,26 @@ void extractDefineIdList({
     typeName: "AmmiunitionTypeID",
     func:extractFn('id','name'),
 });
+//BodyPartID提取
+void extractDefineIdList({
+    sourceFileGlob: "data/json/body_parts.json",
+    typeName: "BodyPartID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        const bplist = jsonlist.filter(v=>v.type === 'body_part');
+        return bplist.map(async v=>
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)}`);
+    }
+});
+//SubBodyPartID提取
+void extractDefineIdList({
+    sourceFileGlob: "data/json/body_parts.json",
+    typeName: "SubBodyPartID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        const bplist = jsonlist.filter(v=>v.type === 'sub_body_part');
+        return bplist.map(async v=>
+            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)}`);
+    }
+});
 //#endregion
