@@ -10,9 +10,12 @@ import { TechniqueID } from "./Technique";
 
 /**身体部位定义ID */
 export type BodyPartID = CddaID<'BP'>|DefineBodyPartID;
+/**子身体部位定义ID */
+export type SubBodyPartID = CddaID<'SBP'>|DefineBodyPartID;
 
 /**身体部位定义 */
 export type BodyPart = {
+    type: "body_part";
     /**身体部位定义唯一ID */
     id: (BodyPartID);
     /**游戏中显示的名称 */
@@ -222,10 +225,28 @@ export type BodyPart = {
     /**子部位列表 */
     sub_parts?: BodyPartID[];
     /**左侧或右侧 */
-    side?: "left" | "right";
+    side?: "left" | "right" | "both";
     /**旧版ID */
     legacy_id?: string;
 };
+
+/**子身体部位定义 */
+export type SubBodyPart = {
+    type: "sub_body_part";
+    /**子身体部位定义唯一ID */
+    id: (SubBodyPartID);
+    /**游戏中显示的名称 */
+    name: (DescText);
+    /**游戏中显示的复数形式名称 */
+    name_multiple?: (DescText);
+    /**父肢体部位ID */
+    parent: (BodyPartID);
+    /**镜像位置的肢体id */
+    opposite?: (BodyPartID);
+    /**位置 */
+    side: 0|1|2;
+    max_coverage?: Int;
+}
 
 
 /**有效的躯干类型 列表 */

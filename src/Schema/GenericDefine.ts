@@ -46,7 +46,7 @@ import { NPCFaction } from "./NPCFaction";
 import { Trap } from "./Trap";
 import { Harvest } from "./Harvest";
 import { HarvestDropType } from "./HarvestDropType";
-import { BodyPart } from "./BodyPart";
+import { BodyPart, SubBodyPart } from "./BodyPart";
 import { LimbScore } from "./LimbScore";
 import { CharacterMod } from "./CharacterMod";
 import { Snippet } from "./Snippet";
@@ -431,7 +431,7 @@ export type AnyCddaJson = Item|Eoc|Mutation|DamageType|DamageInfoOrder|
     OverMapSpecial|Mapgen|Palette|Furniture|MonsterGroup|ProficiencyCategory|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
-    BodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory|Uncraft|ItemAction|
+    BodyPart|SubBodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory|Uncraft|ItemAction|
     Vitamin|Skill|Emit|FieldType;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];
