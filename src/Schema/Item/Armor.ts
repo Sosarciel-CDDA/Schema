@@ -1,4 +1,4 @@
-import { BodyPartID } from "Schema/BodyPart";
+import { BodyPartID, SubBodyPartID } from "Schema/BodyPart";
 import { CddaID, DescText, Float, Int } from "../GenericDefine"
 import { MaterialID } from "../Material";
 import { GenericFlagID } from "./Generic"
@@ -166,7 +166,7 @@ export type ArmorPortion = {
      * 如果不指定, 则假定该部分完全覆盖它覆盖的所有身体部位  
      * 绑带层物品和外层护甲应始终指定这些, 否则会与其他部件冲突  
      */
-    specifically_covers?: BodyPartID[];
+    specifically_covers?: SubBodyPartID[];
     /**护甲材料定义 */
     material?: ArmorMaterial[];
 };

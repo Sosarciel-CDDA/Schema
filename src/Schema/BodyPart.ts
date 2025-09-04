@@ -11,7 +11,7 @@ import { TechniqueID } from "./Technique";
 /**身体部位定义ID */
 export type BodyPartID = CddaID<'BP'>|DefineBodyPartID;
 /**子身体部位定义ID */
-export type SubBodyPartID = CddaID<'SBP'>|DefineBodyPartID;
+export type SubBodyPartID = CddaID<'SBP'>;
 
 /**身体部位定义 */
 export type BodyPart = {
