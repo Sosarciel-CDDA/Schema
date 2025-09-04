@@ -10,10 +10,9 @@ export type VitaminID = CddaID<"VIT">|DefineVitaminID;
 
 /**维生素 */
 export type Vitamin = {
+    type: "vitamin";
     /**维生素唯一ID */
     id: (VitaminID);
-    /**类型, 必需为"vitamin" */
-    type: "vitamin";
     /**维生素类型, 必需字段  
      * 有效值:   
      * - "vitamin": 当简化营养启用时, 此维生素不会被添加到任何物品中  

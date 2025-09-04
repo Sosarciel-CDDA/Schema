@@ -23,6 +23,7 @@ type DamageMod = {
 };
 
 export type Fault = {
+    type: "fault";
     /**故障的唯一ID */
     id: (FaultID);
     /**显示用的故障名称 */

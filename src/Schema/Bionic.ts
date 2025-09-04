@@ -19,6 +19,7 @@ export type BionicID = CddaID<'BIO'>;
 
 /**仿生组件定义 */
 export type Bionic = {
+    type: "bionic";
     /**仿生组件唯一ID */
     id: BionicID;
     /**游戏内显示的名称 */

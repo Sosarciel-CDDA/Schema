@@ -26,9 +26,9 @@ export type SpellID = CddaID<"SPELL">|DefineSpellID;
 
 /**法术 */
 export type Spell = {
+    type: "SPELL";
     /**法术唯一ID */
     id: (SpellID);
-    type: "SPELL";
     name: (DescText);
     description: (DescText);
     /**有效的目标类型 */

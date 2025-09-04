@@ -25,11 +25,11 @@ export type MonsterID = CddaID<"MON">;
 
 /**怪物 */
 export type Monster = CopyfromVar<{
+    type: "MONSTER";
     /**看上去像哪个id的物品 */
     looks_like?: (LookLikeID);
     /**怪物唯一ID */
     id: (MonsterID);
-    type: "MONSTER";
     /**怪物名 */
     name: (DescText);
     /**怪物说明 */

@@ -19,6 +19,7 @@ export type FaultGroupID = CddaID<'FAULTG'>|DefineFaultGroupID;
  * }  
  */
 export type FaultGroup = {
+    type: "fault_group";
     /**故障组唯一ID */
     id: (FaultGroupID);
     /**故障项列表  

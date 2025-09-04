@@ -8,10 +8,10 @@ import { CddaID, Explosion } from "./GenericDefine";
 export type AmmoEffectID = CddaID<"AEFF">|DefineAmmoEffectID;
 /**弹药效果 */
 export type AmmoEffect = {
-    /**弹药效果唯一ID */
-    id: (AmmoEffectID);
     /**类型 */
     type: "ammo_effect";
+    /**弹药效果唯一ID */
+    id: (AmmoEffectID);
     /**命中区域  
      * 这个地块附着物将在投射物命中的瓷砖上产生  
      */

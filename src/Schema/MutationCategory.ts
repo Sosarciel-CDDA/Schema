@@ -10,7 +10,7 @@ export type MutationCategoryID = CddaID<"MUTC">|DefineMutationCategoryID;
 
 /**变异类别 */
 export type MutationCategory = {
-    type :"mutation_category";
+    type: "mutation_category";
     /**变异类别唯一ID */
     id: (MutationCategoryID);
     /**突变种类的可读名称, 供玩家查看.  */

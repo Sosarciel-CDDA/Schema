@@ -50,8 +50,8 @@ export type RecipeProficiency = {
 
 /**配方定义 */
 export type Recipe = {
+    type: "recipe";
     id:RecipeID;
-    type: "recipe",
     /**结果物品ID */
     result: (ItemID);
     /**活动强度等级 */

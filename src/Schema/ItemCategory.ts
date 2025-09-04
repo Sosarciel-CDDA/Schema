@@ -8,6 +8,7 @@ export type ItemCategoryID = CddaID<'ITEMC'>|DefineItemCategoryID;
 
 /**物品类别定义 - 用于库存分类显示 */
 export type ItemCategory = {
+    type: "ITEM_CATEGORY";
     /**物品类型唯一ID */
     id: (ItemCategoryID);
     /**用于标题的类别名称. 这是在游戏中打开库存时显示的内容 */
@@ -42,6 +43,7 @@ export type ItemCategory = {
 
 /**物品类别示例 */
 const ExampleItemCategory: ItemCategory = {
+    type: "ITEM_CATEGORY",
     "id": "armor",
     "name": "ARMOR",
     "zone": "LOOT_ARMOR",
