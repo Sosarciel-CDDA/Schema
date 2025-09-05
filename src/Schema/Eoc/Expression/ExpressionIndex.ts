@@ -39,7 +39,7 @@ export type CondExpr = GenericExpr|string;
 export type TimeExpr = NumberExpr|IDExpr<Time>;
 
 /**talker表达式 */
-export type TalekrExpr = GenericExpr;
+export type TalekrExpr = GenericExpr|"u"|"npc"|"avatar"|"";
 
 
 /**专用于某种ID的字符串表达式  */
