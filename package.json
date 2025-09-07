@@ -15,6 +15,7 @@
   "author": "zwa73",
   "license": "ISC",
   "dependencies": {
+    "@sosarciel-cdda/event": "^1.0.0",
     "@zwa73/utils": "^1.0.149",
     "gettext-parser": "^8.0.0"
   },
