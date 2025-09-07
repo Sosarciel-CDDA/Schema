@@ -319,11 +319,11 @@ export type UseActionFirestarter = {
     /**生火, 如用打火机 */
     type: "firestarter";
     /**生火所需的移动点数, 会被生存技能减少 */
-    moves: Int;
+    moves?: Int;
     /**点燃难以燃烧物品所需的移动点数, 会被生存技能减少 */
-    moves_slow: Int;
+    moves_slow?: Int;
     /**角色是否需要处于阳光直射下, 例如使用放大镜 */
-    need_sunlight: boolean;
+    need_sunlight?: boolean;
 };
 
 /**解包此物品 */

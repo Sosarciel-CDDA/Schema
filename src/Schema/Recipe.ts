@@ -1,6 +1,6 @@
 import { ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";
-import { CddaID, Int, Float, Time, ActivityLevel, PRecord } from "./GenericDefine";
+import { CddaID, Int, Float, Time, ActivityLevel, PRecord, DescText } from "./GenericDefine";
 import { ItemID, ItemVariantID } from "./Item";
 import { ProficiencyID } from "./Proficiency";
 import { Requirement, RequirementID } from "./Requirement";
@@ -27,7 +27,7 @@ export type BookLearn = {
     /** 需要达到的技能等级 */
     skill_level: Int;
     /** 配方在书中显示的名称 */
-    recipe_name?: (RecipeID);
+    recipe_name?: (DescText);
     /** 是否在书中隐藏该配方 */
     hidden?: boolean;
 }
@@ -50,8 +50,9 @@ export type RecipeProficiency = {
 
 /**配方定义 */
 export type Recipe = {
+    /**配方的唯一ID */
+    id?:(RecipeID);
     type: "recipe";
-    id:RecipeID;
     /**结果物品ID */
     result: (ItemID);
     /**活动强度等级 */
@@ -105,7 +106,7 @@ export type Recipe = {
      *   }  
      * }  
      */
-    book_learn?: PRecord<ItemID,BookLearn>;
+    book_learn?: PRecord<ItemID,BookLearn>|[ItemID,Int][];
     /**制作难度  */
     difficulty: Int;
     /**制作时间 */

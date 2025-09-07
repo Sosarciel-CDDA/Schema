@@ -1,15 +1,9 @@
-
-
-
-
-
-
+import { ItemActionID } from 'Schema/ItemAction';
 
 
 
 /**可用的UseAction */
-export type UseAction = UseActionList[number]|HardcodeUseAction;
-
+export type UseAction = UseActionList[number]|HardcodeUseAction|ItemActionID;
 //#region UseAction导出
 import {UseActionTransform, UseActionExplosion, UseActionChangeScent, UseActionConsumeDrug, UseActionPlaceMonster, UseActionPlaceNpc, UseActionLinkUp, UseActionDeployFurn, UseActionDeployAppliance, UseActionDelayedTransform, UseActionFirestarter, UseActionUnpack, UseActionSalvage, UseActionInscribe, UseActionFireweaponOff, UseActionFireweaponOn, UseActionMusicalInstrument, UseActionHolster, UseActionBandolier, UseActionRevealMap, UseActionHeal, UseActionPlaceTrap, UseActionSewAdvanced, UseActionEffectOnConditions, UseActionMessage, UseActionSound, UseActionManualnoise, UseActionLearnSpell, UseActionCastSpell} from './UseAction'
 /**UseAction导出 */

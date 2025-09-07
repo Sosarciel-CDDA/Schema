@@ -9,7 +9,7 @@ import { GenericFlagID } from "./Generic";
 export type BatteryID = CddaID<"BATTERY">;
 
 /**电池定义 */
-export type BatteryTrait = ItemTrait<"AMMO",({
+export type BatteryTrait = ItemTrait<"BATTERY",({
     /**标记具有 BATTERY 的特征, 用于补全 */
     "//T": "BATTERY";
 }|{

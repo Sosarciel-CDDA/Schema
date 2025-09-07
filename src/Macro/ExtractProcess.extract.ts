@@ -153,4 +153,10 @@ void extractDefineIdList({
             awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)}`);
     }
 });
+//UseActionID提取
+void extractDefineIdList({
+    sourceFileGlob: "data/json/item_action.json",
+    typeName: "ItemActionID",
+    func:extractFn('id','name'),
+});
 //#endregion

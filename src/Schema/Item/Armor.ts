@@ -44,19 +44,19 @@ export type ArmorTrait = ItemTrait<"ARMOR",({
     /**基础覆盖率(%)  
      * 身体部位被覆盖的百分比(总体)  
      */
-    coverage: Int;
+    coverage?: Int;
     /**近战攻击覆盖率(%)  
      * 身体部位被覆盖的百分比(对抗近战)  
      */
-    cover_melee: Int;
+    cover_melee?: Int;
     /**远程攻击覆盖率(%)  
      * 身体部位被覆盖的百分比(对抗远程)  
      */
-    cover_ranged: Int;
+    cover_ranged?: Int;
     /**要害保护率(%)  
      * 暴击伤害被减轻的百分比  
      */
-    cover_vitals: Int;
+    cover_vitals?: Int;
     /**材料厚度(mm)  
      * 材料的厚度, 以毫米为单位(大约)  
      * 普通衣服范围从0.1到0.5  
@@ -117,7 +117,7 @@ export type ArmorPortion = {
      * 可以是: PERSONAL, SKINTIGHT, NORMAL, WAIST, OUTER, BELTED, AURA  
      * 详见 ARMOR_BALANCE_AND_DESIGN.md#layers  
      */
-    layers: ArmorLayer[];
+    layers?: ArmorLayer[];
     /**如果为true, 这部分护甲是刚性的, 会与同一层次上的其他刚性服装冲突  
      * @default false  
      */
@@ -130,18 +130,18 @@ export type ArmorPortion = {
      * 这件护甲被近战攻击命中的时间百分比  
      * 通常这与coverage相同  
      */
-    cover_melee: Int;
+    cover_melee?: Int;
     /**远程攻击覆盖率(%)  
      * 这件护甲被远程攻击命中的时间百分比  
      * 通常这与coverage相同  
      */
-    cover_ranged: Int;
+    cover_ranged?: Int;
     /**要害保护率(%)  
      * 暴击伤害被吸收的百分比  
      * 只有超出正常伤害的额外伤害会被减轻  
      * 所以100的要害覆盖率意味着暴击伤害将与普通伤害相同  
      */
-    cover_vitals: Int;
+    cover_vitals?: Int;
     /**体积累赘修正系数  
      * 更现代的方法是直接在护甲上设置一个比例因子  
      * 这样更容易阅读和快速解析(不需要心算)  
