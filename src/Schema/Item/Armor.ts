@@ -102,7 +102,7 @@ export type ArmorPortion = {
      * 第一个值 + (第二个值 - 第一个值) * 非刚性体积 / 非刚性容量  
      * 默认情况下, 最大累赘度是累赘度 + (非刚性体积 / 250ml)  
      */
-    encumbrance: Int | [Int, Int];
+    encumbrance?: Int | [Int, Int];
     /**覆盖护甲的透气性, 由护甲材料驱动  
      * @example "IMPERMEABLE" // 0%  
      * @example "POOR" // 30%  
