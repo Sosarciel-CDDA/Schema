@@ -16,11 +16,15 @@
   "license": "ISC",
   "dependencies": {
     "@sosarciel-cdda/event": "^1.0.0",
-    "@zwa73/utils": "^1.0.149",
-    "gettext-parser": "^8.0.0"
+    "@zwa73/js-utils": "^1.0.57",
+    "@zwa73/modular-mixer": "^1.0.8",
+    "@zwa73/utils": "^1.0.259",
+    "gettext-parser": "^8.0.0",
+    "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
-    "@types/gettext-parser": "^8.0.0"
+    "@types/gettext-parser": "^8.0.0",
+    "@zwa73/dev-utils": "^1.0.89"
   },
   "files": [
     "dist"

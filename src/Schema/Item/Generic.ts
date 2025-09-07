@@ -225,7 +225,7 @@ export type GenericTrait = CopyfromVar<{
     /**工具使用的战斗技巧 */
     techniques?: TechniqueID[];
     /**固有的工具品质, 如锤击, 锯切, 拧紧 (参见 tool_qualities.json) */
-    quality?: ItemToolQuality[];
+    qualities?: ItemToolQuality[];
     /**如果工具至少还剩 charges_per_use 费用, 则可用的工具品质 */
     charged_qualities?: ItemToolQuality[];
 
