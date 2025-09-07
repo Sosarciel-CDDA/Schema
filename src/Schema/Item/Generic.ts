@@ -23,7 +23,7 @@ import { ItemToolQuality } from "./Tool";
 /**通用物品基础 */
 export type GenericTrait = CopyfromVar<{
     /**子类型 */
-    subtype?:ItemSubtype[];
+    subtypes?:ItemSubtype[];
     /**物品唯一ID */
     id: (ItemID);
     /**物品类型 */

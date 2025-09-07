@@ -67,7 +67,7 @@ const a:Item = {
   id: "a",
   name: "a",
   description: "a",
-  subtype: ["TOOL"],
+  subtypes: ["TOOL"],
   weight: 1,
   volume: 1,
   symbol: "1",
