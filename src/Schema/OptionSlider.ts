@@ -41,8 +41,8 @@ export const OptionSliderOptionTypeList = [
     { option: "EVOLUTION_INVERSE_MULTIPLIER", type: "float" }, // 怪物进化速度 1 为 100%
     { option: "ITEM_SPAWNRATE"              , type: "float" }, // 物品生成倍率 1 为 100%
     { option: "NPC_SPAWNTIME"               , type: "float" }, // NPC生成间隔 默认4 越大越慢
-] as const satisfies {option:string,type:"int"|"float"}[];
+] as const satisfies ReadonlyArray<{readonly option:string,readonly type:"int"|"float"}>;
 /**选项滑块选项 */
 export type OptionSliderOptionType = typeof OptionSliderOptionTypeList[number];
 
-type OptionSliderOption = OptionSliderOptionType&{ value: number };
+type OptionSliderOption = OptionSliderOptionType&{ val: number };
