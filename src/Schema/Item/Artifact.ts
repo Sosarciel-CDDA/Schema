@@ -1,6 +1,7 @@
-import { CddaID } from "Schema/GenericDefine";
+import { CddaID, Time } from "Schema/GenericDefine";
 import { ItemTrait } from "./ItemIndex";
-import { GenericFlagID, RelicData } from "./Generic";
+import { GenericFlagID } from "./Generic";
+import { EnchantmentID, InlineEnchantment } from "Schema/Enchantment";
 
 
 
@@ -16,7 +17,18 @@ export type ArtifactTrait = ItemTrait<"ARTIFACT",({
     /**标记具有 ARTIFACT 的特征, 用于补全 */
     "//ARTIFACT": true;
 })&{
-    /**附魔数据 */
-    relic_data?: (RelicData),
+    /**自动充能 */
+    charge_info?: {
+        regenerate_ammo: true;
+        /**回复方式 periodic 为周期 */
+        recharge_type: "lunar"|"periodic"|"solar_cloudy"|"solar_sunny"|"none";
+        /**每次回复的间隔 */
+        time: (Time);
+    };
+    /**被动附魔效果 */
+    passive_effects?: ({
+        /**引用附魔 */
+        id: EnchantmentID
+    }|InlineEnchantment)[];
     flags?:GenericFlagID[];
 }>;

@@ -232,23 +232,6 @@ export type GenericTrait = CopyfromVar<{
 /**物品变体ID */
 export type ItemVariantID = CddaID<"ITEMV">;
 
-/**物品附魔数据 */
-export type RelicData = {
-    /**自动充能 */
-    charge_info?: {
-        regenerate_ammo: true;
-        /**回复方式 periodic 为周期 */
-        recharge_type: "lunar"|"periodic"|"solar_cloudy"|"solar_sunny"|"none";
-        /**每次回复的间隔 */
-        time: (Time);
-    },
-    /**被动附魔效果 */
-    passive_effects?: ({
-        /**引用附魔 */
-        id: EnchantmentID
-    }|InlineEnchantment)[];
-}
-
 /**内置弹夹 */
 export type GenericMagazines = [
     /**弹药类型 */
