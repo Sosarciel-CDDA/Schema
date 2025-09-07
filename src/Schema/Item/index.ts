@@ -1,2 +1,2 @@
 // export *
-export * from './UseAction';export * from './Tool';export * from './Magazine';export * from './ItemIndex';export * from './GunMod';export * from './Gun';export * from './Generic';export * from './Comestible';export * from './BionicItem';export * from './Battery';export * from './Armor';export * from './Ammo';
+export * from './UseAction';export * from './Tool';export * from './Magazine';export * from './ItemIndex';export * from './GunMod';export * from './Gun';export * from './Generic';export * from './Comestible';export * from './BionicItem';export * from './Battery';export * from './Artifact';export * from './Armor';export * from './Ammo';

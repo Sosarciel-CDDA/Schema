@@ -9,6 +9,7 @@ import { MagazineTrait } from "./Magazine";
 import { GunModTrait } from "./GunMod";
 import { BatteryTrait } from "./Battery";
 import { BionicItemTrait } from "./BionicItem";
+import { ArtifactTrait } from "./Artifact";
 
 
 
@@ -31,6 +32,7 @@ const ItemSubtypeList = [
   "BREWABLE",      // 可酿造类物品
   "COMPOSTABLE",   // 可堆肥类物品
   "MILLING",       // 可碾磨类物品
+  "ARTIFACT",      // 神器
 ] as const;
 export type ItemSubtype = typeof ItemSubtypeList[number];
 
@@ -44,7 +46,7 @@ export type AnyItemTrait = (ItemTrait<"GENERIC",({
     "//GENERIC": true;
 })&{
   flags?:GenericTrait["flags"];
-}>|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait|BatteryTrait|BionicItemTrait);
+}>|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait|BatteryTrait|BionicItemTrait|ArtifactTrait);
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
 
 /**物品ID */

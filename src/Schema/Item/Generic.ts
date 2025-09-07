@@ -180,8 +180,6 @@ export type GenericTrait = CopyfromVar<{
     countdown_action?: (UseAction);
     /**使用效果 */
     drop_action?: UseAction|UseAction[];
-    /**附魔数据 */
-    relic_data?: (RelicData),
     /**最小力量需求 */
     min_strength?: Int;
     /**最小敏捷需求 */
