@@ -1,4 +1,5 @@
 import { AddictionTypeID } from "./Addiction";
+import { BionicID } from "./Bionic";
 import { ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, DescText, Int } from "./GenericDefine";
@@ -85,7 +86,7 @@ export type Profession = {
      */
     flags?: FlagID[];
     /**起始植入的CBM列表（可选） */
-    CBMs?: string[];
+    CBMs?: BionicID[];
     /**起始特质/突变列表（可选）
      * 参见mutations.json和MUTATIONS.md
      */
