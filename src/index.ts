@@ -1,2 +1,2 @@
 export * from './Schema';
-export * from './ModDefine';
+export * from './Util';

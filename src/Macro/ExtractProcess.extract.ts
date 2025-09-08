@@ -1,6 +1,9 @@
-import { awt, extractDefineIdList, SCHEMA_DIR, zh, zhl } from 'Macro';
+
+
+
+import { extractDefineIdList } from 'Macro';
 import { UtilFT } from '@zwa73/utils';
-import { Effect } from 'Schema/Effect';
+import { awt, zh, zhl } from '@/src/Util';
 
 
 const extractFn = (idfield:string,...fields:string[])=>async (fp:string)=>{
