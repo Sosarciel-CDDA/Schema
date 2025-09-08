@@ -4,6 +4,7 @@ import { GenericFlagID } from "./Generic";
 import { VitaminID } from "Schema/Vitamin";
 import { MaterialID } from "Schema/Material";
 import { ItemID, ItemTrait } from "./ItemIndex";
+import { AddictionTypeID } from "Schema/Addiction";
 
 /**Comestible ID格式   */
 export type ComestibleID = CddaID<"COME">;
@@ -33,7 +34,7 @@ export type ComestibleTrait = ItemTrait<"COMESTIBLE",({
     /**此物品引起成瘾的默认强度 */
     addiction_potential?: number;
     /**成瘾类型 (如果没有给出潜力, 将使用"addiction_potential"字段来确定该成瘾的强度)  */
-    addiction_type?: ["crack", { addiction: "cocaine"; potential: number }];
+    addiction_type?: AddictionData|AddictionData[];
     /**在过去的48小时内, 每消费一个, 乐趣就减少这个数值. 除非食品也有"NEGATIVE_MONOTONY_OK"标志, 否则不能将乐趣降低到0以下  
      * @default 2  
      */
@@ -73,6 +74,8 @@ export type ComestibleTrait = ItemTrait<"COMESTIBLE",({
     /**消耗品的flag */
     flags?: ComestibleFlagID[];
 }>;
+
+type AddictionData = AddictionTypeID|{ addiction: AddictionTypeID; potential: Int };
 
 /**消耗品类型 列表*/
 export const  ComestibleTypeList = [

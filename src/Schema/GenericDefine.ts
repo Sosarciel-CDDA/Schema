@@ -58,6 +58,9 @@ import { Vitamin } from "./Vitamin";
 import { Skill } from "./Skill";
 import { FieldType } from "./FieldType";
 import { Emit } from "./Emit";
+import { AddictionType } from "./Addiction";
+import { MoraleType } from "./MoraleType";
+import { Hobby, Profession } from "./Profession";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -432,6 +435,6 @@ export type AnyCddaJson = Item|Eoc|Mutation|DamageType|DamageInfoOrder|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
     BodyPart|SubBodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory|Uncraft|ItemAction|
-    Vitamin|Skill|Emit|FieldType;
+    Vitamin|Skill|Emit|FieldType|AddictionType|MoraleType|Profession|Hobby;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];
