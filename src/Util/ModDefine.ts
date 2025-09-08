@@ -3,7 +3,7 @@ import {
     EffectID, TalkTopicID, EocID ,FlagID,AmmoID, ArmorID, GunID,
     ItemGroupID,MonsterID,MutationID,NpcClassID,NpcInstanceID, EnchantmentID,
     ItemID
-} from "./Schema";
+} from "@/src/Schema";
 
 /**ModID生成工具 */
 export class ModDefine{

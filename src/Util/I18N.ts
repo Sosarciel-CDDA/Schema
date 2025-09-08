@@ -1,7 +1,7 @@
 import path from 'pathe';
 import fs from 'fs';
 import { memoize, PRecord, UtilFunc } from '@zwa73/utils';
-import { BUILD_SETTING } from './Define';
+import { BUILD_SETTING, GAME_PATH } from './Define';
 //import gettextParser  from 'gettext-parser';
 
 
@@ -50,11 +50,8 @@ export type LangFlag =
     | "zh_TW";
 
 export const loadI18NData = memoize(async (langFlag:LangFlag)=>{
-    const buildinfo = BUILD_SETTING;
-    const gamePath = buildinfo.game_path;
-
     console.time('static loadI18NData');
-    const langPatj = path.join(gamePath,'lang','mo',langFlag,'LC_MESSAGES','cataclysm-dda.mo');
+    const langPatj = path.join(GAME_PATH,'lang','mo',langFlag,'LC_MESSAGES','cataclysm-dda.mo');
     const dat = await fs.promises.readFile(langPatj);
     const table = (await gettextParser).mo.parse(dat);
     const out:PRecord<string,string>={};
