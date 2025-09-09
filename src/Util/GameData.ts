@@ -1,6 +1,6 @@
 import { memoize, UtilFT } from "@zwa73/utils";
 import { GAME_PATH } from "./Define";
-import { AnyCddaJson, Volume, Weight } from "Schema/GenericDefine";
+import { AnyCddaJson, Time, Volume, Weight } from "Schema/GenericDefine";
 
 
 type VaildJson = Extract<AnyCddaJson,{id:string,type:string}>&{
@@ -101,41 +101,54 @@ export async function expandCopyFrom<T extends VaildJson>(data:T):Promise<T>{
 }
 
 
-/** 将 Weight 转换为毫克数值 */
-export function parseWeight(value?: Weight): number {
+
+/** 通用单位解析器：将复合单位字符串转换为最小单位数值 */
+export function parseUnitString(
+    value: string | number | undefined,
+    units: Record<string, number>
+): number {
     if (value == undefined) return 0;
     if (typeof value === "number") return value;
     if (!isNaN(Number(value))) return Number(value);
 
-    const match = value.match(/^([\d.]+)\s*(mg|g|kg)$/);
-    if (!match) throw new Error(`未知重量: ${value}`);
+    let total = 0;
+    const regex = /([\d.]+)\s*(\w+)/g;
+    let match: RegExpExecArray | null;
 
-    const [, numStr, unit] = match;
-    const num = parseFloat(numStr);
+    while ((match = regex.exec(value)) !== null) {
+        const [, numStr, unit] = match;
+        const num = parseFloat(numStr);
+        const multiplier = units[unit];
 
-    switch (unit) {
-        case "mg": return num;
-        case "g": return num * 1000;
-        case "kg": return num * 1_000_000;
-        default: throw new Error(`未知重量单位: ${unit}`);
+        if (multiplier == undefined)
+            throw new Error(`未知单位: ${unit}`);
+
+        total += num * multiplier;
     }
+    return total;
+}
+const weightUnits = { mg: 1, g: 1000, kg: 1_000_000 };
+const volumeUnits = { ml: 1, L: 1000 };
+
+/** 将 Weight 转换为毫克数值 */
+export function parseWeight(value?: Weight): number {
+    return parseUnitString(value, weightUnits);
 }
 
 /** 将 Volume 转换为毫升数值 */
 export function parseVolume(value?: Volume): number {
-    if (value == undefined) return 0;
-    if (typeof value === "number") return value;
-    if (!isNaN(Number(value))) return Number(value);
+    return parseUnitString(value, volumeUnits);
+}
+/** 时间单位映射：所有单位转为秒 */
+const timeUnits: Record<string, number> = {
+    s: 1, second: 1, seconds: 1,
+    t: 1, turn: 1, turns: 1,
+    m: 60, minute: 60, minutes: 60,
+    h: 3600, hour: 3600, hours: 3600,
+    d: 86400, day: 86400, days: 86400,
+};
 
-    const match = value.match(/^([\d.]+)\s*(ml|L)$/);
-    if (!match) throw new Error(`未知体积: ${value}`);
-
-    const [, numStr, unit] = match;
-    const num = parseFloat(numStr);
-
-    switch (unit) {
-        case "ml": return num;
-        case "L": return num * 1000;
-        default: throw new Error(`未知体积单位: ${unit}`);
-    }
+/** 通用单位解析器：将复合单位字符串转换为秒数 */
+export function parseTime(value?: Time): number {
+    return parseUnitString(value, timeUnits);
 }
