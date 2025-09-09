@@ -1,6 +1,6 @@
 import { memoize, UtilFT } from "@zwa73/utils";
 import { GAME_PATH } from "./Define";
-import { AnyCddaJson } from "Schema/GenericDefine";
+import { AnyCddaJson, Volume, Weight } from "Schema/GenericDefine";
 
 
 type VaildJson = Extract<AnyCddaJson,{id:string,type:string}>&{
@@ -98,4 +98,44 @@ export async function expandCopyFrom<T extends VaildJson>(data:T):Promise<T>{
         return expandFn(Object.assign({},cloneP,cloneC),stack++);
     }
     return expandFn(data) as any;
+}
+
+
+/** 将 Weight 转换为毫克数值 */
+export function parseWeight(value?: Weight): number {
+    if (value == undefined) return 0;
+    if (typeof value === "number") return value;
+    if (!isNaN(Number(value))) return Number(value);
+
+    const match = value.match(/^([\d.]+)\s*(mg|g|kg)$/);
+    if (!match) throw new Error(`未知重量: ${value}`);
+
+    const [, numStr, unit] = match;
+    const num = parseFloat(numStr);
+
+    switch (unit) {
+        case "mg": return num;
+        case "g": return num * 1000;
+        case "kg": return num * 1_000_000;
+        default: throw new Error(`未知重量单位: ${unit}`);
+    }
+}
+
+/** 将 Volume 转换为毫升数值 */
+export function parseVolume(value?: Volume): number {
+    if (value == undefined) return 0;
+    if (typeof value === "number") return value;
+    if (!isNaN(Number(value))) return Number(value);
+
+    const match = value.match(/^([\d.]+)\s*(ml|L)$/);
+    if (!match) throw new Error(`未知体积: ${value}`);
+
+    const [, numStr, unit] = match;
+    const num = parseFloat(numStr);
+
+    switch (unit) {
+        case "ml": return num;
+        case "L": return num * 1000;
+        default: throw new Error(`未知体积单位: ${unit}`);
+    }
 }

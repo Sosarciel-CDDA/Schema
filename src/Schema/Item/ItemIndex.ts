@@ -77,6 +77,7 @@ const a:Item = {
   //"//T": "GUN" as "GUN"|"ARMOR",
   "//GUN": true,
   "//ARMOR": true,
+  stack_size: 1,
   ammo:["50"],
   covers: ["arm_r"],
   encumbrance: 0,
