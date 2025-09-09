@@ -350,6 +350,7 @@ export type RunMonsterEocs = TalkerVar<{
 
 /**在物品上运行EOCs  
  * 在你或NPC的物品栏中的物品上运行EOCs  
+ * 背包所有者为 alpha, 物品为 beta  
  * 适用于: Item  
  * @example  
  * // 选择角色手中的物品, 并在其上运行EOC_DESTROY_ITEM EOC  
