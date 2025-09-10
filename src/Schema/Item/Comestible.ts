@@ -64,7 +64,7 @@ export type ComestibleTrait = ItemTrait<"COMESTIBLE",({
     /**主要材料ID是什么. 材料决定了比热.  */
     primary_material?: (MaterialID);
     /**食品变质时产生的怪物组 (用于孵化蛋)  */
-    rot_spawn: string;
+    rot_spawn?: string;
     /**食品腐烂时怪物组生成的百分比机会. 最大100.  */
     rot_spawn_chance?: number;
     /**在烟熏器中烘干此食品后得到的食品 */

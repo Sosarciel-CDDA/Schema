@@ -155,11 +155,11 @@ export type UseActionConsumeDrug = {
     /**玩家可以食用的药物 */
     type: "consume_drug";
     /**激活时显示的消息 */
-    activation_message: (DescText);
+    activation_message?: (DescText);
     /**效果及其持续时间 */
-    effects: PRecord<EffectID, Int>;
+    effects?: PRecord<EffectID, Int>;
     /**随时间造成的伤害 */
-    damage_over_time: {
+    damage_over_time?: {
         /**伤害类型 */
         damage_type: (DamageTypeID);
         /**伤害将持续多长时间 */
@@ -170,19 +170,19 @@ export type UseActionConsumeDrug = {
         bodyparts: BodyPartID[];
     }[];
     /**对玩家状态的调整 */
-    stat_adjustments: PRecord<SurvivalNeed, Int>;
+    stat_adjustments?: PRecord<SurvivalNeed, Int>;
     /**产生的领域, 主要用于烟雾 */
-    fields_produced: PRecord<(FieldTypeID), Int>;
+    fields_produced?: PRecord<(FieldTypeID), Int>;
     /**在食用药物过程中需要使用的充能 */
-    charges_needed: PRecord<(ItemID), Int>;
+    charges_needed?: PRecord<(ItemID), Int>;
     /**食用药物所需的工具 */
-    tools_needed: PRecord<(ItemID), Int>;
+    tools_needed?: PRecord<(ItemID), Int>;
     /**过程中所需的移动点数  
      * @default 100  
      */
     moves?: Int;
     /**此药物提供的维生素及数量 */
-    vitamins: [(VitaminID), Int][];
+    vitamins?: [(VitaminID), Int][];
 };
 
 /**在地图上放置炮塔/人形机等怪物 */
