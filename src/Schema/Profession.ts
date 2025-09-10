@@ -131,4 +131,4 @@ export type Hobby = {
     subtype:"hobby";
     /**爱好的唯一ID */
     id: (HobbyID);
-} & Omit<Profession,'id'>;
+} & Omit<Profession,'id'|'items'>;
