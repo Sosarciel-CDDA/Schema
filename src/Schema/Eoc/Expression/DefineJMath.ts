@@ -809,3 +809,300 @@ export const quality = (
 
 
 };
+
+
+/**预定义的变量 */
+export namespace JMV {
+
+/**当前活动等级（整数，范围 0–5）  
+ * 不可赋值  
+ * 0 表示睡眠或静止，5 表示剧烈运动  
+ */
+export const activityLevel = 'activity_level';
+
+/**当前年龄（单位：岁）  
+ * 可赋值  
+ */
+export const age = 'age';
+
+/**角色的盟友数量（仅适用于 avatar）  
+ * 不可赋值  
+ */
+export const allies = 'allies';
+
+/**当前愤怒值（仅适用于怪物）  
+ * 可赋值  
+ */
+export const anger = 'anger';
+
+/**当前 BMI（乘以 1000）  
+ * 不可赋值  
+ */
+export const bmiPermil = 'bmi_permil';
+
+/**当前体温  
+ * 不可赋值  
+ */
+export const bodyTemp = 'body_temp';
+
+/**身体温度差值（最热/最冷部位与感知温度的差）  
+ * 不可赋值  
+ */
+export const bodyTempDelta = 'body_temp_delta';
+
+/**当前现金金额  
+ * 可赋值  
+ */
+export const cash = 'cash';
+
+/**当前闪避值  
+ * 不可赋值  
+ */
+export const dodge = 'dodge';
+
+/**总经验值  
+ * 可赋值  
+ */
+export const exp = 'exp';
+
+/**当前困倦程度  
+ * 可赋值  
+ */
+export const sleepiness = 'sleepiness';
+
+/**精细视觉修正值（1.0 表示清晰，11.0 表示完全失明）  
+ * 不可赋值  
+ */
+export const fineDetailVisionMod = 'fine_detail_vision_mod';
+
+/**当前专注值  
+ * 可赋值  
+ */
+export const focus = 'focus';
+
+/**有效专注值（受附魔影响）  
+ * 不可赋值  
+ */
+export const focusEffective = 'focus_effective';
+
+/**当前友好度（仅适用于怪物）  
+ * 可赋值  
+ */
+export const friendly = 'friendly';
+
+/**抓握强度（仅适用于怪物）  
+ * 不可赋值  
+ */
+export const grabStrength = 'grab_strength';
+
+/**当前身高（单位：厘米）  
+ * 可赋值，受体型限制  
+ */
+export const height = 'height';
+
+/**当前饥饿感（感知值）  
+ * 不可赋值  
+ */
+export const hunger = 'hunger';
+
+/**当前即时口渴值（未吸收的水分不计入）  
+ * 不可赋值  
+ */
+export const instantThirst = 'instant_thirst';
+
+/**当前法力值  
+ * 可赋值  
+ */
+export const mana = 'mana';
+
+/**最大法力值  
+ * 不可赋值  
+ */
+export const manaMax = 'mana_max';
+
+/**法力百分比  
+ * 不可赋值  
+ */
+export const manaPercentage = 'mana_percentage';
+
+/**当前士气值（仅怪物可赋值）  
+ * 可赋值（怪物）  
+ */
+export const morale = 'morale';
+
+/**角色欠 avatar 的金额  
+ * 可赋值  
+ */
+export const owed = 'owed';
+
+/**当前止痛药水平  
+ * 可赋值  
+ */
+export const pkill = 'pkill';
+
+/**当前坐标 X  
+ * 可赋值  
+ */
+export const posX = 'pos_x';
+
+/**当前坐标 Y  
+ * 可赋值  
+ */
+export const posY = 'pos_y';
+
+/**当前坐标 Z  
+ * 可赋值  
+ */
+export const posZ = 'pos_z';
+
+/**当前电力（义体或物品）  
+ * 可赋值  
+ */
+export const power = 'power';
+
+/**电力百分比（义体或物品）  
+ * 可赋值  
+ */
+export const powerPercentage = 'power_percentage';
+
+/**最大电力（义体或物品）  
+ * 不可赋值  
+ */
+export const powerMax = 'power_max';
+
+/**当前辐射值  
+ * 可赋值  
+ */
+export const rad = 'rad';
+
+/**当前体型等级（1–5）  
+ * 不可赋值  
+ */
+export const size = 'size';
+
+/**当前睡眠剥夺程度  
+ * 可赋值  
+ */
+export const sleepDeprivation = 'sleep_deprivation';
+
+/**avatar 向角色出售的金额  
+ * 可赋值  
+ */
+export const sold = 'sold';
+
+/**当前耐力值  
+ * 可赋值  
+ */
+export const stamina = 'stamina';
+
+/**当前兴奋剂水平  
+ * 可赋值  
+ */
+export const stim = 'stim';
+
+/**当前力量值  
+ * 可赋值  
+ */
+export const strength = 'strength';
+
+/**当前敏捷值  
+ * 可赋值  
+ */
+export const dexterity = 'dexterity';
+
+/**当前智力值  
+ * 可赋值  
+ */
+export const intelligence = 'intelligence';
+
+/**当前感知值  
+ * 可赋值  
+ */
+export const perception = 'perception';
+
+/**基础力量值  
+ * 可赋值  
+ */
+export const strengthBase = 'strength_base';
+
+/**基础敏捷值  
+ * 可赋值  
+ */
+export const dexterityBase = 'dexterity_base';
+
+/**基础智力值  
+ * 可赋值  
+ */
+export const intelligenceBase = 'intelligence_base';
+
+/**基础感知值  
+ * 可赋值  
+ */
+export const perceptionBase = 'perception_base';
+
+/**力量加值  
+ * 可赋值  
+ */
+export const strengthBonus = 'strength_bonus';
+
+/**敏捷加值  
+ * 可赋值  
+ */
+export const dexterityBonus = 'dexterity_bonus';
+
+/**智力加值  
+ * 可赋值  
+ */
+export const intelligenceBonus = 'intelligence_bonus';
+
+/**感知加值  
+ * 可赋值  
+ */
+export const perceptionBonus = 'perception_bonus';
+
+/**当前口渴值  
+ * 可赋值  
+ */
+export const thirst = 'thirst';
+
+/**当前体积（毫升，仅怪物）  
+ * 不可赋值  
+ */
+export const volume = 'volume';
+
+/**当前重量（毫克，仅怪物）  
+ * 不可赋值  
+ */
+export const weight = 'weight';
+
+/**物品数量  
+ * 不可赋值  
+ */
+export const count = 'count';
+
+/**车辆朝向角度（0 表示正北）  
+ * 不可赋值，仅适用于车辆  
+ */
+export const vehicleFacing = 'vehicle_facing';
+
+/**车辆当前速度  
+ * 不可赋值，仅适用于车辆  
+ */
+export const currentSpeed = 'current_speed';
+
+/**车辆空载重量（不含乘客与货物）  
+ * 不可赋值，仅适用于车辆  
+ */
+export const unloadedWeight = 'unloaded_weight';
+
+/**车上非敌对乘客数量（人类或怪物）  
+ * 不可赋值，仅适用于车辆  
+ */
+export const friendlyPassengerCount = 'friendly_passenger_count';
+
+/**车上非友好乘客数量（人类或怪物）  
+ * 不可赋值，仅适用于车辆  
+ */
+export const hostilePassengerCount = 'hostile_passenger_count';
+
+}
