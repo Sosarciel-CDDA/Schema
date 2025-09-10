@@ -154,7 +154,7 @@ export type GenericTrait = CopyfromVar<{
         /**研磨结果的物品id */
         into: (ItemID);
         /**执行任务的配方的引用 */
-        recipe: (RecipeID);
+        recipe: (RecipeID|ItemID);
     };
     /**物品着火时是否应该爆炸 */
     explode_in_fire?: boolean;

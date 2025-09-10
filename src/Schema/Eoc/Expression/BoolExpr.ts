@@ -788,7 +788,7 @@ export type KnowRecipe = TalkerVar<{
     /**知道配方  
      * 要检查的配方ID  
      */
-    know_recipe: (IDExpr<RecipeID>);
+    know_recipe: (IDExpr<RecipeID|ItemID>);
 }, 'know_recipe'>;
 
 /**穿戴有标志的物品  

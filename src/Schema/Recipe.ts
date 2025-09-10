@@ -1,4 +1,4 @@
-import { ParamsEoc } from "./Eoc";
+import { ParamsEoc, ParamsEocList } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, Int, Float, Time, ActivityLevel, PRecord, DescText } from "./GenericDefine";
 import { ItemID, ItemVariantID } from "./Item";
@@ -50,11 +50,13 @@ export type RecipeProficiency = {
 
 /**配方定义 */
 export type Recipe = {
-    /**配方的唯一ID */
+    /**配方的唯一ID, 仅在结果为 result_eocs 时有效 */
     id?:(RecipeID);
+    /**配方的显示名, 如果设置id则需要设置 */
+    name?:(DescText);
     type: "recipe";
-    /**结果物品ID */
-    result: (ItemID);
+    /**结果物品ID 如果设置则不能有配方id */
+    result?: (ItemID);
     /**活动强度等级 */
     activity_level: (ActivityLevel);
     /**副产品, 制作时额外生成的物品ID数组  
@@ -155,7 +157,7 @@ export type Recipe = {
     /**配方标志 */
     flags?: FlagID[];
     /**制作完成时触发的效果条件 */
-    result_eocs?: (ParamsEoc);
+    result_eocs?: (ParamsEocList);
     /**建筑蓝图ID, 用于派系营地升级建筑  
      * @example "camp" // 营地升级蓝图  
      */

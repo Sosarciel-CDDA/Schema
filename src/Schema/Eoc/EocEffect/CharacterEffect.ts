@@ -572,7 +572,7 @@ export type SetCondition = {
  */
 export type LearnRecipe = TalkerVar<{
     /**要学习的配方 */
-    learn_recipe: (IDExpr<RecipeID>);
+    learn_recipe: (IDExpr<RecipeID|ItemID>);
 }, 'learn_recipe'>;
 
 
@@ -589,7 +589,7 @@ export type LearnRecipe = TalkerVar<{
  */
 export type ForgetRecipe = TalkerVar<{
     /**要忘记的配方/配方类别 */
-    forget_recipe: (IDExpr<RecipeID>);
+    forget_recipe: (IDExpr<RecipeID|ItemID>);
     /**是否为类别  
      * 上述字段是否应该被解释为类别而不是单个配方  
      * 除非指定了subcategory, 否则默认false  

@@ -112,7 +112,7 @@ export type Profession = {
      */
     spells?: { id: (SpellID); level: Int }[];
     /**起始配方列表（可选） */
-    recipes?: RecipeID[];
+    recipes?: (RecipeID|ItemID)[];
     /**爱好列表（可选）
      * 仅允许选择这些爱好
      */

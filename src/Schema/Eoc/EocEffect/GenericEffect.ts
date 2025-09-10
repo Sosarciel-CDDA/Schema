@@ -1,7 +1,7 @@
 import { BoolExpr, CondExpr, IDExpr, LocExpr, NumberExpr, StringExpr, TalekrExpr, TimeExpr } from "../Expression";
 import { SoundEffectID, SoundEffectVariantID } from "Schema/SoundEffect";
 import { EocID, InlineEoc, TalkerStr, TalkerVar, ToFEffect } from "../Eoc";
-import { EocEffect, ItemSearchData, ParamsEoc } from "./EocEffectIndex";
+import { EocEffect, ItemSearchData, ParamsEoc, ParamsEocList } from "./EocEffectIndex";
 import { TalkTopicID } from "Schema/TalkTopic";
 import { MissionDefinitionID } from "Schema/MissionDefinition";
 import { DescText, Time } from "Schema/GenericDefine";
@@ -289,7 +289,7 @@ export type RunNpcEocs = TalkerVar<{
     /**要运行的EOCs  
      * NPC将运行的EOCs数组  
      */
-    run_npc_eocs: (ParamsEoc);
+    run_npc_eocs: (ParamsEocList);
     /**NPC的唯一ID  
      * 将受影响的NPC的ID; 如果没有ID, 则效果会在你的现实气泡中的每个NPC上运行 (如果"local": true) ,   
      * 或在世界上的每个NPC上运行 (如果"local": false) ;   
@@ -331,7 +331,7 @@ export type RunMonsterEocs = TalkerVar<{
     /**要运行的EOCs  
      * 怪物将运行的EOCs数组  
      */
-    run_monster_eocs: (ParamsEoc);
+    run_monster_eocs: (ParamsEocList);
     /**怪物类型ID  
      * 应该受到影响的mtype_id  
      */

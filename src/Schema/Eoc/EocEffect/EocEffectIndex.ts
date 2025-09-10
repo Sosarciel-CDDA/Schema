@@ -13,6 +13,11 @@ export type EocEffect = EocEffectList[number];
  */
 export type ParamsEoc = (IDExpr<EocID>|InlineEoc)|(IDExpr<EocID>|InlineEoc)[];
 
+/**作为参数的Eoc数组  
+ * eocid或内联eoc 组成的数组  
+ */
+export type ParamsEocList = (IDExpr<EocID>|InlineEoc)[];
+
 /**背包筛选数据 */
 export type ItemSearchData = {
     /**特定物品的id */
