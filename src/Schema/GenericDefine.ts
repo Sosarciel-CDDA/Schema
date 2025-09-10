@@ -58,7 +58,7 @@ import { Vitamin } from "./Vitamin";
 import { Skill } from "./Skill";
 import { FieldType } from "./FieldType";
 import { Emit } from "./Emit";
-import { AddictionType } from "./Addiction";
+import { AddictionType } from "./AddictionType";
 import { MoraleType } from "./MoraleType";
 import { Hobby, Profession } from "./Profession";
 
@@ -141,6 +141,14 @@ export type SchemaString = (String&string);
 /**自定义的ID */
 export type CddaID<T extends string> = (`${T}_${string}`|SchemaString);
 //export type CddaID<T extends string> = `${`${string}_`|''}${T}_${string}`|SchemaString;
+
+type ExtractA<T extends string> = { [K in T]: K };
+type ExtractB<T extends {}> = {
+    [K in keyof T]: string extends K ? never : T[K]
+}[keyof T];
+/**从CddaID提取定义的ID */
+export type ExtractDefineID<T extends string> = ExtractB<ExtractA<T>>;
+
 
 /**Copyfrom的保留字段 */
 export type CopyfromResFD = "id"|"type";

@@ -50,7 +50,10 @@ export type AnyItemTrait = (ItemTrait<"GENERIC",({
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
 
 /**物品ID */
-export type ItemID = CddaID<"ITEM">;
+export type ItemID = CddaID<"ITEM">|DefineItemID;
+
+/**预定义的物品ID */
+export type DefineItemID = 'null';
 
 /**物品  
  * 以 "//T"?:"xxx" as TypeA|TypeB 标记其 同时符合TypeA和TypeB的特征  

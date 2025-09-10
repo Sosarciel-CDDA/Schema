@@ -1,4 +1,4 @@
-import { AddictionTypeID } from "./Addiction";
+import { AddictionTypeID } from "./AddictionType";
 import { BionicID } from "./Bionic";
 import { ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";

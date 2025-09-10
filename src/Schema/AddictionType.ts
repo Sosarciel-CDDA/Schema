@@ -1,6 +1,11 @@
+import { Literal } from "@zwa73/js-utils";
 import { EocID, InlineEoc } from "./Eoc";
-import { CddaID, DescText } from "./GenericDefine";
+import { CddaID, DescText, SchemaString } from "./GenericDefine";
 import { MoraleTypeID } from "./MoraleType";
+
+
+
+
 
 /**成瘾品类型ID */
 export type AddictionTypeID = CddaID<'ADDICTION_TYPE'>;
