@@ -14,10 +14,10 @@ regionMacro("ModDefineID生成",async ()=>{
             const idtext = match[1];
             const ids = match[3];
             return `
-    /**生成适用于此mod的 ${idtext} */
-    gen${idtext}(id:string):${idtext}{
-        return \`\${this.MOD_PREFIX}_${ids}_\${id}\`;
-    }
+/**生成适用于此mod的 ${idtext} */
+gen${idtext}(id:string):${idtext}{
+    return \`\${this.MOD_PREFIX}_${ids}_\${id}\`;
+}
 `.trim();
         });
     }));
