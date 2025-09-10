@@ -63,7 +63,7 @@ export type Effect = {
     /**效果被移除时产生的log */
     remove_memorial_log?: (DescText);
     /**可 抵抗 此效果的变异 */
-    resist_traits?: (MutationID);
+    resist_traits?: MutationID[];
     /**可 抵抗 此效果的效果 */
     resist_effects?: EffectID[];
     /**可免疫此效果的Flag */

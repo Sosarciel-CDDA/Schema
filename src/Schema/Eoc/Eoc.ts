@@ -23,7 +23,7 @@ export type Eoc = {
     /**循环eoc 默认值 */
     eoc_type?:"RECURRING";
     /**循环间隔 */
-    recurrence?: (Time);
+    recurrence?: (Time)|[Time,Time];
     /**deactivate_condition 是否仅在玩家上运行  
      * 如果为 True, 此循环 EOC 将在玩家和全局队列中的每个 NPC 上运行.   
      * 停用条件将根据角色设定生效.   
