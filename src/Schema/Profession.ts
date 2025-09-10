@@ -3,6 +3,7 @@ import { BionicID } from "./Bionic";
 import { ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, DescText, Int } from "./GenericDefine";
+import { ItemID } from "./Item";
 import { InlineItemGroup } from "./ItemGroup";
 import { MissionDefinitionID } from "./MissionDefinition";
 import { MonsterID } from "./Monster";
@@ -60,9 +61,9 @@ export type Profession = {
      * 包含"both"、"male"和"female"字段
      */
     items?: {
-        both?: (InlineItemGroup);
-        male?: (InlineItemGroup);
-        female?: (InlineItemGroup);
+        both?  : (InlineItemGroup)|ItemID[];
+        male?  : (InlineItemGroup)|ItemID[];
+        female?: (InlineItemGroup)|ItemID[];
     };
     /**最低生成年龄（可选）
      * 仅影响随机生成（如"Play Now!"）
