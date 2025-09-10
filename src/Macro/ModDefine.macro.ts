@@ -9,7 +9,7 @@ regionMacro("ModDefineID生成",async ()=>{
     const idlist = await Promise.all(filelist.map(async fp => {
         const text = await fs.promises.readFile(fp, 'utf-8');
         const matches = [...text.matchAll(/export type (\S+) = CddaID<('|")(.+?)('|")>/g)];
-        if (matches.length === 0) return;
+        if (matches.length === 0) return [];
         return matches.map(match => {
             const idtext = match[1];
             const ids = match[3];
@@ -22,5 +22,5 @@ regionMacro("ModDefineID生成",async ()=>{
         });
     }));
 
-    return idlist.filter(v=>v!=undefined).join('\n');
+    return idlist.flat().filter(v=>v!=undefined).join('\n');
 },{filePath:path.join(SRC_DIR,'Util','ModDefine.ts')});
