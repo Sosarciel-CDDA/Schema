@@ -24,8 +24,10 @@ type UN  = 'u'|'n';
 type UNG = 'u'|'n'|'g';
 type G   = 'g';
 type Talker = UN|UNG|G;
+type sboolean = boolean|string;
+type snumber = number|string;
 const pt = (talker:Talker)=>talker=='g' ? '' : `${talker}_`;
-const pfk = (opts?:Record<string,string|number|boolean>,prefix:boolean=true)=>opts==undefined ? [] :
+const pfk = (opts?:Record<string,string|number|boolean>)=>opts==undefined ? [] :
     Object.entries(opts).filter(v=>v[1]!==undefined)
     .map(([k,v])=>`'${k}': ${v}`)
 const plist = (...args:(string|number|boolean|undefined)[])=> args.filter(v=>v!==undefined).join(', ');
@@ -95,7 +97,7 @@ export const charactersNearby = (
         radius?: string,
         location?: string,
         attitude?: 'hostile' | 'allies' | 'not_allies' | 'any',
-        allow_hallucinations?: number
+        allow_hallucinations?: snumber
     }
 ) => `${pt(talker)}characters_nearby(${plist(...pfk(kwargs))})`;
 
@@ -433,7 +435,7 @@ export const moonPhase = () =>
  * @example
  * "math": [ "u_value_to_set = num_input('Playstyle Perks Cost?', 4)" ]
  */
-export const numInput = (prompt: string, defaultValue: number | string) =>
+export const numInput = (prompt: string, defaultValue: snumber) =>
     `num_input(${plist(prompt,defaultValue)})`;
 
 /**获取或设置角色的疼痛值  
@@ -459,7 +461,7 @@ export const proficiency = (
     proficiencyID: Arg<ProficiencyID>,
     kwargs?: {
         format?: 'percent' | 'permille' | 'time_spent' | 'time_left' | 'total_time_required',
-        direct?: boolean | string
+        direct?: sboolean
     }
 ) => `${pt(talker)}proficiency(${plist(proficiencyID,...pfk(kwargs))})`;
 
@@ -496,7 +498,7 @@ export const skill = (talker: UN, skillID: Arg<SkillID>) =>
 export const spellDifficulty = (
     talker: UN,
     spellID: Arg<SpellID>,
-    kwargs?: { baseline?: 'true' | 'false' }
+    kwargs?: { baseline?: sboolean }
 ) => `${pt(talker)}spell_difficulty(${plist(spellID,...pfk(kwargs))})`;
 
 /**获取或设置技能经验  
@@ -525,7 +527,7 @@ export const spellExp = (talker: UN, spellID: Arg<SpellID>) =>
  * @example
  * "math": [ "spell_exp_for_level('SPELL_ID', u_spell_level('SPELL_ID') ) * 5" ]
  */
-export const spellExpForLevel = (spellID: Arg<SpellID>, level: string | number) =>
+export const spellExpForLevel = (spellID: Arg<SpellID>, level: snumber) =>
     `spell_exp_for_level(${plist(spellID,level)})`;
 
 /**获取角色已掌握的法术数量  
@@ -549,7 +551,7 @@ export const spellCount = (
  */
 export const spellLevelSum = (
     talker: UN,
-    kwargs?: { school?: Arg<string>, level?: string | number }
+    kwargs?: { school?: Arg<string>, level?: snumber }
 ) => `${pt(talker)}spell_level_sum(${plist(...pfk(kwargs))})`;
 
 /**获取或设置角色某法术的等级  
@@ -593,7 +595,7 @@ export const spellcastingAdjustment = (
  * @example
  * "condition": { "math": [ "u_blorg = value_or( fancy_var, 15 )" ] }
  */
-export const valueOr = (variable: string, fallback: string | number) =>
+export const valueOr = (variable: string, fallback: snumber) =>
     `value_or(${plist(variable,fallback)})`;
 
 /**获取时间段对应的数值（单位：回合）  
@@ -766,7 +768,7 @@ export const calories = (
     talker: UN,
     kwargs?: {
         format?: 'percent' | 'raw',
-        dont_affect_weariness?: boolean
+        dont_affect_weariness?: sboolean
     }
 ) => `${pt(talker)}calories(${plist(...pfk(kwargs))})`;
 
@@ -788,7 +790,7 @@ export const artifactResonance = (talker: UN) =>
  */
 export const getCaloriesDaily = (
     kwargs?: {
-        day?: number | string,
+        day?: snumber,
         type?: 'spent' | 'gained' | 'ingested' | 'total'
     }
 ) => `get_calories_daily(${plist(...pfk(kwargs))})`;
@@ -805,7 +807,7 @@ export const getCaloriesDaily = (
 export const quality = (
     talker: UN,
     qualityID: Arg<ToolQualityID>,
-    kwargs?: { strict?: boolean }
+    kwargs?: { strict?: sboolean }
 ) => `${pt(talker)}quality(${plist(qualityID,...pfk(kwargs))})`;
 
 
