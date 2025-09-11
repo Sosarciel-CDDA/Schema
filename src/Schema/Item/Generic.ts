@@ -1,7 +1,7 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { EnchantmentID, InlineEnchantment } from "../Enchantment";
 import { CustomFlagID } from "../Flag";
-import { CddaID, Char, Color, CopyfromVar, DescText, Explosion, Float, Int, Length, LookLikeID, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
+import { CddaID, Char, Color, CopyfromVar, DescText, Ememory, Explosion, Float, Int, Length, LookLikeID, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
 import { AmmoID } from "./Ammo";
 import { WeaponCategoryID } from "../WeaponCategory";
 import { MaterialID } from "../Material";
@@ -227,6 +227,60 @@ export type GenericTrait = CopyfromVar<{
     /**如果工具至少还剩 charges_per_use 费用, 则可用的工具品质 */
     charged_qualities?: ItemToolQuality[];
 
+    /**此物品数字化时占据的存储容量 */
+    ememory_size?: (Ememory);
+    /**此物品的内存内容 */
+    memory_card?: {
+        /**读取该物品时将其转换为指定的物品 ID  
+         * 用于模拟读取后物品内容发生变化的行为  
+         */
+        on_read_convert_to?: (ItemID);
+        /**该物品包含数据的概率（0~1）  
+         * 用于判定是否生成数据内容  
+         */
+        data_chance?: Float;
+        /**该物品包含照片的概率（0~1）  
+         * 用于判定是否生成照片内容  
+         */
+        photos_chance?: Float;
+        /**该物品包含的照片数量（范围：1 到 photos_amount）  
+         * 实际生成数量将介于 1 和该值之间  
+         */
+        photos_amount?: Int;
+        /**该物品包含歌曲的概率（0~1）  
+         * 用于判定是否生成音乐内容  
+         */
+        songs_chance?: Float;
+        /**该物品包含的歌曲数量（范围：1 到 songs_amount）  
+         * 实际生成数量将介于 1 和该值之间  
+         */
+        songs_amount?: Int;
+        /**该物品包含配方的概率（0~1）  
+         * 用于判定是否生成食谱或工艺配方  
+         */
+        recipes_chance?: Float;
+        /**该物品包含的配方数量（范围：1 到 recipes_amount）  
+         * 实际生成数量将介于 1 和该值之间  
+         */
+        recipes_amount?: Int;
+        /**生成配方的最低技能等级要求  
+         * 所有配方至少需要达到此等级  
+         */
+        recipes_level_min?: Int;
+        /**生成配方的最高技能等级要求  
+         * 所有配方最多不超过此等级  
+         */
+        recipes_level_max?: Int;
+        /**该物品可能包含的配方分类  
+         * 默认为 ["CC_FOOD"]，可指定多个分类  
+         */
+        recipes_categories?: string[];
+        /**是否允许生成带有 SECRET 标记的配方  
+         * 启用后可包含隐藏配方  
+         * @default false
+         */
+        secret_recipes?: boolean;
+    }
 }>;
 
 /**物品变体ID */
