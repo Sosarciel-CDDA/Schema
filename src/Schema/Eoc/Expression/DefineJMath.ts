@@ -25,9 +25,10 @@ type UNG = 'u'|'n'|'global';
 type G   = 'global';
 type Talker = UN|UNG|G;
 const pt = (talker:Talker)=>talker=='global' ? '' : `${talker}_`;
-const fk = (opts?:Record<string,string|number|boolean>,prefix:boolean=true)=>opts==undefined ? '' :
-    (prefix ? ', ' : '') + Object.entries(opts)
-    .map(([k,v])=>`'${k}': ${v}`).join(', ')
+const pfk = (opts?:Record<string,string|number|boolean>,prefix:boolean=true)=>opts==undefined ? [] :
+    Object.entries(opts).filter(v=>v[1]!==undefined)
+    .map(([k,v])=>`'${k}': ${v}`)
+const plist = (...args:(string|number|boolean|undefined)[])=> args.filter(v=>v!==undefined).join(', ');
 
 type FNP<T extends string> = `'${ExtractDefineID<T>}'`|SchemaString;
 
@@ -40,7 +41,7 @@ export namespace JM {
  * "condition": { "math": [ "u_armour('bash', 'torso') >= 5"] }
  */
 export const armor = (talker:UN,damageType:FNP<DamageTypeID>,bodypart:FNP<BodyPartID>)=>
-    `${pt(talker)}armor(${damageType}, ${bodypart})`;
+    `${pt(talker)}armor(${plist(damageType,bodypart)})`;
 
 
 /**获取角色当前武器的攻击速度  
@@ -96,7 +97,7 @@ export const charactersNearby = (
         attitude?: 'hostile' | 'allies' | 'not_allies' | 'any',
         allow_hallucinations?: number
     }
-) => `${pt(talker)}characters_nearby(${fk(kwargs,false)})`;
+) => `${pt(talker)}characters_nearby(${plist(...pfk(kwargs))})`;
 
 
 /**获取角色背包中某物品的充能次数  
@@ -124,7 +125,7 @@ export const coverage = (talker: UN, bodypart: FNP<BodyPartID>) =>
  * "condition": { "math": [ "distance('u', loc) <= 50"] }
  */
 export const distance = (from: 'u'|'npc'|AnyString, to: 'u'|'npc'|AnyString) =>
-    `distance(${from}, ${to})`;
+    `distance(${plist(from,to)})`;
 
 
 /**获取角色某状态效果的强度  
@@ -137,7 +138,7 @@ export const effectIntensity = (
     talker: UN,
     effectID: FNP<EffectID>,
     kwargs?: { bodypart?: FNP<BodyPartID> }
-) => `${pt(talker)}effect_intensity(${effectID}${fk(kwargs)})`;
+) => `${pt(talker)}effect_intensity(${plist(effectID,...pfk(kwargs))})`;
 
 
 /**获取角色某状态效果的持续时间  
@@ -151,7 +152,7 @@ export const effectDuration = (
     talker: UN,
     effectID: FNP<EffectID>,
     kwargs?: { bodypart?: FNP<BodyPartID>, unit?: 'seconds' | 'minutes' | 'hours' }
-) => `${pt(talker)}effect_duration(${effectID}${fk(kwargs)})`;
+) => `${pt(talker)}effect_duration(${plist(effectID,...pfk(kwargs))})`;
 
 
 /**获取角色某部位的累积负重值  
@@ -208,7 +209,7 @@ export const factionTrust = (factionID: FNP<NPCFactionID>) =>
 export const factionFoodSupply = (
     factionID: FNP<NPCFactionID>,
     kwargs?: { vitamin?: FNP<VitaminID> }
-) => `faction_food_supply(${factionID}${fk(kwargs)})`;
+) => `faction_food_supply(${plist(factionID,...pfk(kwargs))})`;
 
 /**获取指定派系的财富值  
  * 只读  
@@ -239,7 +240,7 @@ export const fieldStrength = (
     talker: UNG,
     fieldID: FNP<FieldTypeID>,
     kwargs?: { location?: string }
-) => `${pt(talker)}field_strength(${fieldID}${fk(kwargs)})`;
+) => `${pt(talker)}field_strength(${plist(fieldID,...pfk(kwargs))})`;
 
 /**判断角色是否拥有指定 flag  
  * 只读  
@@ -269,7 +270,7 @@ export const sumTraitsOfCategory = (
     talker: UN,
     categoryID: FNP<MutationCategoryID>,
     kwargs?: { type?: 'POSITIVE' | 'NEGATIVE' | 'ALL' }
-) => `${pt(talker)}sum_traits_of_category(${categoryID}${fk(kwargs)})`;
+) => `${pt(talker)}sum_traits_of_category(${plist(categoryID,...pfk(kwargs))})`;
 
 /**获取角色当前拥有的某 mutation 分类下的 trait 总和  
  * 只读  
@@ -281,7 +282,7 @@ export const sumTraitsOfCategoryCharHas = (
     talker: UN,
     categoryID: FNP<MutationCategoryID>,
     kwargs?: { type?: 'POSITIVE' | 'NEGATIVE' | 'ALL' }
-) => `${pt(talker)}sum_traits_of_category_char_has(${categoryID}${fk(kwargs)})`;
+) => `${pt(talker)}sum_traits_of_category_char_has(${plist(categoryID,...pfk(kwargs))})`;
 
 /**判断角色是否拥有某项熟练度  
  * 只读  
@@ -355,7 +356,7 @@ export const itemRad = (
     talker: UN,
     flagID: FNP<FlagID>,
     kwargs?: { aggregate?: 'min' | 'max' | 'sum' | 'average' | 'first' | 'last' }
-) => `${pt(talker)}item_rad(${flagID}${fk(kwargs)})`;
+) => `${pt(talker)}item_rad(${plist(flagID,...pfk(kwargs))})`;
 
 /**获取物品的近战伤害  
  * 只读  
@@ -382,7 +383,7 @@ export const monstersNearby = (
         location?: string,
         attitude?: 'hostile' | 'friendly' | 'both'
     }
-) => `${pt(talker)}monsters_nearby(${ids.join(', ')}${fk(kwargs)})`;
+) => `${pt(talker)}monsters_nearby(${plist(ids.join(', '),...pfk(kwargs))})`;
 
 /**获取指定 mod 的加载顺序  
  * 只读  
@@ -403,7 +404,7 @@ export const monSpeciesNearby = (
         location?: string,
         attitude?: 'hostile' | 'friendly' | 'both'
     }
-) => `${pt(talker)}mon_species_nearby(${speciesIDs.join(', ')}${fk(kwargs)})`;
+) => `${pt(talker)}mon_species_nearby(${plist(speciesIDs.join(', '),...pfk(kwargs))})`;
 
 /**获取附近指定怪物群组的数量  
  * 只读  
@@ -417,7 +418,7 @@ export const monGroupsNearby = (
         location?: string,
         attitude?: 'hostile' | 'friendly' | 'both'
     }
-) => `${pt(talker)}mon_groups_nearby(${groupIDs.join(', ')}${fk(kwargs)})`;
+) => `${pt(talker)}mon_groups_nearby(${plist(...groupIDs,...pfk(kwargs))})`;
 
 /**获取当前月相  
  * 只读  
@@ -433,7 +434,7 @@ export const moonPhase = () =>
  * "math": [ "u_value_to_set = num_input('Playstyle Perks Cost?', 4)" ]
  */
 export const numInput = (prompt: string, defaultValue: number | string) =>
-    `num_input(${prompt}, ${defaultValue})`;
+    `num_input(${plist(prompt,defaultValue)})`;
 
 /**获取或设置角色的疼痛值  
  * 可读可写  
@@ -445,7 +446,7 @@ export const numInput = (prompt: string, defaultValue: number | string) =>
 export const pain = (
     talker: UN,
     kwargs?: { type?: 'perceived' | 'raw' }
-) => `${pt(talker)}pain(${fk(kwargs, false)})`;
+) => `${pt(talker)}pain(${plist(...pfk(kwargs))})`;
 
 /**获取或设置角色的熟练度  
  * 可读可写  
@@ -460,7 +461,7 @@ export const proficiency = (
         format?: 'percent' | 'permille' | 'time_spent' | 'time_left' | 'total_time_required',
         direct?: boolean | string
     }
-) => `${pt(talker)}proficiency(${proficiencyID}${fk(kwargs)})`;
+) => `${pt(talker)}proficiency(${plist(proficiencyID,...pfk(kwargs))})`;
 
 /**获取角色已掌握的某法术学派的最高等级  
  * 只读  
@@ -496,7 +497,7 @@ export const spellDifficulty = (
     talker: UN,
     spellID: FNP<SpellID>,
     kwargs?: { baseline?: 'true' | 'false' }
-) => `${pt(talker)}spell_difficulty(${spellID}${fk(kwargs)})`;
+) => `${pt(talker)}spell_difficulty(${plist(spellID,...pfk(kwargs))})`;
 
 /**获取或设置技能经验  
  * 可读可写  
@@ -508,7 +509,7 @@ export const skillExp = (
     talker: UN,
     skillID: FNP<SkillID>,
     kwargs?: { format?: 'percentage' | 'raw' | string }
-) => `${pt(talker)}skill_exp(${skillID}${fk(kwargs)})`;
+) => `${pt(talker)}skill_exp(${plist(skillID,...pfk(kwargs))})`;
 
 /**获取或设置法术经验  
  * 可读可写  
@@ -525,7 +526,7 @@ export const spellExp = (talker: UN, spellID: FNP<SpellID>) =>
  * "math": [ "spell_exp_for_level('SPELL_ID', u_spell_level('SPELL_ID') ) * 5" ]
  */
 export const spellExpForLevel = (spellID: FNP<SpellID>, level: string | number) =>
-    `spell_exp_for_level(${spellID}, ${level})`;
+    `spell_exp_for_level(${plist(spellID,level)})`;
 
 /**获取角色已掌握的法术数量  
  * 只读  
@@ -536,7 +537,7 @@ export const spellExpForLevel = (spellID: FNP<SpellID>, level: string | number) 
 export const spellCount = (
     talker: UN,
     kwargs?: { school?: FNP<string> }
-) => `${pt(talker)}spell_count(${fk(kwargs)})`;
+) => `${pt(talker)}spell_count(${plist(...pfk(kwargs))})`;
 
 /**获取角色所有法术等级的总和  
  * 只读  
@@ -549,7 +550,7 @@ export const spellCount = (
 export const spellLevelSum = (
     talker: UN,
     kwargs?: { school?: FNP<string>, level?: string | number }
-) => `${pt(talker)}spell_level_sum(${fk(kwargs)})`;
+) => `${pt(talker)}spell_level_sum(${plist(...pfk(kwargs))})`;
 
 /**获取或设置角色某法术的等级  
  * 可读可写  
@@ -585,7 +586,7 @@ export const spellcastingAdjustment = (
         school?: FNP<string>,
         spell?: FNP<SpellID>
     }
-) => `${pt(talker)}spellcasting_adjustment(${aspect}${fk(kwargs)})`;
+) => `${pt(talker)}spellcasting_adjustment(${plist(aspect,...pfk(kwargs))})`;
 
 /**获取变量值，如果未定义则返回默认值  
  * 只读  
@@ -593,7 +594,7 @@ export const spellcastingAdjustment = (
  * "condition": { "math": [ "u_blorg = value_or( fancy_var, 15 )" ] }
  */
 export const valueOr = (variable: string, fallback: string | number) =>
-    `value_or(${variable}, ${fallback})`;
+    `value_or(${plist(variable,fallback)})`;
 
 /**获取时间段对应的数值（单位：回合）  
  * 可读可写  
@@ -602,7 +603,7 @@ export const valueOr = (variable: string, fallback: string | number) =>
  * { "math": [ "time('now') - u_timer_caravan_RandEnc > time('1 h')" ] }
  */
 export const time = (timeStr: string, kwargs?: { unit?: string }) =>
-    `time(${timeStr}${fk(kwargs)})`;
+    `time(${plist(timeStr,...pfk(kwargs))})`;
 
 /**获取某时间点以来的时间（单位：回合）  
  * 只读  
@@ -611,7 +612,7 @@ export const time = (timeStr: string, kwargs?: { unit?: string }) =>
  * { "math": [ "time_since(u_timer_caravan_RandEnc) > time('1 h')" ] }
  */
 export const timeSince = (timePoint: string, kwargs?: { unit?: string }) =>
-    `time_since(${timePoint}${fk(kwargs)})`;
+    `time_since(${plist(timePoint,...pfk(kwargs))})`;
 
 /**获取距离某时间点的剩余时间（单位：回合）  
  * 只读  
@@ -620,14 +621,14 @@ export const timeSince = (timePoint: string, kwargs?: { unit?: string }) =>
  * { "math": [ "TIME_TILL_SUNRISE = time_until('sunrise', 'unit':'minutes')" ] }
  */
 export const timeUntil = (timePoint: string, kwargs?: { unit?: string }) =>
-    `time_until(${timePoint}${fk(kwargs)})`;
+    `time_until(${plist(timePoint,...pfk(kwargs))})`;
 
 /**获取距离某 EOC 下次运行的时间  
  * 只读  
  * 可选参数：unit  
  */
 export const timeUntilEOC = (eocID: FNP<EocID>, kwargs?: { unit?: string }) =>
-    `time_until_eoc(${eocID}${fk(kwargs)})`;
+    `time_until_eoc(${plist(eocID,...pfk(kwargs))})`;
 
 /**获取或设置角色属性值  
  * 可读可写  
@@ -767,7 +768,7 @@ export const calories = (
         format?: 'percent' | 'raw',
         dont_affect_weariness?: boolean
     }
-) => `${pt(talker)}calories(${fk(kwargs)})`;
+) => `${pt(talker)}calories(${plist(...pfk(kwargs))})`;
 
 /**获取角色或物品的神器共鸣值  
  * 只读  
@@ -790,7 +791,7 @@ export const getCaloriesDaily = (
         day?: number | string,
         type?: 'spent' | 'gained' | 'ingested' | 'total'
     }
-) => `get_calories_daily(${fk(kwargs)})`;
+) => `get_calories_daily(${plist(...pfk(kwargs))})`;
 
 /**获取物品的工具质量等级  
  * 只读  
@@ -805,7 +806,7 @@ export const quality = (
     talker: UN,
     qualityID: FNP<ToolQualityID>,
     kwargs?: { strict?: boolean }
-) => `${pt(talker)}quality(${qualityID}${fk(kwargs)})`;
+) => `${pt(talker)}quality(${plist(qualityID,...pfk(kwargs))})`;
 
 
 };
