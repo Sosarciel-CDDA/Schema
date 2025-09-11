@@ -61,6 +61,7 @@ import { Emit } from "./Emit";
 import { AddictionType } from "./AddictionType";
 import { MoraleType } from "./MoraleType";
 import { Hobby, Profession } from "./Profession";
+import { ModInfo } from "./ModInfo";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -106,8 +107,10 @@ export type Energy = Int|`${number} ${"mJ"|"J"|"kJ"}`;
 export type Power = Int|`${number} ${"mW"|"W"|"kW"}`;
 /**价格 */
 export type Price = Int|`${number} ${"cent"|"cents"|"dollar"|"dollars"|"USD"|"kUSD"}`;
+/**可用的时间单位 */
+export type TimeUnit = "turns"|"turn"|"t"|"seconds"|"second"|"s"|"minutes"|"minute"|"m"|"hours"|"hour"|"h"|"day"|"days"|"d";
 /**时间 无符号为秒 1turn=1s */
-export type Time = Int|`${number} ${"turns"|"turn"|"t"|"seconds"|"second"|"s"|"minutes"|"minute"|"m"|"hours"|"hour"|"h"|"day"|"days"|"d"}`;
+export type Time = Int|`${number} ${TimeUnit}`;
 /**电子数据单位 无符号为KB */
 export type Ememory = Int|`${number} ${"KB"|"GB"|"GB"|"TB"}`;
 ///**温度 */
@@ -443,6 +446,6 @@ export type AnyCddaJson = Item|Eoc|Mutation|DamageType|DamageInfoOrder|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
     BodyPart|SubBodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory|Uncraft|ItemAction|
-    Vitamin|Skill|Emit|FieldType|AddictionType|MoraleType|Profession|Hobby;
+    Vitamin|Skill|Emit|FieldType|AddictionType|MoraleType|Profession|Hobby|ModInfo;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];

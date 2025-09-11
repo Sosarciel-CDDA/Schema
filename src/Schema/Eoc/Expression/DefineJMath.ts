@@ -5,7 +5,7 @@ import { DamageTypeID } from "Schema/DamageType";
 import { EffectID } from "Schema/Effect";
 import { FieldTypeID } from "Schema/FieldType";
 import { FlagID } from "Schema/Flag";
-import { ExtractDefineID, SchemaString } from "Schema/GenericDefine";
+import { ExtractDefineID, SchemaString, TimeUnit } from "Schema/GenericDefine";
 import { ItemID } from "Schema/Item";
 import { MonsterID } from "Schema/Monster";
 import { MonsterGroupID } from "Schema/MonsterGroup";
@@ -19,6 +19,7 @@ import { SpellID } from "Schema/Spell";
 import { VitaminID } from "Schema/Vitamin";
 import { EocID } from "../Eoc";
 import { ToolQualityID } from "Schema/ToolQuality";
+import { ModId } from "Schema/ModInfo";
 
 type UN  = 'u'|'n';
 type UNG = 'u'|'n'|'g';
@@ -390,7 +391,7 @@ export const monstersNearby = (
  * 只读  
  * 返回 mod 的加载顺序，未加载则返回 -1  
  */
-export const modLoadOrder = (modID: Arg<string>) =>
+export const modLoadOrder = (modID: Arg<ModId>) =>
     `mod_load_order(${modID})`;
 
 /**获取附近指定物种的怪物数量  
@@ -469,7 +470,7 @@ export const proficiency = (
  * @example
  * "condition": { "math": [ "u_school_level('MAGUS') >= 3"] }
  */
-export const schoolLevel = (talker: UN, schoolID: Arg<string>) =>
+export const schoolLevel = (talker: UN, schoolID: Arg<MutationID>) =>
     `${pt(talker)}school_level(${schoolID})`;
 
 /**获取或设置法术学派的临时等级调整  
@@ -477,7 +478,7 @@ export const schoolLevel = (talker: UN, schoolID: Arg<string>) =>
  * @example
  * { "math": [ "u_school_level_adjustment('MAGUS')++"] }
  */
-export const schoolLevelAdjustment = (talker: UN, schoolID: Arg<string>) =>
+export const schoolLevelAdjustment = (talker: UN, schoolID: Arg<MutationID>) =>
     `${pt(talker)}school_level_adjustment(${schoolID})`;
 
 /**获取或设置技能等级  
@@ -537,7 +538,7 @@ export const spellExpForLevel = (spellID: Arg<SpellID>, level: snumber) =>
  */
 export const spellCount = (
     talker: UN,
-    kwargs?: { school?: Arg<string> }
+    kwargs?: { school?: Arg<MutationID> }
 ) => `${pt(talker)}spell_count(${plist(...pfk(kwargs))})`;
 
 /**获取角色所有法术等级的总和  
@@ -550,7 +551,7 @@ export const spellCount = (
  */
 export const spellLevelSum = (
     talker: UN,
-    kwargs?: { school?: Arg<string>, level?: snumber }
+    kwargs?: { school?: Arg<MutationID>, level?: snumber }
 ) => `${pt(talker)}spell_level_sum(${plist(...pfk(kwargs))})`;
 
 /**获取或设置角色某法术的等级  
@@ -579,12 +580,12 @@ export const spellLevelAdjustment = (talker: UN, spellID: Arg<SpellID> | 'null')
  */
 export const spellcastingAdjustment = (
     talker: UN,
-    aspect: string,
+    aspect: 'cost'|'aoe'|'range'|'difficulty'|'accuracy'|'damage'|'dot'|'duration'|'pierce'|'field_intensity',
     kwargs?: {
         flag_blacklist?: Arg<FlagID>,
         flag_whitelist?: Arg<FlagID>,
-        mod?: Arg<string>,
-        school?: Arg<string>,
+        mod?: Arg<ModId>,
+        school?: Arg<MutationID>,
         spell?: Arg<SpellID>
     }
 ) => `${pt(talker)}spellcasting_adjustment(${plist(aspect,...pfk(kwargs))})`;
@@ -603,7 +604,7 @@ export const valueOr = (variable: string, fallback: snumber) =>
  * @example
  * { "math": [ "time('now') - u_timer_caravan_RandEnc > time('1 h')" ] }
  */
-export const time = (timeStr: string, kwargs?: { unit?: string }) =>
+export const time = (timeStr: AnyString|'now', kwargs?: { unit?: TimeUnit }) =>
     `time(${plist(timeStr,...pfk(kwargs))})`;
 
 /**获取某时间点以来的时间（单位：回合）  
@@ -612,7 +613,7 @@ export const time = (timeStr: string, kwargs?: { unit?: string }) =>
  * @example
  * { "math": [ "time_since(u_timer_caravan_RandEnc) > time('1 h')" ] }
  */
-export const timeSince = (timePoint: string, kwargs?: { unit?: string }) =>
+export const timeSince = (timePoint: string, kwargs?: { unit?: TimeUnit }) =>
     `time_since(${plist(timePoint,...pfk(kwargs))})`;
 
 /**获取距离某时间点的剩余时间（单位：回合）  
@@ -621,14 +622,14 @@ export const timeSince = (timePoint: string, kwargs?: { unit?: string }) =>
  * @example
  * { "math": [ "TIME_TILL_SUNRISE = time_until('sunrise', 'unit':'minutes')" ] }
  */
-export const timeUntil = (timePoint: string, kwargs?: { unit?: string }) =>
+export const timeUntil = (timePoint: string, kwargs?: { unit?: TimeUnit }) =>
     `time_until(${plist(timePoint,...pfk(kwargs))})`;
 
 /**获取距离某 EOC 下次运行的时间  
  * 只读  
  * 可选参数：unit  
  */
-export const timeUntilEOC = (eocID: Arg<EocID>, kwargs?: { unit?: string }) =>
+export const timeUntilEOC = (eocID: Arg<EocID>, kwargs?: { unit?: TimeUnit }) =>
     `time_until_eoc(${plist(eocID,...pfk(kwargs))})`;
 
 /**获取或设置角色属性值  
