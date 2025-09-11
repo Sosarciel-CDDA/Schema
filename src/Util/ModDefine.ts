@@ -1,5 +1,5 @@
 import {
-    AmmunitionTypeID, BoolExpr, Eoc, EocEffect, EocEffectList, SpellID,
+    AmmunitionTypeID, BoolExpr, Eoc, EocEffect, SpellID,
     EffectID, TalkTopicID, EocID ,FlagID,
     ItemGroupID,MonsterID,MutationID,NpcClassID,NpcInstanceID, EnchantmentID,
     WeaponCategoryID,
