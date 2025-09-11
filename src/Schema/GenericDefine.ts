@@ -158,12 +158,12 @@ export type CopyfromResFD = "id"|"type";
 /**可以复制的物体 */
 export type CopyfromAble = {id:string,type:string};
 /**Copyfrom的物品 */
-export type CopyfromVar<T extends CopyfromAble> = (T&{"//"?:"uncopy"})|Copyfrom<T>;
+export type CopyfromVar<T extends CopyfromAble> = (T&{"//copy"?:false})|Copyfrom<T>;
 /**copyfrom变体 */
 export type Copyfrom<T extends CopyfromAble> =
     Pick<T,CopyfromResFD>&{
         /**复制的目标 */
-        "copy-from":T["id"], "//"?:"copy",
+        "copy-from":T["id"], "//copy"?:true,
         /**删除原物品的某些元素 */
         delete?: Partial<Omit<T,CopyfromResFD>>,
         /**扩展原物品的某些元素 */
@@ -183,7 +183,7 @@ export type Copyfrom<T extends CopyfromAble> =
 /**容器 */
 export type PocketData = {
     /**容器或弹夹 */
-    pocket_type: "CONTAINER"|"MAGAZINE"|"MAGAZINE_WELL";
+    pocket_type: "CONTAINER"|"MAGAZINE"|"MAGAZINE_WELL"|"E_FILE_STORAGE";
     /**此口袋可以容纳的最大体积, 所有包含的物品的总和 */
     max_contains_volume?: (Volume);
     /**此口袋可以容纳的最大重量, 所有容器物品的总重量 */
@@ -251,6 +251,8 @@ export type PocketData = {
     sealed_data?: Partial<PocketData>;
     /**如果口袋继承了标志, 则意味着里面的物品对拥有口袋本身的物品有贡献的任何标志.  */
     inherits_flags?: boolean;
+    /**此口袋的数据存储空间大小 */
+    ememory_max?: (Ememory);
 };
 
 

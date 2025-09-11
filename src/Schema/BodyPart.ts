@@ -1,3 +1,4 @@
+import { ExtractDefineBodyPartID, ExtractDefineSubBodyPartID } from "Extract";
 import { DamageTypeID } from "./DamageType";
 import { EffectID } from "./Effect";
 import { IDExpr } from "./Eoc";
@@ -11,7 +12,9 @@ import { TechniqueID } from "./Technique";
 /**身体部位定义ID */
 export type BodyPartID = CddaID<'BP'>|DefineBodyPartID;
 /**子身体部位定义ID */
-export type SubBodyPartID = CddaID<'SBP'>;
+export type SubBodyPartID = CddaID<'SBP'>|DefineSubBodyPartID;
+/**预定义的子肢体类型 */
+export type DefineSubBodyPartID = ExtractDefineSubBodyPartID;
 
 /**身体部位定义 */
 export type BodyPart = {
@@ -286,18 +289,18 @@ export const DefineLimbBodyPartIDList = [
 /**预定义的四肢/主要肢体 */
 export type DefineLimbBodyPartID = typeof DefineLimbBodyPartIDList[number];
 
-/**预定义的子肢体 列表 */
-export const DefineSubBodyPartIDList = [
+/**预定义的子躯干 列表 */
+export const DefineSubLimbBodyPartIDList = [
     "foot_l", "foot_r",
     "hand_l", "hand_r",
 ] as const;
-/**预定义的子肢体 */
-export type DefineSubBodyPartID = typeof DefineSubBodyPartIDList[number];
+/**预定义的子躯干 */
+export type DefineSubLimbBodyPartID = typeof DefineSubLimbBodyPartIDList[number];
 
 /**预定义的肢体 列表 */
-export const DefineBodyPartIDList = [...DefineLimbBodyPartIDList,...DefineSubBodyPartIDList] as const;
+export const DefineBodyPartIDList = [...DefineLimbBodyPartIDList,...DefineSubLimbBodyPartIDList] as const;
 /**预定义的肢体 */
-export type DefineBodyPartID = typeof DefineBodyPartIDList[number];
+export type DefineBodyPartID = typeof DefineBodyPartIDList[number]|ExtractDefineBodyPartID;
 
 /**目标肢体参数  
  * whole body为全身  

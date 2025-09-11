@@ -76,7 +76,7 @@ const a:Item = {
   weight: 1,
   volume: 1,
   symbol: "1",
-  "//":"uncopy",
+  "//copy":false,
   //"//T": "GUN" as "GUN"|"ARMOR",
   "//GUN": true,
   "//ARMOR": true,
