@@ -72,16 +72,12 @@ export class GameDataTable{
     }
 
     /**获取某个id的数据 */
-    async getGameData
-    <T extends CommonJson["type"]>(type:CommonJson["type"],id:string):
-    Promise<Extract<CommonJson,{type:T}>|undefined>{
+    getData <T extends CommonJson["type"]>(type:CommonJson["type"],id:string):Extract<CommonJson,{type:T}>|undefined{
         return this._dataTable[type]?.[id] as any;
     }
 
     /**获取某个类型的全部数据 */
-    async getGameDataList
-    <T extends CommonJson["type"]>(type:T):
-    Promise<Extract<CommonJson,{type:T}>[]>{
+    getDataList<T extends CommonJson["type"]>(type:T):Extract<CommonJson,{type:T}>[]{
         return Object.values(this._dataTable[type] ?? {}) as any;
     }
 
