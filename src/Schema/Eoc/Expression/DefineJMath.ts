@@ -30,7 +30,7 @@ const pfk = (opts?:Record<string,string|number|boolean>,prefix:boolean=true)=>op
     .map(([k,v])=>`'${k}': ${v}`)
 const plist = (...args:(string|number|boolean|undefined)[])=> args.filter(v=>v!==undefined).join(', ');
 
-type FNP<T extends string> = `'${ExtractDefineID<T>}'`|SchemaString;
+type Arg<T extends string> = `'${ExtractDefineID<T>}'`|SchemaString;
 
 /**预定义的jmath函数 */
 export namespace JM {
@@ -40,7 +40,7 @@ export namespace JM {
  * @example
  * "condition": { "math": [ "u_armour('bash', 'torso') >= 5"] }
  */
-export const armor = (talker:UN,damageType:FNP<DamageTypeID>,bodypart:FNP<BodyPartID>)=>
+export const armor = (talker:UN,damageType:Arg<DamageTypeID>,bodypart:Arg<BodyPartID>)=>
     `${pt(talker)}armor(${plist(damageType,bodypart)})`;
 
 
@@ -69,7 +69,7 @@ export const speed = (talker: UN) =>
  * @example
  * "condition": { "math": [ "u_addiction_intensity('caffeine') >= 1"] }
  */
-export const addictionIntensity = (talker: UN, addictionType: FNP<AddictionTypeID>) =>
+export const addictionIntensity = (talker: UN, addictionType: Arg<AddictionTypeID>) =>
     `${pt(talker)}addiction_intensity(${addictionType})`;
 
 
@@ -78,7 +78,7 @@ export const addictionIntensity = (talker: UN, addictionType: FNP<AddictionTypeI
  * @example
  * "condition": { "math": [ "u_addiction_turns('caffeine') >= 3600"] }
  */
-export const addictionTurns = (talker: UN, addictionType: FNP<AddictionTypeID>) =>
+export const addictionTurns = (talker: UN, addictionType: Arg<AddictionTypeID>) =>
     `${pt(talker)}addiction_turns(${addictionType})`;
 
 
@@ -105,7 +105,7 @@ export const charactersNearby = (
  * @example
  * "condition": { "math": [ "u_charge_count('light_battery_cell') >= 100"] }
  */
-export const chargeCount = (talker: UN, itemID: FNP<ItemID>) =>
+export const chargeCount = (talker: UN, itemID: Arg<ItemID>) =>
     `${pt(talker)}charge_count(${itemID})`;
 
 
@@ -114,7 +114,7 @@ export const chargeCount = (talker: UN, itemID: FNP<ItemID>) =>
  * @example
  * "condition": { "math": [ "u_coverage('torso') > 0"] }
  */
-export const coverage = (talker: UN, bodypart: FNP<BodyPartID>) =>
+export const coverage = (talker: UN, bodypart: Arg<BodyPartID>) =>
     `${pt(talker)}coverage(${bodypart})`;
 
 
@@ -136,8 +136,8 @@ export const distance = (from: 'u'|'npc'|AnyString, to: 'u'|'npc'|AnyString) =>
  */
 export const effectIntensity = (
     talker: UN,
-    effectID: FNP<EffectID>,
-    kwargs?: { bodypart?: FNP<BodyPartID> }
+    effectID: Arg<EffectID>,
+    kwargs?: { bodypart?: Arg<BodyPartID> }
 ) => `${pt(talker)}effect_intensity(${plist(effectID,...pfk(kwargs))})`;
 
 
@@ -150,8 +150,8 @@ export const effectIntensity = (
  */
 export const effectDuration = (
     talker: UN,
-    effectID: FNP<EffectID>,
-    kwargs?: { bodypart?: FNP<BodyPartID>, unit?: 'seconds' | 'minutes' | 'hours' }
+    effectID: Arg<EffectID>,
+    kwargs?: { bodypart?: Arg<BodyPartID>, unit?: 'seconds' | 'minutes' | 'hours' }
 ) => `${pt(talker)}effect_duration(${plist(effectID,...pfk(kwargs))})`;
 
 
@@ -161,7 +161,7 @@ export const effectDuration = (
  * @example
  * "condition": { "math": [ "u_encumbrance('torso') > 0"] }
  */
-export const encumbrance = (talker: UN, bodypart: FNP<BodyPartID>) =>
+export const encumbrance = (talker: UN, bodypart: Arg<BodyPartID>) =>
     `${pt(talker)}encumbrance(${bodypart})`;
 
 /**获取角色当前生命值  
@@ -185,19 +185,19 @@ export const energy = (value: string) =>
  * @example
  * "condition": { "math": [ "faction_like('hells_raiders') < -60" ] }
  */
-export const factionLike = (factionID: FNP<NPCFactionID>) =>
+export const factionLike = (factionID: Arg<NPCFactionID>) =>
     `faction_like(${factionID})`;
 
 /**获取指定派系对角色的尊重值  
  * 只读  
  */
-export const factionRespect = (factionID: FNP<NPCFactionID>) =>
+export const factionRespect = (factionID: Arg<NPCFactionID>) =>
     `faction_respect(${factionID})`;
 
 /**获取指定派系对角色的信任值  
  * 只读  
  */
-export const factionTrust = (factionID: FNP<NPCFactionID>) =>
+export const factionTrust = (factionID: Arg<NPCFactionID>) =>
     `faction_trust(${factionID})`;
 
 /**获取指定派系的食物储备  
@@ -207,26 +207,26 @@ export const factionTrust = (factionID: FNP<NPCFactionID>) =>
  * { "math": [ "calcium_amount = faction_food_supply('your_followers', 'vitamin':'calcium')" ] }
  */
 export const factionFoodSupply = (
-    factionID: FNP<NPCFactionID>,
-    kwargs?: { vitamin?: FNP<VitaminID> }
+    factionID: Arg<NPCFactionID>,
+    kwargs?: { vitamin?: Arg<VitaminID> }
 ) => `faction_food_supply(${plist(factionID,...pfk(kwargs))})`;
 
 /**获取指定派系的财富值  
  * 只读  
  */
-export const factionWealth = (factionID: FNP<NPCFactionID>) =>
+export const factionWealth = (factionID: Arg<NPCFactionID>) =>
     `faction_wealth(${factionID})`;
 
 /**获取指定派系的力量值  
  * 只读  
  */
-export const factionPower = (factionID: FNP<NPCFactionID>) =>
+export const factionPower = (factionID: Arg<NPCFactionID>) =>
     `faction_power(${factionID})`;
 
 /**获取指定派系的规模  
  * 可读可写  
  */
-export const factionSize = (factionID: FNP<NPCFactionID>) =>
+export const factionSize = (factionID: Arg<NPCFactionID>) =>
     `faction_size(${factionID})`;
 
 /**获取指定位置上的场强  
@@ -238,7 +238,7 @@ export const factionSize = (factionID: FNP<NPCFactionID>) =>
  */
 export const fieldStrength = (
     talker: UNG,
-    fieldID: FNP<FieldTypeID>,
+    fieldID: Arg<FieldTypeID>,
     kwargs?: { location?: string }
 ) => `${pt(talker)}field_strength(${plist(fieldID,...pfk(kwargs))})`;
 
@@ -248,7 +248,7 @@ export const fieldStrength = (
  * @example
  * "condition": { "math": [ "u_blorg = u_has_flag('MUTATION_TRESHOLD') ? 100 : 15" ] }
  */
-export const hasFlag = (talker: UN, flagID: FNP<FlagID>) =>
+export const hasFlag = (talker: UN, flagID: Arg<FlagID>) =>
     `${pt(talker)}has_flag(${flagID})`;
 
 /**判断角色是否拥有指定 trait  
@@ -257,7 +257,7 @@ export const hasFlag = (talker: UN, flagID: FNP<FlagID>) =>
  * @example
  * "condition": { "math": [ "u_blorg = u_has_trait('FEEBLE') ? 100 : 15" ] }
  */
-export const hasTrait = (talker: UN, traitID: FNP<MutationID>) =>
+export const hasTrait = (talker: UN, traitID: Arg<MutationID>) =>
     `${pt(talker)}has_trait(${traitID})`;
 
 /**获取某 mutation 分类下的 trait 总和（不限定角色）  
@@ -268,7 +268,7 @@ export const hasTrait = (talker: UN, traitID: FNP<MutationID>) =>
  */
 export const sumTraitsOfCategory = (
     talker: UN,
-    categoryID: FNP<MutationCategoryID>,
+    categoryID: Arg<MutationCategoryID>,
     kwargs?: { type?: 'POSITIVE' | 'NEGATIVE' | 'ALL' }
 ) => `${pt(talker)}sum_traits_of_category(${plist(categoryID,...pfk(kwargs))})`;
 
@@ -280,7 +280,7 @@ export const sumTraitsOfCategory = (
  */
 export const sumTraitsOfCategoryCharHas = (
     talker: UN,
-    categoryID: FNP<MutationCategoryID>,
+    categoryID: Arg<MutationCategoryID>,
     kwargs?: { type?: 'POSITIVE' | 'NEGATIVE' | 'ALL' }
 ) => `${pt(talker)}sum_traits_of_category_char_has(${plist(categoryID,...pfk(kwargs))})`;
 
@@ -290,7 +290,7 @@ export const sumTraitsOfCategoryCharHas = (
  * @example
  * "condition": { "math": [ "u_blorg = u_has_proficiency('prof_intro_biology') ? 100 : 15" ] }
  */
-export const hasProficiency = (talker: UN, proficiencyID: FNP<ProficiencyID>) =>
+export const hasProficiency = (talker: UN, proficiencyID: Arg<ProficiencyID>) =>
     `${pt(talker)}has_proficiency(${proficiencyID})`;
 
 /**判断变量是否已定义  
@@ -308,7 +308,7 @@ export const hasVar = (varName: string) =>
  * @example
  * "condition": { "math": [ "hp('torso') > 100"] }
  */
-export const hp = (bodypart: FNP<BodyPartID>) =>
+export const hp = (bodypart: Arg<BodyPartID>) =>
     `hp(${bodypart})`;
 
 /**获取角色某部位的最大生命值  
@@ -316,7 +316,7 @@ export const hp = (bodypart: FNP<BodyPartID>) =>
  * @example
  * "condition": { "math": [ "u_hp_max('torso') >= 100"] }
  */
-export const hpMax = (talker: UN, bodypart: FNP<BodyPartID>) =>
+export const hpMax = (talker: UN, bodypart: Arg<BodyPartID>) =>
     `${pt(talker)}hp_max(${bodypart})`;
 
 
@@ -326,7 +326,7 @@ export const hpMax = (talker: UN, bodypart: FNP<BodyPartID>) =>
  * @example
  * "condition": { "math": [ "game_option('NPC_SPAWNTIME') >= 5"] }
  */
-export const gameOption = (optionID: FNP<string>) =>
+export const gameOption = (optionID: Arg<string>) =>
     `game_option(${optionID})`;
 
 /**获取物品的枪械伤害  
@@ -335,7 +335,7 @@ export const gameOption = (optionID: FNP<string>) =>
  * @example
  * { "math": [ "mygun = n_gun_damage('ALL')" ] }
  */
-export const gunDamage = (talker: UN, damageType: FNP<DamageTypeID>) =>
+export const gunDamage = (talker: UN, damageType: Arg<DamageTypeID>) =>
     `${pt(talker)}gun_damage(${damageType})`;
 
 /**获取角色背包中某物品的数量  
@@ -343,7 +343,7 @@ export const gunDamage = (talker: UN, damageType: FNP<DamageTypeID>) =>
  * @example
  * "condition": { "math": [ "u_item_count('backpack') >= 1"] }
  */
-export const itemCount = (talker: UN, itemID: FNP<ItemID>) =>
+export const itemCount = (talker: UN, itemID: Arg<ItemID>) =>
     `${pt(talker)}item_count(${itemID})`;
 
 /**获取带有指定 flag 的穿戴物品的辐射值  
@@ -354,7 +354,7 @@ export const itemCount = (talker: UN, itemID: FNP<ItemID>) =>
  */
 export const itemRad = (
     talker: UN,
-    flagID: FNP<FlagID>,
+    flagID: Arg<FlagID>,
     kwargs?: { aggregate?: 'min' | 'max' | 'sum' | 'average' | 'first' | 'last' }
 ) => `${pt(talker)}item_rad(${plist(flagID,...pfk(kwargs))})`;
 
@@ -364,7 +364,7 @@ export const itemRad = (
  * @example
  * { "math": [ "mymelee = n_melee_damage('ALL')" ] }
  */
-export const meleeDamage = (talker: UN, damageType: FNP<DamageTypeID>) =>
+export const meleeDamage = (talker: UN, damageType: Arg<DamageTypeID>) =>
     `${pt(talker)}melee_damage(${damageType})`;
 
 /**获取附近怪物数量  
@@ -377,7 +377,7 @@ export const meleeDamage = (talker: UN, damageType: FNP<DamageTypeID>) =>
  */
 export const monstersNearby = (
     talker: UNG,
-    ids: FNP<MonsterID>[],
+    ids: Arg<MonsterID>[],
     kwargs?: {
         radius?: string,
         location?: string,
@@ -389,7 +389,7 @@ export const monstersNearby = (
  * 只读  
  * 返回 mod 的加载顺序，未加载则返回 -1  
  */
-export const modLoadOrder = (modID: FNP<string>) =>
+export const modLoadOrder = (modID: Arg<string>) =>
     `mod_load_order(${modID})`;
 
 /**获取附近指定物种的怪物数量  
@@ -398,7 +398,7 @@ export const modLoadOrder = (modID: FNP<string>) =>
  */
 export const monSpeciesNearby = (
     talker: UNG,
-    speciesIDs: (FNP<SpeciesID> | string)[],
+    speciesIDs: (Arg<SpeciesID> | string)[],
     kwargs?: {
         radius?: string,
         location?: string,
@@ -412,7 +412,7 @@ export const monSpeciesNearby = (
  */
 export const monGroupsNearby = (
     talker: UNG,
-    groupIDs: (FNP<MonsterGroupID> | string)[],
+    groupIDs: (Arg<MonsterGroupID> | string)[],
     kwargs?: {
         radius?: string,
         location?: string,
@@ -456,7 +456,7 @@ export const pain = (
  */
 export const proficiency = (
     talker: UN,
-    proficiencyID: FNP<ProficiencyID>,
+    proficiencyID: Arg<ProficiencyID>,
     kwargs?: {
         format?: 'percent' | 'permille' | 'time_spent' | 'time_left' | 'total_time_required',
         direct?: boolean | string
@@ -468,7 +468,7 @@ export const proficiency = (
  * @example
  * "condition": { "math": [ "u_school_level('MAGUS') >= 3"] }
  */
-export const schoolLevel = (talker: UN, schoolID: FNP<string>) =>
+export const schoolLevel = (talker: UN, schoolID: Arg<string>) =>
     `${pt(talker)}school_level(${schoolID})`;
 
 /**获取或设置法术学派的临时等级调整  
@@ -476,7 +476,7 @@ export const schoolLevel = (talker: UN, schoolID: FNP<string>) =>
  * @example
  * { "math": [ "u_school_level_adjustment('MAGUS')++"] }
  */
-export const schoolLevelAdjustment = (talker: UN, schoolID: FNP<string>) =>
+export const schoolLevelAdjustment = (talker: UN, schoolID: Arg<string>) =>
     `${pt(talker)}school_level_adjustment(${schoolID})`;
 
 /**获取或设置技能等级  
@@ -484,7 +484,7 @@ export const schoolLevelAdjustment = (talker: UN, schoolID: FNP<string>) =>
  * @example
  * "condition": { "math": [ "u_skill('driving') >= 5"] }
  */
-export const skill = (talker: UN, skillID: FNP<SkillID>) =>
+export const skill = (talker: UN, skillID: Arg<SkillID>) =>
     `${pt(talker)}skill(${skillID})`;
 
 /**获取法术难度  
@@ -495,7 +495,7 @@ export const skill = (talker: UN, skillID: FNP<SkillID>) =>
  */
 export const spellDifficulty = (
     talker: UN,
-    spellID: FNP<SpellID>,
+    spellID: Arg<SpellID>,
     kwargs?: { baseline?: 'true' | 'false' }
 ) => `${pt(talker)}spell_difficulty(${plist(spellID,...pfk(kwargs))})`;
 
@@ -507,7 +507,7 @@ export const spellDifficulty = (
  */
 export const skillExp = (
     talker: UN,
-    skillID: FNP<SkillID>,
+    skillID: Arg<SkillID>,
     kwargs?: { format?: 'percentage' | 'raw' | string }
 ) => `${pt(talker)}skill_exp(${plist(skillID,...pfk(kwargs))})`;
 
@@ -516,7 +516,7 @@ export const skillExp = (
  * @example
  * "condition": { "math": [ "u_spell_exp('SPELL_ID') >= 5"] }
  */
-export const spellExp = (talker: UN, spellID: FNP<SpellID>) =>
+export const spellExp = (talker: UN, spellID: Arg<SpellID>) =>
     `${pt(talker)}spell_exp(${spellID})`;
 
 /**获取某法术等级所需的经验值  
@@ -525,7 +525,7 @@ export const spellExp = (talker: UN, spellID: FNP<SpellID>) =>
  * @example
  * "math": [ "spell_exp_for_level('SPELL_ID', u_spell_level('SPELL_ID') ) * 5" ]
  */
-export const spellExpForLevel = (spellID: FNP<SpellID>, level: string | number) =>
+export const spellExpForLevel = (spellID: Arg<SpellID>, level: string | number) =>
     `spell_exp_for_level(${plist(spellID,level)})`;
 
 /**获取角色已掌握的法术数量  
@@ -536,7 +536,7 @@ export const spellExpForLevel = (spellID: FNP<SpellID>, level: string | number) 
  */
 export const spellCount = (
     talker: UN,
-    kwargs?: { school?: FNP<string> }
+    kwargs?: { school?: Arg<string> }
 ) => `${pt(talker)}spell_count(${plist(...pfk(kwargs))})`;
 
 /**获取角色所有法术等级的总和  
@@ -549,7 +549,7 @@ export const spellCount = (
  */
 export const spellLevelSum = (
     talker: UN,
-    kwargs?: { school?: FNP<string>, level?: string | number }
+    kwargs?: { school?: Arg<string>, level?: string | number }
 ) => `${pt(talker)}spell_level_sum(${plist(...pfk(kwargs))})`;
 
 /**获取或设置角色某法术的等级  
@@ -558,7 +558,7 @@ export const spellLevelSum = (
  * @example
  * "condition": { "math": [ "u_spell_level('SPELL_ID') == -1"] }
  */
-export const spellLevel = (talker: UN, spellID: FNP<SpellID> | 'null') =>
+export const spellLevel = (talker: UN, spellID: Arg<SpellID> | 'null') =>
     `${pt(talker)}spell_level(${spellID})`;
 
 /**获取或设置角色某法术的临时等级调整  
@@ -567,7 +567,7 @@ export const spellLevel = (talker: UN, spellID: FNP<SpellID> | 'null') =>
  * @example
  * { "math": [ "u_spell_level_adjustment('SPELL_ID') += 3"] }
  */
-export const spellLevelAdjustment = (talker: UN, spellID: FNP<SpellID> | 'null') =>
+export const spellLevelAdjustment = (talker: UN, spellID: Arg<SpellID> | 'null') =>
     `${pt(talker)}spell_level_adjustment(${spellID})`;
 
 /**设置角色施法属性的临时调整（不可读取）  
@@ -580,11 +580,11 @@ export const spellcastingAdjustment = (
     talker: UN,
     aspect: string,
     kwargs?: {
-        flag_blacklist?: FNP<FlagID>,
-        flag_whitelist?: FNP<FlagID>,
-        mod?: FNP<string>,
-        school?: FNP<string>,
-        spell?: FNP<SpellID>
+        flag_blacklist?: Arg<FlagID>,
+        flag_whitelist?: Arg<FlagID>,
+        mod?: Arg<string>,
+        school?: Arg<string>,
+        spell?: Arg<SpellID>
     }
 ) => `${pt(talker)}spellcasting_adjustment(${plist(aspect,...pfk(kwargs))})`;
 
@@ -627,7 +627,7 @@ export const timeUntil = (timePoint: string, kwargs?: { unit?: string }) =>
  * 只读  
  * 可选参数：unit  
  */
-export const timeUntilEOC = (eocID: FNP<EocID>, kwargs?: { unit?: string }) =>
+export const timeUntilEOC = (eocID: Arg<EocID>, kwargs?: { unit?: string }) =>
     `time_until_eoc(${plist(eocID,...pfk(kwargs))})`;
 
 /**获取或设置角色属性值  
@@ -700,7 +700,7 @@ export const volume = (talker: UN) =>
  * @example
  * { "math": [ "u_vitamin('mutagen') = 0" ] }
  */
-export const vitamin = (talker: UN, vitaminID: FNP<VitaminID>) =>
+export const vitamin = (talker: UN, vitaminID: Arg<VitaminID>) =>
     `${pt(talker)}vitamin(${vitaminID})`;
 
 /**获取角色某部位的温暖度  
@@ -708,7 +708,7 @@ export const vitamin = (talker: UN, vitaminID: FNP<VitaminID>) =>
  * @example
  * { "math": [ "u_warmth_in_game = (u_warmth('torso') / 100) * 2 - 100"] }
  */
-export const warmth = (talker: UN, bodypart: FNP<BodyPartID>) =>
+export const warmth = (talker: UN, bodypart: Arg<BodyPartID>) =>
     `${pt(talker)}warmth(${bodypart})`;
 
 /**获取角色或怪物的视觉范围  
@@ -804,7 +804,7 @@ export const getCaloriesDaily = (
  */
 export const quality = (
     talker: UN,
-    qualityID: FNP<ToolQualityID>,
+    qualityID: Arg<ToolQualityID>,
     kwargs?: { strict?: boolean }
 ) => `${pt(talker)}quality(${plist(qualityID,...pfk(kwargs))})`;
 
