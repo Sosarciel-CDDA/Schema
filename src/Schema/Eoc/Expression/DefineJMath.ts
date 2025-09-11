@@ -22,8 +22,7 @@ import { ToolQualityID } from "Schema/ToolQuality";
 
 type UN  = 'u'|'n';
 type UNG = 'u'|'n'|'g';
-type G   = 'g';
-type Talker = UN|UNG|G;
+type Talker = UN|UNG;
 type sboolean = boolean|string;
 type snumber = number|string;
 const pt = (talker:Talker)=>talker=='g' ? '' : `${talker}_`;
