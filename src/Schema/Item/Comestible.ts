@@ -4,7 +4,7 @@ import { GenericFlagID } from "./Generic";
 import { VitaminID } from "Schema/Vitamin";
 import { MaterialID } from "Schema/Material";
 import { ItemID, ItemTrait } from "./ItemIndex";
-import { AddictionTypeID } from "Schema/Addiction";
+import { AddictionTypeID } from "Schema/AddictionType";
 
 /**Comestible ID格式   */
 export type ComestibleID = CddaID<"COME">;

@@ -21,10 +21,10 @@ import { EocID } from "../Eoc";
 import { ToolQualityID } from "Schema/ToolQuality";
 
 type UN  = 'u'|'n';
-type UNG = 'u'|'n'|'global';
-type G   = 'global';
+type UNG = 'u'|'n'|'g';
+type G   = 'g';
 type Talker = UN|UNG|G;
-const pt = (talker:Talker)=>talker=='global' ? '' : `${talker}_`;
+const pt = (talker:Talker)=>talker=='g' ? '' : `${talker}_`;
 const pfk = (opts?:Record<string,string|number|boolean>,prefix:boolean=true)=>opts==undefined ? [] :
     Object.entries(opts).filter(v=>v[1]!==undefined)
     .map(([k,v])=>`'${k}': ${v}`)
