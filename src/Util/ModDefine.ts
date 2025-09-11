@@ -77,6 +77,7 @@ import {
     UpdateMapgenID,
     FaultTypeID,
     SubBodyPartID,
+    ModId,
 } from "@/src/Schema";
 
 /**ModID生成工具 */
@@ -242,6 +243,10 @@ export class ModDefine{
     /**生成适用于此mod的 MonsterID */
     genMonsterID(id:string):MonsterID{
         return `${this.MOD_PREFIX}_MON_${id}`;
+    }
+    /**生成适用于此mod的 ModId */
+    genModId(id:string):ModId{
+        return `${this.MOD_PREFIX}_MOD_${id}`;
     }
     /**生成适用于此mod的 MissionDefinitionID */
     genMissionDefinitionID(id:string):MissionDefinitionID{
