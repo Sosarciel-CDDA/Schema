@@ -31,7 +31,7 @@ export type SpawnItem = TalkerVar<{
     /**物品将拥有这些flag
      * @default []
      */
-    flags: FlagID[];
+    flags?: FlagID[];
 },"spawn_item">
 
 /**删除物品 */
