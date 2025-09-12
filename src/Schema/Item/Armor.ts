@@ -36,7 +36,7 @@ export type ArmorTrait = ItemTrait<"ARMOR",({
      * 特别坚固的布料可能高达1-2mm  
      * 护甲或防护设备可以高达10或更高  
      */
-    material_thickness: Float;
+    material_thickness?: Float;
     /**是否为动力装甲物品(这些是特殊的)  
      * @default false  
      */

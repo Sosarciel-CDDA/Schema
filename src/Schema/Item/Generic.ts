@@ -68,9 +68,9 @@ export type GenericTrait = CopyfromVar<{
     /**默认的状态 默认为固态 */
     phase?: (Phase);
     /**重量 0重量物品需要添加 ZERO_WEIGHT标签 */
-    weight: (Weight);
+    weight: (Exclude<Weight,number>);
     /**体积 0体积物品需要添加 ZERO_WEIGHT标签*/
-    volume: (Volume);
+    volume: (Exclude<Volume,number>);
     /**当物品集成到另一个物品中时添加到基础物品的体积  
      * 例如枪械模组集成到枪中 体积会添加到基础物品上.   
      * 默认值与 volume 相同  

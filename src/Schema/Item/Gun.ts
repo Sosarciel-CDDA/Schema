@@ -19,8 +19,7 @@ export type GunTrait = ItemTrait<"GUN",({
 }|{
     /**标记具有 GUN 的特征, 用于补全 */
     "//GUN": true;
-})&{
-} & GunBase>;
+}) & GunBase>;
 
 /**枪械基础 */
 export type GunBase = {
@@ -31,7 +30,7 @@ export type GunBase = {
     /**发射时的远程伤害 */
     ranged_damage?: RangeDamage|RangeDamage[];
     /**发射时的范围 */
-    range?: number;
+    range: number;
     /**枪的不准确度, 以角度分钟 (MOA) 的百分之一为单位测量  
      * 当枪械模组中存在 sight_dispersion 和 aim_speed 时, 瞄准系统会选择“最佳”  
      * 用于每个目标操作的瞄准器, 这是在当前目标阈值下具有分散性的最快瞄准器  
