@@ -13,9 +13,6 @@ export type GunModID = CddaID<"GMOD">;
 /**枪械模组 */
 export type GunModTrait = ItemTrait<"GUNMOD",({
     /**标记具有 GUNMOD 的特征, 用于补全 */
-    "//T": "GUNMOD";
-}|{
-    /**标记具有 GUNMOD 的特征, 用于补全 */
     "//GUNMOD": true;
 })&{
 	/**这个枪械改装件安装在哪里？ */

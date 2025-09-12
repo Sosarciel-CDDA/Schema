@@ -12,9 +12,6 @@ export type AmmoID = CddaID<"AMMO">;
 /**Ammo 弹药物品 */
 export type AmmoTrait = ItemTrait<"AMMO",({
     /**标记具有 AMMO 的特征, 用于补全 */
-    "//T": "AMMO";
-}|{
-    /**标记具有 AMMO 的特征, 用于补全 */
     "//AMMO": true;
 })&{
     /**弹药类型 使用材质id */

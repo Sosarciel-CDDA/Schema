@@ -11,9 +11,6 @@ export type ArmorID = CddaID<"ARMOR">;
 /**一件护甲 */
 export type ArmorTrait = ItemTrait<"ARMOR",({
     /**标记具有 ARMOR 的特征, 用于补全 */
-    "//T": "ARMOR";
-}|{
-    /**标记具有 ARMOR 的特征, 用于补全 */
     "//ARMOR": true;
 })&{
     /**保暖值  

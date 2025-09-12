@@ -58,30 +58,28 @@ export type DefineItemID = 'null';
 export type Item = GenericTrait&AnyItemTrait;
 
 ///**任何物品的Flag */
-//export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];
+export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];
 
 /**物品特征 */
 export type ItemTrait<F extends string,T> = T;
 
 const a:Item = {
-  type: "ITEM",
-  id: "a",
-  name: "a",
-  description: "a",
-  subtypes: ["TOOL"],
-  weight: '1 g',
-  volume: '1 ml',
-  symbol: "1",
-  "//copy":false,
-  "//GUN": true,
-  "//ARMOR": true,
-  stack_size: 1,
-  ammo:["50"],
-  covers: ["arm_r"],
-  encumbrance: 0,
-  cover_melee:0,
-  cover_ranged:0,
-  material_thickness:1,
-  cover_vitals:0,
-  coverage:0
+    "//copy":false, "//GUN": true, "//ARMOR": true,
+    type: "ITEM",
+    id: "a",
+    name: "a",
+    description: "a",
+    subtypes: ["TOOL"],
+    weight: '1 g',
+    volume: '1 ml',
+    symbol: "1",
+    stack_size: 1,
+    ammo:["50"],
+    covers: ["arm_r"],
+    encumbrance: 0,
+    cover_melee:0,
+    cover_ranged:0,
+    material_thickness:1,
+    cover_vitals:0,
+    coverage:0
 }

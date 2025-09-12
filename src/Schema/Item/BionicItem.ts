@@ -11,9 +11,6 @@ export type BionicItemID = CddaID<'BIOITEM'>;
 /**仿生组件物品定义 */
 export type BionicItemTrait = ItemTrait<"BIONIC_ITEM",({
     /**标记具有 BIONIC_ITEM 的特征, 用于补全 */
-    "//T": "BIONIC_ITEM";
-}|{
-    /**标记具有 BIONIC_ITEM 的特征, 用于补全 */
     "//BIONIC_ITEM": true;
 })&{
     /**安装后的仿生ID  

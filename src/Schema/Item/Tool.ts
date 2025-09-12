@@ -16,9 +16,6 @@ export type PortID = CddaID<"PORT">;
 /**工具 */
 export type ToolTrait = ItemTrait<"TOOL",({
     /**标记具有 TOOL 的特征, 用于补全 */
-    "//T": "TOOL";
-}|{
-    /**标记具有 TOOL 的特征, 用于补全 */
     "//TOOL": true;
 })&{
     /**随着时间的推移消耗的费用, 不推荐使用 power_draw */

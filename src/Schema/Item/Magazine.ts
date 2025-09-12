@@ -11,9 +11,6 @@ export type MagazineID = CddaID<"MAG">;
 /**弹夹 */
 export type MagazineTrait = ItemTrait<"MAGAZINE",({
     /**标记具有 MAGAZINE 的特征, 用于补全 */
-    "//T": "MAGAZINE";
-}|{
-    /**标记具有 MAGAZINE 的特征, 用于补全 */
     "//MAGAZINE": true;
 })&{
     /**该弹匣可以装载哪些类型的弹药 */

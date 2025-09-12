@@ -12,9 +12,6 @@ export type ArtifactID = CddaID<"ARTIFACT">;
 /**神器定义 */
 export type ArtifactTrait = ItemTrait<"ARTIFACT",({
     /**标记具有 ARTIFACT 的特征, 用于补全 */
-    "//T": "ARTIFACT";
-}|{
-    /**标记具有 ARTIFACT 的特征, 用于补全 */
     "//ARTIFACT": true;
 })&{
     /**自动充能 */
