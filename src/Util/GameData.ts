@@ -1,4 +1,4 @@
-import { memoize, UtilFT } from "@zwa73/utils";
+import { memoize, PromiseQueue, UtilFT } from "@zwa73/utils";
 import { GAME_PATH } from "./Define";
 import { AnyCddaJson, Time, Volume, Weight } from "Schema/GenericDefine";
 import path from "pathe";
@@ -32,6 +32,8 @@ export const loadModMetadata = memoize(async ()=>{
     return metadataMap;
 });
 
+const loadqueue = new PromiseQueue({concurrency:128});
+
 /**获取mod数据 */
 export const loadModDataTable = memoize(async (modid:string)=>{
     const metadata = await loadModMetadata();
@@ -45,14 +47,15 @@ export const loadModDataTable = memoize(async (modid:string)=>{
         if(data['copy-from'] == data.fixed_id)
             delete data['copy-from'];
         const id = data.fixed_id;
-        if(!type || !id || typeof type != "string" || typeof id != "string") return;
+        if( type==undefined || id ==undefined ||
+            typeof type != "string" || typeof id != "string") return;
         if(modid) data.mod_source = modid;
         return data;
     }
 
     const dataMap:DataTable = {};
     await Promise.all(filelist.map(async fp=>{
-        const jsonlist = await UtilFT.loadJSONFile(fp) as CommonJson[];
+        const jsonlist = await loadqueue.enqueue(()=>UtilFT.loadJSONFile(fp)) as CommonJson[];
         if(!Array.isArray(jsonlist)) return;
         jsonlist.forEach(v=>{
             const data = procFn(v,modid=="dda" ? undefined : modid);

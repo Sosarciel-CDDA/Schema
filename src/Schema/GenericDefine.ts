@@ -326,7 +326,6 @@ export type PocketData = {
     ememory_max?: (Ememory);
 };
 
-
 /**远程武器伤害 */
 export type RangeDamage = {
     /**伤害类型 */
