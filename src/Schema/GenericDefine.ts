@@ -182,7 +182,12 @@ export type Copyfrom<T extends CopyfromAble> =
 
 /**容器 */
 export type PocketData = {
-    /**容器或弹夹 */
+    /**口袋类型  
+     * CONTAINER      为通常容器  
+     * MAGAZINE       为弹匣  
+     * MAGAZINE_WELL  为弹匣插槽  
+     * E_FILE_STORAGE 为数据存储器  
+     */
     pocket_type: "CONTAINER"|"MAGAZINE"|"MAGAZINE_WELL"|"E_FILE_STORAGE";
     /**此口袋可以容纳的最大体积, 所有包含的物品的总和 */
     max_contains_volume: (Volume);
