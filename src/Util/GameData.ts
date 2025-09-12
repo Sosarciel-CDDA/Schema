@@ -24,6 +24,7 @@ export const loadModMetadata = memoize(async ()=>{
         if(!ftoken.isDirectory()) return;
         const fp = path.join(GAME_PATH,'data','mods',ftoken.name);
         const modinfo = await UtilFT.loadJSONFile(path.join(fp,'modinfo.json')) as AnyCddaJson[];
+        if(!modinfo) return;
         const modid = modinfo.find(v=>v.type=="MOD_INFO")?.id;
         if(modid) metadataMap[modid] = fp;
     }));
