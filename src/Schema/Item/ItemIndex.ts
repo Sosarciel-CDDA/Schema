@@ -38,16 +38,12 @@ export type ItemSubtype = typeof ItemSubtypeList[number];
 
 
 /**任何物品特征 */
-export type AnyItemTrait = (ItemTrait<"GENERIC",({
-    /**标记具有 GENERIC 的特征, 用于补全 */
-    "//T": "GENERIC";
-}|{
-    /**标记具有 GENERIC 的特征, 用于补全 */
-    "//GENERIC": true;
-})&{
-  flags?:GenericTrait["flags"];
-}>|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait|AmmoTrait|BatteryTrait|BionicItemTrait|ArtifactTrait);
+export type AnyItemTrait = GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|
+ArmorTrait|GunModTrait|AmmoTrait|BatteryTrait|BionicItemTrait|ArtifactTrait;
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
+
+/**指定type的物品 */
+export type TypedItem<T extends AnyItemTrait> = GenericTrait&T;
 
 /**物品ID */
 export type ItemID = CddaID<"ITEM">|DefineItemID;
@@ -61,8 +57,8 @@ export type DefineItemID = 'null';
  */
 export type Item = GenericTrait&AnyItemTrait;
 
-/**任何物品的Flag */
-export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];
+///**任何物品的Flag */
+//export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];
 
 /**物品特征 */
 export type ItemTrait<F extends string,T> = T;
@@ -77,7 +73,6 @@ const a:Item = {
   volume: '1 ml',
   symbol: "1",
   "//copy":false,
-  //"//T": "GUN" as "GUN"|"ARMOR",
   "//GUN": true,
   "//ARMOR": true,
   stack_size: 1,

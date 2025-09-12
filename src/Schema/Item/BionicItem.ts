@@ -16,8 +16,6 @@ export type BionicItemTrait = ItemTrait<"BIONIC_ITEM",({
     /**标记具有 BIONIC_ITEM 的特征, 用于补全 */
     "//BIONIC_ITEM": true;
 })&{
-    /** 物品类型 */
-    type: "BIONIC_ITEM";  // 定义这是一个CBM
     /**安装后的仿生ID  
      * 如果与"id"不同, 则使用此ID  
      */
