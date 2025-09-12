@@ -16,8 +16,6 @@ export type ArmorTrait = ItemTrait<"ARMOR",({
     /**标记具有 ARMOR 的特征, 用于补全 */
     "//ARMOR": true;
 })&{
-    /**覆盖的位置 */
-    covers: BodyPartID[];
     /**保暖值  
      * @default 0  
      */
@@ -26,37 +24,12 @@ export type ArmorTrait = ItemTrait<"ARMOR",({
      * @default 0  
      */
     environmental_protection?: Int;
-    /**基础累赘度(未适配值) */
-    encumbrance: Int;
-    /**最大累赘度  
-     * 当角色完全装满体积时, 非刚性存储容器的累赘度将设置为这个值  
-     * 否则它将介于encumbrance和max_encumbrance之间, 遵循方程:   
-     * encumbrance + (max_encumbrance - encumbrance) * 非刚性体积 / 非刚性容量  
-     * 默认情况下, max_encumbrance是encumbrance + (非刚性体积 / 250ml)  
-     */
-    max_encumbrance?: Int;
     /**如果为true, 这是一件分边护甲  
      * 分边护甲是即使它描述了覆盖双腿, 双臂, 双手等  
      * 实际上一次只覆盖一个"边", 但玩家可以随意在两边之间移动  
      * @default false  
      */
     sided?: boolean;
-    /**基础覆盖率(%)  
-     * 身体部位被覆盖的百分比(总体)  
-     */
-    coverage?: Int;
-    /**近战攻击覆盖率(%)  
-     * 身体部位被覆盖的百分比(对抗近战)  
-     */
-    cover_melee?: Int;
-    /**远程攻击覆盖率(%)  
-     * 身体部位被覆盖的百分比(对抗远程)  
-     */
-    cover_ranged?: Int;
-    /**要害保护率(%)  
-     * 暴击伤害被减轻的百分比  
-     */
-    cover_vitals?: Int;
     /**材料厚度(mm)  
      * 材料的厚度, 以毫米为单位(大约)  
      * 普通衣服范围从0.1到0.5  
@@ -90,7 +63,11 @@ export type ArmorTrait = ItemTrait<"ARMOR",({
     /**护甲数据 必须设置覆盖层 */
     armor?: ArmorPortion[];
     flags?: ArmorFlagID[];
-}>;
+}&Pick<ArmorPortion,
+"covers"|"coverage"|
+"cover_melee"|"cover_ranged"|"cover_vitals"|
+"encumbrance"|"max_encumbrance"
+>>;
 
 /**护甲数据 */
 export type ArmorPortion = {
@@ -103,6 +80,13 @@ export type ArmorPortion = {
      * 默认情况下, 最大累赘度是累赘度 + (非刚性体积 / 250ml)  
      */
     encumbrance?: Int | [Int, Int];
+    /**最大累赘度  
+     * 当角色完全装满体积时, 非刚性存储容器的累赘度将设置为这个值  
+     * 否则它将介于encumbrance和max_encumbrance之间, 遵循方程:   
+     * encumbrance + (max_encumbrance - encumbrance) * 非刚性体积 / 非刚性容量  
+     * 默认情况下, max_encumbrance是encumbrance + (非刚性体积 / 250ml)  
+     */
+    max_encumbrance?: Int;
     /**覆盖护甲的透气性, 由护甲材料驱动  
      * @example "IMPERMEABLE" // 0%  
      * @example "POOR" // 30%  
