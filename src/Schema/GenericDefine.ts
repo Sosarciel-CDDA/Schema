@@ -185,46 +185,77 @@ export type PocketData = {
     /**容器或弹夹 */
     pocket_type: "CONTAINER"|"MAGAZINE"|"MAGAZINE_WELL"|"E_FILE_STORAGE";
     /**此口袋可以容纳的最大体积, 所有包含的物品的总和 */
-    max_contains_volume?: (Volume);
+    max_contains_volume: (Volume);
     /**此口袋可以容纳的最大重量, 所有容器物品的总重量 */
-    max_contains_weight?: (Weight);
-    /**可放入此口袋的物品的最小体积.  小于此尺寸的物品不能放入口袋中 */
+    max_contains_weight: (Weight);
+    /**可放入此口袋的物品的最小体积.
+     * 小于此尺寸的物品不能放入口袋中
+     */
     min_item_volume?: (Volume);
-    /**可通过开口放入此口袋的物品的最大体积 */
+    /**可放入此口袋的物品的最大体积 */
     max_item_volume?: (Volume);
-    /**可放入此口袋的物品的最大长度 (按其最长边).  默认值为假设体积为立方体的对角线开口长度 (cube_root(vol)*square_root(2)) */
+    /**可放入此口袋的物品的最大长度 (按其最长边)
+     * 默认值为假设体积为立方体的对角线开口长度 (cube_root(vol)*square_root(2))
+     */
     max_item_length?: (Length);
-    /**腐坏速度乘数 将物品放入此口袋中如何影响损坏.  小于1.0, 物品保存时间更长;  0.0 将无限期保留 */
+    /**腐坏速度乘数 将物品放入此口袋中如何影响损坏
+     * 小于1.0, 物品保存时间更长;  0.0 将无限期保留
+     * @default 1
+     */
     spoil_multiplier?: number;
-    /**重量乘数 个口袋里的物品神奇地内部重量比外部重量轻 原版中的任何东西都不应该有一个weight_multiplier */
+    /**重量乘数
+     * 口袋里的物品神奇地内部重量比外部重量轻  
+     * 原版中的任何东西都不应该有一个weight_multiplier  
+     * @default 1
+     */
     weight_multiplier?: number;
-    /**体积乘数 该口袋中的物品内部体积小于外部体积.  可用于有助于组织特定内容的容器, 例如用于管道胶带的纸板卷 */
+    /**体积乘数
+     * 该口袋中的物品内部体积小于外部体积  
+     * 可用于有助于组织特定内容的容器, 例如用于管道胶带的纸板卷  
+     * @default 1
+     */
     volume_multiplier?: number;
-    /**表示在最佳条件下从口袋中取出物品所需的移动次数.  */
+    /**负重修正系数。
+     * 该口袋体积对累赘的影响
+     * 与盔甲中的 volume_encumber_modifier 逻辑一致
+     * @default 1
+     */
+    volume_encumber_modifier?: number;
+    /**存取速度  
+     * 表示在最佳条件下从口袋中取出物品所需的移动点数  
+     */
     moves?: number;
-    /**如果为 true, 则该口袋的大小是固定的, 并且在填充时不会扩展.  玻璃罐是刚性的, 而塑料袋则不是
+    /**是否刚性  
+     * 如果为 true, 则该口袋的大小是固定的  
+     * 并且在填充时不会扩展  
+     * 玻璃罐是刚性的, 而塑料袋则不是  
      * @default false  
      */
     rigid?: boolean;
-    /**如果属实, 则玩家无法使用该口袋  
+    /**是否禁止使用
+     * 如果为 true, 玩家无法使用该口袋存取物品  
      * @default false  
      */
     forbidden?: boolean;
     /**在口袋开始膨胀之前可以放置物品的空间量.  仅当rigid = false 时才有效.  */
     magazine_well?: (Volume);
-    /**如果属实, 可能含有液体  
+    /**如果为 true, 可以装入液体  
      * @default false  
      */
     watertight?: boolean;
-    /**如果属实, 可能含有气体  
+    /**如果为 true, 可以装入气体  
      * @default false  
      */
     airtight?: boolean;
-    /**如果属实, 该物品包含一个烧蚀板.  确保在可以添加的车牌类型上包含 flag_restriction  
+    /**是否为防护板槽  
+     * 如果为 true, 该口袋用于安装单个防护板  
+     * 需配合 flag_restriction 限定板类型  
      * @default false  
      */
     ablative?: boolean;
-    /**如果为 true, 则只能将一堆物品放入此口袋内, 如果该物品不是 count_by_charges, 则只能放置一件物品  
+    /**是否为枪套  
+     * 如果为 true, 则只能将一堆物品放入此口袋内  
+     * 如果该物品不是 count_by_charges, 则只能放置一件物品  
      * @default false  
      */
     holster?: boolean;
@@ -232,24 +263,58 @@ export type PocketData = {
      * @default false  
      */
     open_container?: boolean;
-    /**如果属实, 口袋可以保护里面的物品在扔进火里时不会爆炸  
+    /**是否防火爆  
+     * 如果为 true, 口袋可以保护里面的物品在扔进火里时不会爆炸  
      * @default false  
      */
     fire_protection?: boolean;
-    /**将口袋限制为给定的弹药类型和数量.  这会覆盖强制性的体积, 重量, 水密和气密, 以使用给定的弹药类型.   
+    /**是否透明
+     * 若为 true，可远距离看到口袋内物品。未来可能用于光照系统
+     * @default false
+     */
+    transparent?:boolean;
+    /**额外负重。
+     * 使用该口袋时角色额外承受的负重值
+     */
+    extra_encumbrance?: Int;
+    /**被撕裂概率
+     * 挣脱攫抓状态时，口袋内容物被撕裂的概率为：
+     * 随机数[0,10×ripoff] 与 抓力[0,grab_strength] 比较
+     * @default 0
+     */
+    ripoff?:Int;
+    /**角色移动时此口袋产生的噪音 */
+    activity_noise?:{
+        /**噪音音量 */
+        vloume:Int;
+        /**产生概率, 百分比 */
+        chance:Int;
+    };
+    /**此物品生成时默认包含的弹匣 ID */
+    default_magazine?:(ItemID);
+    /**将口袋限制为给定的弹药类型和数量  
+     * 会覆盖强制性的体积, 重量, 水密和气密, 以使用给定的弹药类型.   
      * 一个口袋可以容纳任意数量的独特弹药类型, 每种弹药类型的数量不同, 并且容器只能容纳一种类型 (截至目前).  如果省略它, 它将是空的.   
      * PRecord<(AmmoID)子弹类型 : (number)容纳数量}>  
+     * @example  
+     * { "44": 5, "9mm": 10 }  
      */
     ammo_restriction?: PRecord<AmmoID,number>;
-    /**只有当物品具有与这些标志之一匹配的标志时, 才能将其放入此口袋中.  */
+    /**只有当物品具有与这些标志之一匹配的标志时, 才能将其放入此口袋中  */
     flag_restriction?: FlagID[];
-    /**只有这些物品 ID 才能放入此口袋中.  超越弹药和旗帜限制.  */
+    /**只有这些物品 ID 才能放入此口袋中
+     * 优先级最高
+     */
     item_restriction?: ItemID[];
-    /**有主要由该材料制成的物品才能进入.  */
+    /**有主要由该材料制成的物品才能放入此口袋  */
     material_restriction?: MaterialID[];
-    /**如果口袋有 sealed_data, 则在物品生成时它将被密封.  口袋的密封版本将覆盖相同数据类型的未密封版本  */
+    /**如果为 true, 则在物品生成时它将被密封  
+     * 口袋的密封版本将覆盖相同数据类型的未密封版本  
+     */
     sealed_data?: Partial<PocketData>;
-    /**如果口袋继承了标志, 则意味着里面的物品对拥有口袋本身的物品有贡献的任何标志.  */
+    /**如果为 true, 口袋内物品的flag会传递给口袋
+     * @default false
+     */
     inherits_flags?: boolean;
     /**此口袋的数据存储空间大小 */
     ememory_max?: (Ememory);
