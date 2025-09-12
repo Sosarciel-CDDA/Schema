@@ -190,9 +190,9 @@ export type PocketData = {
      */
     pocket_type: "CONTAINER"|"MAGAZINE"|"MAGAZINE_WELL"|"E_FILE_STORAGE";
     /**此口袋可以容纳的最大体积, 所有包含的物品的总和 */
-    max_contains_volume: (Volume);
+    max_contains_volume?: (Volume);
     /**此口袋可以容纳的最大重量, 所有容器物品的总重量 */
-    max_contains_weight: (Weight);
+    max_contains_weight?: (Weight);
     /**可放入此口袋的物品的最小体积.
      * 小于此尺寸的物品不能放入口袋中
      */
@@ -278,8 +278,9 @@ export type PocketData = {
      * @default false
      */
     transparent?:boolean;
-    /**额外负重。
+    /**额外负重
      * 使用该口袋时角色额外承受的负重值
+     * @default 0
      */
     extra_encumbrance?: Int;
     /**被撕裂概率
