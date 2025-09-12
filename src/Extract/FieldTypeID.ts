@@ -65,7 +65,6 @@ export const ExtractDefineFieldTypeIDList = [
     "fd_fungicidal_gas"           , // 抗真菌薄雾
     "fd_insecticidal_gas"         , // 杀虫剂薄雾
     "fd_smoke_vent"               , // 烟雾涌出
-    "fd_mechanical_fluid"         , // 少量机油
     "fd_electricity_unlit"        , // 电火花
     "fd_direction"                , // 检测到物体
     "fd_clairvoyant"              , // 透视

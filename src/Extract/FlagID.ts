@@ -38,6 +38,7 @@ export const ExtractDefineFlagIDList = [
     "COLLAR"                      , // 这件装备有 <info>宽领子</info>，能在嘴部没有累赘时拉高领子，为嘴部保暖。
     "COLLAPSE_CONTENTS"           , // 默认在物品栏中隐藏内容物。
     "DEAF"                        , // 这件装备会 <bad>阻挡声音</bad>，让你 <info>完全失聪</info>。
+    "DESTROY_ON_CHARGE_USE"       ,
     "OVERHEATS"                   , // 持续射击将会使武器 <bad>过热</bad>，并且可能使其 <info>受到损害</info>。
     "DIAMOND"                     , // 这件物品有着 <good>钻刃涂层</good>，增加了 <info>斩击及穿刺伤害</info>。
     "GEMSTONE"                    , // 这是一种珍贵的宝石，常用于装饰，然而在大灾变后它基本上没什么大用。
@@ -494,6 +495,7 @@ export const ExtractDefineFlagIDList = [
     "ELECTRONIC"                  ,
     "E_FILE_DEVICE"               ,
     "E_STORABLE"                  ,
+    "E_STORABLE_EXCLUSIVE"        ,
     "E_COPIABLE"                  ,
     "E_FILE_COLLECTION"           ,
     "E_FILE_DEVICE_UNREAD"        ,

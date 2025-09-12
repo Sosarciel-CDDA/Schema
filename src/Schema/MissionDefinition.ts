@@ -134,13 +134,13 @@ export type AssignMissionTarget = {
     must_see?:boolean;
     /**如果属实, 那么om_terrain一定还没有被看到.  */
     cant_see?:boolean;
-    /**如果为 true, 则使用随机匹配​​.
-     * 如果为 false, 则使用最接近的om_terrain
-     * @default false
+    /**如果为 true, 则使用随机匹配​​.  
+     * 如果为 false, 则使用最接近的om_terrain  
+     * @default false  
      **/
     random?:boolean;
-    /**在覆盖地图地形坐标中寻找匹配的范围om_terrain.
-     * 如果random为falese, 则不能填写
+    /**在覆盖地图地形坐标中寻找匹配的范围om_terrain.  
+     * 如果random为falese, 则不能填写  
      */
     search_range?: (NumberExpr);
     /**覆盖地图地形坐标中的范围. 此范围内的实例om_terrain将被忽略.  */

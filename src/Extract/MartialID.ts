@@ -1,37 +1,5 @@
 /**从文件提取的预定义的MartialID 列表*/
 export const ExtractDefineMartialIDList = [
-    "style_biojutsu"              , // 生化格斗术 一种后现代的先进格斗术，简称"生化术"。生化格斗术将武器、护甲和其它生化插件结合，产生了这种统一的武术流派。
-    "style_centipede"             , // 蜈蚣功 五毒教汤山魁使用的神功。蜈蚣功用暴雨般的高频攻击敌人。你的每次命中都会提高你的攻击速度。暴击将进一步提高你的伤害。
-    "style_lizard"                , // 壁虎功 五毒教何远新使用的神功。壁虎功善于利用墙壁攻击敌人。站在墙边可以获得更强的增益并解锁更强大的招式。
-    "style_scorpion"              , // 蝎子功 五毒教马腾使用的神功。神秘的蝎子功主练"钳形散手"与"蝎尾踢"。保持移动可以解锁一招能击昏敌人的"巨螯击"，暴击时招式能造成更高伤害，并能够击飞对手和其它被撞到的人。
-    "style_toad"                  , // 蛤蟆功 五毒教李豪使用的神功。蛤蟆功大师能专注于力量来抵御所有攻击。你有强大的物理防护，但当你移动时你会分心。你可以停下来冥想，在短时间内给自己提供更多的护甲。
-    "style_venom_snake"           , // 毒蛇功 五毒教洪文通使用的神功，毒蛇功专注于攻击被击昏的对手。先用"蛇嘴拳"击晕，然后就能够使用传说中的"蛇信掌"终结对手。
-    "MARTIAL_ARTS4"               , // 五毒门徒 你是五毒教的徒众。你在游戏开始时可以使用蜈蚣功，毒蛇功，蝎子功，壁虎功或蛤蟆功之一。请参考邵氏经典电影《五毒》。
-    "tec_biojutsu_disarm"         , // 缴械
-    "tec_biojutsu_strike_melee"   , // 精准打击（近战）
-    "tec_biojutsu_strike_unarmed" , // 精准打击（徒手）
-    "tec_biojutsu_impale"         , // 生化穿刺
-    "tec_biojutsu_takedown"       , // 生化绊摔
-    "tec_biojutsu_wide"           , // 生化斩击
-    "tec_lizard_rapid"            , // 壁虎重击
-    "tec_lizard_tail"             , // 壁虎扫尾
-    "tec_lizard_break"            , // 反擒拿
-    "tec_lizard_walldive"         , // 壁虎墙扑
-    "tec_venom_snake_feint"       , // 毒蛇吐信
-    "tec_venom_snake_rapid"       , // 蛇头拳
-    "tec_venom_snake_bite"        , // 蛇嘴拳
-    "tec_venom_snake_tail"        , // 毒蛇摆尾
-    "tec_venom_snake_strike"      , // 蛇信掌
-    "tec_scorpion_roundhouse"     , // 回旋踢
-    "tec_scorpion_brutal"         , // 蝎尾踢
-    "tec_scorpion_precise"        , // 巨螯击
-    "tec_toad_cross"              , // 蛤蟆掴
-    "tec_toad_crit"               , // 蛤蟆撞
-    "tec_toad_grab"               , // 毒蟾吐舌
-    "tec_centipede_break"         , // 反擒拿
-    "tec_centipede_rapid"         , // 蜈蚣连击
-    "tec_centipede_bite"          , // 蜈蚣撕咬
-    "tec_centipede_disarm"        , // 缴械
     "style_none"                  , // 无流派 并非武术流派，而是人类近乎本能的拳脚击打。
     "style_kicks"                 , // 强制徒手 并非一种真正的武术流派，选择该流派将不使用手持物品近战攻击，而是用拳头（如果你空手时）或脚。
     "style_aikido"                , // 合气道 合气道是一种专注自卫的日本武术，以抓筋拿脉，分筋错骨为主要手段，尽量减少对对方的实际伤害。它使用防御投技并解除敌人的武装，但是招式缺乏进攻力。
@@ -64,6 +32,38 @@ export const ExtractDefineMartialIDList = [
     "style_wingchun"              , // 咏春 咏春是一门中国武术，传说起源于南少林鹤拳，也有从蛇鹤相斗获得灵感的说法。它的站立姿势很高，重心完全放在后腿上。咏春专注于对对手发力方向的准确感知，并借此还击。
     "style_zui_quan"              , // 醉拳 醉拳模仿醉汉的动作来迷惑敌人。你获得基于智力的被动闪避加成及闪避次数加成。闪避成功会在短时间内让你获得基于智力的伤害和命中。移动会给你额外的闪避加成。
     "style_debug"                 , // 调试专精 失传的绝世武学，仅由开发者和作弊者使用。
+    "style_biojutsu"              , // 生化格斗术 一种后现代的先进格斗术，简称"生化术"。生化格斗术将武器、护甲和其它生化插件结合，产生了这种统一的武术流派。
+    "style_centipede"             , // 蜈蚣功 五毒教汤山魁使用的神功。蜈蚣功用暴雨般的高频攻击敌人。你的每次命中都会提高你的攻击速度。暴击将进一步提高你的伤害。
+    "style_lizard"                , // 壁虎功 五毒教何远新使用的神功。壁虎功善于利用墙壁攻击敌人。站在墙边可以获得更强的增益并解锁更强大的招式。
+    "style_scorpion"              , // 蝎子功 五毒教马腾使用的神功。神秘的蝎子功主练"钳形散手"与"蝎尾踢"。保持移动可以解锁一招能击昏敌人的"巨螯击"，暴击时招式能造成更高伤害，并能够击飞对手和其它被撞到的人。
+    "style_toad"                  , // 蛤蟆功 五毒教李豪使用的神功。蛤蟆功大师能专注于力量来抵御所有攻击。你有强大的物理防护，但当你移动时你会分心。你可以停下来冥想，在短时间内给自己提供更多的护甲。
+    "style_venom_snake"           , // 毒蛇功 五毒教洪文通使用的神功，毒蛇功专注于攻击被击昏的对手。先用"蛇嘴拳"击晕，然后就能够使用传说中的"蛇信掌"终结对手。
+    "MARTIAL_ARTS4"               , // 五毒门徒 你是五毒教的徒众。你在游戏开始时可以使用蜈蚣功，毒蛇功，蝎子功，壁虎功或蛤蟆功之一。请参考邵氏经典电影《五毒》。
+    "tec_biojutsu_disarm"         , // 缴械
+    "tec_biojutsu_strike_melee"   , // 精准打击（近战）
+    "tec_biojutsu_strike_unarmed" , // 精准打击（徒手）
+    "tec_biojutsu_impale"         , // 生化穿刺
+    "tec_biojutsu_takedown"       , // 生化绊摔
+    "tec_biojutsu_wide"           , // 生化斩击
+    "tec_lizard_rapid"            , // 壁虎重击
+    "tec_lizard_tail"             , // 壁虎扫尾
+    "tec_lizard_break"            , // 反擒拿
+    "tec_lizard_walldive"         , // 壁虎墙扑
+    "tec_venom_snake_feint"       , // 毒蛇吐信
+    "tec_venom_snake_rapid"       , // 蛇头拳
+    "tec_venom_snake_bite"        , // 蛇嘴拳
+    "tec_venom_snake_tail"        , // 毒蛇摆尾
+    "tec_venom_snake_strike"      , // 蛇信掌
+    "tec_scorpion_roundhouse"     , // 回旋踢
+    "tec_scorpion_brutal"         , // 蝎尾踢
+    "tec_scorpion_precise"        , // 巨螯击
+    "tec_toad_cross"              , // 蛤蟆掴
+    "tec_toad_crit"               , // 蛤蟆撞
+    "tec_toad_grab"               , // 毒蟾吐舌
+    "tec_centipede_break"         , // 反擒拿
+    "tec_centipede_rapid"         , // 蜈蚣连击
+    "tec_centipede_bite"          , // 蜈蚣撕咬
+    "tec_centipede_disarm"        , // 缴械
 ] as const;
 /**从文件提取的预定义的MartialID */
 export type ExtractDefineMartialID = typeof ExtractDefineMartialIDList[number];

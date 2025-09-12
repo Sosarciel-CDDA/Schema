@@ -1,5 +1,6 @@
+import { GAME_PATH } from '@src/Util';
 import { fileMacro, regionMacro } from '@zwa73/dev-utils';
-import { memoize, MPromise, UtilFT } from '@zwa73/utils';
+import { MPromise, UtilFT } from '@zwa73/utils';
 import fs from 'fs';
 import path from 'pathe';
 
@@ -14,10 +15,6 @@ export const ITEM_DIR = path.join(SCHEMA_DIR,'Item');
 
 export const EXTRACT_DIR = path.join(SRC_DIR,'Extract');
 
-
-export const loadBuildInfo = memoize(async ()=>{
-    return await UtilFT.loadJSONFile(INFO_PATH) as {gamepath:string};
-});
 
 /**生成TypeList并导出 */
 export async function exportTypeList(arg:{
@@ -80,12 +77,11 @@ export async function extractDefineIdList(arg:{
      */
     func:(filepath:string)=>MPromise<MPromise<string>[]>;
 }){
-    const info = await loadBuildInfo();
     const {typeName,sourceFileGlob,func} = arg;
 
     const extractName = `ExtractDefine${typeName}`;
 
-    const sourceFileList = await UtilFT.fileSearchGlob(info.gamepath,sourceFileGlob);
+    const sourceFileList = await UtilFT.fileSearchGlob(GAME_PATH,sourceFileGlob);
 
     //const contextList = await Promise.all(sourceFileList.map(fp=>fs.promises.readFile(path.join(info.gamepath,fp),'utf-8')));
     const exportStringList = await Promise.all((await Promise.all(sourceFileList.map(fp => func(fp)))).flat());

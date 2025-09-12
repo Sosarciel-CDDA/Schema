@@ -39,8 +39,8 @@ export namespace JM {
 /**获取对应部位的护甲值  
  * 只读  
  * 返回角色特定身体部位的护甲值, 对应特定伤害类型  
- * @example
- * "condition": { "math": [ "u_armour('bash', 'torso') >= 5"] }
+ * @example  
+ * "condition": { "math": [ "u_armour('bash', 'torso') >= 5"] }  
  */
 export const armor = (talker:UN,damageType:Arg<DamageTypeID>,bodypart:Arg<BodyPartID>)=>
     `${pt(talker)}armor(${plist(damageType,bodypart)})`;
@@ -49,17 +49,17 @@ export const armor = (talker:UN,damageType:Arg<DamageTypeID>,bodypart:Arg<BodyPa
 /**获取角色当前武器的攻击速度  
  * 只读  
  * 返回角色当前武器的调整后攻击速度  
- * @example
- * "condition": { "math": [ "u_attack_speed() >= 10"] }
+ * @example  
+ * "condition": { "math": [ "u_attack_speed() >= 10"] }  
  */
 export const attackSpeed = (talker: UN) =>
     `${pt(talker)}attack_speed()`;
 
 /**获取角色或怪物的移动速度  
  * 只读  
- * 返回单位移动速度（默认角色为 100）  
- * @example
- * "condition": { "math": [ "u_speed() >= 10"] }
+ * 返回单位移动速度 (默认角色为 100)   
+ * @example  
+ * "condition": { "math": [ "u_speed() >= 10"] }  
  */
 export const speed = (talker: UN) =>
     `${pt(talker)}speed()`;
@@ -68,28 +68,28 @@ export const speed = (talker: UN) =>
 /**获取角色对某种成瘾类型的强度  
  * 只读  
  * 返回角色当前对指定成瘾类型的强度值  
- * @example
- * "condition": { "math": [ "u_addiction_intensity('caffeine') >= 1"] }
+ * @example  
+ * "condition": { "math": [ "u_addiction_intensity('caffeine') >= 1"] }  
  */
 export const addictionIntensity = (talker: UN, addictionType: Arg<AddictionTypeID>) =>
     `${pt(talker)}addiction_intensity(${addictionType})`;
 
 
-/**获取角色对某种成瘾类型剩余持续时间（单位：回合）  
+/**获取角色对某种成瘾类型剩余持续时间 (单位: 回合)   
  * 可读可写  
- * @example
- * "condition": { "math": [ "u_addiction_turns('caffeine') >= 3600"] }
+ * @example  
+ * "condition": { "math": [ "u_addiction_turns('caffeine') >= 3600"] }  
  */
 export const addictionTurns = (talker: UN, addictionType: Arg<AddictionTypeID>) =>
     `${pt(talker)}addiction_turns(${addictionType})`;
 
 
-/**获取附近角色数量（包括玩家和非幻觉 NPC）  
+/**获取附近角色数量 (包括玩家和非幻觉 NPC)   
  * 只读  
- * 可选参数：radius、location、attitude、allow_hallucinations  
- * @example
- * "condition": { "math": [ "u_characters_nearby('radius': u_search_radius * 3, 'attitude': 'not_allies' ) > 0" ] }
- * "condition": { "math": [ "characters_nearby('radius': u_search_radius * 3, 'location': u_search_loc) > 5" ] }
+ * 可选参数: radius, location, attitude, allow_hallucinations  
+ * @example  
+ * "condition": { "math": [ "u_characters_nearby('radius': u_search_radius * 3, 'attitude': 'not_allies' ) > 0" ] }  
+ * "condition": { "math": [ "characters_nearby('radius': u_search_radius * 3, 'location': u_search_loc) > 5" ] }  
  */
 export const charactersNearby = (
     talker: UNG,
@@ -104,8 +104,8 @@ export const charactersNearby = (
 
 /**获取角色背包中某物品的充能次数  
  * 只读  
- * @example
- * "condition": { "math": [ "u_charge_count('light_battery_cell') >= 100"] }
+ * @example  
+ * "condition": { "math": [ "u_charge_count('light_battery_cell') >= 100"] }  
  */
 export const chargeCount = (talker: UN, itemID: Arg<ItemID>) =>
     `${pt(talker)}charge_count(${itemID})`;
@@ -113,8 +113,8 @@ export const chargeCount = (talker: UN, itemID: Arg<ItemID>) =>
 
 /**获取角色某部位的覆盖率  
  * 只读  
- * @example
- * "condition": { "math": [ "u_coverage('torso') > 0"] }
+ * @example  
+ * "condition": { "math": [ "u_coverage('torso') > 0"] }  
  */
 export const coverage = (talker: UN, bodypart: Arg<BodyPartID>) =>
     `${pt(talker)}coverage(${bodypart})`;
@@ -122,9 +122,9 @@ export const coverage = (talker: UN, bodypart: Arg<BodyPartID>) =>
 
 /**获取两个位置之间的距离  
  * 只读  
- * 参数可以是位置变量或特殊字符串（如 'u', 'npc'）  
- * @example
- * "condition": { "math": [ "distance('u', loc) <= 50"] }
+ * 参数可以是位置变量或特殊字符串 (如 'u', 'npc')   
+ * @example  
+ * "condition": { "math": [ "distance('u', loc) <= 50"] }  
  */
 export const distance = (from: 'u'|'npc'|AnyString, to: 'u'|'npc'|AnyString) =>
     `distance(${plist(from,to)})`;
@@ -132,9 +132,9 @@ export const distance = (from: 'u'|'npc'|AnyString, to: 'u'|'npc'|AnyString) =>
 
 /**获取角色某状态效果的强度  
  * 只读  
- * 可选参数：bodypart  
- * @example
- * "condition": { "math": [ "u_effect_intensity('bite', 'bodypart': 'torso') > 1"] }
+ * 可选参数: bodypart  
+ * @example  
+ * "condition": { "math": [ "u_effect_intensity('bite', 'bodypart': 'torso') > 1"] }  
  */
 export const effectIntensity = (
     talker: UN,
@@ -145,10 +145,10 @@ export const effectIntensity = (
 
 /**获取角色某状态效果的持续时间  
  * 可读可写  
- * 可选参数：bodypart, unit（默认单位为秒）  
- * @example
- * "condition": { "math": [ "u_effect_duration('bite', 'bodypart': 'torso') > 1"] }
- * { "math": [ "_thing = u_effect_duration('yrax_overcharged', 'bodypart': 'torso', 'unit': 'hours')" ] }
+ * 可选参数: bodypart, unit (默认单位为秒)   
+ * @example  
+ * "condition": { "math": [ "u_effect_duration('bite', 'bodypart': 'torso') > 1"] }  
+ * { "math": [ "_thing = u_effect_duration('yrax_overcharged', 'bodypart': 'torso', 'unit': 'hours')" ] }  
  */
 export const effectDuration = (
     talker: UN,
@@ -160,32 +160,32 @@ export const effectDuration = (
 /**获取角色某部位的累积负重值  
  * 只读  
  * 返回角色特定身体部位的负重值  
- * @example
- * "condition": { "math": [ "u_encumbrance('torso') > 0"] }
+ * @example  
+ * "condition": { "math": [ "u_encumbrance('torso') > 0"] }  
  */
 export const encumbrance = (talker: UN, bodypart: Arg<BodyPartID>) =>
     `${pt(talker)}encumbrance(${bodypart})`;
 
 /**获取角色当前生命值  
  * 可读可写  
- * @example
- * { "math": [ "u_health() -= 1" ] }
+ * @example  
+ * { "math": [ "u_health() -= 1" ] }  
  */
 export const health = (talker: UN) =>
     `${pt(talker)}health()`;
 
-/**获取能量字符串对应的数值（单位：毫焦耳）  
+/**获取能量字符串对应的数值 (单位: 毫焦耳)   
  * 只读  
- * @example
- * { "math": [ "u_val('power') -= energy('25 kJ')" ] }
+ * @example  
+ * { "math": [ "u_val('power') -= energy('25 kJ')" ] }  
  */
 export const energy = (value: string) =>
     `energy(${value})`;
 
 /**获取指定派系对角色的好感度  
  * 只读  
- * @example
- * "condition": { "math": [ "faction_like('hells_raiders') < -60" ] }
+ * @example  
+ * "condition": { "math": [ "faction_like('hells_raiders') < -60" ] }  
  */
 export const factionLike = (factionID: Arg<NPCFactionID>) =>
     `faction_like(${factionID})`;
@@ -204,9 +204,9 @@ export const factionTrust = (factionID: Arg<NPCFactionID>) =>
 
 /**获取指定派系的食物储备  
  * 可读可写  
- * 可选参数：vitamin  
- * @example
- * { "math": [ "calcium_amount = faction_food_supply('your_followers', 'vitamin':'calcium')" ] }
+ * 可选参数: vitamin  
+ * @example  
+ * { "math": [ "calcium_amount = faction_food_supply('your_followers', 'vitamin':'calcium')" ] }  
  */
 export const factionFoodSupply = (
     factionID: Arg<NPCFactionID>,
@@ -233,10 +233,10 @@ export const factionSize = (factionID: Arg<NPCFactionID>) =>
 
 /**获取指定位置上的场强  
  * 只读  
- * 可选参数：location（global 时必须提供）  
- * @example
- * "condition": { "math": [ "u_field_strength('fd_blood') > 5" ] }
- * "condition": { "math": [ "field_strength('fd_blood_insect', 'location': u_search_loc) > 5" ] }
+ * 可选参数: location (global 时必须提供)   
+ * @example  
+ * "condition": { "math": [ "u_field_strength('fd_blood') > 5" ] }  
+ * "condition": { "math": [ "field_strength('fd_blood_insect', 'location': u_search_loc) > 5" ] }  
  */
 export const fieldStrength = (
     talker: UNG,
@@ -247,8 +247,8 @@ export const fieldStrength = (
 /**判断角色是否拥有指定 flag  
  * 只读  
  * 用于三元表达式条件判断  
- * @example
- * "condition": { "math": [ "u_blorg = u_has_flag('MUTATION_TRESHOLD') ? 100 : 15" ] }
+ * @example  
+ * "condition": { "math": [ "u_blorg = u_has_flag('MUTATION_TRESHOLD') ? 100 : 15" ] }  
  */
 export const hasFlag = (talker: UN, flagID: Arg<FlagID>) =>
     `${pt(talker)}has_flag(${flagID})`;
@@ -256,17 +256,17 @@ export const hasFlag = (talker: UN, flagID: Arg<FlagID>) =>
 /**判断角色是否拥有指定 trait  
  * 只读  
  * 用于三元表达式条件判断  
- * @example
- * "condition": { "math": [ "u_blorg = u_has_trait('FEEBLE') ? 100 : 15" ] }
+ * @example  
+ * "condition": { "math": [ "u_blorg = u_has_trait('FEEBLE') ? 100 : 15" ] }  
  */
 export const hasTrait = (talker: UN, traitID: Arg<MutationID>) =>
     `${pt(talker)}has_trait(${traitID})`;
 
-/**获取某 mutation 分类下的 trait 总和（不限定角色）  
+/**获取某 mutation 分类下的 trait 总和 (不限定角色)   
  * 只读  
- * 可选参数：type（POSITIVE、NEGATIVE、ALL）  
- * @example
- * "condition": { "math": [ "u_sum_traits_of_category('RAT') < u_sum_traits_of_category('RAT', 'type': 'POSITIVE')" ] }
+ * 可选参数: type (POSITIVE, NEGATIVE, ALL)   
+ * @example  
+ * "condition": { "math": [ "u_sum_traits_of_category('RAT') < u_sum_traits_of_category('RAT', 'type': 'POSITIVE')" ] }  
  */
 export const sumTraitsOfCategory = (
     talker: UN,
@@ -276,9 +276,9 @@ export const sumTraitsOfCategory = (
 
 /**获取角色当前拥有的某 mutation 分类下的 trait 总和  
  * 只读  
- * 可选参数：type（POSITIVE、NEGATIVE、ALL）  
- * @example
- * "condition": { "math": [ "u_sum_traits_of_category_char_has('RAT') < u_sum_traits_of_category_char_has('RAT', 'type': 'POSITIVE')" ] }
+ * 可选参数: type (POSITIVE, NEGATIVE, ALL)   
+ * @example  
+ * "condition": { "math": [ "u_sum_traits_of_category_char_has('RAT') < u_sum_traits_of_category_char_has('RAT', 'type': 'POSITIVE')" ] }  
  */
 export const sumTraitsOfCategoryCharHas = (
     talker: UN,
@@ -289,8 +289,8 @@ export const sumTraitsOfCategoryCharHas = (
 /**判断角色是否拥有某项熟练度  
  * 只读  
  * 用于三元表达式条件判断  
- * @example
- * "condition": { "math": [ "u_blorg = u_has_proficiency('prof_intro_biology') ? 100 : 15" ] }
+ * @example  
+ * "condition": { "math": [ "u_blorg = u_has_proficiency('prof_intro_biology') ? 100 : 15" ] }  
  */
 export const hasProficiency = (talker: UN, proficiencyID: Arg<ProficiencyID>) =>
     `${pt(talker)}has_proficiency(${proficiencyID})`;
@@ -298,25 +298,25 @@ export const hasProficiency = (talker: UN, proficiencyID: Arg<ProficiencyID>) =>
 /**判断变量是否已定义  
  * 只读  
  * 用于三元表达式条件判断  
- * @example
- * "condition": { "math": [ "u_blorg = has_var(fancy_var) ? fancy_var : 15" ] }
+ * @example  
+ * "condition": { "math": [ "u_blorg = has_var(fancy_var) ? fancy_var : 15" ] }  
  */
 export const hasVar = (varName: string) =>
     `has_var(${varName})`;
 
 /**获取或设置角色某部位的生命值  
  * 可读可写  
- * 支持特殊值：ALL、ALL_MAJOR、ALL_MINOR  
- * @example
- * "condition": { "math": [ "hp('torso') > 100"] }
+ * 支持特殊值: ALL, ALL_MAJOR, ALL_MINOR  
+ * @example  
+ * "condition": { "math": [ "hp('torso') > 100"] }  
  */
 export const hp = (bodypart: Arg<BodyPartID>) =>
     `hp(${bodypart})`;
 
 /**获取角色某部位的最大生命值  
  * 只读  
- * @example
- * "condition": { "math": [ "u_hp_max('torso') >= 100"] }
+ * @example  
+ * "condition": { "math": [ "u_hp_max('torso') >= 100"] }  
  */
 export const hpMax = (talker: UN, bodypart: Arg<BodyPartID>) =>
     `${pt(talker)}hp_max(${bodypart})`;
@@ -325,34 +325,34 @@ export const hpMax = (talker: UN, bodypart: Arg<BodyPartID>) =>
 /**获取游戏选项的数值  
  * 只读  
  * 返回指定游戏选项的数值  
- * @example
- * "condition": { "math": [ "game_option('NPC_SPAWNTIME') >= 5"] }
+ * @example  
+ * "condition": { "math": [ "game_option('NPC_SPAWNTIME') >= 5"] }  
  */
 export const gameOption = (optionID: Arg<string>) =>
     `game_option(${optionID})`;
 
 /**获取物品的枪械伤害  
  * 只读  
- * 参数为伤害类型，可使用 'ALL' 获取总伤害  
- * @example
- * { "math": [ "mygun = n_gun_damage('ALL')" ] }
+ * 参数为伤害类型, 可使用 'ALL' 获取总伤害  
+ * @example  
+ * { "math": [ "mygun = n_gun_damage('ALL')" ] }  
  */
 export const gunDamage = (talker: UN, damageType: Arg<DamageTypeID>) =>
     `${pt(talker)}gun_damage(${damageType})`;
 
 /**获取角色背包中某物品的数量  
  * 只读  
- * @example
- * "condition": { "math": [ "u_item_count('backpack') >= 1"] }
+ * @example  
+ * "condition": { "math": [ "u_item_count('backpack') >= 1"] }  
  */
 export const itemCount = (talker: UN, itemID: Arg<ItemID>) =>
     `${pt(talker)}item_count(${itemID})`;
 
 /**获取带有指定 flag 的穿戴物品的辐射值  
  * 只读  
- * 可选参数：aggregate（min/max/sum/average/first/last）  
- * @example
- * "condition": { "math": [ "u_item_rad('RAD_DETECT') >= 1"] }
+ * 可选参数: aggregate (min/max/sum/average/first/last)   
+ * @example  
+ * "condition": { "math": [ "u_item_rad('RAD_DETECT') >= 1"] }  
  */
 export const itemRad = (
     talker: UN,
@@ -362,20 +362,20 @@ export const itemRad = (
 
 /**获取物品的近战伤害  
  * 只读  
- * 参数为伤害类型，可使用 'ALL' 获取总伤害  
- * @example
- * { "math": [ "mymelee = n_melee_damage('ALL')" ] }
+ * 参数为伤害类型, 可使用 'ALL' 获取总伤害  
+ * @example  
+ * { "math": [ "mymelee = n_melee_damage('ALL')" ] }  
  */
 export const meleeDamage = (talker: UN, damageType: Arg<DamageTypeID>) =>
     `${pt(talker)}melee_damage(${damageType})`;
 
 /**获取附近怪物数量  
  * 只读  
- * 可变参数：怪物 ID 列表  
- * 可选参数：radius, location, attitude  
- * @example
- * "condition": { "math": [ "u_monsters_nearby('radius': u_search_radius * 3) > 5" ] }
- * "condition": { "math": [ "monsters_nearby('mon_void_maw', 'mon_void_limb', 'mon_fotm_var', 'radius': u_search_radius * 3, 'location': u_search_loc)", ">", "5" ] }
+ * 可变参数: 怪物 ID 列表  
+ * 可选参数: radius, location, attitude  
+ * @example  
+ * "condition": { "math": [ "u_monsters_nearby('radius': u_search_radius * 3) > 5" ] }  
+ * "condition": { "math": [ "monsters_nearby('mon_void_maw', 'mon_void_limb', 'mon_fotm_var', 'radius': u_search_radius * 3, 'location': u_search_loc)", ">", "5" ] }  
  */
 export const monstersNearby = (
     talker: UNG,
@@ -389,14 +389,14 @@ export const monstersNearby = (
 
 /**获取指定 mod 的加载顺序  
  * 只读  
- * 返回 mod 的加载顺序，未加载则返回 -1  
+ * 返回 mod 的加载顺序, 未加载则返回 -1  
  */
 export const modLoadOrder = (modID: Arg<ModId>) =>
     `mod_load_order(${modID})`;
 
 /**获取附近指定物种的怪物数量  
  * 只读  
- * 同 monstersNearby，但参数为物种 ID  
+ * 同 monstersNearby, 但参数为物种 ID  
  */
 export const monSpeciesNearby = (
     talker: UNG,
@@ -410,7 +410,7 @@ export const monSpeciesNearby = (
 
 /**获取附近指定怪物群组的数量  
  * 只读  
- * 同 monstersNearby，但参数为群组 ID  
+ * 同 monstersNearby, 但参数为群组 ID  
  */
 export const monGroupsNearby = (
     talker: UNG,
@@ -424,7 +424,7 @@ export const monGroupsNearby = (
 
 /**获取当前月相  
  * 只读  
- * 返回当前的月亮阶段（0~7）  
+ * 返回当前的月亮阶段 (0~7)   
  */
 export const moonPhase = () =>
     `moon_phase()`;
@@ -432,18 +432,18 @@ export const moonPhase = () =>
 /**弹出数值输入框  
  * 只读  
  * 参数为提示文本和默认值  
- * @example
- * "math": [ "u_value_to_set = num_input('Playstyle Perks Cost?', 4)" ]
+ * @example  
+ * "math": [ "u_value_to_set = num_input('Playstyle Perks Cost?', 4)" ]  
  */
 export const numInput = (prompt: string, defaultValue: snumber) =>
     `num_input(${plist(prompt,defaultValue)})`;
 
 /**获取或设置角色的疼痛值  
  * 可读可写  
- * 可选参数：type（perceived/raw）  
- * @example
- * { "math": [ "n_pain() = u_pain() + 9000" ] }
- * { "math": [ "u_pain('type': 'perceived' ) >= 40" ] }
+ * 可选参数: type (perceived/raw)   
+ * @example  
+ * { "math": [ "n_pain() = u_pain() + 9000" ] }  
+ * { "math": [ "u_pain('type': 'perceived' ) >= 40" ] }  
  */
 export const pain = (
     talker: UN,
@@ -452,9 +452,9 @@ export const pain = (
 
 /**获取或设置角色的熟练度  
  * 可读可写  
- * 可选参数：format, direct  
- * @example
- * { "math": [ "u_proficiency('prof_intro_chemistry', 'format': 'percent') = 50" ] }
+ * 可选参数: format, direct  
+ * @example  
+ * { "math": [ "u_proficiency('prof_intro_chemistry', 'format': 'percent') = 50" ] }  
  */
 export const proficiency = (
     talker: UN,
@@ -467,33 +467,33 @@ export const proficiency = (
 
 /**获取角色已掌握的某法术学派的最高等级  
  * 只读  
- * @example
- * "condition": { "math": [ "u_school_level('MAGUS') >= 3"] }
+ * @example  
+ * "condition": { "math": [ "u_school_level('MAGUS') >= 3"] }  
  */
 export const schoolLevel = (talker: UN, schoolID: Arg<MutationID>) =>
     `${pt(talker)}school_level(${schoolID})`;
 
 /**获取或设置法术学派的临时等级调整  
  * 可读可写  
- * @example
- * { "math": [ "u_school_level_adjustment('MAGUS')++"] }
+ * @example  
+ * { "math": [ "u_school_level_adjustment('MAGUS')++"] }  
  */
 export const schoolLevelAdjustment = (talker: UN, schoolID: Arg<MutationID>) =>
     `${pt(talker)}school_level_adjustment(${schoolID})`;
 
 /**获取或设置技能等级  
  * 可读可写  
- * @example
- * "condition": { "math": [ "u_skill('driving') >= 5"] }
+ * @example  
+ * "condition": { "math": [ "u_skill('driving') >= 5"] }  
  */
 export const skill = (talker: UN, skillID: Arg<SkillID>) =>
     `${pt(talker)}skill(${skillID})`;
 
 /**获取法术难度  
  * 可读可写  
- * 可选参数：baseline（是否忽略临时修正）  
- * @example
- * "math": [ "_difficulty = u_spell_difficulty('test_spell_id', 'baseline': 'true')" ]
+ * 可选参数: baseline (是否忽略临时修正)   
+ * @example  
+ * "math": [ "_difficulty = u_spell_difficulty('test_spell_id', 'baseline': 'true')" ]  
  */
 export const spellDifficulty = (
     talker: UN,
@@ -503,9 +503,9 @@ export const spellDifficulty = (
 
 /**获取或设置技能经验  
  * 可读可写  
- * 可选参数：format（percentage/raw）  
- * @example
- * { "math": [ "u_skill_exp('driving', 'format': crt_format)--"] }
+ * 可选参数: format (percentage/raw)   
+ * @example  
+ * { "math": [ "u_skill_exp('driving', 'format': crt_format)--"] }  
  */
 export const skillExp = (
     talker: UN,
@@ -515,8 +515,8 @@ export const skillExp = (
 
 /**获取或设置法术经验  
  * 可读可写  
- * @example
- * "condition": { "math": [ "u_spell_exp('SPELL_ID') >= 5"] }
+ * @example  
+ * "condition": { "math": [ "u_spell_exp('SPELL_ID') >= 5"] }  
  */
 export const spellExp = (talker: UN, spellID: Arg<SpellID>) =>
     `${pt(talker)}spell_exp(${spellID})`;
@@ -524,17 +524,17 @@ export const spellExp = (talker: UN, spellID: Arg<SpellID>) =>
 /**获取某法术等级所需的经验值  
  * 只读  
  * 参数为 spellID 和目标等级  
- * @example
- * "math": [ "spell_exp_for_level('SPELL_ID', u_spell_level('SPELL_ID') ) * 5" ]
+ * @example  
+ * "math": [ "spell_exp_for_level('SPELL_ID', u_spell_level('SPELL_ID') ) * 5" ]  
  */
 export const spellExpForLevel = (spellID: Arg<SpellID>, level: snumber) =>
     `spell_exp_for_level(${plist(spellID,level)})`;
 
 /**获取角色已掌握的法术数量  
  * 只读  
- * 可选参数：school  
- * @example
- * "condition": { "math": [ "u_spell_count('school': 'MAGUS') >= 10"] }
+ * 可选参数: school  
+ * @example  
+ * "condition": { "math": [ "u_spell_count('school': 'MAGUS') >= 10"] }  
  */
 export const spellCount = (
     talker: UN,
@@ -543,11 +543,11 @@ export const spellCount = (
 
 /**获取角色所有法术等级的总和  
  * 只读  
- * 可选参数：school, level  
- * @example
- * { "math": [ "test_var1 = u_spell_level_sum()" ] }
- * { "math": [ "test_var2 = u_spell_level_sum('school': 'MAGUS')" ] }
- * { "math": [ "test_var3 = u_spell_level_sum('school': 'MAGUS', 'level': '10')" ] }
+ * 可选参数: school, level  
+ * @example  
+ * { "math": [ "test_var1 = u_spell_level_sum()" ] }  
+ * { "math": [ "test_var2 = u_spell_level_sum('school': 'MAGUS')" ] }  
+ * { "math": [ "test_var3 = u_spell_level_sum('school': 'MAGUS', 'level': '10')" ] }  
  */
 export const spellLevelSum = (
     talker: UN,
@@ -557,8 +557,8 @@ export const spellLevelSum = (
 /**获取或设置角色某法术的等级  
  * 可读可写  
  * 参数为 spellID 或 "null"  
- * @example
- * "condition": { "math": [ "u_spell_level('SPELL_ID') == -1"] }
+ * @example  
+ * "condition": { "math": [ "u_spell_level('SPELL_ID') == -1"] }  
  */
 export const spellLevel = (talker: UN, spellID: Arg<SpellID> | 'null') =>
     `${pt(talker)}spell_level(${spellID})`;
@@ -566,17 +566,17 @@ export const spellLevel = (talker: UN, spellID: Arg<SpellID> | 'null') =>
 /**获取或设置角色某法术的临时等级调整  
  * 可读可写  
  * 参数为 spellID 或 "null"  
- * @example
- * { "math": [ "u_spell_level_adjustment('SPELL_ID') += 3"] }
+ * @example  
+ * { "math": [ "u_spell_level_adjustment('SPELL_ID') += 3"] }  
  */
 export const spellLevelAdjustment = (talker: UN, spellID: Arg<SpellID> | 'null') =>
     `${pt(talker)}spell_level_adjustment(${spellID})`;
 
-/**设置角色施法属性的临时调整（不可读取）  
+/**设置角色施法属性的临时调整 (不可读取)   
  * 可写  
- * 可选参数：flag_blacklist, flag_whitelist, mod, school, spell  
- * @example
- * { "math": [ "u_spellcasting_adjustment('casting_time', 'mod': 'magiclysm', 'flag_blacklist': 'CONSUMES_RUNES' ) = -0.95" ] }
+ * 可选参数: flag_blacklist, flag_whitelist, mod, school, spell  
+ * @example  
+ * { "math": [ "u_spellcasting_adjustment('casting_time', 'mod': 'magiclysm', 'flag_blacklist': 'CONSUMES_RUNES' ) = -0.95" ] }  
  */
 export const spellcastingAdjustment = (
     talker: UN,
@@ -590,44 +590,44 @@ export const spellcastingAdjustment = (
     }
 ) => `${pt(talker)}spellcasting_adjustment(${plist(aspect,...pfk(kwargs))})`;
 
-/**获取变量值，如果未定义则返回默认值  
+/**获取变量值, 如果未定义则返回默认值  
  * 只读  
- * @example
- * "condition": { "math": [ "u_blorg = value_or( fancy_var, 15 )" ] }
+ * @example  
+ * "condition": { "math": [ "u_blorg = value_or( fancy_var, 15 )" ] }  
  */
 export const valueOr = (variable: string, fallback: snumber) =>
     `value_or(${plist(variable,fallback)})`;
 
-/**获取时间段对应的数值（单位：回合）  
+/**获取时间段对应的数值 (单位: 回合)   
  * 可读可写  
- * 可选参数：unit  
- * @example
- * { "math": [ "time('now') - u_timer_caravan_RandEnc > time('1 h')" ] }
+ * 可选参数: unit  
+ * @example  
+ * { "math": [ "time('now') - u_timer_caravan_RandEnc > time('1 h')" ] }  
  */
 export const time = (timeStr: AnyString|'now', kwargs?: { unit?: TimeUnit }) =>
     `time(${plist(timeStr,...pfk(kwargs))})`;
 
-/**获取某时间点以来的时间（单位：回合）  
+/**获取某时间点以来的时间 (单位: 回合)   
  * 只读  
- * 可选参数：unit  
- * @example
- * { "math": [ "time_since(u_timer_caravan_RandEnc) > time('1 h')" ] }
+ * 可选参数: unit  
+ * @example  
+ * { "math": [ "time_since(u_timer_caravan_RandEnc) > time('1 h')" ] }  
  */
 export const timeSince = (timePoint: string, kwargs?: { unit?: TimeUnit }) =>
     `time_since(${plist(timePoint,...pfk(kwargs))})`;
 
-/**获取距离某时间点的剩余时间（单位：回合）  
+/**获取距离某时间点的剩余时间 (单位: 回合)   
  * 只读  
- * 可选参数：unit  
- * @example
- * { "math": [ "TIME_TILL_SUNRISE = time_until('sunrise', 'unit':'minutes')" ] }
+ * 可选参数: unit  
+ * @example  
+ * { "math": [ "TIME_TILL_SUNRISE = time_until('sunrise', 'unit':'minutes')" ] }  
  */
 export const timeUntil = (timePoint: string, kwargs?: { unit?: TimeUnit }) =>
     `time_until(${plist(timePoint,...pfk(kwargs))})`;
 
 /**获取距离某 EOC 下次运行的时间  
  * 只读  
- * 可选参数：unit  
+ * 可选参数: unit  
  */
 export const timeUntilEOC = (eocID: Arg<EocID>, kwargs?: { unit?: TimeUnit }) =>
     `time_until_eoc(${plist(eocID,...pfk(kwargs))})`;
@@ -635,88 +635,88 @@ export const timeUntilEOC = (eocID: Arg<EocID>, kwargs?: { unit?: TimeUnit }) =>
 /**获取或设置角色属性值  
  * 可读可写  
  * 参数为属性名  
- * @example
- * { "math": [ "u_val('strength') = 2" ] }
+ * @example  
+ * { "math": [ "u_val('strength') = 2" ] }  
  */
 export const val = (talker: UN, aspect: string) =>
     `${pt(talker)}val(${aspect})`;
 
 /**获取 NPC 对话者的愤怒值  
  * 可读可写  
- * @example
- * { "math": [ "n_npc_anger() > 2" ] }
+ * @example  
+ * { "math": [ "n_npc_anger() > 2" ] }  
  */
 export const npcAnger = (talker: UN) =>
     `${pt(talker)}npc_anger()`;
 
 /**获取 NPC 对话者的恐惧值  
  * 可读可写  
- * @example
- * { "math": [ "n_npc_fear() < 2" ] }
+ * @example  
+ * { "math": [ "n_npc_fear() < 2" ] }  
  */
 export const npcFear = (talker: UN) =>
     `${pt(talker)}npc_fear()`;
 
 /**获取 NPC 对话者的信任值  
  * 可读可写  
- * @example
- * { "math": [ "n_npc_trust() = 2" ] }
+ * @example  
+ * { "math": [ "n_npc_trust() = 2" ] }  
  */
 export const npcTrust = (talker: UN) =>
     `${pt(talker)}npc_trust()`;
 
 /**获取 NPC 对话者的价值评估  
  * 可读可写  
- * @example
- * { "math": [ "n_npc_value() += 2" ] }
+ * @example  
+ * { "math": [ "n_npc_value() += 2" ] }  
  */
 export const npcValue = (talker: UN) =>
     `${pt(talker)}npc_value()`;
 
 /**获取角色的丑陋值  
  * 只读  
- * @example
- * { "math": [ "n_ugliness() > 0" ] }
+ * @example  
+ * { "math": [ "n_ugliness() > 0" ] }  
  */
 export const ugliness = (talker: UN) =>
     `${pt(talker)}ugliness()`;
 
-/**获取角色或物品的重量（单位：毫克）  
+/**获取角色或物品的重量 (单位: 毫克)   
  * 只读  
- * @example
- * { "math": [ "u_weight() < 1000000" ] }
+ * @example  
+ * { "math": [ "u_weight() < 1000000" ] }  
  */
 export const weight = (talker: UN) =>
     `${pt(talker)}weight()`;
 
-/**获取角色或物品的体积（单位：毫升）  
+/**获取角色或物品的体积 (单位: 毫升)   
  * 只读  
- * @example
- * { "math": [ "u_volume() < 1000" ] }
+ * @example  
+ * { "math": [ "u_volume() < 1000" ] }  
  */
 export const volume = (talker: UN) =>
     `${pt(talker)}volume()`;
 
 /**获取或设置角色某种维生素的数值  
  * 可读可写  
- * @example
- * { "math": [ "u_vitamin('mutagen') = 0" ] }
+ * @example  
+ * { "math": [ "u_vitamin('mutagen') = 0" ] }  
  */
 export const vitamin = (talker: UN, vitaminID: Arg<VitaminID>) =>
     `${pt(talker)}vitamin(${vitaminID})`;
 
 /**获取角色某部位的温暖度  
  * 只读  
- * @example
- * { "math": [ "u_warmth_in_game = (u_warmth('torso') / 100) * 2 - 100"] }
+ * @example  
+ * { "math": [ "u_warmth_in_game = (u_warmth('torso') / 100) * 2 - 100"] }  
  */
 export const warmth = (talker: UN, bodypart: Arg<BodyPartID>) =>
     `${pt(talker)}warmth(${bodypart})`;
 
 /**获取角色或怪物的视觉范围  
  * 只读  
- * @example
- * { "math": [ "n_vision_range() < 30"] }
+ * @example  
+ * { "math": [ "n_vision_range() < 30"] }  
  */
 export const visionRange = (talker: UN) =>
     `${pt(talker)}vision_range()`;
@@ -724,45 +724,45 @@ export const visionRange = (talker: UN) =>
 /**获取或设置天气属性  
  * 可读可写  
  * 参数为天气属性名  
- * @example
- * { "math": [ "weather('temperature') < from_fahrenheit( 33 )" ] }
+ * @example  
+ * { "math": [ "weather('temperature') < from_fahrenheit( 33 )" ] }  
  */
 export const weather = (aspect: string) =>
     `weather(${aspect})`;
 
 /**获取物品的损伤等级  
  * 只读  
- * @example
- * "condition": { "math": [ "n_damage_level() < 1" ] }
+ * @example  
+ * "condition": { "math": [ "n_damage_level() < 1" ] }  
  */
 export const damageLevel = (talker: UN) =>
     `${pt(talker)}damage_level()`;
 
-/**获取角色的热控能力（暖）  
+/**获取角色的热控能力 (暖)   
  * 只读  
- * @example
- * "condition": { "math": [ "u_climate_control_str_heat() < 0" ] }
+ * @example  
+ * "condition": { "math": [ "u_climate_control_str_heat() < 0" ] }  
  */
 export const climateControlStrHeat = (talker: UN) =>
     `${pt(talker)}climate_control_str_heat()`;
 
 
-/**获取角色的冷控能力（寒冷环境下的舒适度）  
+/**获取角色的冷控能力 (寒冷环境下的舒适度)   
  * 只读  
- * 返回角色当前的 chill 气候控制值（单位：温暖点）  
- * @example
- * "condition": { "math": [ "n_climate_control_str_chill() < 0" ] }
+ * 返回角色当前的 chill 气候控制值 (单位: 温暖点)   
+ * @example  
+ * "condition": { "math": [ "n_climate_control_str_chill() < 0" ] }  
  */
 export const climateControlStrChill = (talker: UN) =>
     `${pt(talker)}climate_control_str_chill()`;
 
 /**获取或设置角色的卡路里值  
  * 可读可写  
- * 可选参数：format（percent/raw），dont_affect_weariness（是否影响疲劳）  
- * @example
- * "condition": { "math": [ "u_calories() < 0" ] }
- * "condition": { "math": [ "u_calories('format': 'percent') > 0" ] }
- * "condition": { "math": [ "u_calories() = 110000" ] }
+ * 可选参数: format (percent/raw) , dont_affect_weariness (是否影响疲劳)   
+ * @example  
+ * "condition": { "math": [ "u_calories() < 0" ] }  
+ * "condition": { "math": [ "u_calories('format': 'percent') > 0" ] }  
+ * "condition": { "math": [ "u_calories() = 110000" ] }  
  */
 export const calories = (
     talker: UN,
@@ -774,19 +774,19 @@ export const calories = (
 
 /**获取角色或物品的神器共鸣值  
  * 只读  
- * 返回角色的总共鸣值，或物品的单独共鸣值  
- * @example
- * "condition": { "math": [ "u_artifact_resonance() > 0" ] }
+ * 返回角色的总共鸣值, 或物品的单独共鸣值  
+ * @example  
+ * "condition": { "math": [ "u_artifact_resonance() > 0" ] }  
  */
 export const artifactResonance = (talker: UN) =>
     `${pt(talker)}artifact_resonance()`;
 
-/**获取角色每日卡路里摄入/消耗记录（最多追溯 30 天）  
+/**获取角色每日卡路里摄入/消耗记录 (最多追溯 30 天)   
  * 只读  
- * 可选参数：day（0~30），type（spent/gained/ingested/total）  
- * @example
- * "condition": { "math": [ "get_calories_daily() > 1000" ] }
- * { "math": [ "foo = get_calories_daily('type':'gained', 'day':'1')" ] }
+ * 可选参数: day (0~30) , type (spent/gained/ingested/total)   
+ * @example  
+ * "condition": { "math": [ "get_calories_daily() > 1000" ] }  
+ * { "math": [ "foo = get_calories_daily('type':'gained', 'day':'1')" ] }  
  */
 export const getCaloriesDaily = (
     kwargs?: {
@@ -798,11 +798,11 @@ export const getCaloriesDaily = (
 /**获取物品的工具质量等级  
  * 只读  
  * 参数为质量 ID  
- * 可选参数：strict（是否要求物品为空）  
- * @example
- * "condition": { "math": [ "u_quality('HACK') > 0" ] }
- * { "math": [ "_cut_quality = u_quality('CUT')" ] }
- * "condition": { "math": [ "u_quality('BOIL', 'strict': true ) > 0" ] }
+ * 可选参数: strict (是否要求物品为空)   
+ * @example  
+ * "condition": { "math": [ "u_quality('HACK') > 0" ] }  
+ * { "math": [ "_cut_quality = u_quality('CUT')" ] }  
+ * "condition": { "math": [ "u_quality('BOIL', 'strict': true ) > 0" ] }  
  */
 export const quality = (
     talker: UN,
@@ -817,28 +817,28 @@ export const quality = (
 /**预定义的变量 */
 export namespace JMV {
 
-/**当前活动等级（整数，范围 0–5）  
+/**当前活动等级 (整数, 范围 0–5)   
  * 不可赋值  
- * 0 表示睡眠或静止，5 表示剧烈运动  
+ * 0 表示睡眠或静止, 5 表示剧烈运动  
  */
 export const activityLevel = 'activity_level';
 
-/**当前年龄（单位：岁）  
+/**当前年龄 (单位: 岁)   
  * 可赋值  
  */
 export const age = 'age';
 
-/**角色的盟友数量（仅适用于 avatar）  
+/**角色的盟友数量 (仅适用于 avatar)   
  * 不可赋值  
  */
 export const allies = 'allies';
 
-/**当前愤怒值（仅适用于怪物）  
+/**当前愤怒值 (仅适用于怪物)   
  * 可赋值  
  */
 export const anger = 'anger';
 
-/**当前 BMI（乘以 1000）  
+/**当前 BMI (乘以 1000)   
  * 不可赋值  
  */
 export const bmiPermil = 'bmi_permil';
@@ -848,7 +848,7 @@ export const bmiPermil = 'bmi_permil';
  */
 export const bodyTemp = 'body_temp';
 
-/**身体温度差值（最热/最冷部位与感知温度的差）  
+/**身体温度差值 (最热/最冷部位与感知温度的差)   
  * 不可赋值  
  */
 export const bodyTempDelta = 'body_temp_delta';
@@ -873,7 +873,7 @@ export const exp = 'exp';
  */
 export const sleepiness = 'sleepiness';
 
-/**精细视觉修正值（1.0 表示清晰，11.0 表示完全失明）  
+/**精细视觉修正值 (1.0 表示清晰, 11.0 表示完全失明)   
  * 不可赋值  
  */
 export const fineDetailVisionMod = 'fine_detail_vision_mod';
@@ -883,32 +883,32 @@ export const fineDetailVisionMod = 'fine_detail_vision_mod';
  */
 export const focus = 'focus';
 
-/**有效专注值（受附魔影响）  
+/**有效专注值 (受附魔影响)   
  * 不可赋值  
  */
 export const focusEffective = 'focus_effective';
 
-/**当前友好度（仅适用于怪物）  
+/**当前友好度 (仅适用于怪物)   
  * 可赋值  
  */
 export const friendly = 'friendly';
 
-/**抓握强度（仅适用于怪物）  
+/**抓握强度 (仅适用于怪物)   
  * 不可赋值  
  */
 export const grabStrength = 'grab_strength';
 
-/**当前身高（单位：厘米）  
- * 可赋值，受体型限制  
+/**当前身高 (单位: 厘米)   
+ * 可赋值, 受体型限制  
  */
 export const height = 'height';
 
-/**当前饥饿感（感知值）  
+/**当前饥饿感 (感知值)   
  * 不可赋值  
  */
 export const hunger = 'hunger';
 
-/**当前即时口渴值（未吸收的水分不计入）  
+/**当前即时口渴值 (未吸收的水分不计入)   
  * 不可赋值  
  */
 export const instantThirst = 'instant_thirst';
@@ -928,8 +928,8 @@ export const manaMax = 'mana_max';
  */
 export const manaPercentage = 'mana_percentage';
 
-/**当前士气值（仅怪物可赋值）  
- * 可赋值（怪物）  
+/**当前士气值 (仅怪物可赋值)   
+ * 可赋值 (怪物)   
  */
 export const morale = 'morale';
 
@@ -958,17 +958,17 @@ export const posY = 'pos_y';
  */
 export const posZ = 'pos_z';
 
-/**当前电力（义体或物品）  
+/**当前电力 (义体或物品)   
  * 可赋值  
  */
 export const power = 'power';
 
-/**电力百分比（义体或物品）  
+/**电力百分比 (义体或物品)   
  * 可赋值  
  */
 export const powerPercentage = 'power_percentage';
 
-/**最大电力（义体或物品）  
+/**最大电力 (义体或物品)   
  * 不可赋值  
  */
 export const powerMax = 'power_max';
@@ -978,7 +978,7 @@ export const powerMax = 'power_max';
  */
 export const rad = 'rad';
 
-/**当前体型等级（1–5）  
+/**当前体型等级 (1–5)   
  * 不可赋值  
  */
 export const size = 'size';
@@ -1068,12 +1068,12 @@ export const perceptionBonus = 'perception_bonus';
  */
 export const thirst = 'thirst';
 
-/**当前体积（毫升，仅怪物）  
+/**当前体积 (毫升, 仅怪物)   
  * 不可赋值  
  */
 export const volume = 'volume';
 
-/**当前重量（毫克，仅怪物）  
+/**当前重量 (毫克, 仅怪物)   
  * 不可赋值  
  */
 export const weight = 'weight';
@@ -1083,28 +1083,28 @@ export const weight = 'weight';
  */
 export const count = 'count';
 
-/**车辆朝向角度（0 表示正北）  
- * 不可赋值，仅适用于车辆  
+/**车辆朝向角度 (0 表示正北)   
+ * 不可赋值, 仅适用于车辆  
  */
 export const vehicleFacing = 'vehicle_facing';
 
 /**车辆当前速度  
- * 不可赋值，仅适用于车辆  
+ * 不可赋值, 仅适用于车辆  
  */
 export const currentSpeed = 'current_speed';
 
-/**车辆空载重量（不含乘客与货物）  
- * 不可赋值，仅适用于车辆  
+/**车辆空载重量 (不含乘客与货物)   
+ * 不可赋值, 仅适用于车辆  
  */
 export const unloadedWeight = 'unloaded_weight';
 
-/**车上非敌对乘客数量（人类或怪物）  
- * 不可赋值，仅适用于车辆  
+/**车上非敌对乘客数量 (人类或怪物)   
+ * 不可赋值, 仅适用于车辆  
  */
 export const friendlyPassengerCount = 'friendly_passenger_count';
 
-/**车上非友好乘客数量（人类或怪物）  
- * 不可赋值，仅适用于车辆  
+/**车上非友好乘客数量 (人类或怪物)   
+ * 不可赋值, 仅适用于车辆  
  */
 export const hostilePassengerCount = 'hostile_passenger_count';
 

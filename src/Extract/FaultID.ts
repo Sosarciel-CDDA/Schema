@@ -23,7 +23,7 @@ export const ExtractDefineFaultIDList = [
     "fault_handle_long_off"       , // 无手柄 工具的头部完全从杆上脱落了。
     "fault_blade_rolled_edge"     , // 刀口卷刃 刀口卷曲变形，更难使用。
     "fault_blade_chipped"         , // 刀刃崩口 一小块刃口缺损，以致锋利度锐减。
-    "fault_blade_cracked"         , // 裂纹 刀身上有一道深深的裂痕。这无疑表明整把武器迟早会断裂。
+    "fault_blade_cracked"         , // 裂纹 There is a deep crack on the blade.  A sure sign that the entire sword will break apart sooner or later.  Any attempt to repair it would only further damage the blade, so the days for this %s are numbered.
     "fault_blade_broken_half"     , // 刀身折断 刀身的一小部分断掉了。仍可使用，但效果大打折扣。
     "fault_blade_broken"          , // 刀身折断 刀身粉碎，仅剩残端。想修只能铸把新的了。
     "fault_blade_broken_tip"      , // 破损的尖锋 你可以用来戳刺的刀尖消失了。
