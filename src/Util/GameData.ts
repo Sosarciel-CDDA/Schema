@@ -23,8 +23,10 @@ export const loadModMetadata = memoize(async ()=>{
     await Promise.all(dirlist.map(async ftoken=>{
         if(!ftoken.isDirectory()) return;
         const fp = path.join(GAME_PATH,'data','mods',ftoken.name);
-        const modinfo = await UtilFT.loadJSONFile(path.join(fp,'modinfo.json')) as AnyCddaJson[];
-        if(!modinfo) return;
+        const infopath = path.join(fp,'modinfo.json');
+        if(!(await UtilFT.pathExists(infopath))) return;
+        const modinfo = await UtilFT.loadJSONFile(infopath) as AnyCddaJson[];
+        if(!modinfo || !Array.isArray(modinfo)) return;
         const modid = modinfo.find(v=>v.type=="MOD_INFO")?.id;
         if(modid) metadataMap[modid] = fp;
     }));
