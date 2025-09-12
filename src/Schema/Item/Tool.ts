@@ -26,7 +26,7 @@ export type ToolTrait = ItemTrait<"TOOL",({
      */
     fuel_efficiency?: Float;
     /**用于装弹的弹药类型 */
-    tool_ammo?: AmmunitionTypeID[];
+    tool_ammo?: AmmunitionTypeID|AmmunitionTypeID[];
     /**此工具对配方中所需的每次充电使用 charge_factor 费用  
      * 适用于具有 sub 字段但使用与原始工具不同的弹药的工具  
      */
