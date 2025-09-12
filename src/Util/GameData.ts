@@ -111,8 +111,20 @@ export class GameDataTable{
 }
 
 /**获取某个加载顺序的数据 */
-export const loadGameDataTable = async (...mods:string[])=>{
-    if(mods[0]=="*") mods = ['dda',...Object.keys(await loadModMetadata()).filter(v=>v!="dda")];
+export const loadGameDataTable = async (opt:{
+    /**不填代表全部 */
+    includes?:string[];
+    /**排除的mod */
+    excludes?:string[];
+})=>{
+    const {
+        includes,
+        excludes = []
+    } = opt;
+    const mods = ( includes ??
+    ['dda',...Object.keys(await loadModMetadata()).filter(v=>v!="dda")]
+    ).filter(v=>!excludes.includes(v));
+
     const datamapList = await Promise.all(mods.map(loadModDataTable));
     const mgr:DataTable = {};
     for(const datamap of datamapList){
