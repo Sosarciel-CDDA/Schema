@@ -1,10 +1,13 @@
-import { Time, CddaID, DescText, Int } from "./GenericDefine";
+import { Time, CddaID, DescText, Int, Color, Char } from "./GenericDefine";
 import { SpellID } from "./Spell";
 import { EmitID } from "./Emit";
 import { MutationID } from "./Mutation";
 import { EffectID } from "./Effect";
 import { BoolExpr, NumberExpr } from "./Eoc";
 import { BodyPartID } from "./BodyPart";
+import { PRecord } from "@zwa73/js-utils";
+import { DamageTypeID } from "./DamageType";
+import { SkillID } from "./Skill";
 
 /**附魔ID */
 export type EnchantmentID = CddaID<"ENCH">;
@@ -30,8 +33,10 @@ export type Enchantment = {
      * 该咒语以您的位置为中心.   
      */
     hit_me_effect?: FakeSpell[];
-    /**附魔的数值增幅 */
-    values?: EnchModVal[];
+    /**附魔的数值调整 */
+    values?: ValueModVal<EnchValType>[];
+    /**附魔的技能调整 */
+    skills?:ValueModVal<SkillID>[];
     /**生成Emit */
     emitter?: (EmitID);
     /**添加肢体 */
@@ -60,7 +65,61 @@ export type Enchantment = {
             spell_effects: FakeSpell[];
         }[];
     };
+    /**累赘度修正 */
+    encumbrance_modifier?:{
+        /**目标肢体 */
+        part    :(BodyPartID);
+        /**倍率调整 1为+100% */
+        multiply?: (NumberExpr);
+        /**加值调整 在计算倍率前先添加 */
+        add     ?: (NumberExpr);
+    }[]
+    /**近战伤害加值 */
+    melee_damage_bonus?:DamageModVal[];
+    /**伤害减免 计算护甲前 */
+    incoming_damage_mod?:DamageModVal[];
+    /**伤害减免 计算护甲后 */
+    incoming_damage_mod_post_absorbed?:DamageModVal[];
+    /**特殊视觉 */
+    special_vision?:SpecialVisionDesc[]
 };
+
+/**特殊视觉文本描述ID */
+export type SpecialVisionDescID = string;
+/**特殊视觉文本描述 */
+export type SpecialVisionDesc = {
+    /**特殊视觉文本描述ID */
+    id: SpecialVisionDescID;
+    /**视觉描述条件 */
+    text_condition?: (BoolExpr);
+    /**视觉描述 */
+    text: (DescText);
+    /**视觉描述符号 */
+    symbol?: (Char);
+    /**视觉描述颜色 */
+    color?: (Color);
+}
+
+/**附魔伤害类型数值调整 */
+export type DamageModVal = {
+    /**伤害类型 */
+    type: (DamageTypeID);
+    /**倍率调整 1为+100% */
+    multiply?: (NumberExpr);
+    /**加值调整 在计算倍率前先添加 */
+    add     ?: (NumberExpr);
+}
+
+/**附魔数值调整 value */
+export type ValueModVal<T extends string> = {
+    /**附魔调整类型 */
+    value    : T;
+    /**倍率调整 1为+100% */
+    multiply?: (NumberExpr);
+    /**加值调整 在计算倍率前先添加 */
+    add     ?: (NumberExpr);
+}
+
 /**内联匿名附魔 */
 export type InlineEnchantment = Omit<Enchantment,"type"|"id">;
 
@@ -88,15 +147,6 @@ export type EnchCon =(
     BoolExpr
 );
 
-/**附魔数值增幅 */
-export type EnchModVal = {
-    /**附魔增幅类型 */
-    value    : EnchValType;
-    /**倍率增幅 1为+100% */
-    multiply?: (NumberExpr);
-    /**加值增幅 在计算倍率前先添加 */
-    add     ?: (NumberExpr);
-}
 /**伪法术附加信息 */
 export type FakeSpell = {
     /**法术ID */
@@ -123,7 +173,7 @@ export const EnchGenericValTypeList = [
     "ARMOR_ALL"                  ,// 提供对所有伤害类型的防护, 除了标记为 "no_resist": true 的类型. 若需更精确的调整, 请使用 incoming_damage_mod 或 item_armor_bonus. 
     "ATTACK_NOISE"               ,// 影响你进行近战攻击时产生的噪音量. 
     "ATTACK_SPEED"               ,// 影响物品的攻击速度, 即使该物品不是你当前使用的装备, 同时影响投掷动作的消耗 (最多 25 移动点) . "add": 10 表示每次攻击增加 10 移动点 (变慢) , "add": -10 表示每次攻击减少 10 移动点 (变快) ; "multiply": 1 表示攻击速度翻倍. 
-    "AVOID_FRIENDRY_FIRE"        ,// 若有友军处于火线中, 你角色有一定几率避免误伤. 范围从 0.0 (无避免几率) 到 1.0 (绝不误伤) . 
+    "AVOID_FRIENDRY_FIRE"        ,// 若有友军处于枪械射击路径中, 你角色有一定几率避免误伤. 范围从 0.0 (无避免几率) 到 1.0 (绝不误伤) . 
     "BANDAGE_BONUS"              ,// 影响你使用绷带时的治疗强度 (bandages_power) . 
     "BIONIC_MANA_PENALTY"        ,// 改变义体能量对法力值的惩罚比例 (默认是 1 千焦耗费 1 点法力) . 推荐使用 multiply; 使用 add 会直接加减固定法力值, 与能量量无关. 
     "BIONIC_POWER"               ,// 增加义体能量储存 (单位: 毫焦) . 例如 "add": 1000000 表示增加 1 千焦. 
