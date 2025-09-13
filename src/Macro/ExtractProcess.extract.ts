@@ -162,4 +162,21 @@ void extractDefineIdList({
     typeName: "ItemActionID",
     func:extractFn('id','name'),
 });
+//RecipeCategoryID提取
+void extractDefineIdList({
+    sourceFileGlob: "data/json/recipes/recipes.json",
+    typeName: "RecipeCategoryID",
+    func:extractFn('id'),
+});
+
+void extractDefineIdList({
+    sourceFileGlob: "data/json/recipes/recipes.json",
+    typeName: "RecipeSubCategoryID",
+    func:async fp=>{
+        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+        const list = jsonlist.filter(v=>v.recipe_subcategories !=null );
+        return list.map(v=>v.recipe_subcategories).flat().map(async v=>
+            awt`${`"${v}"`.padEnd(30)},`);
+    }
+});
 //#endregion

@@ -182,7 +182,7 @@ export type UseActionConsumeDrug = {
      */
     moves?: Int;
     /**此药物提供的维生素及数量 */
-    vitamins?: [(VitaminID), Int][];
+    vitamins?: [(VitaminID), Int, Int?][];
 };
 
 /**在地图上放置炮塔/人形机等怪物 */

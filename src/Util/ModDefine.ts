@@ -1,4 +1,5 @@
 import {
+    RecipeCategoryID, RecipeSubCategoryID,
     AmmunitionTypeID, BoolExpr, Eoc, EocEffect, SpellID,
     EffectID, TalkTopicID, EocID ,FlagID,
     ItemGroupID,MonsterID,MutationID,NpcClassID,NpcInstanceID, EnchantmentID,
@@ -171,6 +172,14 @@ export class ModDefine{
     /**生成适用于此mod的 RequirementID */
     genRequirementID(id:string):RequirementID{
         return `${this.MOD_PREFIX}_REQ_${id}`;
+    }
+    /**生成适用于此mod的 RecipeCategoryID */
+    genRecipeCategoryID(id:string):RecipeCategoryID{
+        return `${this.MOD_PREFIX}_RC_${id}`;
+    }
+    /**生成适用于此mod的 RecipeSubCategoryID */
+    genRecipeSubCategoryID(id:string):RecipeSubCategoryID{
+        return `${this.MOD_PREFIX}_RSC_${id}`;
     }
     /**生成适用于此mod的 RecipeID */
     genRecipeID(id:string):RecipeID{

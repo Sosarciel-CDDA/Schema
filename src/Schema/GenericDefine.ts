@@ -62,6 +62,7 @@ import { AddictionType } from "./AddictionType";
 import { MoraleType } from "./MoraleType";
 import { Hobby, Profession } from "./Profession";
 import { ModInfo } from "./ModInfo";
+import { RecipeCategory } from "./RecipeCategory";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -518,6 +519,6 @@ export type AnyCddaJson = Item|Eoc|Mutation|DamageType|DamageInfoOrder|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
     BodyPart|SubBodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory|Uncraft|ItemAction|
-    Vitamin|Skill|Emit|FieldType|AddictionType|MoraleType|Profession|Hobby|ModInfo;
+    Vitamin|Skill|Emit|FieldType|AddictionType|MoraleType|Profession|Hobby|ModInfo|RecipeCategory;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];

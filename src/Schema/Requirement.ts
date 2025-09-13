@@ -19,7 +19,7 @@ export type Requirement = {
      *   "amount": 1  
      * }] // 需要1个具有1级切割质量的工具  
      */
-    qualities: {
+    qualities?: {
         /**工具ID */
         id:(ToolID);
         /**要求等级 */

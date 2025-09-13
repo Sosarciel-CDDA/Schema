@@ -3,6 +3,7 @@ import { FlagID } from "./Flag";
 import { CddaID, Int, Float, Time, ActivityLevel, PRecord, DescText } from "./GenericDefine";
 import { ItemID, ItemVariantID } from "./Item";
 import { ProficiencyID } from "./Proficiency";
+import { RecipeCategoryID, RecipeSubCategoryID } from "./RecipeCategory";
 import { Requirement, RequirementID } from "./Requirement";
 import { SkillID } from "./Skill";
 import { ToolQualityID } from "./ToolQuality";
@@ -74,11 +75,11 @@ export type Recipe = {
     /**配方类别  
      * @example "CC_WEAPON" // 武器类  
      */
-    category: string;
+    category: (RecipeCategoryID);
     /**配方子类别  
      * @example "CSC_WEAPON_PIERCING" // 穿刺武器  
      */
-    subcategory?: string;
+    subcategory: (RecipeSubCategoryID);
     /**ID后缀, 用于使配方ID唯一  
      * @example "_striped" // 完整配方ID将是"<result>_striped"  
      */
