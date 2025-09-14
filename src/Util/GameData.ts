@@ -7,6 +7,7 @@ import fs from 'fs';
 
 /**通用的cddajson数据 */
 type CommonJson = Extract<AnyCddaJson,{id:string,type:string}>&{
+    /**是由哪个mod最先定义的 */
     mod_source?:string;
     abstract?:string;
     /**便于索引抽象物品的id */
@@ -133,7 +134,17 @@ export const loadGameDataTable = async (opt:{
     for(const datamap of datamapList){
         Object.entries(datamap).forEach(([type,submap])=>{
             mgr[type]??={};
-            Object.assign(mgr[type],submap);
+            const mgrmap = mgr[type];
+            for(const key in submap){
+                //确保source为第一个mod
+                if(mgrmap[key]!=undefined){
+                    const cdata = submap[key];
+                    delete cdata.mod_source;
+                    mgrmap[key] = cdata;
+                    continue;
+                }
+                mgrmap[key] = submap[key];
+            }
         });
     }
     return new GameDataTable(mgr);
