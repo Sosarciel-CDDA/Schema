@@ -57,7 +57,7 @@ export type ToolTrait = ItemTrait<"TOOL",({
      */
     e_port?: (PortID);
     /**定义禁止连接类型的字符串数组 */
-    e_port_banned?: PortID[];
+    e_ports_banned?: PortID[];
     /**变体 */
     variables?: {
         /**该工具是可折叠车辆, 可以绕过默认的可折叠规则;  这是将展开的车辆的名称 */

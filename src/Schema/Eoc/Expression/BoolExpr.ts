@@ -45,6 +45,13 @@ export type OneInChance = {
     one_in_chance: (NumberExpr);
 };
 
+/**x/y的概率返回true */
+export type XINYChange = {
+    /**x/y的概率返回true */
+    x_in_y_chance: {x:(NumberExpr),y:(NumberExpr)};
+};
+
+
 /**某个mod是否加载 */
 export type ModIsLoad = {
     /**目标mod的ID */
