@@ -10,7 +10,8 @@
     "compile": "powershell scripts/compile",
     "package": "powershell scripts/package",
     "build-schema": "powershell scripts/build-schema",
-    "build": "powershell scripts/build"
+    "build": "powershell scripts/build",
+    "watch": "powershell scripts/watch"
   },
   "author": "zwa73",
   "license": "ISC",

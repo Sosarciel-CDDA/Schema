@@ -1,4 +1,4 @@
-import { memoize, PromiseQueue, UtilFT } from "@zwa73/utils";
+import { deepClone, memoize, PromiseQueue, UtilFT } from "@zwa73/utils";
 import { GAME_PATH } from "./Define";
 import { AnyCddaJson, Time, Volume, Weight } from "Schema/GenericDefine";
 import path from "pathe";
@@ -7,14 +7,17 @@ import fs from 'fs';
 
 /**通用的cddajson数据 */
 type CommonJson = Extract<AnyCddaJson,{id:string,type:string}>&{
+    /**copyfrom链 */
+    sourceline:string[];
     /**是由哪个mod最先定义的 */
-    mod_source?:string;
+    mod_source:string;
     abstract?:string;
     /**便于索引抽象物品的id */
     fixed_id:string;
     'copy-from'?:string;
 };
 type DataTable = Record<string,Record<string,CommonJson>>;
+type ModData = { table:DataTable; mod:string;};
 
 /**获取mod元数据 */
 export const loadModMetadata = memoize(async ()=>{
@@ -45,15 +48,16 @@ export const loadModDataTable = memoize(async (modid:string)=>{
     if(!modpath) throw `找不到mod ${modid} 的数据`;
     const filelist = await UtilFT.fileSearchGlob(modpath,'**/*.json');
 
-    const procFn = (data:CommonJson,modid?:string)=>{
+    const procFn = (data:CommonJson,modid:string)=>{
         const type = data.type;
         data.fixed_id = data.abstract ? data.abstract : data.id;
-        if(data['copy-from'] == data.fixed_id)
-            delete data['copy-from'];
+        //if(data['copy-from'] == data.fixed_id)
+        //    delete data['copy-from'];
         const id = data.fixed_id;
         if( type==undefined || id ==undefined ||
             typeof type != "string" || typeof id != "string") return;
-        if(modid) data.mod_source = modid;
+        data.mod_source = modid;
+        data.sourceline = [modid+':'+id];
         return data;
     }
 
@@ -62,55 +66,102 @@ export const loadModDataTable = memoize(async (modid:string)=>{
         const jsonlist = await loadqueue.enqueue(()=>UtilFT.loadJSONFile(fp)) as CommonJson[];
         if(!Array.isArray(jsonlist)) return;
         jsonlist.forEach(v=>{
-            const data = procFn(v,modid=="dda" ? undefined : modid);
+            const data = procFn(v,modid);
             if(!data) return;
             dataMap[data.type]??={};
             dataMap[data.type][data.fixed_id] = data;
         });
     }));
-    return dataMap;
+    return { table:dataMap,  mod:modid };
 });
 
 
+/**合并父子数据 */
+const mergeCopyData = <T extends CommonJson>(child:T,parent:T):T=>{
+    const cloneC = {...child} as any;
+    delete (cloneC as any)['copy-from'];
+    delete (cloneC as any)['mod_source'];
+
+    const cloneP = {...parent} as any;
+    delete (cloneP as any)['abstract'];
+
+    const result = Object.assign({},cloneP,cloneC) as any;
+    result.sourceline = [...child.sourceline,(parent.mod_source+':'+parent.id)];
+    return result as any;
+}
+
+
+/**展开copyfrom字段 */
+const copyData = <T extends CommonJson["type"]>(
+    type:T,id:string,
+    modDataSeqByPriority:ModData[],stack=0
+):Extract<CommonJson,{type:T}>|undefined=>{
+
+    const fixExtends = <T extends CommonJson["type"]>(
+        type:T,id:string,seq:ModData[],child:any,stack:number
+    ):Extract<CommonJson,{type:T}>|undefined=>{
+        //console.log(child);
+
+        //死循环则直接返回
+        if(stack>5) return child;
+
+        const copyId = child['copy-from'];
+        //如果不存在copyfrom则直接返回
+        if(!copyId) return child;
+        //非扩展则直接返回
+        if(copyId!=id) return child;
+
+        //找到优先级最高的数据
+        const lastIdx = seq.findIndex(data=>data.table[type]?.[id] != undefined);
+        const last = seq[lastIdx]?.table?.[type]?.[id] as Extract<CommonJson,{type:T}>|undefined;
+        if(last==undefined) return child;
+
+        const expand = mergeCopyData(child as any,last  as any) as any;
+        return fixExtends(type,id,seq.slice(lastIdx+1),expand,stack+1);
+    }
+
+    const fixedData = fixExtends(type,id,modDataSeqByPriority,{
+        id, sourceline:[], 'copy-from':id,
+    },stack);
+
+    //死循环则直接返回
+    if(stack>10) return fixedData;
+    if(fixedData==undefined) return;
+    const fixedCopyId = fixedData['copy-from'];
+    //如果不存在copyfrom则直接返回
+    if(!fixedCopyId) return fixedData;
+
+    //console.log(stack);
+    //合并copyfrom
+    let prevData = copyData(type,fixedCopyId,modDataSeqByPriority,stack+1);
+    if(!prevData){
+        console.log(`找不到 ${type}:${fixedData.id} copyfrom的目标 ${fixedCopyId}, 已返回空数据`);
+        prevData = {} as any;
+    }
+    return mergeCopyData(fixedData,prevData!);
+}
+
 export class GameDataTable{
-    private _dataTable:DataTable;
-    constructor(dataTable:DataTable){
-        this._dataTable = dataTable;
+    /**依照加载顺序排序的mod数据表 */
+    private _modDataList:ModData[];
+    constructor(dataTableList:ModData[]){
+        //console.log(dataTableList.map(v=>v.mod));
+        this._modDataList = dataTableList;
     }
 
     /**获取某个id的数据 */
-    getData <T extends CommonJson["type"]>(type:CommonJson["type"],id:string):Extract<CommonJson,{type:T}>|undefined{
-        return this._dataTable[type]?.[id] as any;
+    getData <T extends CommonJson["type"]>
+    (type:CommonJson["type"],id:string):Extract<CommonJson,{type:T}>|undefined{
+        return copyData(type,id,[...this._modDataList].reverse()) as any;
     }
 
     /**获取某个类型的全部数据 */
-    getDataList<T extends CommonJson["type"]>(type:T):Extract<CommonJson,{type:T}>[]{
-        return Object.values(this._dataTable[type] ?? {}) as any;
-    }
-
-    /**展开copyfrom字段 */
-    expandCopyFrom<T extends CommonJson>(data:T):T{
-        if((data as any)['copy-from']==undefined) return data;
-        const type = data.type;
-        const id = data.fixed_id;
-        if(!type || !id || typeof type != "string" || typeof id != "string")
-            throw "必须要字符串类型id与type才能展开copyfrom";
-        const expandFn = (curr:CommonJson,stack=0)=>{
-            if(stack>10) return curr;
-            const copyfromId = (curr as any)['copy-from'];
-            if(!copyfromId) return curr;
-            let copyfromData = this._dataTable[type]?.[copyfromId];
-            if(!copyfromData){
-                console.log(`找不到 ${type}:${(curr as any).id} copyfrom的目标 ${copyfromId}, 已返回空数据`);
-                copyfromData = {} as any;
-            }
-            const cloneC = {...curr} as any;
-            delete (cloneC as any)['copy-from'];
-            const cloneP = {...copyfromData} as any;
-            delete (cloneP as any)['abstract'];
-            return expandFn(Object.assign({},cloneP,cloneC),stack++);
-        }
-        return expandFn(data) as any;
+    getDataIdList<T extends CommonJson["type"]>
+    (type:T):string[]{
+        //console.log(this._modDataList[0].table['ITEM'])
+        const typedDataTableList = this._modDataList.map(data=>data.table[type]).filter(v=>v!=undefined);
+        //console.log(typedDataTableList);
+        return Object.keys(Object.assign({},...typedDataTableList));
     }
 }
 
@@ -126,28 +177,11 @@ export const loadGameDataTable = async (opt:{
         excludes = []
     } = opt;
     const mods = ( includes ??
-    ['dda',...Object.keys(await loadModMetadata()).filter(v=>v!="dda")]
+    ['dda',...Object.keys(await loadModMetadata()).sort((a,b)=>a.localeCompare(b,'en', { sensitivity: 'base' })).filter(v=>v!="dda")]
     ).filter(v=>!excludes.includes(v));
 
     const datamapList = await Promise.all(mods.map(loadModDataTable));
-    const mgr:DataTable = {};
-    for(const datamap of datamapList){
-        Object.entries(datamap).forEach(([type,submap])=>{
-            mgr[type]??={};
-            const mgrmap = mgr[type];
-            for(const key in submap){
-                //确保source为第一个mod
-                if(mgrmap[key]!=undefined){
-                    const cdata = submap[key];
-                    delete cdata.mod_source;
-                    mgrmap[key] = cdata;
-                    continue;
-                }
-                mgrmap[key] = submap[key];
-            }
-        });
-    }
-    return new GameDataTable(mgr);
+    return new GameDataTable(datamapList);
 };
 
 
