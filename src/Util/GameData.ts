@@ -96,12 +96,9 @@ const copyData = <T extends CommonJson["type"]>(
     type:T,id:string,
     modDataSeqByPriority:ModData[],stack=0
 ):Extract<CommonJson,{type:T}>|undefined=>{
-
     const fixExtends = <T extends CommonJson["type"]>(
         type:T,id:string,seq:ModData[],child:any,stack:number
     ):Extract<CommonJson,{type:T}>|undefined=>{
-        //console.log(child);
-
         //死循环则直接返回
         if(stack>5) return child;
 
