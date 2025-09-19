@@ -8,7 +8,7 @@ import { AmmoID, Item, ItemID, AnyItemTrait } from "./Item";
 import { ItemGroup } from "./ItemGroup";
 import { MathFunction } from "./MathFuncion";
 import { Monster, MonsterID } from "./Monster";
-import { NpcClass } from "./NpcClass";
+import { NpcClass, ShopkeeperBlacklist, ShopkeeperConsumptionRate } from "./NpcClass";
 import { NpcInstance } from "./NpcInstance";
 import { OverlayOrdering } from "./OverlayOrdering";
 import { SoundEffect } from "./SoundEffect";
@@ -519,6 +519,7 @@ export type AnyCddaJson = Item|Eoc|Mutation|DamageType|DamageInfoOrder|
     Species|MutationCategory|ScentType|Proficiency|Technique|MartialArt|AttackVector|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
     BodyPart|SubBodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory|Uncraft|ItemAction|
-    Vitamin|Skill|Emit|FieldType|AddictionType|MoraleType|Profession|Hobby|ModInfo|RecipeCategory;
+    Vitamin|Skill|Emit|FieldType|AddictionType|MoraleType|Profession|Hobby|ModInfo|RecipeCategory|
+    ShopkeeperBlacklist|ShopkeeperConsumptionRate;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];

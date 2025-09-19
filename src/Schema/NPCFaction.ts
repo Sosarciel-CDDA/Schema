@@ -19,7 +19,7 @@ type FoodSupply = {
 };
 
 /**价格规则 */
-type PriceRule = {
+export type NpcShopPriceRule = {
     /**物品ID */
     item?: (ItemID);
     /**物品类别 */
@@ -120,7 +120,7 @@ export type NPCFaction = {
     /**价格规则数组  
      * 允许为物品/类别/组定义溢价, 加价, 价格和/或固定调整  
      */
-    price_rules?: PriceRule[];
+    price_rules?: NpcShopPriceRule[];
     /**阵营关系字典  
      * 描述该阵营如何看待其他阵营  
      */

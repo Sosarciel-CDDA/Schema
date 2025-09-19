@@ -79,6 +79,8 @@ import {
     FaultTypeID,
     SubBodyPartID,
     ModId,
+    ShopkeeperConsumptionRateID,
+    ShopkeeperBlacklistID,
 } from "@/src/Schema";
 
 /**ModID生成工具 */
@@ -228,6 +230,14 @@ export class ModDefine{
     /**生成适用于此mod的 NpcClassID */
     genNpcClassID(id:string):NpcClassID{
         return `${this.MOD_PREFIX}_NPCCLS_${id}`;
+    }
+    /**生成适用于此mod的 ShopkeeperConsumptionRateID */
+    genShopkeeperConsumptionRateID(id:string):ShopkeeperConsumptionRateID{
+        return `${this.MOD_PREFIX}_SHOPKEEPER_CONSUMPTION_RATES_${id}`;
+    }
+    /**生成适用于此mod的 ShopkeeperBlacklistID */
+    genShopkeeperBlacklistID(id:string):ShopkeeperBlacklistID{
+        return `${this.MOD_PREFIX}_SHOPKEEPER_BLACKLIST_${id}`;
     }
     /**生成适用于此mod的 MutationCategoryID */
     genMutationCategoryID(id:string):MutationCategoryID{

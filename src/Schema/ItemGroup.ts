@@ -4,6 +4,7 @@ import { ItemID } from "./Item/ItemIndex";
 
 /**预定义的物品组ID */
 export const DefineItemGroupIDList = [
+    "EMPTY_GROUP"                           ,//空组
     "bionics"                               ,//任何cbm
     "afs_common_biomaterial_scrapgroup"     ,//afs材料
     "afs_advanced_biomaterial_scrapgroup"   ,
