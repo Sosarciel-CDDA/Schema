@@ -1,5 +1,5 @@
 import { EocEffect, IDExpr, LocExpr, NumberExpr, StringExpr } from "./Eoc";
-import { CddaID, DescText } from "./GenericDefine";
+import { CddaID, DescText, Int } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { OverMapSpecialID } from "./OvermapSpecial";
 import { OvermapTerrainID } from "./OvermapTerrain";
@@ -18,9 +18,9 @@ export type MissionDefinition = {
     /**任务说明 */
     description: (DescText);
     /**任务目标 */
-    goal: MissionGoal;
+    goal: (MissionGoal);
     /**任务难度 */
-    difficulty: number;
+    difficulty: (Int);
     /**未知 */
     value: number;
     /**如果目标是寻找道具, 目标的道具ID */
@@ -40,7 +40,7 @@ export type MissionDefinition = {
     /**任务对话文本  
      * 如果是npc来源的任务必须设置  
      */
-    dialogue?: MissionDialog;
+    dialogue?: (MissionDialog);
 };
 
 /**任务目标 列表*/
