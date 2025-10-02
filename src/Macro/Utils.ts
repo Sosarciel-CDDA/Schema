@@ -1,4 +1,4 @@
-import { GAME_PATH } from '@src/Util';
+import { GAME_PATH } from '@/src/Util';
 import { fileMacro, regionMacro } from '@zwa73/dev-utils';
 import { MPromise, UtilFT } from '@zwa73/utils';
 import fs from 'fs';

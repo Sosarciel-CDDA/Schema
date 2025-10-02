@@ -1,6 +1,6 @@
-import { ExtractDefineRecipeCategoryID } from "@src/Extract/RecipeCategoryID";
+import { ExtractDefineRecipeCategoryID } from "@/src/Extract/RecipeCategoryID";
 import { CddaID } from "./GenericDefine";
-import { ExtractDefineRecipeSubCategoryID } from "@src/Extract/RecipeSubCategoryID";
+import { ExtractDefineRecipeSubCategoryID } from "@/src/Extract/RecipeSubCategoryID";
 
 
 
