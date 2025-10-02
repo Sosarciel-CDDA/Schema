@@ -720,7 +720,7 @@ export type TurnCost = TalkerVar<{
  *   }  
  * }  
  */
-export type TransformItem = TalkerVar<{
+export type TransformItem = {
     /**转换物品  
      * 要转换成的物品ID  
      */
@@ -729,5 +729,5 @@ export type TransformItem = TalkerVar<{
      * 如果为true, 激活物品  
      */
     active?: boolean;
-}, 'transform_item'>;
+};
 

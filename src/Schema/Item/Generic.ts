@@ -1,11 +1,10 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
-import { EnchantmentID, InlineEnchantment } from "../Enchantment";
 import { CustomFlagID } from "../Flag";
 import { CddaID, Char, Color, CopyfromVar, DescText, Ememory, Explosion, Float, Int, Length, LookLikeID, MeleeDamage, Phase, PocketData, Price, Time, Volume, Weight } from "../GenericDefine";
 import { AmmoID } from "./Ammo";
 import { WeaponCategoryID } from "../WeaponCategory";
 import { MaterialID } from "../Material";
-import { ItemID, ItemSubtype } from "./ItemIndex";
+import { ItemID, ItemSubtype, ItemTrait } from "./ItemIndex";
 import { SnippetCategoryID } from "Schema/Snippet";
 import { ItemCategoryID } from "Schema/ItemCategory";
 import { MonsterID } from "Schema/Monster";
@@ -21,7 +20,7 @@ import { ItemToolQuality } from "./Tool";
 
 
 /**通用物品基础 */
-export type GenericTrait = CopyfromVar<{
+export type GenericBase = CopyfromVar<{
     /**子类型 */
     subtypes?:ItemSubtype[];
     /**物品唯一ID */
@@ -281,6 +280,12 @@ export type GenericTrait = CopyfromVar<{
          */
         secret_recipes?: boolean;
     }
+}>;
+
+export type GenericTrait = ItemTrait<"GENERIC",{
+    /**标记具有 GENERIC 的特征, 用于补全 */
+    "//GENERIC": true;
+    flags?:GenericFlagID[];
 }>;
 
 /**物品变体ID */

@@ -1,6 +1,6 @@
 import { ComestibleTrait } from "./Comestible";
 import { GunTrait } from "./Gun";
-import { GenericTrait } from "./Generic";
+import { GenericFlagID, GenericBase, GenericTrait } from "./Generic";
 import { CddaID } from "Schema/GenericDefine";
 import { ArmorTrait } from "./Armor";
 import { AmmoTrait } from "./Ammo";
@@ -40,11 +40,12 @@ export type ItemSubtype = typeof ItemSubtypeList[number];
 
 /**任何物品特征 */
 export type AnyItemTrait = GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|
-ArmorTrait|GunModTrait|AmmoTrait|BatteryTrait|BionicItemTrait|ArtifactTrait;
+ArmorTrait|GunModTrait|AmmoTrait|BatteryTrait|BionicItemTrait|ArtifactTrait|
+GenericTrait;
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
 
 /**指定type的物品 */
-export type TypedItem<T extends AnyItemTrait> = GenericTrait&T;
+export type TypedItem<T extends AnyItemTrait> = GenericBase&T;
 
 /**物品ID */
 export type ItemID = CddaID<"ITEM">|DefineItemID;
@@ -56,7 +57,7 @@ export type DefineItemID = 'null';
  * 以 "//T"?:"xxx" as TypeA|TypeB 标记其 同时符合TypeA和TypeB的特征  
  * 以 "//TypeA": true; "//TypeB": true; 标记其符合TypeA或TypeB的特征  
  */
-export type Item = GenericTrait&AnyItemTrait;
+export type Item = GenericBase&AnyItemTrait;
 
 ///**任何物品的Flag */
 export type AnyItemFlag = Exclude<AnyItemTrait['flags'],undefined>[number];
