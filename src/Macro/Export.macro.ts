@@ -11,7 +11,7 @@ void exportTypeList({
     listName:'EocEffectList',
     targetFile:path.join(EOC_DIR,"EocEffect","EocEffectIndex.ts"),
     typeFileList:[
-        path.join(EOC_DIR,"EocEffect","EocEffect.ts"),
+        path.join(EOC_DIR,"EocEffect","NpcEffect.ts"),
         path.join(EOC_DIR,"EocEffect","GenericEffect.ts"),
         path.join(EOC_DIR,"EocEffect","CharacterEffect.ts"),
         path.join(EOC_DIR,"EocEffect","ItemEffect.ts"),

@@ -25,33 +25,6 @@ import { NpcInstanceID } from "Schema/NpcInstance";
 import { TechniqueID } from "Schema/Technique";
 
 
-
-
-//#region 不在eoc doc定义内的
-
-/**使用物品 */
-export type ConsumeItem = TalkerVar<{
-    consume_item: IDExpr<ItemID>;
-    /**数量 */
-    count?: (NumberExpr);
-    /**充能数量 */
-    charges?: (NumberExpr);
-    /**为true时将显示消息给予npc物品 */
-    popup?: boolean;
-},"consume_item">;
-
-/**让npc跟随玩家 */
-export type FollowOnly = "follow_only"
-
-/**让npc停止跟随玩家并离开追随者阵营 */
-export type Leave = "leave"
-
-/**丢下手持物品 仅限npc */
-export type DropWeapon = "drop_weapon"
-
-//#endregion
-
-
 /**造成伤害  
  * 以近战攻击的方式造成伤害; 不能被闪避, 但可以被护甲减免  
  * 适用于: Avatar Character NPC Monster  
@@ -619,6 +592,7 @@ export type AssignActivity = TalkerVar<{
      */
     duration: (TimeExpr);
 }, 'assign_activity'>;
+
 
 /**取消活动  
  * NPC或角色将停止当前活动  
