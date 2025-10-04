@@ -1,3 +1,4 @@
+import { ExtractDefineMaterialID } from "../Extract/MaterialID";
 import { DamageTypeID } from "./DamageType";
 import { CddaID, DescText, Energy, Float, Int, PRecord, Volume } from "./GenericDefine";
 import { TerrainID } from "./Terrain";
@@ -10,7 +11,10 @@ import { VitaminID } from "./Vitamin";
 
 
 /**材料ID */
-export type MaterialID = CddaID<"MATE">;
+export type MaterialID = CddaID<"MATE">|DefineMaterialID;
+
+/**预定义的 材料ID */
+export type DefineMaterialID = ExtractDefineMaterialID;
 
 /**材料 */
 export type Material = {

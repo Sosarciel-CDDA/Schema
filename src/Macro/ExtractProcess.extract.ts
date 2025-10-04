@@ -186,4 +186,12 @@ void extractDefineIdList({
     typeName: "NpcClassID",
     func:extractFn('id','name','job_description'),
 });
+
+//MaterilID提取
+void extractDefineIdList({
+    sourceFileGlob: "data/json/materials.json",
+    typeName: "MaterialID",
+    func:extractFn('id','name'),
+});
+
 //#endregion
