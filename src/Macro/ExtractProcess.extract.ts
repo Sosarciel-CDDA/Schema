@@ -179,4 +179,11 @@ void extractDefineIdList({
             awt`${`"${v}"`.padEnd(30)},`);
     }
 });
+
+//NpcClassID提取
+void extractDefineIdList({
+    sourceFileGlob: "data/json/npcs/classes.json",
+    typeName: "NpcClassID",
+    func:extractFn('id','name','job_description'),
+});
 //#endregion

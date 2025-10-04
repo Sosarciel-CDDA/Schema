@@ -542,7 +542,7 @@ export type SpawnNpc = TalkerVar<{
     /**生成NPC  
      * 将生成的NPC的类别  
      */
-    spawn_npc: (IDExpr<NpcClassID>|IDExpr<NpcInstanceID>);
+    spawn_npc: (IDExpr<NpcInstanceID>);
     /**唯一ID */
     unique_id?: (StringExpr);
     /**特性  

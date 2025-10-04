@@ -1,3 +1,4 @@
+import { ExtractDefineNpcClassID } from "../Extract/NpcClassID";
 import { BoolExpr, NpcNumberExpr, NumberExpr } from "./Eoc";
 import { CddaID, DescText, Int, PRecord, Price, Time } from "./GenericDefine";
 import { ItemID } from "./Item";
@@ -13,7 +14,9 @@ import { SpellID } from "./Spell";
 
 
 /**Npc职业ID */
-export type NpcClassID = CddaID<"NPCCLS">;
+export type NpcClassID = CddaID<"NPCCLS">|DefineNpcClassID;
+/**预定义的 Npc职业ID */
+export type DefineNpcClassID = ExtractDefineNpcClassID;
 /**Npc职业 */
 export type NpcClass = {
     type: "npc_class";

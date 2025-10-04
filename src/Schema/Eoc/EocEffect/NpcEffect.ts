@@ -1,6 +1,6 @@
 
 import { AssignMissionTarget, MissionDefinitionID } from "Schema/MissionDefinition";
-import { BoolExpr, IDExpr, LocExpr, NumberExpr } from "../Expression";
+import { IDExpr, LocExpr, NumberExpr } from "../Expression";
 import { TalkerStr, TalkerVar } from "../Eoc";
 import { FlagID } from "Schema/Flag";
 import { ItemID } from "Schema/Item";
@@ -106,15 +106,15 @@ export type SpawnItem = TalkerVar<{
     /**如果为 true，则从指定物品组生成物品, 此时忽略 "count" 和 "container"  
      * @default false
      */
-    use_item_group?: (BoolExpr);
+    use_item_group?: boolean;
     /**如果为 true，则不显示提示信息  
      * @default false
      */
-    suppress_message?: (BoolExpr);
+    suppress_message?: boolean;
     /**如果为 true，角色会尝试装备该物品  
      * @default false
      */
-    force_equip?: (BoolExpr);
+    force_equip?: boolean;
     /**物品将包含数组中的所有标志  
      * @default []
      */
@@ -136,11 +136,11 @@ export type BuyItem = {
     /**如果为 true，则从指定物品组生成物品（此时忽略 "count" 和 "container"）  
      * @default false
      */
-    use_item_group?: (BoolExpr);
+    use_item_group?: boolean;
     /**如果为 true，则不显示提示信息  
      * @default false
      */
-    suppress_message?: (BoolExpr);
+    suppress_message?: boolean;
     /**物品将包含数组中的所有标志 */
     flags?: FlagID[];
     true_eocs?: (ParamsEoc);
@@ -417,7 +417,7 @@ export type SetGuardPos = TalkerVar<{
     /**如果为 true，则 NPC 的 unique_id 会作为变量名的前缀
      * @default false
      */
-    unique_id?: (BoolExpr);
+    unique_id?: boolean;
 },'set_guard_pos'>;
 
 
