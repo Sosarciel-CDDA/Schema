@@ -148,6 +148,10 @@ export type Spell = {
      * PRecord<(SpellID)法术ID : (NumObj)需求等级>  
      */
     learn_spells?: PRecord<SpellID,NumberExpr>;
+    /**可教学的
+     * @default true
+     */
+    teachable?: boolean;
 };
 
 /**法术有效目标 列表 */
