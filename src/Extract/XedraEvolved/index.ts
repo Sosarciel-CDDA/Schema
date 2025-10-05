@@ -1,1 +1,1 @@
-export * from './XedraEvolvedDreamerSpellID';export * from './XedraEvolvedEaterSpellID';
+export * from './index';export * from './XedraEvolvedDreamerSpellID';export * from './XedraEvolvedEaterSpellID';

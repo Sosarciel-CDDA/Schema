@@ -16,7 +16,6 @@ export const ExtractDefineXedraEvolvedDreamerSpellIDList = [
     "make_constructed_hammer"     , // 重锤 利用你的能量，你制造了一个形状奇特的锤子。你可以用它来粉碎你的敌人，或者粉碎各种障碍。
     "constructed_hammer_attack"   , // Smash A Target Deal some damage.  You can't see it except in debug mode.
     "constructed_hammer_self_destruct", // Constructed Hammer Self destruct Removes constructed hammer.  You can't see it except in debug mode.
-    "EOC_REMOVE_CONSTRUCTED_HAMMER",
     "summon_duplicator"           , // 召唤复制者 召唤传送门生物来帮助应对危险情况。
     "xedra_dreamer_time_bubble"   , // 召唤时间气泡 在你所选的位置召唤一个时间完全冻结的气泡，不可穿透，并使里面的一切事物停滞。
     "teleport_coin"               , // 抛硬币 抛硬币。你选哪一边？

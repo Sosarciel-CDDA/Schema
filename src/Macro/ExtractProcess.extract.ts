@@ -1,6 +1,3 @@
-
-
-
 import { createExtractIndex, extractDefineIdList } from 'Macro';
 import { ivk, MPromise, UtilFT } from '@zwa73/utils';
 import { awt, zh, zhl } from '@/src/Util';
@@ -27,6 +24,7 @@ const extractFn = (arg:{
     })).then(v=>v.filter(str=>str!=undefined));
 }
 
+const typeFilter = (t:string) => (v:any)=> v.type == t;
 
 //#region 预定义IDList生成
 ivk(async ()=>{
@@ -274,20 +272,140 @@ ivk(async ()=>{
         extractDefineIdList({
             dirName,
             sourceFileGlob: "data/mods/Xedra_Evolved/spells/dreamer_spells.json",
-            typeName: "XedraEvolvedDreamerSpellID",
+            typeName: `${dirName}DreamerSpellID`,
             func:extractFn({
                 id: 'id',
                 field: ['name','description'],
+                filter:typeFilter("SPELL"),
             }),
         }),
         //食梦者
         extractDefineIdList({
             dirName,
             sourceFileGlob: "data/mods/Xedra_Evolved/spells/eater_spells.json",
-            typeName: "XedraEvolvedEaterSpellID",
+            typeName: `${dirName}EaterSpellID`,
             func:extractFn({
                 id: 'id',
                 field: ['name','description'],
+                filter:typeFilter("SPELL"),
+            }),
+        }),
+        ]);
+        await createExtractIndex({dirName});
+    }),
+
+    //MoM法术提取
+    ivk(async ()=>{
+        const dirName = "MindOverMatter";
+        await Promise.all([
+        //炼体者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/powers/biokinesis.json",
+            typeName: `${dirName}BiokinesisSpellID`,
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+                filter:typeFilter("SPELL"),
+            }),
+        }),
+        //灵视者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/powers/clairsentience.json",
+            typeName: `${dirName}ClairsentienceSpellID`,
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+                filter:typeFilter("SPELL"),
+            }),
+        }),
+        //驱电者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/powers/electrokinesis.json",
+            typeName: `${dirName}ElectrokinesisSpellID`,
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+                filter:typeFilter("SPELL"),
+            }),
+        }),
+        //控光者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/powers/photokinesis.json",
+            typeName: `${dirName}PhotokinesisSpellID`,
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+                filter:typeFilter("SPELL"),
+            }),
+        }),
+        //焰动者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/powers/pyrokinesis.json",
+            typeName: `${dirName}PyrokinesisSpellID`,
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+                filter:typeFilter("SPELL"),
+            }),
+        }),
+        //灵视者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/powers/clairsentience.json",
+            typeName: `${dirName}ClairsentienceSpellID`,
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+                filter:typeFilter("SPELL"),
+            }),
+        }),
+        //念动者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/powers/telekinesis.json",
+            typeName: `${dirName}TelekinesisSpellID`,
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+                filter:typeFilter("SPELL"),
+            }),
+        }),
+        //超感者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/powers/telepathy.json",
+            typeName: `${dirName}TelepathySpellID`,
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+                filter:typeFilter("SPELL"),
+            }),
+        }),
+        //传送者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/powers/teleportation.json",
+            typeName: `${dirName}TeleportationSpellID`,
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+                filter:typeFilter("SPELL"),
+            }),
+        }),
+        //疗愈者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/powers/vitakinesis.json",
+            typeName: `${dirName}VitakinesisSpellID`,
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+                filter:typeFilter("SPELL"),
             }),
         }),
         ]);
