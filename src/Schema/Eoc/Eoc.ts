@@ -25,15 +25,15 @@ export type Eoc = {
     /**循环间隔 */
     recurrence?: (Time)|[Time,Time];
     /**deactivate_condition 是否仅在玩家上运行  
-     * 如果为 True, 此循环 EOC 将在玩家和全局队列中的每个 NPC 上运行.   
-     * 停用条件将根据角色设定生效.   
-     * 如果为 False, 则角色和每个角色将拥有各自的副本和各自的停用列表.   
+     * 如果为 True, 此循环 EOC 将在全局队列上运行.   
+     * 此时, 停用条件(deactivate_condition)将基于玩家角色(avatar)进行判断  
+     * 如果为 False, 则玩家和每个 NPC 都会拥有自己的副本和各自的停用列表  
      * @default false  
      */
     global?:boolean;
     /**是否可在NPC上运行 global生效时才可用  
-     * 如果为False, 则 EOC 将仅针对角色运行  
-     * 如果为True, 则 EOC 将针对角色和所有 NPC 运行  
+     * 如果为False, EOC 只会作用于玩家角色(avatar)  
+     * 如果为True, 则该 EOC 会同时作用于玩家和所有 NPC  
      * @default false  
      */
     run_for_npcs?:boolean;
