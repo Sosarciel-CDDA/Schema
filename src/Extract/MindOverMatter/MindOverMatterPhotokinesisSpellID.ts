@@ -2,9 +2,6 @@
 export const ExtractDefineMindOverMatterPhotokinesisSpellIDList = [
     "photokinetic_light_local"    , // [Ψ]长明烛光(C) 创造一小片光芒，它不是很明亮，但足够阅读或进行其他简单任务。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。<color_red>进入战斗失效</color>。
     "photokinetic_create_light"   , // [Ψ]驱暗灵光 创造光子，并操控其照亮整片区域。
-    "photokinetic_create_light_01", // [Ψ]驱暗灵光 创造光子，并操控其照亮整片区域。
-    "photokinetic_create_light_02", // [Ψ]驱暗灵光 创造光子，并操控其照亮整片区域。
-    "photokinetic_create_light_03", // [Ψ]驱暗灵光 创造光子，并操控其照亮整片区域。
     "photokinetic_light_up_enemy" , // [Ψ]Illuminate 创造光子，并操控其照亮整片区域。
     "photokinetic_snuff_light"    , // [Ψ]黑暗降临 截断光线的流动以创造一个黑暗区域。
     "photokinetic_light_dodge"    , // [Ψ]光线戏法(C) Manipulate the light around your body, creating shifting illusions, blurring your outline and position, and becoming harder to hit.  An enemy successfully hitting you will pinpoint your location and <color_red>disrupt the power</color>.his power <color_yellow>is maintained by concentration</color> and <color_red>may fail</color> if <color_yellow>concentration is interrupted</color>.

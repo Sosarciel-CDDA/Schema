@@ -8,17 +8,12 @@ export const ExtractDefineMindOverMatterTelepathySpellIDList = [
     "telepathic_blast"            , // [Ψ]突触过载 短路并超载目标的大脑，造成极大的伤害甚至死亡。
     "telepathic_animal_mind_control", // [Ψ]野兽操控 控制动物的思维，强迫它服从你。这种灵能对昆虫、蜘蛛等生物无效。
     "telepathic_confusion"        , // [Ψ]意识剥夺 切断目标的大脑与其感官的连接，使其失明和困惑。
-    "telepathic_confusion_blind"  , // [Ψ]意识剥夺致盲效果 意识剥夺能力的一部分，使目标失明。拥有这个能力说明你出bug了。
     "telepathic_fear"             , // [Ψ]原始恐惧 使用目标自身内心的恐惧来对付他们，用压倒性的恐怖使他们瘫痪。这种效果不会持续很久，但在持续期间完全能够使其无法动弹，并且会在目标身上留下持久的恐怖感。
     "telepathic_invisibility"     , // [Ψ]心理隐身 以难以察觉的方式影响他人的思维，从心理上隐藏自己的存在。当灵能生效时，目标将不能看见你。此项灵能<color_red>进入战斗失效</color>。
-    "telepathic_invisibility_self", // [Ψ]Obscurity Self Puts an effect on you so anyone affected by Obscurity knows to ignore you.  It's a bug if you have this directly.
     "telepathic_blast_radius"     , // [Ψ]心灵尖啸 发出一种不受控制的心灵尖叫，攻击附近任何人的思想。这种灵能不区分朋友和敌人。
-    "telepathic_blast_radius_guaranteed", // [Ψ]Psychic Scream Additional Damage This exists to allow Psychic Scream to do minimal damage and kill small animals whose extremely low HP would otherwise be below the percentage threshold, as well as making it more likely to stun or daze.  It's a bug if you have it directly.
     "telepathic_beast_taming"     , // [Ψ]野兽驯服 对动物进行意识改造，使其长时间将你视为朋友。动物必须已经成为同伴。可以是正常驯服，也可以通过其他灵能控制得来。
-    "telepathic_beast_taming_pet" , // [Ψ]Beast Tamer Pet Effect This applies the pet effect to a tamed animal.  It's a bug if you have it directly.
     "telepathic_mind_control"     , // [Ψ]心灵控制 控制目标的思想，迫使他们听从你的命令。
     "telepathic_network"          , // [Ψ]网络效应 在你和附近的盟友之间形成一个无意识的心灵感应网络，让你们都能发送和接收附近危险的信息，并在战斗中做出更快的反应。 该网络需要附近至少有一名盟友才能生效。
-    "telepathic_network_real"     , // [Ψ]Network Effect Real The actual power that implements the Network Effect.  It's a bug if you have it.
 ] as const;
 /**从文件提取的预定义的MindOverMatterTelepathySpellID */
 export type ExtractDefineMindOverMatterTelepathySpellID = typeof ExtractDefineMindOverMatterTelepathySpellIDList[number];

@@ -7,9 +7,6 @@ export const ExtractDefineMindOverMatterClairsentienceSpellIDList = [
     "clair_spot_weakness"         , // [Ψ]弱点观察 你的灵能可以让你准确地定位你的敌人的弱点。
     "clair_see_auras"             , // [Ψ]气场感知(C) 你隐隐约约看到彩色漩涡环绕人们周围，暗示他们的情绪和精神状态。这使你在交流谈判中处于上风。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。<color_red>进入战斗失效</color>。
     "clair_sense_rads"            , // [Ψ]辐射感知 你可以打开你的神经来感受辐射的光芒。
-    "clair_sense_rads_self"       , // [Ψ]Radiation Sense on you Sense your personal radiation.  It's a bug if you have it directly.
-    "clair_sense_rads_outside"    , // [Ψ]Radiation Sense on your environment Sense your environmental radiation.  It's a bug if you have it directly.
-    "clair_sense_rads_outside_spawn_item", // [Ψ]Radiation Sense summon item This is the reoccurring item summon for Radiation Sense.  It's a bug if you have it.
     "clair_ranged_enhance"        , // [Ψ]射手之眼(C) 运用你被灵能增强了的感官，你可以增加远程攻击的射程与精度。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
     "clair_voyance"               , // [Ψ]透视 这是超感者的经典灵能，你可以透过墙壁看到周围的一切。
     "clair_dodge_power"           , // [Ψ]战斗直感(C) 你可以稍稍预感短暂的未来，从而更好地躲避敌人的攻击。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。

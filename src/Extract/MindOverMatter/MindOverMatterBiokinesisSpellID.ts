@@ -22,7 +22,6 @@ export const ExtractDefineMindOverMatterBiokinesisSpellIDList = [
     "biokin_combat_dance"         , // [Ψ]战斗之舞(C) 你可以用灵能充盈你的身体，以提高你的战斗灵能。
     "biokin_perfected_motion"     , // 极速移动 Your control over your body allows you to move incredibly quickly.  While this does not allow you to attack more quickly, you can cross distances in the blink of an eye and outrun a cheetah.  You could even run on water, though not walk on it.This power <color_yellow>is maintained by concentration</color> and <color_red>may fail</color> if <color_yellow>concentration is interrupted</color>.  It requires <color_yellow>even more concentration</color> than usual.Perfected Motion <color_red>cannot be active</color> with Hurricane Blows.
     "biokin_hurricane_blows"      , // [Ψ]暴风连击 你攻击快如幻影，似乎根本看不到你抬手。在对手一个眨眼之间你就能发动数次攻击，在其刚开始察觉就打出了最后一击。移动会打断暴风连击的专注并终止效果。暴风连击 与  极速行动 <color_red>不能共存</color>.
-    "biokin_hurricane_blows_2"    , // [Ψ]Hurricane Blows 2 Makes sure the extra effects of Hurricane Blows last through the power's duration.  It's a bug if you have it.
 ] as const;
 /**从文件提取的预定义的MindOverMatterBiokinesisSpellID */
 export type ExtractDefineMindOverMatterBiokinesisSpellID = typeof ExtractDefineMindOverMatterBiokinesisSpellIDList[number];

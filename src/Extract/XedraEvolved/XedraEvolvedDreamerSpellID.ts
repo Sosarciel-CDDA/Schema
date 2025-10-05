@@ -1,6 +1,5 @@
 /**从文件提取的预定义的XedraEvolvedDreamerSpellID 列表*/
 export const ExtractDefineXedraEvolvedDreamerSpellIDList = [
-    "return_critters"             , // 召回野兽 如果您的召唤兽走失了，把它们召唤回来。
     "dream_blade"                 , // 梦剑术 这把短暂存在的剑可以让你用脑海中的浮梦来保护自己！
     "dream_dagger"                , // 梦匕术 这把昙花一现的匕首由你的内在现实连接驱动，你的魔力池越大，它的杀伤力就越大。
     "dream_armor"                 , // 梦甲术 召唤出一套轻轻盖在你身上的盔甲，几乎没有什么累赘，并且叠加在你所穿衣物的上方。
@@ -14,8 +13,6 @@ export const ExtractDefineXedraEvolvedDreamerSpellIDList = [
     "summon_shifter"              , // 召唤移相怪 召唤传送门生物来帮助应对危险情况。
     "summon_sapient_light"        , // 召唤光怪 召唤一个来自另一个现实的对生物怀有仇恨的受干扰的智慧实体。它不会攻击你。至少目前是这样。
     "make_constructed_hammer"     , // 重锤 利用你的能量，你制造了一个形状奇特的锤子。你可以用它来粉碎你的敌人，或者粉碎各种障碍。
-    "constructed_hammer_attack"   , // Smash A Target Deal some damage.  You can't see it except in debug mode.
-    "constructed_hammer_self_destruct", // Constructed Hammer Self destruct Removes constructed hammer.  You can't see it except in debug mode.
     "summon_duplicator"           , // 召唤复制者 召唤传送门生物来帮助应对危险情况。
     "xedra_dreamer_time_bubble"   , // 召唤时间气泡 在你所选的位置召唤一个时间完全冻结的气泡，不可穿透，并使里面的一切事物停滞。
     "teleport_coin"               , // 抛硬币 抛硬币。你选哪一边？

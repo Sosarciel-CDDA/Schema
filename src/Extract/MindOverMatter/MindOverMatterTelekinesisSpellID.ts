@@ -1,10 +1,7 @@
 /**从文件提取的预定义的MindOverMatterTelekinesisSpellID 列表*/
 export const ExtractDefineMindOverMatterTelekinesisSpellIDList = [
     "telekinetic_pull"            , // [Ψ]念动之手 将一组物品朝你移动或者移走。
-    "telekinetic_item_pull_real"  , // [Ψ]Far Hand Pull Items Real The actual effect that causes the far hand.  It's a bug if you have it.
-    "telekinetic_item_push_real"  , // [Ψ]Far Hand Push Items Real The actual effect that causes the far hand.  It's a bug if you have it.
     "telekinetic_push"            , // [Ψ]念动拉扯 用一股灵能将目标生物推开或拉向你。目标可以移动的距离取决于它的重量与你的灵能等级；更重的物品不会被移动得太远，如果你的目标太重，你可能根本无法移动它。
-    "telekinetic_force_shove_real", // [Ψ]Force Shove Push Real The actual effect that causes the force shove away.  It's a bug if you have it.
     "telekinetic_noise"           , // [Ψ]噪音发生器 使用集中的念动爆破力，将两个物体撞击在一起，或者将一个物体撞向地面，或者只是将自身的灵能撞击地面，引发巨大的噪音。
     "telekinetic_slam_down"       , // [Ψ]念力击倒 操控念动力使某物猛烈地摔到地上，造成少量伤害和击倒。
     "telekinetic_momentum"        , // [Ψ]动量修正(C) 操控自己和附近物体的动量，以获取战斗优势，减少受到的伤害并略微增加你的速度。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
@@ -21,8 +18,6 @@ export const ExtractDefineMindOverMatterTelekinesisSpellIDList = [
     "telekinetic_move_large_weight", // [Ψ]超念动 范围及强度更大的念动，这种灵能可以让你移动非常重的物品，并以足以致命的速度投掷出接近人类体型的目标，或者捡起并投掷巨大的物品。你可以移动的重量取决于灵能水平。
     "telekinetic_aegis"           , // [Ψ]灵能神盾 在周围生成一个物理伤害无法穿透的盾牌。只能维持<color_yellow>极短时间</color>并且你在持续期间<color_red>无法移动</color>。
     "telekinetic_earthshaker"     , // [Ψ]撼地灵能 用灵能操纵附近的大地，将其*扭曲*，推倒建筑物，击倒附近的所有人。
-    "telekinetic_earthshaker_bash_terrain", // [Ψ]Earthshaker Bash Terrain Destroy furniture and terrain nearby.
-    "telekinetic_earthshaker_spawn_rubble", // [Ψ]Earthshaker Rubble Causes rubble to be spawned occasionally.
 ] as const;
 /**从文件提取的预定义的MindOverMatterTelekinesisSpellID */
 export type ExtractDefineMindOverMatterTelekinesisSpellID = typeof ExtractDefineMindOverMatterTelekinesisSpellIDList[number];

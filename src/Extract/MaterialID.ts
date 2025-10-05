@@ -1,6 +1,5 @@
 /**从文件提取的预定义的MaterialID 列表*/
 export const ExtractDefineMaterialIDList = [
-    "undefined"                   , // 聚合树脂
     "thermo_resin"                , // 热塑树脂
     "epoxy"                       , // 环氧树脂
     "fiberglass"                  , // 玻纤层压板
