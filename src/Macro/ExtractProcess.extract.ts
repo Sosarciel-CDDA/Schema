@@ -1,197 +1,301 @@
 
 
 
-import { extractDefineIdList } from 'Macro';
-import { UtilFT } from '@zwa73/utils';
+import { createExtractIndex, extractDefineIdList } from 'Macro';
+import { ivk, MPromise, UtilFT } from '@zwa73/utils';
 import { awt, zh, zhl } from '@/src/Util';
 
 
-const extractFn = (idfield:string,...fields:string[])=>async (fp:string)=>{
+const extractFn = (arg:{
+    id:string;
+    field?:string[];
+    filter?:(v:any)=>MPromise<boolean>;
+})=>async (fp:string)=>{
+    const {
+        id,
+        field=[],
+        filter=()=>true
+    } = arg;
     const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
-    return Promise.all(jsonlist.map(async (v) => {
+    return Promise.all(jsonlist.map(async v => {
+        if(! await filter(v)) return undefined;
         const translated = (await Promise.all(
-            fields.map(async f => zhl(Array.isArray(v[f]) ? v[f]?.[0] : v[f]))
-        ))
-        .filter(fd=>typeof fd === 'string' && fd.length>0);
+            field.map(async f => zhl(Array.isArray(v[f]) ? v[f]?.[0] : v[f]))
+        )).filter(fd=>typeof fd === 'string' && fd.length>0);
         const cmt = translated.length>0 ? ` // ${translated.join(' ')}` : '';
-        return awt`${`"${v[idfield]}"`.padEnd(30)},${cmt}`;
-    }));
+        return awt`${`"${v[id]}"`.padEnd(30)},${cmt}`;
+    })).then(v=>v.filter(str=>str!=undefined));
 }
 
+
 //#region 预定义IDList生成
-//ItemCategoryID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/item_category.json",
-    typeName: "ItemCategoryID",
-    func:extractFn('id','name_header'),
-});
-//SkillID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/skills.json",
-    typeName: "SkillID",
-    func:extractFn('id','name','description'),
-});
-//VitaminID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/vitamin.json",
-    typeName: "VitaminID",
-    func:extractFn('id','name'),
-});
-//FlagID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/flags.json",
-    typeName: "FlagID",
-    func:extractFn('id','info'),
-});
-//EffectID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/effects.json",
-    typeName: "EffectID",
-    func:extractFn('id','name','desc'),
-});
-//FaultGroupID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/faults/fault_groups_*.json",
-    typeName: "FaultGroupID",
-    func:extractFn('id','//'),
-});
-//FaultID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/faults/faults_*.json",
-    typeName: "FaultID",
-    func:extractFn('id','name','description'),
-});
-//FaultFixID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/faults/fault_fixes_*.json",
-    typeName: "FaultFixeID",
-    func:extractFn('id','name'),
-});
-//FieldTypeID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/field_type.json",
-    typeName: "FieldTypeID",
-    func:async fp=>{
-        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
-        return jsonlist.map(async v=>
-            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.intensity_levels?.[0].name)}`);
-    }
-});
-//EmitID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/emit.json",
-    typeName: "EmitID",
-    func:extractFn('id','//'),
-});
-//MartialID提取
-void extractDefineIdList({
-    sourceFileGlob: [
-        "data/json/martialarts.json",
-        "data/json/martialarts_fictional.json"
-    ],
-    typeName: "MartialID",
-    func:extractFn('id','name','description'),
-});
-//TechniqueID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/techniques.json",
-    typeName: "TechniqueID",
-    func:extractFn('id','name','description'),
-});
-//ToolQualityID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/tool_qualities.json",
-    typeName: "ToolQualityID",
-    func:extractFn('id','name'),
-});
-//WeaponCategoryID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/weapon_categories.json",
-    typeName: "WeaponCategoryID",
-    func:extractFn('id','name','//'),
-});
-//AttackVectorID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/attack_vectors.json",
-    typeName: "AttackVectorID",
-    func:extractFn('id','//'),
-});
-//AmmoEffectID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/ammo_effects.json",
-    typeName: "AmmoEffectID",
-    func:extractFn('id','//'),
-});
-//ItemActionID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/item_actions.json",
-    typeName: "ItemActionID",
-    func:extractFn('id','name'),
-});
-//AmmiunitionTypeID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/items/ammo_types.json",
-    typeName: "AmmiunitionTypeID",
-    func:extractFn('id','name'),
-});
-//BodyPartID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/body_parts.json",
-    typeName: "BodyPartID",
-    func:async fp=>{
+ivk(async ()=>{
+    await Promise.all([
+    //ItemCategoryID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/item_category.json",
+        typeName: "ItemCategoryID",
+        func:extractFn({
+            id: 'id',
+            field: ['name_header'],
+        }),
+    }),
+    //SkillID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/skills.json",
+        typeName: "SkillID",
+        func:extractFn({
+            id: 'id',
+            field: ['name','description'],
+        }),
+    }),
+    //VitaminID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/vitamin.json",
+        typeName: "VitaminID",
+        func:extractFn({
+            id: 'id',
+            field: ['name'],
+        }),
+    }),
+    //FlagID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/flags.json",
+        typeName: "FlagID",
+        func:extractFn({
+            id: 'id',
+            field: ['info'],
+        }),
+    }),
+    //EffectID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/effects.json",
+        typeName: "EffectID",
+        func:extractFn({
+            id: 'id',
+            field: ['name','desc'],
+        }),
+    }),
+    //FaultGroupID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/faults/fault_groups_*.json",
+        typeName: "FaultGroupID",
+        func:extractFn({
+            id: 'id',
+            field: ['//'],
+        }),
+    }),
+    //FaultID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/faults/faults_*.json",
+        typeName: "FaultID",
+        func:extractFn({
+            id: 'id',
+            field: ['name','description'],
+        }),
+    }),
+    //FaultFixID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/faults/fault_fixes_*.json",
+        typeName: "FaultFixeID",
+        func:extractFn({
+            id: 'id',
+            field: ['name'],
+        }),
+    }),
+    //FieldTypeID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/field_type.json",
+        typeName: "FieldTypeID",
+        func:async fp=>{
+            const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+            return jsonlist.map(async v=>
+                awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.intensity_levels?.[0].name)}`);
+        }
+    }),
+    //EmitID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/emit.json",
+        typeName: "EmitID",
+        func:extractFn({
+            id: 'id',
+            field: ['//'],
+        }),
+    }),
+    //MartialID提取
+    extractDefineIdList({
+        sourceFileGlob: [
+            "data/json/martialarts.json",
+            "data/json/martialarts_fictional.json"
+        ],
+        typeName: "MartialID",
+        func:extractFn({
+            id: 'id',
+            field: ['name','description'],
+        }),
+    }),
+    //TechniqueID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/techniques.json",
+        typeName: "TechniqueID",
+        func:extractFn({
+            id: 'id',
+            field: ['name','description'],
+        }),
+    }),
+    //ToolQualityID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/tool_qualities.json",
+        typeName: "ToolQualityID",
+        func:extractFn({
+            id: 'id',
+            field: ['name'],
+        }),
+    }),
+    //WeaponCategoryID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/weapon_categories.json",
+        typeName: "WeaponCategoryID",
+        func:extractFn({
+            id: 'id',
+            field: ['name','//'],
+        }),
+    }),
+    //AttackVectorID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/attack_vectors.json",
+        typeName: "AttackVectorID",
+        func:extractFn({
+            id: 'id',
+            field: ['//'],
+        }),
+    }),
+    //AmmoEffectID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/ammo_effects.json",
+        typeName: "AmmoEffectID",
+        func:extractFn({
+            id: 'id',
+            field: ['//'],
+        }),
+    }),
+    //ItemActionID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/item_actions.json",
+        typeName: "ItemActionID",
+        func:extractFn({
+            id: 'id',
+            field: ['name'],
+        }),
+    }),
+    //AmmiunitionTypeID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/items/ammo_types.json",
+        typeName: "AmmiunitionTypeID",
+        func:extractFn({
+            id: 'id',
+            field: ['name'],
+        }),
+    }),
+    //BodyPartID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/body_parts.json",
+        typeName: "BodyPartID",
+        func:async fp=>{
         const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
         const bplist = jsonlist.filter(v=>v.type === 'body_part');
         return bplist.map(async v=>
             awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)}`);
-    }
-});
-//SubBodyPartID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/body_parts.json",
-    typeName: "SubBodyPartID",
-    func:async fp=>{
-        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
-        const bplist = jsonlist.filter(v=>v.type === 'sub_body_part');
-        return bplist.map(async v=>
-            awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)}`);
-    }
-});
-//UseActionID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/item_action.json",
-    typeName: "ItemActionID",
-    func:extractFn('id','name'),
-});
-//RecipeCategoryID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/recipes/recipes.json",
-    typeName: "RecipeCategoryID",
-    func:extractFn('id'),
-});
+        }
+    }),
+    //SubBodyPartID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/body_parts.json",
+        typeName: "SubBodyPartID",
+        func:async fp=>{
+            const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+            const bplist = jsonlist.filter(v=>v.type === 'sub_body_part');
+            return bplist.map(async v=>
+                awt`${`"${v.id}"`.padEnd(30)}, // ${zhl(v.name)}`);
+        }
+    }),
+    //UseActionID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/item_action.json",
+        typeName: "ItemActionID",
+        func:extractFn({
+            id: 'id',
+            field: ['name'],
+        }),
+    }),
+    //RecipeCategoryID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/recipes/recipes.json",
+        typeName: "RecipeCategoryID",
+        func:extractFn({id:'id'}),
+    }),
 
-void extractDefineIdList({
-    sourceFileGlob: "data/json/recipes/recipes.json",
-    typeName: "RecipeSubCategoryID",
-    func:async fp=>{
-        const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
-        const list = jsonlist.filter(v=>v.recipe_subcategories !=null );
-        return list.map(v=>v.recipe_subcategories).flat().map(async v=>
-            awt`${`"${v}"`.padEnd(30)},`);
-    }
-});
+    extractDefineIdList({
+        sourceFileGlob: "data/json/recipes/recipes.json",
+        typeName: "RecipeSubCategoryID",
+        func:async fp=>{
+            const jsonlist = await UtilFT.loadJSONFile(fp) as any[];
+            const list = jsonlist.filter(v=>v.recipe_subcategories !=null );
+            return list.map(v=>v.recipe_subcategories).flat().map(async v=>
+                awt`${`"${v}"`.padEnd(30)},`);
+        }
+    }),
 
-//NpcClassID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/npcs/classes.json",
-    typeName: "NpcClassID",
-    func:extractFn('id','name','job_description'),
-});
+    //NpcClassID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/npcs/classes.json",
+        typeName: "NpcClassID",
+        func:extractFn({
+            id: 'id',
+            field: ['name','job_description'],
+        }),
+    }),
 
-//MaterilID提取
-void extractDefineIdList({
-    sourceFileGlob: "data/json/materials.json",
-    typeName: "MaterialID",
-    func:extractFn('id','name'),
-});
+    //MaterilID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/materials.json",
+        typeName: "MaterialID",
+        func:extractFn({
+            id: 'id',
+            field: ['name'],
+        }),
+    }),
+
+    //Xedra法术提取
+    ivk(async ()=>{
+        const dirName = "XedraEvolved";
+        await Promise.all([
+        //梦行者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/spells/dreamer_spells.json",
+            typeName: "XedraEvolvedDreamerSpellID",
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+            }),
+        }),
+        //食梦者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/spells/eater_spells.json",
+            typeName: "XedraEvolvedEaterSpellID",
+            func:extractFn({
+                id: 'id',
+                field: ['name','description'],
+            }),
+        }),
+        ]);
+        await createExtractIndex({dirName});
+    }),
+
+    ]);
+    await createExtractIndex({});
+})
 
 //#endregion

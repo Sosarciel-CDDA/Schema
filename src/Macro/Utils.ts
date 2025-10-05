@@ -68,6 +68,8 @@ export type ${listName} = [
 export async function extractDefineIdList(arg:{
     /**输出的类型名 */
     typeName:string;
+    /**输出的目录名 */
+    dirName?:string;
     /**读取的来源文件
      * 路径将以gamepath为起点
      */
@@ -77,7 +79,7 @@ export async function extractDefineIdList(arg:{
      */
     func:(filepath:string)=>MPromise<MPromise<string>[]>;
 }){
-    const {typeName,sourceFileGlob,func} = arg;
+    const {typeName,sourceFileGlob,func,dirName} = arg;
 
     const extractName = `ExtractDefine${typeName}`;
 
@@ -93,7 +95,22 @@ export const ${extractName}List = [
 ] as const;
 /**从文件提取的预定义的${typeName} */
 export type ${extractName} = typeof ${extractName}List[number];
-`.trim(),{filePath:path.join(EXTRACT_DIR,`${typeName}.ts`)})
+`.trim(),{filePath:path.join(dirName ? path.join(EXTRACT_DIR,dirName) : EXTRACT_DIR,`${typeName}.ts`)})
+}
+
+/**生成index */
+export async function createExtractIndex(arg:{
+    /**输出的目录名 */
+    dirName?:string;
+}){
+    const {dirName} = arg;
+    const fixedDir = dirName ? path.join(EXTRACT_DIR,dirName) : EXTRACT_DIR;
+    const fileList = await fs.promises.readdir(fixedDir);
+    const str = fileList.map(file=>{
+        const {name} = path.parse(file);
+        return `export * from './${name}';`;
+    }).join('');
+    await fs.promises.writeFile(path.join(fixedDir,'index.ts'),str);
 }
 
 
