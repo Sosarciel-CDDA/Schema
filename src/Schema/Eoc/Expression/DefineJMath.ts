@@ -383,7 +383,7 @@ export const monstersNearby = (
     kwargs?: {
         radius?: string,
         location?: string,
-        attitude?: 'hostile' | 'friendly' | 'both'
+        attitude?: "'hostile'" | "'friendly'" | "'both'" | SchemaString
     }
 ) => `${pt(talker)}monsters_nearby(${plist(...ids,...pfk(kwargs))})`;
 
