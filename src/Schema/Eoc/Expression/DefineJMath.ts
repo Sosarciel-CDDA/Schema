@@ -385,7 +385,7 @@ export const monstersNearby = (
         location?: string,
         attitude?: 'hostile' | 'friendly' | 'both'
     }
-) => `${pt(talker)}monsters_nearby(${plist(ids.join(', '),...pfk(kwargs))})`;
+) => `${pt(talker)}monsters_nearby(${plist(...ids,...pfk(kwargs))})`;
 
 /**获取指定 mod 的加载顺序  
  * 只读  
@@ -638,7 +638,7 @@ export const timeUntilEOC = (eocID: Arg<EocID>, kwargs?: { unit?: TimeUnit }) =>
  * @example  
  * { "math": [ "u_val('strength') = 2" ] }  
  */
-export const val = (talker: UN, aspect: typeof JMV[keyof typeof JMV]) =>
+export const val = (talker: UN, aspect: `'${typeof JMV[keyof typeof JMV]}'`|SchemaString) =>
     `${pt(talker)}val(${aspect})`;
 
 /**获取 NPC 对话者的愤怒值  
