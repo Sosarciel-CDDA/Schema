@@ -258,7 +258,7 @@ export const EnchGenericValTypeList = [
     "SCENT_MASK"                 ,// 增加你在气味系统中的目标气味值 (默认为 500) . "add": 100 表示角色更容易被嗅到
     "SHOUT_NOISE"                ,// 修改你喊叫时产生的噪音量 (默认为 10) 
     "SHOUT_NOISE_STR_MULT"       ,// 修改力量对喊叫噪音的影响倍数 (默认为 2, 即每点力量增加 2 点噪音) 
-    "SKILL_RUST_RESIST"          ,// 使用 add 表示抵抗技能衰退的几率 (百分比) ; 使用 multiply 表示衰退量的乘法因子, 数值越小衰退越慢
+    "SKILL_RUST_RESIST"          ,// 使用 add 表示抵抗技能衰退的几率 (百分比) add: 100 即过目不忘; 使用 multiply 表示衰退量的乘法因子, 数值越小衰退越慢 mul: 0 即过目不忘
     "SLEEPY"                     ,// 数值越高越容易入睡
     "SOCIAL_INTIMIDATE"          ,// 影响你的威吓能力
     "SOCIAL_LIE"                 ,// 影响你的说谎能力
