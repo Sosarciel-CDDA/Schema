@@ -475,6 +475,8 @@ export class ModDefine{
             effect,condition
         }
     }
+    /**生成适用于此mod的变量ID */
+    genVarID<T extends string>(id:T):`${string}_${T}`{
+        return `${this.MOD_PREFIX}_${id}`;
+    }
 }
-
-
