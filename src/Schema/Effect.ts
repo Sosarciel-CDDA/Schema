@@ -183,12 +183,12 @@ export type Effect = {
 export type EffectVitaminsMod ={
     /**维生素ID */
     vitamin: (VitaminID);
-    /**每隔[0]~[1] tick 将会应用一次调整  
+    /**每隔 tick 将会应用一次 [0]~[1] 的加法调整  
      * 按效果强度应用不同成员  
      */
     rate?: [ Int, Int ][];
     /**在玩家 抵抗 此效果时  
-     * 每隔 [0]~[1] tick将会应用一次调整  
+     * 每隔 tick 将会应用一次 [0]~[1] 的加法调整  
      * 按效果强度应用不同成员  
      */
     resist_rate?: [ Int, Int ][];
