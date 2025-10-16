@@ -306,6 +306,17 @@ ivk(async ()=>{
             field: ['name','description'],
         });
         await Promise.all([
+        //无职业的
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/powers/classless.json",
+            typeName: `${dirName}ClasslessSpellID`,
+            func:extractFn({
+                filter: v => v.type == "SPELL",
+                id: 'id',
+                field: ['name','description'],
+            }),
+        }),
         //炼体者
         extractDefineIdList({
             dirName,
