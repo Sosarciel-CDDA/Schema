@@ -17,7 +17,7 @@ export const ExtractDefineMartialIDList = [
     "style_karate"                , // 空手道 空手道是一种广为流行的武术，起源于日本。它侧重于快速、精确的攻击、格挡和流畅的步法。成功命中会让你在下回合获得额外闪避和额外格挡。
     "style_kickboxing"            , // 踢拳道 一种将西方拳击与空手道、跆拳道、泰拳和法国踢腿术元素相结合的武术，侧重于踢腿的技巧。美式踢拳道去掉了膝顶和肘击，转而专注于高踢。
     "style_krav_maga"             , // 马伽术 发源于以色列地区，马伽术基于迅速有效地打倒敌人的技巧发展而来。它的技术偏向于切实有效的攻击动作，摒弃展示用或者较为复杂的动作。在警察和各种武装部队人员之间流行。
-    "style_leopard"               , // 豹形拳 少林五形拳之一。豹拳出其不意，快速压制。敏捷将替代力量提升你的伤害，同时能提高暴击率。
+    "style_leopard"               , // 豹形拳 One of the five Shaolin animal styles.  The Leopard focuses on rapid, strategically-planned strikes.  Dexterity determines your damage, rather than Strength and also increases your critical hit chance.
     "style_swordsmanship"         , // 中世纪剑术 使用长剑和剑与盾的技艺，这一技艺之后发展成了现代击剑。它既适用于无甲战斗，也适用于装甲战斗，包括擒拿以及防守和进攻剑法。这篇论文用详尽的分解插图比较了意大利和德国的中世纪战斗传统。
     "style_muay_thai"             , // 泰拳 也被称作"八臂武术"，泰拳是一种源自泰国的流行格斗技，采用双拳、双肘、双膝、双脚这八个部位给予对手强力一击。你的格挡值随着力量增加而增加。格挡成功或者受到伤害会增加你的攻击伤害并提升后续格挡值。
     "style_ninjutsu"              , // 忍术 忍术是封建时代的日本忍者所使用的武学和战斗技巧。它专注于快速、精确、无声的突击。忍术招式几乎全是无声的，并且首次攻击时有暴击几率更高。它也会在你每次移动时提供少许战斗加成。

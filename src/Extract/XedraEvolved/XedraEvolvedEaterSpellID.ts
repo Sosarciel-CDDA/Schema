@@ -11,7 +11,7 @@ export const ExtractDefineXedraEvolvedEaterSpellIDList = [
     "spell_stamina_wonder"        , // 循环 不要停下来。
     "spell_night_vision"          , // 黑暗视觉 增强你的视力，使你在夜间看得像白天一样清楚。
     "spell_dodge"                 , // 闪避 避开他们的攻击。
-    "spell_endurance"             , // 忍耐 Take the blows.  Don't let the world kill you.
+    "spell_endurance"             , // 忍耐 承受住打击。别让这个世界杀了你。
     "spell_invisibility"          , // 隐藏 别让它们发现你。
     "spell_clairvoyance"          , // 思维展开 闭上眼睛来看清一切。
     "spell_melee_damage"          , // 物理工具 你的身体是一台毁灭机器，请明智地使用它。
@@ -19,9 +19,9 @@ export const ExtractDefineXedraEvolvedEaterSpellIDList = [
     "spell_speed_wonder"          , // 狂奔 跑。 尽可能快地跑。别停下。
     "spell_weak"                  , // 虚弱 使你周围的敌人更脆弱。
     "spell_unbreakable"           , // 不可战胜 任何东西都无法把你推开或拉走。
-    "xedra_eater_stabilize_reality", // Stabilize in Reality Prevent hostile adjustments to your personal reality and timeline.
-    "xedra_eater_erosion"         , // 侵蚀 Generate an unstable field of time close to your body that erodes creatures you attack in melee over time.
-    "point_blank"                 , // 强力肘击 A straight hit with your arm.  Using additional energy you could probably break a wall with such a powerful strike.
+    "xedra_eater_stabilize_reality", // 稳固现实 防止你的个人现实与时间线遭到恶意调整。
+    "xedra_eater_erosion"         , // 侵蚀 在身体附近生成一个不稳定的时间场，它会随着时间推移，不断侵蚀你近战攻击的生物。
+    "point_blank"                 , // 强力肘击 用手臂发出的一记直击。若注入额外能量，这强力一击或许能击穿墙壁。
 ] as const;
 /**从文件提取的预定义的XedraEvolvedEaterSpellID */
 export type ExtractDefineXedraEvolvedEaterSpellID = typeof ExtractDefineXedraEvolvedEaterSpellIDList[number];

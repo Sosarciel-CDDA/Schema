@@ -1,14 +1,14 @@
 /**从文件提取的预定义的MagiclysmDruidSpellID 列表*/
 export const ExtractDefineMagiclysmDruidSpellIDList = [
-    "druid_veggrasp"              , // 藤蔓缠绕 This spell causes roots and vines to burst forth from the ground and grab your foes, slowing them and doing a small amount of damage as they dig in.Larger targets will be <color_yellow>less affected</color> by the spell, and it has <color_red>no effect</color> on targets not on natural ground.
-    "druid_rootstrike"            , // 树根穿刺 This spell causes roots to spear out of the ground in a cone and stab into your foes, impaling them.
+    "druid_veggrasp"              , // 藤蔓缠绕 此法术能使藤蔓与根须破土而出并缠住你的敌人，在紧缚的同时造成少量伤害并使其减速。体型较大的目标受此法术的<color_yellow>影响较小</color>，且该法术对不处于天然地面上的目标<color_red>无效</color>。
+    "druid_rootstrike"            , // 树根穿刺 此法术会从地面锥形范围内唤出无数根须，如利矛般穿刺并钉住你的敌人。
     "druid_woodshaft"             , // 硬木投掷 这个法术能召唤出一根硬木投射物，从施法者的手中高速射出，刺向敌人。
     "druid_naturebow1"            , // 自然之弓 这个法术可以变出一把神奇的木制反曲弓，以及与之相配的箭筒和箭簇。
     "druid_naturebow1_plus"       , // 升级版自然之弓 这个咒语可以变出一把神奇的木质反曲弓，以及与之相配的箭筒和箭簇。 现在你已经对这个咒语了如指掌，并开始设计自己的版本。
-    "recover_sleepiness"          , // 自然冥想 Your connection to living things allows you to go into a magical trance.  This allows you to recover from fatigue quickly in exchange for mana.
+    "recover_sleepiness"          , // 自然冥想 你与生灵的连接使你能够进入一种魔法凝神状态，从而消耗魔力，快速消除疲劳。
     "summon_cats"                 , // 袋装猫咪 你就是那个和猫讲话的怪婆婆吗？
     "summon_bear"                 , // 恐怖威熊 这个法术看上去已被严重污染，你十分确定这法术的名字应该是"恐怖威能"，但是你也十分确定施放它不能造成恐怖，因为它的施放步骤脏到难以辨认。不过，现在是大灾变，没时间搞清楚了！
-    "create_rune_druid"           , // 符文（德鲁伊） A ritual in which you conjure forth roots and vines in order to make a druidic rune.  You can use the rune as a catalyst for recipes.
+    "create_rune_druid"           , // 符文（德鲁伊） 这是一种通过召唤根须与藤蔓来塑造德鲁伊符文的仪式。该符文可以作为配方的催化剂使用。
     "purify_seed"                 , // 净化之种 你召唤了大地的馈赠，可用于净水。若不及时使用很快就会变质。
     "druidic_regrowth"            , // 沃血重萌 通过献祭自身生命力，你可以让附近枯萎贫瘠的植被重获新生。剩下的就得靠时间来尽复生机了。
     "druidic_healing"             , // 舍己济人 将使用者自身部分生命力转化为医疗能量，为同伴治疗。
@@ -29,21 +29,21 @@ export const ExtractDefineMagiclysmDruidSpellIDList = [
     "druid_beguile_savage_beast"  , // 蛊惑野兽 利用你与大自然的联系，你可以支配一只动物为你服务。这个法术甚至对变异的动物有效。
     "druid_bramble_spear"         , // 荆棘之矛 这个法术会把一根棍子变成一把会滴下粘性汁液的凶猛的矛状物。
     "druid_bramble_spear_enhanced", // 强化荆棘之矛 这个法术能将树皮或树枝变成一根滴着粘稠汁液的凶恶长矛。 你现在对这个咒语了如指掌，再也不需要像以前那样需要大量的法术组件了。
-    "druid_summon_brambles"       , // 绞杀荆棘 Call up thick, swiftly growing brambles, either in a line to form a wall or an arc to trap an enemy.
-    "druid_summon_brambles_arc"   , // 召唤荆棘弧 Call up thick, swiftly growing brambles, either in a line to form a wall or an arc to trap an enemy.
-    "druid_summon_brambles_line"  , // 召唤荆棘线 Call up thick, swiftly growing brambles, either in a line to form a wall or an arc to trap an enemy.
+    "druid_summon_brambles"       , // 绞杀荆棘 召唤出粗壮而迅猛生长的荆棘丛，可令其排成直线，化为坚壁；或使其弯曲成弧，围困敌人。
+    "druid_summon_brambles_arc"   , // 召唤荆棘弧 召唤出粗壮而迅猛生长的荆棘丛，可令其排成直线，化为坚壁；或使其弯曲成弧，围困敌人。
+    "druid_summon_brambles_line"  , // 召唤荆棘线 召唤出粗壮而迅猛生长的荆棘丛，可令其排成直线，化为坚壁；或使其弯曲成弧，围困敌人。
     "druid_thorn_skin"            , // 棘皮术 这个咒语将德鲁伊的皮肤变成一种树皮状的物质，上面覆盖着巨大的刺。它提供了极好的保护，但会稍微减慢你的速度，使你容易受到火灾的伤害。
-    "druid_renew_forest_spell"    , // 森林新生 While outdoors and not underground, the druid can create a profusion of life around themselves, causing grass to grow through pavement, bushes and flowers to sprout, and trees to grow to full height in moments.In <color_yellow>addition to</color> mana, this spell also requires <color_red>hit points</color> to cast and <color_yellow>will fail</color> if you are too injured.
+    "druid_renew_forest_spell"    , // 森林新生 只要身处室外而非地下，德鲁伊就能在自身周围催生万物，令青草破开路面，灌木与花卉萌芽，树木在片刻间长成。<color_yellow>除了魔力</color>之外，此法术还需消耗<color_red>生命力</color>才能施放，如果你伤势过重，则施法将会<color_yellow>失败</color>。
     "druid_wood_living_tree_spell", // 塑木术 用德鲁伊魔法，在不伤害树木的情况下用其塑造出可用的原木。你必须对一棵活着的树施放此法术。
-    "druid_anti_heat"             , // 清凉之触 Draw on some of the essence of water, providing protection against the summer's heat.
-    "druid_breathing_underwater"  , // Aquatic Mantle Cover yourself in a thin layer of magical seaweed, preventing you from getting wet and allowing you to breathe underwater.
-    "druid_disinfectant"          , // 清洗伤口 Transform a bit of water into a magical disinfectant as you pour it over your wounds.
-    "druid_water_walking"         , // 水上漂 Enchant yourself so that the water will buoy you up and prevent you from sinking, allowing you to walk on its surface.
-    "druid_traverse_the_wilds"    , // 穿行荒野 Blend in the wilds and urge them to speed your passage.  Trees bend out of the way, bushes do not hinder you, and even grass subtly moves your feet along.  The spell cannot be cast near civilization and similarly will fade if your travels take you out of the wilds.
-    "druid_bearmantle"            , // Bearmantle Adopt some of the aspect of the bear, protecting you from cold and preparing you for winter.
-    "druid_goodberry"             , // 神莓术 Enchant a set of berries, transforming them into magical fruit that will provide a hearty meal's worth of nutrition and a small amount of healing when eaten.  The goodberries will rot away within 24 hours if not eaten.
-    "druid_create_temporary_spring", // Fountain of the Depths Call to the waters beneath the earth and bring them to the surface, creating a natural spring.  The waters will subside when the spell's duration ends.
-    "druid_turn_tree_into_treant" , // Awakening of the Forest Guardian Grant a nearby tree awareness and mobility, letting it shake free from the soil and rise up to crush your enemies.  It will root itself again when the spell expires.You must be <color_yellow>standing next to a tree</color> for the spell to take effect.
+    "druid_anti_heat"             , // 清凉之触 汲取部分水的精华，以抵御夏日的酷热。
+    "druid_breathing_underwater"  , // 水灵披风 用一层薄薄的魔法海藻覆盖全身，让你滴水不沾，并能在水下呼吸。
+    "druid_disinfectant"          , // 净创术 在你将水浇于伤口之上时，可将其转化为具有魔力的消毒剂。
+    "druid_water_walking"         , // 水上漂 为自身附魔，水便会托起你，使你免于下沉，从而能在水面上行走。
+    "druid_traverse_the_wilds"    , // 穿行荒野 融入荒野，并催动它来为你加速。树木将为你让路，灌木将不再阻碍，就连青草也会暗中助你前行。此法术无法在文明区域附近施放，同样，一旦离开荒野，法术也会随之消散。
+    "druid_bearmantle"            , // 熊灵附身 获得部分熊之外相，使你免受寒冷侵袭，为过冬做好准备。
+    "druid_goodberry"             , // 神莓术 为一捧浆果附魔，将其转化为魔法水果。食用后可提供一顿饱饭的营养，并带来少许治疗效果。若24小时内不食用，这些“好莓果”便会腐烂。
+    "druid_create_temporary_spring", // 深源涌泉 呼唤地底之水，引其涌上地表，从而创造出一口天然泉眼。当法术持续时间结束时，泉水便会退去。
+    "druid_turn_tree_into_treant" , // 唤醒林卫 赋予附近的一棵树木意识与行动能力，使其挣脱土壤，拔地而起，去碾碎你的敌人。当法术失效时，它会重新扎根。你必须站在<color_yellow>一棵树的旁边</color>才能让此法术生效。
 ] as const;
 /**从文件提取的预定义的MagiclysmDruidSpellID */
 export type ExtractDefineMagiclysmDruidSpellID = typeof ExtractDefineMagiclysmDruidSpellIDList[number];

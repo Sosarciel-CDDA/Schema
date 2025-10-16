@@ -354,7 +354,7 @@ export const ExtractDefineEffectIDList = [
     "weakened_gravity"            , // 弱重力 本地的时空出现了问题，你附近的一切都变轻了。
     "strengthened_gravity"        , // 强重力 本地的时空出现了问题，你周围的一切像是灌了铅水一样沉重。
     "slowed_time"                 , // 时间减缓 本地的时空出现了问题，你周围的一切似乎都变得更快了。
-    "nvg_green"                   , // 夜视仪（绿色） 你的夜视仪给世界涂上了一层绿色的色调。
+    "nvg_green"                   , // 夜视仪(绿色) 你的夜视仪给世界涂上了一层绿色的色调。
     "glowing_gas"                 , // inhaled 你吸入了一肺发光的异界寄生孢子。 值得庆幸的是，它们似乎并不适应人类的生理学。
     "glowing_gas_cover"           , // 发光 你全身沾满了发光的异界孢子！
     "molting"                     , // 蜕壳 你有一种想躲在安全之处的强烈冲动。

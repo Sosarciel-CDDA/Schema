@@ -1,7 +1,7 @@
 /**从文件提取的预定义的NpcClassID 列表*/
 export const ExtractDefineNpcClassIDList = [
     "NC_NONE"                     , // 无职业 我在闲逛。
-    "NC_NONE_HARDENED"            , // 无职业 I'm a dummy class for better NPC items later into the Cataclysm.
+    "NC_NONE_HARDENED"            , // 无职业 我只是个NPC，好让某些人在浩劫后期能拿到更好的物品。
     "NC_TEST_CLASS"               , // 调试用NPC 我正在帮助你测试这个游戏。
     "NC_SHOPKEEP"                 , // 店主 我是此处的商人。
     "NC_DOCTOR"                   , // 医生 我正在寻找需要救助的伤员。
@@ -14,7 +14,7 @@ export const ExtractDefineNpcClassIDList = [
     "NC_SCAVENGER"                , // 拾荒者 我只是在努力生存下去。
     "NC_SCAVENGER_PREPPER"        , // 拾荒者 我只是在努力生存下去。
     "NC_SCAVENGER_MOONSHINER"     , // 拾荒者 我只是在努力生存下去。
-    "NC_SCAVENGER_EX_PILOT"       , // Former Pilot I just want to fly away to somewhere better.
+    "NC_SCAVENGER_EX_PILOT"       , // 前飞行员 我只想飞走，飞去一个更好的地方。
     "NC_HUNTER"                   , // 狩猎者 我正在追踪猎物。
     "NC_SCAVENGER_NOMOVE"         , // 拾荒者 我只是在努力生存下去。
     "NC_SCAVENGER_STATIC"         , // 拾荒者 我只是在努力生存下去。
@@ -26,7 +26,7 @@ export const ExtractDefineNpcClassIDList = [
     "NC_SURVIVOR_CHEF"            , // 大厨 我是个厨子。
     "NC_TRUE_FOODPERSON"          , // 美食侠™ 我是美食侠™，我带来了食物！
     "NC_CYBORG"                   , // 改造人 滋滋滋……我…我是一个…改…造造造…人。
-    "NC_CYBORG_RESCUE"            , // 改造人 I'm transhuman above and beyond.
+    "NC_CYBORG_RESCUE"            , // 改造人 我早已超越了凡人之躯。
     "NC_CITY_COP"                 , // 前警官 我曾经是一名警官，但现在我只是一个幸存者。
     "NC_HOMELESS_BROKER"          , // 拾荒者 我只是在努力生存下去。
 ] as const;

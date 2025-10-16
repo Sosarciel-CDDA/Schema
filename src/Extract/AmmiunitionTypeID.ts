@@ -4,7 +4,7 @@ export const ExtractDefineAmmiunitionTypeIDList = [
     "50"                          , // .50 BMG 弹
     "4570"                        , // .45-70 弹
     "50ae"                        , // .50 AE弹
-    "50beowulf"                   , // 12.7x42mm 弹
+    "50beowulf"                   , // 12.7x42mm
     "450"                         , // .450 大毒蛇弹
     "338lapua"                    , // .338 拉普阿弹
     "77mm_arisaka"                , // 7.7x58mm 有阪弹
@@ -29,7 +29,7 @@ export const ExtractDefineAmmiunitionTypeIDList = [
     "9mm"                         , // 9x19mm 弹
     "357sig"                      , // .357 西格弹
     "357mag"                      , // .357 马格南弹
-    "9x18"                        , // 9x18mm 弹
+    "9x18"                        , // 9x18mm
     "380"                         , // .380 ACP 弹
     "38"                          , // .38 特制弹
     "38super"                     , // .38 超级弹
@@ -40,9 +40,9 @@ export const ExtractDefineAmmiunitionTypeIDList = [
     "454"                         , // .454 卡苏尔弹
     "460sw"                       , // .460 S&W 马格南弹
     "45colt"                      , // .45 柯尔特弹
-    "500"                         , // .500 马格南弹
-    "57"                          , // 5.7mm 弹
-    "46"                          , // 4.6mm 弹
+    "500"                         , // .500 Magnum
+    "57"                          , // 5.7mm
+    "46"                          , // 4.6mm
     "762"                         , // 7.62x39mm 弹
     "545x39"                      , // 5.45x39mm 弹
     "223"                         , // .223 弹
@@ -53,9 +53,9 @@ export const ExtractDefineAmmiunitionTypeIDList = [
     "308"                         , // .308 弹
     "40x46mm"                     , // 40x46mm 榴弹
     "40x53mm"                     , // 40x53mm 榴弹
-    "66mm"                        , // 破甲战斗部
-    "120mm"                       , // 破甲战斗部
-    "84x246mm"                    , // 84mm 无后坐力炮弹
+    "66mm"                        , // high-explosive anti-tank warhead
+    "120mm"                       , // high-explosive anti-tank warhead
+    "84x246mm"                    , // 84mm recoilless projectile
     "m235"                        , // M235 66mm 燃烧火箭弹
     "mortar_60mm"                 , // 60mm 迫击炮炮弹
     "sling-ready_grenade"         , // 投射用手雷
@@ -81,13 +81,13 @@ export const ExtractDefineAmmiunitionTypeIDList = [
     "anesthetic"                  , // 麻醉剂
     "soap"                        , // 肥皂
     "tape"                        , // 强力胶带
-    "superglue"                   , // 万能胶
+    "superglue"                   , // super glue
     "battery"                     , // kJ
     "money"                       , // 美分
     "plutonium"                   , // 钚
     "uranium"                     , // 铀
     "reactor_slurry"              , // 钚浆
-    "12mm"                        , // 12mm 独头弹
+    "12mm"                        , // 12mm slugs
     "plasma"                      , // 固态氢
     "flammable"                   , // 可燃液体
     "weldgas"                     , // 焊接气体
@@ -112,9 +112,9 @@ export const ExtractDefineAmmiunitionTypeIDList = [
     "gasfilter_m"                 , // 防毒面具滤毒罐
     "300"                         , // .300 温彻斯特马格南弹
     "32"                          , // .32 ACP 弹
-    "762x25"                      , // 7.62x25mm 弹
+    "762x25"                      , // 7.62x25mm
     "flintlock"                   , // 纸卷弹
-    "36paper"                     , // .36 雷管弹
+    "36paper"                     , // .36 cap & ball
     "44paper"                     , // .44 雷管弹
     "762R"                        , // 7.62x54mmR 弹
     "fishspear"                   , // 枪矛
@@ -133,11 +133,11 @@ export const ExtractDefineAmmiunitionTypeIDList = [
     "tinder"                      , // 火绒
     "esbit"                       , // 乌洛托品
     "water"                       , // 水
-    "300blk"                      , // .300 BLK 弹
-    "123ln"                       , // 12.3ln弹
-    "273x110"                     , // 27.3x110 蒂约弹
-    "273x44"                      , // 27.3x44 蒂约弹
-    "273x44RG"                    , // 27.3x44 蒂约榴弹
+    "300blk"                      , // .300 BLK弹
+    "123ln"                       , // 12.3ln 弹
+    "273x110"                     , // 27.3x110 Diyua
+    "273x44"                      , // 27.3x44 Diyua
+    "273x44RG"                    , // 27.3x44 Diyua Grenade
     "33naval"                     , // 3.3 海军弹
     "caotel_cell"                 , // 卡特尔单元
     "khuunaofaai_payload"         , // 锟厄焚烟花载荷

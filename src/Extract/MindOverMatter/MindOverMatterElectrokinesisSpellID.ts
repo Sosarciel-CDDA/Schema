@@ -5,8 +5,8 @@ export const ExtractDefineMindOverMatterElectrokinesisSpellIDList = [
     "electrokinetic_zap_enemies"  , // [Ψ]电荷释放(C) 在你的体内积聚电荷，电击任何试图攻击你的人。这还能保护你免受电磁脉冲的攻击。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
     "electrokinetic_melee_attacks", // [Ψ]电流附加(C) 在使用武器攻击时附加电击伤害。同时还提供对电击伤害的防护。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
     "electrokinetic_hacking_interface", // [Ψ]黑客接口(C) 用灵能创建一个电子接口，让你可以像使用电脑一样破解附近的电子设备。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
-    "electrokinetic_personal_battery", // [Ψ]电子溢流(C) Generate power for battery-powered devices on your person.This power <color_yellow>is maintained by concentration</color> and <color_red>may fail</color> if <color_yellow>concentration is interrupted</color>.
-    "electrokinetic_paralysis"    , // [Ψ]神经电击 Cause an electrical burst in the target's nervous system (or the remains of it), incapacitating them briefly.  It will only work on targets that have, or had, a nervous system.
+    "electrokinetic_personal_battery", // [Ψ]电子溢流(C) 为随身携带的电池驱动设备供电。此异能需要<color_yellow>持续专注来维持</color>，若<color_yellow>专注中断</color>则可能<color_red>失效</color>。
+    "electrokinetic_paralysis"    , // [Ψ]神经电击 在目标的神经系统（或其残骸）中引发一次电能爆发，使其短暂地陷入瘫痪。此能力只对拥有或曾经拥有神经系统的目标生效。
     "electrokinetic_reduce_pain"  , // [Ψ]疼痛抑制(C) 运用你掌控电流的灵能，减弱体内的疼痛信号。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
     "electrokinetic_lightning_bolt", // [Ψ]电击处刑 向附近的目标发射一道闪电。
     "electrokinetic_recharge_vehicle", // [Ψ]反向充电 将体内的灵能转化为车辆或设备的电力。触摸车辆或电网的任何部位即可进行充电。

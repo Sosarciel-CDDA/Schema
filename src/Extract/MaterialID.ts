@@ -27,7 +27,7 @@ export const ExtractDefineMaterialIDList = [
     "ceramic"                     , // 陶瓷
     "yrax_quartz"                 , // 石英
     "damaged_ceramic"             , // 复合陶瓷
-    "hyperweave_off"              , // 惰性超织物
+    "hyperweave_off"              , // 静态超织物
     "hyperweave_on"               , // 充能超织物
     "chitin"                      , // 硬化甲壳
     "acidchitin"                  , // 硅化甲壳
@@ -50,7 +50,7 @@ export const ExtractDefineMaterialIDList = [
     "flesh"                       , // 肉
     "drug_filler"                 , // 药品
     "gutskin"                     , // 肠衣
-    "freshclay"                   , // 黏土（新鲜）
+    "freshclay"                   , // 黏土(新鲜)
     "fruit"                       , // 水果
     "fur"                         , // 毛皮
     "faux_fur"                    , // 人造毛皮

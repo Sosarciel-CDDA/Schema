@@ -1,7 +1,7 @@
 /**从文件提取的预定义的MagiclysmAnimistSpellID 列表*/
 export const ExtractDefineMagiclysmAnimistSpellIDList = [
     "smite"                       , // 神圣惩击 邪恶已经蔓延到世界各地。让你的力量成为在黑暗中闪耀的光芒！
-    "recover_mana"                , // 生命分流 将你的生命力量导入你的精神能量。消耗符文恢复魔力。
+    "recover_mana"                , // 生命转化 将你的生命力量导入你的精神能量。消耗符文恢复魔力。
     "recover_pain"                , // 心胜于痛 这是一种类似于体能训练的激烈仪式，可以帮助你将一些疼痛抛之脑后。
     "summon_undead"               , // 召唤不死人 一只从地底深处冒出来的不死人会为你而战。你召唤的不死生物种类会随着法术等级的提高而变得更致命。
     "summon_undead_swarm"         , // 召唤不死兽群 一群从地底深处冒出来的不死动物会为你而战。你召唤的不死生物种类会随着法术等级的提高而变得更致命。
@@ -20,19 +20,19 @@ export const ExtractDefineMagiclysmAnimistSpellIDList = [
     "bleed"                       , // 引血术 撕裂生物身上的旧伤口，使其渗出鲜血。
     "animist_summon_decaying_boneclub", // 腐朽骨棍 这个法术将你体内的活血和死者的骨头联系起来，制造出一根渴望收割活物的骨棍。
     "animist_summon_decaying_boneclub_plus", // 升级版腐朽骨棍 这个法术将你体内的活血和死者的血和骨头联系起来，制造出一根渴望收割活物的骨棍。现在你对这个法术了如指掌，并设计出了你自己的版本。
-    "rupture"                     , // 魔爆术 You pour mana into an unwilling and unprepared vessel, causing cellular break-down, internal hemorrhaging, muddling ley lines, and overcharging electronics.  The more powerful the spell, the faster the damage happens.  Immensely gruesome and crude, it was once illegal world-wide, not that it matters now.
+    "rupture"                     , // 魔爆术 你将魔力灌入一个毫无防备的躯体，引发细胞崩解、内脏出血、灵脉紊乱并使电子设备过载。此法术的威力越强，伤害生效就越快。它极为残忍粗暴，曾一度被全球禁用，不过现在也无所谓了。
     "devour"                      , // 吞噬 杀死一只召唤物，吸收它的生命能量来恢复一些血量。
     "animist_sense_outsiders"     , // 界外感知 你可以感觉到来自异界的附近生物的存在。
     "animist_summon_watcher"      , // 召唤守望者之魂 召唤一个守望者之魂，它的感官与你的重叠，你可以通过它的眼睛看到你。 虽然它们是灵魂，但它们很脆弱，面对任何攻击都很容易消散。
-    "animist_mass_hiding_aoe"     , // 泯然众人 Sever the connections between your spirit and the spirits of everyone around you, rendering them incapable of perceiving you; the light might hit their eyes and the sounds their ears, but they cannot recognize what those impressions mean.  Anything outside the spell's area of effect will have no trouble spotting you.This spell does not affect any target without a spirit, such as a robot.
+    "animist_mass_hiding_aoe"     , // 泯然众人 斩断你与周遭所有生灵的精神联系，使他们无法感知到你的存在。光线或许会映入他们的眼帘，声音或许会传入他们的耳畔，但他们无法辨识这些感官信息的含义。任何处于法术范围之外的目标都能轻易发现你。此法术对没有灵魂的目标无效，例如机器人。
     "animist_luck_bone"           , // 骨之幸运 将好运灵吸引到骨头上，只要它被携带，就会给你提供少量加成。虽然本性善良，但灵是难以捉摸的，它所提供的加成完全无法事前确定。当法术持续时间结束，灵离开时，骨头会碎成粉末。
     "animist_spirit_walking"      , // 灵魂漫步 将你的身体转化为纯粹的灵体，使你隐身且无形。在法术生效期间，你可以快速移动，并且可以在隐身状态下穿过敌人，但你将无法与物理世界交互或者施法。
     "animist_add_evasion_spell"   , // 守护之灵 召唤一个友善的灵魂来为你警戒，并提醒你即将到来的攻击，让你能够闪避掉其中的部分攻击。
-    "animist_slow_food_rotting_spell", // 驱逐腐败 Placing a warding on food or drink, preventing the spirits of decay from nesting within it.  The mage may affect as much food or drink as they can carry.  The principles by which this spell functions were not discovered until the 20th century, but some animists maintain that radiation is frightening to decay spirits.
+    "animist_slow_food_rotting_spell", // 驱逐腐败 为食物或饮品施加一道护咒，防止腐败的精怪在其中滋生。法师可以影响其所能携带的所有食物或饮品。此法术的原理直到20世纪才被发现，但一些泛灵师坚称，辐射能吓退腐败的精怪。
     "animist_magic_fissile"       , // 魔法裂变 我发射魔法……裂变？在黑暗中？
-    "animist_cast_spells_when_silent", // 心灵之声 Channel magic through your soul instead of your voice, allowing you to cast spells that require speech even when mute.
-    "animist_do_psionic_damage_to_head", // 意志击溃 绕过目标的所有物理防护，直击其心灵。
-    "animist_detect_wizards"      , // 巫术视觉 Open your senses up to look for the bright corporeal ley lines of those who spent their lives frequently expending their mana.  This also applies to creatures or alien beings that frequently use spells.
+    "animist_cast_spells_when_silent", // 心灵之声 将魔力经由你的灵魂而非声音引导而出，使你在喑哑之时也能施展需要言语的法术。
+    "animist_do_psionic_damage_to_head", // 心灵碾压 绕过目标的所有物理防护，直击其心灵。
+    "animist_detect_wizards"      , // 巫术视觉 敞开你的感知，去搜寻那些毕生频繁消耗魔力之人的明亮灵脉。此法术对那些经常使用法术的生物或异星存在同样有效。
 ] as const;
 /**从文件提取的预定义的MagiclysmAnimistSpellID */
 export type ExtractDefineMagiclysmAnimistSpellID = typeof ExtractDefineMagiclysmAnimistSpellIDList[number];

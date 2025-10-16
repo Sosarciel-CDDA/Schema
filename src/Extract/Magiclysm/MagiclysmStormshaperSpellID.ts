@@ -2,13 +2,13 @@
 export const ExtractDefineMagiclysmStormshaperSpellIDList = [
     "jolt"                        , // 震颤电击 从你的指尖发射出几道短距离扇形电流。
     "shocking_lash_base"          , // Shocking Lash Base Reference spell definition used for Shocking Lash and Shocking Lash Jump.
-    "lightning_bolt"              , // 闪电束 The go-to spell for many Stormshapers, this iconic spell does just what you expect: shoot lightning from your fingertips.  However, this lightning is more directed than most lightning, and travels in a line through most non-solid targets.
+    "lightning_bolt"              , // 闪电束 这是许多“风暴塑造者”的常备法术。正如你所想，这个标志性法术就是从指尖射出闪电。不过，这道闪电比寻常闪电更具指向性，能够直线穿透大部分非固态目标。
     "windstrike"                  , // 风击术 一阵强风爆出，吹向你身体前的一切。
     "windrun"                     , // 风行术 当你移动的时候，一股神奇的风推动着你前进，让你自如行动并提高速度。
     "storm_hammer"                , // 风暴之锤 一个充满闪电的魔幻战锤，用闪电击打你的敌人。当然，也可以把东西砸成碎片！
     "storm_hammer_plus"           , // 强化风暴之锤 一个充满闪电的魔幻战锤，用闪电击打你的敌人。当然，也可以把东西砸成碎片！现在你对这个法术了如指掌，并设计出了你自己的版本。
-    "create_rune_stormshaper"     , // 符文（风暴塑造者） This ritual creates a rune attuned to Stormshapers, which looks similar to what you'd expect lightning in a glass pebble to look like.  You can use the rune as a catalyst for recipes.
-    "lightning_blast"             , // 闪电冲击 You fire a small concentrated ball of lightning at the target.  The electricity diffuses rapidly, so it doesn't do much damage, but you're able to fire off several ones quickly.
+    "create_rune_stormshaper"     , // 符文（风暴塑造者） 该仪式能创造一枚与“风暴塑造者”同调的符文，其形貌宛如封印在琉璃卵石中的闪电。此符文可用作配方的催化剂。
+    "lightning_blast"             , // 闪电冲击 你向目标发射一个小型浓缩闪电球。电流会迅速弥散，故而伤害不高，但胜在可以快速连发。
     "lightning_storm"             , // spell 你召唤天空的力量来打击大地。几道闪电从你的指尖射出，击中目标。
     "lightning_blast_from_storm"  , // Lightning Blast from Lightning Storm Makes sure the blasts from the lightning storm scale with that spell in case you don't know the Lightning Blast spell.
     "stormshaper_ionization"      , // 电离术 通过操控空气中的电荷，你可以在大片区域内召唤出一道闪电。虽然它的破坏力与自然产生的闪电相去甚远，但它所产生的强光和雷击会让你的敌人战战兢兢。
@@ -18,7 +18,7 @@ export const ExtractDefineMagiclysmStormshaperSpellIDList = [
     "stormfist"                   , // 风暴之拳 召唤闪电包裹手臂和拳头，使你可以在近战战斗中用它来击打敌人和保护自己。
     "stormfist_plus"              , // 强化风暴之拳 召唤闪电包裹手臂和拳头，使你可以在近战战斗中用它来击打敌人和保护自己。现在你对这个法术了如指掌，并设计出了你自己的版本。
     "create_electric_lighter"     , // 电火花 召唤一道小电火花，什么都伤不到。你可以用它点燃什么易燃物。
-    "storm_shipwrecker"           , // 碎舰风暴 As the sound of the spell moves out of your mouth, it creates a crushing shockwave that shatters everything in its path.
+    "storm_shipwrecker"           , // 碎舰风暴 咒音甫出，便化作一道摧枯拉朽的冲击波，将路径上的一切碾为齑粉。
     "explosive_decompression"     , // 爆裂失压 创建从选定点开始的高压区。随后，巨大的压力波将粉碎里面的一切，给每个受影响的单位造成伤害。
     "vacuum_decompression"        , // 真空减压 创建一个从选定点开始的高压区域。随后，巨大的压力波会压碎里面的一切，对所有受影响的单位造成伤害。压力差也会在崩溃前把毫无准备的单位拉进这个区域。
     "air_bubble"                  , // 气泡术 用气泡覆盖住头部，使你能在水下和有毒气体中呼吸。
@@ -34,7 +34,7 @@ export const ExtractDefineMagiclysmStormshaperSpellIDList = [
     "stormshaper_heart_of_hurricane", // 飓风之心 将狂暴飓风的狂风压缩成薄薄的狂暴气流壳，环绕在自己周围。这样你就不容易失去平衡或被击倒，有时还能将攻击者扔出去，但旋风的声音很大。
     "stormshaper_heart_of_hurricane_throw", // Heart of the Hurricane Throw This is the spell that throws your target back.  It's a bug if you have it directly.
     "stormshaper_cloak_of_frog"   , // 青蛙斗篷 这个法术上添加了某人的个人笔记。你能确定不管是名字还是功效都已经变了。
-    "stormshaper_loud_voice_spell", // 洪亮如雷 增大施法者的声音音量，使其说出的每个字如同雷霆般回荡。作为一项实用的附加效果，此法术使施法者对因噪音过大导致的听力损伤免疫。
+    "stormshaper_loud_voice_spell", // 雷音术 增大施法者的声音音量，使其说出的每个字如同雷霆般回荡。作为一项实用的附加效果，此法术使施法者对因噪音过大导致的听力损伤免疫。
 ] as const;
 /**从文件提取的预定义的MagiclysmStormshaperSpellID */
 export type ExtractDefineMagiclysmStormshaperSpellID = typeof ExtractDefineMagiclysmStormshaperSpellIDList[number];

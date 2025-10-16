@@ -20,11 +20,11 @@ export const ExtractDefineXedraEvolvedDreamerSpellIDList = [
     "summon_winch"                , // 传送令牌 创建一个小标记。 使用时，它会把你拉回到你创建它的地方。
     "summon_winch_item"           , // Spawn a Winch Spawns a winch item.  You can see it only in debug mode.
     "dreamer_artifact"            , // 从"远方"取得物品 利用你的能力，你用纯粹的能量压缩双手之间的间隙，试图构建……某种东西。
-    "xedra_dreamer_generate_accelerated_time", // Generate Accelerated Time Continuously generate short-lived bubbles of accelerated time around you, allowing you and anything else that enters to act far quicker than normal.
-    "spell_ethereal_wings"        , // 空灵之翼 Two ethereal wings sprout out of your back indefinitely until toggled off.  They work as phantasmal pair of wings that can somehow lift your weight even without conscious effort.
-    "spell_karma_arms"            , // 业力之手 Four transparent arms emit out of your body indefinitely until toggled off.  They work as a desirable additional pair of arms, and who knows what power they contain?
-    "spell_stalker_eyes"          , // 追猎者之眼 Your own eyes are replaced with the eyeballs of an unknown creature, indefinitely, until you toggle them off.  Compounded from billions of red crosses inside void-dark sclera, they can see much more clearly than any natural creature.
-    "spell_devil_tail"            , // 恶魔之尾 A stretchy tail appears from the base of your spine, instinctively aiding you in battle or moving to defend you, indefinitely, until toggled off.
+    "xedra_dreamer_generate_accelerated_time", // 生成时间加速场 在你周围持续生成短暂的时间加速泡，让你及任何进入其中的事物都能以远超正常的速度行动。
+    "spell_ethereal_wings"        , // 空灵之翼 两只虚灵之翼从你背后生出，并将一直存在，直到你主动关闭。它们就像一对幻象之翼，即便你无意识地发力，也能以某种方式托起你的体重。
+    "spell_karma_arms"            , // 业力之手 四条透明手臂从你身体中伸出，并将一直存在，直到你主动关闭。它们是求之不得的额外手臂，天知道其中蕴含着何种力量？
+    "spell_stalker_eyes"          , // 追猎者之眼 你的双眼被未知生物的眼球所取代，并将一直存在，直到你主动关闭。它们的巩膜漆黑如渊，其中由亿万个红色十字构成，视物远比任何自然生物都清晰。
+    "spell_devil_tail"            , // 恶魔之尾 一条伸缩自如的尾巴从你的脊椎末端长出，它会本能地在战斗中协助或保护你，并将一直存在，直到你主动关闭。
     "dreamer_lucid_dreams"        , // 清明梦 模糊现实与梦境的边界。在梦中你几乎不受现实的影响，梦中身体发生的大部分变化都会在你醒来时复原。在梦中“死亡”会导致你当场醒来，但死亡抓不到你。
 ] as const;
 /**从文件提取的预定义的XedraEvolvedDreamerSpellID */

@@ -1,9 +1,9 @@
 /**从文件提取的预定义的MindOverMatterVitakinesisSpellID 列表*/
 export const ExtractDefineMindOverMatterVitakinesisSpellIDList = [
-    "vita_health_power"           , // [Ψ]治愈光辉(C) Your powers can keep you in the bloom of health.  This can also stop or prevent an asthma attack.This power <color_yellow>is maintained by concentration</color> and <color_red>may fail</color> if <color_yellow>concentration is interrupted</color>.  Healthy Glow <color_red>cannot be active</color> with Leucocyte Acculumation
+    "vita_health_power"           , // [Ψ]治愈光辉(C) 你的异能可使你永葆康健，这也能中止或预防哮喘发作。此异能<color_yellow>需要集中精神</color>来维持，若精神<color_yellow>被打断</color>则可能会<color_red>失效</color>。治愈光辉无法与集中再生同时<color_red>激活。
     "vita_slow_bleeding"          , // [Ψ]减缓流血(C) 通过提高血小板的效率和加速其流动，你可以减缓流血的速度，甚至在出血之前就能预防流血。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
     "vita_stop_bleeding"          , // [Ψ]止血 你专注于你的伤口，让它们愈合、停止流血。
-    "vita_concentrated_healing"   , // [Ψ]Leukocyte Accumulation (C) By rerouting blood and stem cells from more lightly damaged areas, you can speed the healing of your most grievous wounds at the cost of lessened healing elsewhere.  You may also use this to control an asthma attack.This power <color_yellow>is maintained by concentration</color> and <color_red>may fail</color> if <color_yellow>concentration is interrupted</color>.  Leucocyte Acculumation <color_red>cannot be active</color> with Healthy Glow
+    "vita_concentrated_healing"   , // [Ψ]集中再生(C) 通过将轻伤区域的血液和干细胞转移至他处，你可以加速修复最严重的创伤，但代价是其他部位的愈合速度会减缓。你也可以用它来控制哮喘发作。此异能<color_yellow>需要集中精神</color>来维持，若精神<color_yellow>被打断</color>则可能会<color_red>失效</color>。“集中再生”无法与“治愈光辉”<color_red>同时激活</color>。
     "vita_hurt_touch"             , // [Ψ]衰弱之触 只要轻轻一碰，你的目标就会开始慢慢衰弱。这对拥有超自然治愈能力的目标效果显著，但对正常人也有效果。
     "vita_health_power_ally"      , // [Ψ]疗愈之触 你可以将治愈光辉灵能施加在一个追随者或盟友身上。这也可以阻止哮喘发作。
     "vita_remove_poison"          , // [Ψ]排出毒素 你在中毒后可以将毒素隔离并移动到汗腺中，然后随着汗液无害地排出体外。此时，任何咬你的生物也会发现你体表带毒。
@@ -17,7 +17,7 @@ export const ExtractDefineMindOverMatterVitakinesisSpellIDList = [
     "vita_banish_illness"         , // [Ψ]驱除疾病 进入深度冥想恍惚状态，清除体内的疾病，甚至是癌症或多发性硬化症等严重疾病。 这不会治愈变异。 有些疾病比其他疾病更难成功根除。
     "vita_super_heal"             , // [Ψ]极速自愈(C) 你调动身体的潜能，将自愈速度提高百倍。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。比其寻常灵能需要<color_yellow>更多专注</color>。
     "vita_limb_restore"           , // [Ψ]断肢再生 你将你的思绪沉入自己内心最深处，进入冥想的状态，逐个恢复失去的肢体。在进行此过程之前，请务必移除任何假肢，因为它们会干扰恢复过程。
-    "vita_degenerating_touch"     , // [Ψ]Degenerating Touch The ultimate expression of a vitakinetic's ability to reverse vital processes, this power induces massive cellular breakdown in the target, causing severe injury, weakness, and possible death.
+    "vita_degenerating_touch"     , // [Ψ]崩解之触 作为疗愈者逆转生命进程之力的终极体现，此能力可引发目标体内大规模的细胞崩解，导致其重伤、衰弱，甚至可能死亡。
     "vita_return_from_death"      , // [Ψ]回光返照(C) 当这个灵能处于激活状态时，如果你遭受潜在致命伤害，你的疗愈灵能将超负荷运转以维系你的生命。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
 ] as const;
 /**从文件提取的预定义的MindOverMatterVitakinesisSpellID */

@@ -3,7 +3,7 @@ export const ExtractDefineMindOverMatterPyrokinesisSpellIDList = [
     "pyrokinetic_eruption"        , // [Ψ]火焰喷泉 在目标位置引发一场大火。
     "pyrokinetic_flash"           , // [Ψ]眩目闪光 通过在某一特定点强烈激发空气，你就会产生一束光。
     "pyrokinetic_cauterize"       , // [Ψ]烧灼止血 一项功能细分的焰动者能力，将伤口烧焦以止血。这可能会很痛苦，如果你没有医学知识，几乎肯定会造成更多的伤害。如果出血过多，烧灼将无效，并且无论你是否成功，都有<color_red>感染几率</color>。
-    "pyrokinetic_call_flames"     , // [Ψ]可控火焰(C) 伸出手并召唤火焰。你可以用它们来加热食物、煮水、点火，或者完成任何火焰能够做到的事情。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。<color_red>进入战斗失效</color>。
+    "pyrokinetic_call_flames"     , // [Ψ]蕴火(C) 伸出手并召唤火焰。你可以用它们来加热食物、煮水、点火，或者完成任何火焰能够做到的事情。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。<color_red>进入战斗失效</color>。
     "pyrokinetic_quell_flames"    , // [Ψ]熄灭火焰 既然你可以生火，你也可以扑灭它。
     "pyrokinetic_cloak"           , // [Ψ]控温斗篷(C) 控制附近空气的温度，保持温暖并使你免受火焰伤害。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
     "pyrokinetic_flamethrower"    , // [Ψ]喷射火焰 在你面前的一个锥形区里喷火。

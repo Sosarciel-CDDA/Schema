@@ -390,6 +390,17 @@ ivk(async ()=>{
             field: ['name','description'],
         });
         await Promise.all([
+        //无职业的
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Magiclysm/Spells/classless.json",
+            typeName: `${dirName}ClasslessSpellID`,
+            func:extractFn({
+                filter: v => v.type == "SPELL",
+                id: 'id',
+                field: ['name','description'],
+            }),
+        }),
         //泛灵师
         extractDefineIdList({
             dirName,

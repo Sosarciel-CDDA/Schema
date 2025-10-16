@@ -451,7 +451,7 @@ export const ExtractDefineFlagIDList = [
     "SCIENCE_CARD_TRANSPORT_1"    , // 这件物品可让你进入一处科学设施。
     "SCIENCE_CARD_SECURITY_YELLOW", // 这件物品可让你进入一处防护严密的执法部门区域。
     "SCIENCE_CARD_SECURITY_MAGENTA", // 这件物品可让你进入一处防护严密的执法部门区域。
-    "SCIENCE_CARD_SECURITY_BLACK" , // 这件物品可让你进入一处防护严密的区域。
+    "SCIENCE_CARD_SECURITY_BLACK" , // You could probably use this to get into a secured  area.
     "SCIENCE_CARD_MUTAGEN_GREEN"  , // 这件物品可让你进入一处防护严密的设施中的区域。
     "SCIENCE_CARD_MUTAGEN_PINK"   , // 这件物品可让你进入一处防护严密的设施中的区域。
     "SCIENCE_CARD_MUTAGEN_CYAN"   , // 这件物品可让你进入一处防护严密的设施中的区域。

@@ -1,9 +1,9 @@
 /**从文件提取的预定义的MindOverMatterClairsentienceSpellID 列表*/
 export const ExtractDefineMindOverMatterClairsentienceSpellIDList = [
-    "clair_better_senses"         , // [Ψ]感知强化(C) All of your senses are heightened, allowing you to see further and hear better, and at higher levels even see in murky water or use minor vibrations and small sounds to determine moving creatures nearby.This power <color_yellow>is maintained by concentration</color> and <color_red>may fail</color> if <color_yellow>concentration is interrupted</color>.
+    "clair_better_senses"         , // [Ψ]感知强化(C) 你所有的感官都得到了强化，让你视距更远，听力更敏锐。等级提升后，你甚至能在浑水中视物，或通过微小的震动和声响来感知附近移动的生物。此异能需要<color_yellow>持续专注来维持</color>，若<color_yellow>专注中断</color>则可能<color_red>失效</color>。
     "clair_speed_reading"         , // [Ψ]高速阅读(C) 你的灵能让你能够高速阅读。书上的文字似乎在不停飞出，直接映入你的脑海，你得以读的更快并且记得更牢。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。<color_red>进入战斗失效</color>。
     "clair_danger_sense"          , // [Ψ]危险感知(C) 你可以感觉到危险敌人的存在。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
-    "clair_night_vision"          , // [Ψ]夜视(C) You are able to sense your surroundings in areas of low light, and you can even "see" in pitch darkness.  Strictly speaking, this is not vision, and you cannot discern fine details or read.This power <color_yellow>is maintained by concentration</color> and <color_red>may fail</color> if <color_yellow>concentration is interrupted</color>.
+    "clair_night_vision"          , // [Ψ]夜视(C) 你能够在光线昏暗的区域感知周遭环境，甚至能在伸手不见五指的黑暗中“视物”。严格来说，这并非真正的视觉，因此你无法辨认精细的细节或进行阅读。此异能需要<color_yellow>持续专注来维持</color>，若<color_yellow>专注中断</color>则可能<color_red>失效</color>。
     "clair_spot_weakness"         , // [Ψ]弱点观察 你的灵能可以让你准确地定位你的敌人的弱点。
     "clair_see_auras"             , // [Ψ]气场感知(C) 你隐隐约约看到彩色漩涡环绕人们周围，暗示他们的情绪和精神状态。这使你在交流谈判中处于上风。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。<color_red>进入战斗失效</color>。
     "clair_sense_rads"            , // [Ψ]辐射感知 你可以打开你的神经来感受辐射的光芒。
