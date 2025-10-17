@@ -1,5 +1,5 @@
 import { FakeSpell } from "Schema/Enchantment";
-import { TalkerStr, TalkerVar } from "../Eoc";
+import { TalkerStr, TalkerVar, TalkerVarG } from "../Eoc";
 import { ParamsEoc } from "./EocEffectIndex";
 import { BoolExpr, CondExpr, GenericExpr, IDExpr, LocExpr, NumberExpr, StringExpr, TimeExpr } from "../Expression";
 import { Explosion, Int, MessageRatType } from "Schema/GenericDefine";
@@ -1502,7 +1502,7 @@ export type MirrorCoordinates = TalkerVar<{
  * // 打印带有上下文变量的文本  
  * { "u_message": "Test event with trait_id FIRE! <context_val:trait_id>", "type": "good" }  
  */
-export type Message = TalkerVar<{
+export type Message = TalkerVarG<{
     /**消息内容  
      * 将打印的消息; 如果snippet为true, 则为将打印的片段的ID  
      */

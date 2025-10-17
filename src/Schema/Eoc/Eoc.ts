@@ -83,6 +83,13 @@ export type TalkerVar<B extends JObject,K extends string> =
     (Omit<B,K>&{[P in `npc_${K}`]:B[K]}&{[P in `u_${K}`]?:never})|
     (Omit<B,K>&{[P in `u_${K}`]:B[K]}&{[P in `npc_${K}`]?:never});
 
+
+/**创建U与NPC的变体并保留无talker版本 */
+export type TalkerVarG<B extends JObject,K extends string> =
+    B&{[P in `u_${K}`|`npc_${K}`]?:never}|
+    (Omit<B,K>&{[P in `npc_${K}`]:B[K]}&{[P in `u_${K}`|K]?:never})|
+    (Omit<B,K>&{[P in `u_${K}`]:B[K]}&{[P in `npc_${K}`|K]?:never});
+
 /**成功或失败的Eoc效果 */
 export type ToFEffect = {
     /**成功时运行的EOCs */
