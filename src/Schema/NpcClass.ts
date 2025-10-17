@@ -79,26 +79,26 @@ export type NpcClass = {
 /**出售物品组 */
 type ShopItemGroup = {
     group: ItemGroupID;
-    /**出售条件
-     * 玩家作为 alpha NPC 作为 beta
+    /**出售条件  
+     * 玩家作为 alpha NPC 作为 beta  
      */
     consition?: (BoolExpr);
-    /**信任度要求
-     * 如果该派系对玩家的信任度低于此值，则该物品组中的物品不会出现在商店中出售  
-     * @default 0
+    /**信任度要求  
+     * 如果该派系对玩家的信任度低于此值, 则该物品组中的物品不会出现在商店中出售  
+     * @default 0  
      */
     trust?: Int;
-    /**默认情况下，物品组会持续迭代，直到达到 NPC 所需的数量或价值阈值
-     * 若设为 rigid, 则该物品组只会尝试填充一次 (若条件允许) 且不会重复运行或包含重复物品
-     * @default false
+    /**默认情况下, 物品组会持续迭代, 直到达到 NPC 所需的数量或价值阈值  
+     * 若设为 rigid, 则该物品组只会尝试填充一次 (若条件允许) 且不会重复运行或包含重复物品  
+     * @default false  
      */
     rigid?: boolean;
-    /**若设为 true, 则该物品组在补货时也必须满足条件, 否则不会重新补货
-     * @default false
+    /**若设为 true, 则该物品组在补货时也必须满足条件, 否则不会重新补货  
+     * @default false  
      */
     strict?: boolean;
-    /**当条件不满足时，在用户界面（如交易界面）中显示的提示信息。
-     * @default "<npc_faction> faction does not trust you enough."
+    /**当条件不满足时, 在用户界面 (如交易界面) 中显示的提示信息.   
+     * @default "<npc_faction> faction does not trust you enough."  
      */
     refusal?: (DescText);
 }
@@ -121,12 +121,12 @@ export type ShopkeeperConsumptionRateID = CddaID<"SHOPKEEPER_CONSUMPTION_RATES">
 export type ShopkeeperConsumptionRate = {
     type: "shopkeeper_consumption_rates";
     id: (ShopkeeperConsumptionRateID);
-    /**补货频率/天
-     * -1 为不补货
+    /**补货频率/天  
+     * -1 为不补货  
      */
     default_rate: Int;
-    /**价格阈值
-     * 低于此阈值的物品将会被清空
+    /**价格阈值  
+     * 低于此阈值的物品将会被清空  
      */
     junk_threshold: (Price);
     /**补货频率 */
@@ -141,8 +141,8 @@ type RateEntry = {
     category?: (ItemCategoryID);
     /**物品组 */
     group?: (ItemGroupID);
-    /**补货频率/天
-     * -1 为不补货
+    /**补货频率/天  
+     * -1 为不补货  
      */
     rate: Int;
     /**补货条件 */
@@ -170,6 +170,6 @@ type BlacklistEntry = {
     group?: (ItemGroupID);
     /**黑名单条件 */
     condition?: (BoolExpr);
-    /**拒绝提示信息（可用于交易界面等） */
+    /**拒绝提示信息 (可用于交易界面等)  */
     message?: (DescText);
 };

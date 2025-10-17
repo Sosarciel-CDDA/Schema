@@ -5,6 +5,7 @@ import { NumberExpr } from "./Eoc";
 import { FieldTypeID } from "./FieldType";
 import { CddaID, DescText, PRecord } from "./GenericDefine";
 import { ItemID } from "./Item";
+import { MagicTypeID, SpellEnergySource } from "./MagicType";
 import { MonsterID } from "./Monster";
 import { MutationID } from "./Mutation";
 import { SoundEffectID, SoundEffectVariantID } from "./SoundEffect";
@@ -148,10 +149,12 @@ export type Spell = {
      * PRecord<(SpellID)法术ID : (NumObj)需求等级>  
      */
     learn_spells?: PRecord<SpellID,NumberExpr>;
-    /**可教学的
-     * @default true
+    /**可教学的  
+     * @default true  
      */
     teachable?: boolean;
+    /**此法术的类型 */
+    magic_type?: (MagicTypeID),
 };
 
 /**法术有效目标 列表 */
@@ -260,12 +263,6 @@ export const SpellFlagList = [
 /**法术Flag */
 export type SpellFlag = typeof SpellFlagList[number];
 
-/**法术能量池 列表 */
-export const SpellEnergySourceList = [
-    "MANA", "BIONIC", "HP", "STAMINA", "NONE"
-] as const;
-/**法术能量池 */
-export type SpellEnergySource = typeof SpellEnergySourceList[number];
 
 /**法术声音类型 列表 */
 export const SpellSoundTypeList = [

@@ -81,6 +81,7 @@ import {
     ModId,
     ShopkeeperConsumptionRateID,
     ShopkeeperBlacklistID,
+    MagicTypeID,
 } from "@/src/Schema";
 
 /**ModID生成工具 */
@@ -294,6 +295,10 @@ export class ModDefine{
     /**生成适用于此mod的 UpdateMapgenID */
     genUpdateMapgenID(id:string):UpdateMapgenID{
         return `${this.MOD_PREFIX}_UMPG_${id}`;
+    }
+    /**生成适用于此mod的 MagicTypeID */
+    genMagicTypeID(id:string):MagicTypeID{
+        return `${this.MOD_PREFIX}_MAGIC_TYPE_${id}`;
     }
     /**生成适用于此mod的 LimbScoreID */
     genLimbScoreID(id:string):LimbScoreID{

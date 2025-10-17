@@ -63,6 +63,7 @@ import { MoraleType } from "./MoraleType";
 import { Hobby, Profession } from "./Profession";
 import { ModInfo } from "./ModInfo";
 import { RecipeCategory } from "./RecipeCategory";
+import { MagicType } from "./MagicType";
 
 /**描述性文本 */
 export type DescText = string|{
@@ -194,37 +195,37 @@ export type PocketData = {
     max_contains_volume?: (Volume);
     /**此口袋可以容纳的最大重量, 所有容器物品的总重量 */
     max_contains_weight?: (Weight);
-    /**可放入此口袋的物品的最小体积.
-     * 小于此尺寸的物品不能放入口袋中
+    /**可放入此口袋的物品的最小体积.  
+     * 小于此尺寸的物品不能放入口袋中  
      */
     min_item_volume?: (Volume);
     /**可放入此口袋的物品的最大体积 */
     max_item_volume?: (Volume);
-    /**可放入此口袋的物品的最大长度 (按其最长边)
-     * 默认值为假设体积为立方体的对角线开口长度 (cube_root(vol)*square_root(2))
+    /**可放入此口袋的物品的最大长度 (按其最长边)  
+     * 默认值为假设体积为立方体的对角线开口长度 (cube_root(vol)*square_root(2))  
      */
     max_item_length?: (Length);
-    /**腐坏速度乘数 将物品放入此口袋中如何影响损坏
+    /**腐坏速度乘数 将物品放入此口袋中如何影响损坏  
      * 小于1.0, 物品保存时间更长;  0.0 将无限期保留
-     * @default 1
+     * @default 1  
      */
     spoil_multiplier?: number;
-    /**重量乘数
+    /**重量乘数  
      * 口袋里的物品神奇地内部重量比外部重量轻  
      * 原版中的任何东西都不应该有一个weight_multiplier  
-     * @default 1
+     * @default 1  
      */
     weight_multiplier?: number;
-    /**体积乘数
+    /**体积乘数  
      * 该口袋中的物品内部体积小于外部体积  
      * 可用于有助于组织特定内容的容器, 例如用于管道胶带的纸板卷  
-     * @default 1
+     * @default 1  
      */
     volume_multiplier?: number;
-    /**负重修正系数。
-     * 该口袋体积对累赘的影响
-     * 与盔甲中的 volume_encumber_modifier 逻辑一致
-     * @default 1
+    /**负重修正系数.   
+     * 该口袋体积对累赘的影响  
+     * 与盔甲中的 volume_encumber_modifier 逻辑一致  
+     * @default 1  
      */
     volume_encumber_modifier?: number;
     /**存取速度  
@@ -238,7 +239,7 @@ export type PocketData = {
      * @default false  
      */
     rigid?: boolean;
-    /**是否禁止使用
+    /**是否禁止使用  
      * 如果为 true, 玩家无法使用该口袋存取物品  
      * @default false  
      */
@@ -274,20 +275,20 @@ export type PocketData = {
      * @default false  
      */
     fire_protection?: boolean;
-    /**是否透明
-     * 若为 true，可远距离看到口袋内物品。未来可能用于光照系统
-     * @default false
+    /**是否透明  
+     * 若为 true, 可远距离看到口袋内物品. 未来可能用于光照系统  
+     * @default false  
      */
     transparent?:boolean;
-    /**额外负重
-     * 使用该口袋时角色额外承受的负重值
-     * @default 0
+    /**额外负重  
+     * 使用该口袋时角色额外承受的负重值  
+     * @default 0  
      */
     extra_encumbrance?: Int;
-    /**被撕裂概率
-     * 挣脱攫抓状态时，口袋内容物被撕裂的概率为：
-     * 随机数[0,10×ripoff] 与 抓力[0,grab_strength] 比较
-     * @default 0
+    /**被撕裂概率  
+     * 挣脱攫抓状态时, 口袋内容物被撕裂的概率为:   
+     * 随机数[0,10×ripoff] 与 抓力[0,grab_strength] 比较  
+     * @default 0  
      */
     ripoff?:Int;
     /**角色移动时此口袋产生的噪音 */
@@ -309,8 +310,8 @@ export type PocketData = {
     ammo_restriction?: PRecord<AmmoID,number>;
     /**只有当物品具有与这些标志之一匹配的标志时, 才能将其放入此口袋中  */
     flag_restriction?: FlagID[];
-    /**只有这些物品 ID 才能放入此口袋中
-     * 优先级最高
+    /**只有这些物品 ID 才能放入此口袋中  
+     * 优先级最高  
      */
     item_restriction?: ItemID[];
     /**有主要由该材料制成的物品才能放入此口袋  */
@@ -319,8 +320,8 @@ export type PocketData = {
      * 口袋的密封版本将覆盖相同数据类型的未密封版本  
      */
     sealed_data?: Partial<PocketData>;
-    /**如果为 true, 口袋内物品的flag会传递给口袋
-     * @default false
+    /**如果为 true, 口袋内物品的flag会传递给口袋  
+     * @default false  
      */
     inherits_flags?: boolean;
     /**此口袋的数据存储空间大小 */
@@ -520,6 +521,6 @@ export type AnyCddaJson = Item|Eoc|Mutation|DamageType|DamageInfoOrder|
     Fault|FaultFix|FaultGroup|MonsterFaction|NPCFaction|Trap|Harvest|HarvestDropType|
     BodyPart|SubBodyPart|LimbScore|CharacterMod|Snippet|SpeedDescription|WeaponCategory|Uncraft|ItemAction|
     Vitamin|Skill|Emit|FieldType|AddictionType|MoraleType|Profession|Hobby|ModInfo|RecipeCategory|
-    ShopkeeperBlacklist|ShopkeeperConsumptionRate;
+    ShopkeeperBlacklist|ShopkeeperConsumptionRate|MagicType;
 /**任何Cdda的Json 组成的数组*/
 export type AnyCddaJsonList = (AnyCddaJson)[];
