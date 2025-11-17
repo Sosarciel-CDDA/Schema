@@ -400,10 +400,6 @@ export class ModDefine{
     genActivityTypeID(id:string):ActivityTypeID{
         return `${this.MOD_PREFIX}_ACT_${id}`;
     }
-    /**生成适用于此mod的 EocID */
-    genEocID(id:string):EocID{
-        return `${this.MOD_PREFIX}_EOC_${id}`;
-    }
     /**生成适用于此mod的 ToolID */
     genToolID(id:string):ToolID{
         return `${this.MOD_PREFIX}_TOOL_${id}`;
@@ -455,6 +451,10 @@ export class ModDefine{
     /**生成适用于此mod的 AmmoID */
     genAmmoID(id:string):AmmoID{
         return `${this.MOD_PREFIX}_AMMO_${id}`;
+    }
+    /**生成适用于此mod的 EocID */
+    genEocID(id:string):EocID{
+        return `${this.MOD_PREFIX}_EOC_${id}`;
     }
     //#endregion
 

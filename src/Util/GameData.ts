@@ -86,6 +86,9 @@ const mergeCopyData = <T extends CommonJson>(child:T,parent:T):T=>{
     delete (cloneP as any)['abstract'];
 
     const result = Object.assign({},cloneP,cloneC) as any;
+    if(cloneC.fixed_id!=cloneP.fixed_id)
+        result.mod_source = child.mod_source;
+
     result.sourceline = [...child.sourceline,(parent.mod_source+':'+parent.fixed_id)];
     return result as any;
 }
