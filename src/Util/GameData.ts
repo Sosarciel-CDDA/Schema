@@ -86,40 +86,57 @@ const mergeCopyData = <T extends CommonJson>(child:T,parent:T):T=>{
     delete (cloneP as any)['abstract'];
 
     const result = Object.assign({},cloneP,cloneC) as any;
-    result.sourceline = [...child.sourceline,(parent.mod_source+':'+parent.id)];
+    result.sourceline = [...child.sourceline,(parent.mod_source+':'+parent.fixed_id)];
     return result as any;
 }
 
 
 /**展开copyfrom字段 */
 const copyData = <T extends CommonJson["type"]>(
-    type:T,id:string,
+    itype:T,id:string,
     modDataSeqByPriority:ModData[],stack=0
 ):Extract<CommonJson,{type:T}>|undefined=>{
-    const fixExtends = <T extends CommonJson["type"]>(
-        type:T,id:string,seq:ModData[],child:any,stack:number
-    ):Extract<CommonJson,{type:T}>|undefined=>{
+    const fixExtends = <T extends CommonJson["type"]>(opt:{
+        itype:T,id:string,
+        modseq:ModData[],
+        child:Extract<CommonJson,{type:T}>|undefined,
+        stack:number
+    }):Extract<CommonJson,{type:T}>|undefined=>{
+
+        const {child,id,modseq,stack,itype} = opt;
+
         //死循环则直接返回
         if(stack>5) return child;
 
-        const copyId = child['copy-from'];
-        //如果不存在copyfrom则直接返回
-        if(!copyId) return child;
-        //非扩展则直接返回
-        if(copyId!=id) return child;
+        if(child!=undefined){
+            const copyId = child['copy-from'];
+            //如果不存在copyfrom则直接返回
+            if(!copyId) return child;
+            //非扩展则直接返回
+            if(copyId!=id) return child;
+        }
 
         //找到优先级最高的数据
-        const lastIdx = seq.findIndex(data=>data.table[type]?.[id] != undefined);
-        const last = seq[lastIdx]?.table?.[type]?.[id] as Extract<CommonJson,{type:T}>|undefined;
+        const lastIdx = modseq.findIndex(data=>data.table[itype]?.[id] != undefined);
+        const last = modseq[lastIdx]?.table?.[itype]?.[id] as Extract<CommonJson,{type:T}>|undefined;
         if(last==undefined) return child;
 
+        if(child==undefined)
+            return fixExtends({
+                itype,id,
+                modseq:modseq.slice(lastIdx+1),
+                child:last,stack:stack+1
+            });
+
         const expand = mergeCopyData(child as any,last  as any) as any;
-        return fixExtends(type,id,seq.slice(lastIdx+1),expand,stack+1);
+        return fixExtends({
+            itype,id,
+            modseq:modseq.slice(lastIdx+1),
+            child:expand,stack:stack+1
+        });
     }
 
-    const fixedData = fixExtends(type,id,modDataSeqByPriority,{
-        id, sourceline:[], 'copy-from':id,
-    },stack);
+    const fixedData = fixExtends({itype,id,modseq:modDataSeqByPriority,child:undefined,stack});
 
     //死循环则直接返回
     if(stack>10) return fixedData;
@@ -130,9 +147,9 @@ const copyData = <T extends CommonJson["type"]>(
 
     //console.log(stack);
     //合并copyfrom
-    let prevData = copyData(type,fixedCopyId,modDataSeqByPriority,stack+1);
+    let prevData = copyData(itype,fixedCopyId,modDataSeqByPriority,stack+1);
     if(!prevData){
-        console.log(`找不到 ${type}:${fixedData.id} copyfrom的目标 ${fixedCopyId}, 已返回空数据`);
+        console.log(`找不到 ${itype}:${fixedData.id} copyfrom的目标 ${fixedCopyId}, 已返回空数据`);
         prevData = {} as any;
     }
     return mergeCopyData(fixedData,prevData!);
