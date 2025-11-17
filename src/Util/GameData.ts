@@ -1,6 +1,6 @@
 import { deepClone, memoize, PromiseQueue, UtilFT } from "@zwa73/utils";
 import { GAME_PATH } from "./Define";
-import { AnyCddaJson, Time, Volume, Weight } from "Schema/GenericDefine";
+import { AnyCddaJson, Price, Time, Volume, Weight } from "Schema/GenericDefine";
 import path from "pathe";
 import fs from 'fs';
 
@@ -232,4 +232,15 @@ const timeUnits: Record<string, number> = {
 /** 通用单位解析器：将复合单位字符串转换为秒数 */
 export function parseTime(value?: Time): number {
     return parseUnitString(value, timeUnits);
+}
+
+/** 价值单位映射：所有单位转为美元 */
+const priceUnits: Record<string, number> = {
+    cent: 0.01, cents: 0.01,
+    dollar: 1, dollars: 1, USD: 1,
+    kUSD: 1000,
+};
+/** 通用单位解析器：将复合单位字符串转换为秒数 */
+export function parsePrice(value?: Price): number {
+    return parseUnitString(value, priceUnits);
 }
