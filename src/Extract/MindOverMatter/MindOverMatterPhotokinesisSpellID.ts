@@ -16,9 +16,9 @@ export const ExtractDefineMindOverMatterPhotokinesisSpellIDList = [
     "photokinetic_stun_robots"    , // [Ψ]传感器干扰 释放一次局部的电磁辐射脉冲，使区域内所有的电子传感设备超载。
     "photokinetic_invisibility"   , // [Ψ]光之帷幕(C) 折射你周围的光线来使你隐身。如果能力不够熟练，移动时有概率使隐身失效；近战攻击也会导致隐身失效。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
     "photokinetic_light_flash"    , // [Ψ]恒星耀光 创造一道线性的毁灭闪光，对光束路径上的所有目标造成伤害。
-    "photokinetic_blinding_glare" , // [Ψ]致盲光辉 (C) 你可以释放出耀眼的光芒，任何试图攻击你的人都有被致盲的风险。此异能需要<color_yellow>持续专注来维持</color>，若<color_yellow>专注中断</color>则可能<color_red>失效</color>。
+    "photokinetic_blinding_glare" , // [Ψ]致盲光辉(C) 你可以释放出耀眼的光芒，任何试图攻击你的人都有被致盲的风险。此异能需要<color_yellow>持续专注来维持</color>，若<color_yellow>专注中断</color>则可能<color_red>失效</color>。
     "photokinetic_light_disintegrate", // [Ψ]瓦解光束 将大量光线集中到一个单一目标上，将其瓦解。
-    "photokinetic_light_army"     , // [Ψ]幻影军团 (C) 在周身创造出无数幻象，用以误导和迷惑敌人。这些幻象一旦受损便会爆炸，并发出致盲的闪光。此异能需要<color_yellow>持续专注来维持</color>，若<color_yellow>专注中断</color>则可能<color_red>失效</color>。维持此异能需要比平时更高的<color_yellow>专注度</color>。当所有幻象都被摧毁时，专注会<color_green>自动结束</color>。
+    "photokinetic_light_army"     , // [Ψ]幻影军团(C) 在周身创造出无数幻象，用以误导和迷惑敌人。这些幻象一旦受损便会爆炸，并发出致盲的闪光。此异能需要<color_yellow>持续专注来维持</color>，若<color_yellow>专注中断</color>则可能<color_red>失效</color>。维持此异能需要比平时更高的<color_yellow>专注度</color>。当所有幻象都被摧毁时，专注会<color_green>自动结束</color>。
     "photokinetic_light_army_remove", // [Ψ]Phantom Legion Destruction Removes all remaining illusions when the power ends.
 ] as const;
 /**从文件提取的预定义的MindOverMatterPhotokinesisSpellID */

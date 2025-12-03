@@ -50,7 +50,7 @@ export const ExtractDefineMaterialIDList = [
     "flesh"                       , // 肉
     "drug_filler"                 , // 药品
     "gutskin"                     , // 肠衣
-    "freshclay"                   , // 黏土(新鲜)
+    "freshclay"                   , // 黏土（新鲜）
     "fruit"                       , // 水果
     "fur"                         , // 毛皮
     "faux_fur"                    , // 人造毛皮
@@ -68,7 +68,7 @@ export const ExtractDefineMaterialIDList = [
     "biodiesel"                   , // 生物柴油
     "gasoline"                    , // 汽油
     "lamp_oil"                    , // 煤油
-    "crude_lamp_oil"              , // 自制灯油
+    "crude_lamp_oil"              , // 粗制灯油
     "motor_oil"                   , // 机油
     "crude_oil"                   , // 原油
     "iflesh"                      , // 虫肉

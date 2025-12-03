@@ -13,14 +13,14 @@ export const ExtractDefineFaultIDList = [
     "fault_engine_pump_fuel"      , // 故障的汽油泵 将汽油从油箱中泵出的必要器件。
     "fault_engine_starter"        , // 故障的启动电机 用于启动引擎的必需品。
     "fault_handle_chipping"       , // 握把崩边 握把有小碎片正在剥落。
-    "fault_handle_cracked"        , // 手柄开裂 There is a nasty crack on a handle.  Better to fix it before the entire shaft snaps in half!
-    "fault_handle_broken"         , // 手柄损坏 Instead of a handle, there is just a small piece of wood that was left.
+    "fault_handle_cracked"        , // 手柄开裂 手柄上有一道难看的裂缝。最好在整根轴折断之前把它修好！
+    "fault_handle_broken"         , // 手柄损坏 原先的手柄只留下一小块木头。
     "fault_handle_off"            , // 无手柄 原先在这儿的把手断裂脱落了。
     "fault_handle_long_chipping"  , // 握把崩边 握把有小碎片正在剥落。
-    "fault_handle_long_cracked"   , // 手柄开裂 There is a nasty crack on a handle.  Better to fix it before the entire shaft snaps in half!
-    "fault_handle_long_broken_half", // 手柄损坏 The handle is snapped in half.  You still can use it, albeit less effectively.
+    "fault_handle_long_cracked"   , // 手柄开裂 手柄上有一道难看的裂缝。最好在整根轴折断之前把它修好！
+    "fault_handle_long_broken_half", // 手柄损坏 手柄折断成两半了。不过你还是可以用，只是效果会差一些。
     "fault_handle_long_broken"    , // 手柄损坏 手柄完全坏了。
-    "fault_handle_long_off"       , // 无手柄 The head of the tool completely separated off the shaft.
+    "fault_handle_long_off"       , // 无手柄 工具的头部完全从杆上脱落了。
     "fault_blade_rolled_edge"     , // 刀口卷刃 刀口卷曲变形，更难使用。
     "fault_blade_chipped"         , // 刀刃崩口 一小块刃口缺损，以致锋利度锐减。
     "fault_blade_cracked"         , // 裂纹 剑刃上有一道深深的裂纹。这预示着整把剑迟早会彻底断裂。任何修复的尝试都只会对剑刃造成二次伤害，看来这把%s命不久矣。
@@ -50,7 +50,7 @@ export const ExtractDefineFaultIDList = [
     "fault_fail_to_feed"          , // 未进弹 这把枪未能正常上膛。
     "fault_gun_chamber_spent"     , // 弹壳卡膛 这把枪的枪膛里卡着一颗空弹壳。
     "fault_stovepipe"             , // 抛壳窗卡弹 弹壳未能正确抛出，卡在了抛壳窗，形成类似烟囱的形状。
-    "fault_double_feed"           , // 双进弹 Magazine of the gun tried to put two rounds in the chamber at once.
+    "fault_double_feed"           , // 双进弹 枪械弹匣试图将两发子弹一起装入枪膛。
     "fault_electronic_blown_fuse" , // 保险丝熔断 受保险丝保护的电子电路。
     "mend_fault_electronic_blown_fuse", // 更换保险丝
     "fault_electronic_blown_capacitor", // 电容烧毁 储存电荷的电子电路。

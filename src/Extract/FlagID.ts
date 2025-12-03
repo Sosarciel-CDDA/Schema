@@ -207,8 +207,8 @@ export const ExtractDefineFlagIDList = [
     "GENE_TECH"                   ,
     "NANOFAB_REPAIR"              , // 这件物品带有一片反光怪异的全息贴片。它由纳米制造机生产，也可以在其中<info>修复</info>。
     "NANOFAB_TEMPLATE"            , // 这件物品包含纳米制造配方。
-    "NANOFAB_TEMPLATE_SINGLE_USE" , // 这个模板受版权保护，一次性使用后将被 <bad>销毁</bad>。
-    "BIONIC_FAULTY"               , // 这个生化插件 <bad>已故障</bad>。
+    "NANOFAB_TEMPLATE_SINGLE_USE" , // 这个模板拥有复制保护，在使用过一次后便会<bad>销毁</bad>。
+    "BIONIC_FAULTY"               , // 这个生化插件<bad>已经故障</bad>。
     "BIONIC_POWER_SOURCE"         , // 这个生化插件是个动力源。
     "BIONIC_TOGGLED"              ,
     "BIONIC_GUN"                  ,
@@ -240,8 +240,8 @@ export const ExtractDefineFlagIDList = [
     "ROBUST_GENETIC"              ,
     "HIDDEN_HALLU"                ,
     "HIDDEN_POISON"               ,
-    "BAD_TASTE"                   , // 这件食物让人 <bad>倒胃口</bad>，大多数烹饪方式都<bad>无法改善口味</bad>。
-    "RAW"                         , // 这份食物是<info>生的</info>，烹饪后食用会<good>更有营养</good>。
+    "BAD_TASTE"                   , // 这个食物让人 <bad>倒胃口</bad>，且大多数烹饪方式都<bad>无法改善其口味</bad>。
+    "RAW"                         , // 这个食物是<info>生的</info>，烹饪后食用会<good>更有营养</good>。
     "CANNIBALISM"                 ,
     "STRICT_HUMANITARIANISM"      ,
     "ALLERGEN_BREAD"              ,
@@ -314,8 +314,8 @@ export const ExtractDefineFlagIDList = [
     "INITIAL_PART"                ,
     "INSPIRATIONAL"               ,
     "INSTALL_DIFFICULT"           ,
-    "INTEGRATED"                  , // 这件物品是 <info>身体</info>的一部分。
-    "MORPHIC"                     , // 这件物品<info>尺寸自适应</info>。
+    "INTEGRATED"                  , // 这件物品是<info>身体</info>的一部分。
+    "MORPHIC"                     , // 这件物品会<info>自动贴合身体</info>。
     "IS_ARMOR"                    ,
     "IS_PET_ARMOR"                ,
     "IS_UPS"                      , // 这件物品可以作为 <info>UPS电源</info>。
@@ -323,14 +323,14 @@ export const ExtractDefineFlagIDList = [
     "LITCIG"                      ,
     "LUPINE"                      ,
     "MAG_BELT"                    ,
-    "MAG_BULKY"                   , // 这件物品 <bad>体积大</bad>，可能无法放入所有类型的弹匣口袋。
+    "MAG_BULKY"                   , // 这个弹匣<bad>体积较大</bad>，不是所有类型的弹匣袋都能将其容纳。
     "MAG_EJECT"                   ,
     "MANUAL_CBM_INSTALLATION"     ,
     "MECH_BAT"                    ,
     "MESSY"                       ,
     "MISSION_ITEM"                ,
     "MODULE_HOLDER"               ,
-    "MOUNTED_GUN"                 , // 这种武器过于 <bad>笨重</bad>，无法单独发射，使用前 <info>必须安装</info> 在车辆或某些家具/地形上。
+    "MOUNTED_GUN"                 , // 该枪过于<bad>笨重</bad>，无法直接拿来射击，<info>必须安装/架设</info>在车辆或某些家具/地形上才能射击。
     "MUNDANE"                     , // 这件物品具有特殊效果。
     "RELIC_PINK"                  ,
     "MUTAGEN_SAMPLE"              , // 可用于制造 <neutral>诱变药剂</neutral>。
@@ -451,7 +451,7 @@ export const ExtractDefineFlagIDList = [
     "SCIENCE_CARD_TRANSPORT_1"    , // 这件物品可让你进入一处科学设施。
     "SCIENCE_CARD_SECURITY_YELLOW", // 这件物品可让你进入一处防护严密的执法部门区域。
     "SCIENCE_CARD_SECURITY_MAGENTA", // 这件物品可让你进入一处防护严密的执法部门区域。
-    "SCIENCE_CARD_SECURITY_BLACK" , // You could probably use this to get into a secured  area.
+    "SCIENCE_CARD_SECURITY_BLACK" , // 这件物品可让你进入一处防护严密的区域。
     "SCIENCE_CARD_MUTAGEN_GREEN"  , // 这件物品可让你进入一处防护严密的设施中的区域。
     "SCIENCE_CARD_MUTAGEN_PINK"   , // 这件物品可让你进入一处防护严密的设施中的区域。
     "SCIENCE_CARD_MUTAGEN_CYAN"   , // 这件物品可让你进入一处防护严密的设施中的区域。
@@ -516,7 +516,7 @@ export const ExtractDefineFlagIDList = [
     "PANORAMIC_OUTSERT"           , // 本产品用来从外部连接到一个单眼窗防毒面具的目镜。
     "PANORAMIC_INSERT"            , // 本产品用于插入单眼窗防毒面具的遮阳板后方。
     "REBREATHER_CART"             , // 呼吸器滤芯
-    "OLD_GUN"                     , // 一把老古董的枪支，大概是二战时期或者更早。
+    "OLD_GUN"                     , // 一把老古董的枪支，大概产自二战时期或者更早。
     "USE_POWER_WHEN_HIT"          , // 这件护甲<info>受击消耗能量</info>。
     "RAT"                         ,
     "MOUSE"                       ,

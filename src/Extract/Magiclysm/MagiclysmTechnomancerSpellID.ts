@@ -20,7 +20,7 @@ export const ExtractDefineMagiclysmTechnomancerSpellIDList = [
     "summon_magic_motorcycle"     , // 召唤魔托车 你不是一个牛仔，但是你还是骑着铁骑。
     "summon_magic_comcycle"       , // 召唤协力机车 更大的座驾，为了更大的战利品，或为了另一位牛仔。
     "overcharge_eyes"             , // 喷嚏激光术 你将体内的生化电池过载，从你的脸上射出半定向的激光光束。这个法术的发明者一定有某种诡异的幽默感。
-    "x-ray"                       , // X光视觉 You fire a cone of X-rays that magically allows you to see that area for a short time.
+    "x-ray"                       , // X光视觉 你发射出一道X光，并通过魔法来短暂地看清X光所及区域。
     "knock"                       , // 开锁术 你引导魔力，将其变成能够打开门的力量。这种法术只能打开木门。
     "improved_knock"              , // 高等开锁术 你引导魔力，将其变成能够打开门的力量。这种法术能打开任何锁住的门。"阿拉霍洞开！"
     "technomancer_knifeshot"      , // 飞刀术 这个法术能在一把刀子周围产生磁场，并将其高速发射出去。
