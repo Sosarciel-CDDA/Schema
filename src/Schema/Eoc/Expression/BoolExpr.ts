@@ -78,6 +78,12 @@ export type IsSeason = {
     is_season: (SeasonLc);
 }
 
+/**移动模式判断 */
+export type HasMoveMode = TalkerVar<{
+    /**移动模式判断 MoveModeID */
+    has_move_mode: string;
+},'has_move_mode'>
+
 //#endregion
 
 /**And条件  
