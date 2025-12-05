@@ -163,7 +163,7 @@ export type AssignMissionTarget = {
 export const OMTMatchTypeList =[
     "EXACT"    , // 提供的字符串必须与覆盖地图地形 ID 完全匹配, 包括线性地形类型的线性方向后缀或旋转地形类型的旋转后缀. 
     "TYPE"     , // 提供的字符串必须与覆盖地图地形 ID 的基本类型 ID 完全匹配, 这意味着旋转和线性地形类型的后缀将被忽略. 
-    "PREFIX"   , // 提供的字符串必须是覆盖地图地形 ID 的完整前缀 (附加部分由下划线分隔) . 例如, “forest”将匹配“forest”或“forest_thick”, 但不匹配“forestcabin”. 
+    "PREFIX"   , // 提供的字符串必须是覆盖地图地形 ID 的完整前缀 (附加部分由下划线分隔) . 例如, "forest"将匹配"forest"或"forest_thick", 但不匹配"forestcabin". 
     "CONTAINS" , // 提供的字符串必须包含在覆盖地图地形 ID 中, 但可以出现在开头, 结尾或中间, 并且没有任何关于下划线分隔的规则. 
 ] as const;
 /**地块匹配类型  

@@ -48,7 +48,7 @@ export type Eoc = {
      * 如果返回 false, effect_on_condition 将开始再次运行.   
      * 这是为了允许为特定的特性或仿生装置添加 effect_on_conditions,  
      * 当你没有目标仿生装置/特性时, 不会浪费时间运行.   
-     * 请参阅 NPC 的 “Dialogue conditions” 部分以获取完整语法.   
+     * 请参阅 NPC 的 "Dialogue conditions" 部分以获取完整语法.   
      */
     deactivate_condition?: BoolExpr;
 }|{

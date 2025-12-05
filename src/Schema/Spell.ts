@@ -188,7 +188,7 @@ export const SpellEffectList = [
     "fungalize"             , // 使目标变成真菌. 
     "guilt"                 , // 目标得到罪恶感, 就好像它杀了施法者一样. 
     "map"                   , // 映射出以玩家为中心的overmap, 半径为aoe(). 
-    "mod_moves"             , // 为目标添加damage()移动. 负值表示“冻结”那段时间. 
+    "mod_moves"             , // 为目标添加damage()移动. 负值表示"冻结"那段时间. 
     "morale"                , // 给aoe内的NPC或头像一个士气效果. 使用damage()作为值. decay_start是duration()/10. 
     "mutate"                , // 变异目标. 如果定义了effect_str, 则向该类别变异, 而不是随机选择. 如果使用了MUTATE_TRAIT标志, 则允许effect_str是一个特定的特性. Damage()/100是突变成功的百分比 (10000表示100.00%) . 
     "noise"                 , // 在目标处产生damage()量的噪音. 注意: 噪音可以进一步描述为sound_type, sound_description, sound_ambient, sound_id和sound_variant. 
@@ -238,7 +238,7 @@ export const SpellFlagList = [
     "NO_FAIL"                  , // 该法术在施展时不会失败. 
     "NO_HANDS"                 , // 手不影响法术能量消耗. 
     "NO_LEGS"                  , // 腿不影响施法时间. 
-    "NO_PROJECTILE"            , // 法术的“射弹”部分会穿过墙壁, 法术效果的中心正是你瞄准的地方, 不考虑障碍物. 
+    "NO_PROJECTILE"            , // 法术的"射弹"部分会穿过墙壁, 法术效果的中心正是你瞄准的地方, 不考虑障碍物. 
     "NON_MAGICAL"              , // 计算伤害减轻时忽略法术抗力. 
     "PAIN_NORESIST"            , // 改变疼痛的法术无法被抵抗 (就像死亡特性一样). 
     "PERCENTAGE_DAMAGE"        , // 该法术根据目标当前的生命值造成伤害. 这意味着该法术无法直接杀死目标. 

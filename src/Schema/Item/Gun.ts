@@ -1,7 +1,7 @@
 import { FaultID } from "Schema/Fault";
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { RangeDamage, Energy, Volume, CddaID, Length } from "../GenericDefine";
+import { RangeDamage, Energy, Volume, CddaID, Length, Int } from "../GenericDefine";
 import { SkillID } from "../Skill";
 import { GenericFlagID } from "./Generic";
 import { GunModID, GunModSlot } from "./GunMod";
@@ -29,7 +29,7 @@ export type GunBase = {
     /**发射时的范围 */
     range: number;
     /**枪的不准确度, 以角度分钟 (MOA) 的百分之一为单位测量  
-     * 当枪械模组中存在 sight_dispersion 和 aim_speed 时, 瞄准系统会选择“最佳”  
+     * 当枪械模组中存在 sight_dispersion 和 aim_speed 时, 瞄准系统会选择"最佳"  
      * 用于每个目标操作的瞄准器, 这是在当前目标阈值下具有分散性的最快瞄准器  
      */
     dispersion?: number;
@@ -38,7 +38,7 @@ export type GunBase = {
     /**射击时产生的后坐力, 以角度分钟 (MOA) 的百分之一为单位测量 */
     recoil?: number;
     /**抵抗损坏/生锈, 也决定了失火几率 */
-    durability?: number;
+    durability?: Int;
     /**发射黑火药弹药时, 有 N 分之一的几率 (每次射击）被堵塞（越高越好).  可选, 默认为 8 */
     blackpowder_tolerance?: number;
     /**枪发射多颗子弹连射时的最小弹药后坐力.  */
@@ -47,7 +47,7 @@ export type GunBase = {
     clip_size?: number;
     /**除了普通弹药 (如果有)之外, 枪还需要一些电能.   
      * 枪内电池电量耗尽.   
-     * 使用标志“USE_UPS”和“USES_BIONIC_POWER”来耗尽其他资源.   
+     * 使用标志"USE_UPS"和"USES_BIONIC_POWER"来耗尽其他资源.   
      * 这也适用于模组.  附加带有 energy_drain 的模组将增加/增加武器的消耗. 
      */
     energy_drain?: Energy;

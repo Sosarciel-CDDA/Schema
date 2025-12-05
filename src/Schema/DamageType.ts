@@ -68,7 +68,7 @@ export type DamageType = {
      * @default false  
      */
     mon_difficulty?: boolean;
-    /** (可选) 将此伤害类型标识为无法抵抗的 (即“纯”伤害)  
+    /** (可选) 将此伤害类型标识为无法抵抗的 (即"纯"伤害)  
      * @default false  
      */
     no_resist?: boolean;

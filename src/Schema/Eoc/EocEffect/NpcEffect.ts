@@ -242,7 +242,7 @@ export type BuyMonster = {
     count?: number;
     /**如果指定了, 则怪物将使用该名称 */
     name?: string;
-    /**如果为 true, 则怪物将获得“安抚”效果 */
+    /**如果为 true, 则怪物将获得"安抚"效果 */
     pacified?: boolean;
     /**成功时的eoc */
     true_eocs?: (ParamsEoc);
@@ -287,10 +287,10 @@ export type Hostile = "hostile";
 /**使 NPC 从你的角色身边逃离. */
 export type Flee = "flee";
 
-/**使 NPC 跟随你的角色, 加入 “你的追随者” 阵营. */
+/**使 NPC 跟随你的角色, 加入 "你的追随者" 阵营. */
 export type Follow = "follow";
 
-/**使 NPC 离开 “你的追随者” 阵营并停止跟随你的角色. */
+/**使 NPC 离开 "你的追随者" 阵营并停止跟随你的角色. */
 export type Leave = "leave";
 
 /**使 NPC 跟随你的角色, 但不改变阵营. */
@@ -311,7 +311,7 @@ export type StrangerNeutral = "stranger_neutral";
 /**NPC 会接近你的角色并进行抢劫, 如果你的角色反抗则会发动攻击. */
 export type StartMugging = "start_mugging";
 
-/**NPC 会获得 LEAD 态度, 并给予你的角色一个“前往安全地带”的任务. */
+/**NPC 会获得 LEAD 态度, 并给予你的角色一个"前往安全地带"的任务. */
 export type LeadToSafety = "lead_to_safety";
 
 /**NPC 会教授你的角色某项技能或武术.   

@@ -526,7 +526,7 @@ ELECTRONIC                            该物品包含敏感电子设备, 可以�
 FAKE_MILLItem                        是一个假物品, 表示 @ref Item::process_fake_mill 的部分研磨产品, 其中设置了移除条件. 
 FAKE_SMOKEItem                        是一个产生烟雾的假物品, 可通过 @ref item::process_fake_smoke 识别, 其中设置了其移除条件. 
 FELINE                                食物, 只有FELINE阈值突变的玩家才能吃; 看INEDIBLE
-FIREWOOD                            该物品可以用作柴火. 带有此标志的物品会被分类到“战利品: 木材”区域
+FIREWOOD                            该物品可以用作柴火. 带有此标志的物品会被分类到"战利品: 木材"区域
 FLAMING                                该物品着火了, 你使用它会造成额外的火焰伤害
 FRAGILE_MELEE                        由于结构质量差, 用作武器时容易散架的易碎物品, 破损后会碎成部件. 
 FRESH_GRAIN                            该产品是鲜切谷物, 可以在炉子上干燥
@@ -552,7 +552,7 @@ MILITARY_CARD                        用于军人身份证, 打开军卡读卡�
 MISSION_ITEM                        该物品的生成几率不受世界物品生成比例因子的影响. 
 MOP                                    该物品可用于清除溢出的液体, 例如血液或水. 
 MOUSE                                食物, 只有MOUSE阈值突变的玩家才能吃; 看INEDIBLE
-MUNDANE                                该物品使用与魔法相关的功能, 但本身不是魔法 - 对于结界来说, 这意味着该物品的颜色不会更改为粉红色, 而对于法术来说, 物品描述将从“该物品在咒语级别施放咒语名称”更改为“该项目激活后: spell_name “. of可以单独使用这个功能, 使用 booleanuse_action"type": "cast_spell""mundane": true
+MUNDANE                                该物品使用与魔法相关的功能, 但本身不是魔法 - 对于结界来说, 这意味着该物品的颜色不会更改为粉红色, 而对于法术来说, 物品描述将从"该物品在咒语级别施放咒语名称"更改为“该项目激活后: spell_name “. of可以单独使用这个功能, 使用 booleanuse_action"type": "cast_spell""mundane": true
 MUTAGEN_SAMPLE                        该物品为诱变剂样品, 并Used in the creation of mutagenic drugs在物品描述中显示消息
 NANOFAB_REPAIR                        该物品可以使用 nanofabricator 修复
 NANOFAB_TEMPLATE                    本项为nanofabricator模板, 可以使用相关语法

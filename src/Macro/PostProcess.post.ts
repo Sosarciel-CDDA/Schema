@@ -1,4 +1,4 @@
-import {UtilDT, UtilMacro} from '@zwa73/dev-utils';
+import { UtilDT } from '@zwa73/dev-utils';
 
 
 /**as */
@@ -8,6 +8,7 @@ import {UtilDT, UtilMacro} from '@zwa73/dev-utils';
 UtilDT.fileMacro(({text})=>{
     return text
     .replace(/（(.+?)）/g,' ($1) ')
+    .replace(/“(.+?)”/g,'"$1"')
     .replace(/(，|、)/g,', ')
     .replace(/。/g,'. ')
     .replace(/：/g,': ')

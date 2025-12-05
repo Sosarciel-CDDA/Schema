@@ -25,7 +25,7 @@ export type CommonToFurnitureAndTerrain<T extends FurnitureOrTerrain> = T&{
      */
     lockpick_result?: (T['id']);
     /**锁开成功消息  
-     * 撬锁成功时显示给玩家的信息. 如果省略, 则显示通用的“锁打开了……”提示  
+     * 撬锁成功时显示给玩家的信息. 如果省略, 则显示通用的"锁打开了……"提示  
      */
     lockpick_message?: (DescText);
     /**使该类型成为一个或多个连接组的成员  

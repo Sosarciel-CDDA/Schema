@@ -219,7 +219,7 @@ BLOCK_WHILE_WORN                    允许使用磨损的盔甲或盾牌来阻�
 BULLET_IMMUNE                       佩戴带有此旗帜的物品可以使你免受子弹伤害
 CANT_WEAR                           该物品不能直接佩戴. 
 COLLAR                              这件衣服有一个宽领, 可以在大部分不受阻碍的情况下让你的嘴保持温暖. 
-COMBAT_TOGGLEABLE                   该项目旨在在战斗中切换. 由 NPC 用于确定他们是否会在战斗中打开它. 这只支持简单的“转换”操作. 
+COMBAT_TOGGLEABLE                   该项目旨在在战斗中切换. 由 NPC 用于确定他们是否会在战斗中打开它. 这只支持简单的"转换"操作. 
 DEAF                                使玩家耳聋. 
 DECAY_EXPOSED_ATMOSPHERE            消耗品一旦暴露在大气中就会变质 (例如 MRE). 
 ELECTRIC_IMMUNE                     该装备可以完全保护您免受放电. 

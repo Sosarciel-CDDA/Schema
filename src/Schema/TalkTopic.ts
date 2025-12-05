@@ -169,12 +169,12 @@ export const DefineTopicList = [
     "TALK_STOLE_ITEM"          , // 与拥有 18 = NPCATT_RECOVER_GOODS 的 NPC 交谈    NPC含有字段 talk_stole_item 时显示
     "TALK_WAKE_UP"             , // 与熟睡的 NPC 交谈        NPC含有字段 talk_wake_up 时显示
     "TALK_FRIEND_GUARD"        , // 派系营地守卫            NPC含有字段 talk_friend_guard 时显示
-    "TALK_MUG"                 , // 参见“成功与失败”部分    NPC含有字段 talk_mug 时显示
-    "TALK_STRANGER_AGGRESSIVE" , // 参见“成功与失败”部分    NPC含有字段 talk_stranger_aggressive 时显示
-    "TALK_STRANGER_SCARED"     , // 参见“成功与失败”部分    NPC含有字段 talk_stranger_scared 时显示
-    "TALK_STRANGER_WARY"       , // 参见“成功与失败”部分    NPC含有字段 talk_stranger_wary 时显示
-    "TALK_STRANGER_FRIENDLY"   , // 参见“成功与失败”部分    NPC含有字段 talk_stranger_friendly 时显示
-    "TALK_STRANGER_NEUTRAL"    , // 参见“成功与失败”部分    NPC含有字段 talk_stranger_neutral 时显示
+    "TALK_MUG"                 , // 参见"成功与失败"部分    NPC含有字段 talk_mug 时显示
+    "TALK_STRANGER_AGGRESSIVE" , // 参见"成功与失败"部分    NPC含有字段 talk_stranger_aggressive 时显示
+    "TALK_STRANGER_SCARED"     , // 参见"成功与失败"部分    NPC含有字段 talk_stranger_scared 时显示
+    "TALK_STRANGER_WARY"       , // 参见"成功与失败"部分    NPC含有字段 talk_stranger_wary 时显示
+    "TALK_STRANGER_FRIENDLY"   , // 参见"成功与失败"部分    NPC含有字段 talk_stranger_friendly 时显示
+    "TALK_STRANGER_NEUTRAL"    , // 参见"成功与失败"部分    NPC含有字段 talk_stranger_neutral 时显示
     "TALK_COMBAT_COMMANDS"     , // 战斗设置
     "TALK_LUO_ORDERS"          , // 做事
     "TALK_MISC_RULES"          , // 其他规则设置
@@ -266,8 +266,8 @@ end_conversation    结束对话并让 NPC 从此不再理你.
 insult_combat    结束对话并使 NPC 产生敌意, 添加一条消息, 表明角色开始与 NPC 打斗. 
 hostile    使 NPC 产生敌意并结束对话. 
 flee    让 NPC 逃离你的角色. 
-follow    让NPC追随你的角色, 加入“你的追随者”阵营. 
-leave    让NPC离开“你的追随者”阵营并停止追随你的角色. 
+follow    让NPC追随你的角色, 加入"你的追随者"阵营. 
+leave    让NPC离开"你的追随者"阵营并停止追随你的角色. 
 follow_only    让 NPC 跟随你的角色而不改变派系. 
 stop_following    使 NPC 不再跟随你的角色而不改变派系. 
 npc_thankful    让 NPC 对你的角色产生积极的倾向. 
@@ -275,7 +275,7 @@ drop_weapon    让 NPC 放下武器.
 stranger_neutral    将 NPC 的态度改为中立. 
 start_mugging    NPC 会接近你的角色并从你的角色身上偷东西, 如果你的角色抵抗就会攻击. 
 lead_to_safety    NPC 将获得 LEAD 态度并赋予你的角色到达安全的使命. 
-start_training    NPC 会训练你的角色的技能或武术. 注意: 当前代码要求您通过引导玩家"topic": "TALK_TRAIN"选择要训练的内容来启动训练. 在“TALK_TRAIN”之外启动训练将给出错误. 
+start_training    NPC 会训练你的角色的技能或武术. 注意: 当前代码要求您通过引导玩家"topic": "TALK_TRAIN"选择要训练的内容来启动训练. 在"TALK_TRAIN"之外启动训练将给出错误. 
 start_training_npc    NPC将接受玩家的技能或武术训练. 
 start_training_seminar    打开一个对话框来选择哪些角色将参加该 NPC 主办的培训研讨会. 
 companion_mission: role_string    NPC 将根据 NPC 的角色为您的盟友 NPC 提供任务列表. 

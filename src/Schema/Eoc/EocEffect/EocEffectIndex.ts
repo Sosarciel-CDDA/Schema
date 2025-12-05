@@ -80,15 +80,15 @@ export type EocEffectList = [
     InsultCombat            ,//结束对话并使 NPC 敌对, 同时添加一条角色挑衅 NPC 的消息.
     Hostile                 ,//使 NPC 敌对并结束对话.
     Flee                    ,//使 NPC 从你的角色身边逃离.
-    Follow                  ,//使 NPC 跟随你的角色, 加入 “你的追随者” 阵营.
-    Leave                   ,//使 NPC 离开 “你的追随者” 阵营并停止跟随你的角色.
+    Follow                  ,//使 NPC 跟随你的角色, 加入 "你的追随者" 阵营.
+    Leave                   ,//使 NPC 离开 "你的追随者" 阵营并停止跟随你的角色.
     FollowOnly              ,//使 NPC 跟随你的角色, 但不改变阵营.
     StopFollowing           ,//使 NPC 停止跟随你的角色, 但不改变阵营.
     NpcThankful             ,//使 NPC 对你的角色产生积极好感.
     DropWeapon              ,//使 NPC 丢弃其武器 仅限npc
     StrangerNeutral         ,//将 NPC 的态度改为中立.
     StartMugging            ,//NPC 会接近你的角色并进行抢劫, 如果你的角色反抗则会发动攻击.
-    LeadToSafety            ,//NPC 会获得 LEAD 态度, 并给予你的角色一个“前往安全地带”的任务.
+    LeadToSafety            ,//NPC 会获得 LEAD 态度, 并给予你的角色一个"前往安全地带"的任务.
     StartTraining           ,//NPC 会教授你的角色某项技能或武术.
     StartTrainingNpc        ,//NPC 会接受玩家教授的技能或武术训练.
     StartTrainingSeminar    ,//打开一个对话框, 选择哪些角色将参与由该 NPC 主持的训练研讨会.

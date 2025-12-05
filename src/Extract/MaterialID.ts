@@ -161,7 +161,7 @@ export const ExtractDefineMaterialIDList = [
     "blood"                       , // 血液
     "hblood"                      , // 人类血液
     "acetone"                     , // 丙酮
-    "acid"                        , // 酸液
+    "acid"                        , // 酸蚀
     "wheat"                       , // 小麦
     "wood"                        , // 木头
     "charcoal"                    , // 木炭

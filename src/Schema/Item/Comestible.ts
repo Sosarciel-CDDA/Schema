@@ -20,7 +20,7 @@ export type ComestibleTrait = ItemTrait<"COMESTIBLE",({
     stim?: number;
     /**这种食品可以消除多少疲劳.  (负值增加疲劳)  */
     fatigue_mod?: number;
-    /**食品类型, 用于库存排序. 'FOOD', 'DRINK', 'MED'或'INVALID'之一 (如果使用INVALID, 考虑使用与COMESTIBLE不同的“type”)  */
+    /**食品类型, 用于库存排序. 'FOOD', 'DRINK', 'MED'或'INVALID'之一 (如果使用INVALID, 考虑使用与COMESTIBLE不同的"type")  */
     comestible_type: ComestibleType;
     /**消费后运行的条件影响. 支持内联或字符串id */
     consumption_effect_on_conditions?: (ParamsEoc);
