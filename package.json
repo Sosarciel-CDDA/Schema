@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@types/gettext-parser": "^8.0.0",
-    "@zwa73/dev-utils": "^1.0.92"
+    "@zwa73/dev-utils": "^1.0.93"
   },
   "files": [
     "dist"
