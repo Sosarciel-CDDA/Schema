@@ -17,15 +17,15 @@
   "license": "ISC",
   "dependencies": {
     "@sosarciel-cdda/event": "^1.0.0",
-    "@zwa73/js-utils": "^1.0.57",
-    "@zwa73/modular-mixer": "^1.0.8",
-    "@zwa73/utils": "^1.0.259",
+    "@zwa73/js-utils": "^1.0.74",
+    "@zwa73/modular-mixer": "^1.0.11",
+    "@zwa73/utils": "^1.0.281",
     "gettext-parser": "^8.0.0",
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
     "@types/gettext-parser": "^8.0.0",
-    "@zwa73/dev-utils": "^1.0.89"
+    "@zwa73/dev-utils": "^1.0.92"
   },
   "files": [
     "dist"
