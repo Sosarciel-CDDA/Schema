@@ -12,7 +12,7 @@ export type ModId = CddaID<"MOD">;
 export type ModInfo = {
     type: "MOD_INFO";
     id: ModId;
-    name: "SmartNPC";
+    name: string;
     authors: string[];
     maintainers: string[];
     description: (DescText);
