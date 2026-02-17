@@ -8,6 +8,7 @@ import { MaterialID } from "./Material";
 import { MonsterID } from "./Monster";
 import { MutationCategory } from "./MutationCategory";
 import { ScentTypeID } from "./ScentType";
+import { SpeciesID } from "./Species";
 import { SpellID } from "./Spell";
 
 
@@ -196,7 +197,7 @@ export type Mutation = {
     /**被你激怒的物种列表以及多少, 负值代表平静  
      * @default []  
      */
-    anger_relations?: [string, number][];
+    anger_relations?: [SpeciesID, number][];
     /**可食用材料列表  
      * @default []  
      */

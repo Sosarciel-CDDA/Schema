@@ -1,6 +1,6 @@
 import { createExtractIndex, extractDefineIdList } from 'Macro';
 import { ivk, MPromise, UtilFT } from '@zwa73/utils';
-import { awt, zh, zhl } from '@/src/Util';
+import { awt, zhl } from '@/src/Util';
 
 
 const extractFn = (arg:{
@@ -257,6 +257,16 @@ ivk(async ()=>{
         func:extractFn({
             id: 'id',
             field: ['name','job_description'],
+        }),
+    }),
+
+    //NpcInstanceID提取
+    extractDefineIdList({
+        sourceFileGlob: "data/json/npcs/npc.json",
+        typeName: "NpcInstanceID",
+        func:extractFn({
+            id: 'id',
+            field: ['//'],
         }),
     }),
 

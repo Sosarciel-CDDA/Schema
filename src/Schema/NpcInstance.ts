@@ -1,3 +1,4 @@
+import { ExtractDefineNpcInstanceID } from "Extract";
 import { EocID } from "./Eoc";
 import { CddaID, DescText } from "./GenericDefine";
 import { NpcClassID } from "./NpcClass";
@@ -7,7 +8,10 @@ import { TalkTopicID } from "./TalkTopic";
 
 
 /**Npc实例ID */
-export type NpcInstanceID = CddaID<"NPC">;
+export type NpcInstanceID = CddaID<"NPC">|DefineNpcInstanceID;
+/**预定义的 Npc实例ID */
+export type DefineNpcInstanceID = ExtractDefineNpcInstanceID;
+
 
 /**Npc实例 */
 export type NpcInstance = {
