@@ -18,4 +18,5 @@ export type ModInfo = {
     description: (DescText);
     category: string;
     dependencies: ModId[];
+    conflicts?: ModId[];
 };
