@@ -1,5 +1,5 @@
 import { CddaID, DescText, PRecord } from "./GenericDefine";
-import { BoolExpr, BoolExprList, Eoc, EocEffect, NoParamCond } from "./Eoc";
+import { BoolExpr, EocEffect, NoParamCond } from "./Eoc";
 import { SkillID } from "./Skill";
 import { ItemID } from "./Item";
 import { ItemCategoryID } from "./ItemCategory";
@@ -99,7 +99,7 @@ type RespShot={
     /**转移到哪个对话 */
     topic: (TalkTopicID);
     /**产生的效果 */
-    effect?: EocEffect;
+    effect?: EocEffect|EocEffect[];
 }
 
 /**玩家的回复 技能鉴定完整写法 */
@@ -130,7 +130,7 @@ export type RespEffect = {
     /**转移到哪个对话 */
     topic: (TalkTopicID);
     /**产生的效果 */
-    effect?: EocEffect;
+    effect?: EocEffect|EocEffect[];
     /**态度调整 */
     opinion?: {
         /**信任 */

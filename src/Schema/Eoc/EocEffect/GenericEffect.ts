@@ -1,10 +1,10 @@
-import { BoolExpr, CondExpr, IDExpr, LocExpr, NumberExpr, StringExpr, TalekrExpr, TimeExpr } from "../Expression";
+import { BoolExpr, IDExpr, LocExpr, NumberExpr, StringExpr, TalekrExpr, TimeExpr } from "../Expression";
 import { SoundEffectID, SoundEffectVariantID } from "Schema/SoundEffect";
-import { EocID, InlineEoc, TalkerStr, TalkerVar, ToFEffect } from "../Eoc";
+import { EocID, InlineEoc, TalkerVar, ToFEffect } from "../Eoc";
 import { EocEffect, ItemSearchData, ParamsEoc, ParamsEocList } from "./EocEffectIndex";
 import { TalkTopicID } from "Schema/TalkTopic";
 import { MissionDefinitionID } from "Schema/MissionDefinition";
-import { DescText, Time } from "Schema/GenericDefine";
+import { DescText } from "Schema/GenericDefine";
 import { ItemGroupID } from "Schema/ItemGroup";
 import { MonsterID } from "Schema/Monster";
 
@@ -56,18 +56,20 @@ export type SoundEffect = {
  * }  
  */
 export type OpenDialogue = {
-    /**对话主题  
-     * 如果使用, 将使用此主题与一个空的talker进行对话, 而不是与参与者对话  
-     */
-    topic?: (IDExpr<TalkTopicID>);
-    /**对话成功时运行的EOCs  
-     * 如果对话成功, 将运行所有true_eocs中的EOCs  
-     */
-    true_eocs?: EocEffect[];
-    /**对话失败时运行的EOCs  
-     * 如果对话失败, 将运行所有false_eocs中的EOCs  
-     */
-    false_eocs?: EocEffect[];
+    open_dialogue:{
+        /**对话主题  
+         * 如果使用, 将使用此主题与一个空的talker进行对话, 而不是与参与者对话  
+         */
+        topic?: (IDExpr<TalkTopicID>);
+        /**对话成功时运行的EOCs  
+         * 如果对话成功, 将运行所有true_eocs中的EOCs  
+         */
+        true_eocs?: EocEffect[];
+        /**对话失败时运行的EOCs  
+         * 如果对话失败, 将运行所有false_eocs中的EOCs  
+         */
+        false_eocs?: EocEffect[];
+    }
 }
 
 /**接管NPC控制权  
