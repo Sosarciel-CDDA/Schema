@@ -1,8 +1,8 @@
 import {
     RecipeCategoryID, RecipeSubCategoryID,
     AmmunitionTypeID, BoolExpr, Eoc, EocEffect, SpellID,
-    EffectID, TalkTopicID, EocID ,FlagID,
-    ItemGroupID,MonsterID,MutationID,NpcClassID,NpcInstanceID, EnchantmentID,
+    EffectID, TalkTopicID, EocID, FlagID,
+    ItemGroupID, MonsterID, MutationID, NpcClassID, NpcInstanceID, EnchantmentID,
     WeaponCategoryID,
     WeakpointSetID,
     VitaminID,
@@ -82,6 +82,7 @@ import {
     ShopkeeperConsumptionRateID,
     ShopkeeperBlacklistID,
     MagicTypeID,
+    MonsterAttackID,
 } from "@/src/Schema";
 
 /**ModID生成工具 */
@@ -259,6 +260,10 @@ export class ModDefine{
     /**生成适用于此mod的 MonsterFactionID */
     genMonsterFactionID(id:string):MonsterFactionID{
         return `${this.MOD_PREFIX}_MONF_${id}`;
+    }
+    /**生成适用于此mod的 MonsterAttackID */
+    genMonsterAttackID(id:string):MonsterAttackID{
+        return `${this.MOD_PREFIX}_MATK_${id}`;
     }
     /**生成适用于此mod的 MonsterID */
     genMonsterID(id:string):MonsterID{

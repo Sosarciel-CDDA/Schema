@@ -3,12 +3,13 @@ import { DamageTypeID } from "./DamageType";
 import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
-import { BoolExpr, EocID } from "./Eoc";
+import { BoolExpr } from "./Eoc";
 import { CddaID, Char, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, PRecord, Season, Time, Volume, Weight } from "./GenericDefine";
 import { HarvestID } from "./Harvest";
 import { ItemID } from "./Item";
 import { InlineItemGroup, ItemGroupID } from "./ItemGroup";
 import { MaterialID } from "./Material";
+import { MonsterSpecialAttack } from "./MonsterAttack";
 import { MonsterFactionID } from "./MonsterFaction";
 import { MonsterGroupID } from "./MonsterGroup";
 import { ScentTypeID } from "./ScentType";
@@ -162,7 +163,7 @@ export type Monster = CopyfromVar<{
     /**满血时是否恢复愤怒和士气 */
     regen_morale?: boolean;
     /**怪物拥有的特殊攻击 */
-    special_attacks?: MonSpecialAttack[];
+    special_attacks?: MonsterSpecialAttack[];
     /**像 SEES, HEARS, SMELLS, STUMBLES, REVIVES 这样的任意数量的属性 */
     flags?: MonsterFlag[];
     /**如果与怪物开启对话, 会出现的对话主题 */
@@ -427,39 +428,6 @@ export type MonPathSettings = {
      */
     avoid_sharp?: boolean;
 }
-
-
-/**怪物的特殊攻击 */
-export type MonSpecialAttack = MonEocSpecialAttack;
-/**EOC attack 配置
- * 触发指定的 effect_on_condition，以怪物作为 alpha_talker、目标作为 beta_talker。
- * 该攻击需要能看到目标。
- */
-export type MonEocSpecialAttack = {
-    /**跳跃的最大距离。
-     * 遵循“圆形距离”设定。
-     */
-    range: number;
-    /**完全忽略目标位置进行跳跃，会导致完全随机的跳跃行为。
-     * 原文描述为 cooldown，但语义明显是布尔开关。
-     */
-    cooldown?: boolean;
-    /**effect_on_condition 的 id 数组。
-     * 详见 NPCs.md。
-     */
-    eoc: EocID[];
-    /**对话条件，用于决定攻击是否启用。
-     * 详见 NPCs.md 中的对话条件说明。
-     * 其中 u 指代怪物自身。
-     */
-    condition?: (BoolExpr);
-    /**默认 false。
-     * 若为 true，则脚本在无目标时也会执行，
-     * 此时 beta_talker 会被丢弃。
-     */
-    allow_no_target?: boolean;
-}
-
 
 /**怪物可用的Flag 列表 */
 export const MonsterFlagList = [
