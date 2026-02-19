@@ -22,11 +22,16 @@ export type MonsterAttack = {
     /**特殊攻击的唯一id */
     id: (MonsterAttackID);
     /** 攻击类型 */
-    attack_type: "melee"|"bite";
+    attack_type: "melee"|"bite"|"eoc";
     /**感染概率 仅在 attack_type 为 bite 时生效
      * 实际概率 = infection_chance / 100。
      */
     infection_chance?: Int;
+    /**若为 true，则在没有敌对目标时也允许使用此能力
+     * 仅在 attack_type 为 eoc 时生效
+     * @default false
+     */
+    allow_no_target?: boolean;
     /** 冷却时间（整数或变量对象）。
      * 表示两次使用之间的回合数。
      */
@@ -60,7 +65,7 @@ export type MonsterAttack = {
      * u 指怪物自身，npc 指攻击目标。
      * x_has_flag 对怪物仅检查 effect flags，而非 monster flags。
      */
-    condition?: (NumberExpr);
+    condition?: (BoolExpr);
     /**若为 false，则常规攻击不会命中带 UPPER_LIMB 标记的部位
      *（除非 body_parts 明确指定）。
      * @default true

@@ -316,11 +316,11 @@ export type MosnterMeleeDamage = {
     /**伤害量 */
     amount: Int;
     /**伤害实例忽略的护甲量 */
-    armor_penetration: Int;
+    armor_penetration?: Int;
     /**护甲穿透的乘数 */
-    armor_multiplier: Float;
+    armor_multiplier?: Float;
     /**伤害量的乘数 */
-    damage_multiplier: Float;
+    damage_multiplier?: Float;
 }
 
 
