@@ -22,7 +22,7 @@ export type MonsterAttack = {
     /**特殊攻击的唯一id */
     id: (MonsterAttackID);
     /** 攻击类型 */
-    attack_type: "melee"|"bite"|"eoc";
+    attack_type: "melee"|"bite";
     /**感染概率 仅在 attack_type 为 bite 时生效
      * 实际概率 = infection_chance / 100。
      */

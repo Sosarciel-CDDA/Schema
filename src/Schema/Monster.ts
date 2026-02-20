@@ -3,7 +3,8 @@ import { DamageTypeID } from "./DamageType";
 import { EffectID } from "./Effect";
 import { EmitID } from "./Emit";
 import { FakeSpell } from "./Enchantment";
-import { BoolExpr } from "./Eoc";
+import { BoolExpr, EocID } from "./Eoc";
+import { FlagID } from "./Flag";
 import { CddaID, Char, Color, CopyfromVar, DescText, Float, Int, LookLikeID, Phase, PRecord, Season, Time, Volume, Weight } from "./GenericDefine";
 import { HarvestID } from "./Harvest";
 import { ItemID } from "./Item";
@@ -145,7 +146,8 @@ export type Monster = CopyfromVar<{
     death_function?: {
         corpse_type?: "NO_CORPSE";
         message?:(DescText);
-        effect?:FakeSpell;
+        effect?:(FakeSpell);
+        eoc?: (EocID);
     };
     /**怪物发出的场以及频率 */
     emit_fields?:  {
@@ -297,6 +299,7 @@ export const MonsterBPList = [
     "pig"           , // 一种头部与身体在同一线上的四足动物
     "spider"        , // 一种头部小, 腹部大的八足动物
     "snake"         , // 一种身体长, 无肢体的动物
+    "giant"         , //
 ] as const;
 /**怪物的身体类型 */
 export type MonBP = typeof MonsterBPList[number];
@@ -441,7 +444,7 @@ export const MonsterFlagList = [
     "NOGIB"             , //这个怪物被超量伤害杀死时不会爆成碎块
 ] as const;
 /**怪物可用的Flag */
-export type MonsterFlag = (typeof MonsterFlagList)[number];
+export type MonsterFlag = (typeof MonsterFlagList)[number]|FlagID;
 
 /**可用的怪物类型 列表 */
 export const MonsterCategoryList = [
