@@ -37,10 +37,10 @@
 - [x] MONSTERS.md - 怪物系统
 - [x] MUTATIONS.md - 变异系统
 ### NPC系统
-- [ ] NPCs.md - NPC系统
-- [ ] MISSIONS_JSON.md - 任务系统
+- [x] NPCs.md - NPC系统
+- [x] MISSIONS_JSON.md - 任务系统
 ### 地图系统
-- [ ] MAPGEN.md - 地图生成
+- [x] MAPGEN.md - 地图生成
 - [ ] OVERMAP.md - 大地图系统
 - [ ] TER_FURN_TRANSFORM.md - 地形/家具转换
 ### 其他系统
