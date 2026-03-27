@@ -193,7 +193,7 @@ export type Mutation = {
     /**忽视你的物种列表  
      * @default []  
      */
-    ignored_by?: string[];
+    ignored_by?: SpeciesID[];
     /**被你激怒的物种列表以及多少, 负值代表平静  
      * @default []  
      */

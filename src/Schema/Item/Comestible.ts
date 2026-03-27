@@ -6,6 +6,7 @@ import { MaterialID } from "Schema/Material";
 import { ItemID, ItemTrait } from "./ItemIndex";
 import { AddictionTypeID } from "Schema/AddictionType";
 import { MonsterGroupID } from "Schema/MonsterGroup";
+import { MonsterID } from "Schema/Monster";
 
 /**Comestible ID格式   */
 export type ComestibleID = CddaID<"COME">;
@@ -61,8 +62,8 @@ export type ComestibleTrait = ItemTrait<"COMESTIBLE",({
     vitamins?: [VitaminID, Weight][];
     /**主要材料ID是什么. 材料决定了比热.  */
     primary_material?: (MaterialID);
-    /**腐烂时生成的怪物ID */
-    rot_spawn?: (MonsterGroupID);
+    /**腐烂时生成的怪物定义 */
+    rot_spawn?: RotSpawn;
     /**腐烂时生成怪物的几率 (100 = 总是)  */
     rot_spawn_chance?: Int;
     /**在烟熏器中烘干此食品后得到的食品 */
@@ -127,4 +128,16 @@ export type DefineComestibleFlagID = typeof DefineComestibleFlagIDList[number];
 
 /**消耗品Flag */
 type ComestibleFlagID = DefineComestibleFlagID|GenericFlagID;
+
+/**腐烂时生成的怪物定义 */
+type RotSpawn = {
+    /**怪物组ID (与monster互斥) */
+    group?: (MonsterGroupID);
+    /**怪物ID (与group互斥) */
+    monster?: (MonsterID);
+    /**生成数量 (仅monster模式) */
+    amount?: Int | [Int, Int];
+    /**生成几率 */
+    chance?: Int;
+};
 

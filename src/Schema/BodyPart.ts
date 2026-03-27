@@ -60,7 +60,7 @@ export type BodyPart = {
      */
     grabbing_effect?: (EffectID);
     /**在面板中HP栏旁边显示的方式 */
-    hp_bar_ui_text: string;
+    hp_bar_ui_text: (DescText);
     /**此部位所连接的主要部位  
      * (如果这是主要部位, 则连接到自身)  
      */

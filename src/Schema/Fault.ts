@@ -33,12 +33,12 @@ export type Fault = {
     /**物品前缀  
      * 有此故障的物品将添加此前缀  
      */
-    item_prefix?: string;
+    item_prefix?: (DescText);
     /**物品后缀  
      * 有此故障的物品将添加此后缀(会放在括号内)  
      * @example "no handle" // 会显示为"sword (no handle)"  
      */
-    item_suffix?: string;
+    item_suffix?: (DescText);
     /**应用故障时显示的消息 */
     message: (DescText);
     /**故障类型  

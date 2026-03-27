@@ -1,7 +1,7 @@
 import { FaultID } from "Schema/Fault";
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { RangeDamage, Energy, Volume, CddaID, Length, Int, Float } from "../GenericDefine";
+import { RangeDamage, Energy, Volume, CddaID, Length, Int, Float, DescText } from "../GenericDefine";
 import { SkillID } from "../Skill";
 import { GenericFlagID } from "./Generic";
 import { GunModID, GunModSlot } from "./GunMod";
@@ -83,7 +83,7 @@ export type GunBase = {
     /**子弹附加效果 */
     ammo_effects?: AmmoEffectID[],
     /**重装时发出的声音 */
-    reload_noise?: string;
+    reload_noise?: (DescText);
     /**重装时发出的声音大小 */
     reload_noise_volume?: Int;
     /**可能适用于该枪的故障类型;  通常继承自单个抽象, 例如rifle_base, 但也存在例外 */

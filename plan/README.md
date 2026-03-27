@@ -201,17 +201,22 @@
 - [x] `fuel_options?: string[]` (L87) - 已修复为 `(MaterialID)[]`
 
 ### BodyPart.ts
-- [ ] `hp_bar_ui_text: string` (L63) - 验证
-- [ ] `legacy_id?: string` (L233) - ID引用
+- [x] `hp_bar_ui_text: string` (L63) - 已修复为 `(DescText)`
+- [~] `legacy_id?: string` (L233) - **保持string** (旧版兼容ID)
 
 ### Item相关文件
-- [ ] `Item/Armor.ts:59` - `valid_mods?: string[]`
-- [ ] `Item/Comestible.ts:64,70` - `rot_spawn`, `petfood`
+- [~] `Item/Armor.ts:59` - `valid_mods?: string[]` - **保持string[]** (clothing mod ID引用，无ClothingModID定义)
+- [x] `Item/Comestible.ts:65` - `rot_spawn` - 已修复为 `RotSpawn` 对象类型
+- [~] `Item/Comestible.ts:72` - `petfood?: string[]` - **保持string[]** (宠物食品类别)
 - [x] `Item/Generic.ts:109,219` - solar_efficiency → `Float`, environmental_protection_with_filter → `Int`
-- [ ] `Item/Gun.ts:86` - `reload_noise?: string`
+- [x] `Item/Gun.ts:86` - `reload_noise?: string` - 已修复为 `(DescText)`
+
+### Mutation.ts
+- [~] `types?: string[]` (L41) - **保持string[]** (突变类型分类，互斥机制)
+- [x] `ignored_by?: string[]` (L196) - 已修复为 `SpeciesID[]`
 
 ### 其他文件中的string字段
-- [ ] `Fault.ts:36,41` - item_prefix, item_suffix
+- [x] `Fault.ts:36,41` - item_prefix, item_suffix - 已修复为 `(DescText)`
 - [ ] `FaultFix.ts:40,45` - 索引签名和str字段
 - [ ] `FieldType.ts:83,129,198,200` - effect_id, issue, sound字段
 - [ ] `GenericDefine.ts:71-77` - str相关字段（已是DescText的一部分）
@@ -249,8 +254,8 @@
 |------|---------|--------|------|
 | any | 1 | 1 | 0 |
 | number | ~166 | ~161 | 5 |
-| string | ~108 | 4 | 104 |
-| **总计** | **~275** | **~166** | **~109** |
+| string | ~108 | 9 | 99 |
+| **总计** | **~275** | **~171** | **~104** |
 
 **剩余 number 字段说明：**
 - `MissionDefinition.ts:25` - `value: number` - 保持 (描述为"未知")
