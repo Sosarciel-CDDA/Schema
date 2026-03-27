@@ -10,12 +10,14 @@ import { ItemCategoryID } from "Schema/ItemCategory";
 import { MonsterID } from "Schema/Monster";
 import { DamageTypeID } from "Schema/DamageType";
 import { RecipeID } from "Schema/Recipe";
+import { RecipeCategoryID } from "Schema/RecipeCategory";
 import { RequirementID } from "Schema/Requirement";
 import { UseAction } from "./UseAction";
 import { TalkTopicID } from "Schema/TalkTopic";
 import { SkillID } from "Schema/Skill";
 import { TechniqueID } from "Schema/Technique";
 import { ItemToolQuality } from "./Tool";
+import { ItemGroupID } from "Schema/ItemGroup";
 
 
 
@@ -160,7 +162,7 @@ export type GenericBase = CopyfromVar<{
     /**此物品是纳米制造机配方, 并指向可能包含的物品的物品组;   
      * 需要nanofab_template_group  
      */
-    nanofab_template_group?: string;
+    nanofab_template_group?: (ItemGroupID);
     /**制作任何这些模板所需的`requirement`;   
      * 用作"每250毫升物品体积一个完整需求"  
      * 体积750毫升的物品需要三倍的`requirement`  
@@ -273,7 +275,7 @@ export type GenericBase = CopyfromVar<{
         /**该物品可能包含的配方分类  
          * 默认为 ["CC_FOOD"], 可指定多个分类  
          */
-        recipes_categories?: string[];
+        recipes_categories?: RecipeCategoryID[];
         /**是否允许生成带有 SECRET 标记的配方  
          * 启用后可包含隐藏配方  
          * @default false  

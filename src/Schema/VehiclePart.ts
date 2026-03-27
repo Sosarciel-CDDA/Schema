@@ -6,6 +6,7 @@ import { FurnitureID } from "./Furniture";
 import { CddaID, Color, CopyfromVar, DescText, Energy, Int, LookLikeID, PRecord, Time, Volume } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { ItemGroupEntrie, ItemGroupID } from "./ItemGroup";
+import { ProficiencyID } from "./Proficiency";
 import { ReqUsing } from "./Requirement";
 import { SkillID } from "./Skill";
 import { TerrainID } from "./Terrain";
@@ -157,8 +158,8 @@ type VPRequirement = {
 type ControlReq = {
     /** "skills" 是一个列表, 每个列表都是一个技能名称和技能等级 */
     skills?: [SkillID,number][];
-    /** "proficiencies" 是技能名称的列表 prof_helicopter_pilot */
-    proficiencies?: string[];
+    /** "proficiencies" 是熟练度ID的列表 */
+    proficiencies?: ProficiencyID[];
 };
 
 /**定义的车辆部件flag 列表 */

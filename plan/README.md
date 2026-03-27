@@ -209,6 +209,10 @@
 - [x] `Item/Comestible.ts:65` - `rot_spawn` - 已修复为 `RotSpawn` 对象类型
 - [~] `Item/Comestible.ts:72` - `petfood?: string[]` - **保持string[]** (宠物食品类别)
 - [x] `Item/Generic.ts:109,219` - solar_efficiency → `Float`, environmental_protection_with_filter → `Int`
+- [x] `Item/Generic.ts:163` - nanofab_template_group - 已修复为 `(ItemGroupID)`
+- [~] `Item/Generic.ts:47` - conditional_names.condition - **保持string** (多态条件值)
+- [~] `Item/Generic.ts:201` - variants.ascii_picture - **保持string** (无AsciiArtID定义)
+- [x] `Item/Generic.ts:276` - recipes_categories - 已修复为 `RecipeCategoryID[]`
 - [x] `Item/Gun.ts:86` - `reload_noise?: string` - 已修复为 `(DescText)`
 
 ### Mutation.ts
@@ -221,33 +225,34 @@
 - [x] `FieldType.ts:83` - effect_id - 已修复为 `(EffectID)`
 - [~] `FieldType.ts:129` - issue - **保持string** (NPC抱怨问题标识符)
 - [x] `FieldType.ts:198,200` - sound, sound_fail - 已修复为 `(DescText)`
-- [ ] `GenericDefine.ts:71-77` - str相关字段（已是DescText的一部分）
+- [~] `GenericDefine.ts:71-77` - str相关字段 - **保持string** (DescText类型的i18n结构)
 - [~] `ItemCategory.ts:19,30` - zone和priority_zones.id - **保持string** (无LootZoneID定义)
 - [x] `ItemGroup.ts:102-105` - ammo-item, container-item, contents-item, container-group, contents-group - 已修复为 `(ItemID)`/`(ItemGroupID)`
 - [~] `Mapgen.ts:72` - rows字段 - **保持string[]** (地图布局符号)
 - [~] `MathFuncion.ts:20` - return字段 - **保持string** (数学表达式代码)
 - [~] `ModTileset.ts:9` - compatibility字段 - **保持string[]** (tileset名称标识符)
-- [ ] `MoraleType.ts:13` - text字段
+- [x] `MoraleType.ts:13` - text - 已是 `(DescText)`，无需修改
 - [x] `NpcClass.ts:61` - shopkeeper_blacklist - 已修复为 `(ShopkeeperBlacklistID)`
 - [~] `NpcClass.ts:107` - traits.group - **保持string** (无MutationGroupID定义)
 - [~] `NPCFaction.ts:70` - FactionEpilogue.id - **保持string** (无SnippetID定义)
-- [ ] `OvermapSpecial.ts:14` - locations字段
-- [ ] `Palette.ts:23,52` - liquid和索引签名
-- [ ] `Profession.ts:41,98` - npc_background和requirement
-- [ ] `Recipe.ts:86,165` - id_suffix和construction_blueprint
-- [ ] `SoundEffect.ts:20` - files字段
-- [ ] `Spell.ts:49` - effect_str字段
-- [ ] `Terrain.ts:47` - allowed_template_ids字段
-- [ ] `VehiclePart.ts:84,128,162` - hotkey, id, proficiencies字段
-- [ ] `WeakpointSet.ts:113` - id字段
+- [~] `OvermapSpecial.ts:14,22` - locations字段 - **保持string[]** (无OvermapLocationID定义)
+- [x] `Palette.ts:23` - liquid - 已修复为 `(ItemID)`，amount改为 `[Int, Int]`
+- [~] `Profession.ts:41,98` - npc_background和requirement - **保持string** (无BGTraitGroupID/AchievementID定义)
+- [~] `Recipe.ts:86,165` - id_suffix和construction_blueprint - **保持string** (ID后缀/mapgen update ID引用)
+- [~] `SoundEffect.ts:20` - files - **保持string[]** (文件路径)
+- [~] `Spell.ts:49` - effect_str - **保持string** (多态ID引用，根据effect字段决定类型)
+- [~] `Terrain.ts:47` - allowed_template_ids - **保持string[]** (纳米制造机模板ID引用)
+- [~] `VehiclePart.ts:84,128` - hotkey, variants_bases.id - **保持string** (热键/内部标识符)
+- [x] `VehiclePart.ts:162` - proficiencies - 已修复为 `ProficiencyID[]`
+- [~] `WeakpointSet.ts:113` - id - **保持string** (弱点族内部标识符)
 
 ### Eoc相关文件 (大量string字段)
-- [ ] `Eoc/EocEffect/GenericEffect.ts:647` - keys字段
-- [ ] `Eoc/EocEffect/CharacterEffect.ts:378-425` - add_var, value等字段
-- [ ] `Eoc/EocEffect/NpcEffect.ts:234-391` - 多个string字段
-- [ ] `Eoc/Expression/BoolExpr.ts:58,84` - mod_is_loaded, has_move_mode
-- [ ] `Eoc/Expression/DefineJMath.ts` - 多个函数参数
-- [ ] `Eoc/Expression/ExpressionIndex.ts:7-11` - 变量类型字段
+- [~] `Eoc/EocEffect/GenericEffect.ts:647` - keys - **保持string[]** (快捷键数组)
+- [~] `Eoc/EocEffect/CharacterEffect.ts:378-425` - add_var, value, type, context等 - **保持string** (变量名/变量值)
+- [~] `Eoc/EocEffect/NpcEffect.ts:234-391` - 多个string字段 - **保持string** (变量名/消息文本/动态ID)
+- [~] `Eoc/Expression/BoolExpr.ts:58,84` - mod_is_loaded, has_move_mode - **保持string** (无MoveModeID定义)
+- [~] `Eoc/Expression/DefineJMath.ts` - 函数参数 - **无需修改** (已使用Arg<T>类型)
+- [~] `Eoc/Expression/ExpressionIndex.ts:7-11` - 变量类型字段 - **保持string** (变量名标识符)
 
 ---
 
@@ -257,8 +262,8 @@
 |------|---------|--------|------|
 | any | 1 | 1 | 0 |
 | number | ~166 | ~161 | 5 |
-| string | ~108 | 9 | 99 |
-| **总计** | **~275** | **~171** | **~104** |
+| string | ~108 | 17 | ~91 |
+| **总计** | **~275** | **~179** | **~96** |
 
 **剩余 number 字段说明：**
 - `MissionDefinition.ts:25` - `value: number` - 保持 (描述为"未知")
