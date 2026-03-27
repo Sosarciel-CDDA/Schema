@@ -2,26 +2,6 @@
 
 本文档记录对 CDDA JSON 文档总结的分析结果，并通过搜索验证检查现有 Schema 项目中缺失的大类定义。
 
----
-
-## 搜索验证结果
-
-### 已存在类型 (搜索确认)
-
-以下类型在报告中标记为缺失，但实际已存在：
-
-| 类型 | 文件位置 | 状态 |
-|------|----------|------|
-| `talk_topic` | `TalkTopic.ts` | ✅ 已存在 |
-| `damage_type` | `DamageType.ts` | ✅ 已存在 |
-| `profession` | `Profession.ts` | ✅ 已存在 |
-| `proficiency` | `Proficiency.ts` | ✅ 已存在 |
-| `addiction_type` | `AddictionType.ts` | ✅ 已存在 |
-| `snippet` | `Snippet.ts` | ✅ 已存在 |
-| `json_flag` | `Flag.ts` | ✅ 已存在 |
-
----
-
 ## 确认缺失的大类定义
 
 ### 高优先级
@@ -45,7 +25,6 @@
 | `clothing_mod` | 服装修正 | ❌ 缺失 |
 | `disease` | 疾病 | ❌ 缺失 |
 | `profession_group` | 职业组 | ❌ 缺失 |
-| `hobby` | 爱好 | ❌ 缺失 |
 
 ### 低优先级
 
