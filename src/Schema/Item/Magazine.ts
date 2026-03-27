@@ -25,6 +25,13 @@ export type MagazineTrait = ItemTrait<"MAGAZINE",({
     default_ammo?: (AmmoID);
     /**将每单位弹药装入弹匣需要多长时间 */
     reload_time?: Int;
+    /**弹匣机械故障的乘数, 主要是在损坏时
+     * 小于1的值反映弹匣质量更好, 卡壳更少
+     * 大于1的值导致枪更容易发生故障, 在较低的损坏程度就会卡壳
+     * 零mag_jam_mult (以及枪中的零gun_jam_mult) 将消除枪支故障的任何机会
+     * 仅当枪支存在gun_mechanical_simple组中的任何故障时才适用
+     */
+    mag_jam_mult?: Int;
     /**如果设置, 则每消耗一单位弹药就会丢弃一个链接 (给定类型) (设置用于分解弹药带) */
     linkage?: (ItemID);
     /**弹夹的Flag */

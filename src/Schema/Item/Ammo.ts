@@ -22,6 +22,8 @@ export type AmmoTrait = ItemTrait<"AMMO",({
     prop_damage?: Float;
     /**开火范围 */
     range?: Int;
+    /**发射后回收弹药的百分比几率 */
+    recovery_chance?: Int;
     /**倍增基础枪械射程字段 */
     range_multiplier?: Float;
     /**弹药的不准确度, 以角度分钟 (MOA) 的百分之一为单位测量 */
@@ -62,6 +64,8 @@ export type AmmoTrait = ItemTrait<"AMMO",({
     loudness?: Int;
     /**弹药的特殊效果 */
     effects?: AmmoEffectID[];
+    /**发射后留下的弹壳物品ID */
+    casing?: (ItemID);
     /**弹药的flag */
     flags?: GenericFlagID[];
     /**发射弹药后在弹药落点掉落的物品 */

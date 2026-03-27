@@ -39,6 +39,13 @@ export type GunBase = {
     recoil?: Int;
     /**抵抗损坏/生锈, 也决定了失火几率 */
     durability?: Int;
+    /**枪械机械故障的乘数, 主要是在损坏时
+     * 小于1的值反映枪的质量更好, 卡壳更少
+     * 大于1的值导致枪更容易发生故障, 在较低的损坏程度就会卡壳
+     * 零gun_jam_mult (以及零mag_jam_mult, 如果存在弹匣) 将消除枪支故障的任何机会
+     * 仅当枪支存在gun_mechanical_simple组中的任何故障时才适用
+     */
+    gun_jam_mult?: Float;
     /**发射黑火药弹药时, 有 N 分之一的几率 (每次射击）被堵塞（越高越好).  可选, 默认为 8 */
     blackpowder_tolerance?: Int;
     /**枪发射多颗子弹连射时的最小弹药后坐力.  */
@@ -90,10 +97,14 @@ export type GunBase = {
     faults?:FaultID[];
     /**武器的处理;  更好的操控性意味着更少的后坐力 */
     handling?:Int;
-    heat_per_shot?:undefined;
-    cooling_value?:undefined;
-    overheat_threshold?:undefined;
-    hurt_part_when_fired?:undefined;
+    /**每次射击增加的热量值 */
+    heat_per_shot?: Int;
+    /**每回合减少的热量值 */
+    cooling_value?: Int;
+    /**热量值阈值, 达到时可能发生故障, 参见#Item faults; 低于零的值表示物品不会发生故障 */
+    overheat_threshold?: Int;
+    /**射击时伤害部件 */
+    hurt_part_when_fired?: boolean;
 };
 
 

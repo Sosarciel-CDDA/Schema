@@ -120,6 +120,14 @@ export type GunModTrait = ItemTrait<"GUNMOD",({
 	blacklist_slot?: GunModSlot[];
 	/**如果枪上存在指定的改装件, 阻止安装枪械改装件 */
 	blacklist_mod?: GunModID[];
+	/**增加或减少物品的to_hit值 */
+	to_hit_mod?: Int;
+	/**如果为true, 该物品的近战伤害会添加到枪的基础伤害上
+	 * @default false
+	 */
+	is_bayonet?: boolean;
+	/**(可选) 增加或减少基础枪噪音的乘数字段. 0.5会使枪的噪音减半, 2会使噪音加倍 */
+	loudness_multiplier?: Float;
 } & Partial<GunBase>>;
 
 /**枪械模组槽位 */

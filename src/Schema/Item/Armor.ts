@@ -84,6 +84,13 @@ export type ArmorPortion = {
      * 默认情况下, max_encumbrance是encumbrance + (非刚性体积 / 250ml)  
      */
     max_encumbrance?: Int;
+    /**累赘度修正器 (实验性功能)
+     * 根据重量而非固定数字生成物品累赘度
+     * 接受代码中描述的"DESCRIPTORS"数组, 如果不需要任何描述符则放入"NONE"
+     * 这会覆盖encumbrance字段, 同时设置encumbrance也会使其被忽略
+     * 目前只适用于头部护甲
+     */
+    encumbrance_modifiers?: string[];
     /**覆盖护甲的透气性, 由护甲材料驱动  
      * @example "IMPERMEABLE" // 0%  
      * @example "POOR" // 30%  
