@@ -44,7 +44,6 @@
 | `overmap_location` | 大地图位置定义 | ❌ 缺失 |
 | `clothing_mod` | 服装修正 | ❌ 缺失 |
 | `disease` | 疾病 | ❌ 缺失 |
-| `mutation_branch` | 变异分支 | ❌ 缺失 |
 | `profession_group` | 职业组 | ❌ 缺失 |
 | `hobby` | 爱好 | ❌ 缺失 |
 
