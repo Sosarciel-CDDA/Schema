@@ -493,7 +493,7 @@ export type SetStringVar = {
          * 输入框的字符长度  
          * @default 20  
          */
-        width?: number;
+        width?: Int;
         /**标识符  
          * 具有相同标识符的输入框共享输入历史  
          * @default ""  

@@ -1,6 +1,6 @@
 
 import { AssignMissionTarget, MissionDefinitionID } from "Schema/MissionDefinition";
-import { IDExpr, LocExpr, NumberExpr } from "../Expression";
+import { IDExpr, LocExpr, NumberExpr, StringExpr } from "../Expression";
 import { TalkerStr, TalkerVar } from "../Eoc";
 import { FlagID } from "Schema/Flag";
 import { ItemID } from "Schema/Item";
@@ -152,12 +152,12 @@ export type BuyItem = {
  * 若角色没有足够数量的物品, 该效果将失败, 因此应提前检查.   
  */
 export type SellItem = {
-    /**要出售的物品ID */
+    /**要出售的物品ID (ItemID或变量对象) */
     u_sell_item: (IDExpr<ItemID>);
-    /**出售加个 */
-    cost?: number;
-    /**出售个数 */
-    count?: number;
+    /**出售价格 (int或表达式) */
+    cost?: NumberExpr;
+    /**出售个数 (int或表达式) */
+    count?: NumberExpr;
     /**出售成功时的eoc */
     true_eocs?: (ParamsEoc);
     /**出售失败时的eoc */
@@ -231,17 +231,20 @@ export type RemoveItemWith = TalkerVar<{
  * 如果 op_of_u.owed 小于 cost, 将打开交易窗口, 玩家需通过交易补足差额, 否则 NPC 不会交付怪物.   
  */
 export type BuyMonster = {
-    u_buy_monster: string;
-    /**价格  
+    /**怪物ID (string或表达式) */
+    u_buy_monster: StringExpr;
+    /**价格 (int或表达式)
      * 如果未指定 cost, 则 NPC 无偿赠送怪物  
      */
-    cost?: number;
-    /**个数  
+    cost?: NumberExpr;
+    /**个数 (int或表达式)
      * @default 1  
     */
-    count?: number;
-    /**如果指定了, 则怪物将使用该名称 */
-    name?: string;
+    count?: NumberExpr;
+    /**怪物名称 (string或表达式)
+     * 如果指定了, 则怪物将使用该名称 
+     */
+    name?: StringExpr;
     /**如果为 true, 则怪物将获得"安抚"效果 */
     pacified?: boolean;
     /**成功时的eoc */

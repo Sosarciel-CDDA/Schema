@@ -4,7 +4,7 @@ import { EocID, InlineEoc, TalkerVar, ToFEffect } from "../Eoc";
 import { EocEffect, ItemSearchData, ParamsEoc, ParamsEocList } from "./EocEffectIndex";
 import { TalkTopicID } from "Schema/TalkTopic";
 import { MissionDefinitionID } from "Schema/MissionDefinition";
-import { DescText } from "Schema/GenericDefine";
+import { DescText, Int } from "Schema/GenericDefine";
 import { ItemGroupID } from "Schema/ItemGroup";
 import { MonsterID } from "Schema/Monster";
 
@@ -163,7 +163,7 @@ export type FinishMission = {
     /**完成到指定步骤  
      * 如果使用, 将任务完成到此步骤  
      */
-    step?: number;
+    step?: Int;
 }
 
 /**提供任务  
@@ -780,7 +780,7 @@ export type SwitchStatement = {
      */
     cases: {
         /**case值 */
-        case: number;
+        case: Int;
         /**case值与switch传入NumObj相等时运行的效果 */
         effect: EocEffect|EocEffect[];
     }[];

@@ -51,7 +51,7 @@ export type FaultFix = {
      * 可以是预定义需求ID数组或内联需求对象  
      * @example ["gun_lubrication", 2]  
      */
-    requirements: ([RequirementID, number] | Omit<Requirement,'id'|'type'|'extend'>)[];
+    requirements: ([RequirementID, Int] | Omit<Requirement,'id'|'type'|'extend'>)[];
     /**修复时物品损坏修改值 (可为负值表示修复)  
      * @example 1000  
      */

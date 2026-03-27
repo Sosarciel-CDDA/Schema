@@ -173,6 +173,9 @@
 - [x] `WeakpointSet.ts:117,119` - bonus/penalty → `Int`
 - [~] `MissionDefinition.ts:25` - `value: number` - **保持number** (描述为"未知")
 - [x] `MissionDefinition.ts:155-159` - offset字段 → `Int`
+- [x] `Eoc/EocEffect/GenericEffect.ts:166` - `step?: number` → `Int`
+- [x] `Eoc/EocEffect/GenericEffect.ts:783` - `case: number` → `Int` (原始doc确认)
+- [~] `Eoc/Expression/NpcNumberExprIndex.ts:13` - `{constant: number}` - **保持number** (表达式常量)
 
 ---
 
@@ -265,4 +268,27 @@
 1. **每验证一个字段就更新计划**
 2. **优先处理 any 类型**
 3. **按文件分组处理，避免混乱**
-4. **对于不确定的字段，查阅原始doc确认**
+4. **⚠️ 判断类型必须检查原始doc - 不能臆测，有些结果相当反直觉**
+
+---
+
+## 特殊类型标注规则
+
+当原始doc描述为 `int or variable object` 或类似格式时，使用以下特殊类型：
+
+| 文档描述 | TypeScript类型 | 注释说明 |
+|---------|---------------|---------|
+| `int or variable object` | `NumberExpr` | `/** (int或表达式) */` |
+| `bool or variable object` | `BoolExpr` | `/** (bool或表达式) */` |
+| `string or variable object` | `StringExpr` | `/** (string或表达式) */` |
+| `XXXID or variable object` | `IDExpr<XXXID>` | `/** (XXXID或变量对象) */` |
+
+**示例：**
+```typescript
+/** 出售价格 (int或表达式) */
+cost?: NumberExpr;
+/** 物品数量 (int或表达式) */
+count?: NumberExpr;
+/** 物品ID (ItemID或变量对象) */
+item?: IDExpr<ItemID>;
+```
