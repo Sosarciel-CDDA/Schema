@@ -12,7 +12,6 @@
 |------|------|
 | `mutation` / `trait` | 变异/特性，定义变异效果、视觉、护甲、激活能力等 |
 | `mutation_category` | 变异分类 |
-| `mutation_branch` | 变异分支 |
 
 ---
 

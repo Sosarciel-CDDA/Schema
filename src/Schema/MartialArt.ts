@@ -5,6 +5,7 @@ import { SkillID } from "./Skill";
 import { WeaponCategoryID } from "./WeaponCategory";
 import { TechniqueID } from "./Technique";
 import { ExtractDefineMartialID, ExtractDefineMartialIDList } from "Extract";
+import { DamageTypeID } from "./DamageType";
 
 
 /**武术流派ID */
@@ -144,11 +145,37 @@ export type MartialArtBuff = {
     bonus_blocks?: Int;
     /**额外闪避次数 */
     bonus_dodges?: Int;
-    /**固定加成 */
-    flat_bonuses?: any[];
-    /**倍率加成 */
-    mult_bonuses?: any[];
+    /**固定加成
+     * 加成值在乘法加成之后应用
+     */
+    flat_bonuses?: MartialArtBonus[];
+    /**倍率加成
+     * 仅支持 damage 和 movecost
+     */
+    mult_bonuses?: MartialArtBonus[];
 }
+
+
+/**武术流派加成类型 */
+export type MartialArtBonusStat = "hit" | "dodge" | "block" | "speed" | "movecost" | "damage" | "armor" | "arpen";
+
+/**武术流派加成定义 */
+export type MartialArtBonus = {
+    /**受影响的属性
+     * 可选值: hit, dodge, block, speed, movecost, damage, armor, arpen
+     */
+    stat: MartialArtBonusStat;
+    /**伤害类型
+     * 仅当 stat 为 damage, armor, arpen 时需要
+     */
+    type?: (DamageTypeID);
+    /**加成值 */
+    scale: number;
+    /**用于缩放的属性
+     * 可以是四种经典属性(str, dex, int, per)或任何技能(bashing, dodge, unarmed, rifles, spellcraft等)
+     */
+    "scaling-stat"?: string;
+};
 
 
 /**预定义的武术流派ID 列表 */

@@ -190,14 +190,19 @@ export type Monster = CopyfromVar<{
     reproduction?: MonReproduction;
     /**这个怪物能够繁殖的季节 */
     baby_flags?: Season[];
-    /**当怪物被攻击时触发的特殊防御 */
-    special_when_hit?: any[];
+    /**当怪物被攻击时触发的特殊防御
+     * 包含防御ID和触发几率
+     * @example ["ZAPBACK", 100]
+     */
+    special_when_hit?: [string, Int];
     /**当怪物成功攻击时应用于被攻击生物的效果 */
     attack_effs?: MonAttackEffect[];
     /**怪物如何找到路径, 打开门, 避开陷阱或破坏障碍 */
-    path_settings?: MonPathSettings;
-    /**动物或怪物留下的粪便或排泄物 */
-    biosignature?: any;
+    path_settings?: (MonPathSettings);
+    /**动物或怪物留下的粪便或排泄物
+     * @example { "biosig_item": "feces_bird", "biosig_timer": 4 }
+     */
+    biosignature?: (MonBiosignature);
     /**描述可以从尸体中收获什么的 "harvest" 类型的 ID  
      * "exempt" 为无收获  
      */
@@ -212,8 +217,10 @@ export type Monster = CopyfromVar<{
      * @default "DEFAULT"  
      */
     speed_description?: (SpeedDescriptionID);
-    /**关于将这个怪物喂食以将其变成宠物的数据 */
-    petfood?: any;
+    /**关于将这个怪物喂食以将其变成宠物的数据
+     * 决定这个怪物是否可以被驯服
+     */
+    petfood?: MonPetfood;
     /**对于具有 ABSORB_ITEMS 特殊攻击的怪物. 确定必须吸收多少毫升才能获得 1 HP  
      * @default 250  
      */
@@ -454,4 +461,26 @@ export const MonsterCategoryList = [
 ] as const;
 /**可用的怪物类型 */
 export type MonsterCategory = typeof MonsterCategoryList[number];
+
+/**怪物的生物特征(粪便或排泄物) */
+export type MonBiosignature = {
+    /**排泄物物品ID */
+    biosig_item: (ItemID);
+    /**排泄间隔(回合数) */
+    biosig_timer: Int;
+};
+
+/**怪物喂食驯服数据 */
+export type MonPetfood = {
+    /**此怪物接受的食物类别 */
+    food: string[];
+    /**喂食时显示的消息
+     * %s 会被替换为怪物名称
+     */
+    feed?: (DescText);
+    /**与宠物玩耍时显示的消息
+     * %s 会被替换为怪物名称
+     */
+    pet?: (DescText);
+};
 
