@@ -20,19 +20,22 @@
 ### 物品系统
 - [x] GUIDE_COMESTIBLES.md - 消耗品指南
 - [x] ITEM.md - 物品系统
-- [ ] ITEM_CRAFT_AND_DISASSEMBLY.md - 制作和拆解
-- [ ] ITEM_SPAWN.md - 物品生成
+- [x] ITEM_CRAFT_AND_DISASSEMBLY.md - 制作和拆解
+- [x] ITEM_SPAWN.md - 物品生成
+
 ### JSON规范
-- [ ] JSON_FLAGS.md - JSON标志
-- [ ] JSON_INFO.md - JSON信息(核心参考)
-- [ ] JSON_INHERITANCE.md - JSON继承
-- [ ] JSON_LOADING_ORDER.md - JSON加载顺序
-- [ ] JSON_STYLE.md - JSON编码风格
-- [ ] JSON_TOOLS.md - JSON工具
+- [x] JSON_FLAGS.md - JSON标志
+- [x] JSON_INFO.md - JSON信息(核心参考)
+- [x] JSON_INHERITANCE.md - JSON继承
+- [x] JSON_LOADING_ORDER.md - JSON加载顺序
+- [x] JSON_STYLE.md - JSON编码风格
+- [x] JSON_TOOLS.md - JSON工具
+
 ### 魔法与战斗
-- [ ] MAGIC.md - 魔法系统
-- [ ] MARTIALART_JSON.md - 武术系统
-- [ ] MONSTER_SPECIAL_ATTACKS.md - 怪物特殊攻击
+- [x] MAGIC.md - 魔法系统
+- [x] MARTIALART_JSON.md - 武术系统
+- [x] MONSTER_SPECIAL_ATTACKS.md - 怪物特殊攻击
+
 ### 生物系统
 - [ ] MONSTERS.md - 怪物系统
 - [ ] MUTATIONS.md - 变异系统
