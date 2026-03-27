@@ -3,17 +3,12 @@
 本文档用于追踪 `h:\CDDA\newver11\cdda-windows-with-graphics-and-sounds-x64-2025-12-01-0424\doc\JSON` 目录下所有文档的阅读和总结进度。
 
 ## 进度说明
-
 - [ ] 未开始
 - [x] 已完成
 - [~] 进行中
-
 每完成一篇文档的总结，会在 `f:\Sosarciel\CDDA\Workspace\Schema\plan\summaries\` 目录下创建对应的总结文件。
-
 ---
-
 ## 主目录文档
-
 ### 核心系统
 - [x] ARTIFACTS.md - 神器系统
 - [x] BASECAMP.md - 基地系统
@@ -22,13 +17,11 @@
 - [x] EFFECT_ON_CONDITION.md - 条件效果(EOC)
 - [x] EXAMINE.md - 检查动作
 - [x] FACTIONS.md - NPC派系
-
 ### 物品系统
-- [ ] GUIDE_COMESTIBLES.md - 消耗品指南
-- [ ] ITEM.md - 物品系统
+- [x] GUIDE_COMESTIBLES.md - 消耗品指南
+- [x] ITEM.md - 物品系统
 - [ ] ITEM_CRAFT_AND_DISASSEMBLY.md - 制作和拆解
 - [ ] ITEM_SPAWN.md - 物品生成
-
 ### JSON规范
 - [ ] JSON_FLAGS.md - JSON标志
 - [ ] JSON_INFO.md - JSON信息(核心参考)
@@ -36,25 +29,20 @@
 - [ ] JSON_LOADING_ORDER.md - JSON加载顺序
 - [ ] JSON_STYLE.md - JSON编码风格
 - [ ] JSON_TOOLS.md - JSON工具
-
 ### 魔法与战斗
 - [ ] MAGIC.md - 魔法系统
 - [ ] MARTIALART_JSON.md - 武术系统
 - [ ] MONSTER_SPECIAL_ATTACKS.md - 怪物特殊攻击
-
 ### 生物系统
 - [ ] MONSTERS.md - 怪物系统
 - [ ] MUTATIONS.md - 变异系统
-
 ### NPC系统
 - [ ] NPCs.md - NPC系统
 - [ ] MISSIONS_JSON.md - 任务系统
-
 ### 地图系统
 - [ ] MAPGEN.md - 地图生成
 - [ ] OVERMAP.md - 大地图系统
 - [ ] TER_FURN_TRANSFORM.md - 地形/家具转换
-
 ### 其他系统
 - [ ] HELP_MENU.md - 帮助菜单
 - [ ] MOVE_MODE.md - 移动模式
@@ -66,28 +54,19 @@
 - [ ] VEHICLES_JSON.md - 载具系统
 - [ ] VITAMIN.md - 维生素系统
 - [ ] WEATHER_TYPE.md - 天气类型
-
 ---
-
 ## JSON_Mapping_Guides 子目录
-
 - [ ] Guide_for_beginning_mapgen.md - 地图生成入门指南
 - [ ] Guide_for_intermediate_mapgen.md - 地图生成进阶指南
 - [ ] JSON_ROOF_MAPGEN.md - 屋顶地图生成
-
 ---
-
 ## 统计
-
 - 总文档数：40
-- 已完成：6
+- 已完成：9
 - 进行中：0
-- 未开始：34
-
+- 未开始：31
 ---
-
 ## 更新日志
-
 | 时间 | 操作 |
 |------|------|
 | - | 创建计划文档 |
@@ -97,3 +76,6 @@
 | - | 完成 EFFECTS_JSON.md 总结 |
 | - | 完成 EFFECT_ON_CONDITION.md 总结 |
 | - | 完成 EXAMINE.md 总结 |
+| - | 完成 FACTIONS.md 总结 |
+| - | 完成 GUIDE_COMESTIBLES.md 总结 |
+| - | 完成 ITEM.md 总结 |
