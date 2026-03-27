@@ -22,7 +22,6 @@
 - [x] ITEM.md - 物品系统
 - [x] ITEM_CRAFT_AND_DISASSEMBLY.md - 制作和拆解
 - [x] ITEM_SPAWN.md - 物品生成
-
 ### JSON规范
 - [x] JSON_FLAGS.md - JSON标志
 - [x] JSON_INFO.md - JSON信息(核心参考)
@@ -30,15 +29,13 @@
 - [x] JSON_LOADING_ORDER.md - JSON加载顺序
 - [x] JSON_STYLE.md - JSON编码风格
 - [x] JSON_TOOLS.md - JSON工具
-
 ### 魔法与战斗
 - [x] MAGIC.md - 魔法系统
 - [x] MARTIALART_JSON.md - 武术系统
 - [x] MONSTER_SPECIAL_ATTACKS.md - 怪物特殊攻击
-
 ### 生物系统
-- [ ] MONSTERS.md - 怪物系统
-- [ ] MUTATIONS.md - 变异系统
+- [x] MONSTERS.md - 怪物系统
+- [x] MUTATIONS.md - 变异系统
 ### NPC系统
 - [ ] NPCs.md - NPC系统
 - [ ] MISSIONS_JSON.md - 任务系统
@@ -65,9 +62,9 @@
 ---
 ## 统计
 - 总文档数：40
-- 已完成：9
+- 已完成：21
 - 进行中：0
-- 未开始：31
+- 未开始：19
 ---
 ## 更新日志
 | 时间 | 操作 |
@@ -82,3 +79,15 @@
 | - | 完成 FACTIONS.md 总结 |
 | - | 完成 GUIDE_COMESTIBLES.md 总结 |
 | - | 完成 ITEM.md 总结 |
+| - | 完成 ITEM_CRAFT_AND_DISASSEMBLY.md 总结 |
+| - | 完成 ITEM_SPAWN.md 总结 |
+| - | 完成 JSON_FLAGS.md 总结 |
+| - | 完成 JSON_INFO.md 总结 |
+| - | 完成 JSON_INHERITANCE.md 总结 |
+| - | 完成 JSON_LOADING_ORDER.md 总结 |
+| - | 完成 JSON_STYLE.md 总结 |
+| - | 完成 JSON_TOOLS.md 总结 |
+| - | 完成 MAGIC.md 总结 |
+| - | 完成 MARTIALART_JSON.md 总结 |
+| - | 完成 MONSTER_SPECIAL_ATTACKS.md 总结 |
+| - | 完成 MONSTERS.md 总结 |
