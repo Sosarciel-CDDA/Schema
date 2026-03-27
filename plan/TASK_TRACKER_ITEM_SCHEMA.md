@@ -43,20 +43,20 @@
 ### 阶段 3: 缺失文件创建
 | 编号 | 任务 | 状态 | 开始时间 | 完成时间 | 备注 |
 |---|------|--------|---------|-----------|-------|
-| 3.1 | 创建 Book.ts schema | [ ] | - | - | 需要查阅原始doc |
-| 3.2 | 创建 PetArmor.ts schema | [ ] | - | - | 需要查阅原始doc |
-| 3.3 | 创建 ToolMod.ts schema | [ ] | - | - | 需要查阅原始doc |
-| 3.4 | 创建 Engine.ts schema | [ ] | - | - | 需要查阅原始doc |
-| 3.5 | 创建 Wheel.ts schema | [ ] | - | - | 需要查阅原始doc |
-| 3.6 | 创建 Seed.ts schema | [ ] | - | - | 需要查阅原始doc |
-| 3.7 | 创建 Brewable.ts schema | [ ] | - | - | 需要查阅原始doc |
-| 3.8 | 创建 Compostable.ts schema | [ ] | - | - | 需要查阅原始doc |
-| 3.9 | 创建 Milling.ts schema | [ ] | - | - | 需要查阅原始doc |
+| 3.1 | 创建 Book.ts schema | [x] | 2026-03-28 | 2026-03-28 | 已创建 |
+| 3.2 | 创建 PetArmor.ts schema | [x] | 2026-03-28 | 2026-03-28 | 已创建，包含environmental_protection/material_thickness/pet_bodytype等字段 |
+| 3.3 | 创建 ToolMod.ts schema | [x] | 2026-03-28 | 2026-03-28 | 已创建，包含acceptable_ammo/pocket_mods/magazine_adaptor字段 |
+| 3.4 | 创建 Engine.ts schema | [x] | 2026-03-28 | 2026-03-28 | 已创建，包含power/energy_consumption/m2c等字段 |
+| 3.5 | 创建 Wheel.ts schema | [x] | 2026-03-28 | 2026-03-28 | 已创建，包含wheel_offroad_rating/contact_area/diameter/width等字段 |
+| 3.6 | 创建 Seed.ts schema | [x] | 2026-03-28 | 2026-03-28 | 已创建，包含plant_name/fruit/seeds/grow等字段 |
+| 3.7 | 创建 Brewable.ts schema | [x] | 2026-03-28 | 2026-03-28 | 已创建，包含brew_time/brew_results字段 |
+| 3.8 | 创建 Compostable.ts schema | [x] | 2026-03-28 | 2026-03-28 | 已创建，包含compost_time/compost_results字段 |
+| 3.9 | 创建 Milling.ts schema | [x] | 2026-03-28 | 2026-03-28 | 已创建，包含into/recipe字段 |
 
 ### 阶段 4: 最终验证
 | 编号 | 任务 | 状态 | 开始时间 | 完成时间 | 备注 |
 |---|------|--------|---------|-----------|-------|
-| 4.1 | 编译验证 tsc --noEmit | [ ] | - | - | |
+| 4.1 | 编译验证 tsc --noEmit | [x] | 2026-03-28 | 2026-03-28 | 通过，修复了导入路径错误 |
 | 4.2 | 更新index.ts导出 | [ ] | - | - | |
 | 4.3 | 更新ItemIndex.ts引用 | [ ] | - | - | |
 
