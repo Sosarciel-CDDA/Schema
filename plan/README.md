@@ -217,17 +217,20 @@
 
 ### 其他文件中的string字段
 - [x] `Fault.ts:36,41` - item_prefix, item_suffix - 已修复为 `(DescText)`
-- [ ] `FaultFix.ts:40,45` - 索引签名和str字段
-- [ ] `FieldType.ts:83,129,198,200` - effect_id, issue, sound字段
+- [~] `FaultFix.ts:40,45` - 索引签名和str字段 - **保持string** (变量名/变量值)
+- [x] `FieldType.ts:83` - effect_id - 已修复为 `(EffectID)`
+- [~] `FieldType.ts:129` - issue - **保持string** (NPC抱怨问题标识符)
+- [x] `FieldType.ts:198,200` - sound, sound_fail - 已修复为 `(DescText)`
 - [ ] `GenericDefine.ts:71-77` - str相关字段（已是DescText的一部分）
-- [ ] `ItemCategory.ts:19,30` - zone和id字段
-- [ ] `ItemGroup.ts:102-105` - ammo-item等字段
-- [ ] `Mapgen.ts:72` - rows字段
-- [ ] `MathFuncion.ts:20` - return字段
-- [ ] `ModTileset.ts:9` - compatibility字段
+- [~] `ItemCategory.ts:19,30` - zone和priority_zones.id - **保持string** (无LootZoneID定义)
+- [x] `ItemGroup.ts:102-105` - ammo-item, container-item, contents-item, container-group, contents-group - 已修复为 `(ItemID)`/`(ItemGroupID)`
+- [~] `Mapgen.ts:72` - rows字段 - **保持string[]** (地图布局符号)
+- [~] `MathFuncion.ts:20` - return字段 - **保持string** (数学表达式代码)
+- [~] `ModTileset.ts:9` - compatibility字段 - **保持string[]** (tileset名称标识符)
 - [ ] `MoraleType.ts:13` - text字段
-- [ ] `NpcClass.ts:61,107` - shopkeeper_blacklist和traits
-- [ ] `NPCFaction.ts:70` - id字段
+- [x] `NpcClass.ts:61` - shopkeeper_blacklist - 已修复为 `(ShopkeeperBlacklistID)`
+- [~] `NpcClass.ts:107` - traits.group - **保持string** (无MutationGroupID定义)
+- [~] `NPCFaction.ts:70` - FactionEpilogue.id - **保持string** (无SnippetID定义)
 - [ ] `OvermapSpecial.ts:14` - locations字段
 - [ ] `Palette.ts:23,52` - liquid和索引签名
 - [ ] `Profession.ts:41,98` - npc_background和requirement

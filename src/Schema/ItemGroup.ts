@@ -99,9 +99,9 @@ type ItemGroupEntrieOpt = Partial<{
      * 这允许水, 其中包含一本书, 其中包含一个钢架, 其中包含一具尸体.   
      */
     "contents-group": ItemGroupID|ItemGroupID[];
-    "ammo-item": string,
-    "ammo-group": string,
-    "container-group": string,
+    "ammo-item": (ItemID),
+    "ammo-group": (ItemGroupID),
+    "container-group": (ItemGroupID),
     "entry-wrapper": string,
     /**如果为 true, 则物品生成时容器将被密封.   
      * @default true  

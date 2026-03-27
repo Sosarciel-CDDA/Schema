@@ -58,7 +58,7 @@ export type NpcClass = {
     /**使用与派系价格规则相同的格式定义个人价格规则 (请参阅 FACTIONS.md). 这些优先于派系规则 */
     shopkeeper_price_rules?: NpcShopPriceRule[],
     /**可选为此店主定义黑名单 */
-    shopkeeper_blacklist?: string;
+    shopkeeper_blacklist?: (ShopkeeperBlacklistID);
     /**默认值为 6 天 */
     restock_interval?: (Time);
     /**基础变异 */

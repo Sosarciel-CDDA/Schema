@@ -5,6 +5,7 @@ import { CddaID, Char, Color, DescText, Float, Int, Length, MessageRatType, Phas
 import { ItemID } from "./Item";
 import { MonsterID } from "./Monster";
 import { MonsterGroupID } from "./MonsterGroup";
+import { EffectID } from "./Effect";
 
 
 
@@ -80,7 +81,7 @@ export type FieldType = {
         /**应用的效果列表 */
         effects?: {
             /**效果ID */
-            effect_id: string;
+            effect_id: (EffectID);
             /**最小持续时间 */
             min_duration: (Time);
             /**最大持续时间 */
@@ -195,9 +196,9 @@ export type FieldType = {
         /**击打失败时的音量 */
         sound_fail_vol: Int;
         /**成功击打时的声音 */
-        sound: string;
+        sound: (DescText);
         /**击打失败时的声音 */
-        sound_fail: string;
+        sound_fail: (DescText);
         /**成功击打时的消息 */
         msg_success: (DescText);
         /**成功击打消耗的移动点数  

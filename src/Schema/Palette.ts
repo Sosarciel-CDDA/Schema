@@ -20,7 +20,7 @@ type PaletteFurnitureMap = {
 };
 /**液体映射 */
 type PaletteLiquidsMap = {
-    [key:string]:{ liquid: string; amount: [number, number]};
+    [key:string]:{ liquid: (ItemID); amount: [Int, Int]};
 };
 /**怪物映射 */
 type PaletteMonstersMap = {
