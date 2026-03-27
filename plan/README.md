@@ -47,24 +47,28 @@
 - [x] HELP_MENU.md - 帮助菜单
 - [x] MOVE_MODE.md - 移动模式
 - [x] OPTIONS.md - 游戏选项
-- [ ] PRACTICE_RECIPES.md - 练习配方
-- [ ] PROFICIENCY.md - 熟练度系统
-- [ ] PROFICIENCY_LIST.md - 熟练度列表
-- [ ] REGION_SETTINGS.md - 区域设置
-- [ ] VEHICLES_JSON.md - 载具系统
-- [ ] VITAMIN.md - 维生素系统
-- [ ] WEATHER_TYPE.md - 天气类型
+- [x] PRACTICE_RECIPES.md - 练习配方
+- [x] PROFICIENCY.md - 熟练度系统
+- [x] PROFICIENCY_LIST.md - 熟练度列表
+- [x] REGION_SETTINGS.md - 区域设置
+- [x] VEHICLES_JSON.md - 载具系统
+- [x] VITAMIN.md - 维生素系统
+- [x] WEATHER_TYPE.md - 天气类型
 ---
 ## JSON_Mapping_Guides 子目录
-- [ ] Guide_for_beginning_mapgen.md - 地图生成入门指南
-- [ ] Guide_for_intermediate_mapgen.md - 地图生成进阶指南
-- [ ] JSON_ROOF_MAPGEN.md - 屋顶地图生成
+
+- [x] Guide_for_beginning_mapgen.md - 地图生成入门指南
+- [x] Guide_for_intermediate_mapgen.md - 地图生成进阶指南
+- [x] JSON_ROOF_MAPGEN.md - 屋顶地图生成
+
 ---
+
 ## 统计
+
 - 总文档数：40
-- 已完成：21
+- 已完成：40
 - 进行中：0
-- 未开始：19
+- 未开始：0
 ---
 ## 更新日志
 | 时间 | 操作 |
