@@ -1,5 +1,6 @@
 import { CddaID, Time } from "../GenericDefine";
 import { ItemTrait, ItemID } from "./ItemIndex";
+import { GenericFlagID } from "./Generic";
 
 /**Brewable ID格式 */
 export type BrewableID = CddaID<"BREW">;
@@ -19,4 +20,6 @@ export type BrewableTrait = ItemTrait<"BREWABLE",{
      * 可酿造物品每电荷的结果ID和乘数
      */
     brew_results: (ItemID)[];
+    /**物品标志 */
+    flags?: GenericFlagID[];
 }>;

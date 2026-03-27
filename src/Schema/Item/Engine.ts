@@ -1,5 +1,6 @@
 import { CddaID, Energy, Float, Int } from "../GenericDefine";
 import { ItemTrait, ItemID } from "./ItemIndex";
+import { GenericFlagID } from "./Generic";
 
 /**Engine ID格式 */
 export type EngineID = CddaID<"ENG">;
@@ -56,4 +57,6 @@ export type EngineTrait = ItemTrait<"ENGINE",{
      * @default fuel_type
      */
     fuel_options?: (ItemID)[];
+    /**物品标志 */
+    flags?: GenericFlagID[];
 }>;

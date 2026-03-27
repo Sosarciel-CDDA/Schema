@@ -1,5 +1,6 @@
 import { CddaID, Int, Time } from "../GenericDefine";
 import { ItemTrait, ItemID } from "./ItemIndex";
+import { GenericFlagID } from "./Generic";
 
 /**Compostable ID格式 */
 export type CompostableID = CddaID<"COMP">;
@@ -18,4 +19,6 @@ export type CompostableTrait = ItemTrait<"COMPOSTABLE",{
      * 堆肥产生的物品ID和数量
      */
     compost_results: Record<(ItemID), Int>;
+    /**物品标志 */
+    flags?: GenericFlagID[];
 }>;

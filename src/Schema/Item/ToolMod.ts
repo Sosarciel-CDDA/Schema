@@ -3,6 +3,7 @@ import { CddaID } from "../GenericDefine";
 import { ItemTrait } from "./ItemIndex";
 import { MagazineID } from "./Magazine";
 import { PocketData } from "../GenericDefine";
+import { GenericFlagID } from "./Generic";
 
 /**Tool Mod ID格式 */
 export type ToolModID = CddaID<"TMOD">;
@@ -26,4 +27,6 @@ export type ToolModTrait = ItemTrait<"TOOLMOD",{
      * 格式: [弹药ID, 弹匣ID[]][]
      */
     magazine_adaptor?: [AmmunitionTypeID, MagazineID[]][];
+    /**物品标志 */
+    flags?: GenericFlagID[];
 }>;

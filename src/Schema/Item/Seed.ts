@@ -1,5 +1,6 @@
 import { CddaID, Time } from "../GenericDefine";
 import { ItemTrait, ItemID } from "./ItemIndex";
+import { GenericFlagID } from "./Generic";
 
 /**Seed ID格式 */
 export type SeedID = CddaID<"SEED">;
@@ -46,4 +47,6 @@ export type SeedTrait = ItemTrait<"SEED",{
      * @default "PLANTABLE"
      */
     required_terrain_flag?: string;
+    /**物品标志 */
+    flags?: GenericFlagID[];
 }>;

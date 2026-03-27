@@ -10,6 +10,15 @@ import { GunModTrait } from "./GunMod";
 import { BatteryTrait } from "./Battery";
 import { BionicItemTrait } from "./BionicItem";
 import { ArtifactTrait } from "./Artifact";
+import { BookTrait } from "./Book";
+import { PetArmorTrait } from "./PetArmor";
+import { ToolModTrait } from "./ToolMod";
+import { EngineTrait } from "./Engine";
+import { WheelTrait } from "./Wheel";
+import { SeedTrait } from "./Seed";
+import { BrewableTrait } from "./Brewable";
+import { CompostableTrait } from "./Compostable";
+import { MillingTrait } from "./Milling";
 
 
 
@@ -41,7 +50,8 @@ export type ItemSubtype = typeof ItemSubtypeList[number];
 /**任何物品特征 */
 export type AnyItemTrait = GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|
 ArmorTrait|GunModTrait|AmmoTrait|BatteryTrait|BionicItemTrait|ArtifactTrait|
-GenericTrait;
+GenericTrait|BookTrait|PetArmorTrait|ToolModTrait|EngineTrait|WheelTrait|
+SeedTrait|BrewableTrait|CompostableTrait|MillingTrait;
 //(AmmoTrait|GunTrait|ToolTrait|MagazineTrait|ComestibleTrait|ArmorTrait|GunModTrait);
 
 /**指定type的物品 */

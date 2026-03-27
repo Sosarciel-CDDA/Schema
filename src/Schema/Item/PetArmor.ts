@@ -1,5 +1,6 @@
 import { CddaID, Int, Volume } from "Schema/GenericDefine";
 import { ItemTrait } from "./ItemIndex";
+import { GenericFlagID } from "./Generic";
 
 /**Pet Armor ID格式 */
 export type PetArmorID = CddaID<"PETARM">;
@@ -22,4 +23,6 @@ export type PetArmorTrait = ItemTrait<"PET_ARMOR",{
     min_pet_vol: (Volume);
     /**是否为动力装甲物品 (那些是特殊的)  */
     power_armor?: boolean;
+    /**物品标志 */
+    flags?: GenericFlagID[];
 }>;

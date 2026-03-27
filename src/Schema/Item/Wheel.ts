@@ -1,5 +1,6 @@
 import { CddaID, Float, Int } from "../GenericDefine";
 import { ItemTrait } from "./ItemIndex";
+import { GenericFlagID } from "./Generic";
 
 /**Wheel ID格式 */
 export type WheelID = CddaID<"WHEEL">;
@@ -36,4 +37,6 @@ export type WheelTrait = ItemTrait<"WHEEL",{
     diameter?: Int;
     /**车轮宽度 (英寸) */
     width?: Int;
+    /**物品标志 */
+    flags?: GenericFlagID[];
 }>;

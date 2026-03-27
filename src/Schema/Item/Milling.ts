@@ -1,6 +1,7 @@
 import { CddaID } from "../GenericDefine";
 import { ItemTrait, ItemID } from "./ItemIndex";
 import { RecipeID } from "../Recipe";
+import { GenericFlagID } from "./Generic";
 
 /**Milling ID格式 */
 export type MillingID = CddaID<"MILL">;
@@ -21,4 +22,6 @@ export type MillingTrait = ItemTrait<"MILLING",{
      * 然后配方定义为源的普通配方, 产品为结果, id_suffix为"mill_X_Y"
      */
     recipe: (RecipeID);
+    /**物品标志 */
+    flags?: GenericFlagID[];
 }>;
