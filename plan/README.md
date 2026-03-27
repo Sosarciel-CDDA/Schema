@@ -21,7 +21,7 @@
 - [x] EFFECTS_JSON.md - 效果系统
 - [x] EFFECT_ON_CONDITION.md - 条件效果(EOC)
 - [x] EXAMINE.md - 检查动作
-- [ ] FACTIONS.md - NPC派系
+- [x] FACTIONS.md - NPC派系
 
 ### 物品系统
 - [ ] GUIDE_COMESTIBLES.md - 消耗品指南
