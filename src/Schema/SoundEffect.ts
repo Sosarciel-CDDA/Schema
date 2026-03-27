@@ -1,4 +1,4 @@
-import { CddaID, SeasonLc } from "./GenericDefine"
+import { CddaID, Int, SeasonLc } from "./GenericDefine"
 
 
 
@@ -15,7 +15,7 @@ export type SoundEffect = {
     /**音效变体ID */
     variant: (SoundEffectVariantID);
     /**音量 */
-    volume: number;
+    volume: Int;
     /**文件路径 从音效包起始 */
     files: string[];
     /**如果定义, 声音将仅在指定季节播放.  (可能的值为spring, summer, autumn和winter).  */

@@ -114,7 +114,7 @@ export type WeakpointFamilie = {
     /**族对应的专长ID */
     proficiency?: (ProficiencyID);
     /**如果攻击者掌握专长, 则对弱点技能的奖励 */
-    bonus?: number;
+    bonus?: Int;
     /**如果攻击者缺乏专长, 则会对弱点技能进行惩罚 */
-    penalty?: number;
+    penalty?: Int;
 }|ProficiencyID;

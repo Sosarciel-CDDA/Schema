@@ -1,5 +1,5 @@
 import { FurnitureID } from "./Furniture";
-import { CddaID } from "./GenericDefine";
+import { CddaID, Int } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { NestedMapgenID } from "./Mapgen";
 import { MonsterID } from "./Monster";
@@ -43,7 +43,7 @@ type PaletteNestMap = {
 type PaletteVehiclesMap = {
     [key:string]:{
         vehicle: (VehicleID);
-        chance: number;
+        chance: Int;
     }
 }
 
@@ -51,9 +51,9 @@ type PaletteVehiclesMap = {
 export type PaletteItemMap = {
     [key: string]: {
         /**重复n次 */
-        repeat: number|[number, number];
+        repeat: Int|[Int, Int];
         item: (ItemID);
-        chance: number;
+        chance: Int;
     }[];
 };
 

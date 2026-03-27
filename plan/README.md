@@ -43,132 +43,136 @@
 - [x] `hitsize_max?: number` (L91) - 已修复为 `Int`
 
 ### TalkTopic.ts
-- [ ] `difficulty?: number` (L116) - 验证
-- [ ] `trust?: number` (L137) - 验证
-- [ ] `fear?: number` (L139) - 验证
-- [ ] `value?: number` (L141) - 验证
-- [ ] `anger?: number` (L143) - 验证
-- [ ] `owed?: number` (L145) - 验证
-- [ ] `favors?: number` (L147) - 验证
+- [x] `difficulty?: number` (L116) - 已修复为 `Int`
+- [x] `trust?: number` (L137) - 已修复为 `Int`
+- [x] `fear?: number` (L139) - 已修复为 `Int`
+- [x] `value?: number` (L141) - 已修复为 `Int`
+- [x] `anger?: number` (L143) - 已修复为 `Int`
+- [x] `owed?: number` (L145) - 已修复为 `Int`
+- [x] `favors?: number` (L147) - 已修复为 `Int`
 
 ### Mutation.ts (大量number字段)
-- [ ] `dodge_modifier?: number` (L126) - 验证
-- [ ] `vomit_multiplier?: number` (L128) - 验证
-- [ ] `hearing_modifier?: number` (L130) - 验证
-- [ ] `hp_adjustment?: number` (L132) - 验证
-- [ ] `hp_modifier?: number` (L134) - 验证
-- [ ] `hp_modifier_secondary?: number` (L136) - 验证
-- [ ] `noise_modifier?: number` (L138) - 验证
-- [ ] `obtain_cost_multiplier?: number` (L140) - 验证
-- [ ] `overmap_sight?: number` (L142) - 验证
-- [ ] `weakness_to_water?: number` (L192) - 验证
-- [ ] `healing_multiplier?: number` (L240) - 验证
-- [ ] `healing_awake?: number` (L242) - 验证
-- [ ] `healing_resting?: number` (L244) - 验证
-- [ ] `temperature_speed_modifier?: number` (L291) - 验证
-- [ ] `pain_modifier?: number` (L293) - 验证
-- [ ] `mana_modifier?: number` (L295) - 验证
-- [ ] `mana_regen_multiplier?: number` (L297) - 验证
-- [ ] `mana_multiplier?: number` (L299) - 验证
-- [ ] `ignored: number` (L320) - 验证
+- [x] `dodge_modifier?: number` (L126) - 已修复为 `Int`
+- [x] `vomit_multiplier?: number` (L128) - 已修复为 `Float`
+- [x] `hearing_modifier?: number` (L130) - 已修复为 `Int`
+- [x] `hp_adjustment?: number` (L132) - 已修复为 `Int`
+- [x] `hp_modifier?: number` (L134) - 已修复为 `Float`
+- [x] `hp_modifier_secondary?: number` (L136) - 已修复为 `Float`
+- [x] `noise_modifier?: number` (L138) - 已修复为 `Float`
+- [x] `obtain_cost_multiplier?: number` (L140) - 已修复为 `Float`
+- [x] `overmap_sight?: number` (L142) - 已修复为 `Int`
+- [x] `weakness_to_water?: number` (L192) - 已修复为 `Int`
+- [x] `healing_multiplier?: number` (L240) - 已修复为 `Float`
+- [x] `healing_awake?: number` (L242) - 已修复为 `Float`
+- [x] `healing_resting?: number` (L244) - 已修复为 `Float`
+- [x] `temperature_speed_modifier?: number` (L291) - 已修复为 `Float`
+- [x] `pain_modifier?: number` (L293) - 已修复为 `Int`
+- [x] `mana_modifier?: number` (L295) - 已修复为 `Int`
+- [x] `mana_regen_multiplier?: number` (L297) - 已修复为 `Float`
+- [x] `mana_multiplier?: number` (L299) - 已修复为 `Float`
+- [x] `ignored: number` (L320) - 已修复为 `Int`
 
 ### NpcInstance.ts
-- [ ] `age?: number` (L40) - 验证
-- [ ] `height?: number` (L42) - 验证
-- [ ] `str?: number` (L44) - 验证
-- [ ] `dex?: number` (L46) - 验证
-- [ ] `int?: number` (L48) - 验证
-- [ ] `per?: number` (L50) - 验证
-- [ ] `aggression?: number` (L54) - 验证
-- [ ] `bravery?: number` (L56) - 验证
-- [ ] `collector?: number` (L58) - 验证
-- [ ] `altruism?: number` (L60) - 验证
+- [x] `age?: number` (L40) - 已修复为 `Int`
+- [x] `height?: number` (L42) - 已修复为 `Int`
+- [x] `str?: number` (L44) - 已修复为 `Int`
+- [x] `dex?: number` (L46) - 已修复为 `Int`
+- [x] `int?: number` (L48) - 已修复为 `Int`
+- [x] `per?: number` (L50) - 已修复为 `Int`
+- [x] `aggression?: number` (L54) - 已修复为 `Int`
+- [x] `bravery?: number` (L56) - 已修复为 `Int`
+- [x] `collector?: number` (L58) - 已修复为 `Int`
+- [x] `altruism?: number` (L60) - 已修复为 `Int`
 
 ### Item/Ammo.ts
-- [ ] `prop_damage?: number` (L22) - 验证
-- [ ] `range_multiplier?: number` (L26) - 验证
-- [ ] `dispersion?: number` (L28) - 验证
-- [ ] `shot_spread?: number` (L46) - 验证
-- [ ] `critical_multiplier?: number` (L48) - 验证
-- [ ] `recoil?: number` (L50) - 验证
-- [ ] `loudness?: number` (L62) - 验证
+- [x] `prop_damage?: number` (L22) - 已修复为 `Float`
+- [x] `range_multiplier?: number` (L26) - 已修复为 `Float`
+- [x] `dispersion?: number` (L28) - 已修复为 `Int`
+- [x] `shot_spread?: number` (L46) - 已修复为 `Int`
+- [x] `critical_multiplier?: number` (L48) - 已修复为 `Float`
+- [x] `recoil?: number` (L50) - 已修复为 `Int`
+- [x] `loudness?: number` (L62) - 已修复为 `Int`
 
 ### Item/Comestible.ts
-- [ ] `stim?: number` (L20) - 验证
-- [ ] `fatigue_mod?: number` (L22) - 验证
-- [ ] `quench?: number` (L28) - 验证
-- [ ] `healthy?: number` (L30) - 验证
-- [ ] `addiction_potential?: number` (L32) - 验证
-- [ ] `monotony_penalty?: number` (L38) - 验证
-- [ ] `calories?: number` (L40) - 验证
-- [ ] `nutrition?: number` (L42) - 验证
-- [ ] `stack_size?: number` (L48) - 验证
-- [ ] `fun?: number` (L50) - 验证
-- [ ] `freezing_point?: number` (L52) - 验证
-- [ ] `parasites?: number` (L56) - 验证
-- [ ] `rot_spawn_chance?: number` (L66) - 验证
+- [x] `stim?: number` (L20) - 已修复为 `Int`
+- [x] `fatigue_mod?: number` (L22) - 已修复为 `Int`
+- [x] `quench?: number` (L28) - 已修复为 `Int`
+- [x] `healthy?: number` (L30) - 已修复为 `Int`
+- [x] `addiction_potential?: number` (L32) - 已修复为 `Int`
+- [x] `monotony_penalty?: number` (L38) - 已修复为 `Int`
+- [x] `calories?: number` (L40) - 已修复为 `Int`
+- [x] `nutrition?: number` (L42) - 已修复为 `Int`
+- [x] `stack_size?: number` (L48) - 已修复为 `Int`
+- [x] `fun?: number` (L50) - 已修复为 `Int`
+- [x] `freezing_point?: number` (L52) - 已修复为 `Float`
+- [x] `parasites?: number` (L56) - 已修复为 `Int`
+- [x] `rot_spawn_chance?: number` (L66) - 已修复为 `Int`
 
 ### Item/Gun.ts
-- [ ] `range: number` (L30) - 验证
-- [ ] `dispersion?: number` (L35) - 验证
-- [ ] `sight_dispersion?: number` (L37) - 验证
-- [ ] `recoil?: number` (L39) - 验证
-- [ ] `blackpowder_tolerance?: number` (L43) - 验证
-- [ ] `min_cycle_recoil?: number` (L45) - 验证
-- [ ] `clip_size?: number` (L47) - 验证
-- [ ] `ammo_to_fire?: number` (L57) - 验证
-- [ ] `reload?: number` (L64) - 验证
-- [ ] `loudness?: number` (L80) - 验证
-- [ ] `reload_noise_volume?: number` (L88) - 验证
+- [x] `range: number` (L30) - 已修复为 `Int`
+- [x] `dispersion?: number` (L35) - 已修复为 `Int`
+- [x] `sight_dispersion?: number` (L37) - 已修复为 `Int`
+- [x] `recoil?: number` (L39) - 已修复为 `Int`
+- [x] `blackpowder_tolerance?: number` (L43) - 已修复为 `Int`
+- [x] `min_cycle_recoil?: number` (L45) - 已修复为 `Int`
+- [x] `clip_size?: number` (L47) - 已修复为 `Int`
+- [x] `ammo_to_fire?: number` (L57) - 已修复为 `Int`
+- [x] `reload?: number` (L64) - 已修复为 `Int`
+- [x] `loudness?: number` (L80) - 已修复为 `Int`
+- [x] `reload_noise_volume?: number` (L88) - 已修复为 `Int`
+- [x] `handling?: number` (L92) - 已修复为 `Int`
+- [x] `FireMode[2]: number` (L108) - 已修复为 `Int`
 
 ### Item/GunMod.ts (大量number字段)
-- [ ] `damage_modifier?: number` (L31) - 验证
-- [ ] `dispersion_modifier?: number` (L33) - 验证
-- [ ] `loudness_modifier?: number` (L35) - 验证
-- [ ] `range_modifier?: number` (L37) - 验证
-- [ ] `range_multiplier?: number` (L39) - 验证
-- [ ] `overwrite_min_cycle_recoil?: number` (L43) - 验证
-- [ ] `reload_noise_volume?: number` (L47) - 验证
-- [ ] `aim_speed_modifier?: number` (L49) - 验证
-- [ ] `energy_drain_multiplier?: number` (L53) - 验证
-- [ ] `field_of_view?: number` (L60) - 验证
-- [ ] `shot_spread_multiplier_modifier?: number` (L68) - 验证
-- [ ] `energy_drains_multiplier?: number` (L72) - 验证
-- [ ] `reload_modifier?: number` (L74) - 验证
-- [ ] `min_str_required_mod?: number` (L76) - 验证
-- [ ] `aim_speed?: number` (L78) - 验证
-- [ ] `consume_chance?: number` (L84) - 验证
-- [ ] `consume_divisor?: number` (L88) - 验证
-- [ ] `handling_modifier?: number` (L90) - 验证
-- [ ] `overheat_threshold_modifier?: number` (L98) - 验证
-- [ ] `overheat_threshold_multiplier?: number` (L102) - 验证
-- [ ] `cooling_value_modifier?: number` (L106) - 验证
-- [ ] `cooling_value_multiplier?: number` (L110) - 验证
-- [ ] `heat_per_shot_modifier?: number` (L114) - 验证
-- [ ] `heat_per_shot_multiplier?: number` (L118) - 验证
+- [x] `damage_modifier?: number` (L31) - 已修复为 `Int`
+- [x] `dispersion_modifier?: number` (L33) - 已修复为 `Int`
+- [x] `loudness_modifier?: number` (L35) - 已修复为 `Int`
+- [x] `range_modifier?: number` (L37) - 已修复为 `Int`
+- [x] `range_multiplier?: number` (L39) - 已修复为 `Float`
+- [x] `overwrite_min_cycle_recoil?: number` (L43) - 已修复为 `Int`
+- [x] `reload_noise_volume?: number` (L47) - 已修复为 `Int`
+- [x] `aim_speed_modifier?: number` (L49) - 已修复为 `Int`
+- [x] `energy_drain_multiplier?: number` (L53) - 已修复为 `Float`
+- [x] `field_of_view?: number` (L60) - 已修复为 `Int`
+- [x] `shot_spread_multiplier_modifier?: number` (L68) - 已修复为 `Float`
+- [x] `energy_drains_multiplier?: number` (L72) - 已修复为 `Float`
+- [x] `reload_modifier?: number` (L74) - 已修复为 `Int`
+- [x] `min_str_required_mod?: number` (L76) - 已修复为 `Int`
+- [x] `aim_speed?: number` (L78) - 已修复为 `Int`
+- [x] `consume_chance?: number` (L84) - 已修复为 `Int`
+- [x] `consume_divisor?: number` (L88) - 已修复为 `Int`
+- [x] `handling_modifier?: number` (L90) - 已修复为 `Int`
+- [x] `overheat_threshold_modifier?: number` (L98) - 已修复为 `Int`
+- [x] `overheat_threshold_multiplier?: number` (L102) - 已修复为 `Float`
+- [x] `cooling_value_modifier?: number` (L106) - 已修复为 `Int`
+- [x] `cooling_value_multiplier?: number` (L110) - 已修复为 `Float`
+- [x] `heat_per_shot_modifier?: number` (L114) - 已修复为 `Int`
+- [x] `heat_per_shot_multiplier?: number` (L118) - 已修复为 `Float`
 
 ### Item/Magazine.ts
-- [ ] `capacity: number` (L19) - 验证
-- [ ] `count?: number` (L21) - 验证
-- [ ] `reload_time?: number` (L27) - 验证
+- [x] `capacity: number` (L19) - 已修复为 `Int`
+- [x] `count?: number` (L21) - 已修复为 `Int`
+- [x] `reload_time?: number` (L27) - 已修复为 `Int`
 
 ### 其他文件中的number字段
-- [ ] `DamageType.ts:126` - `order?: number`
-- [ ] `Flag.ts:26` - `taste_mod?: number`
-- [ ] `GenericDefine.ts:212-234` - 多个multiplier字段
-- [ ] `GenericDefine.ts:336-387` - damage相关字段
-- [ ] `ItemCategory.ts:21` - `sort_rank: number`
-- [ ] `Mapgen.ts` - 多个坐标/数值字段
-- [ ] `MathFuncion.ts:16` - `num_args: number`
-- [ ] `MissionDefinition.ts:25,155-159` - value和offset字段
-- [ ] `MutationCategory.ts:23,36,41` - threshold相关字段
-- [ ] `OptionSlider.ts:18,48` - default和val字段
-- [ ] `OvermapTerrain.ts:10` - `chance: number`
-- [ ] `Palette.ts:46,54,56` - chance和repeat字段
-- [ ] `SoundEffect.ts:18` - `volume: number`
-- [ ] `Tileset.ts:7-15,39-40,76` - 尺寸相关字段
-- [ ] `VehiclePart.ts:28,38,40,51,57` - 车辆部件数值字段
-- [ ] `WeakpointSet.ts:117,119` - bonus和penalty字段
+- [x] `DamageType.ts:126` - `order?: number` → `Int`
+- [x] `Flag.ts:26` - `taste_mod?: number` → `Int`
+- [x] `GenericDefine.ts:212-234` - multiplier字段已修复为 `Float`/`Int`
+- [x] `GenericDefine.ts:336-387` - damage/explosion字段已修复
+- [x] `ItemCategory.ts:21` - `sort_rank: number` → `Int`
+- [x] `Mapgen.ts` - 坐标/数值字段 → `Int`
+- [x] `MathFuncion.ts:16` - `num_args: number` → `Int`
+- [x] `MutationCategory.ts:23,36,41` - threshold_min/base_removal_chance → `Int`, base_removal_cost_mul → `Float`
+- [~] `OptionSlider.ts:18` - `default?: number` - **保持number** (可能是int或float)
+- [~] `OptionSlider.ts:48` - `val: number` - **保持number** (可能是int或float)
+- [x] `OvermapTerrain.ts:10` - `chance/population` → `Int`
+- [x] `Palette.ts:46,54,56` - chance/repeat → `Int`
+- [x] `SoundEffect.ts:18` - `volume: number` → `Int`
+- [x] `Tileset.ts:7-15,39-40,76` - 尺寸相关字段 → `Int`
+- [x] `VehiclePart.ts:28,38,40,51,57` - bonus/damage_modifier/durability/epower/difficulty → `Int`
+- [x] `WeakpointSet.ts:117,119` - bonus/penalty → `Int`
+- [~] `MissionDefinition.ts:25` - `value: number` - **保持number** (描述为"未知")
+- [x] `MissionDefinition.ts:155-159` - offset字段 → `Int`
 
 ---
 
@@ -209,7 +213,7 @@
 ### Item相关文件
 - [ ] `Item/Armor.ts:59` - `valid_mods?: string[]`
 - [ ] `Item/Comestible.ts:64,70` - `rot_spawn`, `petfood`
-- [ ] `Item/Generic.ts:47,163,201,276` - 多个string字段
+- [x] `Item/Generic.ts:109,219` - solar_efficiency → `Float`, environmental_protection_with_filter → `Int`
 - [ ] `Item/Gun.ts:86` - `reload_noise?: string`
 
 ### 其他文件中的string字段
@@ -247,12 +251,12 @@
 
 ## 统计
 
-| 类型 | 待验证数量 |
-|------|-----------|
-| any | 1 |
-| number | ~166 |
-| string | ~108 |
-| **总计** | **~275** |
+| 类型 | 原始数量 | 已修复 | 剩余 |
+|------|---------|--------|------|
+| any | 1 | 1 | 0 |
+| number | ~166 | ~153 | 13 |
+| string | ~108 | 0 | 112 |
+| **总计** | **~275** | **~154** | **~125** |
 
 ---
 

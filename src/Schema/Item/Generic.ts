@@ -106,7 +106,7 @@ export type GenericBase = CopyfromVar<{
      * 需要SOLARPACK_ON来发电  
      * @default 0  
      */
-    solar_efficiency?: number;
+    solar_efficiency?: Float;
     /**此物品是这个怪物的尸体(因此具有这个怪物的重量和体积)  
      * 并会复活成这个怪物  
      * 需要COPRSE标志  
@@ -216,7 +216,7 @@ export type GenericBase = CopyfromVar<{
     /**如果物品(例如防毒面具)需要过滤器才能操作并且安装了此过滤器, 则对环境效果的抵抗力  
      * 与使用动作'GASMASK'和'DIVE_TANK'结合使用  
      */
-    environmental_protection_with_filter?: number;
+    environmental_protection_with_filter?: Int;
     chat_topics?:(TalkTopicID);
     min_skills?:(Record<SkillID,Int>);
     /**工具使用的战斗技巧 */

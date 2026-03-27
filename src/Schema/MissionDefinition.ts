@@ -152,11 +152,11 @@ export type AssignMissionTarget = {
     /**一个variable_object (参见variable_objectdoc ) , 如果设置了该变量的值将被使用.  */
     var?: (LocExpr);
     /**找到或创建 后om_terrain, 将任务目标地形偏移覆盖地图地形坐标中的偏移量.  */
-    offset_x?: number;
+    offset_x?: Int;
     /**同offset_x */
-    offset_y?: number;
+    offset_y?: Int;
     /**同offset_x */
-    offset_z?: number;
+    offset_z?: Int;
 }
 
 /**地块匹配类型 列表 */

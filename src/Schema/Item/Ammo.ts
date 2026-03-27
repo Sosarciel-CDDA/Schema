@@ -1,6 +1,6 @@
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { CddaID, Int, RangeDamage } from "../GenericDefine";
+import { CddaID, Float, Int, RangeDamage } from "../GenericDefine";
 import { GenericFlagID } from "./Generic";
 import { ItemID, ItemTrait } from "./ItemIndex";
 
@@ -19,13 +19,13 @@ export type AmmoTrait = ItemTrait<"AMMO",({
     /**远程伤害 */
     damage?: RangeDamage|RangeDamage[];
     /**将武器的伤害乘以数量 (覆盖 damage ) */
-    prop_damage?: number;
+    prop_damage?: Float;
     /**开火范围 */
     range?: Int;
     /**倍增基础枪械射程字段 */
-    range_multiplier?: number;
+    range_multiplier?: Float;
     /**弹药的不准确度, 以角度分钟 (MOA) 的百分之一为单位测量 */
-    dispersion?: number;
+    dispersion?: Int;
     /**指定该弹药每轮发射多个射弹, 例如 shot  
      * 如果存在 shot_damage, 则还必须指定.   
      */
@@ -43,11 +43,11 @@ export type AmmoTrait = ItemTrait<"AMMO",({
     /**指定单个射弹的额外分散度.   
      * 仅当 projectile_count 存在时才有意义.   
      */
-    shot_spread?: number;
+    shot_spread?: Int;
     /**暴击伤害倍率 */
-    critical_multiplier?: number;
-    /**射击时产生后坐力 */
-    recoil?: number;
+    critical_multiplier?: Float;
+    /**射击时产生后坐力, 以角度分钟 (MOA) 的百分之一为单位测量 */
+    recoil?: Int;
     /**一次生成的数量 */
     count?: Int;
     /**上面定义的体积中有多少组.  如果省略, 则与 count 相同 */
@@ -59,7 +59,7 @@ export type AmmoTrait = ItemTrait<"AMMO",({
     /**可以增加或减少基础枪射击时噪音的修改器.   
      * 如果未指定响度值, 则游戏会根据弹药的射程, 伤害和护甲穿透自动计算.   
      */
-    loudness?: number;
+    loudness?: Int;
     /**弹药的特殊效果 */
     effects?: AmmoEffectID[];
     /**弹药的flag */

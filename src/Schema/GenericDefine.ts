@@ -209,29 +209,29 @@ export type PocketData = {
      * 小于1.0, 物品保存时间更长;  0.0 将无限期保留
      * @default 1  
      */
-    spoil_multiplier?: number;
+    spoil_multiplier?: Float;
     /**重量乘数  
      * 口袋里的物品神奇地内部重量比外部重量轻  
      * 原版中的任何东西都不应该有一个weight_multiplier  
      * @default 1  
      */
-    weight_multiplier?: number;
+    weight_multiplier?: Float;
     /**体积乘数  
      * 该口袋中的物品内部体积小于外部体积  
      * 可用于有助于组织特定内容的容器, 例如用于管道胶带的纸板卷  
      * @default 1  
      */
-    volume_multiplier?: number;
+    volume_multiplier?: Float;
     /**负重修正系数.   
      * 该口袋体积对累赘的影响  
      * 与盔甲中的 volume_encumber_modifier 逻辑一致  
      * @default 1  
      */
-    volume_encumber_modifier?: number;
+    volume_encumber_modifier?: Float;
     /**存取速度  
      * 表示在最佳条件下从口袋中取出物品所需的移动点数  
      */
-    moves?: number;
+    moves?: Int;
     /**是否刚性  
      * 如果为 true, 则该口袋的大小是固定的  
      * 并且在填充时不会扩展  
@@ -333,19 +333,19 @@ export type RangeDamage = {
     /**伤害类型 */
     damage_type: (DamageTypeID);
     /**伤害值 */
-    amount: number;
+    amount: Int;
     /**穿甲值 */
-    armor_penetration?: number;
+    armor_penetration?: Float;
     /**枪管伤害 */
     barrels?:{
         /**如果枪管小于等于此长度则应用此伤害 */
         barrel_length: (Length),
         /**伤害 */
-        amount:number
+        amount:Int
     }[]
 }
 /**近战武器伤害 伤害类型 : 伤害值 不能为负数* */
-export type MeleeDamage = PRecord<DamageTypeID,number>;
+export type MeleeDamage = PRecord<DamageTypeID,Int>;
 
 
 export type PRecord<K extends string|number, V> = Partial<Record<K, V>>;
@@ -355,7 +355,7 @@ export type Explosion = {
     /**TNT 当量炸药的克数为单位测量爆炸威力, 影响伤害和射程  
      * 强制性; 爆炸的力量, 以TNT克数表示; 管状炸弹约为300, 手榴弹 (无碎片)为240  
      */
-    power: number;
+    power: Int;
     /**距离因子  
      * 爆炸衰减有多快, 接近1意味着每个瓷砖损失的"力量"较少  
      * 0.8意味着每个瓷砖损失20%的力量  
@@ -364,7 +364,7 @@ export type Explosion = {
      */
     distance_factor?: Float;
     /**爆炸可能产生的最大 (听觉)噪音.  */
-    max_noise?: number;
+    max_noise?: Int;
     /**爆炸是否会留下火  
      * 爆炸产生火焰, 与其功率, 距离和距离因子有关  
      */
@@ -380,11 +380,11 @@ export type Explosion = {
  */
 export type ShrapnelData = {
     /**外壳的总质量, 外壳/威力比决定碎片速度 */
-    casing_mass: number;
+    casing_mass: Int;
     /**每个碎片的质量, 以克为单位. 大碎片打击更重, 小碎片打击更频繁 */
-    fragment_mass: number;
+    fragment_mass: Int;
     /**在落地点掉落物品的百分比几率 */
-    recovery?: number;
+    recovery?: Int;
     /**在着陆点掉落的物品 */
     drop?: (ItemID);
 }|number;

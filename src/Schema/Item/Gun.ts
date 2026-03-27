@@ -1,7 +1,7 @@
 import { FaultID } from "Schema/Fault";
 import { AmmunitionTypeID } from "../AmmiunitionType";
 import { AmmoEffectID } from "../AmmoEffect";
-import { RangeDamage, Energy, Volume, CddaID, Length, Int } from "../GenericDefine";
+import { RangeDamage, Energy, Volume, CddaID, Length, Int, Float } from "../GenericDefine";
 import { SkillID } from "../Skill";
 import { GenericFlagID } from "./Generic";
 import { GunModID, GunModSlot } from "./GunMod";
@@ -27,24 +27,24 @@ export type GunBase = {
     /**发射时的远程伤害 */
     ranged_damage?: RangeDamage|RangeDamage[];
     /**发射时的范围 */
-    range: number;
+    range: Int;
     /**枪的不准确度, 以角度分钟 (MOA) 的百分之一为单位测量  
      * 当枪械模组中存在 sight_dispersion 和 aim_speed 时, 瞄准系统会选择"最佳"  
      * 用于每个目标操作的瞄准器, 这是在当前目标阈值下具有分散性的最快瞄准器  
      */
-    dispersion?: number;
+    dispersion?: Int;
     /**瞄准机构产生的枪支不准确度, 以角度分之一 (MOA) 为单位测量 */
-    sight_dispersion?: number;
+    sight_dispersion?: Int;
     /**射击时产生的后坐力, 以角度分钟 (MOA) 的百分之一为单位测量 */
-    recoil?: number;
+    recoil?: Int;
     /**抵抗损坏/生锈, 也决定了失火几率 */
     durability?: Int;
     /**发射黑火药弹药时, 有 N 分之一的几率 (每次射击）被堵塞（越高越好).  可选, 默认为 8 */
-    blackpowder_tolerance?: number;
+    blackpowder_tolerance?: Int;
     /**枪发射多颗子弹连射时的最小弹药后坐力.  */
-    min_cycle_recoil?: number;
+    min_cycle_recoil?: Int;
     /**可以装载的最大弹药量 */
-    clip_size?: number;
+    clip_size?: Int;
     /**除了普通弹药 (如果有)之外, 枪还需要一些电能.   
      * 枪内电池电量耗尽.   
      * 使用标志"USE_UPS"和"USES_BIONIC_POWER"来耗尽其他资源.   
@@ -54,14 +54,14 @@ export type GunBase = {
     /**使用的弹药量  
      * @default 1  
      */
-    ammo_to_fire?: number;
+    ammo_to_fire?: Int;
     /**这把枪的射击模式 DEFAULT,AUTO, MELEE  
      * 后面是游戏中显示的模式名称  
      * 最后是该模组的射击次数.   
      */
     modes?: FireMode[];
     /**重新加载的时间量, 100 = 1 秒 = 1 "turn" */
-    reload?: number;
+    reload?: Int;
     /**将使用不可拆卸标签集成到武器中的模组数组 */
     built_in_mods?: GunModID[];
     /**将在生成时添加到武器的 mod 数组 */
@@ -77,7 +77,7 @@ export type GunBase = {
      * 最终响度计算为枪支响度+枪械响度+弹药响度.   
      * 如果最终响度为 0, 则枪声完全静音.   
      **/
-    loudness?: number;
+    loudness?: Int;
     /**枪械的flag */
     flags?: GunFlagID[];
     /**子弹附加效果 */
@@ -85,11 +85,11 @@ export type GunBase = {
     /**重装时发出的声音 */
     reload_noise?: string;
     /**重装时发出的声音大小 */
-    reload_noise_volume?: number;
+    reload_noise_volume?: Int;
     /**可能适用于该枪的故障类型;  通常继承自单个抽象, 例如rifle_base, 但也存在例外 */
     faults?:FaultID[];
     /**武器的处理;  更好的操控性意味着更少的后坐力 */
-    handling?:number;
+    handling?:Int;
     heat_per_shot?:undefined;
     cooling_value?:undefined;
     overheat_threshold?:undefined;
@@ -105,7 +105,7 @@ export type FireMode = [
     /**模式名称 semi-auto auto */
     FireModeDisplayName,
     /**射击次数 */
-    number,
+    Int,
     /**额外flag */
     (FireModeFlag|FireModeFlag[])?
 ]

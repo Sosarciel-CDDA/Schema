@@ -1,18 +1,18 @@
-
+import { Float, Int } from "./GenericDefine";
 
 
 /**通用tileset配置 */
 export type TilesetCfgBase = {
     /**每个瓦块的宽度 */
-	sprite_width: number;
+	sprite_width: Int;
     /**每个瓦块的高度 */
-	sprite_height: number;
+	sprite_height: Int;
     /**瓦块的x轴偏移 */
-	sprite_offset_x?: number;
+	sprite_offset_x?: Int;
     /**瓦块的y轴偏移 */
-	sprite_offset_y?: number;
+	sprite_offset_y?: Int;
     /**瓦块缩放率 */
-	pixelscale?: number;
+	pixelscale?: Float;
 }
 /**通用sprite配置 */
 export type SpriteCfgBase = {
@@ -29,15 +29,15 @@ export type SpriteCfgBase = {
 /**默认的tileset配置 */
 export type DefTilsetCfg = {
     /**默认瓦块宽度 */
-    width:number;
+	width:Int;
     /**默认瓦块高度 */
-    height:number;
+	height:Int;
     /**默认缩放 */
-    pixelscale:number;
-    zlevel_height?:number;
+	pixelscale:number;
+    zlevel_height?:Int;
     iso?: false;
-    retract_dist_min?: number;
-    retract_dist_max?: number;
+    retract_dist_min?: Int;
+    retract_dist_max?: Int;
 }
 
 /**待打包的Tileset info */
@@ -73,7 +73,7 @@ export type SpriteCfg = {
 /**用于描述待打包的Tileset png合集 的格式 */
 export type PkgTilesetCfg = {
     /**打包瓦块时, 每一横排的瓦块数 */
-	sprites_across?: number;
+	sprites_across?: Int;
 } & TilesetCfgBase;
 /**打包完成的Tileset png合集 的格式 */
 export type TilesetCfg = {

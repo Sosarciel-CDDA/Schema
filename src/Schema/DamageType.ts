@@ -1,6 +1,6 @@
 import { EocID } from "./Eoc";
 import { FlagID } from "./Flag";
-import { CddaID, Color, DescText } from "./GenericDefine";
+import { CddaID, Color, DescText, Int } from "./GenericDefine";
 import { SkillID } from "./Skill";
 
 
@@ -123,7 +123,7 @@ export type DamageInfoOrder = {
 /** 确定在物品信息的指定部分中此伤害类型的顺序和可见性  */
 export type DmgInfo = {
     /** 确定在此部分中将其显示在伤害类型列表的何处 */
-    order?: number;
+    order?: Int;
     /** 确定是否在此部分显示此伤害类型 */
     show_type?: boolean;
 }

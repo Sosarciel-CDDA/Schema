@@ -1,6 +1,6 @@
 import { ExtractDefineNpcInstanceID } from "Extract";
 import { EocID } from "./Eoc";
-import { CddaID, DescText } from "./GenericDefine";
+import { CddaID, DescText, Int } from "./GenericDefine";
 import { NpcClassID } from "./NpcClass";
 import { NPCFactionID } from "./NPCFaction";
 import { TalkTopicID } from "./TalkTopic";
@@ -37,27 +37,27 @@ export type NpcInstance = {
     /**性别 */
     gender?: NpcGender;
     /**年龄 */
-    age?: number;
+    age?: Int;
     /**身高 */
-    height?: number;
+    height?: Int;
     /**npc的力量 */
-    str?: number;
+    str?: Int;
     /**npc的敏捷 */
-    dex?: number;
+    dex?: Int;
     /**npc的智力 */
-    int?: number;
+    int?: Int;
     /**npc的感知 */
-    per?: number;
+    per?: Int;
     /**npc的性格 */
     personality?: {
         /**攻击性 */
-        aggression?  : number;
+        aggression?  : Int;
         /**勇气 */
-        bravery?     : number;
+        bravery?     : Int;
         /**收集癖 */
-        collector?   : number;
+        collector?   : Int;
         /**乐于助人 */
-        altruism?    : number;
+        altruism?    : Int;
     }
 }
 

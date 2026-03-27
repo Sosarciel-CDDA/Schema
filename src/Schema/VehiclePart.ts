@@ -3,10 +3,9 @@ import { DamageTypeID } from "./DamageType";
 import { FieldTypeID } from "./FieldType";
 import { CustomFlagID, FlagID } from "./Flag";
 import { FurnitureID } from "./Furniture";
-import { CddaID, Color, CopyfromVar, DescText, Int, LookLikeID, PRecord, Time, Volume } from "./GenericDefine";
+import { CddaID, Color, CopyfromVar, DescText, Energy, Int, LookLikeID, PRecord, Time, Volume } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { ItemGroupEntrie, ItemGroupID } from "./ItemGroup";
-import { MonsterID } from "./Monster";
 import { ReqUsing } from "./Requirement";
 import { SkillID } from "./Skill";
 import { TerrainID } from "./Terrain";
@@ -25,7 +24,7 @@ export type VehiclePart = CopyfromVar<{
     /**如果此部分没有图块, 向图块集提供提示, 使用 looks_like 图块.  */
     looks_like?: (LookLikeID);
     /**功能取决于部件类型:  */
-    bonus: number;
+    bonus: Int;
     /**部件工作时使用的颜色 */
     color: Color;
     /**部件损坏时使用的颜色 */
@@ -35,9 +34,9 @@ export type VehiclePart = CopyfromVar<{
     /**当此部件击中某物时, 所造成的伤害乘数, 以百分比表示. 越高 = 对被击中的生物造成更多的伤害  
      * @default 100  
      */
-    damage_modifier?: number;
+    damage_modifier?: Int;
     /**部件在损坏前可以承受多少伤害 */
-    durability: number;
+    durability: Int;
     /**安装此车辆部件时的描述 */
     description: (DescText);
     /**部件消耗的燃料/弹药类型, 作为物品 id  
@@ -48,13 +47,13 @@ export type VehiclePart = CopyfromVar<{
      * 通常, 电力消耗还需要 ENABLED_DRAINS_EPOWER 标志, 并且物品需要打开.   
      * 太阳能板的电力产生受到太阳角度的影响. 当太阳在 90 度时, 面板产生全部电力.   
      */
-    epower?: number;
+    epower?: (Energy);
     /**用于安装此部件的物品, 以及移除此部件时获得的物品.  */
     item: (ItemID);
     /**覆盖 "item", 移除此部件时返回的物品.  */
     remove_as?: (ItemID);
     /**你的机械技能必须至少达到这个级别才能安装这个部件 */
-    difficulty: number;
+    difficulty: Int;
     /**当车辆部件被销毁时, 此物品组中的物品 (参见 ITEM_SPAWN.md) 将在地面上的部件周围生成.   
      * 或者只是物品组的 id.   
      */

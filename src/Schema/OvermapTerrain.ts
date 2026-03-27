@@ -1,4 +1,4 @@
-import { CddaID, Char, Color, DescText } from "./GenericDefine";
+import { CddaID, Char, Color, DescText, Int } from "./GenericDefine";
 import { MonsterGroupID } from "./MonsterGroup";
 
 /**大地图地块ID */
@@ -6,8 +6,8 @@ export type OvermapTerrainID = CddaID<"OMTERR">;
 
 type OMSpawn = {
     group: (MonsterGroupID);
-    population: [number, number];
-    chance: number;
+    population: [Int, Int];
+    chance: Int;
 };
 
 /**大地图地块显示设置  

@@ -1,5 +1,5 @@
 import { VitaminID } from "./Vitamin";
-import { CddaID, DescText } from "./GenericDefine";
+import { CddaID, DescText, Int, Float } from "./GenericDefine";
 import { MutationID } from "./Mutation";
 
 
@@ -20,7 +20,7 @@ export type MutationCategory = {
     /**打破门槛所需的引物值 (primer)   
      * @default 2200  
      */
-    threshold_min?: number;
+    threshold_min?: Int;
     /**玩家在该种类突变时显示的提示信息.  */
     mutagen_message?: (DescText);
     /**玩家突破该突变门槛后, 记录在悼词中的信息 */
@@ -33,12 +33,12 @@ export type MutationCategory = {
      * 被移除的特性将不再视为基础特性, 即使之后重新获得.   
      * @default 100  
      */
-    base_removal_chance?: number;
+    base_removal_chance?: Int;
     /**用于计算移除基础特性的突变所需的引物成本倍率.   
      * 对于越接近非人类的类别应相应降低此值, 最低可为 0.0 表示免费突变  
      * @default 3.0  
      */
-    base_removal_cost_mul?: number;
+    base_removal_cost_mul?: Float;
     /** 表示该突变种类尚未完成, 不应参与一致性测试.  */
     wip?: boolean;
     /**若为 true, 则跳过该类别在一致性测试中的检查; 请谨慎使用, 仅用于明确知道用途的情况 */

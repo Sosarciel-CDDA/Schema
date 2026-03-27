@@ -1,5 +1,5 @@
 import { FurnitureID } from "./Furniture";
-import { CddaID } from "./GenericDefine";
+import { CddaID, Int } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { ItemGroupID } from "./ItemGroup";
 import { MonsterID } from "./Monster";
@@ -14,13 +14,13 @@ export type NestedMapgenID = CddaID<"NESTMPG">;
 
 type Place<T> = T&{
     /**放置的x坐标 固定值或范围随机 */
-    x: number|[number, number];
+    x: Int|[Int, Int];
     /**放置的y坐标 固定值或范围随机 */
-    y: number|[number, number];
+    y: Int|[Int, Int];
     /**重复放置n次 */
-    repeat: number|[number, number];
+    repeat: Int|[Int, Int];
     /**放置概率 */
-    chance: number;
+    chance: Int;
 }
 export type FurnPlace = Place<{
     furn: (FurnitureID);
@@ -30,29 +30,29 @@ export type ItemPlace = Place<{
 }>;
 export type GroupPlace = Place<{
     group: (ItemGroupID);
-    magazine:number;
+    magazine:Int;
 }>;
 export type MonsterPlace = Place<{
     monster: (MonsterID);
-    density: number;
+    density: Int;
 }>;
 export type VehiclePlace = Place<{
     vehicle: (VehicleID);
-    chance: number;
+    chance: Int;
     /**车辆状态 */
     status:1|-1;
     /**角度 0~360 */
-    rotation: number;
+    rotation: Int;
     /**燃料 0~100 */
-    fuel: number;
+    fuel: Int;
 }>;
 
 /**嵌套生成子地图生成定义 */
 export type NestMapgen = {
     nested_mapgen_id:(NestedMapgenID);
     object:{
-        mapgensize: [ number, number ],
-        rotation: [ number, number ],
+        mapgensize: [ Int, Int ],
+        rotation: [ Int, Int ],
     }
 }&Omit<Mapgen,'om_terrain'>;
 
@@ -66,7 +66,7 @@ export type Mapgen = {
     om_terrain: OvermapTerrainID|OvermapTerrainID[]|OvermapTerrainID[][];
     /**更地图更新定义唯一ID */
     update_mapgen_id: (UpdateMapgenID);
-    weight: number;
+    weight: Int;
     object: {
         fill_ter?: (TerrainID);
         rows: string[];

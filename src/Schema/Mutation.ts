@@ -123,23 +123,23 @@ export type Mutation = {
     /**改变你的施法速度; 0.5表示你只花费原来施法时间的50%, 2表示你花费两倍时间. 只对魔法mod有用 */
     casting_time_multiplier?: Float;
     /**从角色中添加或减去平坦量的闪避 */
-    dodge_modifier?: number;
+    dodge_modifier?: Int;
     /**呕吐机会的修饰符 */
-    vomit_multiplier?: number;
+    vomit_multiplier?: Float;
     /**改变你听到不同声音有多好 */
-    hearing_modifier?: number;
+    hearing_modifier?: Int;
     /**对HP的平坦奖励/惩罚 - `5`给所有肢体增加5hp, `-3`减去3hp. */
-    hp_adjustment?: number;
+    hp_adjustment?: Int;
     /**对HP的百分比奖励 - `1` =100%, 使hp加倍, `-0.5`表示-50%, 使hp减半. */
-    hp_modifier?: number;
+    hp_modifier?: Float;
     /**第二个百分比HP修饰符, 在第一个之后应用 */
-    hp_modifier_secondary?: number;
+    hp_modifier_secondary?: Float;
     /**改变你走路时产生多少噪音, `0.5`将其减半, `2`将其加倍 */
-    noise_modifier?: number;
+    noise_modifier?: Float;
     /**从容器中取出物品并存回去的修饰符, 作为处理惩罚 */
-    obtain_cost_multiplier?: number;
+    obtain_cost_multiplier?: Float;
     /**调整在overmap上的视线范围. 正数使它更远, 负数使它更近 */
-    overmap_sight?: number;
+    overmap_sight?: Int;
     /**突变激活允许你射击假枪 */
     ranged_mutation?: {
         /**枪械ID */
@@ -189,7 +189,7 @@ export type Mutation = {
     /**水对你造成多少伤害, 负值代表治疗  
      * @default 0  
      */
-    weakness_to_water?: number;
+    weakness_to_water?: Int;
     /**忽视你的物种列表  
      * @default []  
      */
@@ -237,11 +237,11 @@ export type Mutation = {
     /**将你总体工艺速度乘以这个数. 0.5是正常速度的50%, 1.2比正常速度快20%. */
     crafting_speed_multiplier?: Float;
     /**对PLAYER/NPC_HEALING_RATE的乘数. */
-    healing_multiplier?: number;
+    healing_multiplier?: Float;
     /**清醒时每回合的恢复率. 正数会增加恢复, 负数会减少恢复. */
-    healing_awake?: number;
+    healing_awake?: Float;
     /**休息时每回合的恢复率. 正数会增加恢复, 负数会减少恢复. */
-    healing_resting?: number;
+    healing_resting?: Float;
     /**你的肢体愈合有多快的乘数 (1.2是20%更快). */
     mending_modifier?: Float;
     /**攻击成本修饰符 (0.9是10%更快, 1.1是10%更慢). */
@@ -288,15 +288,15 @@ export type Mutation = {
     /**由此突变授予的附魔列表. 可以是ID或附魔的内联定义 (参见MAGIC.md) */
     enchantments?: (ParamsEnchantment);
     /**如果非零, 在寒冷时变慢, 在热时变快 (1.0为每度高于或低于65 F给予+/-1%速度).  */
-    temperature_speed_modifier?: number;
+    temperature_speed_modifier?: Float;
     /**对接收到的疼痛量的平坦增加 (对于正数)\减少 (对于负数). 减少可以一直到0. 在疼痛附魔后应用.  (所以如果你有抗痛特性和5点平坦疼痛减少, 并接收20点疼痛, 你会获得20*(1-0.25)-5=10点疼痛) */
-    pain_modifier?: number;
+    pain_modifier?: Int;
     /**对总法力池的正负改变.  */
-    mana_modifier?: number;
+    mana_modifier?: Int;
     /**对你法力恢复的乘数. 0.5是正常的50%, 1.5是正常的150%.  */
-    mana_regen_multiplier?: number;
+    mana_regen_multiplier?: Float;
     /**在mana_modifier和任何其他奖励之后, 对你总法力量的乘数. 0.75是正常的75%, 1.5是正常的150%.  */
-    mana_multiplier?: number;
+    mana_multiplier?: Float;
     /**由突变授予的flag_IDs和json_flag_IDs列表. 注意: trait_IDs可以设置并且不会产生错误, 但它们实际上并不"活跃".  */
     flags?: MutationFlagID[];
     /**怪物摄像机, 能够使用列表中友好怪物作为额外视觉来源的能力. 最大视距等于怪物的白天视觉. 数字指定它可以向化身"传输"视觉的范围. */
@@ -317,7 +317,7 @@ export type BPWetProte = {
     /**肢体 */
     part: (BodyPartID);
     /**忽略潮湿点数 */
-    ignored: number;
+    ignored: Int;
 };
 
 /**变异触发器 */

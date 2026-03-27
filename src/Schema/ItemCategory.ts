@@ -1,6 +1,6 @@
 import { ExtractDefineItemCategoryID, ExtractDefineItemCategoryIDList } from "Extract";
 import { FlagID } from "./Flag";
-import { CddaID, DescText, Float } from "./GenericDefine";
+import { CddaID, DescText, Float, Int } from "./GenericDefine";
 
 
 /**物品类型ID */
@@ -18,7 +18,7 @@ export type ItemCategory = {
     /**对应的loot_zone(参见loot_zones.json) */
     zone: string;
     /**用于显示时排序类别. 较低的值先显示 */
-    sort_rank: number;
+    sort_rank: Int;
     /**当设置时, 如果满足条件, 此类别中的物品将被排序到优先级区域  
      * 如果用户在区域管理器中没有优先级区域, 物品将被排序到'zone'属性中设置的区域  
      * 这是一个对象列表. 每个对象有3个属性:   

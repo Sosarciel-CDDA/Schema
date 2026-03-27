@@ -1,4 +1,4 @@
-import { CddaID } from "./GenericDefine";
+import { CddaID, Int } from "./GenericDefine";
 
 
 
@@ -13,7 +13,7 @@ export type MathFunction = {
     /**参数个数  
      * 由 `_${number}` 取得参数  
      */
-    num_args: number;
+    num_args: Int;
     /**函数返回值  
      * 如 "_0 * 2 + rand(_1)"  
      */
