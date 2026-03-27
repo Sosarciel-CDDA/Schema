@@ -41,8 +41,8 @@
 - [x] MISSIONS_JSON.md - 任务系统
 ### 地图系统
 - [x] MAPGEN.md - 地图生成
-- [ ] OVERMAP.md - 大地图系统
-- [ ] TER_FURN_TRANSFORM.md - 地形/家具转换
+- [x] OVERMAP.md - 大地图系统
+- [x] TER_FURN_TRANSFORM.md - 地形/家具转换
 ### 其他系统
 - [ ] HELP_MENU.md - 帮助菜单
 - [ ] MOVE_MODE.md - 移动模式
