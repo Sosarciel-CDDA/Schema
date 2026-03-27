@@ -6,6 +6,7 @@ import { ParamsEoc } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, DescText, Energy, Float, Int, PRecord, SocialType, StatusUc, Time } from "./GenericDefine";
 import { ItemID } from "./Item";
+import { MaterialID } from "./Material";
 import { MartialArtID } from "./MartialArt";
 import { MutationID } from "./Mutation";
 import { ProficiencyID } from "./Proficiency";
@@ -23,9 +24,9 @@ export type Bionic = {
     /**仿生组件唯一ID */
     id: (BionicID);
     /**游戏内显示的名称 */
-    name: string | { str: string };
+    name: (DescText);
     /**游戏内描述 */
-    description: string;
+    description: (DescText);
     /**激活消耗的能量  
      * 可以使用字符串 "1 kJ"/"1000 J"/"1000000 mJ"  
      * @default 0  
@@ -84,7 +85,7 @@ export type Bionic = {
      */
     capacity?: (Energy);
     /**可用于产生能量的材料列表 */
-    fuel_options?: string[];
+    fuel_options?: (MaterialID)[];
     /**是否可以通过外部电源供电  
      * @default false  
      */

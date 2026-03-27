@@ -22,7 +22,7 @@ export type ModInfo = {
      */
     id: (ModId);
     /**模组显示名称，必填 */
-    name: string;
+    name: (DescText);
     /**作者列表，可选
      * 可以添加多个条目
      */
@@ -31,11 +31,11 @@ export type ModInfo = {
     maintainers?: string[];
     /**模组描述，可选 */
     description?: (DescText);
-    /**模组分类，可选
+    /**模组分类
      * 用于在模组选择菜单中显示
      * 可选值: content, total_conversion, items, creatures, misc_additions, buildings, vehicles, rebalance, magical, item_exclude, monster_exclude, graphical
      */
-    category?: string;
+    category?: ModCategory;
     /**依赖模组列表，可选
      * 如果你的模组依赖其他模组才能正常工作，将那个模组的ID添加到此数组中
      * Cataclysm会强制在加载你的模组之前先加载依赖的模组
@@ -70,3 +70,18 @@ export type ModInfo = {
      */
     path?: string;
 };
+
+/**模组分类 */
+export type ModCategory = 
+    | "content" 
+    | "total_conversion" 
+    | "items" 
+    | "creatures" 
+    | "misc_additions" 
+    | "buildings" 
+    | "vehicles" 
+    | "rebalance" 
+    | "magical" 
+    | "item_exclude" 
+    | "monster_exclude" 
+    | "graphical";

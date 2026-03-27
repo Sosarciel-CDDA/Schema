@@ -1,4 +1,4 @@
-import { CddaID } from "./GenericDefine";
+import { CddaID, DescText } from "./GenericDefine";
 
 
 
@@ -10,5 +10,5 @@ export type MoraleType = {
     /**士气的唯一ID */
     id: (MoraleTypeID);
     /**士气类型的文本描述 */
-    text: string;
+    text: (DescText);
 };

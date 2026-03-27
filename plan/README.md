@@ -176,38 +176,29 @@
 - [x] `Eoc/EocEffect/GenericEffect.ts:166` - `step?: number` → `Int`
 - [x] `Eoc/EocEffect/GenericEffect.ts:783` - `case: number` → `Int` (原始doc确认)
 - [~] `Eoc/Expression/NpcNumberExprIndex.ts:13` - `{constant: number}` - **保持number** (表达式常量)
+- [x] `Eoc/EocEffect/CharacterEffect.ts:498` - `width?: number` → `Int` (原始doc确认)
+- [x] `Eoc/EocEffect/NpcEffect.ts:238,242,244` - cost/count/name → `NumberExpr`/`StringExpr` (原始doc确认)
+- [?] `Eoc/Expression/BoolExpr.ts:71` - `amount?: number` - **待定** (原始doc未找到明确定义)
+- [~] `FaultFix.ts:40` - `set_variables` 值 - **保持number** (原始doc确认: number|tripoint|str)
+- [x] `FaultFix.ts:54` - `requirements[1]: number` → `Int` (原始doc确认: 乘数)
 
 ---
 
 ## 3. string 类型修复
 
 ### ModInfo.ts (保持string - 不需要i18n)
-- [x] `name: string` (L25) - 模组显示名，需要i18n → DescText
+- [x] `name: string` (L25) - 已修复为 `(DescText)`
 - [x] `authors?: string[]` (L29) - 作者名，保持string
 - [x] `maintainers?: string[]` (L31) - 维护者名，保持string
-- [ ] `category?: string` (L38) - 分类，可能是字面量
-- [ ] `loading_images?: string[]` (L51) - 文件路径，保持string
-- [ ] `version?: string` (L55) - 版本号，保持string
-- [ ] `path?: string` (L71) - 路径，保持string
-
-### Monster.ts
-- [ ] `food: string[]` (L476) - 食物类别，可能是字面量
-
-### MartialArt.ts
-- [ ] `"scaling-stat"?: string` (L177) - 缩放属性，可能是字面量或ID引用
-
-### TalkTopic.ts
-- [ ] `sentinel?: string` (L255) - 验证
-
-### Mutation.ts
-- [ ] `types?: string[]` (L41) - 验证
-- [ ] `ignored_by?: string[]` (L196) - 验证
-- [ ] `id: string` (L310) - 可能是ID引用
+- [x] `category?: string` (L38) - 已修复为 `ModCategory` 字面量类型
+- [~] `loading_images?: string[]` (L51) - 文件路径，**保持string**
+- [~] `version?: string` (L55) - 版本号，**保持string**
+- [~] `path?: string` (L71) - 路径，**保持string**
 
 ### Bionic.ts
-- [ ] `name: string | { str: string }` (L26) - 需要i18n → DescText
-- [ ] `description: string` (L28) - 需要i18n → DescText
-- [ ] `fuel_options?: string[]` (L87) - 验证
+- [x] `name: string | { str: string }` (L26) - 已修复为 `(DescText)`
+- [x] `description: string` (L28) - 已修复为 `(DescText)`
+- [x] `fuel_options?: string[]` (L87) - 已修复为 `(MaterialID)[]`
 
 ### BodyPart.ts
 - [ ] `hp_bar_ui_text: string` (L63) - 验证
@@ -257,9 +248,15 @@
 | 类型 | 原始数量 | 已修复 | 剩余 |
 |------|---------|--------|------|
 | any | 1 | 1 | 0 |
-| number | ~166 | ~153 | 13 |
-| string | ~108 | 0 | 112 |
-| **总计** | **~275** | **~154** | **~125** |
+| number | ~166 | ~161 | 5 |
+| string | ~108 | 4 | 104 |
+| **总计** | **~275** | **~166** | **~109** |
+
+**剩余 number 字段说明：**
+- `MissionDefinition.ts:25` - `value: number` - 保持 (描述为"未知")
+- `NpcNumberExprIndex.ts:13` - `{constant: number}` - 保持 (表达式常量)
+- `BoolExpr.ts:71` - `amount?: number` - 待定 (原始doc未找到)
+- `OptionSlider.ts:18,48` - `default/val: number` - 保持 (动态类型)
 
 ---
 
