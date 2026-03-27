@@ -44,9 +44,9 @@
 - [x] OVERMAP.md - 大地图系统
 - [x] TER_FURN_TRANSFORM.md - 地形/家具转换
 ### 其他系统
-- [ ] HELP_MENU.md - 帮助菜单
-- [ ] MOVE_MODE.md - 移动模式
-- [ ] OPTIONS.md - 游戏选项
+- [x] HELP_MENU.md - 帮助菜单
+- [x] MOVE_MODE.md - 移动模式
+- [x] OPTIONS.md - 游戏选项
 - [ ] PRACTICE_RECIPES.md - 练习配方
 - [ ] PROFICIENCY.md - 熟练度系统
 - [ ] PROFICIENCY_LIST.md - 熟练度列表
