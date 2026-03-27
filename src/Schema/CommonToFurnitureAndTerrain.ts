@@ -142,9 +142,10 @@ export type CommonToFurnitureAndTerrain<T extends FurnitureOrTerrain> = T&{
      */
     max_volume?: (Volume);
     /**检查时调用的json函数  
+     * 可以是硬编码字符串或JSON对象
      * 参见EXAMINE.md  
      */
-    examine_action?: any;
+    examine_action?: (ExamineAction);
     /**关闭时变成的对象  
      * 值应该是地形ID(在地形条目内)或家具ID(在家具条目内)  
      * 如果定义了其中任何一个, 玩家可以打开/关闭对象  
@@ -454,3 +455,128 @@ const ConnectGroupTypeList = [
 
 /**连接组的类型 */
 type ConnectGroupType = typeof ConnectGroupTypeList[number];
+
+/**硬编码检查动作 列表 */
+const HardcodedExamineActionList = [
+    "aggie_plant",
+    "autodoc",
+    "autoclave_empty",
+    "autoclave_full",
+    "bars",
+    "bulletin_board",
+    "chainfence",
+    "controls_gate",
+    "dirtmound",
+    "elevator",
+    "finite_water_source",
+    "flower_poppy",
+    "fswitch",
+    "fungus",
+    "gaspump",
+    "harvest_plant_ex",
+    "locked_object",
+    "locked_object_pickable",
+    "none",
+    "pedestal_temple",
+    "pedestal_wyrm",
+    "pit_covered",
+    "pit",
+    "portable_structure",
+    "recycle_compactor",
+    "rubble",
+    "safe",
+    "shelter",
+    "shrub_marloss",
+    "shrub_wildveggies",
+    "slot_machine",
+    "water_source",
+    "mortar",
+] as const;
+
+/**硬编码检查动作 */
+type HardcodedExamineAction = typeof HardcodedExamineActionList[number];
+
+/**检查动作对象基础类型 */
+type ExamineActionBase = {
+    /**动作类型 */
+    type: string;
+};
+
+/**迫击炮检查动作 */
+type ExamineActionMortar = {
+    type: "mortar";
+    /**可用的弹药类型 */
+    ammo: string[];
+    /**射程(米) */
+    range: Int;
+    /**使用条件 */
+    condition?: object;
+    /**条件失败消息 */
+    condition_fail_msg?: (DescText);
+    /**瞄准偏差百分比 */
+    aim_deviation?: Int | object;
+    /**瞄准持续时间 */
+    aim_duration?: Int | object;
+    /**飞行时间 */
+    flight_time?: (Time) | object;
+    /**射击结束时触发的效果 */
+    effect_on_conditions?: object[];
+};
+
+/**读卡器检查动作 */
+type ExamineActionCardreader = {
+    type: "cardreader";
+    /**可用的物品标志 */
+    flags: string[];
+    /**是否消耗卡片 */
+    consume_card?: boolean;
+    /**是否允许黑客破解 */
+    allow_hacking?: boolean;
+    /**是否移除敌对怪物 */
+    despawn_monsters?: boolean;
+    /**卡片允许的超地图距离 */
+    omt_allowed_radius?: Int;
+    /**地图生成ID */
+    mapgen_id?: string;
+    /**影响半径 */
+    radius?: Int;
+    /**地形变化映射 */
+    terrain_changes?: Record<string, string>;
+    /**家具变化映射 */
+    furn_changes?: Record<string, string>;
+    /**是否询问玩家 */
+    query?: boolean;
+    /**询问消息 */
+    query_msg?: (DescText);
+    /**成功消息 */
+    success_msg: (DescText);
+    /**重复激活消息 */
+    redundant_msg: (DescText);
+};
+
+/**电器转换检查动作 */
+type ExamineActionApplianceConvert = {
+    type: "appliance_convert";
+    /**转换后设置的家具ID */
+    furn_set?: (FurnitureID);
+    /**转换后设置的地形ID */
+    ter_set?: (TerrainID);
+    /**电器物品ID */
+    item: (ItemID);
+};
+
+/**效果条件检查动作 */
+type ExamineActionEffectOnCondition = {
+    type: "effect_on_condition";
+    /**效果条件列表 */
+    effect_on_conditions: object[];
+};
+
+/**检查动作 */
+type ExamineAction = 
+    | HardcodedExamineAction 
+    | ExamineActionMortar 
+    | ExamineActionCardreader 
+    | ExamineActionApplianceConvert 
+    | ExamineActionEffectOnCondition
+    | ExamineActionBase;

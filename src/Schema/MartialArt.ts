@@ -1,4 +1,4 @@
-import { CddaID, DescText, Int } from "./GenericDefine";
+import { CddaID, DescText, Float, Int } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { ParamsEoc } from "./Eoc";
 import { SkillID } from "./Skill";
@@ -170,7 +170,7 @@ export type MartialArtBonus = {
      */
     type?: (DamageTypeID);
     /**加成值 */
-    scale: number;
+    scale: Float;
     /**用于缩放的属性
      * 可以是四种经典属性(str, dex, int, per)或任何技能(bashing, dodge, unarmed, rifles, spellcraft等)
      */

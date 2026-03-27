@@ -1,4 +1,4 @@
-import { CddaID, DescText, PRecord } from "./GenericDefine";
+import { CddaID, DescText, Int, PRecord } from "./GenericDefine";
 import { BoolExpr, EocEffect, NoParamCond } from "./Eoc";
 import { SkillID } from "./Skill";
 import { ItemID } from "./Item";
@@ -113,11 +113,11 @@ type RespLong ={
         /**如果 type 为 SKILL_CHECK 则使用技能鉴定 */
         skill_required?: (SkillID);
         /**难度 类型不为 NONE 或 CONDITION时需要设置难度*/
-        difficulty?: number;
+        difficulty?: Int;
         /**根据npc的性格或态度进行成功率调整  
          * 结果越高成功率越高  
          */
-        mod?:[TraitMod,number][]
+        mod?:[TraitMod,Int][]
     };
     /**技能鉴定 成功的效果 */
     success: RespEffect;
@@ -134,17 +134,17 @@ export type RespEffect = {
     /**态度调整 */
     opinion?: {
         /**信任 */
-        trust?: number;
+        trust?: Int;
         /**恐惧 */
-        fear?: number;
+        fear?: Int;
         /**重视 */
-        value?: number;
+        value?: Int;
         /**愤怒 */
-        anger?: number;
+        anger?: Int;
         /**赊欠 */
-        owed?: number;
+        owed?: Int;
         /**已售 */
-        favors?: number;
+        favors?: Int;
     };
 };
 /**可用的社交技能 列表 */

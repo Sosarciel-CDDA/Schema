@@ -27,20 +27,20 @@
 ## 1. any 类型修复
 
 ### CommonToFurnitureAndTerrain.ts
-- [ ] `examine_action?: any` (L147) - 验证具体类型
+- [x] `examine_action?: any` (L147) - 已修复为 `ExamineAction` 联合类型
 
 ---
 
 ## 2. number 类型修复
 
 ### MartialArt.ts
-- [ ] `scale: number` (L173) - 加成值，应为 Float
+- [x] `scale: number` (L173) - 已修复为 `Float`
 
 ### MonsterAttack.ts
-- [ ] `accuracy?: number` (L58) - 验证
-- [ ] `range?: number` (L78) - 验证
-- [ ] `hitsize_min?: number` (L89) - 验证
-- [ ] `hitsize_max?: number` (L91) - 验证
+- [x] `accuracy?: number` (L58) - 已修复为 `Int`
+- [x] `range?: number` (L78) - 已修复为 `Int`
+- [x] `hitsize_min?: number` (L89) - 已修复为 `Int`
+- [x] `hitsize_max?: number` (L91) - 已修复为 `Int`
 
 ### TalkTopic.ts
 - [ ] `difficulty?: number` (L116) - 验证

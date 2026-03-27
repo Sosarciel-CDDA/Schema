@@ -55,7 +55,7 @@ export type MonsterAttack = {
      */
     move_cost?: Int;
     /** 若定义，则使用不同于怪物普通近战攻击的命中率。 */
-    accuracy?: number;
+    accuracy?: Int;
     /** 指定攻击的身体部位列表（带权重）。
      * 若为空，则使用普通近战的身体部位选择。
      */
@@ -71,11 +71,11 @@ export type MonsterAttack = {
      * @default true
      */
     attack_upper?: boolean;
-    /**攻击距离
+    /**攻击距离(格数)
      * 近战攻击需要直线无阻挡路径。
      * @default 1
      */
-    range?: number;
+    range?: Int;
     /** 是否为抓取攻击
      * 若为 true，则读取 grab_data
      * @default false
@@ -86,9 +86,9 @@ export type MonsterAttack = {
      */
     grab_data?: (GrabData);
     /** 可命中的最小肢体尺寸（若未指定 body_parts 时生效）。 */
-    hitsize_min?: number;
+    hitsize_min?: Int;
     /** 可命中的最大肢体尺寸。 */
-    hitsize_max?: number;
+    hitsize_max?: Int;
     /** 若为 true，则攻击不能命中相邻目标。 */
     no_adjacent?: boolean;
     /**是否可被闪避
