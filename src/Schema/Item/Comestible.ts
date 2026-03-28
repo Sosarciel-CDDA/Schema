@@ -60,7 +60,7 @@ export type ComestibleTrait = ItemTrait<"COMESTIBLE",({
     contamination?: [{ disease: "bad_food"; probability: Int }];
     /**通过消费此物品的一次 (部分) 提供的维生素. 某些维生素 ("calcium", "iron", "vitC") 可以用该食品中维生素的重量来指定. 按重量指定的维生素可以是克 ("g") , 毫克 ("mg") 或微克 ("μg", "ug", "mcg") . 如果维生素未按重量指定, 则按"单位"指定, 含义根据维生素定义而定. 营养维生素 ("calcium", "iron", "vitC") 是理想每日价值平均的整数百分比. 维生素数组键包括以下内容: calcium, iron, vitC, mutant_toxin, bad_food, blood和redcells.  */
     vitamins?: [VitaminID, Weight][];
-    /**主要材料ID是什么. 材料决定了比热.  */
+    /**覆盖通用物品的material字段. 材料决定了比热.  */
     primary_material?: (MaterialID);
     /**腐烂时生成的怪物定义 */
     rot_spawn?: RotSpawn;

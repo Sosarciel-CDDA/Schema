@@ -48,7 +48,7 @@ export type ArmorTrait = ItemTrait<"ARMOR",({
      */
     energy_shield_max_hp?: Int;
     /**当被摧毁时, 这个物品会变成的itype_id  
-     * 目前仅适用于可消耗护甲  
+     * 目前仅适用于烧蚀护甲  
      */
     non_functional?: (ItemID);
     /**如果物品使用non-functional, 这将是它变成非功能性变体时的描述 */

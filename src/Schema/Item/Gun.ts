@@ -33,7 +33,7 @@ export type GunBase = {
      * 用于每个目标操作的瞄准器, 这是在当前目标阈值下具有分散性的最快瞄准器  
      */
     dispersion?: Int;
-    /**瞄准机构产生的枪支不准确度, 以角度分之一 (MOA) 为单位测量 */
+    /**瞄准机构产生的枪支不准确度, 以角度分钟 (MOA) 的百分之一为单位测量 */
     sight_dispersion?: Int;
     /**射击时产生的后坐力, 以角度分钟 (MOA) 的百分之一为单位测量 */
     recoil?: Int;
@@ -95,7 +95,7 @@ export type GunBase = {
     reload_noise_volume?: Int;
     /**可能适用于该枪的故障类型;  通常继承自单个抽象, 例如rifle_base, 但也存在例外 */
     faults?:FaultID[];
-    /**武器的处理;  更好的操控性意味着更少的后坐力 */
+    /**武器的操控性; 更好的操控性意味着更少的后坐力 */
     handling?:Int;
     /**每次射击增加的热量值 */
     heat_per_shot?: Int;
