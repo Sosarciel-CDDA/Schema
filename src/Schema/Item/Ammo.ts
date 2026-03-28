@@ -14,17 +14,23 @@ export type AmmoTrait = ItemTrait<"AMMO",({
     /**标记具有 AMMO 的特征, 用于补全 */
     "//AMMO": true;
 })&{
-    /**弹药类型 使用材质id */
+    /**弹药类型
+     * 用于确定可与哪些弹匣配合使用
+     */
     ammo_type: (AmmunitionTypeID);
     /**远程伤害 */
     damage?: RangeDamage|RangeDamage[];
-    /**将武器的伤害乘以数量 (覆盖 damage ) */
+    /**将武器的伤害乘以数量 (覆盖 damage )
+     * @unknown JSON_INFO.md提及但无详细定义
+     */
     prop_damage?: Float;
     /**开火范围 */
     range?: Int;
     /**发射后回收弹药的百分比几率 */
     recovery_chance?: Int;
-    /**倍增基础枪械射程字段 */
+    /**倍增基础枪械射程字段
+     * @unknown 仅GUNMOD章节提及，AMMO章节未定义
+     */
     range_multiplier?: Float;
     /**弹药的不准确度, 以角度分钟 (MOA) 的百分之一为单位测量 */
     dispersion?: Int;
@@ -68,7 +74,9 @@ export type AmmoTrait = ItemTrait<"AMMO",({
     casing?: (ItemID);
     /**弹药的flag */
     flags?: GenericFlagID[];
-    /**发射弹药后在弹药落点掉落的物品 */
+    /**发射弹药后在弹药落点掉落的物品
+     * @unknown 非AMMO专用字段，可能为通用字段
+     */
     drop?:ItemID;
 }>;
 

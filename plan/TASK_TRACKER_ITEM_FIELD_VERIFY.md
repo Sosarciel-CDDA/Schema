@@ -7,7 +7,7 @@
 ---
 
 ## 当前进度
-- **当前阶段**: 阶段1 - AMMO字段验证
+- **当前阶段**: 阶段2 - ARMOR字段验证
 - **最后更新**: 2026-03-28
 
 ---
@@ -15,26 +15,26 @@
 ## 阶段 1: AMMO 字段验证
 | 编号 | 字段 | 状态 | 存在性 | 可选性 | 注释 | 备注 |
 |------|------|--------|--------|--------|------|-------|
-| 1.1 | ammo_type | [ ] | - | - | - | |
-| 1.2 | damage | [ ] | - | - | - | |
-| 1.3 | prop_damage | [ ] | - | - | - | |
-| 1.4 | range | [ ] | - | - | - | |
-| 1.5 | recovery_chance | [ ] | - | - | - | |
-| 1.6 | range_multiplier | [ ] | - | - | - | |
-| 1.7 | dispersion | [ ] | - | - | - | |
-| 1.8 | projectile_count | [ ] | - | - | - | |
-| 1.9 | shot_counter | [ ] | - | - | - | |
-| 1.10 | shot_damage | [ ] | - | - | - | |
-| 1.11 | shot_spread | [ ] | - | - | - | |
-| 1.12 | critical_multiplier | [ ] | - | - | - | |
-| 1.13 | recoil | [ ] | - | - | - | |
-| 1.14 | count | [ ] | - | - | - | |
-| 1.15 | stack_size | [ ] | - | - | - | |
-| 1.16 | show_stats | [ ] | - | - | - | |
-| 1.17 | loudness | [ ] | - | - | - | |
-| 1.18 | effects | [ ] | - | - | - | |
-| 1.19 | casing | [ ] | - | - | - | |
-| 1.20 | drop | [ ] | - | - | - | |
+| 1.1 | ammo_type | [x] | ✓ | ! | ✓ | 必要字段 |
+| 1.2 | damage | [x] | ✓ | ? | ✓ | 可选 |
+| 1.3 | prop_damage | [x] | ? | - | ? | @unknown JSON_INFO.md提及但无详细定义 |
+| 1.4 | range | [x] | ✓ | ? | ✓ | 可选 |
+| 1.5 | recovery_chance | [x] | ✓ | ? | ✓ | 可选 |
+| 1.6 | range_multiplier | [x] | ? | - | ? | @unknown 仅GUNMOD章节提及 |
+| 1.7 | dispersion | [x] | ✓ | ? | ✓ | 可选 |
+| 1.8 | projectile_count | [x] | ✓ | ? | ✓ | 可选 |
+| 1.9 | shot_counter | [x] | ✓ | ? | ✓ | 可选 |
+| 1.10 | shot_damage | [x] | ✓ | ? | ✓ | 可选 |
+| 1.11 | shot_spread | [x] | ✓ | ? | ✓ | 可选 |
+| 1.12 | critical_multiplier | [x] | ✓ | ? | ✓ | 可选 |
+| 1.13 | recoil | [x] | ✓ | ? | ✓ | 可选 |
+| 1.14 | count | [x] | ✓ | ? | ✓ | 可选 |
+| 1.15 | stack_size | [x] | ✓ | ? | ✓ | 可选，文档明确(Optional) |
+| 1.16 | show_stats | [x] | ✓ | ? | ✓ | 可选，文档明确(Optional) |
+| 1.17 | loudness | [x] | ✓ | ? | ✓ | 可选，文档明确(Optional) |
+| 1.18 | effects | [x] | ✓ | ? | ✓ | 可选 |
+| 1.19 | casing | [x] | ✓ | ? | ✓ | 可选 |
+| 1.20 | drop | [x] | ? | - | ? | @unknown 非AMMO专用字段 |
 
 ---
 
