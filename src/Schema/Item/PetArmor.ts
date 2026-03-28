@@ -1,6 +1,7 @@
 import { CddaID, Int, Volume } from "Schema/GenericDefine";
 import { ItemTrait } from "./ItemIndex";
 import { GenericFlagID } from "./Generic";
+import { MonBP } from "Schema/Monster";
 
 /**Pet Armor ID格式 */
 export type PetArmorID = CddaID<"PETARM">;
@@ -16,7 +17,7 @@ export type PetArmorTrait = ItemTrait<"PET_ARMOR",{
     /**材料厚度, 以毫米为单位 (约). 通常范围在1-5之间, 更不寻常的护甲类型可达10或更高 */
     material_thickness?: Int;
     /**适合此护甲的宠物身体类型. 参见MONSTERS.md */
-    pet_bodytype: string;
+    pet_bodytype: (MonBP);
     /**适合此护甲的宠物最大体积. 可使用ml或L - "50 ml"或"2 L" */
     max_pet_vol: (Volume);
     /**适合此护甲的宠物最小体积. 可使用ml或L - "50 ml"或"2 L" */
