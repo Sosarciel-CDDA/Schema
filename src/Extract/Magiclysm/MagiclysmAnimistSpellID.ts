@@ -19,7 +19,7 @@ export const ExtractDefineMagiclysmAnimistSpellIDList = [
     "summon_wisps"                , // 召唤鬼火 从富有生命力的沼泽水蒸气中召唤幽灵般的狐火，把你的敌人引向歧途。当你有更多的施法经验时，这个法术可以召唤出数只发光的鬼火。
     "bleed"                       , // 引血术 撕裂生物身上的旧伤口，使其渗出鲜血。
     "animist_summon_decaying_boneclub", // 腐朽骨棍 这个法术将你体内的活血和死者的骨头联系起来，制造出一根渴望收割活物的骨棍。
-    "animist_summon_decaying_boneclub_plus", // 升级版腐朽骨棍 这个法术将你体内的活血和死者的血和骨头联系起来，制造出一根渴望收割活物的骨棍。现在你对这个法术了如指掌，并设计出了你自己的版本。
+    "animist_summon_decaying_boneclub_plus", // 升级版腐朽骨棍 这个法术将你体内的活血和死者的血和骨头联系起来，制造出一根渴望收割活物的骨棍。如今你对此法术已了如指掌，并开始着手设计属于你自己的版本。
     "rupture"                     , // 魔爆术 你将魔力灌入一个毫无防备的躯体，引发细胞崩解、内脏出血、灵脉紊乱并使电子设备过载。此法术的威力越强，伤害生效就越快。它极为残忍粗暴，曾一度被全球禁用，不过现在也无所谓了。
     "devour"                      , // 吞噬 杀死一只召唤物，吸收它的生命能量来恢复一些血量。
     "animist_sense_outsiders"     , // 界外感知 你可以感觉到来自异界的附近生物的存在。
@@ -29,7 +29,7 @@ export const ExtractDefineMagiclysmAnimistSpellIDList = [
     "animist_spirit_walking"      , // 灵魂漫步 将你的身体转化为纯粹的灵体，使你隐身且无形。在法术生效期间，你可以快速移动，并且可以在隐身状态下穿过敌人，但你将无法与物理世界交互或者施法。
     "animist_add_evasion_spell"   , // 守护之灵 召唤一个友善的灵魂来为你警戒，并提醒你即将到来的攻击，让你能够闪避掉其中的部分攻击。
     "animist_slow_food_rotting_spell", // 驱逐腐败 为食物或饮品施加一道护咒，防止腐败的精怪在其中滋生。法师可以影响其所能携带的所有食物或饮品。此法术的原理直到20世纪才被发现，但一些泛灵师坚称，辐射能吓退腐败的精怪。
-    "animist_magic_fissile"       , // 魔法裂变 我发射魔法……裂变？在黑暗中？
+    "animist_magic_fissile"       , // 魔法裂变 我把魔法……裂变？射向黑暗？
     "animist_cast_spells_when_silent", // 心灵之声 将魔力经由你的灵魂而非声音引导而出，使你在喑哑之时也能施展需要言语的法术。
     "animist_do_psionic_damage_to_head", // 心灵碾压 绕过目标的所有物理防护，直击其心灵。
     "animist_detect_wizards"      , // 巫术视觉 敞开你的感知，去搜寻那些毕生频繁消耗魔力之人的明亮灵脉。此法术对那些经常使用法术的生物或异星存在同样有效。

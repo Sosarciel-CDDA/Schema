@@ -4,8 +4,8 @@ export const ExtractDefineXedraEvolvedDreamerSpellIDList = [
     "dream_dagger"                , // 梦匕术 这把昙花一现的匕首由你的内在现实连接驱动，你的魔力池越大，它的杀伤力就越大。
     "dream_armor"                 , // 梦甲术 召唤出一套轻轻盖在你身上的盔甲，几乎没有什么累赘，并且叠加在你所穿衣物的上方。
     "create_dream_dross"          , // 生成浮梦残渣 这个仪式法术会将少量的浮梦残渣带入我们的世界，并使其永久存在。这些梦境的碎片可以用来制造永恒存在的物体。
-    "banish_nether_monsters"      , // 放逐异界怪物 试图将明显不符合本地物理法则的怪物驱逐回他们的原始维度。
-    "banish_dark_monsters"        , // 放逐暗夜血肉 试图放逐由暗夜噩梦制造出的怪物。
+    "banish_nether_monsters"      , // 放逐异界怪物 试图将那些明显违背此地物理法则的存在驱逐回它们原本的维度。
+    "banish_dark_monsters"        , // 放逐有形暗夜 试图放逐那些由最深沉的夜晚所造的怪物。
     "spell_summon_twin"           , // 分身 制作一个自己的假分身来扰乱你的敌人。
     "spell_summon_twin_flood"     , // 二重身大群 让现实充满你的拷贝。
     "spell_dreamer_clairvoyance"  , // 展开 你眼前所有的墙都被抹去了。

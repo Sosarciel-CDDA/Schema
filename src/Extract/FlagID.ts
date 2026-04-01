@@ -28,7 +28,7 @@ export const ExtractDefineFlagIDList = [
     "BELT_CLIP"                   , // 该物品可以别在/钩在大小合适的 <info>腰带环</info> 上。
     "BELTED"                      , // 这件装备可以 <info>背系</info> 在身上。
     "BIONIC_INSTALLATION_DATA"    , // 这件物品<info>提供了</info>生化插件的安装说明和其他所需数据，能够<good>最小化失败几率</good>。
-    "BIONIC_NPC_USABLE"           , // 这个生化插件可被 <good>同伴</good> <info>植入使用</info>。
+    "BIONIC_NPC_USABLE"           , // 这个CBM可被 <good>同伴</good> <info>植入使用</info>。
     "BLIND"                       , // 这件装备会 <bad>阻挡视线</bad>，让你 <info>完全失明</info>。
     "BLOCK_WHILE_WORN"            , // 这件装备穿戴后可以格挡攻击。
     "CALORIES_INTAKE"             , // 这件物品能够记录你的热量摄入情况。
@@ -315,7 +315,7 @@ export const ExtractDefineFlagIDList = [
     "INSPIRATIONAL"               ,
     "INSTALL_DIFFICULT"           ,
     "INTEGRATED"                  , // 这件物品是<info>身体</info>的一部分。
-    "MORPHIC"                     , // 这件物品会<info>自动贴合身体</info>。
+    "MORPHIC"                     , // 这件物品<info>尺寸自适应</info>。
     "IS_ARMOR"                    ,
     "IS_PET_ARMOR"                ,
     "IS_UPS"                      , // 这件物品可以作为 <info>UPS电源</info>。
@@ -465,7 +465,7 @@ export const ExtractDefineFlagIDList = [
     "COMBAT_TOGGLEABLE"           , // 这件物品需要在进入战斗前开启。
     "CHOKE"                       ,
     "GAS_TANK"                    , // 存储丙烷、天然气等气体的密封罐。
-    "LASER_SIGHT"                 , // 当瞄准目标<bad>太远</bad>或<bad>太亮</bad>时，激光镭射不可用。
+    "LASER_SIGHT"                 , // 瞄准目标<bad>太远</bad>或<bad>太亮</bad>时，激光瞄具不可用。
     "JETPACK"                     , // 这件物品属于喷气背包。
     "LEVITATION"                  , // 这件物品可以让你在空中悬停。
     "ALL_TERRAIN_NAVIGATION"      , // 能在崎岖或危险地形以正常速度移动。

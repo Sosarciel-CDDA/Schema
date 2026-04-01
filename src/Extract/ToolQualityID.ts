@@ -11,7 +11,7 @@ export const ExtractDefineToolQualityIDList = [
     "ANESTHESIA"                  , // 麻醉
     "FISHING_ROD"                 , // 钓鱼
     "FISH_TRAP"                   , // 捕鱼
-    "TREE_TAP"                    , // 采脂
+    "TREE_TAP"                    , // 采集树汁
     "SMOOTH"                      , // 平整
     "WELD"                        , // 焊接
     "HACK"                        , // 入侵
@@ -29,7 +29,7 @@ export const ExtractDefineToolQualityIDList = [
     "SIEVE"                       , // 筛选
     "WINNOW"                      , // 扬谷
     "STRAIN"                      , // 筛滤
-    "SMOKE_PIPE"                  , // 吸烟
+    "SMOKE_PIPE"                  , // 吸食烟草
     "DISTILL"                     , // 蒸馏
     "AXE"                         , // 伐木
     "DIG"                         , // 挖掘
@@ -42,7 +42,7 @@ export const ExtractDefineToolQualityIDList = [
     "DRILL_ROCK"                  , // 石钻
     "PRY"                         , // 撬棍
     "PRYING_NAIL"                 , // 撬钉
-    "PUNCH"                       , // 桯钻
+    "PUNCH"                       , // 冲孔钻
     "WRITE"                       , // 铅笔
     "LIFT"                        , // 起重
     "JACK"                        , // 千斤顶
@@ -52,7 +52,7 @@ export const ExtractDefineToolQualityIDList = [
     "CHISEL_WOOD"                 , // 木凿
     "SEW"                         , // 缝纫
     "KNIT"                        , // 针织
-    "PULL"                        , // 拆弹
+    "PULL"                        , // 拆解子弹
     "ANVIL"                       , // 铁砧
     "ANALYSIS"                    , // 分析
     "CONCENTRATE"                 , // 浓缩
@@ -71,8 +71,8 @@ export const ExtractDefineToolQualityIDList = [
     "EXTRACT"                     , // 萃取
     "FILTER"                      , // 精工过滤
     "SUSPENDING"                  , // 悬吊
-    "ROPE"                        , // 绳索
-    "SURFACE"                     , // 干净表面
+    "ROPE"                        , // 捆绑
+    "SURFACE"                     , // 平整台面
     "WHEEL_FAST"                  , // 轮胎紧固
     "JUMPSTART"                   , // 电力跨接
     "FABRIC_CUT"                  , // 面料切割
@@ -84,7 +84,7 @@ export const ExtractDefineToolQualityIDList = [
     "PISTOL"                      , // 手枪
     "CUT_GLASS"                   , // 玻璃切割
     "MOP"                         , // 拖地
-    "BLOW_HOT_AIR"                , // 热风
+    "BLOW_HOT_AIR"                , // 吹热风
     "THREAD_CUT"                  , // 套螺纹
     "THREAD_TAP"                  , // 攻螺纹
 ] as const;

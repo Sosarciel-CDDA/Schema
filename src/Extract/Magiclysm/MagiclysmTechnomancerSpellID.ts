@@ -3,9 +3,9 @@ export const ExtractDefineMagiclysmTechnomancerSpellIDList = [
     "bless"                       , // 祝福 这是一个能给你能量并提升你的能力的祝福。
     "invisibility"                , // 隐身 创造一个魔法力场，将你的身形从他人视野中隐去。通俗点说就是隐形，但和那些科学上的繁文缛节可不是一回事。攻击目标会打破隐形状态。
     "holy_blade"                  , // 魔法剑 这把光明之刃将斩断它所接触到的任何邪恶！
-    "holy_blade_plus"             , // 强化魔法剑 这把光明之刃将斩断它所接触到的任何邪恶！现在你已经像了解自己手背一样熟悉这个咒语，并且开始设计你自己的版本。
+    "holy_blade_plus"             , // 强化魔法剑 这把光明之刃将斩断它所接触到的任何邪恶！如今你对此法术已了如指掌，并开始着手设计属于你自己的版本。
     "spirit_armor"                , // 魔法铠甲 只要心灵够强大，邪恶袭来不害怕。
-    "spirit_armor_plus"           , // 强化魔法铠甲 只要信仰弥坚，邪恶便无法洞穿你的防线！如今你对此术已烂熟于心，并着手构想属于你的版本。
+    "spirit_armor_plus"           , // 强化魔法铠甲 只要信仰弥坚，邪恶便无法洞穿你的防线！如今你对此法术已了如指掌，并开始着手设计属于你自己的版本。
     "create_atomic_lamp"          , // 魔法灯 创造一盏神奇的魔法灯。
     "recover_bionic_power"        , // 魔能转换术 你已找到门路，能将自身魔力转化为可供仿生装置使用的能量。
     "create_rune_technomancer"    , // 符文（科技法师） 该仪式将电路般的灵脉铭刻于一枚符文之上，并将其调谐至科技法师的频率。你可以将这枚符文用作配方的催化剂。
@@ -21,8 +21,8 @@ export const ExtractDefineMagiclysmTechnomancerSpellIDList = [
     "summon_magic_comcycle"       , // 召唤协力机车 更大的座驾，为了更大的战利品，或为了另一位牛仔。
     "overcharge_eyes"             , // 喷嚏激光术 你将体内的生化电池过载，从你的脸上射出半定向的激光光束。这个法术的发明者一定有某种诡异的幽默感。
     "x-ray"                       , // X光视觉 你发射出一道X光，并通过魔法来短暂地看清X光所及区域。
-    "knock"                       , // 开锁术 你引导魔力，将其变成能够打开门的力量。这种法术只能打开木门。
-    "improved_knock"              , // 高等开锁术 你引导魔力，将其变成能够打开门的力量。这种法术能打开任何锁住的门。"阿拉霍洞开！"
+    "knock"                       , // 敲击术 你引导魔力，将其变成能够打开门的力量。这种法术只能打开木门。
+    "improved_knock"              , // 高级敲击术 你引导魔力，将其变成能够打开门的力量。这种法术能打开任何锁住的门。"阿拉霍洞开！"
     "technomancer_knifeshot"      , // 飞刀术 这个法术能在一把刀子周围产生磁场，并将其高速发射出去。
     "technomancer_knifeshot_superior", // 超高速飞刀术 这个法术比之前更进一步，它所射出的飞刀速度快到能够直接穿透目标。
     "technomancer_robot_shutdown" , // 机械关闭 使目标超载，短暂眩晕。 该法术最初是在罗马帝国时期开发的，用于对付失控的傀儡，到了现代，人们发现该法术对机器人和机械也同样有效，因此变得更加流行。
@@ -33,7 +33,7 @@ export const ExtractDefineMagiclysmTechnomancerSpellIDList = [
     "technomancer_gain_electronics_computer_spell", // 机械知识 该咒语能增加施法者对电子产品和计算机的知识，使其使用、维修和制造更加轻松。
     "technomancer_create_ups_connection", // 能量传输 为一件物品附魔，使其能够从兼容的电源处凭空进行无线取电。
     "technomancer_far_sight"      , // 变焦术 通过在优质镜片上蚀刻微小符文并注入魔力，施法者可凭此镜片望见比最精良的凡品望远镜更远的景象。不幸的是，这种结构并不稳定，镜片会在一段时间后崩解。
-    "technomancer_far_sight_plus" , // 强效变焦术 这枚镜片能看得比以往任何时候都远！如今你对此术已烂熟于心，并着手构想属于你的版本。
+    "technomancer_far_sight_plus" , // 强效变焦术 这枚镜片能看得比以往任何时候都远！如今你对此法术已了如指掌，并开始着手设计属于你自己的版本。
     "technomancer_pain_ignore"    , // 机械之躯 一声令咒，你催动自己的身体如机械般运作，在短暂的片刻间部分无视痛楚。
 ] as const;
 /**从文件提取的预定义的MagiclysmTechnomancerSpellID */

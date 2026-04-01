@@ -56,7 +56,7 @@ export const ExtractDefineMaterialIDList = [
     "faux_fur"                    , // 人造毛皮
     "lvl4ballisticglass"          , // 防弹玻璃
     "glass"                       , // 玻璃
-    "crystal"                     , // 水晶
+    "crystal"                     , // 晶体
     "gold"                        , // 黄金
     "hflesh"                      , // 人肉
     "honey"                       , // 蜂蜜
@@ -146,7 +146,7 @@ export const ExtractDefineMaterialIDList = [
     "nylon_2"                     , // 化纤织物
     "nylon_quilted"               , // 绗缝尼龙
     "nylon_quilted_2"             , // 绗缝尼龙
-    "carpet_pilling"              , // 地毯起球
+    "carpet_pilling"              , // 地毯
     "unobtanium"                  , // 奇特金属
     "tin"                         , // 锡
     "veggy"                       , // 植物质

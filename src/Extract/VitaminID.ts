@@ -51,7 +51,7 @@ export const ExtractDefineVitaminIDList = [
     "nut_allergen"                , // 坚果
     "bread_allergen"              , // 面包
     "milk_allergen"               , // 奶
-    "dermatik_larva_size"         , // 寄生蜂大小
+    "dermatik_larva_size"         , // 寄生蜂幼虫体积
     "triffid_fiber"               , // 三尖树纤维
 ] as const;
 /**从文件提取的预定义的VitaminID */

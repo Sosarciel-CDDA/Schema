@@ -5,7 +5,7 @@ export const ExtractDefineXedraEvolvedEaterSpellIDList = [
     "eat_dreamdross_ingot"        , // 食用浮梦锭 你一次吸收不了太多的浮梦残渣，在恢复魔力值之外它还直接改变着你的身体，使你更强壮更健康。这可能是你生命中吃过的最好吃的东西了。
     "blood_boil"                  , // 沸血术 随着一声古代咒语，目标的血液温度开始危险地升高。
     "self_healing"                , // 梦愈治疗 消耗一些浮梦残渣并修复自身伤害。
-    "supercoffee"                 , // 浮梦恢复疲劳。 吸收一些浮梦残渣并治愈自己的疲劳。
+    "supercoffee"                 , // 浮梦恢复疲劳 吸收一些浮梦残渣并治愈自己的疲劳。
     "spring_heeled_leap"          , // 弹簧跳 魔力把你的脚推离地面，把你跃起离地面几米。
     "spell_rage"                  , // 盲目盛怒 完美的憎恨。
     "spell_stamina_wonder"        , // 循环 不要停下来。

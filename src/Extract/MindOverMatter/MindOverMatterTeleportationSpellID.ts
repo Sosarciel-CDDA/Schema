@@ -19,7 +19,7 @@ export const ExtractDefineMindOverMatterTeleportationSpellIDList = [
     "teleport_loci_establishment" , // [Ψ]锚点设立(C) 开始专注于记录能当前的位置，以便于通过施展“[Ψ]锚点回归”来回到锚点。此项灵能<color_yellow>需要专注维持</color>，可能<color_red>失效</color>于<color_yellow>打断专注</color>后。
     "teleport_loci_technique"     , // [Ψ]锚点回归 通过异界将自己传送到设立好的锚点。传送前必须先使用[Ψ]锚点设立(C)与目的地同调。
     "teleport_gateway"            , // [Ψ]空间传送 通过虚空将自己传送至一个已同步的地点。你必须先与希望前往的地点进行同步。若携带装备的体积过大，此能力将会<color_red>失效</color>。
-    "teleport_dilated_gateway"    , // [Ψ]扩域传送门 将自己和所有邻近的生物传送至指定地点。你必须已使用[Ψ]传送门同步过一个区域。
+    "teleport_dilated_gateway"    , // [Ψ]扩域传送 将自己和所有邻近的生物传送至指定地点。你必须已使用[Ψ]空间传送同步过一个区域。
     "teleport_dilated_gateway_teleport_others", // [Ψ]Dilated Gateway - Teleport Others The spell that actually teleports the adjacent targets.  Should only be casted via teleport_gateway_other's EOC.
     "teleport_dilated_gateway_teleport_self", // [Ψ]Dilated Gateway - Teleport Self The spell that actually teleports the player.  Should only be casted via teleport_gateway_other's EOC.
     "teleport_summon"             , // [Ψ]异界裂口 利用你自己或敌人作为相位锚，短暂开启一条通往异界的通道，并使一个（或多个）异界生物通过。你无法控制找到传送门的生物，也无法在它抵达主位面后指挥它。记住，有些异界生物在阳光下会立即死亡。

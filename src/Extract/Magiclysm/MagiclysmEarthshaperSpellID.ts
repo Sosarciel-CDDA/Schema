@@ -1,7 +1,7 @@
 /**从文件提取的预定义的MagiclysmEarthshaperSpellID 列表*/
 export const ExtractDefineMagiclysmEarthshaperSpellIDList = [
     "stonefist"                   , // 大地之拳 召唤岩石包裹手臂和拳头，使你可以在近战战斗中用它来击打敌人和保护自己。
-    "stonefist_plus"              , // 升级版大地之拳 将你的手臂和手掌包裹在一层魔法岩石之中，你可以在近战中用它来出拳和防御。如今你对此法术已了如指掌，并开始着手设计属于你自己的版本。
+    "stonefist_plus"              , // 升级版大地之拳 将你的手臂和手部包裹在一层魔法岩石之中，你可以在近战中用它来出拳和防御。如今你对此法术已了如指掌，并开始着手设计属于你自己的版本。
     "seismic_stomp"               , // 战争践踏 聚集魔力进入你的腿，重重跺脚，发出冲击波，把周围的敌人击倒在地。
     "recover_stamina"             , // 坚岩耐力 你专注于你下方的坚岩，从它们的经受时间考验的坚韧中获取力量。你将魔力转换成耐力。
     "eshaper_shardspray"          , // 碎片喷射 这法术扇形喷射出大量锋利的金属碎片，敌友不分的切碎它们路上的所有目标。
@@ -19,7 +19,7 @@ export const ExtractDefineMagiclysmEarthshaperSpellIDList = [
     "eshaper_impalement"          , // 穿刺 从地下召唤出岩石尖刺，刺穿你的敌人，并使其暂时无法动弹。
     "eshaper_spawn_tools"         , // 工具塑造术 塑造出基本的工作用具，使用你自己的魔法能力和附近的土地。激活以更改工具的形状。
     "eshaper_melee_damage"        , // 沉重打击 将大地的能量充满你的身体，让你的每次攻击都像地震一样有毁灭性。
-    "eshaper_crystal_wrap"        , // 水晶裹覆 你用一层小而锋利的晶体覆盖住身体。它使攻击你的怪物受到一些伤害，并在近战中造成一些额外的切割伤害。
+    "eshaper_crystal_wrap"        , // 晶体裹覆 你用一层小而锋利的晶体覆盖住身体。它使攻击你的怪物受到一些伤害，并在近战中造成一些额外的切割伤害。
     "shape_of_dust"               , // 朦胧尘影 将自己藏身于漫天沙风之中。这会让你更难被击中，怪物也无法发现你。攻击目标将会打破法术。
     "summon_eshaper_golem"        , // 召唤塑地者傀儡 塑造一个强大的石制傀儡。能帮上你很多，但你没有足够的能量永远维持它。
     "earthshaper_boulder"         , // 召唤巨石 运用你的塑地之力，从地下的基岩中抽出一张光滑的石桌。你可以将它用作桌子或简易的铁砧。

@@ -12,7 +12,7 @@ export const ExtractDefineMagiclysmClasslessSpellIDList = [
     "obfuscated_body"             , // 朦胧术 一个魔法光环扭曲了你身体周围的光线，增加了你在一个回合中所能闪避攻击的次数。
     "obfuscated_body_plus"        , // 高级朦胧术 一个魔法光环扭曲了你身体周围的光线，增加了你在一个回合中所能闪避攻击的次数。
     "protection_aura"             , // 保护光环 把你的整个身体包裹在一个神奇的光环里，保护你免受环境伤害。
-    "protection_aura_plus"        , // 强化保护光环 用一层魔法灵光包裹你的全身，保护你免受环境影响。现在你对此法术已了如指掌，并开始着手设计属于你自己的版本。
+    "protection_aura_plus"        , // 强化保护光环 用一层魔法灵光包裹你的全身，保护你免受环境影响。如今你对此法术已了如指掌，并开始着手设计属于你自己的版本。
     "translocate_self"            , // 自我传送 将使用者传送到一个已经开启的易位门。
     "acid_resistance"             , // 防酸术 让施法者不受酸液侵蚀。
     "acid_resistance_greater"     , // 高等防酸术 保护使用者免受酸液伤害。现在你对此法术已了如指掌，并开始着手设计属于你自己的版本，不再需要你持续集中精神。
@@ -23,7 +23,7 @@ export const ExtractDefineMagiclysmClasslessSpellIDList = [
     "classless_clean_clothing_and_self", // 梳洗术 这无疑是大灾变前世界上最普及的法术。梳洗术能清洁你的牙齿，清新你的口气，去除衣物上的污渍与汗水，还能为你的皮肤去角质，让你的秀发重现蓬松。
     "classless_easy_sleep_spell"  , // 安睡术 此法术深受劳累过度的法师和浅尝辄止的魔法爱好者们喜爱，无论你有多疲惫，它都能让你更容易入睡。
     "classless_dispel_magic"      , // 驱散魔法 移除目标身上的魔法效果。 当面对强大的魔法或调谐提供的独特加成时，它就会失效。
-    "classless_disjunction"       , // 解离 作为终极反魔法咒语，"解离 "甚至能从目标身上剥离与调谐相关的魔力或强大的魔法。
+    "classless_disjunction"       , // 法术裂解 反魔法的终极法术。即使是调谐相关、法力高强的附魔效果，法术裂解也能移除。（译注：移除所有法术效果及法术召唤物品，不会影响永久魔法物品）
     "classless_restore_crystal_mana", // 魔力提取 将魔力结晶还原为原始的魔力并将其吸收，恢复你的部分魔力。这个过程非常缓慢，并且效率不高，但相比起魔力药剂更为便携。
     "eoc_evocation_setup"         , // Set Up Proficiency: Evocation Sets up proficiency gain.  This is a bug if you have it.
     "eoc_channeling_setup"        , // Set Up Proficiency: Channeling Sets up proficiency gain.  This is a bug if you have it.

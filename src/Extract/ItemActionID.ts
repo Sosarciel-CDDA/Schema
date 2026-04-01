@@ -26,7 +26,7 @@ export const ExtractDefineItemActionIDList = [
     "METH"                        , // 吸食
     "TAZER"                       , // 电击
     "ANTICONVULSANT"              , // 服用抗痉挛药
-    "LUMBER"                      , // 加工原木
+    "LUMBER"                      , // 把原木切成木板
     "REMOVE_ALL_MODS"             , // 拆卸模组
     "salvage"                     , // 切割物品
     "inscribe"                    , // 铭刻物品
@@ -43,7 +43,7 @@ export const ExtractDefineItemActionIDList = [
     "attach_molle"                , // 安装口袋
     "detach_molle"                , // 取下口袋
     "saw_barrel"                  , // 锯短枪管
-    "saw_stock"                   , // 锯短枪托
+    "saw_stock"                   , // 把枪托锯掉
     "ACIDBOMB_ACT"                , // 激活
     "ADRENALINE_INJECTOR"         , // 注射
     "AFS_TRANSLOCATOR"            , // 建立浮标
@@ -191,7 +191,7 @@ export const ExtractDefineItemActionIDList = [
     "change_scent"                , // 掩盖体味
     "install_bionic"              , // 安装插件
     "CHOP_TREE"                   , // 砍倒树木
-    "CHOP_LOGS"                   , // 树干劈成原木
+    "CHOP_LOGS"                   , // 把树干/树桩劈成原木
     "BREAK_STICK"                 , // 折断木棍
     "WEAK_ANTIBIOTIC"             , // 服用
     "DISASSEMBLE"                 , // 获得内容物

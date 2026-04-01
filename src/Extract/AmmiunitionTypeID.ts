@@ -77,7 +77,7 @@ export const ExtractDefineAmmiunitionTypeIDList = [
     "nitrogen"                    , // 氮气
     "motor_oil"                   , // 机油
     "crude_oil"                   , // 原油
-    "thread"                      , // 棉线
+    "thread"                      , // 缝线
     "anesthetic"                  , // 麻醉剂
     "soap"                        , // 肥皂
     "tape"                        , // 强力胶带
@@ -139,7 +139,7 @@ export const ExtractDefineAmmiunitionTypeIDList = [
     "273x44"                      , // 27.3x44 蒂约弹
     "273x44RG"                    , // 27.3x44 蒂约榴弹
     "33naval"                     , // 3.3 海军弹
-    "caotel_cell"                 , // 卡特尔单元
+    "caotel_cell"                 , // 考特尔单元
     "khuunaofaai_payload"         , // 锟厄焚烟花载荷
     "khuunaofaai_payload_fire"    , // 锟厄焚军械炮燃烧载荷
     "khuunaofaai_payload_acid"    , // 锟厄焚军械炮腐蚀载荷
