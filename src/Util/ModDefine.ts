@@ -83,6 +83,15 @@ import {
     ShopkeeperBlacklistID,
     MagicTypeID,
     MonsterAttackID,
+    WheelID,
+    ToolModID,
+    PetArmorID,
+    SeedID,
+    MillingID,
+    EngineID,
+    CompostableID,
+    BrewableID,
+    BookID,
 } from "@/src/Schema";
 
 /**ModID生成工具 */
@@ -405,9 +414,13 @@ export class ModDefine{
     genActivityTypeID(id:string):ActivityTypeID{
         return `${this.MOD_PREFIX}_ACT_${id}`;
     }
-    /**生成适用于此mod的 EocID */
-    genEocID(id:string):EocID{
-        return `${this.MOD_PREFIX}_EOC_${id}`;
+    /**生成适用于此mod的 WheelID */
+    genWheelID(id:string):WheelID{
+        return `${this.MOD_PREFIX}_WHEEL_${id}`;
+    }
+    /**生成适用于此mod的 ToolModID */
+    genToolModID(id:string):ToolModID{
+        return `${this.MOD_PREFIX}_TMOD_${id}`;
     }
     /**生成适用于此mod的 ToolID */
     genToolID(id:string):ToolID{
@@ -416,6 +429,18 @@ export class ModDefine{
     /**生成适用于此mod的 PortID */
     genPortID(id:string):PortID{
         return `${this.MOD_PREFIX}_PORT_${id}`;
+    }
+    /**生成适用于此mod的 SeedID */
+    genSeedID(id:string):SeedID{
+        return `${this.MOD_PREFIX}_SEED_${id}`;
+    }
+    /**生成适用于此mod的 PetArmorID */
+    genPetArmorID(id:string):PetArmorID{
+        return `${this.MOD_PREFIX}_PETARM_${id}`;
+    }
+    /**生成适用于此mod的 MillingID */
+    genMillingID(id:string):MillingID{
+        return `${this.MOD_PREFIX}_MILL_${id}`;
     }
     /**生成适用于此mod的 MagazineID */
     genMagazineID(id:string):MagazineID{
@@ -437,9 +462,25 @@ export class ModDefine{
     genItemVariantID(id:string):ItemVariantID{
         return `${this.MOD_PREFIX}_ITEMV_${id}`;
     }
+    /**生成适用于此mod的 EngineID */
+    genEngineID(id:string):EngineID{
+        return `${this.MOD_PREFIX}_ENG_${id}`;
+    }
+    /**生成适用于此mod的 CompostableID */
+    genCompostableID(id:string):CompostableID{
+        return `${this.MOD_PREFIX}_COMP_${id}`;
+    }
     /**生成适用于此mod的 ComestibleID */
     genComestibleID(id:string):ComestibleID{
         return `${this.MOD_PREFIX}_COME_${id}`;
+    }
+    /**生成适用于此mod的 BrewableID */
+    genBrewableID(id:string):BrewableID{
+        return `${this.MOD_PREFIX}_BREW_${id}`;
+    }
+    /**生成适用于此mod的 BookID */
+    genBookID(id:string):BookID{
+        return `${this.MOD_PREFIX}_BOOK_${id}`;
     }
     /**生成适用于此mod的 BionicItemID */
     genBionicItemID(id:string):BionicItemID{
@@ -460,6 +501,10 @@ export class ModDefine{
     /**生成适用于此mod的 AmmoID */
     genAmmoID(id:string):AmmoID{
         return `${this.MOD_PREFIX}_AMMO_${id}`;
+    }
+    /**生成适用于此mod的 EocID */
+    genEocID(id:string):EocID{
+        return `${this.MOD_PREFIX}_EOC_${id}`;
     }
     //#endregion
 
