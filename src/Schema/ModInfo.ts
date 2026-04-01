@@ -84,4 +84,5 @@ export type ModCategory =
     | "magical" 
     | "item_exclude" 
     | "monster_exclude" 
-    | "graphical";
+    | "graphical"
+    | "other";
