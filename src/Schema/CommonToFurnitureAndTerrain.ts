@@ -1,4 +1,5 @@
 import { EmitID } from "./Emit";
+import { BoolExpr, Eoc, NumberExpr, ParamsEoc } from "./Eoc";
 import { FurnitureID } from "./Furniture";
 import { Char, Color, DescText, Float, Int, LookLikeID, Time, Volume } from "./GenericDefine";
 import { ItemID } from "./Item";
@@ -510,17 +511,17 @@ type ExamineActionMortar = {
     /**射程(米) */
     range: Int;
     /**使用条件 */
-    condition?: object;
+    condition?: (BoolExpr);
     /**条件失败消息 */
     condition_fail_msg?: (DescText);
     /**瞄准偏差百分比 */
-    aim_deviation?: Int | object;
+    aim_deviation?: (NumberExpr);
     /**瞄准持续时间 */
-    aim_duration?: Int | object;
-    /**飞行时间 */
-    flight_time?: (Time) | object;
+    aim_duration?: (NumberExpr);
+    /**飞行时间 Time */
+    flight_time?: (NumberExpr);
     /**射击结束时触发的效果 */
-    effect_on_conditions?: object[];
+    effect_on_conditions?: (ParamsEoc);
 };
 
 /**读卡器检查动作 */
@@ -565,18 +566,11 @@ type ExamineActionApplianceConvert = {
     item: (ItemID);
 };
 
-/**效果条件检查动作 */
-type ExamineActionEffectOnCondition = {
-    type: "effect_on_condition";
-    /**效果条件列表 */
-    effect_on_conditions: object[];
-};
-
 /**检查动作 */
 type ExamineAction = 
     | HardcodedExamineAction 
     | ExamineActionMortar 
     | ExamineActionCardreader 
     | ExamineActionApplianceConvert 
-    | ExamineActionEffectOnCondition
+    | Eoc
     | ExamineActionBase;
