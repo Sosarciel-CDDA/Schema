@@ -579,7 +579,10 @@ ivk(async ()=>{
             dirName,
             sourceFileGlob: "data/mods/Magiclysm/Spells/attunements/*.json",
             typeName: `${dirName}AttunSpellID`,
-            func:extraFunc,
+            func:extractFn({
+                filter, id: 'id',
+                field: ['name','spell_class','description'],
+            }),
         }),
         ]);
         await createExtractIndex({dirName});
