@@ -288,6 +288,11 @@ ivk(async ()=>{
             filter, id: 'id',
             field: ['name','description'],
         });
+        const extractFuncNoClass = extractFn({
+            filter: (v:any)=> v.type == "SPELL",
+            id: 'id',
+            field: ['name','description'],
+        });
         await Promise.all([
         //梦行者
         extractDefineIdList({
@@ -301,6 +306,97 @@ ivk(async ()=>{
             dirName,
             sourceFileGlob: "data/mods/Xedra_Evolved/spells/eater_spells.json",
             typeName: `${dirName}EaterSpellID`,
+            func:extractFunc,
+        }),
+        //变形者
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/spells/changeling_spells.json",
+            typeName: `${dirName}ChangelingSpellID`,
+            func:extractFunc,
+        }),
+        //无职业法术
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/spells/classless_spells.json",
+            typeName: `${dirName}ClasslessSpellID`,
+            func:extractFuncNoClass,
+        }),
+        //边缘魔法
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/spells/hedge_magic_spells.json",
+            typeName: `${dirName}HedgeMagicSpellID`,
+            func:extractFunc,
+        }),
+        //发明家
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/spells/inventor_spells.json",
+            typeName: `${dirName}InventorSpellID`,
+            func:extractFunc,
+        }),
+        //莉莉姆
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/spells/lilin_spells.json",
+            typeName: `${dirName}LilinSpellID`,
+            func:extractFunc,
+        }),
+        //吸血鬼
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/spells/vampire_spells.json",
+            typeName: `${dirName}VampireSpellID`,
+            func:extractFunc,
+        }),
+        //种族法术-Arvore(树精)
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/mutations/paraclesians/arvore_mutation_spells.json",
+            typeName: `${dirName}RaceArvoreSpellID`,
+            func:extractFunc,
+        }),
+        //种族法术-Homullus
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/mutations/paraclesians/homullus_mutation_spells.json",
+            typeName: `${dirName}RaceHomullusSpellID`,
+            func:extractFunc,
+        }),
+        //种族法术-Ierde
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/mutations/paraclesians/ierde_mutation_spells.json",
+            typeName: `${dirName}RaceIerdeSpellID`,
+            func:extractFunc,
+        }),
+        //种族法术-Paraclesian通用
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/mutations/paraclesians/paraclesian_mutation_spells.json",
+            typeName: `${dirName}RaceParaclesianSpellID`,
+            func:extractFunc,
+        }),
+        //种族法术-Salamander(火元素)
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/mutations/paraclesians/salamander_mutation_spells.json",
+            typeName: `${dirName}RaceSalamanderSpellID`,
+            func:extractFunc,
+        }),
+        //种族法术-Sylph(风元素)
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/mutations/paraclesians/sylph_mutation_spells.json",
+            typeName: `${dirName}RaceSylphSpellID`,
+            func:extractFunc,
+        }),
+        //种族法术-Undine(水元素)
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/mutations/paraclesians/undine_mutation_spells.json",
+            typeName: `${dirName}RaceUndineSpellID`,
             func:extractFunc,
         }),
         ]);
@@ -476,6 +572,13 @@ ivk(async ()=>{
             dirName,
             sourceFileGlob: "data/mods/Magiclysm/Spells/technomancer.json",
             typeName: `${dirName}TechnomancerSpellID`,
+            func:extraFunc,
+        }),
+        //调谐职业法术(统一提取)
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Magiclysm/Spells/attunements/*.json",
+            typeName: `${dirName}AttunSpellID`,
             func:extraFunc,
         }),
         ]);
