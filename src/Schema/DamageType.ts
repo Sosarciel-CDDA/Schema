@@ -94,6 +94,12 @@ export type DamageType = {
     onhit_eocs?: EocID[];
     /**(可选) 当怪物或角色从另一个怪物或角色那里接受这种伤害类型的攻击时激活的效果条件数组.   
      * 在这种情况下, u 指的是伤害源, npc 指的是伤害目标. 还可以访问一些上下文值  
+     * @example
+     * {
+     *   "bp": `bodypart_id`
+     *   "damage_taken": `double` damage the character will take post mitigation
+     *   "total_damage": `double` damage pre mitigation
+     * }
      */
     ondamage_eocs?: EocID[];
 }
