@@ -1,3 +1,4 @@
+import { ExtractDefineCoreDamageTypeID, ExtractDefineMagiclysmDamageTypeID, ExtractDefineMindOverMatterDamageTypeID, ExtractDefineXedraEvolvedDamageTypeID } from "Extract";
 import { EocID } from "./Eoc";
 import { FlagID } from "./Flag";
 import { CddaID, Color, DescText, Int } from "./GenericDefine";
@@ -28,7 +29,7 @@ export const DefineDamageTypeIDList = [
     "psi_enervation_damage"            ,
 ] as const;
 /**预定义的伤害类型 */
-export type DefineDamageTypeID = typeof DefineDamageTypeIDList[number];
+export type DefineDamageTypeID = typeof DefineDamageTypeIDList[number]|ExtractDefineCoreDamageTypeID|ExtractDefineMagiclysmDamageTypeID|ExtractDefineXedraEvolvedDamageTypeID|ExtractDefineMindOverMatterDamageTypeID;
 /**伤害类型ID */
 export type DamageTypeID = DefineDamageTypeID|CddaID<"DT">;
 

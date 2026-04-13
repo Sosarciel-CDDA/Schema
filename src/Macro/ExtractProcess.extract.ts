@@ -588,6 +588,48 @@ ivk(async ()=>{
         await createExtractIndex({dirName});
     }),
 
+    //DamageType提取
+    ivk(async ()=>{
+        const dirName = "DamageType";
+        const filter = typeFilter("damage_type");
+        const extractFunc = extractFn({
+            filter,
+            id: 'id',
+            field: ['name'],
+        });
+        await Promise.all([
+        //原版核心
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/json/damage_types.json",
+            typeName: "CoreDamageTypeID",
+            func:extractFunc,
+        }),
+        //大魔法mod
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Magiclysm/damage_types.json",
+            typeName: "MagiclysmDamageTypeID",
+            func:extractFunc,
+        }),
+        //MoMmod
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/MindOverMatter/damage_types.json",
+            typeName: "MindOverMatterDamageTypeID",
+            func:extractFunc,
+        }),
+        //Xedramod
+        extractDefineIdList({
+            dirName,
+            sourceFileGlob: "data/mods/Xedra_Evolved/damage_types.json",
+            typeName: "XedraEvolvedDamageTypeID",
+            func:extractFunc,
+        }),
+        ]);
+        await createExtractIndex({dirName});
+    }),
+
     ]);
     await createExtractIndex({});
 })
