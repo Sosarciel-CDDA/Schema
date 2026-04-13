@@ -132,13 +132,13 @@ export type BoolNot = {
  * 如果alpha talker存在则返回true  
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle  
  */
-export type HasAlpha = TalkerStr<"has_alpha">;
+export type HasAlpha = "has_alpha";
 
 /**有Beta  
  * 如果beta talker存在则返回true  
  * 适用于: Avatar Character NPC Monster Furniture Item Vehicle  
  */
-export type HasBeta = TalkerStr<"has_beta">;
+export type HasBeta = "has_beta";
 
 /**男性  
  * 如果alpha或beta talker是男性则返回true  
