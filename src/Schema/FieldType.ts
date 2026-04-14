@@ -217,6 +217,8 @@ export type FieldType = {
     };
     /**是否不可摧毁 (但仍可能随时间过期)  */
     indestructible?: boolean;
+    /**应用某个物体的贴图 */
+    looks_like: string;
 };
 
 /**地块附着物免疫数据  
