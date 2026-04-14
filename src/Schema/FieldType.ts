@@ -1,7 +1,7 @@
 import { ExtractDefineFieldTypeID } from "Extract";
 import { BodyPartParam, LimbType } from "./BodyPart";
 import { FlagID } from "./Flag";
-import { CddaID, Char, Color, DescText, Float, Int, Length, MessageRatType, Phase, Time } from "./GenericDefine";
+import { CddaID, Char, Color, DescText, Float, Int, MessageRatType, Phase, Time } from "./GenericDefine";
 import { ItemID } from "./Item";
 import { MonsterID } from "./Monster";
 import { MonsterGroupID } from "./MonsterGroup";
@@ -158,7 +158,7 @@ export type FieldType = {
     /**应用粘液因子 */
     apply_slime_factor?: Int;
     /**气体吸收因子 */
-    gas_absorption_factor?: (Length);
+    gas_absorption_factor?: string;
     /**是否溅射 (使车辆部件沾血)  */
     is_splattering?: boolean;
     /**是否重新计算透明度缓存 (用于不透明, 扩散的地块附着物)  */
