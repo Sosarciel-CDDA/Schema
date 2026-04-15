@@ -166,6 +166,12 @@ export type Effect = {
     death_event?: (EocEvent);
     /**效果肢体能力修正 */
     limb_score_mods?:EffectLimbMod[];
+    /**效果持续时间修正列表
+     * 修改命中时效果的持续时间
+     * 定义于 body_parts.json
+     * @example [{ effect_id: "bleed", modifier: 1.05, same_bp: false }] // 增加5%的流血持续时间
+     */
+    effect_dur_scaling?: EffectDurScaling[];
     /**效果的基础调整 */
     base_mods?: EffectMod;
     /**效果的每个强度等级的额外调整 */
@@ -236,6 +242,26 @@ export type EffectLimbMod ={
      */
     resist_scaling?: Float;
 }
+
+/**效果持续时间修正
+ * 修改命中时效果的持续时间
+ */
+export type EffectDurScaling = {
+    /**目标效果ID
+     * 定义于 body_parts.json
+     */
+    effect_id: (EffectID);
+    /**持续时间修正系数
+     * @example 1.05 // 增加5%的流血持续时间
+     */
+    modifier: Float;
+    /**是否仅影响同一身体部位
+     * 如果为 true, 仅影响施加效果的身体部位
+     * 如果为 false, 影响所有身体部位
+     * @default false
+     */
+    same_bp?: boolean;
+};
 
 
 
