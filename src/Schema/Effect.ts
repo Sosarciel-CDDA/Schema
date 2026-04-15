@@ -182,6 +182,7 @@ export type Effect = {
     enchantments?:(ParamsEnchantment);
     /**拥有此效果时进行血液分析可得出的说明 */
     blood_analysis_description?: (DescText);
+    flags?: FlagID[];
 };
 
 
