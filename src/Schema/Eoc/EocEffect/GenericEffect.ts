@@ -1,4 +1,4 @@
-import { BoolExpr, IDExpr, LocExpr, NumberExpr, StringExpr, TalekrExpr, TimeExpr } from "../Expression";
+import { BoolExpr, GenericExpr, IDExpr, LocExpr, NumberExpr, StringExpr, TalekrExpr, TimeExpr } from "../Expression";
 import { SoundEffectID, SoundEffectVariantID } from "Schema/SoundEffect";
 import { EocID, InlineEoc, TalkerVar, ToFEffect } from "../Eoc";
 import { EocEffect, ItemSearchData, ParamsEoc, ParamsEocList } from "./EocEffectIndex";
@@ -266,7 +266,7 @@ export type RunEocs = {
      * 当变量是对象并且i18n成员设置为true时, 变量将被本地化;   
      * 可以在运行的EOC内使用expects_vars条件来确保在EOC运行之前每个变量都存在  
      */
-    variables?: {[k:string]:string|boolean|number};
+    variables?: {[k:string]:string|boolean|number|NumberExpr|StringExpr|BoolExpr|LocExpr|GenericExpr};
 }
 
 
