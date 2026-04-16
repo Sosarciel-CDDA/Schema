@@ -310,8 +310,8 @@ export const hasVar = (varName: string) =>
  * @example  
  * "condition": { "math": [ "hp('torso') > 100"] }  
  */
-export const hp = (bodypart: Arg<BodyPartID>) =>
-    `hp(${bodypart})`;
+export const hp = (talker: UN,bodypart: Arg<BodyPartID>) =>
+    `${pt(talker)}hp(${bodypart})`;
 
 /**获取角色某部位的最大生命值  
  * 只读  
