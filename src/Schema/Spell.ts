@@ -4,10 +4,10 @@ import { FakeSpell } from "./Enchantment";
 import { NumberExpr } from "./Eoc";
 import { FieldTypeID } from "./FieldType";
 import { CddaID, DescText, PRecord } from "./GenericDefine";
-import { ItemID } from "./Item";
 import { MagicTypeID, SpellEnergySource } from "./MagicType";
 import { MonsterID } from "./Monster";
 import { MutationID } from "./Mutation";
+import { ReqComponents } from "./Requirement";
 import { SoundEffectID, SoundEffectVariantID } from "./SoundEffect";
 import { SpeciesID } from "./Species";
 
@@ -72,7 +72,7 @@ export type Spell = {
     /**法术使用的能量池 默认魔力 */
     energy_source?: (SpellEnergySource);
     /**施法材料ID */
-    components?: ItemID[];
+    components?: (ReqComponents);
     /**法术难度 */
     difficulty?: (NumberExpr);
     /**法术最大等级 */
