@@ -950,14 +950,12 @@ export type AddMorale = TalkerVar<{
     /**加成  
      * 效果给予的心情加成或惩罚; 可以堆叠到max_bonus上限, 但每个加成都比前一个低  
      *  (例如, 100的加成给予心情加成为100, 141, 172, 198, 221等)  
-     * @default 1  
      */
-    bonus?: (NumberExpr) | (NumberExpr)[];
+    bonus: (NumberExpr) | (NumberExpr)[];
     /**最大加成  
      * 心情不会增加或减少超过的上限  
-     * @default false  
      */
-    max_bonus?: (NumberExpr) | (NumberExpr)[];
+    max_bonus: (NumberExpr) | (NumberExpr)[];
     /**持续时间  
      * 士气效果持续多长时间  
      * @default "1 hour"  
