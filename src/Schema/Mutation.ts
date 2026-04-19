@@ -43,6 +43,10 @@ export type Mutation = {
     prereqs?: MutationID[];
     /**同时需要前置变异 */
     prereqs2?: MutationID[];
+    /**阈值需求 */
+    threshreq?: MutationID[];
+    /**表示这是一个阈值 */
+    threshold?: boolean;
     /**产生此变异时会取消的变异 */
     cancels?: MutationID[];
     /**附带的变异 */
